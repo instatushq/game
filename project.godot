@@ -17,10 +17,26 @@ boot_splash/bg_color=Color(0.362055, 0.265095, 0.736724, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[display]
+
+window/emulate_touch_from_mouse=false
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="Ship"
+2d_physics/layer_2="Astronaut"
+2d_physics/layer_3="Debris"
+2d_physics/layer_5="TopBottomWalls"
+2d_physics/layer_6="LeftRightWalls"
 
 [rendering]
 
