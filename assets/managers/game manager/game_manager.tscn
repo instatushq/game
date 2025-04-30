@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://csv6n3lor4pje"]
+
+[ext_resource type="Script" uid="uid://bks5srxa52nmg" path="res://assets/managers/game manager/game_manager.gd" id="1_b26y8"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_b26y8")
+
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
