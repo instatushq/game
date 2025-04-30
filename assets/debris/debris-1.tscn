@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqp7226e2sov4"]
+
+[ext_resource type="Texture2D" uid="uid://cksjfu20xrl07" path="res://assets/debris/textures/Layered Rock.png" id="1_cidke"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cidke"]
+radius = 17.7953
+height = 62.7282
+
+[node name="Debris-1" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+scale = Vector2(1.00366, 1)
+collision_layer = 4
+collision_mask = 39
+gravity_scale = 0.0
+constant_torque = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("1_cidke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-3, 3)
+rotation = -0.698132
+shape = SubResource("CapsuleShape2D_cidke")
