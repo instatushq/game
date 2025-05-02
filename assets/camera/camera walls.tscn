@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw0ggx5ydt1qa"]
+
+[ext_resource type="Script" uid="uid://bs1lb4vwswrhd" path="res://assets/camera/camera_walls.gd" id="1_bvukq"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wtcfe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ruuv"]
+radius = 0.0
+
+[node name="Walls" type="Node2D"]
+script = ExtResource("1_bvukq")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Left Right" type="StaticBody2D" parent="RigidBody2D"]
+collision_layer = 32
+collision_mask = 7
+
+[node name="Left Wall" type="CollisionShape2D" parent="RigidBody2D/Left Right"]
+position = Vector2(-354, -1)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_wtcfe")
+debug_color = Color(1, 0.252555, 0.614493, 0.42)
+
+[node name="Right Wall" type="CollisionShape2D" parent="RigidBody2D/Left Right"]
+position = Vector2(352, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_wtcfe")
+debug_color = Color(1, 0.252555, 0.614493, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_6ruuv")
+one_way_collision_margin = 0.0
