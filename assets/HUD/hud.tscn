@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqcmv5b3uo3sc"]
+
+[ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbn2g"]
+font_size = 30
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_lbn2g")
+
+[node name="Score" type="Label" parent="."]
+offset_right = 118.0
+offset_bottom = 23.0
+size_flags_horizontal = 4
+text = "0 XP"
+label_settings = SubResource("LabelSettings_lbn2g")
+horizontal_alignment = 1
+vertical_alignment = 1
