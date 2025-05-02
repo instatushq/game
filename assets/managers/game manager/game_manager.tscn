@@ -7,5 +7,6 @@ script = ExtResource("1_b26y8")
 
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 0.2
+autostart = true
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

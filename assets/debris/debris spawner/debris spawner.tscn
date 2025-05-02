@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8polkf2eiy1"]
+
+[ext_resource type="Script" uid="uid://j3t0jnn6mc41" path="res://assets/debris/debris spawner/debris_spawner.gd" id="1_87tiq"]
+
+[node name="Debris Spawner" type="Node2D"]
+script = ExtResource("1_87tiq")
