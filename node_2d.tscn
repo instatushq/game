@@ -19,6 +19,7 @@ unique_name_in_owner = true
 position = Vector2(-7, -40)
 
 [node name="Walls" parent="." instance=ExtResource("3_epypp")]
+unique_name_in_owner = true
 
 [node name="Debris Spawner" parent="." instance=ExtResource("6_kdubu")]
 position = Vector2(-180, -138)
