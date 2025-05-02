@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbkif523pefv5"]
+[gd_scene load_steps=7 format=3 uid="uid://bbkif523pefv5"]
 
 [ext_resource type="Script" uid="uid://0duwjoixufm0" path="res://assets/ship/ship.gd" id="1_n8q6x"]
+[ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="2_77xhg"]
+[ext_resource type="Script" uid="uid://cn5warahkaysk" path="res://assets/ship/issues.gd" id="3_v8d56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8q6x"]
 size = Vector2(64, 64)
@@ -27,3 +29,11 @@ shape = SubResource("RectangleShape2D_n8q6x")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = SubResource("GradientTexture2D_n8q6x")
+
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("2_77xhg")
+
+[node name="Issues" type="Node2D" parent="."]
+script = ExtResource("3_v8d56")
