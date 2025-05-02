@@ -1,68 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=7 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://csv6n3lor4pje" path="res://assets/managers/game manager/game_manager.tscn" id="1_0hol4"]
+[ext_resource type="PackedScene" uid="uid://cqcmv5b3uo3sc" path="res://assets/HUD/hud.tscn" id="1_q6r6c"]
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="1_wtcfe"]
 [ext_resource type="PackedScene" uid="uid://cqp7226e2sov4" path="res://assets/debris/debris-1.tscn" id="2_0e48y"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/camera/camera walls.tscn" id="3_epypp"]
+[ext_resource type="PackedScene" uid="uid://c8polkf2eiy1" path="res://assets/debris/debris spawner/debris spawner.tscn" id="6_kdubu"]
 
 [node name="Game" type="Node2D"]
+
+[node name="HUD" parent="." instance=ExtResource("1_q6r6c")]
 
 [node name="GameManager" parent="." instance=ExtResource("1_0hol4")]
 unique_name_in_owner = true
 
 [node name="Ship" parent="." instance=ExtResource("1_wtcfe")]
 unique_name_in_owner = true
+position = Vector2(-7, -40)
 
-[node name="Walls" type="Node2D" parent="."]
+[node name="Walls" parent="." instance=ExtResource("3_epypp")]
 
-[node name="Left Right" type="StaticBody2D" parent="Walls"]
-collision_layer = 32
-collision_mask = 7
-
-[node name="Left Wall" type="CollisionShape2D" parent="Walls/Left Right"]
-position = Vector2(-354, -1)
-rotation = 1.5708
-shape = SubResource("WorldBoundaryShape2D_wtcfe")
-debug_color = Color(1, 0.252555, 0.614493, 0.42)
-
-[node name="Right Wall" type="CollisionShape2D" parent="Walls/Left Right"]
-position = Vector2(352, 0)
-rotation = -1.5708
-shape = SubResource("WorldBoundaryShape2D_wtcfe")
-debug_color = Color(1, 0.252555, 0.614493, 0.42)
-
-[node name="Top Bottom" type="StaticBody2D" parent="Walls"]
-collision_layer = 16
-collision_mask = 7
-
-[node name="Top Wall" type="CollisionShape2D" parent="Walls/Top Bottom"]
-position = Vector2(0, -206)
-rotation = 3.14159
-shape = SubResource("WorldBoundaryShape2D_wtcfe")
-debug_color = Color(1, 0.252555, 0.614493, 0.42)
-
-[node name="Bottom Wall" type="CollisionShape2D" parent="Walls/Top Bottom"]
-position = Vector2(1, 197)
-shape = SubResource("WorldBoundaryShape2D_wtcfe")
-debug_color = Color(1, 0.252555, 0.614493, 0.42)
-
-[node name="Camera2D" type="Camera2D" parent="Walls"]
-zoom = Vector2(1.6, 1.6)
-position_smoothing_enabled = true
-editor_draw_limits = true
-
-[node name="Debris-1" parent="." instance=ExtResource("2_0e48y")]
-position = Vector2(-232, -160)
-
-[node name="Debris-2" parent="." instance=ExtResource("2_0e48y")]
-position = Vector2(-180, 58)
+[node name="Debris Spawner" parent="." instance=ExtResource("6_kdubu")]
+position = Vector2(-180, -138)
 rotation = 2.60268
-
-[node name="Debris-3" parent="." instance=ExtResource("2_0e48y")]
-position = Vector2(41, 81)
-rotation = 1.30885
-
-[node name="Debris-4" parent="." instance=ExtResource("2_0e48y")]
-position = Vector2(88, -138)
-rotation = 2.58233
+debris_objects = Array[PackedScene]([ExtResource("2_0e48y"), ExtResource("2_0e48y"), ExtResource("2_0e48y"), ExtResource("2_0e48y")])

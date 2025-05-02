@@ -13,12 +13,15 @@ config_version=5
 config/name="Instatus-flight"
 run/main_scene="res://node_2d.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-boot_splash/bg_color=Color(0.362055, 0.265095, 0.736724, 1)
-boot_splash/show_image=false
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.0313726, 0, 0.14902, 1)
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://cw25bkbkbt45g"
+config/icon="uid://cw25bkbkbt45g"
 
 [display]
 
+window/size/viewport_height=800
 window/emulate_touch_from_mouse=false
 
 [editor]
