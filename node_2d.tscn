@@ -26,5 +26,4 @@ position = Vector2(-180, -138)
 debris_objects = Array[PackedScene]([ExtResource("2_0e48y"), ExtResource("2_0e48y"), ExtResource("2_0e48y"), ExtResource("2_0e48y")])
 
 [node name="Dev Camera" type="Camera2D" parent="."]
-enabled = false
 zoom = Vector2(0.34, 0.34)

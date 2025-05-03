@@ -15,7 +15,7 @@ var can_spawn: bool = true
 
 func _spawn_batch(y_level: float = 0) -> void:
 	var view_port_y_size = get_viewport_rect().size.y
-	var area_width = abs(walls[0].position.x - walls[1].position.x)
+	var area_width = 530
 	var grid_size = Vector2(area_width, view_port_y_size)
 	
 	var center_x_position = (walls[0].position.x + walls[1].position.x) / 2

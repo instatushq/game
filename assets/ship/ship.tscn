@@ -31,6 +31,7 @@ shape = SubResource("RectangleShape2D_n8q6x")
 texture = SubResource("GradientTexture2D_n8q6x")
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
+enabled = false
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_77xhg")
