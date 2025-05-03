@@ -9,6 +9,7 @@ enum Player {
 
 @onready var ship: Ship = get_node("%Ship")
 @onready var astronaut: Astronaut = get_node("%Astronaut")
+@onready var camera: Camera = get_node("%Camera")
 
 @export var current_player: Player = Player.SHIP
 
@@ -48,8 +49,10 @@ func switch_to_ship() -> void:
 	current_player = Player.SHIP
 	astronaut.toggle_control(false)
 	ship.toggle_control(true)
+	camera.focus_ship()
 
 func switch_to_astronaut() -> void:
 	current_player = Player.ASTRONAUT
 	astronaut.toggle_control(true)
 	ship.toggle_control(false)
+	camera.focus_astronaut()

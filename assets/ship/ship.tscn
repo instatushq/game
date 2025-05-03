@@ -51,9 +51,6 @@ shape = SubResource("RectangleShape2D_n8q6x")
 position = Vector2(1, 93)
 texture = SubResource("GradientTexture2D_n8q6x")
 
-[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
-enabled = false
-
 [node name="Interior" type="StaticBody2D" parent="RigidBody2D"]
 collision_layer = 8
 collision_mask = 2
