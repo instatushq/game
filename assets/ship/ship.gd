@@ -25,13 +25,17 @@ func _input(event):
 		if drag_vector.length() > MAX_RADIUS:
 			drag_vector = drag_vector.normalized() * MAX_RADIUS
 		movement_axis = drag_vector
-	queue_redraw()
 
 func _draw() -> void:
 	if isTouching:
-		draw_circle(screen_touch_position, MAX_RADIUS, Color(1, 0, 0, 0.4))
-		draw_circle(screen_touch_position + movement_axis, 20, Color(0, 0.5, 1, 0.2))
+		var viewport_rect = get_viewport_rect()
+		var viewport_transform = get_viewport().get_canvas_transform()
+		var bottom_left = viewport_transform.affine_inverse() * Vector2(MAX_RADIUS, viewport_rect.size.y - MAX_RADIUS)
+		draw_circle(bottom_left, MAX_RADIUS, Color(0.3, 2, 0, 0.4))
+		draw_circle(bottom_left + movement_axis, 20, Color(0, 0.5, 1, 0.2))
 		
+func _process(_delta: float) -> void:
+	queue_redraw()
 
 func _handle_movement_score() -> void:
 	if -rb.global_position.y > last_recorded_y + 100:

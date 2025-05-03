@@ -20,13 +20,13 @@ collision_layer = 32
 collision_mask = 7
 
 [node name="Left Wall" type="CollisionShape2D" parent="RigidBody2D/Left Right"]
-position = Vector2(-354, -1)
+position = Vector2(-752, -18)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_wtcfe")
 debug_color = Color(1, 0.252555, 0.614493, 0.42)
 
 [node name="Right Wall" type="CollisionShape2D" parent="RigidBody2D/Left Right"]
-position = Vector2(352, 0)
+position = Vector2(752, 0)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_wtcfe")
 debug_color = Color(1, 0.252555, 0.614493, 0.42)
