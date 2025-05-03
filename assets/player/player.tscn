@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvdl2lntvji7s"]
 
-[ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/camera/camera walls.tscn" id="1_d6veg"]
+[ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/walls/camera walls.tscn" id="1_d6veg"]
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="1_h6syq"]
 
 [node name="Player" type="Node2D"]

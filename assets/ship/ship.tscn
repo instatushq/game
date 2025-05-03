@@ -1,37 +1,82 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbkif523pefv5"]
+[gd_scene load_steps=10 format=3 uid="uid://bbkif523pefv5"]
 
 [ext_resource type="Script" uid="uid://0duwjoixufm0" path="res://assets/ship/ship.gd" id="1_n8q6x"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="2_77xhg"]
 [ext_resource type="Script" uid="uid://cn5warahkaysk" path="res://assets/ship/issues.gd" id="3_v8d56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8q6x"]
-size = Vector2(64, 64)
+size = Vector2(296, 317)
 
 [sub_resource type="Gradient" id="Gradient_5jvrq"]
 colors = PackedColorArray(0.143058, 0.70393, 0.534127, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n8q6x"]
 gradient = SubResource("Gradient_5jvrq")
+width = 300
+height = 320
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pxrqm"]
+a = Vector2(151, 1)
+b = Vector2(-148, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1h06k"]
+b = Vector2(0, 315.56)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1dmai"]
+a = Vector2(0, -152.33)
+b = Vector2(0, 155.92)
 
 [node name="Ship" type="Node2D"]
 script = ExtResource("1_n8q6x")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-collision_mask = 55
+collision_mask = 53
 gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 1.0
 
+[node name="ShipPoints" type="Node2D" parent="RigidBody2D"]
+position = Vector2(0, 93)
+
+[node name="Cockpit" type="Node2D" parent="RigidBody2D/ShipPoints"]
+position = Vector2(95, -67)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 91.5)
 shape = SubResource("RectangleShape2D_n8q6x")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(1, 93)
 texture = SubResource("GradientTexture2D_n8q6x")
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
 enabled = false
+
+[node name="Interior" type="StaticBody2D" parent="RigidBody2D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Ground" type="CollisionShape2D" parent="RigidBody2D/Interior"]
+position = Vector2(0, 241)
+shape = SubResource("SegmentShape2D_pxrqm")
+debug_color = Color(0.969519, 0, 0.460823, 0.42)
+
+[node name="Left Wall" type="CollisionShape2D" parent="RigidBody2D/Interior"]
+position = Vector2(-149, -65)
+shape = SubResource("SegmentShape2D_1h06k")
+debug_color = Color(0.962013, 9.62615e-08, 0.507042, 0.42)
+
+[node name="Right Wall" type="CollisionShape2D" parent="RigidBody2D/Interior"]
+position = Vector2(152, 88)
+shape = SubResource("SegmentShape2D_1dmai")
+debug_color = Color(0.937366, 1.30916e-05, 0.628279, 0.42)
+
+[node name="Ceiling" type="CollisionShape2D" parent="RigidBody2D/Interior"]
+position = Vector2(0, -65)
+shape = SubResource("SegmentShape2D_pxrqm")
+debug_color = Color(0.969519, 0, 0.460823, 0.42)
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_77xhg")

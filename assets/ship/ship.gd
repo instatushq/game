@@ -1,7 +1,10 @@
 extends Node2D
 
+class_name Ship
+
 @export var movement_speed: float = 300.0
 @export var maximum_speed: float = 300.0
+@export var base_travelling_speed: float = 100.0
 
 var movement_axis: Vector2 = Vector2.ZERO
 var screen_touch_position: Vector2 = Vector2.ZERO
@@ -14,7 +17,11 @@ const MAX_RADIUS := 100
 var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y = position.y;
 
+var can_control: bool = false
+
 func _input(event):
+	if not game_manager.current_player == game_manager.Player.SHIP: return
+	
 	if event is InputEventScreenTouch or event is InputEventMouseButton:
 		isTouching = event.pressed
 		screen_touch_position = event.position if event.pressed else Vector2.ZERO
@@ -40,7 +47,6 @@ func _process(_delta: float) -> void:
 func _handle_movement_score() -> void:
 	if -rb.global_position.y > last_recorded_y + 100:
 		var score_increase = 1
-		
 		game_manager.increaseScore(score_increase)
 		last_recorded_y = rb.global_position.y
 
@@ -58,3 +64,7 @@ func _physics_process(_delta: float) -> void:
 	elif abs(rb.linear_velocity.y) < game_manager.base_travelling_speed:
 		rb.apply_force(Vector2.UP * game_manager.base_travelling_speed * 0.4)
 		
+
+func toggle_control(new_can_control: bool) -> void:
+	can_control = new_can_control
+	rb.freeze = not new_can_control

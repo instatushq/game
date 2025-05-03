@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=8 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://csv6n3lor4pje" path="res://assets/managers/game manager/game_manager.tscn" id="1_0hol4"]
 [ext_resource type="PackedScene" uid="uid://cqcmv5b3uo3sc" path="res://assets/HUD/hud.tscn" id="1_q6r6c"]
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="1_wtcfe"]
 [ext_resource type="PackedScene" uid="uid://cqp7226e2sov4" path="res://assets/debris/debris-1.tscn" id="2_0e48y"]
-[ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/camera/camera walls.tscn" id="3_epypp"]
+[ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/walls/camera walls.tscn" id="3_epypp"]
 [ext_resource type="PackedScene" uid="uid://c8polkf2eiy1" path="res://assets/debris/debris spawner/debris spawner.tscn" id="6_kdubu"]
+[ext_resource type="PackedScene" uid="uid://byp6hvrh54j2d" path="res://assets/astronaut/astronaut.tscn" id="7_d21ai"]
 
 [node name="Game" type="Node2D"]
 
@@ -25,5 +26,10 @@ unique_name_in_owner = true
 position = Vector2(-180, -138)
 debris_objects = Array[PackedScene]([ExtResource("2_0e48y"), ExtResource("2_0e48y"), ExtResource("2_0e48y"), ExtResource("2_0e48y")])
 
-[node name="Dev Camera" type="Camera2D" parent="."]
+[node name="Main Camera" type="Camera2D" parent="."]
 zoom = Vector2(0.34, 0.34)
+
+[node name="Astronaut" parent="." instance=ExtResource("7_d21ai")]
+unique_name_in_owner = true
+position = Vector2(0, 127)
+damping = 2.0

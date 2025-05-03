@@ -38,6 +38,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_1="Ship"
 2d_physics/layer_2="Astronaut"
 2d_physics/layer_3="Debris"
+2d_physics/layer_4="InnerShip"
 2d_physics/layer_5="TopBottomWalls"
 2d_physics/layer_6="LeftRightWalls"
 
