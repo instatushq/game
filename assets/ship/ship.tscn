@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbkif523pefv5"]
+[gd_scene load_steps=13 format=3 uid="uid://bbkif523pefv5"]
 
 [ext_resource type="Script" uid="uid://0duwjoixufm0" path="res://assets/ship/ship.gd" id="1_n8q6x"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="2_77xhg"]
@@ -28,6 +28,12 @@ b = Vector2(0, 315.56)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1dmai"]
 a = Vector2(0, -152.33)
 b = Vector2(0, 155.92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxrqm"]
+size = Vector2(102.5, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1h06k"]
+size = Vector2(98, 146)
 
 [node name="Ship" type="Node2D"]
 script = ExtResource("1_n8q6x")
@@ -84,3 +90,23 @@ script = ExtResource("2_77xhg")
 
 [node name="Issues" type="Node2D" parent="."]
 script = ExtResource("3_v8d56")
+
+[node name="Right" type="Area2D" parent="Issues"]
+position = Vector2(100, 169)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
+shape = SubResource("RectangleShape2D_pxrqm")
+
+[node name="Left" type="Area2D" parent="Issues"]
+position = Vector2(-100, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
+position = Vector2(-1, 11)
+shape = SubResource("RectangleShape2D_1h06k")
+debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
+
+[node name="Timer" type="Timer" parent="Issues"]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Issues/Timer" to="Issues" method="_on_timer_timeout"]

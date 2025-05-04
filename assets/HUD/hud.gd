@@ -6,10 +6,10 @@ extends CanvasLayer
 @onready var ship: ShipHealth = %Ship/Health
 
 const HEALTH_COLORS = [
-	{ "threshold": 75, "color": Color("#00FF00"), "text": "Operational" },      # Green
-	{ "threshold": 50, "color": Color("#FFFF00"), "text": "Degraded" },      # Yellow
-	{ "threshold": 25, "color": Color("#FF8000"), "text": "Partial Outage" },      # Orange
-	{ "threshold": 0,  "color": Color("#FF0000"), "text": "Major Outage" }       # Red
+	{ "threshold": 75, "color": Color("#00FF00"), "text": "Operational" },
+	{ "threshold": 50, "color": Color("#FFFF00"), "text": "Degraded" },
+	{ "threshold": 25, "color": Color("#FF8000"), "text": "Partial Outage" },
+	{ "threshold": 0,  "color": Color("#FF0000"), "text": "Major Outage" }
 ]
 
 func _ready():
