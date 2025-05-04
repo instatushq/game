@@ -6,9 +6,32 @@ var possible_zones: Array = []
 
 var current_issues: Dictionary = {}
 var chance_of_issues: int = 0
+var last_entered_zone: Area2D = null
+
+signal zone_body_entered(zone: Area2D, body: Node2D)
+signal zone_body_exited(zone: Area2D, body: Node2D)
 
 func _ready() -> void:
 	possible_zones = find_children("*", "Area2D")
+	for zone in possible_zones:
+		zone.connect("body_entered", Callable(self, "_on_area_entered").bind(zone))
+		zone.connect("body_exited", Callable(self, "_on_area_exited").bind(zone))
+
+func _on_area_entered(body: Node, zone: Area2D) -> void:
+	if current_issues.has(zone.get_instance_id()):
+		last_entered_zone = zone
+		zone_body_entered.emit(zone, body)
+
+func _on_area_exited(body: Node, zone: Area2D) -> void:
+	if last_entered_zone and last_entered_zone.get_instance_id() == zone.get_instance_id():
+		last_entered_zone = null
+	zone_body_exited.emit(zone, body)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
+		if last_entered_zone != null:
+			var current_issue = current_issues[last_entered_zone.get_instance_id()]
+			current_issue.open_issue()
 
 func _get_random_issueless_zone() -> Area2D:
 	var issueless_zones: Array = []
