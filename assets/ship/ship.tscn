@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbkif523pefv5"]
+[gd_scene load_steps=11 format=3 uid="uid://bbkif523pefv5"]
 
 [ext_resource type="Script" uid="uid://0duwjoixufm0" path="res://assets/ship/ship.gd" id="1_n8q6x"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="2_77xhg"]
+[ext_resource type="Script" uid="uid://b0cbditwjg02n" path="res://assets/ship/ShipRigidBody.gd" id="2_pxrqm"]
 [ext_resource type="Script" uid="uid://cn5warahkaysk" path="res://assets/ship/issues.gd" id="3_v8d56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8q6x"]
@@ -35,7 +36,10 @@ script = ExtResource("1_n8q6x")
 collision_mask = 53
 gravity_scale = 0.0
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 30
 linear_damp = 1.0
+script = ExtResource("2_pxrqm")
 
 [node name="ShipPoints" type="Node2D" parent="RigidBody2D"]
 position = Vector2(0, 93)

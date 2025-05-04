@@ -17,10 +17,6 @@
 [node name="GameManager" parent="." instance=ExtResource("1_0hol4")]
 unique_name_in_owner = true
 
-[node name="Ship" parent="." instance=ExtResource("1_wtcfe")]
-unique_name_in_owner = true
-position = Vector2(-7, -40)
-
 [node name="Walls" parent="." instance=ExtResource("3_epypp")]
 unique_name_in_owner = true
 
@@ -30,6 +26,7 @@ debris_objects = Array[PackedScene]([ExtResource("2_0e48y"), ExtResource("2_0e48
 
 [node name="Camera" parent="." instance=ExtResource("7_4d7sh")]
 unique_name_in_owner = true
+position = Vector2(14, 21)
 zoom = Vector2(1, 1)
 position_smoothing_speed = 200.0
 script = ExtResource("8_ir8iy")
@@ -39,3 +36,7 @@ unique_name_in_owner = true
 position = Vector2(0, 127)
 movement_speed = 100.0
 damping = 1.0
+
+[node name="Ship" parent="." instance=ExtResource("1_wtcfe")]
+unique_name_in_owner = true
+position = Vector2(-7, -40)

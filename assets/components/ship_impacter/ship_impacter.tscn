@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwkneci6tcu01"]
+
+[ext_resource type="Script" uid="uid://bmbump3crqi5o" path="res://assets/components/ship_impacter/ship_impacter.gd" id="1_6jmfk"]
+
+[node name="Ship Impacter" type="RigidBody2D"]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 6
+linear_damp = 0.1
+script = ExtResource("1_6jmfk")

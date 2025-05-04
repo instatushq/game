@@ -63,7 +63,6 @@ func _physics_process(_delta: float) -> void:
 		rb.linear_velocity = rb.linear_velocity.normalized() * maximum_speed
 	elif abs(rb.linear_velocity.y) < game_manager.base_travelling_speed:
 		rb.apply_force(Vector2.UP * game_manager.base_travelling_speed * 0.4)
-		
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control
