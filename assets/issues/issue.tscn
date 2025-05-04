@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://tkhk7817dbdm"]
+
+[ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_75dxe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_omrsj"]
+font_size = 40
+font_color = Color(0.771897, 0.63056, 0.988576, 1)
+
+[node name="Issue" type="CanvasLayer"]
+script = ExtResource("1_75dxe")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 559.0
+offset_top = 391.0
+offset_right = 718.0
+offset_bottom = 414.0
+text = "The issue of all time!"
+label_settings = SubResource("LabelSettings_omrsj")
+horizontal_alignment = 1
+vertical_alignment = 1
