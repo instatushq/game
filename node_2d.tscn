@@ -31,12 +31,12 @@ zoom = Vector2(1, 1)
 position_smoothing_speed = 200.0
 script = ExtResource("8_ir8iy")
 
+[node name="Ship" parent="." instance=ExtResource("1_wtcfe")]
+unique_name_in_owner = true
+position = Vector2(-7, -40)
+
 [node name="Astronaut" parent="." instance=ExtResource("7_d21ai")]
 unique_name_in_owner = true
 position = Vector2(0, 127)
 movement_speed = 100.0
 damping = 1.0
-
-[node name="Ship" parent="." instance=ExtResource("1_wtcfe")]
-unique_name_in_owner = true
-position = Vector2(-7, -40)

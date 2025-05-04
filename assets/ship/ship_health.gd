@@ -1,3 +1,22 @@
 extends Node2D
 
-@export var health: int = 100;
+class_name ShipHealth;
+
+@export var health: float = 100;
+
+signal on_health_change(old_Health: float, new_health: float)
+
+func increase_health(health_amount: float) -> void:
+	var new_health = clamp(health_amount + health, 0, 100)
+	emit_signal("on_health_change", health, new_health)
+	health = new_health
+
+func decrease_health(health_amount: float) -> void:
+	var new_health = clamp(health - health_amount, 0, 100)
+	emit_signal("on_health_change", health, new_health)
+	health = new_health
+
+func set_health(health_amount: float) -> void:
+	var new_health = clamp(health_amount, 0, 100)
+	emit_signal("on_health_change", health, new_health)
+	health = new_health

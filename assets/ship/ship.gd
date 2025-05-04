@@ -11,13 +11,17 @@ var screen_touch_position: Vector2 = Vector2.ZERO
 var isTouching: bool = false
 
 const MAX_RADIUS := 100
-@onready var rb := $RigidBody2D  # Correctly wait for the node to be ready
+@onready var rb: ShipRigidBody = $RigidBody2D  # Correctly wait for the node to be ready
+@onready var health: ShipHealth = $Health
 @onready var game_manager: GameManager = get_node("%GameManager")
 
 var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y = position.y;
 
 var can_control: bool = false
+
+func _ready():
+	rb.on_impact.connect(_on_impact_with_object)
 
 func _input(event):
 	if not game_manager.current_player == game_manager.Player.SHIP: return
@@ -67,3 +71,6 @@ func _physics_process(_delta: float) -> void:
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control
 	rb.freeze = not new_can_control
+
+func _on_impact_with_object(body: ShipImpacter) -> void:
+	health.decrease_health(randf_range(body.min_damage_range, body.max_damage_range))
