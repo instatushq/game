@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqp7226e2sov4"]
+[gd_scene load_steps=5 format=3 uid="uid://cqp7226e2sov4"]
 
 [ext_resource type="Texture2D" uid="uid://cksjfu20xrl07" path="res://assets/debris/textures/Layered Rock.png" id="1_cidke"]
 [ext_resource type="PackedScene" uid="uid://cwkneci6tcu01" path="res://assets/components/ship_impacter/ship_impacter.tscn" id="1_e4il8"]
+[ext_resource type="Script" uid="uid://uyh5hiid4nbl" path="res://assets/debris/debris.gd" id="1_s77ue"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cidke"]
 radius = 17.7953
 height = 62.7282
 
 [node name="Debris-1" type="Node2D"]
+script = ExtResource("1_s77ue")
 
 [node name="Ship Impacter" parent="." instance=ExtResource("1_e4il8")]
 collision_layer = 4
@@ -23,3 +25,5 @@ rotation = -0.696334
 scale = Vector2(1.00215, 1.00151)
 skew = -0.00359786
 shape = SubResource("CapsuleShape2D_cidke")
+
+[connection signal="on_shot" from="Ship Impacter" to="." method="_on_ship_impacter_on_shot"]
