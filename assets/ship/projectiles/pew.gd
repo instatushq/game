@@ -3,7 +3,7 @@ extends RigidBody2D
 class_name Pew
 
 @export var movement_direction: Vector2 = Vector2.ZERO
-@export var speed: int = 800
+@export var speed: int = 1300
 @onready var sprite = $Sprite2D
 
 func _ready() -> void:

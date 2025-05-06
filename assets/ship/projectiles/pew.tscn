@@ -23,7 +23,7 @@ linear_damp = -1.0
 script = ExtResource("1_trei1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.04, 0.123)
+scale = Vector2(0.06, 0.184)
 texture = SubResource("GradientTexture2D_fojv6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

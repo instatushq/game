@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var ship_health: ShipHealth = $"../Health"
+class_name Issues
+
 @export var possible_issues: Array[PackedScene] = []
 var possible_zones: Array = []
 
