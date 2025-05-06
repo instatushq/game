@@ -57,7 +57,6 @@ func _on_impact_with_object(body: ShipImpacter) -> void:
 func create_pew(canon: Node2D) -> void:
 	var pew: Pew = pew_scene.instantiate()
 	canon.add_child(pew)
-	var center_point_of_all_canons = (canon_1.global_position + canon_2.global_position) / 2
 	pew.global_position = canon.global_position
 	pew.linear_velocity = (mouse_world_position - canon.global_position).normalized() * pew.speed
 	pew.movement_direction = (mouse_world_position - canon.global_position).normalized()
