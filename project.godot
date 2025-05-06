@@ -21,13 +21,19 @@ config/icon="uid://cw25bkbkbt45g"
 
 [display]
 
-window/size/viewport_height=800
+window/size/viewport_height=1400
+window/size/mode=2
+window/size/resizable=false
 window/emulate_touch_from_mouse=false
 
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[global]
+
+color=Color(0, 0, 0, 1)
 
 [input_devices]
 
@@ -41,9 +47,12 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_4="InnerShip"
 2d_physics/layer_5="TopBottomWalls"
 2d_physics/layer_6="LeftRightWalls"
+2d_physics/layer_7="Issues Area"
+2d_physics/layer_8="Ship Projectile"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.054902, 0.0862745, 0.14902, 1)

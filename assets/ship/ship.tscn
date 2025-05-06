@@ -3,20 +3,13 @@
 [ext_resource type="Script" uid="uid://0duwjoixufm0" path="res://assets/ship/ship.gd" id="1_n8q6x"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="2_77xhg"]
 [ext_resource type="Script" uid="uid://b0cbditwjg02n" path="res://assets/ship/ShipRigidBody.gd" id="2_pxrqm"]
+[ext_resource type="Texture2D" uid="uid://c68tsvtwr2wby" path="res://assets/ship/sprites/astronaut.png" id="3_1dmai"]
 [ext_resource type="Script" uid="uid://cn5warahkaysk" path="res://assets/ship/issues.gd" id="3_v8d56"]
+[ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/test-issue.tscn" id="5_1h06k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8q6x"]
-size = Vector2(296, 317)
-
-[sub_resource type="Gradient" id="Gradient_5jvrq"]
-colors = PackedColorArray(0.143058, 0.70393, 0.534127, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_n8q6x"]
-gradient = SubResource("Gradient_5jvrq")
-width = 300
-height = 320
-fill_from = Vector2(0.5, 0)
-fill_to = Vector2(0.5, 1)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gkfdw"]
+radius = 83.0
+height = 352.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pxrqm"]
 a = Vector2(151, 1)
@@ -53,13 +46,19 @@ position = Vector2(0, 93)
 [node name="Cockpit" type="Node2D" parent="RigidBody2D/ShipPoints"]
 position = Vector2(95, -67)
 
+[node name="Canon" type="Node2D" parent="RigidBody2D/ShipPoints"]
+position = Vector2(130, -75)
+
+[node name="Canon2" type="Node2D" parent="RigidBody2D/ShipPoints"]
+position = Vector2(-130, -75)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(0, 91.5)
-shape = SubResource("RectangleShape2D_n8q6x")
+position = Vector2(4, 84)
+shape = SubResource("CapsuleShape2D_gkfdw")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 position = Vector2(1, 93)
-texture = SubResource("GradientTexture2D_n8q6x")
+texture = ExtResource("3_1dmai")
 
 [node name="Interior" type="StaticBody2D" parent="RigidBody2D"]
 collision_layer = 8
@@ -90,15 +89,19 @@ script = ExtResource("2_77xhg")
 
 [node name="Issues" type="Node2D" parent="."]
 script = ExtResource("3_v8d56")
+possible_issues = Array[PackedScene]([ExtResource("5_1h06k")])
 
 [node name="Right" type="Area2D" parent="Issues"]
-position = Vector2(100, 169)
+collision_layer = 64
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
 shape = SubResource("RectangleShape2D_pxrqm")
 
 [node name="Left" type="Area2D" parent="Issues"]
 position = Vector2(-100, 160)
+collision_layer = 64
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
 position = Vector2(-1, 11)
