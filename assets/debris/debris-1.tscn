@@ -12,8 +12,10 @@ height = 62.7282
 script = ExtResource("1_s77ue")
 
 [node name="Ship Impacter" parent="." instance=ExtResource("1_e4il8")]
+position = Vector2(2, 0)
 collision_layer = 4
-collision_mask = 39
+collision_mask = 35
+linear_damp = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Ship Impacter"]
 scale = Vector2(0.291061, 0.29)
@@ -26,4 +28,5 @@ scale = Vector2(1.00215, 1.00151)
 skew = -0.00359786
 shape = SubResource("CapsuleShape2D_cidke")
 
+[connection signal="on_impact_ship" from="Ship Impacter" to="." method="_on_ship_impacter_on_impact_ship"]
 [connection signal="on_shot" from="Ship Impacter" to="." method="_on_ship_impacter_on_shot"]
