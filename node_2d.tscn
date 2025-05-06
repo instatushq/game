@@ -12,6 +12,10 @@
 
 [node name="Game" type="Node2D"]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
 [node name="HUD" parent="." instance=ExtResource("1_q6r6c")]
 
 [node name="GameManager" parent="." instance=ExtResource("1_0hol4")]

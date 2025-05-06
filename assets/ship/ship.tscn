@@ -32,6 +32,7 @@ size = Vector2(98, 146)
 script = ExtResource("1_n8q6x")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(-3, -1)
 collision_mask = 53
 gravity_scale = 0.0
 lock_rotation = true
@@ -84,32 +85,34 @@ position = Vector2(0, -65)
 shape = SubResource("SegmentShape2D_pxrqm")
 debug_color = Color(0.969519, 0, 0.460823, 0.42)
 
-[node name="Health" type="Node2D" parent="."]
-script = ExtResource("2_77xhg")
-
-[node name="Issues" type="Node2D" parent="."]
+[node name="Issues" type="Node2D" parent="RigidBody2D"]
 script = ExtResource("3_v8d56")
 possible_issues = Array[PackedScene]([ExtResource("5_1h06k")])
 
-[node name="Right" type="Area2D" parent="Issues"]
+[node name="Right" type="Area2D" parent="RigidBody2D/Issues"]
+position = Vector2(100, 167)
 collision_layer = 64
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Issues/Right"]
 shape = SubResource("RectangleShape2D_pxrqm")
 
-[node name="Left" type="Area2D" parent="Issues"]
+[node name="Left" type="Area2D" parent="RigidBody2D/Issues"]
 position = Vector2(-100, 160)
 collision_layer = 64
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Issues/Left"]
 position = Vector2(-1, 11)
 shape = SubResource("RectangleShape2D_1h06k")
 debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
 
-[node name="Timer" type="Timer" parent="Issues"]
+[node name="Timer" type="Timer" parent="RigidBody2D/Issues"]
 wait_time = 10.0
 autostart = true
 
-[connection signal="timeout" from="Issues/Timer" to="Issues" method="_on_timer_timeout"]
+[node name="Health" type="Node2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("2_77xhg")
+
+[connection signal="timeout" from="RigidBody2D/Issues/Timer" to="RigidBody2D/Issues" method="_on_timer_timeout"]

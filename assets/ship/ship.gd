@@ -11,9 +11,9 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @export var canon_two_active: bool = true
 @export var pew_scene: PackedScene = preload("res://assets/ship/projectiles/pew.tscn")
 
-@onready var rb: ShipRigidBody = $RigidBody2D  # Correctly wait for the node to be ready
+@onready var rb: ShipRigidBody = $RigidBody2D
 @onready var health: ShipHealth = $Health
-@onready var game_manager: GameManager = get_node("%GameManager")
+@onready var game_manager: GameManager = %GameManager
 @onready var canon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var canon_2: Node2D = $RigidBody2D/ShipPoints/Canon2
 
@@ -26,8 +26,9 @@ func _ready():
 	rb.on_impact.connect(_on_impact_with_object)
 
 func _input(event: InputEvent) -> void:
-	mouse_world_position = get_global_mouse_position()
+	if game_manager.current_player != GameManager.Player.SHIP: return
 	
+	mouse_world_position = get_global_mouse_position()
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -56,6 +57,7 @@ func _on_impact_with_object(body: ShipImpacter) -> void:
 func create_pew(canon: Node2D) -> void:
 	var pew: Pew = pew_scene.instantiate()
 	canon.add_child(pew)
+	var center_point_of_all_canons = (canon_1.global_position + canon_2.global_position) / 2
 	pew.global_position = canon.global_position
 	pew.linear_velocity = (mouse_world_position - canon.global_position).normalized() * pew.speed
 	pew.movement_direction = (mouse_world_position - canon.global_position).normalized()

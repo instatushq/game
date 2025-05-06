@@ -22,7 +22,6 @@ config/icon="uid://cw25bkbkbt45g"
 [display]
 
 window/size/viewport_height=1400
-window/size/mode=2
 window/size/resizable=false
 window/emulate_touch_from_mouse=false
 
