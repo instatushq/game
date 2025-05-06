@@ -1,11 +1,11 @@
 extends Node2D
 
 @onready var ship_health: ShipHealth = $"../Health"
-var possible_issues: Array[PackedScene] = []
+@export var possible_issues: Array[PackedScene] = []
 var possible_zones: Array = []
 
 var current_issues: Dictionary = {}
-var chance_of_issues: int = 0
+var chance_of_issues: int = 80
 var last_entered_zone: Area2D = null
 
 signal zone_body_entered(zone: Area2D, body: Node2D)
