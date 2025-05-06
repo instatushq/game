@@ -7,9 +7,10 @@ enum Player {
 	ASTRONAUT
 }
 
-@onready var ship: Ship = get_node("%Ship")
-@onready var astronaut: Astronaut = get_node("%Astronaut")
-@onready var camera: Camera = get_node("%Camera")
+@onready var ship: Ship = %Ship
+@onready var astronaut: Astronaut = %Astronaut
+@onready var camera: Camera = %Camera
+@onready var timer: Timer = $ScoreTimer
 
 @export var current_player: Player = Player.SHIP
 
@@ -27,9 +28,14 @@ func increaseScore(amount: int = score_increment_amount):
 	emit_signal("score_changed", currentScore, score)
 
 func _input(event):
+	var new_player: Player = Player.ASTRONAUT if is_controlling_ship() else Player.SHIP
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_T:
-			switch_controlled_player_to(Player.ASTRONAUT if is_controlling_ship() else Player.SHIP)
+			switch_controlled_player_to(new_player)
+			if new_player == Player.SHIP:
+				timer.start()
+			else:
+				timer.stop()
 
 func switch_controlled_player_to(player: Player) -> void:
 	match player:

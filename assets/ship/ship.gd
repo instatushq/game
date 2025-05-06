@@ -40,8 +40,10 @@ func _input(event: InputEvent) -> void:
 func _handle_movement_score() -> void:
 	if -rb.global_position.y > last_recorded_y + 100:
 		var score_increase = 1
-		game_manager.increaseScore(score_increase)
 		last_recorded_y = rb.global_position.y
+		if game_manager.current_player == GameManager.Player.SHIP:
+			game_manager.increaseScore(score_increase)
+
 
 func _physics_process(_delta: float) -> void:
 	_handle_movement_score()
