@@ -8,7 +8,6 @@ class_name ShipImpacter
 
 var amount_of_impacts = 0;
 
-
 signal on_impact_ship(ship: Node2D, current_impact_count: int, max_impact_count: int)
 
 func _ready():

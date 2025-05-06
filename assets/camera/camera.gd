@@ -24,9 +24,9 @@ func focus_ship() -> void:
 	var ship_parent_target: Node2D = ship.get_node("RigidBody2D")
 	reparent(ship_parent_target)
 	position = Vector2.ZERO
-	zoom = Vector2.ONE
+	zoom = Vector2.ONE * 2
 
 func focus_astronaut() -> void:
 	reparent(astronaut)
 	position = Vector2.ZERO
-	zoom = Vector2.ONE * 3
+	zoom = Vector2.ONE * 10
