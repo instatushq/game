@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://tkhk7817dbdm"]
+
+[ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_la0fh"]
+[ext_resource type="Script" uid="uid://qp2bjvhly0yn" path="res://assets/issues/possible_issues/color match/color_match.gd" id="2_sgv0c"]
+
+[node name="Issue" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("1_la0fh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.5
+offset_top = -277.48
+offset_right = 397.5
+offset_bottom = 277.48
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_sgv0c")
+
+[node name="LeftContainer" type="VBoxContainer" parent="ColorRect"]
+custom_minimum_size = Vector2(10, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.65
+offset_top = -186.0
+offset_right = 232.65
+offset_bottom = 186.0
+grow_vertical = 2
+alignment = 1
+
+[node name="Color one" type="Button" parent="ColorRect/LeftContainer"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+text = "Waw"
+
+[node name="Color two" type="Button" parent="ColorRect/LeftContainer"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+text = "Waw"
+
+[node name="Color Three" type="Button" parent="ColorRect/LeftContainer"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+text = "Waw"
+
+[node name="Color Four" type="Button" parent="ColorRect/LeftContainer"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+text = "Waw"
+
+[node name="RightContainer" type="VBoxContainer" parent="ColorRect"]
+custom_minimum_size = Vector2(10, 0)
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 43.0
+offset_top = -185.5
+offset_right = 243.0
+offset_bottom = 186.5
+grow_vertical = 2
+alignment = 1
+
+[node name="Color one" type="Button" parent="ColorRect/RightContainer"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+text = "Waw"
+
+[node name="Color two" type="Button" parent="ColorRect/RightContainer"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+text = "Waw"
+
+[node name="Color Three" type="Button" parent="ColorRect/RightContainer"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+text = "Waw"
+
+[node name="Color Four" type="Button" parent="ColorRect/RightContainer"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 2
+text = "Waw"
