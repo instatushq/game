@@ -48,10 +48,10 @@ position = Vector2(0, 93)
 position = Vector2(95, -67)
 
 [node name="Canon" type="Node2D" parent="RigidBody2D/ShipPoints"]
-position = Vector2(130, -75)
+position = Vector2(83, -65)
 
 [node name="Canon2" type="Node2D" parent="RigidBody2D/ShipPoints"]
-position = Vector2(-130, -75)
+position = Vector2(-94, -67)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(4, 84)
