@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=11 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://csv6n3lor4pje" path="res://assets/managers/game manager/game_manager.tscn" id="1_0hol4"]
+[ext_resource type="Texture2D" uid="uid://bpbkwcseveseg" path="res://assets/environment/backgrounds/ship.png" id="1_ir8iy"]
 [ext_resource type="PackedScene" uid="uid://cqcmv5b3uo3sc" path="res://assets/HUD/hud.tscn" id="1_q6r6c"]
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="1_wtcfe"]
 [ext_resource type="PackedScene" uid="uid://cqp7226e2sov4" path="res://assets/debris/debris-1.tscn" id="2_0e48y"]
@@ -13,8 +14,15 @@
 [node name="Game" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(154.19, -700)
+transform = Transform2D(1, 0, 0, 1, 154.19, -700)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 1800)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_ir8iy")
 
 [node name="HUD" parent="." instance=ExtResource("1_q6r6c")]
 
