@@ -2,9 +2,14 @@ extends CanvasLayer
 
 class_name Issue
 
+signal issue_resolved
+
 func _ready() -> void:
-	visible = false
+	visible = true
+	issue_resolved.connect(close_issue)
 
 func open_issue() -> void:
 	visible = true
-	print("DAMN WE OPENED HTE ISSUE NOW time to edit and play and stuff!")
+
+func close_issue() -> void:
+	visible = false

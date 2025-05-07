@@ -45,8 +45,9 @@ func _get_random_issueless_zone() -> Area2D:
 
 func _generate_random_issue(zone: Area2D) -> void:
 	var random_issue = possible_issues[randi_range(0, possible_issues.size() - 1)]
-	var issue_instance = random_issue.instantiate()
+	var issue_instance: Issue = random_issue.instantiate()
 	zone.add_child(issue_instance)
+	issue_instance.issue_resolved.connect(Callable(self, "_on_issue_resolved").bind(zone))
 	current_issues[zone.get_instance_id()] = issue_instance
 
 func _on_timer_timeout() -> void:
@@ -55,3 +56,10 @@ func _on_timer_timeout() -> void:
 		var random_zone = _get_random_issueless_zone()
 		if random_zone != null:
 			_generate_random_issue(random_zone)
+
+func _on_issue_resolved(zone: Area2D) -> void:
+	print("issue resolved in function")
+	var issue_id = zone.get_instance_id()
+	current_issues[issue_id].queue_free()
+	current_issues.erase(issue_id)
+	

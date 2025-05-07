@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=12 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://csv6n3lor4pje" path="res://assets/managers/game manager/game_manager.tscn" id="1_0hol4"]
 [ext_resource type="Texture2D" uid="uid://bpbkwcseveseg" path="res://assets/environment/backgrounds/ship.png" id="1_ir8iy"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://wavl0ks2h3jn" path="res://assets/camera/camera.tscn" id="7_4d7sh"]
 [ext_resource type="PackedScene" uid="uid://byp6hvrh54j2d" path="res://assets/astronaut/astronaut.tscn" id="7_d21ai"]
 [ext_resource type="Script" uid="uid://7kv11fhng1mq" path="res://assets/camera/camera.gd" id="8_ir8iy"]
+[ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="11_hqns4"]
 
 [node name="Game" type="Node2D"]
 
@@ -52,3 +53,6 @@ unique_name_in_owner = true
 position = Vector2(0, 127)
 movement_speed = 100.0
 damping = 1.0
+
+[node name="Issue" parent="." instance=ExtResource("11_hqns4")]
+follow_viewport_enabled = false
