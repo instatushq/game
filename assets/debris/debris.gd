@@ -22,6 +22,8 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if game_manager.current_player == GameManager.Player.SHIP:
 		rb.linear_velocity = ship_direction * SPEED
+		# Rotate to face movement direction with 34 degree offset
+		rotation = ship_direction.angle()
 	else:
 		rb.linear_velocity = Vector2.ZERO
 

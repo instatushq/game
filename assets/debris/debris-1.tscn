@@ -1,12 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqp7226e2sov4"]
+[gd_scene load_steps=13 format=3 uid="uid://cqp7226e2sov4"]
 
-[ext_resource type="Texture2D" uid="uid://cksjfu20xrl07" path="res://assets/debris/textures/Layered Rock.png" id="1_cidke"]
 [ext_resource type="PackedScene" uid="uid://cwkneci6tcu01" path="res://assets/components/ship_impacter/ship_impacter.tscn" id="1_e4il8"]
 [ext_resource type="Script" uid="uid://uyh5hiid4nbl" path="res://assets/debris/debris.gd" id="1_s77ue"]
+[ext_resource type="Texture2D" uid="uid://cf0crk4a2ormf" path="res://assets/debris/textures/spritesheet.png" id="3_s1mlm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anue0"]
+atlas = ExtResource("3_s1mlm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vdp8"]
+atlas = ExtResource("3_s1mlm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mli5"]
+atlas = ExtResource("3_s1mlm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anndc"]
+atlas = ExtResource("3_s1mlm")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_141c3"]
+atlas = ExtResource("3_s1mlm")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdrqd"]
+atlas = ExtResource("3_s1mlm")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drfq0"]
+atlas = ExtResource("3_s1mlm")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g2aru"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anue0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vdp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mli5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anndc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_141c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdrqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drfq0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cidke"]
-radius = 17.7953
-height = 62.7282
+radius = 27.0133
+height = 72.7946
 
 [node name="Debris-1" type="Node2D"]
 script = ExtResource("1_s77ue")
@@ -17,14 +74,18 @@ collision_layer = 4
 collision_mask = 35
 linear_damp = 0.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Ship Impacter"]
-scale = Vector2(0.291061, 0.29)
-texture = ExtResource("1_cidke")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ship Impacter"]
+position = Vector2(0, -17)
+rotation = -1.5708
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_g2aru")
+autoplay = "default"
+frame_progress = 0.451649
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ship Impacter"]
-position = Vector2(-3.01098, 3)
-rotation = -0.696334
-scale = Vector2(1.00215, 1.00151)
+position = Vector2(6, -6)
+rotation = -0.951204
+scale = Vector2(0.682, 0.682)
 skew = -0.00359786
 shape = SubResource("CapsuleShape2D_cidke")
 
