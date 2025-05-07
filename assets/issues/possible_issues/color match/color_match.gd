@@ -108,7 +108,6 @@ func _is_issue_resolved() -> bool:
 
 func _resolve_issue() -> void:
 	var parent: Issue = get_parent()
-	print(parent.name)
 	parent.issue_resolved.emit()
 
 func _update_buttons_view() -> void:

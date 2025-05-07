@@ -6,7 +6,7 @@ signal issue_resolved
 
 func _ready() -> void:
 	visible = true
-	issue_resolved.connect(close_issue)
+	issue_resolved.connect(close_issue) 
 
 func open_issue() -> void:
 	visible = true
