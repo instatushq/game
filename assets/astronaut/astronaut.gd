@@ -12,9 +12,10 @@ const MAX_RADIUS := 100
 @export var maximum_speed: float = 300.0
 @export var damping: float = 0.0
 @export var acceleration: float = 2000.0
-@onready var game_manager: GameManager = get_node("%GameManager")
-@onready var ship: Ship = get_node("%Ship")
+@onready var game_manager: GameManager = %GameManager
+@onready var ship: Ship = %Ship
 @onready var cockpit_node: Node2D = ship.get_node("RigidBody2D/ShipPoints/Cockpit")
+var is_solving_puzzle: bool = false
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control

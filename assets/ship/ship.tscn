@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b0cbditwjg02n" path="res://assets/ship/ShipRigidBody.gd" id="2_pxrqm"]
 [ext_resource type="Texture2D" uid="uid://c68tsvtwr2wby" path="res://assets/ship/sprites/astronaut.png" id="3_1dmai"]
 [ext_resource type="Script" uid="uid://cn5warahkaysk" path="res://assets/ship/issues.gd" id="3_v8d56"]
-[ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/test-issue.tscn" id="5_1h06k"]
+[ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="5_1h06k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gkfdw"]
 radius = 83.0

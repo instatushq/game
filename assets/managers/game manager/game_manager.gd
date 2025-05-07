@@ -19,6 +19,8 @@ signal score_changed(old_value: int, new_value: int)
 @export var score: int = 0
 @export var score_increment_amount: int = 1
 
+var is_solving_puzzle: bool = false
+
 func _on_score_timer_timeout() -> void:
 	increaseScore()
 
