@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=26 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://csv6n3lor4pje" path="res://assets/managers/game manager/game_manager.tscn" id="1_0hol4"]
 [ext_resource type="Texture2D" uid="uid://cse7rwxntb3w" path="res://assets/environment/backgrounds/stars/stars1.png" id="1_fs4d3"]
@@ -20,6 +20,16 @@
 [ext_resource type="Texture2D" uid="uid://djx6ijpqiom1i" path="res://assets/environment/backgrounds/stars/stars7.png" id="7_gt76g"]
 [ext_resource type="Texture2D" uid="uid://oxfw1fcif0b3" path="res://assets/environment/backgrounds/stars/stars8.png" id="8_1fr6y"]
 [ext_resource type="Script" uid="uid://7kv11fhng1mq" path="res://assets/camera/camera.gd" id="8_ir8iy"]
+[ext_resource type="PackedScene" uid="uid://c7rklw8gicmio" path="res://assets/ship/projectiles/pew.tscn" id="20_ei405"]
+[ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="21_7vxoj"]
+
+[sub_resource type="Gradient" id="Gradient_ei405"]
+offsets = PackedFloat32Array(0, 0.651452, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.438273, 0.261836, 0.0717644, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e8dv2"]
+gradient = SubResource("Gradient_ei405")
+fill_from = Vector2(0.0921409, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hxjc"]
 animations = [{
@@ -54,6 +64,15 @@ animations = [{
 }]
 
 [node name="Game" type="Node2D"]
+
+[node name="InternalShip" parent="." instance=ExtResource("21_7vxoj")]
+unique_name_in_owner = true
+position = Vector2(-8371, -718)
+
+[node name="Sprite2D" type="Sprite2D" parent="InternalShip"]
+position = Vector2(0, 84)
+scale = Vector2(4.7, 4.83)
+texture = SubResource("GradientTexture2D_e8dv2")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2(154.19, -700)
@@ -194,9 +213,8 @@ script = ExtResource("8_ir8iy")
 [node name="Ship" parent="." instance=ExtResource("1_wtcfe")]
 unique_name_in_owner = true
 position = Vector2(-7, 535)
+pew_scene = ExtResource("20_ei405")
 
 [node name="Astronaut" parent="." instance=ExtResource("7_d21ai")]
 unique_name_in_owner = true
-position = Vector2(0, 127)
-movement_speed = 100.0
-damping = 1.0
+position = Vector2(-8431, -595)

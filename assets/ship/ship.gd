@@ -19,7 +19,7 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @onready var root_of_scene: Node2D = get_tree().root.get_child(0)
 
 var current_velocity: Vector2 = Vector2(0, 0)
-var last_recorded_y = position.y;
+var last_recorded_y: float = position.y;
 
 var can_control: bool = false
 
@@ -47,9 +47,9 @@ func _handle_movement_score() -> void:
 
 func _physics_process(_delta: float) -> void:
 	_handle_movement_score()
-	mouse_world_position = get_global_mouse_position()
-	rb.global_position = mouse_world_position
-	rb.linear_velocity = Vector2(0, -movement_speed)
+	if game_manager.current_player == GameManager.Player.SHIP:
+		mouse_world_position = get_global_mouse_position()
+		rb.global_position = mouse_world_position
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control

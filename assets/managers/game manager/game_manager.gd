@@ -18,11 +18,12 @@ signal score_changed(old_value: int, new_value: int)
 
 @export var score: int = 0
 @export var score_increment_amount: int = 1
+var last_mouse_position: Vector2 = Vector2.ZERO
 
 var is_solving_puzzle: bool = false
 
-func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+# func _ready() -> void:
+	# Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _on_score_timer_timeout() -> void:
 	increaseScore()
@@ -56,12 +57,14 @@ func is_controlling_astronaut() -> bool:
 	return current_player == Player.ASTRONAUT
 
 func switch_to_ship() -> void:
+	Input.warp_mouse(last_mouse_position)
 	current_player = Player.SHIP
 	astronaut.toggle_control(false)
 	ship.toggle_control(true)
 	camera.focus_ship()
 
 func switch_to_astronaut() -> void:
+	last_mouse_position = get_viewport().get_mouse_position()
 	current_player = Player.ASTRONAUT
 	astronaut.toggle_control(true)
 	ship.toggle_control(false)

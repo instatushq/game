@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://34pxxoahuuaj"]
+
+[ext_resource type="Script" uid="uid://cn5warahkaysk" path="res://assets/ship/issues.gd" id="1_r65rw"]
+[ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="2_yxcn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o88cq"]
+size = Vector2(102.5, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46acj"]
+size = Vector2(98, 146)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jlxe3"]
+a = Vector2(151, 1)
+b = Vector2(-148, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7h0eb"]
+b = Vector2(0, 315.56)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xw88r"]
+a = Vector2(0, -152.33)
+b = Vector2(0, 155.92)
+
+[node name="InternalShip" type="Node2D"]
+
+[node name="Issues" type="Node2D" parent="."]
+script = ExtResource("1_r65rw")
+possible_issues = Array[PackedScene]([ExtResource("2_yxcn8")])
+
+[node name="Right" type="Area2D" parent="Issues"]
+position = Vector2(100, 167)
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
+shape = SubResource("RectangleShape2D_o88cq")
+
+[node name="Left" type="Area2D" parent="Issues"]
+position = Vector2(-100, 160)
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
+position = Vector2(-1, 11)
+shape = SubResource("RectangleShape2D_46acj")
+debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
+
+[node name="Timer" type="Timer" parent="Issues"]
+wait_time = 10.0
+autostart = true
+
+[node name="Interior" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Ground" type="CollisionShape2D" parent="Interior"]
+position = Vector2(0, 241)
+shape = SubResource("SegmentShape2D_jlxe3")
+debug_color = Color(0.969519, 0, 0.460823, 0.42)
+
+[node name="Left Wall" type="CollisionShape2D" parent="Interior"]
+position = Vector2(-149, -65)
+shape = SubResource("SegmentShape2D_7h0eb")
+debug_color = Color(0.962013, 9.62615e-08, 0.507042, 0.42)
+
+[node name="Right Wall" type="CollisionShape2D" parent="Interior"]
+position = Vector2(152, 88)
+shape = SubResource("SegmentShape2D_xw88r")
+debug_color = Color(0.937366, 1.30916e-05, 0.628279, 0.42)
+
+[node name="Ceiling" type="CollisionShape2D" parent="Interior"]
+position = Vector2(0, -65)
+shape = SubResource("SegmentShape2D_jlxe3")
+debug_color = Color(0.969519, 0, 0.460823, 0.42)
+
+[node name="Points" type="Node2D" parent="."]
+
+[node name="Cockpit" type="Node2D" parent="Points"]
+position = Vector2(95, -13)
+
+[connection signal="timeout" from="Issues/Timer" to="Issues" method="_on_timer_timeout"]

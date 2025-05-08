@@ -1,35 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbkif523pefv5"]
+[gd_scene load_steps=6 format=3 uid="uid://bbkif523pefv5"]
 
 [ext_resource type="Script" uid="uid://0duwjoixufm0" path="res://assets/ship/ship.gd" id="1_n8q6x"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="2_77xhg"]
 [ext_resource type="Script" uid="uid://b0cbditwjg02n" path="res://assets/ship/ShipRigidBody.gd" id="2_pxrqm"]
 [ext_resource type="Texture2D" uid="uid://ca2mk1ixrcu22" path="res://assets/ship/sprites/ship 2.png" id="3_1dmai"]
-[ext_resource type="Script" uid="uid://cn5warahkaysk" path="res://assets/ship/issues.gd" id="3_v8d56"]
-[ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="5_1h06k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gkfdw"]
 radius = 28.0
 height = 170.0
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_pxrqm"]
-a = Vector2(151, 1)
-b = Vector2(-148, 1)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_1h06k"]
-b = Vector2(0, 315.56)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_1dmai"]
-a = Vector2(0, -152.33)
-b = Vector2(0, 155.92)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxrqm"]
-size = Vector2(102.5, 144)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1h06k"]
-size = Vector2(98, 146)
-
 [node name="Ship" type="Node2D"]
 script = ExtResource("1_n8q6x")
+movement_speed = null
+canon_one_active = null
+canon_two_active = null
+pew_scene = null
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(-3, -1)
@@ -44,14 +29,11 @@ script = ExtResource("2_pxrqm")
 [node name="ShipPoints" type="Node2D" parent="RigidBody2D"]
 position = Vector2(0, -67)
 
-[node name="Cockpit" type="Node2D" parent="RigidBody2D/ShipPoints"]
-position = Vector2(95, -67)
-
 [node name="Canon" type="Node2D" parent="RigidBody2D/ShipPoints"]
-position = Vector2(26, -18)
+position = Vector2(-0.5, -64)
 
 [node name="Canon2" type="Node2D" parent="RigidBody2D/ShipPoints"]
-position = Vector2(-27, -18)
+position = Vector2(-0.5, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(0, -74)
@@ -62,58 +44,6 @@ position = Vector2(1, -66)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_1dmai")
 
-[node name="Interior" type="StaticBody2D" parent="RigidBody2D"]
-collision_layer = 8
-collision_mask = 2
-
-[node name="Ground" type="CollisionShape2D" parent="RigidBody2D/Interior"]
-position = Vector2(0, 241)
-shape = SubResource("SegmentShape2D_pxrqm")
-debug_color = Color(0.969519, 0, 0.460823, 0.42)
-
-[node name="Left Wall" type="CollisionShape2D" parent="RigidBody2D/Interior"]
-position = Vector2(-149, -65)
-shape = SubResource("SegmentShape2D_1h06k")
-debug_color = Color(0.962013, 9.62615e-08, 0.507042, 0.42)
-
-[node name="Right Wall" type="CollisionShape2D" parent="RigidBody2D/Interior"]
-position = Vector2(152, 88)
-shape = SubResource("SegmentShape2D_1dmai")
-debug_color = Color(0.937366, 1.30916e-05, 0.628279, 0.42)
-
-[node name="Ceiling" type="CollisionShape2D" parent="RigidBody2D/Interior"]
-position = Vector2(0, -65)
-shape = SubResource("SegmentShape2D_pxrqm")
-debug_color = Color(0.969519, 0, 0.460823, 0.42)
-
-[node name="Issues" type="Node2D" parent="RigidBody2D"]
-script = ExtResource("3_v8d56")
-possible_issues = Array[PackedScene]([ExtResource("5_1h06k")])
-
-[node name="Right" type="Area2D" parent="RigidBody2D/Issues"]
-position = Vector2(100, 167)
-collision_layer = 64
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Issues/Right"]
-shape = SubResource("RectangleShape2D_pxrqm")
-
-[node name="Left" type="Area2D" parent="RigidBody2D/Issues"]
-position = Vector2(-100, 160)
-collision_layer = 64
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Issues/Left"]
-position = Vector2(-1, 11)
-shape = SubResource("RectangleShape2D_1h06k")
-debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
-
-[node name="Timer" type="Timer" parent="RigidBody2D/Issues"]
-wait_time = 10.0
-autostart = true
-
 [node name="Health" type="Node2D" parent="."]
 position = Vector2(0, 1)
 script = ExtResource("2_77xhg")
-
-[connection signal="timeout" from="RigidBody2D/Issues/Timer" to="RigidBody2D/Issues" method="_on_timer_timeout"]
