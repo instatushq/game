@@ -78,6 +78,29 @@ texture = SubResource("GradientTexture2D_e8dv2")
 offset = Vector2(154.19, -700)
 transform = Transform2D(1, 0, 0, 1, 154.19, -700)
 
+[node name="Galaxy Layer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
+position = Vector2(-1108.19, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("1_x0ka3")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
+position = Vector2(755.81, 104)
+scale = Vector2(2, 2)
+texture = ExtResource("1_x0ka3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
+position = Vector2(-912.19, -502)
+scale = Vector2(2, 2)
+texture = ExtResource("2_0h7mo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
+position = Vector2(581.81, -877)
+scale = Vector2(2, 2)
+texture = ExtResource("3_nr8wp")
+
 [node name="Stars Layer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-870.19, 286)
 scale = Vector2(0.9, 0.9)
@@ -168,29 +191,6 @@ sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
 
-[node name="Galaxy Layer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.6, 0.6)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
-position = Vector2(-1108.19, 360)
-scale = Vector2(2, 2)
-texture = ExtResource("1_x0ka3")
-
-[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
-position = Vector2(755.81, 104)
-scale = Vector2(2, 2)
-texture = ExtResource("1_x0ka3")
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
-position = Vector2(-912.19, -502)
-scale = Vector2(2, 2)
-texture = ExtResource("2_0h7mo")
-
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
-position = Vector2(581.81, -877)
-scale = Vector2(2, 2)
-texture = ExtResource("3_nr8wp")
-
 [node name="HUD" parent="." instance=ExtResource("1_q6r6c")]
 
 [node name="GameManager" parent="." instance=ExtResource("1_0hol4")]
@@ -213,6 +213,9 @@ script = ExtResource("8_ir8iy")
 [node name="Ship" parent="." instance=ExtResource("1_wtcfe")]
 unique_name_in_owner = true
 position = Vector2(-7, 535)
+movement_speed = 100.0
+canon_one_active = true
+canon_two_active = true
 pew_scene = ExtResource("20_ei405")
 
 [node name="Astronaut" parent="." instance=ExtResource("7_d21ai")]

@@ -3,8 +3,8 @@ extends Node2D
 class_name Ship
 
 @export var movement_speed: float = 100.0
+@export var bottom_camera_movement_margin: float = 200.0
 
-var screen_touch_position: Vector2 = Vector2.ZERO
 var mouse_world_position: Vector2 = Vector2.ZERO
 
 @export var canon_one_active: bool = true
@@ -50,6 +50,10 @@ func _physics_process(_delta: float) -> void:
 	if game_manager.current_player == GameManager.Player.SHIP:
 		mouse_world_position = get_global_mouse_position()
 		rb.global_position = mouse_world_position
+		var viewport_size = get_viewport_rect().size
+		var camera = get_viewport().get_camera_2d()
+		var bottom_world_pos = camera.global_position + Vector2(0, viewport_size.y / (2 * camera.zoom.y))
+		rb.global_position.y = clamp(mouse_world_position.y, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control

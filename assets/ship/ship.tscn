@@ -11,10 +11,6 @@ height = 170.0
 
 [node name="Ship" type="Node2D"]
 script = ExtResource("1_n8q6x")
-movement_speed = null
-canon_one_active = null
-canon_two_active = null
-pew_scene = null
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(-3, -1)

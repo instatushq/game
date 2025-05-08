@@ -22,9 +22,6 @@ var last_mouse_position: Vector2 = Vector2.ZERO
 
 var is_solving_puzzle: bool = false
 
-# func _ready() -> void:
-	# Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-
 func _on_score_timer_timeout() -> void:
 	increaseScore()
 
@@ -57,6 +54,7 @@ func is_controlling_astronaut() -> bool:
 	return current_player == Player.ASTRONAUT
 
 func switch_to_ship() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.warp_mouse(last_mouse_position)
 	current_player = Player.SHIP
 	astronaut.toggle_control(false)
@@ -69,3 +67,6 @@ func switch_to_astronaut() -> void:
 	astronaut.toggle_control(true)
 	ship.toggle_control(false)
 	camera.focus_astronaut()
+	var viewport_center = get_viewport_rect().size / 2
+	Input.warp_mouse(viewport_center)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
