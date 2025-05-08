@@ -12,7 +12,7 @@ fill_to = Vector2(0, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l2de3"]
 radius = 2.0
-height = 10.0
+height = 26.0
 
 [node name="Pew" type="RigidBody2D"]
 rotation = 6.28319
@@ -23,7 +23,7 @@ linear_damp = -1.0
 script = ExtResource("1_trei1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.06, 0.184)
+scale = Vector2(0.071, 0.401)
 texture = SubResource("GradientTexture2D_fojv6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

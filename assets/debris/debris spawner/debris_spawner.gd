@@ -69,9 +69,3 @@ func _ready() -> void:
 	var top_center_screen_pos = Vector2(viewport_size.x / 2, 0)
 	var top_center_world_pos = ship_camera.get_global_transform().affine_inverse() * top_center_screen_pos
 	_spawn_batch(-top_center_world_pos.y * -10)
-	
-func _draw():
-	pass
-	# draw_rect(Rect2(Vector2(grid_position_draw.x - grid_size_draw.x, grid_position_draw.y - grid_size_draw.y), Vector2(grid_size_draw.x * 2, grid_size_draw.y * 2)), Color(0, 0, 0, 0.5), true)
-	# for spawn in spawnPositions:
-		# draw_circle(spawn, 16, Color.LIGHT_PINK, true)

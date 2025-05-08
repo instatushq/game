@@ -21,6 +21,9 @@ signal score_changed(old_value: int, new_value: int)
 
 var is_solving_puzzle: bool = false
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 func _on_score_timer_timeout() -> void:
 	increaseScore()
 

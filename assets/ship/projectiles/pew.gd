@@ -13,7 +13,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not is_on_screen():
 		queue_free()
-	var angle = movement_direction.angle() + PI / 2
+	var angle = movement_direction.angle()
 	sprite.rotation = angle
 
 func is_on_screen() -> bool:

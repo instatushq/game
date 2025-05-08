@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://qp2bjvhly0yn" path="res://assets/issues/possible_issues/color match/color_match.gd" id="2_sgv0c"]
 
 [node name="Issue" type="CanvasLayer"]
-follow_viewport_enabled = true
 script = ExtResource("1_la0fh")
 
 [node name="ColorRect" type="ColorRect" parent="."]

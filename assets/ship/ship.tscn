@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="5_1h06k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gkfdw"]
-radius = 83.0
-height = 352.0
+radius = 28.0
+height = 170.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pxrqm"]
 a = Vector2(151, 1)
@@ -42,23 +42,24 @@ linear_damp = 1.0
 script = ExtResource("2_pxrqm")
 
 [node name="ShipPoints" type="Node2D" parent="RigidBody2D"]
-position = Vector2(0, 93)
+position = Vector2(0, -67)
 
 [node name="Cockpit" type="Node2D" parent="RigidBody2D/ShipPoints"]
 position = Vector2(95, -67)
 
 [node name="Canon" type="Node2D" parent="RigidBody2D/ShipPoints"]
-position = Vector2(83, -65)
+position = Vector2(26, -18)
 
 [node name="Canon2" type="Node2D" parent="RigidBody2D/ShipPoints"]
-position = Vector2(-94, -67)
+position = Vector2(-27, -18)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(4, 84)
+position = Vector2(0, -74)
 shape = SubResource("CapsuleShape2D_gkfdw")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(1, 93)
+position = Vector2(1, -66)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_1dmai")
 
 [node name="Interior" type="StaticBody2D" parent="RigidBody2D"]

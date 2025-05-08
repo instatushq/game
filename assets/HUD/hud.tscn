@@ -23,9 +23,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Health" type="Label" parent="."]
-offset_left = 915.0
+offset_left = 1652.0
 offset_top = 16.0
-offset_right = 1137.0
+offset_right = 1874.0
 offset_bottom = 103.0
 size_flags_horizontal = 4
 text = "100%

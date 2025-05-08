@@ -4,7 +4,7 @@ var ship_direction: Vector2 = Vector2.ZERO
 @onready var rb: ShipImpacter = $"Ship Impacter"
 var game_manager: GameManager = null
 
-var SPEED: int = 9
+var SPEED: int = 15
 
 func _ready() -> void:
 	var ship: Ship = get_tree().get_current_scene().get_node("%Ship")
@@ -15,9 +15,8 @@ func _ready() -> void:
 	ship_direction = new_velocity
 	game_manager = get_tree().get_current_scene().get_node("%GameManager")
 	var distance_to_ship = rb.global_position.distance_to(ship_rb.global_position)
-	print(distance_to_ship)
 	if distance_to_ship > 500:
-		SPEED = 13
+		SPEED = 20
 	
 func _physics_process(_delta: float) -> void:
 	if game_manager.current_player == GameManager.Player.SHIP:

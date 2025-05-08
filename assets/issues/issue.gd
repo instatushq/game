@@ -5,7 +5,7 @@ class_name Issue
 signal issue_resolved
 
 func _ready() -> void:
-	visible = true
+	visible = false
 	issue_resolved.connect(close_issue) 
 
 func open_issue() -> void:

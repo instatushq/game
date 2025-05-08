@@ -16,6 +16,7 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @onready var game_manager: GameManager = %GameManager
 @onready var canon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var canon_2: Node2D = $RigidBody2D/ShipPoints/Canon2
+@onready var root_of_scene: Node2D = get_tree().root.get_child(0)
 
 var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y = position.y;
@@ -28,7 +29,6 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if game_manager.current_player != GameManager.Player.SHIP: return
 	
-	mouse_world_position = get_global_mouse_position()
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -47,6 +47,8 @@ func _handle_movement_score() -> void:
 
 func _physics_process(_delta: float) -> void:
 	_handle_movement_score()
+	mouse_world_position = get_global_mouse_position()
+	rb.global_position = mouse_world_position
 	rb.linear_velocity = Vector2(0, -movement_speed)
 
 func toggle_control(new_can_control: bool) -> void:
@@ -58,7 +60,6 @@ func _on_impact_with_object(body: ShipImpacter) -> void:
 
 func create_pew(canon: Node2D) -> void:
 	var pew: Pew = pew_scene.instantiate()
-	canon.add_child(pew)
+	root_of_scene.add_child(pew)
 	pew.global_position = canon.global_position
-	pew.linear_velocity = (mouse_world_position - canon.global_position).normalized() * pew.speed
-	pew.movement_direction = (mouse_world_position - canon.global_position).normalized()
+	pew.linear_velocity = Vector2.UP * pew.speed
