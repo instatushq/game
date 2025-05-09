@@ -4,8 +4,7 @@ extends CanvasLayer
 @onready var health_label: Label = $Health
 @onready var game_manager: GameManager = %GameManager
 @onready var ship: ShipHealth = %Ship/Health
-@onready var issues: Issues = %Ship/RigidBody2D/Issues
-
+@onready var issues: Issues = %InternalShip/Issues
 
 const HEALTH_COLORS = [
 	{ "threshold": 75, "color": Color("#00FF00"), "text": "Operational" },
