@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=27 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://csv6n3lor4pje" path="res://assets/managers/game manager/game_manager.tscn" id="1_0hol4"]
 [ext_resource type="Texture2D" uid="uid://cse7rwxntb3w" path="res://assets/environment/backgrounds/stars/stars1.png" id="1_fs4d3"]
@@ -6,21 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="1_wtcfe"]
 [ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="1_x0ka3"]
 [ext_resource type="PackedScene" uid="uid://cqp7226e2sov4" path="res://assets/debris/debris-1.tscn" id="2_0e48y"]
-[ext_resource type="Texture2D" uid="uid://5uhwmlx6yava" path="res://assets/environment/backgrounds/galaxy2.png" id="2_0h7mo"]
 [ext_resource type="Texture2D" uid="uid://b7u0ad703omfw" path="res://assets/environment/backgrounds/stars/stars2.png" id="2_7vxoj"]
 [ext_resource type="Texture2D" uid="uid://dcg17ivsklgrk" path="res://assets/environment/backgrounds/stars/stars3.png" id="3_ei405"]
 [ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/walls/camera walls.tscn" id="3_epypp"]
-[ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy3.png" id="3_nr8wp"]
+[ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy2.png" id="3_nr8wp"]
+[ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="4_2nhjh"]
 [ext_resource type="Texture2D" uid="uid://d0kk5ret3umsa" path="res://assets/environment/backgrounds/stars/stars4.png" id="4_e8dv2"]
 [ext_resource type="Texture2D" uid="uid://b8vi86k1c3u4" path="res://assets/environment/backgrounds/stars/stars5.png" id="5_2nhjh"]
+[ext_resource type="Texture2D" uid="uid://bfrcj1cva63yx" path="res://assets/environment/backgrounds/galaxy4.png" id="5_bjha6"]
 [ext_resource type="Texture2D" uid="uid://dfv1xcd4bydt5" path="res://assets/environment/backgrounds/stars/stars6.png" id="6_bjha6"]
+[ext_resource type="Texture2D" uid="uid://dvhillf4ggqng" path="res://assets/environment/backgrounds/galaxy5.png" id="6_gt76g"]
 [ext_resource type="PackedScene" uid="uid://c8polkf2eiy1" path="res://assets/debris/debris spawner/debris spawner.tscn" id="6_kdubu"]
 [ext_resource type="PackedScene" uid="uid://wavl0ks2h3jn" path="res://assets/camera/camera.tscn" id="7_4d7sh"]
 [ext_resource type="PackedScene" uid="uid://byp6hvrh54j2d" path="res://assets/astronaut/astronaut.tscn" id="7_d21ai"]
 [ext_resource type="Texture2D" uid="uid://djx6ijpqiom1i" path="res://assets/environment/backgrounds/stars/stars7.png" id="7_gt76g"]
 [ext_resource type="Texture2D" uid="uid://oxfw1fcif0b3" path="res://assets/environment/backgrounds/stars/stars8.png" id="8_1fr6y"]
 [ext_resource type="Script" uid="uid://7kv11fhng1mq" path="res://assets/camera/camera.gd" id="8_ir8iy"]
-[ext_resource type="PackedScene" uid="uid://c7rklw8gicmio" path="res://assets/ship/projectiles/pew.tscn" id="20_ei405"]
 [ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="21_7vxoj"]
 
 [sub_resource type="Gradient" id="Gradient_ei405"]
@@ -78,118 +79,225 @@ texture = SubResource("GradientTexture2D_e8dv2")
 offset = Vector2(154.19, -700)
 transform = Transform2D(1, 0, 0, 1, 154.19, -700)
 
-[node name="Galaxy Layer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Back Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-870.19, 286)
+scale = Vector2(0.9, 0.9)
 motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(0, 1050)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(942.889, 1348.88)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(656.223, 1342.22)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(245.111, 1342.22)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(1412.89, 1342.22)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(621.111, 1020)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(1306.67, 1030)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(265.556, 1020)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(788.889, 1020)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(1091.11, 643.333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(623.333, 645.556)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(434.444, 643.333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(1383.33, 643.333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2hxjc")
+autoplay = "default"
+frame_progress = 0.27724
+
+[node name="Galaxy Layer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(0, 1600)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
-position = Vector2(-1108.19, 360)
-scale = Vector2(2, 2)
-texture = ExtResource("1_x0ka3")
-
-[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
-position = Vector2(755.81, 104)
-scale = Vector2(2, 2)
+position = Vector2(-149.19, 1299)
+scale = Vector2(1.8, 1.8)
 texture = ExtResource("1_x0ka3")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
-position = Vector2(-912.19, -502)
-scale = Vector2(2, 2)
-texture = ExtResource("2_0h7mo")
-
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
-position = Vector2(581.81, -877)
-scale = Vector2(2, 2)
+position = Vector2(467.81, 501)
+scale = Vector2(1.8, 1.8)
 texture = ExtResource("3_nr8wp")
 
-[node name="Stars Layer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-870.19, 286)
-scale = Vector2(0.9, 0.9)
-motion_scale = Vector2(0.4, 0.4)
-motion_mirroring = Vector2(0, 1200)
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
+position = Vector2(280.81, 355)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_2nhjh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(942.889, 1004.44)
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
+position = Vector2(-400.19, 602)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("5_bjha6")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
+position = Vector2(-408.19, 25)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("6_gt76g")
+
+[node name="Front Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-1823.19, 1603)
+scale = Vector2(1.5, 1.5)
+motion_mirroring = Vector2(0, 1050)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(942.889, 1348.88)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(559.556, 1004.44)
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(656.223, 1342.22)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(148.444, 1004.44)
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(245.111, 1342.22)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(1316.22, 1004.44)
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(1412.89, 1342.22)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(942.889, 675.556)
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(621.111, 1020)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(559.556, 675.556)
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(1306.67, 1030)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(148.444, 675.556)
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(265.556, 1020)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(1316.22, 675.556)
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(788.889, 1020)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(942.889, 298.889)
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(1091.11, 643.333)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(559.556, 298.889)
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(623.333, 645.556)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(148.444, 298.889)
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(434.444, 643.333)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
-[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="ParallaxBackground/Stars Layer"]
-position = Vector2(1316.22, 298.889)
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(1383.33, 643.333)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2hxjc")
 autoplay = "default"
 frame_progress = 0.27724
+speed_scale = 1.5
 
 [node name="HUD" parent="." instance=ExtResource("1_q6r6c")]
 
@@ -213,10 +321,6 @@ script = ExtResource("8_ir8iy")
 [node name="Ship" parent="." instance=ExtResource("1_wtcfe")]
 unique_name_in_owner = true
 position = Vector2(-7, 535)
-movement_speed = 100.0
-canon_one_active = true
-canon_two_active = true
-pew_scene = ExtResource("20_ei405")
 
 [node name="Astronaut" parent="." instance=ExtResource("7_d21ai")]
 unique_name_in_owner = true

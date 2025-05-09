@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://66vjhmpo6mu8"
-path="res://.godot/imported/galaxy2.png-7c5ac4ea779ba3b6c552baaa51b77be3.ctex"
+uid="uid://dvhillf4ggqng"
+path="res://.godot/imported/galaxy5.png-d73e81aa5c931fbb6f048de7d7cdbb1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/backgrounds/galaxy2.png"
-dest_files=["res://.godot/imported/galaxy2.png-7c5ac4ea779ba3b6c552baaa51b77be3.ctex"]
+source_file="res://assets/environment/backgrounds/galaxy5.png"
+dest_files=["res://.godot/imported/galaxy5.png-d73e81aa5c931fbb6f048de7d7cdbb1b.ctex"]
 
 [params]
 
