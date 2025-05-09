@@ -4,6 +4,7 @@ class_name Ship
 
 @export var movement_speed: float = 100.0
 @export var bottom_camera_movement_margin: float = 200.0
+var side_movement_padding: float = 48.0
 
 var mouse_world_position: Vector2 = Vector2.ZERO
 
@@ -67,9 +68,15 @@ func _physics_process(_delta: float) -> void:
 		rb.global_position = mouse_world_position
 		var viewport_size = get_viewport_rect().size
 		var camera = get_viewport().get_camera_2d()
+		
 		var bottom_world_pos = camera.global_position + Vector2(0, viewport_size.y / (2 * camera.zoom.y))
-		var restricterd_y = clamp(mouse_world_position.y, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
-		rb.global_position.y = restricterd_y
+		var left_world_pos = camera.global_position - Vector2(viewport_size.x / (2 * camera.zoom.x), 0)
+		var right_world_pos = camera.global_position + Vector2(viewport_size.x / (2 * camera.zoom.x), 0)
+		
+		var restricted_y = clamp(mouse_world_position.y, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
+		var restricted_x = clamp(mouse_world_position.x, left_world_pos.x + side_movement_padding, right_world_pos.x - side_movement_padding)
+		
+		rb.global_position = Vector2(restricted_x, restricted_y)
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control
