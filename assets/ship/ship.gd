@@ -36,6 +36,21 @@ func _input(event: InputEvent) -> void:
 					create_pew(canon_1)
 				if canon_two_active:
 					create_pew(canon_2)
+	elif event is InputEventMouseMotion:
+		var viewport_size = get_viewport_rect().size
+		var mouse_pos = get_viewport().get_mouse_position()
+		
+		# Only apply restriction if mouse is within viewport bounds
+		if mouse_pos.x >= 0 and mouse_pos.x <= viewport_size.x and mouse_pos.y >= 0 and mouse_pos.y <= viewport_size.y:
+			if event.relative.y > 0:
+				mouse_world_position = get_global_mouse_position()
+				var camera = get_viewport().get_camera_2d()
+				var bottom_world_pos = camera.global_position + Vector2(0, viewport_size.y / (2 * camera.zoom.y))
+				var restricted_y = clamp(mouse_world_position.y, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
+				
+				if mouse_world_position.y < restricted_y:
+					var current_mouse_pos = get_viewport().get_mouse_position()
+					Input.warp_mouse(Vector2(current_mouse_pos.x, viewport_size.y - (bottom_camera_movement_margin * 2)))
 
 func _handle_movement_score() -> void:
 	if -rb.global_position.y > last_recorded_y + 100:
@@ -53,7 +68,8 @@ func _physics_process(_delta: float) -> void:
 		var viewport_size = get_viewport_rect().size
 		var camera = get_viewport().get_camera_2d()
 		var bottom_world_pos = camera.global_position + Vector2(0, viewport_size.y / (2 * camera.zoom.y))
-		rb.global_position.y = clamp(mouse_world_position.y, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
+		var restricterd_y = clamp(mouse_world_position.y, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
+		rb.global_position.y = restricterd_y
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control
