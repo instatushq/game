@@ -33,3 +33,13 @@ text = "100%
 label_settings = SubResource("LabelSettings_jn2t8")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Fuel" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 1307.0
+offset_right = 226.0
+offset_bottom = 1394.0
+size_flags_horizontal = 4
+text = "Fuel: 100%"
+label_settings = SubResource("LabelSettings_jn2t8")
+vertical_alignment = 1

@@ -2,8 +2,10 @@ extends CanvasLayer
 
 @onready var score_label: Label = $Score
 @onready var health_label: Label = $Health
+@onready var fuel_label: Label = $Fuel
 @onready var game_manager: GameManager = %GameManager
 @onready var ship: ShipHealth = %Ship/Health
+@onready var fuel: ShipFuel = %Ship/Fuel
 @onready var issues: Issues = %InternalShip/Issues
 
 const HEALTH_COLORS = [
@@ -15,7 +17,8 @@ const HEALTH_COLORS = [
 
 func _ready():
 	game_manager.score_changed.connect(on_score_change)
-	ship.on_health_change.connect(on_health_change)
+	ship.on_health_change.connect(_on_health_change)
+	fuel.on_fuel_change.connect(_on_fuel_change)
 	_update_health_text(100)
 	
 func on_score_change(_old_screen: int, new_score: int):
@@ -30,6 +33,11 @@ func _update_health_text(new_health):
 	health_label.label_settings.font_color = HEALTH_COLORS[-1].color
 	health_label.text = str(int(new_health)) + " %\n" + HEALTH_COLORS[-1].text
 
-
-func on_health_change(_old_health: float, new_health: float) -> void:
+func _on_health_change(_old_health: float, new_health: float) -> void:
 	_update_health_text(new_health)
+
+func _update_fuel_text(new_fuel):
+	fuel_label.text = str(new_fuel) + " %"
+
+func _on_fuel_change(_old_fuel: float, new_fuel: float) -> void:
+	_update_fuel_text(new_fuel)
