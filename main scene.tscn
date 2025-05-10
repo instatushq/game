@@ -327,3 +327,5 @@ position = Vector2(-7, 535)
 [node name="Astronaut" parent="." instance=ExtResource("22_ysk47")]
 unique_name_in_owner = true
 position = Vector2(-8431, -595)
+movement_speed = 100.0
+damping = 1.0

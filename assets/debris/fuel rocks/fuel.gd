@@ -3,6 +3,7 @@ extends Node2D
 var ship_direction: Vector2 = Vector2.ZERO
 @onready var rb: ShipImpacter = $"Ship Impacter"
 @onready var game_manager: GameManager = get_tree().get_current_scene().get_node("%GameManager")
+@export var max_hits_to_break = 5
 var times_hit: int = 0
 
 var SPEED: int = 13
@@ -26,7 +27,7 @@ func _release_fuel() -> void:
 
 func _on_ship_impacter_on_shot(laser_bullet: Node2D) -> void:
 	times_hit += 1
-	if times_hit >= 3:
+	if times_hit >= max_hits_to_break:
 		_release_fuel()
 		queue_free()
 	
