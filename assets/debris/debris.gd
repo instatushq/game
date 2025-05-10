@@ -7,13 +7,13 @@ var ship_direction: Vector2 = Vector2.ZERO
 var times_hit: int = 0
 
 var SPEED: int = 13
-var MIN_SCALE: float = 1
-var MAX_SCALE: float = 3
+# var MIN_SCALE: float = 1
+# var MAX_SCALE: float = 3
 
 func _ready() -> void:
 	ship_direction = Vector2.DOWN * SPEED
-	var random_scale = randf_range(MIN_SCALE, MAX_SCALE)
-	scale = Vector2(random_scale, random_scale)
+	# var random_scale = randf_range(MIN_SCALE, MAX_SCALE)
+	# scale = Vector2(random_scale, random_scale)
 	
 func _physics_process(_delta: float) -> void:
 	if game_manager.current_player == GameManager.Player.SHIP:

@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cwkneci6tcu01" path="res://assets/components/ship_impacter/ship_impacter.tscn" id="2_kuyaf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kuyaf"]
-radius = 15.9566
-height = 50.0391
+radius = 13.9919
+height = 44.1108
 
 [node name="Fuel" type="Node2D"]
 script = ExtResource("1_40y8q")

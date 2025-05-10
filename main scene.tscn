@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=30 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="1_tfagm"]
 [ext_resource type="Texture2D" uid="uid://cse7rwxntb3w" path="res://assets/environment/backgrounds/stars/stars1.png" id="2_ipocw"]
@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://brjhnky7i1mn" path="res://assets/debris/fuel rocks/fuel.tscn" id="20_aw4ih"]
 [ext_resource type="Script" uid="uid://7kv11fhng1mq" path="res://assets/camera/camera.gd" id="20_i2nmc"]
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="21_1tmrn"]
+[ext_resource type="PackedScene" uid="uid://b5kof6gdc71fo" path="res://assets/debris/fuel rocks/fuel 2.tscn" id="21_abrck"]
+[ext_resource type="PackedScene" uid="uid://cnxk6ijntgefu" path="res://assets/debris/fuel rocks/fuel 3.tscn" id="22_o10iu"]
 [ext_resource type="PackedScene" uid="uid://byp6hvrh54j2d" path="res://assets/astronaut/astronaut.tscn" id="22_ysk47"]
 
 [sub_resource type="Gradient" id="Gradient_ei405"]
@@ -311,7 +313,7 @@ unique_name_in_owner = true
 [node name="Debris Spawner" parent="." instance=ExtResource("18_ps13k")]
 position = Vector2(-180, -138)
 debris_objects = Array[PackedScene]([ExtResource("19_ipocw")])
-fuel_rocks = Array[PackedScene]([ExtResource("20_aw4ih")])
+fuel_rocks = Array[PackedScene]([ExtResource("20_aw4ih"), ExtResource("21_abrck"), ExtResource("22_o10iu")])
 
 [node name="Camera" parent="." instance=ExtResource("19_eajmq")]
 unique_name_in_owner = true
