@@ -37,7 +37,7 @@ func _on_health_change(_old_health: float, new_health: float) -> void:
 	_update_health_text(new_health)
 
 func _update_fuel_text(new_fuel):
-	fuel_label.text = str(new_fuel) + " %"
+	fuel_label.text = str(snappedf(new_fuel, 0.01)) + " %"
 
 func _on_fuel_change(_old_fuel: float, new_fuel: float) -> void:
 	_update_fuel_text(new_fuel)
