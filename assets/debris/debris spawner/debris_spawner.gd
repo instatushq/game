@@ -13,8 +13,8 @@ var next_spawn_y: float = 0
 var last_spawn_y: float = 0
 var can_spawn: bool = true
 
-var asteroid_rocks_chance: int = 90
-var fuel_rocks_chance: int = 10
+var asteroid_rocks_chance: int = 92
+var fuel_rocks_chance: int = 8
 
 func _spawn_batch(y_level: float = 0) -> void:
 	var view_port_y_size = 600
