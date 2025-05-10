@@ -1,28 +1,29 @@
-[gd_scene load_steps=27 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=28 format=3 uid="uid://mtin8kgh74wb"]
 
-[ext_resource type="PackedScene" uid="uid://csv6n3lor4pje" path="res://assets/managers/game manager/game_manager.tscn" id="1_0hol4"]
-[ext_resource type="Texture2D" uid="uid://cse7rwxntb3w" path="res://assets/environment/backgrounds/stars/stars1.png" id="1_fs4d3"]
-[ext_resource type="PackedScene" uid="uid://cqcmv5b3uo3sc" path="res://assets/HUD/hud.tscn" id="1_q6r6c"]
-[ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="1_wtcfe"]
-[ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="1_x0ka3"]
-[ext_resource type="PackedScene" uid="uid://cqp7226e2sov4" path="res://assets/debris/debris-1.tscn" id="2_0e48y"]
-[ext_resource type="Texture2D" uid="uid://b7u0ad703omfw" path="res://assets/environment/backgrounds/stars/stars2.png" id="2_7vxoj"]
-[ext_resource type="Texture2D" uid="uid://dcg17ivsklgrk" path="res://assets/environment/backgrounds/stars/stars3.png" id="3_ei405"]
-[ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/walls/camera walls.tscn" id="3_epypp"]
-[ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy2.png" id="3_nr8wp"]
-[ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="4_2nhjh"]
-[ext_resource type="Texture2D" uid="uid://d0kk5ret3umsa" path="res://assets/environment/backgrounds/stars/stars4.png" id="4_e8dv2"]
-[ext_resource type="Texture2D" uid="uid://b8vi86k1c3u4" path="res://assets/environment/backgrounds/stars/stars5.png" id="5_2nhjh"]
-[ext_resource type="Texture2D" uid="uid://bfrcj1cva63yx" path="res://assets/environment/backgrounds/galaxy4.png" id="5_bjha6"]
-[ext_resource type="Texture2D" uid="uid://dfv1xcd4bydt5" path="res://assets/environment/backgrounds/stars/stars6.png" id="6_bjha6"]
-[ext_resource type="Texture2D" uid="uid://dvhillf4ggqng" path="res://assets/environment/backgrounds/galaxy5.png" id="6_gt76g"]
-[ext_resource type="PackedScene" uid="uid://c8polkf2eiy1" path="res://assets/debris/debris spawner/debris spawner.tscn" id="6_kdubu"]
-[ext_resource type="PackedScene" uid="uid://wavl0ks2h3jn" path="res://assets/camera/camera.tscn" id="7_4d7sh"]
-[ext_resource type="PackedScene" uid="uid://byp6hvrh54j2d" path="res://assets/astronaut/astronaut.tscn" id="7_d21ai"]
-[ext_resource type="Texture2D" uid="uid://djx6ijpqiom1i" path="res://assets/environment/backgrounds/stars/stars7.png" id="7_gt76g"]
-[ext_resource type="Texture2D" uid="uid://oxfw1fcif0b3" path="res://assets/environment/backgrounds/stars/stars8.png" id="8_1fr6y"]
-[ext_resource type="Script" uid="uid://7kv11fhng1mq" path="res://assets/camera/camera.gd" id="8_ir8iy"]
-[ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="21_7vxoj"]
+[ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="1_tfagm"]
+[ext_resource type="Texture2D" uid="uid://cse7rwxntb3w" path="res://assets/environment/backgrounds/stars/stars1.png" id="2_ipocw"]
+[ext_resource type="Texture2D" uid="uid://b7u0ad703omfw" path="res://assets/environment/backgrounds/stars/stars2.png" id="3_aw4ih"]
+[ext_resource type="Texture2D" uid="uid://dcg17ivsklgrk" path="res://assets/environment/backgrounds/stars/stars3.png" id="4_abrck"]
+[ext_resource type="Texture2D" uid="uid://d0kk5ret3umsa" path="res://assets/environment/backgrounds/stars/stars4.png" id="5_o10iu"]
+[ext_resource type="Texture2D" uid="uid://b8vi86k1c3u4" path="res://assets/environment/backgrounds/stars/stars5.png" id="6_2oafy"]
+[ext_resource type="Texture2D" uid="uid://dfv1xcd4bydt5" path="res://assets/environment/backgrounds/stars/stars6.png" id="7_7wclo"]
+[ext_resource type="Texture2D" uid="uid://djx6ijpqiom1i" path="res://assets/environment/backgrounds/stars/stars7.png" id="8_1rk8b"]
+[ext_resource type="Texture2D" uid="uid://oxfw1fcif0b3" path="res://assets/environment/backgrounds/stars/stars8.png" id="9_wgikr"]
+[ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="10_47sn8"]
+[ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy2.png" id="11_icqtw"]
+[ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="12_t4yvt"]
+[ext_resource type="Texture2D" uid="uid://bfrcj1cva63yx" path="res://assets/environment/backgrounds/galaxy4.png" id="13_t6o86"]
+[ext_resource type="Texture2D" uid="uid://dvhillf4ggqng" path="res://assets/environment/backgrounds/galaxy5.png" id="14_cabrn"]
+[ext_resource type="PackedScene" uid="uid://cqcmv5b3uo3sc" path="res://assets/HUD/hud.tscn" id="15_ens8i"]
+[ext_resource type="PackedScene" uid="uid://csv6n3lor4pje" path="res://assets/managers/game manager/game_manager.tscn" id="16_yklg6"]
+[ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/walls/camera walls.tscn" id="17_770c0"]
+[ext_resource type="PackedScene" uid="uid://c8polkf2eiy1" path="res://assets/debris/debris spawner/debris spawner.tscn" id="18_ps13k"]
+[ext_resource type="PackedScene" uid="uid://wavl0ks2h3jn" path="res://assets/camera/camera.tscn" id="19_eajmq"]
+[ext_resource type="PackedScene" uid="uid://cqp7226e2sov4" path="res://assets/debris/debris-1.tscn" id="19_ipocw"]
+[ext_resource type="PackedScene" uid="uid://brjhnky7i1mn" path="res://assets/debris/fuel rocks/fuel.tscn" id="20_aw4ih"]
+[ext_resource type="Script" uid="uid://7kv11fhng1mq" path="res://assets/camera/camera.gd" id="20_i2nmc"]
+[ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="21_1tmrn"]
+[ext_resource type="PackedScene" uid="uid://byp6hvrh54j2d" path="res://assets/astronaut/astronaut.tscn" id="22_ysk47"]
 
 [sub_resource type="Gradient" id="Gradient_ei405"]
 offsets = PackedFloat32Array(0, 0.651452, 1)
@@ -36,28 +37,28 @@ fill_from = Vector2(0.0921409, 1)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_fs4d3")
+"texture": ExtResource("2_ipocw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_7vxoj")
+"texture": ExtResource("3_aw4ih")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ei405")
+"texture": ExtResource("4_abrck")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_e8dv2")
+"texture": ExtResource("5_o10iu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_2nhjh")
+"texture": ExtResource("6_2oafy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_bjha6")
+"texture": ExtResource("7_7wclo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_gt76g")
+"texture": ExtResource("8_1rk8b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_1fr6y")
+"texture": ExtResource("9_wgikr")
 }],
 "loop": true,
 "name": &"default",
@@ -66,7 +67,7 @@ animations = [{
 
 [node name="Game" type="Node2D"]
 
-[node name="InternalShip" parent="." instance=ExtResource("21_7vxoj")]
+[node name="InternalShip" parent="." instance=ExtResource("1_tfagm")]
 unique_name_in_owner = true
 position = Vector2(-8371, -718)
 
@@ -176,27 +177,27 @@ motion_mirroring = Vector2(0, 1600)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
 position = Vector2(-149.19, 1299)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("1_x0ka3")
+texture = ExtResource("10_47sn8")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
 position = Vector2(467.81, 501)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("3_nr8wp")
+texture = ExtResource("11_icqtw")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
 position = Vector2(280.81, 355)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("4_2nhjh")
+texture = ExtResource("12_t4yvt")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
 position = Vector2(-400.19, 602)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("5_bjha6")
+texture = ExtResource("13_t6o86")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
 position = Vector2(-408.19, 25)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("6_gt76g")
+texture = ExtResource("14_cabrn")
 
 [node name="Front Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-1823.19, 1603)
@@ -299,29 +300,30 @@ autoplay = "default"
 frame_progress = 0.27724
 speed_scale = 1.5
 
-[node name="HUD" parent="." instance=ExtResource("1_q6r6c")]
+[node name="HUD" parent="." instance=ExtResource("15_ens8i")]
 
-[node name="GameManager" parent="." instance=ExtResource("1_0hol4")]
+[node name="GameManager" parent="." instance=ExtResource("16_yklg6")]
 unique_name_in_owner = true
 
-[node name="Walls" parent="." instance=ExtResource("3_epypp")]
+[node name="Walls" parent="." instance=ExtResource("17_770c0")]
 unique_name_in_owner = true
 
-[node name="Debris Spawner" parent="." instance=ExtResource("6_kdubu")]
+[node name="Debris Spawner" parent="." instance=ExtResource("18_ps13k")]
 position = Vector2(-180, -138)
-debris_objects = Array[PackedScene]([ExtResource("2_0e48y"), ExtResource("2_0e48y"), ExtResource("2_0e48y"), ExtResource("2_0e48y")])
+debris_objects = Array[PackedScene]([ExtResource("19_ipocw")])
+fuel_rocks = Array[PackedScene]([ExtResource("20_aw4ih")])
 
-[node name="Camera" parent="." instance=ExtResource("7_4d7sh")]
+[node name="Camera" parent="." instance=ExtResource("19_eajmq")]
 unique_name_in_owner = true
 position = Vector2(14, 21)
 zoom = Vector2(1, 1)
 position_smoothing_speed = 200.0
-script = ExtResource("8_ir8iy")
+script = ExtResource("20_i2nmc")
 
-[node name="Ship" parent="." instance=ExtResource("1_wtcfe")]
+[node name="Ship" parent="." instance=ExtResource("21_1tmrn")]
 unique_name_in_owner = true
 position = Vector2(-7, 535)
 
-[node name="Astronaut" parent="." instance=ExtResource("7_d21ai")]
+[node name="Astronaut" parent="." instance=ExtResource("22_ysk47")]
 unique_name_in_owner = true
 position = Vector2(-8431, -595)
