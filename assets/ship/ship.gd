@@ -11,6 +11,7 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @export var canon_one_active: bool = true
 @export var canon_two_active: bool = true
 @export var pew_scene: PackedScene = preload("res://assets/ship/projectiles/pew.tscn")
+@export var fire_cooldown: float = 0.15
 
 @onready var rb: ShipRigidBody = $RigidBody2D
 @onready var health: ShipHealth = $Health
@@ -23,9 +24,27 @@ var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y: float = position.y;
 
 var can_control: bool = false
+var can_fire: bool = true
+var fire_timer: float = 0.0
+var input_buffered: bool = false
+var is_firing: bool = false
 
 func _ready():
 	rb.on_impact.connect(_on_impact_with_object)
+
+func _process(delta: float) -> void:
+	if not can_fire:
+		fire_timer += delta
+		if fire_timer >= fire_cooldown:
+			can_fire = true
+			fire_timer = 0.0
+			if input_buffered or is_firing:
+				input_buffered = false
+				if canon_one_active:
+					create_pew(canon_1)
+				if canon_two_active:
+					create_pew(canon_2)
+				can_fire = false
 
 func _input(event: InputEvent) -> void:
 	if game_manager.current_player != GameManager.Player.SHIP: return
@@ -33,10 +52,17 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				if canon_one_active:
-					create_pew(canon_1)
-				if canon_two_active:
-					create_pew(canon_2)
+				is_firing = true
+				if can_fire:
+					if canon_one_active:
+						create_pew(canon_1)
+					if canon_two_active:
+						create_pew(canon_2)
+					can_fire = false
+				else:
+					input_buffered = true
+			else:
+				is_firing = false
 	elif event is InputEventMouseMotion:
 		var viewport_size = get_viewport_rect().size
 		var mouse_pos = get_viewport().get_mouse_position()
