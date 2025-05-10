@@ -3,7 +3,7 @@ extends Node2D
 @onready var ship_camera: Camera2D = get_node("%Camera")
 @onready var walls: Array[Node] = get_node("%Walls/RigidBody2D/Left Right").get_children()
 @export var debris_objects: Array[PackedScene] = []
-var spawnPositions: Array[Vector2] = []
+@export var fuel_rocks: Array[PackedScene] = []
 
 var grid_size_draw: Vector2 = Vector2(0, 0)
 var grid_position_draw: Vector2 = Vector2(0, 0)
@@ -12,6 +12,9 @@ const DISTANCE_BETWEEN_SEGMENTS: float = 100
 var next_spawn_y: float = 0
 var last_spawn_y: float = 0
 var can_spawn: bool = true
+
+var asteroid_rocks_chance: int = 90
+var fuel_rocks_chance: int = 10
 
 func _spawn_batch(y_level: float = 0) -> void:
 	var view_port_y_size = 600
@@ -30,8 +33,11 @@ func _spawn_batch(y_level: float = 0) -> void:
 	var generated_points = PoissonDiscSampling.generate_points(140, grid_size, 50, grid_position)
 
 	for point in generated_points:
-		spawnPositions.append(point)
-		_spawn_debris(point)
+		var random_integer: int = randi_range(0, 100)
+		if random_integer < fuel_rocks_chance:
+			_spawn_fuel_rock(point)
+		elif random_integer < asteroid_rocks_chance:
+			_spawn_debris(point)
 
 	queue_redraw()
 
@@ -52,6 +58,12 @@ func _spawn_debris(spawn_position: Vector2):
 	var debris_scene_instance = debris_scene.instantiate()
 	debris_scene_instance.global_position = spawn_position
 	add_child(debris_scene_instance)
+
+func _spawn_fuel_rock(spawn_position: Vector2):
+	var fuel_rock_scene = fuel_rocks.pick_random()
+	var fuel_rock_scene_instance = fuel_rock_scene.instantiate()
+	fuel_rock_scene_instance.global_position = spawn_position
+	add_child(fuel_rock_scene_instance)
 
 func _physics_process(_delta: float) -> void:
 	var viewport_size = get_viewport_rect().size

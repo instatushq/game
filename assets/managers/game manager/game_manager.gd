@@ -38,7 +38,7 @@ func _input(event):
 			if new_player == Player.SHIP:
 				timer.start()
 			else:
-				timer.stop()
+				timer.stop() 
 
 func switch_controlled_player_to(player: Player) -> void:
 	match player:

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://st83eevej0bo"]
+
+[ext_resource type="Script" uid="uid://bm1qfwupvpykf" path="res://assets/debris/fuel rocks/fuel.gd" id="1_lyue0"]
+[ext_resource type="PackedScene" uid="uid://cwkneci6tcu01" path="res://assets/components/ship_impacter/ship_impacter.tscn" id="2_4f74n"]
+[ext_resource type="Texture2D" uid="uid://cpeftxfxv180e" path="res://assets/debris/fuel rocks/textures/fuel gem.png" id="3_qli2v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kuyaf"]
+radius = 12.9924
+height = 40.0
+
+[node name="Fuel" type="Node2D"]
+script = ExtResource("1_lyue0")
+
+[node name="Ship Impacter" parent="." instance=ExtResource("2_4f74n")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ship Impacter"]
+rotation = 2.37979
+texture = ExtResource("3_qli2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ship Impacter"]
+position = Vector2(-1, 0)
+rotation = -0.034108
+shape = SubResource("CapsuleShape2D_kuyaf")
