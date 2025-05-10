@@ -76,15 +76,15 @@ linear_damp = 0.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ship Impacter"]
 position = Vector2(0, -17)
-rotation = -1.5708
+rotation = -0.785398
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_g2aru")
 autoplay = "default"
 frame_progress = 0.451649
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ship Impacter"]
-position = Vector2(6, -6)
-rotation = -0.951204
+position = Vector2(-2, -6)
+rotation = -3.03687
 scale = Vector2(0.682, 0.682)
 skew = -0.00359786
 shape = SubResource("CapsuleShape2D_cidke")

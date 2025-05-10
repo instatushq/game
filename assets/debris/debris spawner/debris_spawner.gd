@@ -27,7 +27,7 @@ func _spawn_batch(y_level: float = 0) -> void:
 	# Set the next spawn trigger position based on camera distance
 	next_spawn_y = y_level - grid_size.y - distance_from_camera_top_to_spawn_batch
 	
-	var generated_points = PoissonDiscSampling.generate_points(100, grid_size, 50, grid_position)
+	var generated_points = PoissonDiscSampling.generate_points(140, grid_size, 50, grid_position)
 
 	for point in generated_points:
 		spawnPositions.append(point)
