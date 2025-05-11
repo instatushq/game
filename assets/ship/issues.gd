@@ -8,12 +8,15 @@ var possible_zones: Array = []
 var current_issues: Dictionary = {}
 var chance_of_issues: int = 80
 var last_entered_zone: Area2D = null
+@onready var game_manager: GameManager = get_node("/root/Game/GameManager")
+@onready var timer: Timer = $Timer
 
 signal zone_body_entered(zone: Area2D, body: Node2D)
 signal zone_body_exited(zone: Area2D, body: Node2D)
 
 func _ready() -> void:
 	possible_zones = find_children("*", "Area2D")
+	game_manager.current_player_changed.connect(_on_current_player_change)
 	for zone in possible_zones:
 		zone.connect("body_entered", Callable(self, "_on_area_entered").bind(zone))
 		zone.connect("body_exited", Callable(self, "_on_area_exited").bind(zone))
@@ -62,4 +65,9 @@ func _on_issue_resolved(zone: Area2D) -> void:
 	var issue_id = zone.get_instance_id()
 	current_issues[issue_id].queue_free()
 	current_issues.erase(issue_id)
-	
+
+func _on_current_player_change(new_player: GameManager.Player):
+	if new_player == GameManager.Player.SHIP:
+		timer.start()
+	else:
+		timer.stop()

@@ -15,6 +15,7 @@ enum Player {
 @export var current_player: Player = Player.SHIP
 
 signal score_changed(old_value: int, new_value: int)
+signal current_player_changed(new_current_player: Player)
 
 @export var score: int = 0
 @export var score_increment_amount: int = 1
@@ -35,6 +36,7 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_T:
 			switch_controlled_player_to(new_player)
+			current_player_changed.emit(new_player)
 			if new_player == Player.SHIP:
 				timer.start()
 			else:
