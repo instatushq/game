@@ -3,7 +3,7 @@ extends Node2D
 class_name ShipFuel;
 
 @export var fuel: float = 100
-@export var fuel_spending_rate = 0.01
+@export var fuel_spending_rate = 1
 @onready var game_manager: GameManager = get_tree().get_current_scene().get_node("%GameManager")
 
 func _physics_process(_delta: float) -> void:
