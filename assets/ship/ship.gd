@@ -16,6 +16,7 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @onready var rb: ShipRigidBody = $RigidBody2D
 @onready var health: ShipHealth = $Health
 @onready var game_manager: GameManager = %GameManager
+@onready var sprites_animation_player: AnimationPlayer = $RigidBody2D/SpritesContainer/SpritesAnimations
 @onready var canon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var canon_2: Node2D = $RigidBody2D/ShipPoints/Canon2
 @onready var root_of_scene: Node2D = get_tree().root.get_child(0)
@@ -40,10 +41,7 @@ func _process(delta: float) -> void:
 			fire_timer = 0.0
 			if input_buffered or is_firing:
 				input_buffered = false
-				if canon_one_active:
-					create_pew(canon_1)
-				if canon_two_active:
-					create_pew(canon_2)
+				_fire_canons()
 				can_fire = false
 
 func _input(event: InputEvent) -> void:
@@ -54,10 +52,7 @@ func _input(event: InputEvent) -> void:
 			if event.pressed:
 				is_firing = true
 				if can_fire:
-					if canon_one_active:
-						create_pew(canon_1)
-					if canon_two_active:
-						create_pew(canon_2)
+					_fire_canons()
 					can_fire = false
 				else:
 					input_buffered = true
@@ -116,3 +111,10 @@ func create_pew(canon: Node2D) -> void:
 	root_of_scene.add_child(pew)
 	pew.global_position = canon.global_position
 	pew.linear_velocity = Vector2.UP * pew.speed
+
+func _fire_canons() -> void:
+	sprites_animation_player.play("shoot")
+	if canon_one_active:
+		create_pew(canon_1)
+	if canon_two_active:
+		create_pew(canon_2)

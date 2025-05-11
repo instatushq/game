@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bbkif523pefv5"]
+[gd_scene load_steps=46 format=3 uid="uid://bbkif523pefv5"]
 
 [ext_resource type="Script" uid="uid://0duwjoixufm0" path="res://assets/ship/ship.gd" id="1_n8q6x"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="2_77xhg"]
@@ -262,6 +262,42 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="Animation" id="Animation_o01ar"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 24), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gpou2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nqv73"]
+_data = {
+&"RESET": SubResource("Animation_gpou2"),
+&"shoot": SubResource("Animation_o01ar")
+}
+
 [node name="Ship" type="Node2D"]
 script = ExtResource("1_n8q6x")
 
@@ -288,19 +324,27 @@ position = Vector2(0, -81)
 position = Vector2(0, -78)
 shape = SubResource("CapsuleShape2D_gkfdw")
 
-[node name="ShipSprite" type="AnimatedSprite2D" parent="RigidBody2D"]
+[node name="SpritesContainer" type="Node2D" parent="RigidBody2D"]
+
+[node name="ShipSprite" type="AnimatedSprite2D" parent="RigidBody2D/SpritesContainer"]
 position = Vector2(0, -120)
 sprite_frames = SubResource("SpriteFrames_gkfdw")
 animation = &"fuel_end"
 script = ExtResource("4_o01ar")
 
-[node name="Trail" type="AnimatedSprite2D" parent="RigidBody2D/ShipSprite"]
+[node name="Trail" type="AnimatedSprite2D" parent="RigidBody2D/SpritesContainer/ShipSprite"]
 sprite_frames = SubResource("SpriteFrames_psj3n")
 
-[node name="Light" type="AnimatedSprite2D" parent="RigidBody2D/ShipSprite"]
+[node name="Light" type="AnimatedSprite2D" parent="RigidBody2D/SpritesContainer/ShipSprite"]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_57ngg")
 animation = &"fuel_end"
+
+[node name="SpritesAnimations" type="AnimationPlayer" parent="RigidBody2D/SpritesContainer"]
+libraries = {
+&"": SubResource("AnimationLibrary_nqv73")
+}
+speed_scale = 8.0
 
 [node name="Health" type="Node2D" parent="."]
 position = Vector2(0, 1)

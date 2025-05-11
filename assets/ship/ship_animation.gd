@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 @onready var trail_sprite: AnimatedSprite2D = $Trail
 @onready var light_sprite: AnimatedSprite2D = $Light
-@onready var fuel: ShipFuel = $"../../Fuel"
+@onready var fuel: ShipFuel = $"../../../Fuel"
 
 var is_fueled_up: bool = true
 
