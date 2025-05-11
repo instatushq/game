@@ -61,7 +61,6 @@ func _on_timer_timeout() -> void:
 			_generate_random_issue(random_zone)
 
 func _on_issue_resolved(zone: Area2D) -> void:
-	print("issue resolved in function")
 	var issue_id = zone.get_instance_id()
 	current_issues[issue_id].queue_free()
 	current_issues.erase(issue_id)
