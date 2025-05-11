@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dlwjglw3walvr" path="res://assets/ship/sprites/animations/lights-off.png" id="5_gkfdw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gkfdw"]
-radius = 28.0
-height = 170.0
+radius = 24.0
+height = 120.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dmai"]
 atlas = ExtResource("3_1h06k")
@@ -91,7 +91,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ruyo7")
 }],
-"loop": true,
+"loop": false,
 "name": &"fuel_end",
 "speed": 15.0
 }]
@@ -142,9 +142,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_psj3n")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -225,9 +225,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x5d2h")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -257,7 +257,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_acshl")
 }],
-"loop": true,
+"loop": false,
 "name": &"fuel_end",
 "speed": 15.0
 }]
@@ -285,12 +285,15 @@ position = Vector2(-0.5, -64)
 position = Vector2(-0.5, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(0, -74)
+position = Vector2(0, -78)
 shape = SubResource("CapsuleShape2D_gkfdw")
 
 [node name="ShipSprite" type="AnimatedSprite2D" parent="RigidBody2D"]
 position = Vector2(0, -120)
 sprite_frames = SubResource("SpriteFrames_gkfdw")
+animation = &"fuel_end"
+frame = 8
+frame_progress = 1.0
 script = ExtResource("4_o01ar")
 
 [node name="Trail" type="AnimatedSprite2D" parent="RigidBody2D/ShipSprite"]
@@ -299,7 +302,7 @@ sprite_frames = SubResource("SpriteFrames_psj3n")
 [node name="Light" type="AnimatedSprite2D" parent="RigidBody2D/ShipSprite"]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_57ngg")
-frame_progress = 0.201035
+animation = &"fuel_end"
 
 [node name="Health" type="Node2D" parent="."]
 position = Vector2(0, 1)
