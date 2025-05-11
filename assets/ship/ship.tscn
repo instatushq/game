@@ -279,10 +279,10 @@ script = ExtResource("2_pxrqm")
 position = Vector2(0, -67)
 
 [node name="Canon" type="Node2D" parent="RigidBody2D/ShipPoints"]
-position = Vector2(-0.5, -64)
+position = Vector2(0, -81)
 
 [node name="Canon2" type="Node2D" parent="RigidBody2D/ShipPoints"]
-position = Vector2(-0.5, -64)
+position = Vector2(0, -81)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(0, -78)
@@ -292,8 +292,6 @@ shape = SubResource("CapsuleShape2D_gkfdw")
 position = Vector2(0, -120)
 sprite_frames = SubResource("SpriteFrames_gkfdw")
 animation = &"fuel_end"
-frame = 8
-frame_progress = 1.0
 script = ExtResource("4_o01ar")
 
 [node name="Trail" type="AnimatedSprite2D" parent="RigidBody2D/ShipSprite"]
