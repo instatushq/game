@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="2_yxcn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o88cq"]
-size = Vector2(102.5, 144)
+size = Vector2(102.5, 117)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46acj"]
-size = Vector2(98, 146)
+size = Vector2(98, 122)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jlxe3"]
 a = Vector2(151, 1)
@@ -32,6 +32,7 @@ collision_layer = 64
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
+position = Vector2(0, 13.5)
 shape = SubResource("RectangleShape2D_o88cq")
 
 [node name="Left" type="Area2D" parent="Issues"]
@@ -40,7 +41,7 @@ collision_layer = 64
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
-position = Vector2(-1, 11)
+position = Vector2(-1, 23)
 shape = SubResource("RectangleShape2D_46acj")
 debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
 
