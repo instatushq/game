@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt0dai5l5rmx5"]
+
+[ext_resource type="Script" uid="uid://b5d53kutlo8de" path="res://assets/environment/spawnable elements/planet_rotate.gd" id="1_i7h86"]
+[ext_resource type="Texture2D" uid="uid://buwtxtti63nnx" path="res://assets/environment/spawnable elements/textures/planets.png" id="1_mh6w5"]
+[ext_resource type="Texture2D" uid="uid://cf4k274dg12qu" path="res://assets/environment/spawnable elements/textures/planet ring.png" id="2_i7h86"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imsoy"]
+atlas = ExtResource("1_mh6w5")
+region = Rect2(624, 122, 208, 122)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pkdu4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imsoy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Small Planet" type="ParallaxLayer"]
+script = ExtResource("1_i7h86")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(169, 26)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pkdu4")
+
+[node name="Ring" type="Sprite2D" parent="."]
+position = Vector2(307, -36)
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("2_i7h86")

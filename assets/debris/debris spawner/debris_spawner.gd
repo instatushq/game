@@ -18,7 +18,7 @@ var fuel_rocks_chance: int = 8
 
 func _spawn_batch(y_level: float = 0) -> void:
 	var view_port_y_size = 600
-	var area_width = 400
+	var area_width = get_viewport().size.x
 	var grid_size = Vector2(area_width, view_port_y_size)
 	
 	var center_x_position = 150
