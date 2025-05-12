@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://buwtxtti63nnx" path="res://assets/environment/spawnable elements/textures/planets.png" id="1_86qgw"]
 [ext_resource type="Texture2D" uid="uid://cf4k274dg12qu" path="res://assets/environment/spawnable elements/textures/planet ring.png" id="2_6le7y"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6prbc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6le7y"]
 atlas = ExtResource("1_86qgw")
-region = Rect2(208, 366, 208, 122)
+region = Rect2(624, 122, 208, 122)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_55wbp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6prbc")
+"texture": SubResource("AtlasTexture_6le7y")
 }],
 "loop": true,
 "name": &"default",
@@ -20,14 +20,15 @@ animations = [{
 }]
 
 [node name="Medium Planet" type="ParallaxLayer"]
+motion_scale = Vector2(0.875, 0.875)
 script = ExtResource("1_6le7y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-114, -44)
+position = Vector2(169, 26)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_55wbp")
 
 [node name="Ring" type="Sprite2D" parent="."]
-position = Vector2(348, -39)
-scale = Vector2(1.3, 1.3)
+position = Vector2(321.52, -36.52)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_6le7y")

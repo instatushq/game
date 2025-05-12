@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=34 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="1_tfagm"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_2oafy"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ccc72g2taxm5r" path="res://assets/environment/spawnable elements/big_planet.tscn" id="16_7wclo"]
 [ext_resource type="PackedScene" uid="uid://csv6n3lor4pje" path="res://assets/managers/game manager/game_manager.tscn" id="16_yklg6"]
 [ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/walls/camera walls.tscn" id="17_770c0"]
+[ext_resource type="PackedScene" uid="uid://b3d8re4q4igwp" path="res://assets/environment/spawnable elements/medium planet.tscn" id="17_wgikr"]
 [ext_resource type="PackedScene" uid="uid://c8polkf2eiy1" path="res://assets/debris/debris spawner/debris spawner.tscn" id="18_ps13k"]
 [ext_resource type="PackedScene" uid="uid://wavl0ks2h3jn" path="res://assets/camera/camera.tscn" id="19_eajmq"]
 [ext_resource type="PackedScene" uid="uid://cqp7226e2sov4" path="res://assets/debris/debris-1.tscn" id="19_ipocw"]
@@ -177,7 +178,7 @@ autoplay = "default"
 frame_progress = 0.27724
 
 [node name="Galaxy Layer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.8, 0.8)
+motion_scale = Vector2(0.75, 0.75)
 motion_mirroring = Vector2(0, 1600)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
@@ -206,10 +207,13 @@ scale = Vector2(1.8, 1.8)
 texture = ExtResource("14_cabrn")
 
 [node name="Small Planet" parent="ParallaxBackground" instance=ExtResource("16_1rk8b")]
-position = Vector2(53.81, 470)
+position = Vector2(99.81, -292)
+
+[node name="Medium Planet" parent="ParallaxBackground" instance=ExtResource("17_wgikr")]
+position = Vector2(-159.19, -20)
 
 [node name="Big Planet2" parent="ParallaxBackground" instance=ExtResource("16_7wclo")]
-position = Vector2(-340.19, 178)
+position = Vector2(-545.19, 481)
 
 [node name="Front Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-401.19, 962)

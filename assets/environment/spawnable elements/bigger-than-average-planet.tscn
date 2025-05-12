@@ -20,6 +20,7 @@ animations = [{
 }]
 
 [node name="Small Planet" type="ParallaxLayer"]
+motion_scale = Vector2(0.8, 0.8)
 script = ExtResource("1_5pd0e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,7 +1,7 @@
 extends ParallaxLayer
 
 var rotation_direction_movement: bool = false
-var rotation_speed: float = 0.0007
+@export var rotation_speed: float = 0.0003
 
 func _ready() -> void:
 	rotation_direction_movement = randi_range(0, 100) > 50
