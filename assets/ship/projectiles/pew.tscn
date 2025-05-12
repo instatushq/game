@@ -11,7 +11,7 @@ gradient = SubResource("Gradient_trei1")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l2de3"]
-radius = 2.0
+radius = 7.0
 height = 26.0
 
 [node name="Pew" type="RigidBody2D"]

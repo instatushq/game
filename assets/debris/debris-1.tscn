@@ -62,8 +62,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cidke"]
-radius = 27.0133
-height = 72.7946
+radius = 41.1423
+height = 86.7245
 
 [node name="Debris-1" type="Node2D"]
 script = ExtResource("1_s77ue")
