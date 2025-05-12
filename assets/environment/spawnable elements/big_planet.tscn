@@ -23,7 +23,9 @@ animations = [{
 motion_scale = Vector2(0.925, 0.925)
 script = ExtResource("1_plye1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Container" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Container"]
 position = Vector2(-95, 37)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_wgikr")
@@ -31,8 +33,7 @@ animation = &"planet"
 autoplay = "planet"
 frame_progress = 1.0
 
-[node name="Ring" type="Sprite2D" parent="."]
+[node name="Ring" type="Sprite2D" parent="Container"]
 position = Vector2(533, -83)
-rotation = -6.28319
 scale = Vector2(2, 2)
 texture = ExtResource("2_plye1")

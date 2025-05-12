@@ -23,12 +23,14 @@ animations = [{
 motion_scale = Vector2(0.875, 0.875)
 script = ExtResource("1_6le7y")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Container" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Container"]
 position = Vector2(169, 26)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_55wbp")
 
-[node name="Ring" type="Sprite2D" parent="."]
+[node name="Ring" type="Sprite2D" parent="Container"]
 position = Vector2(321.52, -36.52)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_6le7y")

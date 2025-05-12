@@ -22,12 +22,14 @@ animations = [{
 [node name="Small Planet" type="ParallaxLayer"]
 script = ExtResource("1_i7h86")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Container" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Container"]
 position = Vector2(169, 26)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pkdu4")
 
-[node name="Ring" type="Sprite2D" parent="."]
+[node name="Ring" type="Sprite2D" parent="Container"]
 position = Vector2(307, -36)
 scale = Vector2(1.15, 1.15)
 texture = ExtResource("2_i7h86")
