@@ -29,6 +29,7 @@ var can_fire: bool = true
 var fire_timer: float = 0.0
 var input_buffered: bool = false
 var is_firing: bool = false
+var current_ship_y_position: float = 300.0
 
 func _ready():
 	rb.on_impact.connect(_on_impact_with_object)
@@ -58,21 +59,10 @@ func _input(event: InputEvent) -> void:
 					input_buffered = true
 			else:
 				is_firing = false
-	elif event is InputEventMouseMotion:
-		var viewport_size = get_viewport_rect().size
-		var mouse_pos = get_viewport().get_mouse_position()
-		
-		# Only apply restriction if mouse is within viewport bounds
-		if mouse_pos.x >= 0 and mouse_pos.x <= viewport_size.x and mouse_pos.y >= 0 and mouse_pos.y <= viewport_size.y:
-			if event.relative.y > 0:
-				mouse_world_position = get_global_mouse_position()
-				var camera = get_viewport().get_camera_2d()
-				var bottom_world_pos = camera.global_position + Vector2(0, viewport_size.y / (2 * camera.zoom.y))
-				var restricted_y = clamp(mouse_world_position.y, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
-				
-				if mouse_world_position.y < restricted_y:
-					var current_mouse_pos = get_viewport().get_mouse_position()
-					Input.warp_mouse(Vector2(current_mouse_pos.x, viewport_size.y - (bottom_camera_movement_margin * 2)))
+	elif event is InputEventMouseMotion:		
+		if event.relative.y != 0:
+			mouse_world_position = get_global_mouse_position()
+			current_ship_y_position = clamp(current_ship_y_position - (event.relative.y * 0.5), 0, bottom_camera_movement_margin)
 
 func _handle_movement_score() -> void:
 	if -rb.global_position.y > last_recorded_y + 100:
@@ -94,7 +84,7 @@ func _physics_process(_delta: float) -> void:
 		var left_world_pos = camera.global_position - Vector2(viewport_size.x / (2 * camera.zoom.x), 0)
 		var right_world_pos = camera.global_position + Vector2(viewport_size.x / (2 * camera.zoom.x), 0)
 		
-		var restricted_y = clamp(mouse_world_position.y, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
+		var restricted_y = clamp(bottom_world_pos.y - current_ship_y_position, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
 		var restricted_x = clamp(mouse_world_position.x, left_world_pos.x + side_movement_padding, right_world_pos.x - side_movement_padding)
 		
 		rb.global_position = Vector2(restricted_x, restricted_y)
