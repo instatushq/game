@@ -18,10 +18,14 @@ var fuel_rocks_chance: int = 8
 
 func _spawn_batch(y_level: float = 0) -> void:
 	var view_port_y_size = 600
-	var area_width = get_viewport().size.x
+	var view_port_x_size = get_viewport().size.x
+
+	var area_width = (view_port_x_size * 0.25) * 0.9 # 0.5 * 0.5 * 0.8
+
 	var grid_size = Vector2(area_width, view_port_y_size)
 	
-	var center_x_position = 150
+	var center_x_position = (ship_camera.global_position.x + (view_port_x_size * 0.25 * 0.325))
+
 	var grid_position = Vector2(center_x_position, y_level - grid_size.y - 150)
 	grid_size_draw = grid_size
 	grid_position_draw = grid_position
