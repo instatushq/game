@@ -1,0 +1,1 @@
+mkdir -p build && godot --headless --export-release "WebGL" build/index
