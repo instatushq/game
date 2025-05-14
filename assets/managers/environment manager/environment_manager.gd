@@ -30,8 +30,3 @@ func _physics_process(_delta: float) -> void:
 	var camera_top_border_y = camera.global_position.y - (viewport_size.y / 4)
 	if camera_top_border_y < last_recorded_y - viewport_size.y:
 		_spawn_and_save_celestial_objects()
-
-func _draw() -> void:
-	var viewport_size = get_viewport_rect().size
-	draw_circle(Vector2(0, last_recorded_y), 40, Color.AQUAMARINE, true)
-	draw_circle(Vector2(0, last_recorded_y - viewport_size.y), 40, Color.BLUE, true)
