@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjngyues28e0r"]
+
+[ext_resource type="Script" uid="uid://ceaywhlnqjc1u" path="res://assets/managers/environment manager/environment_manager.gd" id="1_5feaf"]
+
+[node name="EnvironmentManager" type="Node2D"]
+script = ExtResource("1_5feaf")
