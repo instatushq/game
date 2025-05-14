@@ -71,7 +71,6 @@ func _handle_movement_score() -> void:
 		if game_manager.current_player == GameManager.Player.SHIP:
 			game_manager.increaseScore(score_increase)
 
-
 func _physics_process(_delta: float) -> void:
 	_handle_movement_score()
 	if game_manager.current_player == GameManager.Player.SHIP:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://br040ncejvh51"]
+[gd_scene load_steps=9 format=3 uid="uid://x1eieaqt1a0v"]
 
 [ext_resource type="Shader" uid="uid://8ypycc073j2" path="res://assets/environment/spawnable elements/blackhole/blackhole.gdshader" id="1_1y1st"]
 [ext_resource type="Texture2D" uid="uid://cw25bkbkbt45g" path="res://icon.png" id="2_et0ta"]
@@ -32,7 +32,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Blackhole" type="ParallaxLayer"]
+[node name="Blackhole" type="Node2D"]
+scale = Vector2(1.3, 1.3)
 
 [node name="Blackhole Distortion" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_t6o86")
