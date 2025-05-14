@@ -19,8 +19,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Small Planet" type="ParallaxLayer"]
-motion_scale = Vector2(0.8, 0.8)
+[node name="Small Planet" type="Node2D"]
 script = ExtResource("1_5pd0e")
 
 [node name="Container" type="Node2D" parent="."]

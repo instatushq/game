@@ -19,7 +19,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Small Planet" type="ParallaxLayer"]
+[node name="Small Planet" type="Node2D"]
 script = ExtResource("1_i7h86")
 
 [node name="Container" type="Node2D" parent="."]

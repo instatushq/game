@@ -19,9 +19,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Big Planet" type="ParallaxLayer"]
-motion_scale = Vector2(0.925, 0.925)
+[node name="Big Planet" type="Node2D"]
 script = ExtResource("1_plye1")
+has_ring = true
 
 [node name="Container" type="Node2D" parent="."]
 
