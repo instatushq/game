@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://br040ncejvh51"]
+
+[ext_resource type="Shader" uid="uid://8ypycc073j2" path="res://assets/environment/spawnable elements/blackhole/blackhole.gdshader" id="1_1y1st"]
+[ext_resource type="Texture2D" uid="uid://cw25bkbkbt45g" path="res://icon.png" id="2_et0ta"]
+[ext_resource type="Texture2D" uid="uid://dij0iiliackig" path="res://assets/environment/spawnable elements/textures/blackhole.png" id="3_nsrke"]
+
+[sub_resource type="Curve" id="Curve_icqtw"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.0487804), 0.0, 0.0, 0, 0, Vector2(0.136986, -0.348819), 0.0, 0.0, 0, 0, Vector2(0.305936, 0.224932), 1.84556, 1.84556, 0, 0, Vector2(0.440639, -0.0116144), 0.0, 0.0, 0, 0, Vector2(0.659817, 0.00851715), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_t4yvt"]
+curve = SubResource("Curve_icqtw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t6o86"]
+shader = ExtResource("1_1y1st")
+shader_parameter/curve = SubResource("CurveTexture_t4yvt")
+shader_parameter/strength = -0.304
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icqtw"]
+atlas = ExtResource("3_nsrke")
+region = Rect2(0, 0, 256, 95)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t4yvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icqtw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Blackhole" type="ParallaxLayer"]
+
+[node name="Blackhole Distortion" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_t6o86")
+position = Vector2(0, -3)
+scale = Vector2(1.76, 2.79)
+texture = ExtResource("2_et0ta")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_t4yvt")
