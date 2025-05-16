@@ -101,6 +101,7 @@ medium_planet = ExtResource("17_wgikr")
 average_planet = ExtResource("16_1rk8b")
 black_hole = ExtResource("19_47sn8")
 big_planet_spawn_rate = 0.08
+max_total_objects = 4
 min_distance_between_bodies = 400.0
 
 [node name="Back Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
