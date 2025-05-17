@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Instatus-flight"
-run/main_scene="res://main scene.tscn"
+run/main_scene="uid://e3terh5nct76"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0.0313726, 0, 0.14902, 1)
 boot_splash/fullsize=false
@@ -32,6 +32,10 @@ window/emulate_touch_from_mouse=false
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [global]
 
