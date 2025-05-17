@@ -236,11 +236,11 @@ texture = SubResource("GradientTexture2D_5x655")
 texture_scale = 24.0
 
 [node name="PointLight2D" type="PointLight2D" parent="Ship/Body/Lights"]
-position = Vector2(-1, 7)
+position = Vector2(-1, 11)
 color = Color(0.396078, 0.866667, 0.964706, 1)
-energy = 4.18
+energy = 6.0
 texture = ExtResource("5_5x655")
-texture_scale = 0.27
+texture_scale = 0.26
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Ship/Body"]
 position = Vector2(-8, 23)
@@ -292,6 +292,7 @@ text = "Options"
 icon_alignment = 1
 
 [node name="StaticBody" type="StaticBody2D" parent="Ship"]
+visible = false
 
 [node name="Ground" type="CollisionShape2D" parent="Ship/StaticBody"]
 position = Vector2(0, 78)
