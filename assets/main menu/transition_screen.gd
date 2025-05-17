@@ -17,6 +17,7 @@ signal on_mid_transition_finish
 var _callback: Callable
 var _transition_point: TransitionPoint
 @export var start_dark: bool = false
+@export var trigger_event_on_initial_fade: bool = false
 
 func _ready() -> void:
 	color_rect.visible = false
@@ -35,6 +36,9 @@ func _on_animation_finished(anim_name):
 		animation_player.play("fade_to_view")
 	elif anim_name == "fade_to_view":
 		color_rect.visible = false
+		
+		if start_dark and not trigger_event_on_initial_fade: return
+
 		on_transition_finish.emit()
 		if _callback.is_valid() and _transition_point == TransitionPoint.END:
 			_callback.call()

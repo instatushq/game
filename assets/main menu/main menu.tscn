@@ -46,6 +46,7 @@ Button/styles/pressed = SubResource("StyleBoxEmpty_5x655")
 script = ExtResource("1_plx4y")
 
 [node name="Transition Screen" parent="." instance=ExtResource("2_5x655")]
+start_dark = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(-4, 25)
