@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=9 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://cn5warahkaysk" path="res://assets/ship/issues.gd" id="1_r65rw"]
 [ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="2_yxcn8"]
@@ -19,6 +19,24 @@ b = Vector2(0, 315.56)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xw88r"]
 a = Vector2(0, -152.33)
 b = Vector2(0, 155.92)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r65rw"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}]
 
 [node name="InternalShip" type="Node2D"]
 
@@ -77,5 +95,8 @@ debug_color = Color(0.969519, 0, 0.460823, 0.42)
 
 [node name="Cockpit" type="Node2D" parent="Points"]
 position = Vector2(95, -13)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r65rw")
 
 [connection signal="timeout" from="Issues/Timer" to="Issues" method="_on_timer_timeout"]

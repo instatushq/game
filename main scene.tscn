@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=37 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="1_tfagm"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_2oafy"]
@@ -34,14 +34,6 @@
 [ext_resource type="PackedScene" uid="uid://cnxk6ijntgefu" path="res://assets/debris/fuel rocks/fuel 3.tscn" id="22_o10iu"]
 [ext_resource type="PackedScene" uid="uid://byp6hvrh54j2d" path="res://assets/astronaut/astronaut.tscn" id="22_ysk47"]
 [ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="34_t6o86"]
-
-[sub_resource type="Gradient" id="Gradient_ei405"]
-offsets = PackedFloat32Array(0, 0.651452, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.438273, 0.261836, 0.0717644, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e8dv2"]
-gradient = SubResource("Gradient_ei405")
-fill_from = Vector2(0.0921409, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_icqtw"]
 noise_type = 0
@@ -84,11 +76,6 @@ animations = [{
 [node name="InternalShip" parent="." instance=ExtResource("1_tfagm")]
 unique_name_in_owner = true
 position = Vector2(-8371, -718)
-
-[node name="Sprite2D" type="Sprite2D" parent="InternalShip"]
-position = Vector2(0, 84)
-scale = Vector2(4.7, 4.83)
-texture = SubResource("GradientTexture2D_e8dv2")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 unique_name_in_owner = true
