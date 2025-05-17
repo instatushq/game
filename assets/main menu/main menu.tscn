@@ -280,9 +280,9 @@ icon_alignment = 1
 [node name="Options" type="Button" parent="Ship/Control"]
 layout_mode = 0
 offset_left = -58.0
-offset_top = 9.0
+offset_top = 8.0
 offset_right = 9.0
-offset_bottom = 41.0
+offset_bottom = 40.0
 rotation = -0.0872665
 scale = Vector2(0.365, 0.445)
 theme = SubResource("Theme_tf0ie")
