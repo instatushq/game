@@ -298,7 +298,7 @@ position = Vector2(0, 78)
 shape = SubResource("WorldBoundaryShape2D_5x655")
 
 [node name="Left Wall" type="CollisionShape2D" parent="Ship/StaticBody"]
-position = Vector2(-94, 0)
+position = Vector2(-84, 0)
 shape = SubResource("WorldBoundaryShape2D_xot2w")
 
 [node name="Right Wall" type="CollisionShape2D" parent="Ship/StaticBody"]
@@ -306,7 +306,7 @@ position = Vector2(81, 2)
 shape = SubResource("WorldBoundaryShape2D_gg27b")
 
 [node name="Ceiling" type="CollisionShape2D" parent="Ship/StaticBody"]
-position = Vector2(0, -30)
+position = Vector2(0, -40)
 shape = SubResource("WorldBoundaryShape2D_k5jlq")
 
 [node name="Astronaut" type="RigidBody2D" parent="."]
