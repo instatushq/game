@@ -35,19 +35,29 @@ func _switch_to_game() -> void:
 
 func _on_hover_start_game() -> void:
 	_set_ambience_light_maximized(true)
+	start_game_button.grab_focus()
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	pass
 
 func _on_unhover_start_game() -> void:
 	_set_ambience_light_maximized(false)
+	if get_viewport().gui_get_focus_owner() == start_game_button:
+		start_game_button.release_focus()
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	pass
-	
+
 func _on_hover_options() -> void:
 	_set_ambience_light_maximized(true)
 	ambience_lights.position = options_ambience_light_position
+	options_button.grab_focus()
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 func _on_unhover_options() -> void:
 	_set_ambience_light_maximized(false)
 	ambience_lights.position = default_ambience_light_position
+	if get_viewport().gui_get_focus_owner() == options_button:
+		options_button.release_focus()
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 func _set_ambience_light_maximized(maximized: bool) -> void:
 	if maximized:

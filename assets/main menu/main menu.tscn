@@ -288,6 +288,7 @@ offset_top = -1.0
 offset_right = 64.08
 offset_bottom = 21.01
 mouse_filter = 2
+mouse_default_cursor_shape = 2
 color = Color(0, 0, 0, 0.403922)
 
 [node name="Options" type="Button" parent="Ship/Control"]
@@ -307,6 +308,7 @@ icon_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="Ship/Control/Options"]
 show_behind_parent = true
+layout_mode = 0
 offset_left = -6.08219
 offset_top = -8.44944
 offset_right = 92.3678
