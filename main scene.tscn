@@ -325,7 +325,7 @@ position = Vector2(257.81, 332)
 position = Vector2(-302.19, 646)
 
 [node name="Blackhole2" parent="ParallaxBackground/Celestials" instance=ExtResource("19_47sn8")]
-position = Vector2(125.81, 434)
+position = Vector2(124.81, 435)
 scale = Vector2(2.3, 2.3)
 
 [node name="HUD" parent="." instance=ExtResource("15_ens8i")]
