@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://x1eieaqt1a0v"]
 
 [ext_resource type="Shader" uid="uid://8ypycc073j2" path="res://assets/environment/spawnable elements/blackhole/blackhole.gdshader" id="1_1y1st"]
-[ext_resource type="Texture2D" uid="uid://cw25bkbkbt45g" path="res://icon.png" id="2_et0ta"]
+[ext_resource type="Texture2D" uid="uid://cp1qj3lyoacho" path="res://logo.png" id="2_et0ta"]
 [ext_resource type="Texture2D" uid="uid://dij0iiliackig" path="res://assets/environment/spawnable elements/textures/blackhole.png" id="3_nsrke"]
 
 [sub_resource type="Curve" id="Curve_icqtw"]
