@@ -357,9 +357,11 @@ position = Vector2(-7, 535)
 
 [node name="Astronaut" parent="." instance=ExtResource("22_ysk47")]
 unique_name_in_owner = true
-position = Vector2(-8431, -595)
+position = Vector2(-8374, -640)
 movement_speed = 100.0
 damping = 1.0
 
 [node name="Transition Screen" parent="." instance=ExtResource("34_t6o86")]
 start_dark = true
+
+[connection signal="current_player_changed" from="GameManager" to="InternalShip" method="_on_game_manager_current_player_changed"]

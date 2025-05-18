@@ -13,6 +13,7 @@ var last_entered_zone: Area2D = null
 
 signal zone_body_entered(zone: Area2D, body: Node2D)
 signal zone_body_exited(zone: Area2D, body: Node2D)
+signal on_clear_issues(issues_left: bool)
 
 func _ready() -> void:
 	possible_zones = find_children("*", "Area2D")
@@ -64,9 +65,13 @@ func _on_issue_resolved(zone: Area2D) -> void:
 	var issue_id = zone.get_instance_id()
 	current_issues[issue_id].queue_free()
 	current_issues.erase(issue_id)
+	on_clear_issues.emit(has_any_issues())
 
 func _on_current_player_change(new_player: GameManager.Player):
 	if new_player == GameManager.Player.SHIP:
 		timer.start()
 	else:
 		timer.stop()
+
+func has_any_issues() -> bool:
+	return not current_issues.is_empty()

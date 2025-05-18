@@ -37,4 +37,4 @@ func focus_astronaut() -> void:
 	last_recorded_camera_position = global_position
 	reparent(astronaut)
 	position = Vector2.ZERO
-	zoom = Vector2.ONE * 5
+	zoom = Vector2.ONE * 10

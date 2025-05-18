@@ -15,8 +15,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1dmai"]
-radius = 14.0
-height = 58.0
+radius = 8.0
+height = 34.0
 
 [node name="Astronaut" type="CharacterBody2D"]
 collision_layer = 2
@@ -25,9 +25,10 @@ script = ExtResource("1_ultts")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -21.75)
+scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_1h06k")
 frame_progress = 0.0711007
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -27)
+position = Vector2(0, -25)
 shape = SubResource("CapsuleShape2D_1dmai")
