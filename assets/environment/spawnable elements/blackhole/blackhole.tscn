@@ -37,8 +37,8 @@ scale = Vector2(1.3, 1.3)
 
 [node name="Blackhole Distortion" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_t6o86")
-position = Vector2(0, -3)
-scale = Vector2(1.76, 2.79)
+position = Vector2(0, 3.84615)
+scale = Vector2(0.42, 0.389)
 texture = ExtResource("2_et0ta")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
