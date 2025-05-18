@@ -317,7 +317,6 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.403922)
 
 [node name="StaticBody" type="StaticBody2D" parent="Ship"]
-visible = false
 
 [node name="Ground" type="CollisionShape2D" parent="Ship/StaticBody"]
 position = Vector2(0, 78)
@@ -336,7 +335,7 @@ position = Vector2(0, -40)
 shape = SubResource("WorldBoundaryShape2D_k5jlq")
 
 [node name="Astronaut" type="RigidBody2D" parent="."]
-position = Vector2(-19, 1)
+position = Vector2(0, 63)
 gravity_scale = 0.0
 lock_rotation = true
 angular_damp = 10.0
