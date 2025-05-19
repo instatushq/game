@@ -14,6 +14,7 @@ var last_entered_zone: Area2D = null
 signal zone_body_entered(zone: Area2D, body: Node2D)
 signal zone_body_exited(zone: Area2D, body: Node2D)
 signal on_clear_issues(issues_left: bool)
+signal on_issue_generated(zone: Area2D, issues_count: int)
 
 func _ready() -> void:
 	possible_zones = find_children("*", "Area2D")
@@ -37,6 +38,8 @@ func _input(event: InputEvent) -> void:
 		if last_entered_zone != null:
 			var current_issue = current_issues[last_entered_zone.get_instance_id()]
 			current_issue.open_issue()
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_Q:
+		_generate_random_issue(_get_random_issueless_zone())
 
 func _get_random_issueless_zone() -> Area2D:
 	var issueless_zones: Array = []
@@ -53,7 +56,8 @@ func _generate_random_issue(zone: Area2D) -> void:
 	zone.add_child(issue_instance)
 	issue_instance.issue_resolved.connect(Callable(self, "_on_issue_resolved").bind(zone))
 	current_issues[zone.get_instance_id()] = issue_instance
-
+	on_issue_generated.emit(zone, current_issues.size())
+	
 func _on_timer_timeout() -> void:
 	var random_chance = randi_range(0, 100)
 	if random_chance < chance_of_issues:

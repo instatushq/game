@@ -13,8 +13,14 @@ const MAX_RADIUS := 100
 @export var damping: float = 0.0
 @export var acceleration: float = 2000.0
 @onready var game_manager: GameManager = %GameManager
+@onready var internal_ship: InternalShip = %InternalShip
 @onready var cockpit_node: Node2D = %InternalShip/Points/Cockpit
+@onready var astronaut_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var is_solving_puzzle: bool = false
+
+func _process(_delta: float) -> void:
+	if game_manager.current_player == GameManager.Player.SHIP: return
+	astronaut_sprite.modulate = internal_ship.ship_sprite.modulate
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control

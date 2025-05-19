@@ -1,7 +1,10 @@
 extends Node2D
 
+class_name InternalShip
+
 @onready var ship_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var issues: Issues = $Issues
+@onready var animator: AnimationPlayer = $Animations
 var has_played_broken_animation: bool = false
 var is_playing_revive_animation: bool = false
 
@@ -18,9 +21,20 @@ func _on_game_manager_current_player_changed(new_current_player: GameManager.Pla
 	if not issues.has_any_issues(): return
 	has_played_broken_animation = true
 	ship_sprite.play("breakdown")
-
+	animator.play("breakdown")
 
 func _on_issues_on_clear_issues(issues_left: bool) -> void:
 	if not issues_left:
 		is_playing_revive_animation = true
 		ship_sprite.play_backwards("breakdown")
+		animator.play("revive")
+
+func _on_animator_animation_finish(anim_name: StringName) -> void:
+	if anim_name == "breakdown":
+		animator.play("broken")
+
+func _on_issues_on_issue_generated(_zone: Area2D, issues_count: int) -> void:
+	if issues_count == 1 and not has_played_broken_animation:
+		has_played_broken_animation = true
+		ship_sprite.play("breakdown")
+		animator.play("breakdown")
