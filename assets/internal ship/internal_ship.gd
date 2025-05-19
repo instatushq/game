@@ -5,6 +5,7 @@ class_name InternalShip
 @onready var ship_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var issues: Issues = $Issues
 @onready var animator: AnimationPlayer = $Animations
+@onready var game_manager: GameManager = %GameManager
 var has_played_broken_animation: bool = false
 var is_playing_revive_animation: bool = false
 
@@ -34,7 +35,7 @@ func _on_animator_animation_finish(anim_name: StringName) -> void:
 		animator.play("broken")
 
 func _on_issues_on_issue_generated(_zone: Area2D, issues_count: int) -> void:
-	if issues_count == 1 and not has_played_broken_animation:
+	if issues_count == 1 and not has_played_broken_animation and game_manager.current_player == GameManager.Player.ASTRONAUT:
 		has_played_broken_animation = true
 		ship_sprite.play("breakdown")
 		animator.play("breakdown")
