@@ -16,7 +16,13 @@ const MAX_RADIUS := 100
 @onready var internal_ship: InternalShip = %InternalShip
 @onready var cockpit_node: Node2D = %InternalShip/Points/Cockpit
 @onready var astronaut_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var idle_timer: Timer = $AnimatedSprite2D/Timer
 var is_solving_puzzle: bool = false
+
+func _ready() -> void:
+	idle_timer.stop()
+	idle_timer.timeout.connect(handle_animation_idle_blink)
+
 
 func _process(_delta: float) -> void:
 	if game_manager.current_player == GameManager.Player.SHIP: return
@@ -57,7 +63,32 @@ func _input(event: InputEvent) -> void:
 		if not isTouching:
 			movement_axis = Vector2.ZERO
 	elif isTouching and (event is InputEventScreenDrag or event is InputEventMouseMotion):
-		var drag_vector = event.position - screen_touch_position
+		var drag_vector: Vector2 = event.position - screen_touch_position
 		if drag_vector.length() > MAX_RADIUS:
 			drag_vector = drag_vector.normalized() * MAX_RADIUS
+
 		movement_axis = drag_vector
+	
+	handle_animation(movement_axis)
+		
+
+func handle_animation(movement_vector: Vector2) -> void:
+	if movement_vector.length() == 0:
+		if idle_timer.is_stopped():
+			idle_timer.start()
+	else:
+		if not idle_timer.is_stopped():
+			idle_timer.stop()
+
+	if movement_vector.x > 0:
+		astronaut_sprite.flip_h = false
+	elif movement_vector.x < 0:
+		astronaut_sprite.flip_h = true
+
+func handle_animation_idle_blink() -> void:
+	astronaut_sprite.play("idle_blink")
+	idle_timer.start()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if astronaut_sprite.animation == "idle_blink":
+		astronaut_sprite.play("idle")
