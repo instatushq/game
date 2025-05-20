@@ -87,7 +87,6 @@ func handle_animation(movement_vector: Vector2) -> void:
 
 func handle_animation_idle_blink() -> void:
 	astronaut_sprite.play("idle_blink")
-	idle_timer.start()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if astronaut_sprite.animation == "idle_blink":

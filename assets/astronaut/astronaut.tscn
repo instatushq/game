@@ -151,6 +151,6 @@ autoplay = "idle"
 flip_h = true
 
 [node name="Timer" type="Timer" parent="AnimatedSprite2D"]
-wait_time = 3.0
+wait_time = 4.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
