@@ -2,29 +2,36 @@ extends RigidBody2D
 
 @export var follow_speed: float = 10.0 
 @export var protective_radius: float = 50.0
-@export var max_velocity: float = 300.0  # Maximum velocity to maintain consistent speed
-@export var damping: float = 0.95  # Damping factor to prevent excessive sliding
+@export var max_velocity: float = 300.0  
+@export var damping: float = 0.95  
+@export var light_transition_duration: float = 0.5
+
 @onready var astronaut_sprite = $SpriteContainer/Sprite
 @onready var idle_timer: Timer = $SpriteContainer/Sprite/Timer
 @onready var astronaut_local_position: Vector2 = astronaut_sprite.position
 @onready var astronaut_light: Light2D = $SpriteContainer/PointLight2D
+@onready var astronaught_light_scale: Vector2 = astronaut_light.scale
+@onready var astronaut_light_energy: float = astronaut_light.energy
 
 var is_moving: bool = false
+var current_light_tween: Tween = null
+var target_light_energy: float = 0.0
 
 signal movement_began
 signal movement_ended
 
 func _ready() -> void:
+	astronaut_light.energy = 0
+	target_light_energy = 0.0
 	idle_timer.stop()
 	idle_timer.timeout.connect(handle_animation_idle_blink)
 	movement_began.connect(handle_movement_began)
 	movement_ended.connect(handle_movement_ended)
 	
-	# Configure RigidBody2D properties
-	linear_damp = 0.0  # We'll handle damping manually
-	angular_damp = 10.0  # Prevent excessive rotation
+	linear_damp = 0.0
+	angular_damp = 10.0
 	freeze = false
-	gravity_scale = 0.0  # No gravity in menu
+	gravity_scale = 0.0
 
 func _physics_process(_delta: float) -> void:
 	var target_position = get_global_mouse_position()
@@ -34,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 		if is_moving:
 			movement_ended.emit()
 			is_moving = false
-		# Apply damping when not moving
+
 		linear_velocity *= damping
 		return
 
@@ -44,26 +51,32 @@ func _physics_process(_delta: float) -> void:
 
 	var direction = (target_position - global_position).normalized()
 	
-	# Apply force in the direction of movement
-	var force = direction * follow_speed * 1000.0  # Scale up force for better control
+	var force = direction * follow_speed * 1000.0
 	apply_central_force(force)
 	
-	# Limit maximum velocity
 	if linear_velocity.length() > max_velocity:
 		linear_velocity = linear_velocity.normalized() * max_velocity
 	
-	# Handle sprite flipping and rotation based on direction
 	if direction.x > 0:
 		astronaut_sprite.position.x = -astronaut_local_position.x
 		astronaut_sprite.flip_h = false
 		rotation = direction.angle()
-		astronaut_light.scale = Vector2.ONE
+		astronaut_light.scale = astronaught_light_scale
 	elif direction.x < 0:
 		astronaut_sprite.position.x = astronaut_local_position.x
 		astronaut_sprite.flip_h = true
-		rotation = direction.angle() + PI  # Add 180 degrees (PI radians) when facing left
-		astronaut_light.scale = Vector2.ONE * -1
+		rotation = direction.angle() + PI
+		astronaut_light.scale = astronaught_light_scale * -1
 
+func interpolate_light_energy(target: float) -> void:
+	if current_light_tween:
+		current_light_tween.kill()
+	
+	current_light_tween = create_tween()
+	current_light_tween.tween_property(astronaut_light, "energy", target, light_transition_duration)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)
+	target_light_energy = target
 
 func handle_animation_idle_blink() -> void:
 	astronaut_sprite.play("idle_blink")
@@ -78,6 +91,8 @@ func _on_sprite_animation_finished() -> void:
 
 func handle_movement_began() -> void:
 	astronaut_sprite.play("begin_flight")
+	interpolate_light_energy(astronaut_light_energy)
 
 func handle_movement_ended() -> void:
 	astronaut_sprite.play("halting")
+	interpolate_light_energy(0.0)
