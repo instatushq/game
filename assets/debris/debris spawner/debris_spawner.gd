@@ -4,19 +4,25 @@ extends Node2D
 @onready var walls: Array[Node] = get_node("%Walls/RigidBody2D/Left Right").get_children()
 @export var debris_objects: Array[PackedScene] = []
 @export var fuel_rocks: Array[PackedScene] = []
+const MAX_DEBRIS_BATCHES_AT_A_TIME: int = 3
+var debris_batches: Array = []
+var highest_element_in_the_latest_batch: Node2D = null
 
 var grid_size_draw: Vector2 = Vector2(0, 0)
 var grid_position_draw: Vector2 = Vector2(0, 0)
 const distance_from_camera_top_to_spawn_batch: float = 0
 const DISTANCE_BETWEEN_SEGMENTS: float = 100
-var next_spawn_y: float = 0
-var last_spawn_y: float = 0
 var can_spawn: bool = true
 
 var asteroid_rocks_chance: int = 92
 var fuel_rocks_chance: int = 8
 
+# debug tools
+var debris_positions: Array = []
+var grid_locations: Array = []
+
 func _spawn_batch(y_level: float = 0) -> void:
+	var batch_container: Array[Node2D] = []
 	var view_port_y_size = 600
 	var view_port_x_size = get_viewport().size.x
 
@@ -26,23 +32,49 @@ func _spawn_batch(y_level: float = 0) -> void:
 	
 	var center_x_position = (ship_camera.global_position.x + (view_port_x_size * 0.25 * 0.325))
 
-	var grid_position = Vector2(center_x_position, y_level - grid_size.y - 150)
+	var grid_position = Vector2(center_x_position, y_level - grid_size.y)
 	grid_size_draw = grid_size
 	grid_position_draw = grid_position
-	last_spawn_y = y_level
-	
-	# Set the next spawn trigger position based on camera distance
-	next_spawn_y = y_level - grid_size.y - distance_from_camera_top_to_spawn_batch
-	
+		
 	var generated_points = PoissonDiscSampling.generate_points(140, grid_size, 50, grid_position)
+	grid_locations.append({
+		"position": Vector2(center_x_position, y_level),
+		"size": Vector2(area_width, 100),
+		"color": RandomColor.get_random_color(0.2, 0.5),
+		"points_color": RandomColor.get_random_pastel_color()
+	})
+	# grid_locations.append({
+	# 	"position": grid_position,
+	# 	"size": grid_size,
+	# 	"color": RandomColor.get_random_color(0.2, 0.5 ),
+	# 	"points_color": RandomColor.get_random_pastel_color()
+	# })
+
+	highest_element_in_the_latest_batch = null
 
 	for point in generated_points:
+		var spawned_element: Node2D
 		var random_integer: int = randi_range(0, 100)
 		if random_integer < fuel_rocks_chance:
-			_spawn_fuel_rock(point)
+			spawned_element = _spawn_fuel_rock(point)
 		elif random_integer < asteroid_rocks_chance:
-			_spawn_debris(point)
+			spawned_element = _spawn_debris(point)
+		
+		batch_container.append(spawned_element)
+		
+		if highest_element_in_the_latest_batch == null or not is_instance_valid(highest_element_in_the_latest_batch):
+			highest_element_in_the_latest_batch = spawned_element.get_node("Ship Impacter")
+		else:
+			if spawned_element != null:
+				if spawned_element.global_position.y < highest_element_in_the_latest_batch.global_position.y:
+					highest_element_in_the_latest_batch = spawned_element.get_node("Ship Impacter")
 
+	# debris_positions.append(generated_points)
+
+	debris_batches.append(batch_container)
+	if debris_batches.size() >= MAX_DEBRIS_BATCHES_AT_A_TIME:
+		debris_batches.remove_at(0)
+		
 	queue_redraw()
 
 func _input(event):
@@ -52,36 +84,51 @@ func _input(event):
 
 func spawn_batch_above_player():
 	var viewport_size = get_viewport_rect().size
-	var top_center_screen_pos = Vector2(viewport_size.x / 2, 0)  # Top center of the screen
-	var top_center_world_pos = ship_camera.get_global_transform().affine_inverse() * top_center_screen_pos
-	_spawn_batch(-top_center_world_pos.y)
-	queue_redraw()
+	var camera_position = ship_camera.global_position
+	var top_center_world_pos = camera_position.y - (viewport_size.y / 2)
+	_spawn_batch(top_center_world_pos)
 
-func _spawn_debris(spawn_position: Vector2):
+func _spawn_debris(spawn_position: Vector2) -> Node2D:
 	var debris_scene = debris_objects.pick_random()
 	var debris_scene_instance = debris_scene.instantiate()
 	debris_scene_instance.global_position = spawn_position
 	add_child(debris_scene_instance)
-
-func _spawn_fuel_rock(spawn_position: Vector2):
+	return debris_scene_instance
+	
+func _spawn_fuel_rock(spawn_position: Vector2) -> Node2D:
 	var fuel_rock_scene = fuel_rocks.pick_random()
 	var fuel_rock_scene_instance = fuel_rock_scene.instantiate()
 	fuel_rock_scene_instance.global_position = spawn_position
 	add_child(fuel_rock_scene_instance)
+	return fuel_rock_scene_instance
 
 func _physics_process(_delta: float) -> void:
 	var viewport_size = get_viewport_rect().size
-	var top_center_screen_pos = Vector2(viewport_size.x / 2, 0)  # Top center of the screen
-	var top_center_world_pos = ship_camera.get_global_transform().affine_inverse() * top_center_screen_pos
+	var camera_position = ship_camera.global_position
+	var top_center_world_pos = camera_position.y - (viewport_size.y / 2)
 	
-	if -top_center_world_pos.y < next_spawn_y:
-		var new_spawn_y = last_spawn_y - grid_size_draw.y - DISTANCE_BETWEEN_SEGMENTS
-		_spawn_batch(new_spawn_y)
+	if not is_instance_valid(highest_element_in_the_latest_batch): return
+
+	if top_center_world_pos <= highest_element_in_the_latest_batch.global_position.y:
+		_spawn_batch(highest_element_in_the_latest_batch.global_position.y)
+		debris_positions.append([[Vector2(0, top_center_world_pos)]])
 		queue_redraw()
 		
 
 func _ready() -> void:
 	var viewport_size = get_viewport_rect().size
-	var top_center_screen_pos = Vector2(viewport_size.x / 2, 0)
-	var top_center_world_pos = ship_camera.get_global_transform().affine_inverse() * top_center_screen_pos
-	_spawn_batch(-top_center_world_pos.y * -10)
+	var camera_position = ship_camera.global_position
+	var top_center_world_pos = camera_position.y - (viewport_size.y / 2)
+	_spawn_batch(top_center_world_pos)
+
+func _draw() -> void:
+	for i in range(grid_locations.size()):
+		var grid_size_x = grid_locations[i]["size"].x * 2
+		var grid_size_y = grid_locations[i]["size"].y * 2
+		var grid_position_x = grid_locations[i]["position"].x - grid_size_x / 2
+		var grid_position_y = grid_locations[i]["position"].y - grid_size_y / 2
+
+		var color = grid_locations[i]["color"]
+		var points_color = grid_locations[i]["points_color"]
+
+		draw_rect(Rect2(grid_position_x, grid_position_y, grid_size_x, grid_size_y), color)

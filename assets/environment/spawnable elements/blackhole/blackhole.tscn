@@ -9,12 +9,12 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 0.0487804), 0.0, 0.0, 0, 0, Vector2(0.136986, -0.348819), 0.0, 0.0, 0, 0, Vector2(0.305936, 0.224932), 1.84556, 1.84556, 0, 0, Vector2(0.440639, -0.0116144), 0.0, 0.0, 0, 0, Vector2(0.659817, 0.00851715), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="CurveTexture" id="CurveTexture_t4yvt"]
+[sub_resource type="CurveTexture" id="CurveTexture_1y1st"]
 curve = SubResource("Curve_icqtw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t6o86"]
 shader = ExtResource("1_1y1st")
-shader_parameter/curve = SubResource("CurveTexture_t4yvt")
+shader_parameter/curve = SubResource("CurveTexture_1y1st")
 shader_parameter/strength = -0.304
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icqtw"]
