@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://e3terh5nct76"]
+[gd_scene load_steps=41 format=3 uid="uid://e3terh5nct76"]
 
 [ext_resource type="Script" uid="uid://cyvhedqbrq845" path="res://assets/main menu/main_menu.gd" id="1_plx4y"]
 [ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="2_5x655"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cif0qsjolivhl" path="res://assets/main menu/game logo.png" id="7_8kyfx"]
 [ext_resource type="Script" uid="uid://cxony63smiav4" path="res://assets/main menu/menu_astronaut.gd" id="7_gg27b"]
 [ext_resource type="Texture2D" uid="uid://nhidjigere42" path="res://assets/astronaut/sprites/astronaut.png" id="7_xot2w"]
+[ext_resource type="Texture2D" uid="uid://cblqbhvs14ana" path="res://assets/main menu/screen.png" id="10_aqpky"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5jlq"]
 atlas = ExtResource("3_gg27b")
@@ -306,15 +307,17 @@ theme_override_colors/font_color = Color(0.529412, 0.662745, 0.784314, 1)
 text = "Options"
 icon_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="Ship/Control/Options"]
+[node name="TextureRect" type="TextureRect" parent="Ship/Control/Options"]
+modulate = Color(0, 0, 0, 0.403922)
 show_behind_parent = true
 layout_mode = 0
-offset_left = -6.08219
-offset_top = -8.44944
-offset_right = 92.3678
-offset_bottom = 53.4906
+offset_left = -25.411
+offset_top = -33.169
+offset_right = 27.479
+offset_bottom = 12.831
+scale = Vector2(2.7, 2.425)
 mouse_filter = 2
-color = Color(0, 0, 0, 0.403922)
+texture = ExtResource("10_aqpky")
 
 [node name="StaticBody" type="StaticBody2D" parent="Ship"]
 
