@@ -59,6 +59,8 @@ func _spawn_batch(y_level: float = 0) -> void:
 			spawned_element = _spawn_fuel_rock(point)
 		elif random_integer < asteroid_rocks_chance:
 			spawned_element = _spawn_debris(point)
+		else:
+			continue
 		
 		batch_container.append(spawned_element)
 		
