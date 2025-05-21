@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 				is_starting_rotation = false
 				sprite_container.rotation = new_target
 
-			elif sprite_container.rotation == 0.0 and not is_starting_rotation:
+			elif not is_starting_rotation:
 				sprite_container.rotation = new_target
 				is_starting_rotation = true
 			target_rotation = new_target
