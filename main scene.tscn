@@ -328,12 +328,12 @@ position = Vector2(-302.19, 646)
 position = Vector2(124.81, 435)
 scale = Vector2(2.3, 2.3)
 
+[node name="EnvironmentManager" parent="." instance=ExtResource("22_icqtw")]
+unique_name_in_owner = true
+
 [node name="HUD" parent="." instance=ExtResource("15_ens8i")]
 
 [node name="GameManager" parent="." instance=ExtResource("16_yklg6")]
-unique_name_in_owner = true
-
-[node name="EnvironmentManager" parent="." instance=ExtResource("22_icqtw")]
 unique_name_in_owner = true
 
 [node name="Walls" parent="." instance=ExtResource("17_770c0")]

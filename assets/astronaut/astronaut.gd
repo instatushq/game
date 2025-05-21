@@ -21,14 +21,15 @@ var last_movement_direction: Vector2 = Vector2.ZERO
 @onready var game_manager: GameManager = %GameManager
 @onready var internal_ship: InternalShip = %InternalShip
 @onready var cockpit_node: Node2D = %InternalShip/Points/Cockpit
-@onready var astronaut_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var idle_timer: Timer = $AnimatedSprite2D/Timer
+@onready var astronaut_sprite: AnimatedSprite2D = $SpriteContainer/AnimatedSprite2D
+@onready var sprite_container: Node2D = $SpriteContainer
+@onready var idle_timer: Timer =  $SpriteContainer/AnimatedSprite2D/Timer
 var is_solving_puzzle: bool = false
+@onready var astronaut_local_position: Vector2 = astronaut_sprite.position
 
 func _ready() -> void:
 	idle_timer.stop()
 	idle_timer.timeout.connect(handle_animation_idle_blink)
-
 
 func _process(_delta: float) -> void:
 	if game_manager.current_player == GameManager.Player.SHIP: return
@@ -56,15 +57,15 @@ func _physics_process(delta: float) -> void:
 		
 		if abs(new_target) > MAX_ROTATION:
 			target_rotation = 0.0
-			astronaut_sprite.rotation = 0.0
+			sprite_container.rotation = 0.0
 			is_starting_rotation = false
 		else:
-			if abs(AngleDifference.angle_difference(astronaut_sprite.rotation, new_target)) > ROTATION_CHANGE_THRESHOLD:
+			if abs(AngleDifference.angle_difference(sprite_container.rotation, new_target)) > ROTATION_CHANGE_THRESHOLD:
 				is_starting_rotation = false
-				astronaut_sprite.rotation = new_target
+				sprite_container.rotation = new_target
 
-			elif astronaut_sprite.rotation == 0.0 and not is_starting_rotation:
-				astronaut_sprite.rotation = new_target
+			elif sprite_container.rotation == 0.0 and not is_starting_rotation:
+				sprite_container.rotation = new_target
 				is_starting_rotation = true
 			target_rotation = new_target
 	else:
@@ -75,7 +76,7 @@ func _physics_process(delta: float) -> void:
 		is_starting_rotation = false
 
 	if is_starting_rotation:
-		astronaut_sprite.rotation = lerp_angle(astronaut_sprite.rotation, target_rotation, rotation_speed * delta)
+		sprite_container.rotation = lerp_angle(sprite_container.rotation, target_rotation, rotation_speed * delta)
 
 	if velocity.length() > maximum_speed:
 		velocity = velocity.normalized() * maximum_speed
@@ -110,8 +111,10 @@ func handle_animation(movement_vector: Vector2) -> void:
 			idle_timer.stop()
 
 	if movement_vector.x > 0:
+		astronaut_sprite.position.x = -astronaut_local_position.x
 		astronaut_sprite.flip_h = false
 	elif movement_vector.x < 0:
+		astronaut_sprite.position.x = astronaut_local_position.x
 		astronaut_sprite.flip_h = true
 
 func handle_animation_idle_blink() -> void:
