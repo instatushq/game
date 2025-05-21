@@ -12,6 +12,12 @@ const MAX_RADIUS := 100
 @export var maximum_speed: float = 300.0
 @export var damping: float = 0.0
 @export var acceleration: float = 2000.0
+@export var rotation_speed: float = 5.0
+const MAX_ROTATION: float = deg_to_rad(60.0)
+var target_rotation: float = 0.0
+var is_starting_rotation: bool = false
+const ROTATION_CHANGE_THRESHOLD: float = deg_to_rad(80.0)
+var last_movement_direction: Vector2 = Vector2.ZERO
 @onready var game_manager: GameManager = %GameManager
 @onready var internal_ship: InternalShip = %InternalShip
 @onready var cockpit_node: Node2D = %InternalShip/Points/Cockpit
@@ -43,10 +49,33 @@ func _physics_process(delta: float) -> void:
 		var movement_direction := movement_axis.normalized()
 		var target_velocity = movement_direction * movement_speed * input_strength
 		velocity = velocity.move_toward(target_velocity, acceleration * delta)
+		
+		var new_target = atan2(movement_direction.y, abs(movement_direction.x))
+		if movement_direction.x < 0:
+			new_target = -new_target
+		
+		if abs(new_target) > MAX_ROTATION:
+			target_rotation = 0.0
+			astronaut_sprite.rotation = 0.0
+			is_starting_rotation = false
+		else:
+			if abs(AngleDifference.angle_difference(astronaut_sprite.rotation, new_target)) > ROTATION_CHANGE_THRESHOLD:
+				is_starting_rotation = false
+				astronaut_sprite.rotation = new_target
+
+			elif astronaut_sprite.rotation == 0.0 and not is_starting_rotation:
+				astronaut_sprite.rotation = new_target
+				is_starting_rotation = true
+			target_rotation = new_target
 	else:
 		if damping != 0:
 			var damping_factor = 1.0 - (damping * delta)
 			velocity *= damping_factor
+		target_rotation = 0.0
+		is_starting_rotation = false
+
+	if is_starting_rotation:
+		astronaut_sprite.rotation = lerp_angle(astronaut_sprite.rotation, target_rotation, rotation_speed * delta)
 
 	if velocity.length() > maximum_speed:
 		velocity = velocity.normalized() * maximum_speed
