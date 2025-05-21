@@ -52,6 +52,8 @@ func _physics_process(delta: float) -> void:
 		if game_manager.is_controlling_ship():
 			global_position = cockpit_node.global_position
 		return
+	
+	if internal_ship.issues.is_issue_open: return
 
 	if isTouching:
 		var input_strength := movement_axis.length() / MAX_RADIUS

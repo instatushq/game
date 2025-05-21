@@ -8,6 +8,7 @@ var possible_zones: Array = []
 var current_issues: Dictionary = {}
 var chance_of_issues: int = 80
 var last_entered_zone: Area2D = null
+var is_issue_open: bool = false
 @onready var game_manager: GameManager = get_node("/root/Game/GameManager")
 @onready var timer: Timer = $Timer
 
@@ -38,6 +39,7 @@ func _input(event: InputEvent) -> void:
 		if last_entered_zone != null:
 			var current_issue = current_issues[last_entered_zone.get_instance_id()]
 			current_issue.open_issue()
+			is_issue_open = true
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_Q:
 		_generate_random_issue(_get_random_issueless_zone())
 
@@ -69,6 +71,7 @@ func _on_issue_resolved(zone: Area2D) -> void:
 	var issue_id = zone.get_instance_id()
 	current_issues[issue_id].queue_free()
 	current_issues.erase(issue_id)
+	is_issue_open = false
 	on_clear_issues.emit(has_any_issues())
 
 func _on_current_player_change(new_player: GameManager.Player):
