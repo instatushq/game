@@ -75,6 +75,10 @@ func _spawn_batch(y_level: float = 0) -> void:
 
 	debris_batches.append(batch_container)
 	if debris_batches.size() >= MAX_DEBRIS_BATCHES_AT_A_TIME:
+		var batch_to_remove = debris_batches[0]
+		for element in batch_to_remove:
+			if is_instance_valid(element):
+				element.queue_free()
 		debris_batches.remove_at(0)
 		
 	queue_redraw()
@@ -131,6 +135,5 @@ func _draw() -> void:
 		var grid_position_y = grid_locations[i]["position"].y - grid_size_y / 2
 
 		var color = grid_locations[i]["color"]
-		var points_color = grid_locations[i]["points_color"]
 
 		draw_rect(Rect2(grid_position_x, grid_position_y, grid_size_x, grid_size_y), color)
