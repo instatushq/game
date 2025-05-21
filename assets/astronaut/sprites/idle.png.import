@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buby5v30b0gol"
-path="res://.godot/imported/astronaut idle jump-Sheet.png-d1083f2d4532ccaf7082abb74372fe74.ctex"
+uid="uid://jumkphn087od"
+path="res://.godot/imported/idle.png-f729aa93a8d8deebf8b8119353bbcbad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/astronaut/sprites/astronaut idle jump-Sheet.png"
-dest_files=["res://.godot/imported/astronaut idle jump-Sheet.png-d1083f2d4532ccaf7082abb74372fe74.ctex"]
+source_file="res://assets/astronaut/sprites/idle.png"
+dest_files=["res://.godot/imported/idle.png-f729aa93a8d8deebf8b8119353bbcbad.ctex"]
 
 [params]
 

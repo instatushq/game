@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2avorlayu1vt"
-path="res://.godot/imported/astronaut idle-Sheet.png-7b92811cf2378c917642b63993aa08b5.ctex"
+uid="uid://d3lcnbagcvggt"
+path="res://.godot/imported/mid flight.png-b336ffc8b2d7b9ede1db1332498f8867.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/astronaut/sprites/astronaut idle-Sheet.png"
-dest_files=["res://.godot/imported/astronaut idle-Sheet.png-7b92811cf2378c917642b63993aa08b5.ctex"]
+source_file="res://assets/astronaut/sprites/mid flight.png"
+dest_files=["res://.godot/imported/mid flight.png-b336ffc8b2d7b9ede1db1332498f8867.ctex"]
 
 [params]
 
