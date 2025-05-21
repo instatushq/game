@@ -2,6 +2,11 @@ extends CharacterBody2D
 
 class_name Astronaut
 
+enum MovementDirection { FORWARD, UP, DOWN }
+
+signal movement_began(direction: MovementDirection)
+signal movement_ended(direction: MovementDirection)
+
 var frozen: bool = false
 var can_control: bool = false
 var movement_axis: Vector2 = Vector2.ZERO
@@ -26,10 +31,13 @@ var last_movement_direction: Vector2 = Vector2.ZERO
 @onready var idle_timer: Timer =  $SpriteContainer/AnimatedSprite2D/Timer
 var is_solving_puzzle: bool = false
 @onready var astronaut_local_position: Vector2 = astronaut_sprite.position
+var current_direction: MovementDirection = MovementDirection.FORWARD
 
 func _ready() -> void:
 	idle_timer.stop()
 	idle_timer.timeout.connect(handle_animation_idle_blink)
+	movement_began.connect(handle_movement_began)
+	movement_ended.connect(handle_movement_ended)
 
 func _process(_delta: float) -> void:
 	if game_manager.current_player == GameManager.Player.SHIP: return
@@ -55,11 +63,13 @@ func _physics_process(delta: float) -> void:
 		if movement_direction.x < 0:
 			new_target = -new_target
 		
-		if abs(new_target) > MAX_ROTATION:
+		if new_target > MAX_ROTATION or new_target < -MAX_ROTATION:
+			current_direction = MovementDirection.UP if new_target > MAX_ROTATION else MovementDirection.DOWN
 			target_rotation = 0.0
 			sprite_container.rotation = 0.0
 			is_starting_rotation = false
 		else:
+			current_direction = MovementDirection.FORWARD
 			if abs(AngleDifference.angle_difference(sprite_container.rotation, new_target)) > ROTATION_CHANGE_THRESHOLD:
 				is_starting_rotation = false
 				sprite_container.rotation = new_target
@@ -88,10 +98,22 @@ func _input(event: InputEvent) -> void:
 		return
 		
 	if event is InputEventScreenTouch or event is InputEventMouseButton:
+		var was_touching = isTouching
 		isTouching = event.pressed
 		screen_touch_position = event.position if event.pressed else Vector2.ZERO
-		if not isTouching:
+		
+		if event.pressed and not was_touching:
+			var movement_direction := movement_axis.normalized()
+			var new_target = atan2(movement_direction.y, abs(movement_direction.x))
+			if movement_direction.x < 0:
+				new_target = -new_target
+
+			movement_began.emit(current_direction)
+			
+		elif not event.pressed and was_touching:
+			movement_ended.emit(current_direction)
 			movement_axis = Vector2.ZERO
+			
 	elif isTouching and (event is InputEventScreenDrag or event is InputEventMouseMotion):
 		var drag_vector: Vector2 = event.position - screen_touch_position
 		if drag_vector.length() > MAX_RADIUS:
@@ -123,3 +145,15 @@ func handle_animation_idle_blink() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if astronaut_sprite.animation == "idle_blink":
 		astronaut_sprite.play("idle")
+	elif astronaut_sprite.animation == "halting":
+		astronaut_sprite.play("idle")
+	elif astronaut_sprite.animation == "begin_flight":
+		astronaut_sprite.play("flight")
+
+func handle_movement_began(direction: MovementDirection) -> void:
+	if direction == MovementDirection.FORWARD:
+		astronaut_sprite.play("begin_flight")
+
+func handle_movement_ended(direction: MovementDirection) -> void:
+	if direction == MovementDirection.FORWARD:
+		astronaut_sprite.play("halting")
