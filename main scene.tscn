@@ -359,7 +359,7 @@ position = Vector2(-7, 535)
 unique_name_in_owner = true
 position = Vector2(-1111, 30)
 movement_speed = 100.0
-damping = 1.0
+damping = 2.0
 
 [node name="Transition Screen" parent="." instance=ExtResource("34_t6o86")]
 start_dark = true

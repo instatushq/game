@@ -150,10 +150,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	elif astronaut_sprite.animation == "begin_flight":
 		astronaut_sprite.play("flight")
 
-func handle_movement_began(direction: MovementDirection) -> void:
-	if direction == MovementDirection.FORWARD:
-		astronaut_sprite.play("begin_flight")
+func handle_movement_began(_direction: MovementDirection) -> void:
+	astronaut_sprite.play("begin_flight")
 
-func handle_movement_ended(direction: MovementDirection) -> void:
-	if direction == MovementDirection.FORWARD:
-		astronaut_sprite.play("halting")
+func handle_movement_ended(_direction: MovementDirection) -> void:
+	astronaut_sprite.play("halting")
