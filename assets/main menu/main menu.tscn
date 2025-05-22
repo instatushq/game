@@ -627,13 +627,13 @@ shape = SubResource("CapsuleShape2D_gg27b")
 position = Vector2(-4, -3)
 
 [node name="PointLight2D" type="PointLight2D" parent="Astronaut/SpriteContainer"]
-position = Vector2(-3, -8)
+position = Vector2(0, -9)
 rotation = -0.698132
 scale = Vector2(0.5, 0.5)
 color = Color(0, 0.176471, 0.4, 0.227451)
 energy = 16.0
 texture = ExtResource("16_hbnyu")
-offset = Vector2(45.19, 40.44)
+offset = Vector2(55, 50)
 texture_scale = 0.35
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Astronaut/SpriteContainer"]
