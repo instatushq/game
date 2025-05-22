@@ -18,69 +18,43 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_y3iom")
 
-[node name="DisplayPanel" type="PanelContainer" parent="ColorRect"]
-offset_left = 107.0
-offset_top = 221.0
-offset_right = 885.0
-offset_bottom = 1225.0
+[node name="ProgressDots" type="Container" parent="ColorRect"]
+offset_left = 774.0
+offset_top = 138.0
+offset_right = 1117.0
+offset_bottom = 327.0
 
-[node name="DisplayPanelGrid" type="GridContainer" parent="ColorRect/DisplayPanel"]
-custom_minimum_size = Vector2(500, 500)
+[node name="0" type="ColorRect" parent="ColorRect/ProgressDots"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-columns = 3
+color = Color(0.156863, 1, 1, 1)
 
-[node name="0" type="ColorRect" parent="ColorRect/DisplayPanel/DisplayPanelGrid"]
+[node name="1" type="ColorRect" parent="ColorRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+color = Color(0.156863, 1, 1, 1)
 
-[node name="1" type="ColorRect" parent="ColorRect/DisplayPanel/DisplayPanelGrid"]
+[node name="2" type="ColorRect" parent="ColorRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+color = Color(0.156863, 1, 1, 1)
 
-[node name="2" type="ColorRect" parent="ColorRect/DisplayPanel/DisplayPanelGrid"]
+[node name="3" type="ColorRect" parent="ColorRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+color = Color(0.156863, 1, 1, 1)
 
-[node name="3" type="ColorRect" parent="ColorRect/DisplayPanel/DisplayPanelGrid"]
+[node name="4" type="ColorRect" parent="ColorRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="4" type="ColorRect" parent="ColorRect/DisplayPanel/DisplayPanelGrid"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="5" type="ColorRect" parent="ColorRect/DisplayPanel/DisplayPanelGrid"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="6" type="ColorRect" parent="ColorRect/DisplayPanel/DisplayPanelGrid"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="7" type="ColorRect" parent="ColorRect/DisplayPanel/DisplayPanelGrid"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="8" type="ColorRect" parent="ColorRect/DisplayPanel/DisplayPanelGrid"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+color = Color(0.156863, 1, 1, 1)
 
 [node name="InputPanel" type="PanelContainer" parent="ColorRect"]
-offset_left = 1035.0
-offset_top = 231.0
-offset_right = 1795.0
-offset_bottom = 1246.0
+layout_mode = 0
+offset_left = 572.0
+offset_top = 298.0
+offset_right = 1332.0
+offset_bottom = 1313.0
 
 [node name="InputGrid" type="GridContainer" parent="ColorRect/InputPanel"]
 custom_minimum_size = Vector2(600, 600)
@@ -162,6 +136,7 @@ texture_pressed = ExtResource("3_tqaod")
 stretch_mode = 0
 
 [node name="result" type="Label" parent="ColorRect"]
+layout_mode = 0
 offset_left = 879.0
 offset_top = 120.0
 offset_right = 1026.0
