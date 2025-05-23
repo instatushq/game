@@ -20,6 +20,7 @@ signal current_player_changed(new_current_player: Player)
 @export var score: int = 0
 @export var score_increment_amount: int = 1
 var last_mouse_position: Vector2 = Vector2.ZERO
+var timepassed: int = 0
 
 var is_solving_puzzle: bool = false
 
@@ -31,23 +32,27 @@ func increaseScore(amount: int = score_increment_amount):
 	score = currentScore + amount
 	emit_signal("score_changed", currentScore, score)
 
-func _input(event):
-	var new_player: Player = Player.ASTRONAUT if is_controlling_ship() else Player.SHIP
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_T:
-			switch_controlled_player_to(new_player)
-			current_player_changed.emit(new_player)
-			if new_player == Player.SHIP:
-				timer.start()
-			else:
-				timer.stop() 
+func _process(_delta: float) -> void:
+	timepassed += 1
+	if timepassed == 2:
+		switch_player(Player.ASTRONAUT)
 
-func switch_controlled_player_to(player: Player) -> void:
+# func _input(event):
+# 	if event is InputEventKey and event.pressed:
+# 		if event.keycode == KEY_T:
+# 			var new_player: Player = Player.ASTRONAUT if is_controlling_ship() else Player.SHIP
+# 			switch_player(new_player)
+
+func switch_player(player: Player) -> void:
 	match player:
-		Player.SHIP:
-			switch_to_ship()
-		Player.ASTRONAUT:
-			switch_to_astronaut()
+		Player.SHIP: _switch_to_ship()
+		Player.ASTRONAUT: _switch_to_astronaut()
+
+	current_player_changed.emit(player)
+	if player == Player.SHIP:
+		timer.start()
+	else:
+		timer.stop()
 
 func is_controlling_ship() -> bool:
 	return current_player == Player.SHIP
@@ -55,7 +60,7 @@ func is_controlling_ship() -> bool:
 func is_controlling_astronaut() -> bool:
 	return current_player == Player.ASTRONAUT
 
-func switch_to_ship() -> void:
+func _switch_to_ship() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.warp_mouse(last_mouse_position)
 	current_player = Player.SHIP
@@ -63,7 +68,7 @@ func switch_to_ship() -> void:
 	ship.toggle_control(true)
 	camera.focus_ship()
 
-func switch_to_astronaut() -> void:
+func _switch_to_astronaut() -> void:
 	last_mouse_position = get_viewport().get_mouse_position()
 	current_player = Player.ASTRONAUT
 	astronaut.toggle_control(true)

@@ -77,6 +77,34 @@ animations = [{
 unique_name_in_owner = true
 position = Vector2(-1107, -4)
 
+[node name="Background" type="Node2D" parent="InternalShip"]
+show_behind_parent = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="InternalShip/Background"]
+position = Vector2(33, -44)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("12_t4yvt")
+
+[node name="Sprite2D4" type="Sprite2D" parent="InternalShip/Background"]
+position = Vector2(200, -41)
+rotation = -0.0953066
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("13_t6o86")
+
+[node name="Sprite2D5" type="Sprite2D" parent="InternalShip/Background"]
+position = Vector2(92.9999, 188)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("13_t6o86")
+
+[node name="Big Planet2" parent="InternalShip/Background" instance=ExtResource("16_7wclo")]
+position = Vector2(-128, -71)
+scale = Vector2(0.397925, 0.397925)
+
+[node name="Sprite2D6" type="Sprite2D" parent="InternalShip/Background"]
+position = Vector2(-214, 74)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("13_t6o86")
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 unique_name_in_owner = true
 offset = Vector2(154.19, -700)
