@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://cxony63smiav4" path="res://assets/main menu/menu_astronaut.gd" id="7_gg27b"]
 [ext_resource type="Texture2D" uid="uid://cblqbhvs14ana" path="res://assets/main menu/screen.png" id="10_aqpky"]
 [ext_resource type="Texture2D" uid="uid://d3lcnbagcvggt" path="res://assets/astronaut/sprites/mid flight.png" id="12_03fpy"]
-[ext_resource type="Texture2D" uid="uid://bh8bqoppiayeb" path="res://assets/astronaut/sprites/halting.png" id="13_hbnyu"]
+[ext_resource type="Texture2D" uid="uid://tfqkwo3oeep6" path="res://assets/astronaut/sprites/halting.png" id="13_hbnyu"]
 [ext_resource type="Texture2D" uid="uid://jumkphn087od" path="res://assets/astronaut/sprites/idle.png" id="14_4il1l"]
 [ext_resource type="Texture2D" uid="uid://bmwg8e33sqa8n" path="res://assets/astronaut/sprites/idle anim.png" id="15_k0scp"]
 [ext_resource type="Texture2D" uid="uid://b8jx5gok84hjm" path="res://assets/astronaut/textures/helmet light.png" id="16_hbnyu"]
@@ -639,10 +639,12 @@ texture_scale = 0.35
 [node name="Sprite" type="AnimatedSprite2D" parent="Astronaut/SpriteContainer"]
 modulate = Color(0.278431, 0.278431, 0.278431, 1)
 position = Vector2(-11, -5)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.51, 0.51)
 sprite_frames = SubResource("SpriteFrames_03fpy")
-animation = &"flight"
+animation = &"halting"
 autoplay = "idle"
+frame = 10
+frame_progress = 1.0
 flip_h = true
 
 [node name="Timer" type="Timer" parent="Astronaut/SpriteContainer/Sprite"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=53 format=3 uid="uid://34pxxoahuuaj"]
 
-[ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
+[ext_resource type="Script" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
 [ext_resource type="Script" uid="uid://cn5warahkaysk" path="res://assets/ship/issues.gd" id="1_r65rw"]
 [ext_resource type="Texture2D" uid="uid://qabjpm77ite6" path="res://assets/internal ship/damaged ship loop.png" id="2_46acj"]

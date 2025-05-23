@@ -376,8 +376,10 @@ fuel_rocks = Array[PackedScene]([ExtResource("20_aw4ih"), ExtResource("21_abrck"
 unique_name_in_owner = true
 position = Vector2(14, 21)
 zoom = Vector2(1, 1)
-position_smoothing_speed = 200.0
+position_smoothing_speed = 20.0
 script = ExtResource("20_i2nmc")
+camera_offset_margin = 25.0
+camera_interpolation_speed = 0.04
 
 [node name="Ship" parent="." instance=ExtResource("21_1tmrn")]
 unique_name_in_owner = true
@@ -387,9 +389,11 @@ position = Vector2(-7, 535)
 unique_name_in_owner = true
 position = Vector2(-1111, 30)
 movement_speed = 100.0
+maximum_speed = 75.0
 damping = 2.0
 
 [node name="Transition Screen" parent="." instance=ExtResource("34_t6o86")]
 start_dark = true
 
 [connection signal="current_player_changed" from="GameManager" to="InternalShip" method="_on_game_manager_current_player_changed"]
+[connection signal="on_movement_vector_changed" from="Astronaut" to="Camera" method="_on_astronaut_on_movement_vector_changed"]

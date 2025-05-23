@@ -7,6 +7,8 @@ class_name Camera
 @onready var ship: Ship = %Ship
 @onready var root_of_scene: Node2D = get_tree().root.get_child(0)
 var last_recorded_camera_position: Vector2 = global_position;
+@export var camera_offset_margin: float = 50.0
+@export var camera_interpolation_speed: float = 0.005  # Controls how fast the camera moves to its target position
 
 var movement_speed: float = 100.0
 
@@ -38,3 +40,15 @@ func focus_astronaut() -> void:
 	reparent(astronaut)
 	position = Vector2.ZERO
 	zoom = Vector2.ONE * 10
+
+func _on_astronaut_on_movement_vector_changed(movement_vector: Vector2) -> void:
+	if game_manager.current_player == GameManager.Player.SHIP:
+		return
+
+	var target_position = movement_vector * camera_offset_margin
+	
+	var distance = target_position.length()
+	if distance > camera_offset_margin:
+		target_position = target_position.normalized() * camera_offset_margin
+	
+	position = position.lerp(target_position, camera_interpolation_speed)
