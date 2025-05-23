@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://byp6hvrh54j2d"]
+[gd_scene load_steps=52 format=3 uid="uid://byp6hvrh54j2d"]
 
 [ext_resource type="Script" uid="uid://i57yks2tesb6" path="res://assets/astronaut/astronaut.gd" id="1_ultts"]
 [ext_resource type="Texture2D" uid="uid://tfqkwo3oeep6" path="res://assets/astronaut/sprites/halting.png" id="2_2cjcx"]
@@ -179,10 +179,6 @@ region = Rect2(590, 0, 118, 91)
 atlas = ExtResource("3_bqctt")
 region = Rect2(708, 0, 118, 91)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eol5v"]
-atlas = ExtResource("3_ubged")
-region = Rect2(236, 0, 118, 91)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dfik8"]
 atlas = ExtResource("3_ubged")
 region = Rect2(354, 0, 118, 91)
@@ -354,9 +350,6 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eol5v")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dfik8")
 }],
