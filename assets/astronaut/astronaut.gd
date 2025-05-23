@@ -6,6 +6,7 @@ enum MovementDirection { FORWARD, UP, DOWN }
 
 signal movement_began(direction: MovementDirection)
 signal movement_ended(direction: MovementDirection)
+signal on_movement_vector_changed(movement_vector: Vector2)
 
 var frozen: bool = false
 var can_control: bool = false
@@ -58,6 +59,7 @@ func _physics_process(delta: float) -> void:
 	if isTouching:
 		var input_strength := movement_axis.length() / MAX_RADIUS
 		var movement_direction := movement_axis.normalized()
+		on_movement_vector_changed.emit(movement_direction * input_strength)
 		var target_velocity = movement_direction * movement_speed * input_strength
 		velocity = velocity.move_toward(target_velocity, acceleration * delta)
 		
