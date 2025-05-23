@@ -1,10 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://byp6hvrh54j2d"]
+[gd_scene load_steps=53 format=3 uid="uid://byp6hvrh54j2d"]
 
 [ext_resource type="Script" uid="uid://i57yks2tesb6" path="res://assets/astronaut/astronaut.gd" id="1_ultts"]
 [ext_resource type="Texture2D" uid="uid://tfqkwo3oeep6" path="res://assets/astronaut/sprites/halting.png" id="2_2cjcx"]
 [ext_resource type="Texture2D" uid="uid://d3lcnbagcvggt" path="res://assets/astronaut/sprites/mid flight.png" id="2_oxxbp"]
 [ext_resource type="Texture2D" uid="uid://jumkphn087od" path="res://assets/astronaut/sprites/idle.png" id="2_ultts"]
 [ext_resource type="Texture2D" uid="uid://bmwg8e33sqa8n" path="res://assets/astronaut/sprites/idle anim.png" id="3_bqctt"]
+[ext_resource type="Texture2D" uid="uid://bl7xo5gmt4su5" path="res://assets/astronaut/sprites/up.png" id="3_ubged"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1dmai"]
 radius = 8.0
@@ -21,6 +22,22 @@ region = Rect2(118, 0, 118, 91)
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8ifh"]
 atlas = ExtResource("2_oxxbp")
 region = Rect2(236, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaq8n"]
+atlas = ExtResource("3_ubged")
+region = Rect2(0, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4so5a"]
+atlas = ExtResource("3_ubged")
+region = Rect2(118, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roa3v"]
+atlas = ExtResource("3_ubged")
+region = Rect2(236, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oedor"]
+atlas = ExtResource("3_ubged")
+region = Rect2(354, 0, 118, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ww7a"]
 atlas = ExtResource("2_oxxbp")
@@ -77,6 +94,22 @@ region = Rect2(1062, 0, 118, 91)
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1oej"]
 atlas = ExtResource("2_2cjcx")
 region = Rect2(1180, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juxni"]
+atlas = ExtResource("3_ubged")
+region = Rect2(354, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbcj1"]
+atlas = ExtResource("3_ubged")
+region = Rect2(236, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyj2e"]
+atlas = ExtResource("3_ubged")
+region = Rect2(118, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tksla"]
+atlas = ExtResource("3_ubged")
+region = Rect2(0, 0, 118, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ultts"]
 atlas = ExtResource("2_ultts")
@@ -146,6 +179,14 @@ region = Rect2(590, 0, 118, 91)
 atlas = ExtResource("3_bqctt")
 region = Rect2(708, 0, 118, 91)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_eol5v"]
+atlas = ExtResource("3_ubged")
+region = Rect2(236, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfik8"]
+atlas = ExtResource("3_ubged")
+region = Rect2(354, 0, 118, 91)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_x1ufq"]
 animations = [{
 "frames": [{
@@ -161,6 +202,23 @@ animations = [{
 "loop": false,
 "name": &"begin_flight",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaq8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4so5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roa3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oedor")
+}],
+"loop": false,
+"name": &"begin_up",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -213,6 +271,23 @@ animations = [{
 "loop": false,
 "name": &"halting",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juxni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbcj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyj2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tksla")
+}],
+"loop": false,
+"name": &"halting_up",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -277,6 +352,17 @@ animations = [{
 "loop": false,
 "name": &"idle_blink",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eol5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfik8")
+}],
+"loop": true,
+"name": &"up",
+"speed": 8.0
 }]
 
 [node name="Astronaut" type="CharacterBody2D"]
@@ -295,10 +381,8 @@ position = Vector2(1, -28)
 position = Vector2(-11, -2)
 scale = Vector2(0.51, 0.51)
 sprite_frames = SubResource("SpriteFrames_x1ufq")
-animation = &"halting"
+animation = &"up"
 autoplay = "idle"
-frame = 10
-frame_progress = 1.0
 flip_h = true
 
 [node name="Timer" type="Timer" parent="SpriteContainer/AnimatedSprite2D"]

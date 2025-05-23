@@ -7,6 +7,7 @@ enum MovementDirection { FORWARD, UP, DOWN }
 signal movement_began(direction: MovementDirection)
 signal movement_ended(direction: MovementDirection)
 signal on_movement_vector_changed(movement_vector: Vector2)
+signal direction_changed_while_moving(old_direction: MovementDirection, new_direction: MovementDirection)
 
 var frozen: bool = false
 var can_control: bool = false
@@ -39,6 +40,7 @@ func _ready() -> void:
 	idle_timer.timeout.connect(handle_animation_idle_blink)
 	movement_began.connect(handle_movement_began)
 	movement_ended.connect(handle_movement_ended)
+	direction_changed_while_moving.connect(_handle_direction_changed_while_moving)
 
 func _process(_delta: float) -> void:
 	if game_manager.current_player == GameManager.Player.SHIP: return
@@ -67,6 +69,7 @@ func _physics_process(delta: float) -> void:
 		if movement_direction.x < 0:
 			new_target = -new_target
 		
+		var old_direction = current_direction
 		if new_target > MAX_ROTATION or new_target < -MAX_ROTATION:
 			current_direction = MovementDirection.UP if new_target > MAX_ROTATION else MovementDirection.DOWN
 			target_rotation = 0.0
@@ -82,6 +85,9 @@ func _physics_process(delta: float) -> void:
 				sprite_container.rotation = new_target
 				is_starting_rotation = true
 			target_rotation = new_target
+			
+		if old_direction != current_direction:
+			direction_changed_while_moving.emit(old_direction, current_direction)
 	else:
 		if damping != 0:
 			var damping_factor = 1.0 - (damping * delta)
@@ -149,13 +155,36 @@ func handle_animation_idle_blink() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if astronaut_sprite.animation == "idle_blink":
 		astronaut_sprite.play("idle")
-	elif astronaut_sprite.animation == "halting":
+	elif astronaut_sprite.animation == "halting" or astronaut_sprite.animation == "halting_up":
 		astronaut_sprite.play("idle")
 	elif astronaut_sprite.animation == "begin_flight":
 		astronaut_sprite.play("flight")
+	elif astronaut_sprite.animation == "begin_up":
+		astronaut_sprite.play("up")
 
 func handle_movement_began(_direction: MovementDirection) -> void:
-	astronaut_sprite.play("begin_flight")
+	match _direction:
+		MovementDirection.FORWARD:
+			astronaut_sprite.play("begin_flight")
+		MovementDirection.UP:
+			astronaut_sprite.play("begin_up")
+		MovementDirection.DOWN:
+			astronaut_sprite.play("begin_up")
 
 func handle_movement_ended(_direction: MovementDirection) -> void:
-	astronaut_sprite.play("halting")
+	match _direction:
+		MovementDirection.FORWARD:
+			astronaut_sprite.play("halting")
+		MovementDirection.UP:
+			astronaut_sprite.play("halting_up")
+		MovementDirection.DOWN:
+			astronaut_sprite.play("halting_up")
+
+func _handle_direction_changed_while_moving(old_direction: MovementDirection, new_direction: MovementDirection) -> void:
+	match new_direction:
+		MovementDirection.FORWARD:
+			astronaut_sprite.play("flight")
+		MovementDirection.UP:
+			astronaut_sprite.play("up")
+		MovementDirection.DOWN:
+			astronaut_sprite.play("up")
