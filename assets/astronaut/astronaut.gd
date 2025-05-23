@@ -180,7 +180,7 @@ func handle_movement_ended(_direction: MovementDirection) -> void:
 		MovementDirection.DOWN:
 			astronaut_sprite.play("halting_up")
 
-func _handle_direction_changed_while_moving(old_direction: MovementDirection, new_direction: MovementDirection) -> void:
+func _handle_direction_changed_while_moving(_old_direction: MovementDirection, new_direction: MovementDirection) -> void:
 	match new_direction:
 		MovementDirection.FORWARD:
 			astronaut_sprite.play("flight")

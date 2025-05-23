@@ -19,10 +19,16 @@ signal current_player_changed(new_current_player: Player)
 
 @export var score: int = 0
 @export var score_increment_amount: int = 1
+@export var play_music: bool = false
+@onready var music: AudioStreamPlayer2D = Music
 var last_mouse_position: Vector2 = Vector2.ZERO
 var timepassed: int = 0
 
 var is_solving_puzzle: bool = false
+
+func _ready() -> void:
+	if play_music:
+		music.play()
 
 func _on_score_timer_timeout() -> void:
 	increaseScore()

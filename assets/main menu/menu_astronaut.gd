@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name MenuAstronaut
+
 @export var follow_speed: float = 10.0 
 @export var protective_radius: float = 50.0
 @export var max_velocity: float = 300.0  
@@ -16,6 +18,7 @@ extends RigidBody2D
 var is_moving: bool = false
 var current_light_tween: Tween = null
 var target_light_energy: float = 0.0
+var stand_away_from_mouse: bool = false
 
 signal movement_began
 signal movement_ended
@@ -34,7 +37,7 @@ func _ready() -> void:
 	gravity_scale = 0.0
 
 func _physics_process(_delta: float) -> void:
-	var target_position = get_global_mouse_position()
+	var target_position = get_global_mouse_position() if not stand_away_from_mouse else get_global_mouse_position() + Vector2(40, 30)
 	
 	var distance_to_target = global_position.distance_to(target_position)
 	if distance_to_target < protective_radius:

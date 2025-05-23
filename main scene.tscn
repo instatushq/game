@@ -363,6 +363,7 @@ unique_name_in_owner = true
 
 [node name="GameManager" parent="." instance=ExtResource("16_yklg6")]
 unique_name_in_owner = true
+play_music = true
 
 [node name="Walls" parent="." instance=ExtResource("17_770c0")]
 unique_name_in_owner = true

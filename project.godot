@@ -20,6 +20,10 @@ boot_splash/use_filter=false
 boot_splash/image="uid://cp1qj3lyoacho"
 config/icon="uid://cp1qj3lyoacho"
 
+[autoload]
+
+Music="*res://assets/audio/music.tscn"
+
 [display]
 
 window/size/viewport_width=1920
