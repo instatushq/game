@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://e3terh5nct76"]
+[gd_scene load_steps=81 format=3 uid="uid://e3terh5nct76"]
 
 [ext_resource type="Script" uid="uid://cyvhedqbrq845" path="res://assets/main menu/main_menu.gd" id="1_plx4y"]
 [ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="2_5x655"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://jumkphn087od" path="res://assets/astronaut/sprites/idle.png" id="14_4il1l"]
 [ext_resource type="Texture2D" uid="uid://bmwg8e33sqa8n" path="res://assets/astronaut/sprites/idle anim.png" id="15_k0scp"]
 [ext_resource type="Texture2D" uid="uid://b8jx5gok84hjm" path="res://assets/astronaut/textures/helmet light.png" id="16_hbnyu"]
+[ext_resource type="AudioStream" uid="uid://xmgb8tmdyuy0" path="res://assets/audio/background/ambience.mp3" id="17_4il1l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5jlq"]
 atlas = ExtResource("3_gg27b")
@@ -546,7 +547,7 @@ offset_left = -4.0
 offset_top = 4.0
 offset_right = 61.0
 offset_bottom = 25.0
-focus_neighbor_left = NodePath("../Options")
+focus_neighbor_left = NodePath("../Node2D/Options")
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_5x655")
 theme_type_variation = &"FlatButton"
@@ -564,14 +565,15 @@ mouse_filter = 2
 mouse_default_cursor_shape = 2
 color = Color(0, 0, 0, 0.403922)
 
-[node name="Options" type="Button" parent="Ship/Control"]
-layout_mode = 0
+[node name="Node2D" type="Node2D" parent="Ship/Control"]
+
+[node name="Options" type="Button" parent="Ship/Control/Node2D"]
 offset_left = -60.78
 offset_top = -0.24
 offset_right = 34.07
 offset_bottom = 63.74
 scale = Vector2(0.365, 0.445)
-focus_neighbor_right = NodePath("../Start Game")
+focus_neighbor_right = NodePath("../../Start Game")
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_tf0ie")
 theme_type_variation = &"FlatButton"
@@ -579,15 +581,41 @@ theme_override_colors/font_color = Color(0.529412, 0.662745, 0.784314, 1)
 text = "Options"
 icon_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Ship/Control/Options"]
+[node name="Music" type="Button" parent="Ship/Control/Node2D"]
+offset_left = -61.0
+offset_top = -4.0
+offset_right = 33.85
+offset_bottom = 28.0
+scale = Vector2(0.365, 0.445)
+focus_neighbor_bottom = NodePath("../SFX")
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_tf0ie")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.529412, 0.662745, 0.784314, 1)
+text = "Music: ON"
+icon_alignment = 1
+
+[node name="SFX" type="Button" parent="Ship/Control/Node2D"]
+offset_left = -61.0
+offset_top = 10.0
+offset_right = 33.85
+offset_bottom = 42.0
+scale = Vector2(0.365, 0.445)
+focus_neighbor_top = NodePath("../Music")
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_tf0ie")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.529412, 0.662745, 0.784314, 1)
+text = "SFX: ON"
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Ship/Control/Node2D"]
 modulate = Color(0, 0, 0, 0.403922)
 show_behind_parent = true
-layout_mode = 0
-offset_left = -25.411
-offset_top = -33.169
-offset_right = 27.479
-offset_bottom = 12.831
-scale = Vector2(2.7, 2.425)
+offset_left = -70.5
+offset_top = -13.0
+offset_right = -17.61
+offset_bottom = 33.0
 mouse_filter = 2
 texture = ExtResource("10_aqpky")
 
@@ -650,13 +678,21 @@ flip_h = true
 [node name="Timer" type="Timer" parent="Astronaut/SpriteContainer/Sprite"]
 wait_time = 4.0
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_4il1l")
+autoplay = true
+bus = &"Ambience"
+
 [connection signal="focus_entered" from="Ship/Control/Start Game" to="." method="_on_hover_start_game"]
 [connection signal="focus_exited" from="Ship/Control/Start Game" to="." method="_on_unhover_start_game"]
 [connection signal="mouse_entered" from="Ship/Control/Start Game" to="." method="_on_hover_start_game"]
 [connection signal="mouse_exited" from="Ship/Control/Start Game" to="." method="_on_unhover_start_game"]
 [connection signal="pressed" from="Ship/Control/Start Game" to="." method="_on_click_start_game"]
-[connection signal="focus_entered" from="Ship/Control/Options" to="." method="_on_hover_options"]
-[connection signal="focus_exited" from="Ship/Control/Options" to="." method="_on_unhover_options"]
-[connection signal="mouse_entered" from="Ship/Control/Options" to="." method="_on_hover_options"]
-[connection signal="mouse_exited" from="Ship/Control/Options" to="." method="_on_unhover_options"]
+[connection signal="focus_entered" from="Ship/Control/Node2D/Options" to="." method="_on_hover_options"]
+[connection signal="focus_exited" from="Ship/Control/Node2D/Options" to="." method="_on_unhover_options"]
+[connection signal="mouse_entered" from="Ship/Control/Node2D/Options" to="." method="_on_hover_options"]
+[connection signal="mouse_exited" from="Ship/Control/Node2D/Options" to="." method="_on_unhover_options"]
+[connection signal="pressed" from="Ship/Control/Node2D/Options" to="." method="_on_click_options"]
+[connection signal="pressed" from="Ship/Control/Node2D/Music" to="." method="_on_music_pressed"]
+[connection signal="pressed" from="Ship/Control/Node2D/SFX" to="." method="_on_sfx_pressed"]
 [connection signal="animation_finished" from="Astronaut/SpriteContainer/Sprite" to="Astronaut" method="_on_sprite_animation_finished"]
