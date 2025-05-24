@@ -301,17 +301,6 @@ size = Vector2(102.5, 117)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46acj"]
 size = Vector2(98, 122)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_jlxe3"]
-a = Vector2(151, 1)
-b = Vector2(-148, 1)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_7h0eb"]
-b = Vector2(0, 315.56)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_xw88r"]
-a = Vector2(0, -152.33)
-b = Vector2(0, 155.92)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_liemg"]
 atlas = ExtResource("1_o88cq")
 region = Rect2(0, 0, 370, 490)
@@ -559,6 +548,17 @@ gradient = SubResource("Gradient_xw88r")
 offsets = PackedFloat32Array(0, 0.0603248, 0.50116, 0.944316, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0.726852, 0.726852, 0.726852, 1, 0, 0.996078, 0.94902, 0.627451, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jlxe3"]
+a = Vector2(151, 1)
+b = Vector2(-148, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7h0eb"]
+b = Vector2(0, 315.56)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xw88r"]
+a = Vector2(0, -152.33)
+b = Vector2(0, 155.92)
+
 [node name="InternalShip" type="Node2D"]
 script = ExtResource("1_jlxe3")
 default_lights_texutres = ExtResource("7_7h0eb")
@@ -595,31 +595,6 @@ debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
 [node name="Timer" type="Timer" parent="Issues"]
 wait_time = 10.0
 autostart = true
-
-[node name="Interior" type="StaticBody2D" parent="."]
-position = Vector2(0, -164)
-collision_layer = 8
-collision_mask = 2
-
-[node name="Ground" type="CollisionShape2D" parent="Interior"]
-position = Vector2(0, 234)
-shape = SubResource("SegmentShape2D_jlxe3")
-debug_color = Color(0.969519, 0, 0.460823, 0.42)
-
-[node name="Left Wall" type="CollisionShape2D" parent="Interior"]
-position = Vector2(-85, 60)
-shape = SubResource("SegmentShape2D_7h0eb")
-debug_color = Color(0.962013, 9.62615e-08, 0.507042, 0.42)
-
-[node name="Right Wall" type="CollisionShape2D" parent="Interior"]
-position = Vector2(69, 213)
-shape = SubResource("SegmentShape2D_xw88r")
-debug_color = Color(0.937366, 1.30916e-05, 0.628279, 0.42)
-
-[node name="Ceiling" type="CollisionShape2D" parent="Interior"]
-position = Vector2(1, 114)
-shape = SubResource("SegmentShape2D_jlxe3")
-debug_color = Color(0.969519, 0, 0.460823, 0.42)
 
 [node name="Points" type="Node2D" parent="."]
 
@@ -669,6 +644,33 @@ initial_velocity_min = 2.0
 initial_velocity_max = 4.0
 scale_amount_min = 0.4
 color_ramp = SubResource("Gradient_i8hiq")
+
+[node name="Interior" type="StaticBody2D" parent="."]
+position = Vector2(0, -164)
+collision_layer = 8
+collision_mask = 2
+
+[node name="Ground" type="CollisionShape2D" parent="Interior"]
+position = Vector2(2, 254)
+shape = SubResource("SegmentShape2D_jlxe3")
+debug_color = Color(0.969519, 0, 0.460823, 0.42)
+
+[node name="Node2D" type="Node2D" parent="Interior"]
+
+[node name="Left Wall" type="CollisionShape2D" parent="Interior"]
+position = Vector2(-93, 61)
+shape = SubResource("SegmentShape2D_7h0eb")
+debug_color = Color(0.962013, 9.62615e-08, 0.507042, 0.42)
+
+[node name="Right Wall" type="CollisionShape2D" parent="Interior"]
+position = Vector2(91, 213)
+shape = SubResource("SegmentShape2D_xw88r")
+debug_color = Color(0.937366, 1.30916e-05, 0.628279, 0.42)
+
+[node name="Ceiling" type="CollisionShape2D" parent="Interior"]
+position = Vector2(3, 115)
+shape = SubResource("SegmentShape2D_jlxe3")
+debug_color = Color(0.969519, 0, 0.460823, 0.42)
 
 [connection signal="animation_finished" from="Animations" to="." method="_on_animator_animation_finish"]
 [connection signal="on_clear_issues" from="Issues" to="." method="_on_issues_on_clear_issues"]
