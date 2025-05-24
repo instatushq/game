@@ -127,8 +127,8 @@ animations = [{
 }]
 
 [node name="Issue" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_8boil")
-default_visibility = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8

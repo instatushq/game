@@ -35,7 +35,7 @@ func _on_area_exited(body: Node, zone: Area2D) -> void:
 	zone_body_exited.emit(zone, body)
 
 func _input(event: InputEvent) -> void:
-	if game_manager.is_controlling_ship() and not game_manager.is_meteor_herd_active: return
+	if game_manager.is_controlling_ship() or game_manager.is_meteor_herd_active: return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
 		if last_entered_zone != null:
 			var current_issue = current_issues[last_entered_zone.get_instance_id()]

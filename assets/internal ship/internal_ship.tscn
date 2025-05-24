@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=54 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qabjpm77ite6" path="res://assets/internal ship/damaged ship loop.png" id="2_46acj"]
 [ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="2_yxcn8"]
 [ext_resource type="Texture2D" uid="uid://dcnhyyeq5nybm" path="res://assets/internal ship/Fixed ship animationt.png" id="3_yxcn8"]
+[ext_resource type="PackedScene" uid="uid://d2burbt4yek8s" path="res://assets/issues/possible_issues/whack a mole/whack a mole.tscn" id="4_xw88r"]
 [ext_resource type="Texture2D" uid="uid://b08qkhhb12xhr" path="res://assets/main menu/light.png" id="7_7h0eb"]
 
 [sub_resource type="Animation" id="Animation_djmod"]
@@ -563,7 +564,7 @@ libraries = {
 
 [node name="Issues" type="Node2D" parent="."]
 script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("2_yxcn8")])
+possible_issues = Array[PackedScene]([ExtResource("2_yxcn8"), ExtResource("4_xw88r")])
 
 [node name="Right" type="Area2D" parent="Issues"]
 position = Vector2(93, 75)
