@@ -195,6 +195,6 @@ func _handle_direction_changed_while_moving(_old_direction: MovementDirection, n
 		MovementDirection.FORWARD:
 			astronaut_sprite.play("flight")
 		MovementDirection.UP:
-			astronaut_sprite.play("up")
+			astronaut_sprite.play("begin_up")
 		MovementDirection.DOWN:
-			astronaut_sprite.play("down")
+			astronaut_sprite.play("begin_down")
