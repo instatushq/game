@@ -1,0 +1,331 @@
+[gd_scene load_steps=22 format=3 uid="uid://d2burbt4yek8s"]
+
+[ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_8boil"]
+[ext_resource type="Script" uid="uid://dsd2g1qv6ddsb" path="res://assets/issues/possible_issues/whack a mole/whack a mole.gd" id="2_00j50"]
+[ext_resource type="Script" uid="uid://c277f4hblehjv" path="res://assets/issues/possible_issues/whack a mole/mole.gd" id="3_hf4y4"]
+[ext_resource type="Texture2D" uid="uid://brtnbep1ca10l" path="res://assets/astronaut/sprites/up.png" id="4_hf4y4"]
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="5_hf4y4"]
+
+[sub_resource type="Theme" id="Theme_p5srt"]
+default_font = ExtResource("5_hf4y4")
+default_font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_2p6su"]
+line_spacing = 40.0
+font_size = 70
+font_color = Color(0, 0.733333, 0.8, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hf4y4"]
+line_spacing = 40.0
+font_size = 40
+font_color = Color(0, 0.733333, 0.8, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uemvr"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(472, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv0ip"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(354, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm7c6"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(236, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klspp"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(118, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovrla"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(0, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00j50"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(354, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf4y4"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(472, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keg7o"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(0, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fml2"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(118, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbh2y"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(236, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe51f"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(354, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8xie"]
+atlas = ExtResource("4_hf4y4")
+region = Rect2(472, 0, 118, 91)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6ds3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uemvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv0ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm7c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klspp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovrla")
+}],
+"loop": false,
+"name": &"down",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00j50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf4y4")
+}],
+"loop": true,
+"name": &"out",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keg7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fml2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbh2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe51f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8xie")
+}],
+"loop": false,
+"name": &"up",
+"speed": 9.0
+}]
+
+[node name="Issue" type="CanvasLayer"]
+script = ExtResource("1_8boil")
+default_visibility = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -397.5
+offset_top = -277.48
+offset_right = 397.5
+offset_bottom = 277.48
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.164706, 0.635294, 0.686275, 0.352941)
+script = ExtResource("2_00j50")
+metadata/_edit_use_anchors_ = true
+
+[node name="cooldown_timer" type="Timer" parent="ColorRect"]
+wait_time = 0.5
+one_shot = true
+
+[node name="XPCounter" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 2.48001
+offset_right = 200.0
+offset_bottom = 122.48
+grow_horizontal = 2
+color = Color(0, 0, 0, 0)
+
+[node name="XP" type="Label" parent="ColorRect/XPCounter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_p5srt")
+theme_type_variation = &"HeaderSmall"
+text = "0"
+label_settings = SubResource("LabelSettings_2p6su")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MaxXP" type="Label" parent="ColorRect/XPCounter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 164.0
+offset_top = 32.0
+offset_right = 164.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_p5srt")
+theme_type_variation = &"HeaderSmall"
+text = "/ 14000 XP"
+label_settings = SubResource("LabelSettings_hf4y4")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="whack" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 106.5
+offset_top = -93.0
+offset_right = 256.5
+offset_bottom = 7.0
+grow_vertical = 2
+theme_type_variation = &"FlatButton"
+script = ExtResource("3_hf4y4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/whack"]
+position = Vector2(96, 46)
+sprite_frames = SubResource("SpriteFrames_p6ds3")
+animation = &"down"
+
+[node name="Timer" type="Timer" parent="ColorRect/whack"]
+one_shot = true
+
+[node name="whack2" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 156.5
+offset_top = 62.0
+offset_right = 306.5
+offset_bottom = 162.0
+grow_vertical = 2
+theme_type_variation = &"FlatButton"
+script = ExtResource("3_hf4y4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/whack2"]
+position = Vector2(96, 46)
+sprite_frames = SubResource("SpriteFrames_p6ds3")
+animation = &"down"
+
+[node name="Timer" type="Timer" parent="ColorRect/whack2"]
+one_shot = true
+
+[node name="whack3" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 21.5
+offset_top = 10.0
+offset_right = 171.5
+offset_bottom = 110.0
+grow_vertical = 2
+theme_type_variation = &"FlatButton"
+script = ExtResource("3_hf4y4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/whack3"]
+position = Vector2(96, 46)
+sprite_frames = SubResource("SpriteFrames_p6ds3")
+animation = &"down"
+
+[node name="Timer" type="Timer" parent="ColorRect/whack3"]
+one_shot = true
+
+[node name="whack4" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 520.5
+offset_top = -98.0
+offset_right = 670.5
+offset_bottom = 2.0
+grow_vertical = 2
+theme_type_variation = &"FlatButton"
+script = ExtResource("3_hf4y4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/whack4"]
+position = Vector2(96, 46)
+sprite_frames = SubResource("SpriteFrames_p6ds3")
+animation = &"down"
+
+[node name="Timer" type="Timer" parent="ColorRect/whack4"]
+one_shot = true
+
+[node name="whack5" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 570.5
+offset_top = 57.0
+offset_right = 720.5
+offset_bottom = 157.0
+grow_vertical = 2
+theme_type_variation = &"FlatButton"
+script = ExtResource("3_hf4y4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/whack5"]
+position = Vector2(96, 46)
+sprite_frames = SubResource("SpriteFrames_p6ds3")
+animation = &"down"
+
+[node name="Timer" type="Timer" parent="ColorRect/whack5"]
+one_shot = true
+
+[node name="whack6" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 435.5
+offset_top = 5.0
+offset_right = 585.5
+offset_bottom = 105.0
+grow_vertical = 2
+theme_type_variation = &"FlatButton"
+script = ExtResource("3_hf4y4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/whack6"]
+position = Vector2(96, 46)
+sprite_frames = SubResource("SpriteFrames_p6ds3")
+animation = &"down"
+
+[node name="Timer" type="Timer" parent="ColorRect/whack6"]
+one_shot = true
