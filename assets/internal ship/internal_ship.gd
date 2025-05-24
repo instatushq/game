@@ -6,15 +6,20 @@ class_name InternalShip
 @onready var issues: Issues = $Issues
 @onready var animator: AnimationPlayer = $Animations
 @onready var game_manager: GameManager = %GameManager
+@onready var screens_light: PointLight2D = $AnimatedSprite2D/Lights/Screens
+@export var default_lights_texutres: Texture2D
+@export var broken_lights_texture: Texture2D
 var has_played_broken_animation: bool = false
 var is_playing_revive_animation: bool = false
 
 func _on_animation_finish() -> void:
 	if ship_sprite.animation == "breakdown":
 		ship_sprite.play("default" if is_playing_revive_animation else "broken")
+		screens_light.texture = broken_lights_texture
 		if is_playing_revive_animation:
 			is_playing_revive_animation = false
 			has_played_broken_animation = false
+			screens_light.texture = default_lights_texutres
 
 func _on_game_manager_current_player_changed(new_current_player: GameManager.Player) -> void:
 	if new_current_player == GameManager.Player.SHIP: return
