@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var ship: ShipHealth = %Ship/Health
 @onready var fuel: ShipFuel = %Ship/Fuel
 @onready var issues: Issues = %InternalShip/Issues
+@onready var warning: AnimationPlayer = $WarningRectangle/Animation
+@onready var timer: Timer = $WarningRectangle/Timer
 
 const HEALTH_COLORS = [
 	{ "threshold": 75, "color": Color("#00FF00"), "text": "Operational" },
@@ -41,3 +43,10 @@ func _update_fuel_text(new_fuel):
 
 func _on_fuel_change(_old_fuel: float, new_fuel: float) -> void:
 	_update_fuel_text(new_fuel)
+
+func _on_meteor_herd_begin() -> void:
+	warning.play("warning")
+	timer.start()
+
+func _on_timer_timeout() -> void:
+	warning.play("hide")
