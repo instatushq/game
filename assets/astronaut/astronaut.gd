@@ -120,7 +120,7 @@ func _input(event: InputEvent) -> void:
 			var new_target = atan2(movement_direction.y, abs(movement_direction.x))
 			if movement_direction.x < 0:
 					new_target = -new_target			
-		elif (not event.pressed and was_touching) or joystick_movement_vector.length() > MOVEMENT_DEADZONE_PERCENTAGE:
+		elif not event.pressed and was_touching and _has_movement_begun_already:
 			movement_ended.emit(current_direction)
 			_has_movement_begun_already = false
 			movement_axis = Vector2.ZERO
