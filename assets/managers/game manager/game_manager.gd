@@ -57,7 +57,7 @@ func _on_score_timer_timeout() -> void:
 func increaseScore(amount: int = score_increment_amount):
 	var currentScore: int = score
 	score = currentScore + amount
-	emit_signal("score_changed", currentScore, score)
+	score_changed.emit(currentScore, score)
 
 func _process(_delta: float) -> void:
 	if meteor_herd_buffered_for_puzzle and not is_solving_puzzle:
