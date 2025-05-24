@@ -20,7 +20,7 @@ const MAX_RADIUS := 100
 @export var damping: float = 0.0
 @export var acceleration: float = 2000.0
 @export var rotation_speed: float = 5.0
-const MAX_ROTATION: float = deg_to_rad(42.5)
+const MAX_ROTATION: float = deg_to_rad(30)
 var target_rotation: float = 0.0
 var is_starting_rotation: bool = false
 const ROTATION_CHANGE_THRESHOLD: float = deg_to_rad(80.0)
@@ -99,7 +99,7 @@ func _physics_process(delta: float) -> void:
 		is_starting_rotation = false
 
 	if is_starting_rotation:
-		sprite_container.rotation = lerp_angle(sprite_container.rotation, target_rotation, rotation_speed * delta)
+		sprite_container.rotation = 0
 
 	if velocity.length() > maximum_speed:
 		velocity = velocity.normalized() * maximum_speed
