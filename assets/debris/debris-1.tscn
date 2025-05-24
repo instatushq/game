@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cwkneci6tcu01" path="res://assets/components/ship_impacter/ship_impacter.tscn" id="1_e4il8"]
 [ext_resource type="Script" uid="uid://uyh5hiid4nbl" path="res://assets/debris/debris.gd" id="1_s77ue"]
-[ext_resource type="Texture2D" uid="uid://cf0crk4a2ormf" path="res://assets/debris/textures/spritesheet.png" id="3_s1mlm"]
+[ext_resource type="Texture2D" uid="uid://cf0crk4a2ormf" path="res://assets/debris/textures/fire asteroid 2.png" id="3_s1mlm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anue0"]
 atlas = ExtResource("3_s1mlm")
