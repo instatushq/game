@@ -12,11 +12,16 @@ class_name InternalShip
 var has_played_broken_animation: bool = false
 var is_playing_revive_animation: bool = false
 
+signal on_ship_broken
+signal on_ship_revived
+
 func _on_animation_finish() -> void:
 	if ship_sprite.animation == "breakdown":
 		ship_sprite.play("default" if is_playing_revive_animation else "broken")
 		screens_light.texture = broken_lights_texture
+		on_ship_broken.emit()
 		if is_playing_revive_animation:
+			on_ship_revived.emit()
 			is_playing_revive_animation = false
 			has_played_broken_animation = false
 			screens_light.texture = default_lights_texutres

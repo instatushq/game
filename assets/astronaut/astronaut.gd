@@ -31,6 +31,7 @@ var last_movement_direction: Vector2 = Vector2.ZERO
 @onready var astronaut_sprite: AnimatedSprite2D = $SpriteContainer/AnimatedSprite2D
 @onready var sprite_container: Node2D = $SpriteContainer
 @onready var idle_timer: Timer =  $SpriteContainer/AnimatedSprite2D/Timer
+@onready var astronaut_flashlight: AstronautFlashlight = $SpriteContainer/PointLight2D
 var is_solving_puzzle: bool = false
 @onready var astronaut_local_position: Vector2 = astronaut_sprite.position
 var current_direction: MovementDirection = MovementDirection.FORWARD
@@ -44,6 +45,12 @@ func _ready() -> void:
 	movement_began.connect(handle_movement_began)
 	movement_ended.connect(handle_movement_ended)
 	direction_changed_while_moving.connect(_handle_direction_changed_while_moving)
+	internal_ship.on_ship_revived.connect(func(): astronaut_flashlight.on_ship_revived())
+	internal_ship.on_ship_broken.connect(_on_internal_ship_broke)
+
+func _on_internal_ship_broke() -> void:
+	print("flame on fre")
+	astronaut_flashlight.on_ship_broken(_has_movement_begun_already)
 
 func _process(_delta: float) -> void:
 	if game_manager.current_player == GameManager.Player.SHIP: return
@@ -119,7 +126,7 @@ func _input(event: InputEvent) -> void:
 			var movement_direction := movement_axis.normalized()
 			var new_target = atan2(movement_direction.y, abs(movement_direction.x))
 			if movement_direction.x < 0:
-					new_target = -new_target			
+					new_target = -new_target
 		elif not event.pressed and was_touching and _has_movement_begun_already:
 			movement_ended.emit(current_direction)
 			_has_movement_begun_already = false
@@ -153,9 +160,13 @@ func handle_animation(movement_vector: Vector2) -> void:
 	if movement_vector.x > 0:
 		astronaut_sprite.position.x = -astronaut_local_position.x
 		astronaut_sprite.flip_h = false
+		if current_direction != MovementDirection.UP and current_direction != MovementDirection.DOWN:
+			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.RIGHT)
 	elif movement_vector.x < 0:
 		astronaut_sprite.position.x = astronaut_local_position.x
 		astronaut_sprite.flip_h = true
+		if current_direction != MovementDirection.UP and current_direction != MovementDirection.DOWN:
+			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.LEFT)
 
 func handle_animation_idle_blink() -> void:
 	astronaut_sprite.play("idle_blink")
@@ -172,16 +183,20 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	elif astronaut_sprite.animation == "begin_down":
 		astronaut_sprite.play("down")
 
-func handle_movement_began(_direction: MovementDirection) -> void:	
+func handle_movement_began(_direction: MovementDirection) -> void:
+	astronaut_flashlight.flame_on()
 	match _direction:
 		MovementDirection.FORWARD:
 			astronaut_sprite.play("begin_flight")
 		MovementDirection.UP:
 			astronaut_sprite.play("begin_up")
+			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.UP)
 		MovementDirection.DOWN:
 			astronaut_sprite.play("begin_down")
+			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.DOWN)
 
 func handle_movement_ended(_direction: MovementDirection) -> void:
+	astronaut_flashlight.flame_off()
 	match _direction:
 		MovementDirection.FORWARD:
 			astronaut_sprite.play("halting")
@@ -196,5 +211,7 @@ func _handle_direction_changed_while_moving(_old_direction: MovementDirection, n
 			astronaut_sprite.play("flight")
 		MovementDirection.UP:
 			astronaut_sprite.play("begin_up")
+			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.UP)
 		MovementDirection.DOWN:
 			astronaut_sprite.play("begin_down")
+			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.DOWN)

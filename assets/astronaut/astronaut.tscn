@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://byp6hvrh54j2d"]
+[gd_scene load_steps=69 format=3 uid="uid://byp6hvrh54j2d"]
 
 [ext_resource type="Script" uid="uid://i57yks2tesb6" path="res://assets/astronaut/astronaut.gd" id="1_ultts"]
 [ext_resource type="Texture2D" uid="uid://tfqkwo3oeep6" path="res://assets/astronaut/sprites/halting.png" id="2_2cjcx"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://jumkphn087od" path="res://assets/astronaut/sprites/idle.png" id="2_ultts"]
 [ext_resource type="Texture2D" uid="uid://bmwg8e33sqa8n" path="res://assets/astronaut/sprites/idle anim.png" id="3_bqctt"]
 [ext_resource type="Texture2D" uid="uid://brtnbep1ca10l" path="res://assets/astronaut/sprites/up.png" id="3_ubged"]
+[ext_resource type="Texture2D" uid="uid://b8jx5gok84hjm" path="res://assets/astronaut/textures/helmet light.png" id="8_ahefm"]
+[ext_resource type="Script" uid="uid://2gpupc8ev16h" path="res://assets/astronaut/astronaut_flashlight.gd" id="9_mmyod"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1dmai"]
 radius = 8.0
@@ -481,6 +483,7 @@ shape = SubResource("CapsuleShape2D_1dmai")
 position = Vector2(1, -28)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
+light_mask = 3
 position = Vector2(-11, -2)
 scale = Vector2(0.51, 0.51)
 sprite_frames = SubResource("SpriteFrames_x1ufq")
@@ -490,5 +493,17 @@ flip_h = true
 
 [node name="Timer" type="Timer" parent="SpriteContainer/AnimatedSprite2D"]
 wait_time = 4.0
+
+[node name="PointLight2D" type="PointLight2D" parent="SpriteContainer"]
+position = Vector2(1, -9)
+rotation = -0.698132
+scale = Vector2(0.5, 0.5)
+color = Color(0.117647, 0.552941, 0.827451, 1)
+energy = 4.0
+range_item_cull_mask = 2
+texture = ExtResource("8_ahefm")
+offset = Vector2(50, 45)
+texture_scale = 0.35
+script = ExtResource("9_mmyod")
 
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
