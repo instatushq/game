@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=56 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -555,6 +555,10 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_i8hiq"]
 gradient = SubResource("Gradient_xw88r")
 
+[sub_resource type="Gradient" id="Gradient_i8hiq"]
+offsets = PackedFloat32Array(0, 0.0603248, 0.50116, 0.944316, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.726852, 0.726852, 0.726852, 1, 0, 0.996078, 0.94902, 0.627451, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="InternalShip" type="Node2D"]
 script = ExtResource("1_jlxe3")
 default_lights_texutres = ExtResource("7_7h0eb")
@@ -651,6 +655,20 @@ energy = 0.0
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_i8hiq")
 texture_scale = 0.25
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 15)
+amount = 35
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(90, 70)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_amount_min = 0.4
+color_ramp = SubResource("Gradient_i8hiq")
 
 [connection signal="animation_finished" from="Animations" to="." method="_on_animator_animation_finish"]
 [connection signal="on_clear_issues" from="Issues" to="." method="_on_issues_on_clear_issues"]
