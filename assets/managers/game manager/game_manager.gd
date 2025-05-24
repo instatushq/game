@@ -8,6 +8,7 @@ enum Player {
 }
 
 @onready var ship: Ship = %Ship
+@onready var ship_health: ShipHealth = %Ship/Health
 @onready var astronaut: Astronaut = %Astronaut
 @onready var camera: Camera = %Camera
 @onready var timer: Timer = $ScoreTimer
@@ -16,7 +17,6 @@ enum Player {
 @onready var meteor_herd_ending_timer: Timer = $MeteorHerdEnd
 
 @export var current_player: Player = Player.SHIP
-
 
 signal score_changed(old_value: int, new_value: int)
 signal current_player_changed(new_current_player: Player)
@@ -130,3 +130,7 @@ func _on_meteor_herd_end_timeout() -> void:
 	is_meteor_herd_active = false
 	transition_screen.transition(_switch_to_astronaut_view, TransitionScreen.TransitionPoint.MIDDLE)
 	meteor_herd_ended.emit()
+
+func _on_ship_damage_timer_timeout() -> void:
+	if current_player == Player.ASTRONAUT:
+		ship_health.decrease_health(randi_range(1, 3))

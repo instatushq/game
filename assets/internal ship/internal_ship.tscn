@@ -604,7 +604,6 @@ position = Vector2(0, 62)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 3
 sprite_frames = SubResource("SpriteFrames_r65rw")
-animation = &"broken"
 autoplay = "default"
 
 [node name="Lights" type="Node2D" parent="AnimatedSprite2D"]
