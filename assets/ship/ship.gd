@@ -19,7 +19,7 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @onready var sprites_animation_player: AnimationPlayer = $RigidBody2D/SpritesContainer/SpritesAnimations
 @onready var canon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var canon_2: Node2D = $RigidBody2D/ShipPoints/Canon2
-@onready var root_of_scene: Node2D = get_tree().root.get_child(0)
+@onready var root_of_scene = get_tree().root.get_child(0)
 
 var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y: float = position.y;
@@ -65,11 +65,7 @@ func _input(event: InputEvent) -> void:
 			current_ship_y_position = clamp(current_ship_y_position - (event.relative.y * 0.5), 0, bottom_camera_movement_margin)
 
 func _handle_movement_score() -> void:
-	if -rb.global_position.y > last_recorded_y + 100:
-		var score_increase = 1
-		last_recorded_y = rb.global_position.y
-		if game_manager.current_player == GameManager.Player.SHIP:
-			game_manager.increaseScore(score_increase)
+	game_manager.increaseScore(1)
 
 func _physics_process(_delta: float) -> void:
 	_handle_movement_score()

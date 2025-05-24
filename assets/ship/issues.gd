@@ -35,11 +35,13 @@ func _on_area_exited(body: Node, zone: Area2D) -> void:
 	zone_body_exited.emit(zone, body)
 
 func _input(event: InputEvent) -> void:
+	if game_manager.is_controlling_ship() and not game_manager.is_meteor_herd_active: return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
 		if last_entered_zone != null:
 			var current_issue = current_issues[last_entered_zone.get_instance_id()]
 			current_issue.open_issue()
 			is_issue_open = true
+			game_manager.is_solving_puzzle = true
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_Q:
 		_generate_random_issue(_get_random_issueless_zone())
 
@@ -72,6 +74,7 @@ func _on_issue_resolved(zone: Area2D) -> void:
 	current_issues[issue_id].queue_free()
 	current_issues.erase(issue_id)
 	is_issue_open = false
+	game_manager.is_solving_puzzle = false
 	on_clear_issues.emit(has_any_issues())
 
 func _on_current_player_change(new_player: GameManager.Player):

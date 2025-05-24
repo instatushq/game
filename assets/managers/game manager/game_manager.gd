@@ -11,24 +11,45 @@ enum Player {
 @onready var astronaut: Astronaut = %Astronaut
 @onready var camera: Camera = %Camera
 @onready var timer: Timer = $ScoreTimer
+@onready var meteor_herd_timer: Timer = $MeteorHerdTimer
+@onready var meteor_herd_warning_timer: Timer = $MeteorHerdWarning
+@onready var meteor_herd_ending_timer: Timer = $MeteorHerdEnd
 
 @export var current_player: Player = Player.SHIP
 
+
 signal score_changed(old_value: int, new_value: int)
 signal current_player_changed(new_current_player: Player)
+signal meteor_herd_triggered
+signal meteor_herd_warning
+signal meteor_herd_buffered
+signal meteor_herd_sequence_started
+signal meteor_herd_ended
+signal meteor_herd_value_changed(new_value: int)
+
+
+@export_range(0, 100) var meteor_herd_chance: float = 80.0
+var meteor_herd_buffered_for_puzzle: bool = false
+var is_meteor_herd_active: bool = false
 
 @export var score: int = 0
 @export var score_increment_amount: int = 1
 @export var play_music: bool = false
-@onready var music: AudioStreamPlayer2D = Music
+@onready var music: AudioStreamPlayer = Music
+@onready var transition_screen: TransitionScreen = %"Transition Screen"
 var last_mouse_position: Vector2 = Vector2.ZERO
 var timepassed: int = 0
 
 var is_solving_puzzle: bool = false
 
 func _ready() -> void:
+	meteor_herd_warning.connect(_on_meteor_herd_warning)
 	if play_music:
 		music.play()
+
+func _physics_process(_delta: float) -> void:
+	if not meteor_herd_ending_timer.is_stopped() and not meteor_herd_ending_timer.paused:
+		meteor_herd_value_changed.emit(meteor_herd_ending_timer.time_left)
 
 func _on_score_timer_timeout() -> void:
 	increaseScore()
@@ -39,15 +60,20 @@ func increaseScore(amount: int = score_increment_amount):
 	emit_signal("score_changed", currentScore, score)
 
 func _process(_delta: float) -> void:
+	if meteor_herd_buffered_for_puzzle and not is_solving_puzzle:
+		meteor_herd_buffered_for_puzzle = false
+		meteor_herd_warning.emit()
+
 	timepassed += 1
 	if timepassed == 2:
 		switch_player(Player.ASTRONAUT)
 
-# func _input(event):
-# 	if event is InputEventKey and event.pressed:
-# 		if event.keycode == KEY_T:
-# 			var new_player: Player = Player.ASTRONAUT if is_controlling_ship() else Player.SHIP
-# 			switch_player(new_player)
+func _switch_to_ship_view() -> void:
+	meteor_herd_sequence_started.emit()
+	switch_player(Player.SHIP)
+
+func _switch_to_astronaut_view() -> void:
+	switch_player(Player.ASTRONAUT)
 
 func switch_player(player: Player) -> void:
 	match player:
@@ -83,3 +109,24 @@ func _switch_to_astronaut() -> void:
 	var viewport_center = get_viewport_rect().size / 2
 	Input.warp_mouse(viewport_center)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _on_meteor_herd_timer_timeout() -> void:
+	if randf_range(0, 100) <= meteor_herd_chance and not is_meteor_herd_active:
+		meteor_herd_buffered_for_puzzle = true
+		is_meteor_herd_active = true
+		meteor_herd_buffered.emit()
+
+func _on_meteor_herd_warning() -> void:
+	meteor_herd_warning_timer.start()
+	meteor_herd_triggered.emit()
+
+func _on_meteor_herd_warning_timeout() -> void:
+	transition_screen.transition(_switch_to_ship_view, TransitionScreen.TransitionPoint.MIDDLE)
+	timer.stop()
+	meteor_herd_ending_timer.start()
+
+func _on_meteor_herd_end_timeout() -> void:
+	timer.start()
+	is_meteor_herd_active = false
+	transition_screen.transition(_switch_to_astronaut_view, TransitionScreen.TransitionPoint.MIDDLE)
+	meteor_herd_ended.emit()

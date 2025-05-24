@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=38 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="1_tfagm"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_2oafy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b7u0ad703omfw" path="res://assets/environment/backgrounds/stars/stars2.png" id="3_aw4ih"]
 [ext_resource type="Texture2D" uid="uid://dcg17ivsklgrk" path="res://assets/environment/backgrounds/stars/stars3.png" id="4_abrck"]
 [ext_resource type="PackedScene" uid="uid://dt0dai5l5rmx5" path="res://assets/environment/spawnable elements/small_planet.tscn" id="4_t4yvt"]
+[ext_resource type="AudioStream" uid="uid://xmgb8tmdyuy0" path="res://assets/audio/background/ambience.mp3" id="5_cabrn"]
 [ext_resource type="Texture2D" uid="uid://d0kk5ret3umsa" path="res://assets/environment/backgrounds/stars/stars4.png" id="5_o10iu"]
 [ext_resource type="Texture2D" uid="uid://b8vi86k1c3u4" path="res://assets/environment/backgrounds/stars/stars5.png" id="6_2oafy"]
 [ext_resource type="Texture2D" uid="uid://dfv1xcd4bydt5" path="res://assets/environment/backgrounds/stars/stars6.png" id="7_7wclo"]
@@ -104,6 +105,13 @@ scale = Vector2(0.397925, 0.397925)
 position = Vector2(-214, 74)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("13_t6o86")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="InternalShip"]
+stream = ExtResource("5_cabrn")
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.0
+bus = &"Ambience"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 unique_name_in_owner = true
@@ -363,6 +371,7 @@ unique_name_in_owner = true
 
 [node name="GameManager" parent="." instance=ExtResource("16_yklg6")]
 unique_name_in_owner = true
+meteor_herd_chance = 40.0
 play_music = true
 
 [node name="Walls" parent="." instance=ExtResource("17_770c0")]
@@ -394,7 +403,9 @@ maximum_speed = 75.0
 damping = 2.0
 
 [node name="Transition Screen" parent="." instance=ExtResource("34_t6o86")]
+unique_name_in_owner = true
 start_dark = true
 
 [connection signal="current_player_changed" from="GameManager" to="InternalShip" method="_on_game_manager_current_player_changed"]
+[connection signal="meteor_herd_warning" from="GameManager" to="HUD" method="_on_meteor_herd_begin"]
 [connection signal="on_movement_vector_changed" from="Astronaut" to="Camera" method="_on_astronaut_on_movement_vector_changed"]

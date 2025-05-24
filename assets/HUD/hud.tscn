@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=12 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="2_jn2t8"]
@@ -15,27 +15,11 @@ default_font = ExtResource("2_jn2t8")
 default_font_size = 80
 
 [sub_resource type="LabelSettings" id="LabelSettings_vq446"]
-line_spacing = 40.0
+line_spacing = 15.0
 font_size = 70
-font_color = Color(0.996078, 0.262745, 0.0196078, 1)
+font_color = Color(0.8, 0.258824, 0, 1)
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_jn2t8"]
-resource_name = "warning"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
 
 [sub_resource type="Animation" id="Animation_y0j1j"]
 length = 0.001
@@ -67,12 +51,35 @@ tracks/0/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_jn2t8"]
+resource_name = "warning"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y0j1j"]
 _data = {
 &"RESET": SubResource("Animation_y0j1j"),
 &"hide": SubResource("Animation_vq446"),
 &"warning": SubResource("Animation_jn2t8")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_y0j1j"]
+line_spacing = 40.0
+font_size = 70
+font_color = Color(0, 0.733333, 0.8, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
@@ -111,13 +118,13 @@ vertical_alignment = 1
 
 [node name="WarningRectangle" type="ColorRect" parent="."]
 show_behind_parent = true
-custom_minimum_size = Vector2(1000, 300)
+custom_minimum_size = Vector2(1000, 310)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -500.0
 offset_right = 500.0
-offset_bottom = 400.0
+offset_bottom = 310.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 0.176471)
 
@@ -126,13 +133,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_y0j1j")
 theme_type_variation = &"HeaderSmall"
 text = "WARNING
-SHIT INCOMING SHOOT AND AVOID"
+METEOR HERD INCOMING
+ SHOOT AND AVOID to survive"
 label_settings = SubResource("LabelSettings_vq446")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -146,5 +156,33 @@ autoplay = "hide"
 [node name="Timer" type="Timer" parent="WarningRectangle"]
 wait_time = 3.0
 one_shot = true
+
+[node name="MeteorCountdown" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Countdown" type="Label" parent="MeteorCountdown"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_y0j1j")
+theme_type_variation = &"HeaderSmall"
+text = "60 S"
+label_settings = SubResource("LabelSettings_y0j1j")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [connection signal="timeout" from="WarningRectangle/Timer" to="." method="_on_timer_timeout"]
