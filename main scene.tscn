@@ -398,8 +398,8 @@ position = Vector2(-7, 535)
 [node name="Astronaut" parent="." instance=ExtResource("22_ysk47")]
 unique_name_in_owner = true
 position = Vector2(-1111, 30)
-movement_speed = 100.0
-maximum_speed = 75.0
+movement_speed = 60.0
+maximum_speed = 60.0
 damping = 2.0
 
 [node name="Transition Screen" parent="." instance=ExtResource("34_t6o86")]

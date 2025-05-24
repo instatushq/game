@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brtnbep1ca10l"
-path="res://.godot/imported/up.png-d1f9755a48cb5d02e3f47172d7dda0d7.ctex"
+uid="uid://cp3gilgmyrmwr"
+path="res://.godot/imported/move down.png-4d4ae43b925247646e76bdaaf36a6552.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/astronaut/sprites/up.png"
-dest_files=["res://.godot/imported/up.png-d1f9755a48cb5d02e3f47172d7dda0d7.ctex"]
+source_file="res://assets/astronaut/sprites/move down.png"
+dest_files=["res://.godot/imported/move down.png-4d4ae43b925247646e76bdaaf36a6552.ctex"]
 
 [params]
 

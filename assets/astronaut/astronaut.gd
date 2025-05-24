@@ -34,6 +34,9 @@ var last_movement_direction: Vector2 = Vector2.ZERO
 var is_solving_puzzle: bool = false
 @onready var astronaut_local_position: Vector2 = astronaut_sprite.position
 var current_direction: MovementDirection = MovementDirection.FORWARD
+const MOVEMENT_DEADZONE_PERCENTAGE: float = 0.2
+var joystick_movement_vector: Vector2 = Vector2.ZERO
+var _has_movement_begun_already: bool = false
 
 func _ready() -> void:
 	idle_timer.stop()
@@ -71,7 +74,7 @@ func _physics_process(delta: float) -> void:
 		
 		var old_direction = current_direction
 		if new_target > MAX_ROTATION or new_target < -MAX_ROTATION:
-			current_direction = MovementDirection.UP if new_target > MAX_ROTATION else MovementDirection.DOWN
+			current_direction = MovementDirection.DOWN if (new_target > MAX_ROTATION) == (movement_direction.x > 0) else MovementDirection.UP
 			target_rotation = 0.0
 			sprite_container.rotation = 0.0
 			is_starting_rotation = false
@@ -86,7 +89,7 @@ func _physics_process(delta: float) -> void:
 				is_starting_rotation = true
 			target_rotation = new_target
 			
-		if old_direction != current_direction:
+		if old_direction != current_direction and joystick_movement_vector.length() > MOVEMENT_DEADZONE_PERCENTAGE:
 			direction_changed_while_moving.emit(old_direction, current_direction)
 	else:
 		if damping != 0:
@@ -116,12 +119,10 @@ func _input(event: InputEvent) -> void:
 			var movement_direction := movement_axis.normalized()
 			var new_target = atan2(movement_direction.y, abs(movement_direction.x))
 			if movement_direction.x < 0:
-				new_target = -new_target
-
-			movement_began.emit(current_direction)
-			
-		elif not event.pressed and was_touching:
+					new_target = -new_target			
+		elif (not event.pressed and was_touching) or joystick_movement_vector.length() > MOVEMENT_DEADZONE_PERCENTAGE:
 			movement_ended.emit(current_direction)
+			_has_movement_begun_already = false
 			movement_axis = Vector2.ZERO
 			
 	elif isTouching and (event is InputEventScreenDrag or event is InputEventMouseMotion):
@@ -130,14 +131,21 @@ func _input(event: InputEvent) -> void:
 			drag_vector = drag_vector.normalized() * MAX_RADIUS
 
 		movement_axis = drag_vector
+		var normalized_joystick = drag_vector / MAX_RADIUS
+		joystick_movement_vector = normalized_joystick
+		if joystick_movement_vector.length() > MOVEMENT_DEADZONE_PERCENTAGE and not _has_movement_begun_already:
+			_has_movement_begun_already = true
+			movement_began.emit(current_direction)
+	else:
+		joystick_movement_vector = Vector2.ZERO
 	
-	handle_animation(movement_axis)
-		
+	handle_animation(joystick_movement_vector)
 
 func handle_animation(movement_vector: Vector2) -> void:
-	if movement_vector.length() == 0:
+	if movement_vector.length() <= MOVEMENT_DEADZONE_PERCENTAGE:
 		if idle_timer.is_stopped():
 			idle_timer.start()
+		return
 	else:
 		if not idle_timer.is_stopped():
 			idle_timer.stop()
@@ -155,21 +163,23 @@ func handle_animation_idle_blink() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if astronaut_sprite.animation == "idle_blink":
 		astronaut_sprite.play("idle")
-	elif astronaut_sprite.animation == "halting" or astronaut_sprite.animation == "halting_up":
+	elif astronaut_sprite.animation == "halting" or astronaut_sprite.animation == "halting_up" or astronaut_sprite.animation == "halting_down":
 		astronaut_sprite.play("idle")
 	elif astronaut_sprite.animation == "begin_flight":
 		astronaut_sprite.play("flight")
 	elif astronaut_sprite.animation == "begin_up":
 		astronaut_sprite.play("up")
+	elif astronaut_sprite.animation == "begin_down":
+		astronaut_sprite.play("down")
 
-func handle_movement_began(_direction: MovementDirection) -> void:
+func handle_movement_began(_direction: MovementDirection) -> void:	
 	match _direction:
 		MovementDirection.FORWARD:
 			astronaut_sprite.play("begin_flight")
 		MovementDirection.UP:
 			astronaut_sprite.play("begin_up")
 		MovementDirection.DOWN:
-			astronaut_sprite.play("begin_up")
+			astronaut_sprite.play("begin_down")
 
 func handle_movement_ended(_direction: MovementDirection) -> void:
 	match _direction:
@@ -178,7 +188,7 @@ func handle_movement_ended(_direction: MovementDirection) -> void:
 		MovementDirection.UP:
 			astronaut_sprite.play("halting_up")
 		MovementDirection.DOWN:
-			astronaut_sprite.play("halting_up")
+			astronaut_sprite.play("halting_down")
 
 func _handle_direction_changed_while_moving(_old_direction: MovementDirection, new_direction: MovementDirection) -> void:
 	match new_direction:
@@ -187,4 +197,4 @@ func _handle_direction_changed_while_moving(_old_direction: MovementDirection, n
 		MovementDirection.UP:
 			astronaut_sprite.play("up")
 		MovementDirection.DOWN:
-			astronaut_sprite.play("up")
+			astronaut_sprite.play("down")
