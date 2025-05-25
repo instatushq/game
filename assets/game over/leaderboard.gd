@@ -33,7 +33,8 @@ func _ready() -> void:
 	query_rank_request.request_completed.connect(_on_query_rank_request_completed)
 	submit_score_request.request_completed.connect(_on_submit_score_request_completed)
 	query_rank_request.request("http://localhost:3000/leaderboard/rank/" + str(current_player_score))
-
+	
+	name_edit.grab_focus()
 
 func set_entries_data(entries: Array) -> void:
 	entries_data = entries
@@ -51,6 +52,7 @@ func _on_query_rank_request_completed(_result: int, _response_code: int, _header
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	if json == null:
 		push_error("Failed to parse JSON response")
+		score_rank.text = "N/A"
 		return
 	
 	score_rank.text = str(int(json.rank)) + " " + Rank.get_ordinal_suffix(int(json.rank))
@@ -74,6 +76,9 @@ func _on_name_edit_text_submitted(new_text: String) -> void:
 		save_score(current_player_score, new_text)
 
 func save_score(score: int, player_name: String) -> void:
+	if player_name.strip_edges().is_empty():
+		return
+		
 	var headers = ["Content-Type: application/json"]
 	var payload = JSON.stringify({"score": score, "name": player_name})
 
@@ -103,6 +108,17 @@ func toggle_form(enabled: bool) -> void:
 	name_edit.focus_mode = Control.FOCUS_ALL if enabled else Control.FOCUS_NONE
 	name_edit.selecting_enabled = enabled
 	name_edit.caret_blink = enabled
-	name_edit.caret_force_displayed = enabled
 	if not enabled:
 		name_edit.release_focus()
+
+
+func _on_name_edit_text_changed(new_text: String) -> void:
+	var filtered_text = ""
+	for character in new_text:
+		if character.is_valid_identifier():
+			filtered_text += character
+	
+	# If the text was modified, update the LineEdit
+	if filtered_text != new_text:
+		name_edit.text = filtered_text
+		name_edit.caret_column = filtered_text.length()

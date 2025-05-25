@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bnb6fd0uu1p82"]
+[gd_scene load_steps=37 format=3 uid="uid://bnb6fd0uu1p82"]
 
 [ext_resource type="Script" uid="uid://ckjc6b027vyxq" path="res://assets/game over/game_over.gd" id="1_5d7i2"]
 [ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="1_064we"]
@@ -80,6 +80,9 @@ font_color = Color(4.71681e-06, 0.625889, 0.830778, 1)
 default_font = ExtResource("22_36qrg")
 default_font_size = 26
 LineEdit/colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+LineEdit/styles/focus = null
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vf5at"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqfd3"]
 
@@ -414,12 +417,12 @@ label_settings = SubResource("LabelSettings_vf5at")
 custom_minimum_size = Vector2(39, 0)
 layout_mode = 2
 theme = SubResource("Theme_aqfd3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vf5at")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_aqfd3")
 placeholder_text = "NAM"
 alignment = 1
 max_length = 3
 caret_blink = true
-caret_force_displayed = true
 
 [node name="Score" type="Label" parent="Camera2D/Leaderboard/VBoxContainer/Form/CenterContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -453,6 +456,7 @@ unique_name_in_owner = true
 start_dark = true
 
 [connection signal="on_added_new_score" from="Camera2D/Leaderboard" to="." method="_on_leaderboard_on_added_new_score"]
+[connection signal="text_changed" from="Camera2D/Leaderboard/VBoxContainer/Form/CenterContainer/HBoxContainer/NameEdit" to="Camera2D/Leaderboard" method="_on_name_edit_text_changed"]
 [connection signal="text_submitted" from="Camera2D/Leaderboard/VBoxContainer/Form/CenterContainer/HBoxContainer/NameEdit" to="Camera2D/Leaderboard" method="_on_name_edit_text_submitted"]
 [connection signal="pressed" from="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer/SaveScore" to="Camera2D/Leaderboard" method="_on_save_score_pressed"]
 [connection signal="pressed" from="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer/MainMenu" to="Camera2D/Leaderboard" method="_on_press_main_menu"]
