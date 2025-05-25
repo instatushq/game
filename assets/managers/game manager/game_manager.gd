@@ -78,6 +78,10 @@ func _process(_delta: float) -> void:
 	if timepassed == 2:
 		switch_player(Player.ASTRONAUT)
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_N:
+		on_death.emit()
+
 func _switch_to_ship_view() -> void:
 	meteor_herd_sequence_started.emit()
 	switch_player(Player.SHIP)
