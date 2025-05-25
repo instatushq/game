@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvwxedgu7n73u"]
+
+[ext_resource type="Script" uid="uid://b1ptkit31jn4v" path="res://assets/game over/leaderboard_entry.gd" id="1_1wn1q"]
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="1_6js57"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_36qrg"]
+font = ExtResource("1_6js57")
+font_size = 26
+
+[node name="Entry" type="HBoxContainer"]
+theme_override_constants/separation = 90
+script = ExtResource("1_1wn1q")
+
+[node name="Rank" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "1ST"
+label_settings = SubResource("LabelSettings_36qrg")
+
+[node name="Name" type="Label" parent="."]
+custom_minimum_size = Vector2(39, 0)
+layout_mode = 2
+text = "zzz"
+label_settings = SubResource("LabelSettings_36qrg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "0150000"
+label_settings = SubResource("LabelSettings_36qrg")
+horizontal_alignment = 2

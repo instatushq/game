@@ -36,6 +36,7 @@ var is_meteor_herd_active: bool = false
 @export var score_increment_amount: int = 1
 @export var play_music: bool = false
 @onready var music: AudioStreamPlayer = Music
+@onready var game_stats: GameStats = Stats
 @onready var transition_screen: TransitionScreen = %"Transition Screen"
 var last_mouse_position: Vector2 = Vector2.ZERO
 var timepassed: int = 0
@@ -57,6 +58,7 @@ func _on_score_timer_timeout() -> void:
 func increaseScore(amount: int = score_increment_amount):
 	var currentScore: int = score
 	score = currentScore + amount
+	game_stats.current_score = score
 	score_changed.emit(currentScore, score)
 
 func _process(_delta: float) -> void:

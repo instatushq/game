@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://bnb6fd0uu1p82"]
+[gd_scene load_steps=36 format=3 uid="uid://bnb6fd0uu1p82"]
 
+[ext_resource type="Script" uid="uid://ckjc6b027vyxq" path="res://assets/game over/game_over.gd" id="1_5d7i2"]
 [ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="1_064we"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="1_jps65"]
 [ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy2.png" id="2_qs7s7"]
@@ -21,6 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://x1eieaqt1a0v" path="res://assets/environment/spawnable elements/blackhole/blackhole.tscn" id="17_w3olx"]
 [ext_resource type="PackedScene" uid="uid://bjngyues28e0r" path="res://assets/managers/environment manager/environment_manager.tscn" id="20_ypvgp"]
 [ext_resource type="Script" uid="uid://df6mg4hdegm0q" path="res://assets/game over/game over camera.gd" id="21_wph33"]
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="22_36qrg"]
+[ext_resource type="Script" uid="uid://cy4uajxv2llta" path="res://assets/game over/leaderboard.gd" id="22_q4pyq"]
+[ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="22_ypvgp"]
+[ext_resource type="PackedScene" uid="uid://bvwxedgu7n73u" path="res://assets/game over/leaderboard_entry.tscn" id="25_aqfd3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_36qrg"]
 noise_type = 0
@@ -58,7 +63,38 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_aqfd3"]
+font = ExtResource("22_36qrg")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_36qrg"]
+font = ExtResource("22_36qrg")
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_vf5at"]
+font = ExtResource("22_36qrg")
+font_size = 26
+font_color = Color(4.71681e-06, 0.625889, 0.830778, 1)
+
+[sub_resource type="Theme" id="Theme_aqfd3"]
+default_font = ExtResource("22_36qrg")
+default_font_size = 26
+LineEdit/colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqfd3"]
+
+[sub_resource type="Theme" id="Theme_vf5at"]
+default_font = ExtResource("22_36qrg")
+default_font_size = 26
+
+[sub_resource type="Theme" id="Theme_1hdpe"]
+default_font = ExtResource("22_36qrg")
+default_font_size = 26
+
 [node name="GameOver" type="Node2D"]
+script = ExtResource("1_5d7i2")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 unique_name_in_owner = true
@@ -185,6 +221,7 @@ texture = ExtResource("5_wph33")
 [node name="Front Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-401.19, 962)
 scale = Vector2(1.5, 1.5)
+motion_scale = Vector2(1.2, 1.2)
 motion_mirroring = Vector2(0, 717.81)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
@@ -296,40 +333,126 @@ zoom = Vector2(2, 2)
 script = ExtResource("21_wph33")
 movement_speed = 100.0
 
-[node name="Control" type="Control" parent="Camera2D"]
+[node name="Leaderboard" type="Control" parent="Camera2D" node_paths=PackedStringArray("screen_transition")]
 layout_mode = 3
-anchors_preset = 0
-offset_top = -14.0
-offset_right = 40.0
-offset_bottom = 26.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("22_q4pyq")
+screen_transition = NodePath("../../Transition Screen")
+entry_scene = ExtResource("25_aqfd3")
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D/Control"]
-layout_mode = 0
-offset_left = -207.0
-offset_top = -184.0
-offset_right = -157.0
-offset_bottom = -134.0
+[node name="BG" type="ColorRect" parent="Camera2D/Leaderboard"]
+layout_mode = 1
+offset_left = -320.0
+offset_top = -304.0
+offset_right = -245.0
+offset_bottom = -229.0
 scale = Vector2(8.31637, 8.31637)
 color = Color(0, 0, 0, 0.65098)
 
-[node name="VFlowContainer" type="VFlowContainer" parent="Camera2D/Control/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Leaderboard"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -268.0
+offset_top = -298.0
+offset_right = 250.0
+offset_bottom = 281.0
+theme_override_constants/separation = 20
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/Control/ColorRect/VFlowContainer"]
+[node name="Title" type="Label" parent="Camera2D/Leaderboard/VBoxContainer"]
+custom_minimum_size = Vector2(39, 0)
+layout_mode = 2
+text = "SCOREBOARD"
+label_settings = SubResource("LabelSettings_aqfd3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Labels" type="GridContainer" parent="Camera2D/Leaderboard/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 180
+columns = 3
+
+[node name="Label" type="Label" parent="Camera2D/Leaderboard/VBoxContainer/Labels"]
+layout_mode = 2
+text = "Rank"
+label_settings = SubResource("LabelSettings_36qrg")
+
+[node name="Label2" type="Label" parent="Camera2D/Leaderboard/VBoxContainer/Labels"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_36qrg")
+
+[node name="Label3" type="Label" parent="Camera2D/Leaderboard/VBoxContainer/Labels"]
+layout_mode = 2
+text = "Score"
+label_settings = SubResource("LabelSettings_36qrg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Leaderboard/VBoxContainer"]
+layout_mode = 2
+
+[node name="Form" type="VBoxContainer" parent="Camera2D/Leaderboard/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="Camera2D/Leaderboard/VBoxContainer/Form"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Leaderboard/VBoxContainer/Form/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Rank" type="Label" parent="Camera2D/Leaderboard/VBoxContainer/Form/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "1ST"
+label_settings = SubResource("LabelSettings_vf5at")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Camera2D/Control/ColorRect/VFlowContainer"]
+[node name="NameEdit" type="LineEdit" parent="Camera2D/Leaderboard/VBoxContainer/Form/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(39, 0)
 layout_mode = 2
-text = "1ST"
+theme = SubResource("Theme_aqfd3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aqfd3")
+placeholder_text = "NAM"
+alignment = 1
+max_length = 3
+caret_blink = true
+caret_force_displayed = true
+
+[node name="Score" type="Label" parent="Camera2D/Leaderboard/VBoxContainer/Form/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "0150000"
+label_settings = SubResource("LabelSettings_vf5at")
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Camera2D/Leaderboard/VBoxContainer/Form"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SaveScore" type="Button" parent="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = SubResource("Theme_vf5at")
+text = "SAVE"
+
+[node name="MainMenu" type="Button" parent="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = SubResource("Theme_1hdpe")
+text = "MAIN MENU"
+
+[node name="SubmitScore" type="HTTPRequest" parent="Camera2D/Leaderboard/VBoxContainer/Form"]
+
+[node name="QueryRank" type="HTTPRequest" parent="Camera2D/Leaderboard/VBoxContainer/Form"]
+
+[node name="Transition Screen" parent="." instance=ExtResource("22_ypvgp")]
+unique_name_in_owner = true
+start_dark = true
+
+[connection signal="on_added_new_score" from="Camera2D/Leaderboard" to="." method="_on_leaderboard_on_added_new_score"]
+[connection signal="text_submitted" from="Camera2D/Leaderboard/VBoxContainer/Form/CenterContainer/HBoxContainer/NameEdit" to="Camera2D/Leaderboard" method="_on_name_edit_text_submitted"]
+[connection signal="pressed" from="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer/SaveScore" to="Camera2D/Leaderboard" method="_on_save_score_pressed"]
+[connection signal="pressed" from="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer/MainMenu" to="Camera2D/Leaderboard" method="_on_press_main_menu"]
