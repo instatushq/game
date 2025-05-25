@@ -4,6 +4,7 @@ class_name InternalShip
 
 @onready var ship_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var issues: Issues = $Issues
+@onready var ship_health: ShipHealth = %Ship/Health
 @onready var animator: AnimationPlayer = $Animations
 @onready var game_manager: GameManager = %GameManager
 @onready var screens_light: PointLight2D = $AnimatedSprite2D/Lights/Screens
@@ -16,23 +17,26 @@ var issue_generated_during_revival: bool = false
 signal on_ship_broken
 signal on_ship_revived
 
+func _ready() -> void:
+	issues.on_clear_issues.connect(_on_issue_resolved)
+
+func _on_issue_resolved(_issues_left: bool) -> void:
+	ship_health.increase_health(randi_range(2, 5))
+
 func _on_animation_finish() -> void:
 	if ship_sprite.animation == "breakdown":
 		if is_playing_revive_animation:
 			if issue_generated_during_revival:
-				# If an issue was generated during revival, play the full breakdown sequence
 				ship_sprite.play("breakdown")
 				animator.play("breakdown")
 				issue_generated_during_revival = false
 			else:
-				# Normal revival completion
 				ship_sprite.play("default")
 				screens_light.texture = default_lights_texutres
 				on_ship_revived.emit()
 			is_playing_revive_animation = false
 			has_played_broken_animation = false
 		else:
-			# Normal breakdown completion
 			ship_sprite.play("broken")
 			screens_light.texture = broken_lights_texture
 			on_ship_broken.emit()
@@ -54,7 +58,7 @@ func _on_issues_on_clear_issues(issues_left: bool) -> void:
 func _on_animator_animation_finish(anim_name: StringName) -> void:
 	if anim_name == "breakdown":
 		animator.play("broken")
-		if not is_playing_revive_animation:  # Only emit broken signal if not in revival
+		if not is_playing_revive_animation:
 			on_ship_broken.emit()
 
 func _on_issues_on_issue_generated(_zone: Area2D, issues_count: int) -> void:
