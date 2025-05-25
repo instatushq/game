@@ -14,6 +14,10 @@ const RED = Color(1, 0, 0)
 const GREY = Color(0.5, 0.5, 0.5)
 const WHITE = Color(1, 1, 1)
 
+func _resolve_issue() -> void:
+	var parent: Issue = get_parent()
+	parent.issue_resolved.emit()
+
 
 func _generate_new_sequence() -> void:
 	correctSequence.clear()
@@ -59,9 +63,9 @@ func _check_sequence() -> void:
 	else:
 		var dot = $ProgressDots.get_node("4")
 		dot.modulate = GREEN
-		$result.text = "Issue resolved!! ⚡️"
 		canAcceptInput = false
-		# TODO: win
+		$result.text = "Issue resolved!! ⚡️"
+		_resolve_issue()
 	buttonSequence.clear()
 
 func _set_button_colors(newColor: Color) -> void:
