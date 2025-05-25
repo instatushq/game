@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export async function getTopPlayers(amount: number = 10) {
   return await prisma.scores.findMany({
-    orderBy: { score: "desc" },
+    orderBy: [{ score: "desc" }, { createdAt: "desc" }],
     take: amount,
   });
 }
