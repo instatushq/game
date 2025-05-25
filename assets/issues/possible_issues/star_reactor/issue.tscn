@@ -17,7 +17,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_y3iom")
-ButtonFlashTime = 0.35
+ButtonFlashTime = 0.25
+TimeBetweenFlashes = 0.1
 
 [node name="ProgressDots" type="HBoxContainer" parent="ColorRect"]
 layout_mode = 1

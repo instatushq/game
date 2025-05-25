@@ -8,6 +8,7 @@ var correctSequence: Array[int] = []
 var currentRun: int = 1
 var maxRuns: int = 5
 var canAcceptInput: bool = false
+var isShowingSequence: bool = false
 
 const GREEN = Color(0, 1, 0)
 const RED = Color(1, 0, 0)
@@ -27,30 +28,38 @@ func _generate_new_sequence() -> void:
 	_show_sequence()
 
 func _show_sequence() -> void:
+	if isShowingSequence:
+		return
+		
+	isShowingSequence = true
 	canAcceptInput = false
+	
 	for i in range(correctSequence.size()):
 		var button = $InputPanel/InputGrid.get_node(str(correctSequence[i]))
 		button.modulate = RED
 		await get_tree().create_timer(ButtonFlashTime).timeout
 		button.modulate = WHITE
 		await get_tree().create_timer(TimeBetweenFlashes).timeout
+	
+	isShowingSequence = false
 	canAcceptInput = true
 
 func _on_button_pressed(button: TextureButton) -> void:
-	if not canAcceptInput:
+	if not canAcceptInput or isShowingSequence:
 		return
 		
 	var button_number = int(button.name)
 	buttonSequence.append(button_number)
+	
 	if button_number != correctSequence[buttonSequence.size() - 1]:
 		_show_mistake()
 		return
+	if buttonSequence.size() == correctSequence.size():
+		_check_sequence()
+
 	button.modulate = GREEN
 	await get_tree().create_timer(0.2).timeout
 	button.modulate = WHITE
-	
-	if buttonSequence.size() == correctSequence.size():
-		_check_sequence()
 
 func _check_sequence() -> void:
 	$result.text = "Correct incident response"
@@ -65,6 +74,7 @@ func _check_sequence() -> void:
 		dot.modulate = GREEN
 		canAcceptInput = false
 		$result.text = "Issue resolved!! ⚡️"
+		await get_tree().create_timer(1.5).timeout
 		_resolve_issue()
 	buttonSequence.clear()
 
