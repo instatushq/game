@@ -15,5 +15,9 @@
   },
   "devDependencies": {
     "ts-node": "^10.9.2"
+  },
+  "scripts": {
+    "build": "npx prisma generate && npx tsc",
+    "start": "node dist/index.js"
   }
 }
