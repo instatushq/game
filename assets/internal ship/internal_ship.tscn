@@ -593,7 +593,7 @@ shape = SubResource("RectangleShape2D_46acj")
 debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
 
 [node name="Timer" type="Timer" parent="Issues"]
-wait_time = 10.0
+wait_time = 5.0
 autostart = true
 
 [node name="Points" type="Node2D" parent="."]

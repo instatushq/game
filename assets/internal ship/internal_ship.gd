@@ -11,20 +11,31 @@ class_name InternalShip
 @export var broken_lights_texture: Texture2D
 var has_played_broken_animation: bool = false
 var is_playing_revive_animation: bool = false
+var issue_generated_during_revival: bool = false
 
 signal on_ship_broken
 signal on_ship_revived
 
 func _on_animation_finish() -> void:
 	if ship_sprite.animation == "breakdown":
-		ship_sprite.play("default" if is_playing_revive_animation else "broken")
-		screens_light.texture = broken_lights_texture
-		on_ship_broken.emit()
 		if is_playing_revive_animation:
-			on_ship_revived.emit()
+			if issue_generated_during_revival:
+				# If an issue was generated during revival, play the full breakdown sequence
+				ship_sprite.play("breakdown")
+				animator.play("breakdown")
+				issue_generated_during_revival = false
+			else:
+				# Normal revival completion
+				ship_sprite.play("default")
+				screens_light.texture = default_lights_texutres
+				on_ship_revived.emit()
 			is_playing_revive_animation = false
 			has_played_broken_animation = false
-			screens_light.texture = default_lights_texutres
+		else:
+			# Normal breakdown completion
+			ship_sprite.play("broken")
+			screens_light.texture = broken_lights_texture
+			on_ship_broken.emit()
 
 func _on_game_manager_current_player_changed(new_current_player: GameManager.Player) -> void:
 	if new_current_player == GameManager.Player.SHIP: return
@@ -43,8 +54,14 @@ func _on_issues_on_clear_issues(issues_left: bool) -> void:
 func _on_animator_animation_finish(anim_name: StringName) -> void:
 	if anim_name == "breakdown":
 		animator.play("broken")
+		if not is_playing_revive_animation:  # Only emit broken signal if not in revival
+			on_ship_broken.emit()
 
 func _on_issues_on_issue_generated(_zone: Area2D, issues_count: int) -> void:
+	if is_playing_revive_animation:
+		issue_generated_during_revival = true
+		return
+		
 	if issues_count == 1 and not has_played_broken_animation and game_manager.current_player == GameManager.Player.ASTRONAUT:
 		has_played_broken_animation = true
 		ship_sprite.play("breakdown")

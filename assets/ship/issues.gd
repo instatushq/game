@@ -6,7 +6,7 @@ class_name Issues
 var possible_zones: Array = []
 
 var current_issues: Dictionary = {}
-var chance_of_issues: int = 80
+var chance_of_issues: int = 50
 var last_entered_zone: Area2D = null
 var is_issue_open: bool = false
 @onready var game_manager: GameManager = get_node("/root/Game/GameManager")

@@ -15,7 +15,7 @@ func _ready() -> void:
 		mole.mole_hit.connect(_on_mole_hit)
 		mole.mole_missed.connect(_on_mole_missed)
 
-	score_per_mole = randi_range(400, 500)
+	score_per_mole = randi_range(6000, 6000)
 	MaxXP.text = "/ " + str(score_goal) + " XP"
 	XP.text = str(score)
 	cooldown_timer.timeout.connect(_on_cooldown_timer_timeout)

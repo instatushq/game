@@ -49,7 +49,6 @@ func _ready() -> void:
 	internal_ship.on_ship_broken.connect(_on_internal_ship_broke)
 
 func _on_internal_ship_broke() -> void:
-	print("flame on fre")
 	astronaut_flashlight.on_ship_broken(_has_movement_begun_already)
 
 func _process(_delta: float) -> void:
