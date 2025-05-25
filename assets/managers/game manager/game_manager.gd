@@ -2,6 +2,9 @@ extends Node2D
 
 class_name GameManager
 
+signal on_death
+var is_dead_already: bool = false
+
 enum Player {
 	SHIP,
 	ASTRONAUT
@@ -9,12 +12,14 @@ enum Player {
 
 @onready var ship: Ship = %Ship
 @onready var ship_health: ShipHealth = %Ship/Health
+@onready var ship_fuel: ShipFuel = %Ship/Fuel
 @onready var astronaut: Astronaut = %Astronaut
 @onready var camera: Camera = %Camera
 @onready var timer: Timer = $ScoreTimer
 @onready var meteor_herd_timer: Timer = $MeteorHerdTimer
 @onready var meteor_herd_warning_timer: Timer = $MeteorHerdWarning
 @onready var meteor_herd_ending_timer: Timer = $MeteorHerdEnd
+@onready var screen_transition: TransitionScreen = %"Transition Screen"
 
 @export var current_player: Player = Player.SHIP
 
@@ -45,6 +50,9 @@ var is_solving_puzzle: bool = false
 
 func _ready() -> void:
 	meteor_herd_warning.connect(_on_meteor_herd_warning)
+	ship_fuel.on_fuel_change.connect(_on_readings_change)
+	ship_health.on_health_change.connect(_on_readings_change)
+	on_death.connect(_on_astronaut_death)
 	if play_music:
 		music.play()
 
@@ -136,3 +144,24 @@ func _on_meteor_herd_end_timeout() -> void:
 func _on_ship_damage_timer_timeout() -> void:
 	if current_player == Player.ASTRONAUT:
 		ship_health.decrease_health(randi_range(1, 3))
+
+func _on_readings_change(_old_value: float, new_value: float) -> void:
+	if new_value <= 0 and not is_dead_already:
+		is_dead_already = true
+		on_death.emit()
+
+func _switch_to_game_over() -> void:
+	screen_transition.transition(func():
+		get_tree().change_scene_to_file("res://assets/game over/game over.tscn")
+	,TransitionScreen.TransitionPoint.MIDDLE)
+
+func _on_astronaut_death() -> void:
+	var death_timer = Timer.new()
+	add_child(death_timer)
+	death_timer.one_shot = true
+	death_timer.wait_time = 1.5
+	death_timer.timeout.connect(func(): 
+		_switch_to_game_over()
+		death_timer.queue_free()
+	)
+	death_timer.start()

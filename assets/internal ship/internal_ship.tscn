@@ -302,12 +302,6 @@ _data = {
 &"revive": SubResource("Animation_i8hiq")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o88cq"]
-size = Vector2(102.5, 117)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_46acj"]
-size = Vector2(98, 122)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_liemg"]
 atlas = ExtResource("1_o88cq")
 region = Rect2(0, 0, 370, 490)
@@ -566,6 +560,12 @@ b = Vector2(0, 315.56)
 a = Vector2(0, -152.33)
 b = Vector2(0, 155.92)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o88cq"]
+size = Vector2(102.5, 117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46acj"]
+size = Vector2(98, 122)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_djmod"]
 a = Vector2(1, -1)
 b = Vector2(16, 125)
@@ -610,33 +610,6 @@ broken_lights_texture = ExtResource("3_i8hiq")
 libraries = {
 &"": SubResource("AnimationLibrary_djmod")
 }
-
-[node name="Issues" type="Node2D" parent="."]
-script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("2_yxcn8"), ExtResource("4_xw88r")])
-
-[node name="Right" type="Area2D" parent="Issues"]
-position = Vector2(93, 75)
-collision_layer = 64
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
-position = Vector2(0, 13.5)
-shape = SubResource("RectangleShape2D_o88cq")
-
-[node name="Left" type="Area2D" parent="Issues"]
-position = Vector2(-101, 72)
-collision_layer = 64
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
-position = Vector2(-1, 23)
-shape = SubResource("RectangleShape2D_46acj")
-debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
-
-[node name="Timer" type="Timer" parent="Issues"]
-wait_time = 5.0
-autostart = true
 
 [node name="Points" type="Node2D" parent="."]
 
@@ -720,6 +693,33 @@ position = Vector2(3, 115)
 shape = SubResource("SegmentShape2D_jlxe3")
 debug_color = Color(0.969519, 0, 0.460823, 0.42)
 
+[node name="Issues" type="Node2D" parent="."]
+script = ExtResource("1_r65rw")
+possible_issues = Array[PackedScene]([ExtResource("2_yxcn8"), ExtResource("4_xw88r")])
+
+[node name="Right" type="Area2D" parent="Issues"]
+position = Vector2(93, 75)
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
+position = Vector2(0, 13.5)
+shape = SubResource("RectangleShape2D_o88cq")
+
+[node name="Left" type="Area2D" parent="Issues"]
+position = Vector2(-95, -67)
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
+position = Vector2(-1, 23)
+shape = SubResource("RectangleShape2D_46acj")
+debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
+
+[node name="Timer" type="Timer" parent="Issues"]
+wait_time = 5.0
+autostart = true
+
 [node name="Visual Herd" type="Node2D" parent="."]
 script = ExtResource("10_djmod")
 asteroids_scenes = Array[PackedScene]([ExtResource("11_aiucs"), ExtResource("13_adlbk"), ExtResource("14_5y73v"), ExtResource("15_liemg"), ExtResource("16_5y73v")])
@@ -779,8 +779,8 @@ debug_color = Color(1, 0, 0.368627, 1)
 autostart = true
 
 [connection signal="animation_finished" from="Animations" to="." method="_on_animator_animation_finish"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finish"]
 [connection signal="on_clear_issues" from="Issues" to="." method="_on_issues_on_clear_issues"]
 [connection signal="on_issue_generated" from="Issues" to="." method="_on_issues_on_issue_generated"]
 [connection signal="timeout" from="Issues/Timer" to="Issues" method="_on_timer_timeout"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finish"]
 [connection signal="timeout" from="Visual Herd/Spawn Timer" to="Visual Herd" method="_on_spawn_timer_timeout"]
