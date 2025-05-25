@@ -64,14 +64,16 @@ func _check_sequence() -> void:
 		# TODO: win
 	buttonSequence.clear()
 
+func _set_button_colors(newColor: Color) -> void:
+	for button in $InputPanel/InputGrid.get_children():
+		button.modulate = newColor
+
 func _show_mistake() -> void:
 	canAcceptInput = false
 
-	for button in $InputPanel/InputGrid.get_children():
-		button.modulate = RED
+	_set_button_colors(RED)
 	await get_tree().create_timer(0.5).timeout
-	for button in $InputPanel/InputGrid.get_children():
-		button.modulate = WHITE
+	_set_button_colors(WHITE)
 	
 	buttonSequence.clear()
 	$result.text = "Try again :("
