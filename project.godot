@@ -23,6 +23,7 @@ config/icon="uid://cp1qj3lyoacho"
 [autoload]
 
 Music="*res://assets/audio/music.tscn"
+Stats="*res://assets/globals/game stats.tscn"
 
 [display]
 

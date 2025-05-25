@@ -3,6 +3,9 @@
 /android/
 *.translation
 
+leaderboard-web-server/node_modules
+leaderboard-web-server/generated
+
 # C sharp:
 nupkg/
 bin/
