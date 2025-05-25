@@ -9,6 +9,17 @@ export async function getTopPlayers(amount: number = 10) {
   });
 }
 
+export async function getScoreRank(score: number) {
+  const rank = await prisma.scores.count({
+    where: {
+      score: {
+        gt: score,
+      },
+    },
+  });
+  return rank + 1;
+}
+
 export async function addScore(name: string, score: number) {
   const topPlayers = await prisma.scores.findMany({
     where: {
