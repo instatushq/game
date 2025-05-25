@@ -43,7 +43,12 @@ app.get("/leaderboard/rank/:score", async (req, res) => {
 
 app.post("/leaderboard", async (req, res) => {
   const { name, score } = req.body;
-  if (!name || !score) {
+  if (
+    name === null ||
+    name === undefined ||
+    score === null ||
+    score === undefined
+  ) {
     res.status(400).send("Name and score are required");
     return;
   }
@@ -51,13 +56,12 @@ app.post("/leaderboard", async (req, res) => {
     res.status(400).send("Name must be 3 characters or less");
     return;
   }
-  if (!(score > 0 && score < Number.MAX_SAFE_INTEGER)) {
+  if (!(score >= 0 && score < Number.MAX_SAFE_INTEGER)) {
     res
       .status(400)
       .send("Score must be between 0 and " + Number.MAX_SAFE_INTEGER);
     return;
   }
-
   try {
     const newScore = await addScore(name, score);
     res.json(newScore);
