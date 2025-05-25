@@ -250,6 +250,7 @@ texture = ExtResource("14_cabrn")
 [node name="Front Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-401.19, 962)
 scale = Vector2(1.5, 1.5)
+motion_scale = Vector2(1.2, 1.2)
 motion_mirroring = Vector2(0, 717.81)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]

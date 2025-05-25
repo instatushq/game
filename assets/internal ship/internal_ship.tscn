@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=72 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -9,6 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://dcnhyyeq5nybm" path="res://assets/internal ship/Fixed ship animationt.png" id="3_yxcn8"]
 [ext_resource type="PackedScene" uid="uid://d2burbt4yek8s" path="res://assets/issues/possible_issues/whack a mole/whack a mole.tscn" id="4_xw88r"]
 [ext_resource type="Texture2D" uid="uid://b08qkhhb12xhr" path="res://assets/main menu/light.png" id="7_7h0eb"]
+[ext_resource type="Script" uid="uid://cq1kujf0104bc" path="res://assets/internal ship/visual_herd.gd" id="10_djmod"]
+[ext_resource type="Texture2D" uid="uid://bio6jl0ah80an" path="res://assets/main menu/ship_edge_light.png" id="10_igsmt"]
+[ext_resource type="PackedScene" uid="uid://bq85575w8bxgw" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 1.tscn" id="11_aiucs"]
+[ext_resource type="PackedScene" uid="uid://b8mgilkn4xcd" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 2.tscn" id="13_adlbk"]
+[ext_resource type="PackedScene" uid="uid://35csyl7rx3c" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 3.tscn" id="14_5y73v"]
+[ext_resource type="PackedScene" uid="uid://ls4e8s8mqgmp" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 4.tscn" id="15_liemg"]
+[ext_resource type="PackedScene" uid="uid://byafhmsqn2tyg" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 5.tscn" id="16_5y73v"]
 
 [sub_resource type="Animation" id="Animation_djmod"]
 length = 0.001
@@ -559,6 +566,41 @@ b = Vector2(0, 315.56)
 a = Vector2(0, -152.33)
 b = Vector2(0, 155.92)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_djmod"]
+a = Vector2(1, -1)
+b = Vector2(16, 125)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_aiucs"]
+b = Vector2(46, 127)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_igsmt"]
+a = Vector2(-18, 16)
+b = Vector2(14, 126)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_m5471"]
+a = Vector2(-61, -9)
+b = Vector2(14, 126)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_b1oje"]
+a = Vector2(-3, 0)
+b = Vector2(-18, 127)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_adlbk"]
+a = Vector2(-28, -1)
+b = Vector2(-48, 126)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5y73v"]
+a = Vector2(46, 9)
+b = Vector2(12, 125)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_liemg"]
+a = Vector2(144, -9)
+b = Vector2(76, 121)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_g1y32"]
+a = Vector2(144, -9)
+b = Vector2(-218, -13)
+
 [node name="InternalShip" type="Node2D"]
 script = ExtResource("1_jlxe3")
 default_lights_texutres = ExtResource("7_7h0eb")
@@ -630,6 +672,13 @@ range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_i8hiq")
 texture_scale = 0.25
 
+[node name="Edges" type="PointLight2D" parent="AnimatedSprite2D/Lights"]
+position = Vector2(-9, -63)
+color = Color(0.14902, 0.615686, 0.788235, 1)
+energy = 5.0
+texture = ExtResource("10_igsmt")
+texture_scale = 0.5
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
 position = Vector2(0, 15)
 amount = 35
@@ -671,8 +720,67 @@ position = Vector2(3, 115)
 shape = SubResource("SegmentShape2D_jlxe3")
 debug_color = Color(0.969519, 0, 0.460823, 0.42)
 
+[node name="Visual Herd" type="Node2D" parent="."]
+script = ExtResource("10_djmod")
+asteroids_scenes = Array[PackedScene]([ExtResource("11_aiucs"), ExtResource("13_adlbk"), ExtResource("14_5y73v"), ExtResource("15_liemg"), ExtResource("16_5y73v")])
+
+[node name="ShipExternalCollision" type="StaticBody2D" parent="Visual Herd"]
+collision_layer = 256
+collision_mask = 512
+
+[node name="Right1" type="CollisionShape2D" parent="Visual Herd/ShipExternalCollision"]
+position = Vector2(108, 2)
+shape = SubResource("SegmentShape2D_djmod")
+debug_color = Color(1, 0, 0.368627, 1)
+
+[node name="Right2" type="CollisionShape2D" parent="Visual Herd/ShipExternalCollision"]
+position = Vector2(120, 125)
+shape = SubResource("SegmentShape2D_aiucs")
+debug_color = Color(1, 0, 0.368627, 1)
+
+[node name="Right3" type="CollisionShape2D" parent="Visual Herd/ShipExternalCollision"]
+position = Vector2(94, -122)
+shape = SubResource("SegmentShape2D_igsmt")
+debug_color = Color(1, 0, 0.368627, 1)
+
+[node name="Right4" type="CollisionShape2D" parent="Visual Herd/ShipExternalCollision"]
+position = Vector2(63, -230)
+shape = SubResource("SegmentShape2D_m5471")
+debug_color = Color(1, 0, 0.368627, 1)
+
+[node name="Left1" type="CollisionShape2D" parent="Visual Herd/ShipExternalCollision"]
+position = Vector2(-110, 2)
+shape = SubResource("SegmentShape2D_b1oje")
+debug_color = Color(1, 0, 0.368627, 1)
+
+[node name="Left2" type="CollisionShape2D" parent="Visual Herd/ShipExternalCollision"]
+position = Vector2(-98, 125)
+shape = SubResource("SegmentShape2D_adlbk")
+debug_color = Color(1, 0, 0.368627, 1)
+
+[node name="Left3" type="CollisionShape2D" parent="Visual Herd/ShipExternalCollision"]
+position = Vector2(-124, -122)
+shape = SubResource("SegmentShape2D_5y73v")
+debug_color = Color(1, 0, 0.368627, 1)
+
+[node name="Left4" type="CollisionShape2D" parent="Visual Herd/ShipExternalCollision"]
+position = Vector2(-155, -230)
+shape = SubResource("SegmentShape2D_liemg")
+debug_color = Color(1, 0, 0.368627, 1)
+
+[node name="Bottom" type="CollisionShape2D" parent="Visual Herd/ShipExternalCollision"]
+position = Vector2(44, 242)
+shape = SubResource("SegmentShape2D_g1y32")
+debug_color = Color(1, 0, 0.368627, 1)
+
+[node name="Asteriods" type="Node2D" parent="Visual Herd"]
+
+[node name="Spawn Timer" type="Timer" parent="Visual Herd"]
+autostart = true
+
 [connection signal="animation_finished" from="Animations" to="." method="_on_animator_animation_finish"]
 [connection signal="on_clear_issues" from="Issues" to="." method="_on_issues_on_clear_issues"]
 [connection signal="on_issue_generated" from="Issues" to="." method="_on_issues_on_issue_generated"]
 [connection signal="timeout" from="Issues/Timer" to="Issues" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finish"]
+[connection signal="timeout" from="Visual Herd/Spawn Timer" to="Visual Herd" method="_on_spawn_timer_timeout"]

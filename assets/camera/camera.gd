@@ -39,7 +39,7 @@ func focus_astronaut() -> void:
 	last_recorded_camera_position = global_position
 	reparent(astronaut)
 	position = Vector2.ZERO
-	zoom = Vector2.ONE * 11.5
+	zoom = Vector2.ONE * 2
 
 func _on_astronaut_on_movement_vector_changed(movement_vector: Vector2) -> void:
 	if game_manager.current_player == GameManager.Player.SHIP:

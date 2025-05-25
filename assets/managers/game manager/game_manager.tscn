@@ -10,7 +10,7 @@ wait_time = 0.2
 autostart = true
 
 [node name="MeteorHerdTimer" type="Timer" parent="."]
-wait_time = 50.0
+wait_time = 60.0
 autostart = true
 
 [node name="MeteorHerdWarning" type="Timer" parent="."]

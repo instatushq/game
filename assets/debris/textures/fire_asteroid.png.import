@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cksjfu20xrl07"
-path="res://.godot/imported/Layered Rock.png-bbfc4da1a88fec5a9a868e587d6735c4.ctex"
+uid="uid://c315jyx5n6eqv"
+path="res://.godot/imported/fire_asteroid.png-d1205c1207a463496cce7f10ca65ec1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/debris/textures/Layered Rock.png"
-dest_files=["res://.godot/imported/Layered Rock.png-bbfc4da1a88fec5a9a868e587d6735c4.ctex"]
+source_file="res://assets/debris/textures/fire_asteroid.png"
+dest_files=["res://.godot/imported/fire_asteroid.png-d1205c1207a463496cce7f10ca65ec1d.ctex"]
 
 [params]
 

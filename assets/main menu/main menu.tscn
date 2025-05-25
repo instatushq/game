@@ -583,9 +583,9 @@ icon_alignment = 1
 
 [node name="Music" type="Button" parent="Ship/Control/Node2D"]
 offset_left = -61.0
-offset_top = -4.0
+offset_top = -2.0
 offset_right = 33.85
-offset_bottom = 28.0
+offset_bottom = 30.0
 scale = Vector2(0.365, 0.445)
 focus_neighbor_bottom = NodePath("../SFX")
 mouse_default_cursor_shape = 2
@@ -597,9 +597,9 @@ icon_alignment = 1
 
 [node name="SFX" type="Button" parent="Ship/Control/Node2D"]
 offset_left = -61.0
-offset_top = 10.0
+offset_top = 8.0
 offset_right = 33.85
-offset_bottom = 42.0
+offset_bottom = 40.0
 scale = Vector2(0.365, 0.445)
 focus_neighbor_top = NodePath("../Music")
 mouse_default_cursor_shape = 2

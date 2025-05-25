@@ -1,0 +1,121 @@
+[gd_scene load_steps=15 format=3 uid="uid://byafhmsqn2tyg"]
+
+[ext_resource type="Script" uid="uid://cdnwmbv4dcebt" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid.gd" id="1_o8gtf"]
+[ext_resource type="Texture2D" uid="uid://cf0crk4a2ormf" path="res://assets/debris/textures/fire asteroid 2.png" id="2_o8gtf"]
+[ext_resource type="Texture2D" uid="uid://c315jyx5n6eqv" path="res://assets/debris/textures/fire_asteroid.png" id="3_ihlvo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_igsmt"]
+radius = 14.8449
+height = 40.7839
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njq1u"]
+atlas = ExtResource("2_o8gtf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihlvo"]
+atlas = ExtResource("2_o8gtf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh177"]
+atlas = ExtResource("2_o8gtf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndwvk"]
+atlas = ExtResource("2_o8gtf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3k7f"]
+atlas = ExtResource("2_o8gtf")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n2ud"]
+atlas = ExtResource("2_o8gtf")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujedf"]
+atlas = ExtResource("2_o8gtf")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aglr1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njq1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihlvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh177")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndwvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3k7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n2ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujedf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aiucs"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_igsmt"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.566154, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.76276, 0.0, 0, 0]
+point_count = 3
+
+[node name="CosmeticAsteroid" type="RigidBody2D"]
+collision_layer = 512
+collision_mask = 256
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_o8gtf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, -6)
+rotation = 1.28115
+shape = SubResource("CapsuleShape2D_igsmt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -4)
+rotation = -0.831641
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_aglr1")
+autoplay = "default"
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_aiucs")
+position = Vector2(19, -7)
+emitting = false
+amount = 20
+texture = ExtResource("3_ihlvo")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 42
+direction = Vector2(-1, -0.2)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 115.61
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+linear_accel_min = -60.0
+linear_accel_max = -55.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_igsmt")
+anim_offset_min = 0.3
+anim_offset_max = 1.0
