@@ -10,7 +10,9 @@ signal on_added_new_score
 @onready var name_edit: LineEdit = $VBoxContainer/Form/CenterContainer/HBoxContainer/NameEdit
 @onready var new_score_label: Label = $VBoxContainer/Form/CenterContainer/HBoxContainer/Score
 @onready var save_button: Button = $VBoxContainer/Form/HBoxContainer/SaveScore
-@onready var current_player_score = 10
+@onready var current_player_score = Stats.current_score
+@onready var music: AudioStreamPlayer = Music
+@onready var music_volume: float = music.volume_db
 @export var screen_transition: TransitionScreen
 @export var entry_scene: PackedScene = null
 var is_form_enabled: bool = true
@@ -64,6 +66,12 @@ func _on_press_main_menu() -> void:
 	screen_transition.transition(func():
 		get_tree().change_scene_to_file("res://assets/main menu/main menu.tscn")
 	,TransitionScreen.TransitionPoint.MIDDLE)
+
+	var tween = create_tween()
+	tween.tween_property(music, "volume_db", -80.0, 0.4)  # Fade to silence over 0.5 seconds
+	await tween.finished
+	music.stop()
+	music.volume_db = music_volume
 
 
 func _on_save_score_pressed() -> void:
