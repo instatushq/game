@@ -34,7 +34,7 @@ func _on_mole_missed(_mole: Mole) -> void:
 		cooldown_timer.start(0.6)
 
 func _resolve_issue() -> void:
-	var parent: Issue = get_parent()
+	var parent: Issue = get_parent().get_parent()
 	parent.issue_resolved.emit()
 
 func _update_xp_counter() -> void:

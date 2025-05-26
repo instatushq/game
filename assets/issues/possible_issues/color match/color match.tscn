@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_la0fh"]
 [ext_resource type="Script" uid="uid://qp2bjvhly0yn" path="res://assets/issues/possible_issues/color match/color_match.gd" id="2_sgv0c"]
 
-[node name="Issue" type="CanvasLayer"]
+[node name="Issue" type="Node2D"]
 script = ExtResource("1_la0fh")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -20,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_sgv0c")
 
-[node name="LeftContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="LeftContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
 custom_minimum_size = Vector2(10, 0)
 layout_direction = 2
 layout_mode = 1
@@ -34,27 +36,27 @@ offset_bottom = 186.0
 grow_vertical = 2
 alignment = 1
 
-[node name="Color one" type="Button" parent="ColorRect/LeftContainer"]
+[node name="Color one" type="Button" parent="CanvasLayer/ColorRect/LeftContainer"]
 custom_minimum_size = Vector2(200, 90)
 layout_mode = 2
 text = "Waw"
 
-[node name="Color two" type="Button" parent="ColorRect/LeftContainer"]
+[node name="Color two" type="Button" parent="CanvasLayer/ColorRect/LeftContainer"]
 custom_minimum_size = Vector2(200, 90)
 layout_mode = 2
 text = "Waw"
 
-[node name="Color Three" type="Button" parent="ColorRect/LeftContainer"]
+[node name="Color Three" type="Button" parent="CanvasLayer/ColorRect/LeftContainer"]
 custom_minimum_size = Vector2(200, 90)
 layout_mode = 2
 text = "Waw"
 
-[node name="Color Four" type="Button" parent="ColorRect/LeftContainer"]
+[node name="Color Four" type="Button" parent="CanvasLayer/ColorRect/LeftContainer"]
 custom_minimum_size = Vector2(200, 90)
 layout_mode = 2
 text = "Waw"
 
-[node name="RightContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="RightContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
 custom_minimum_size = Vector2(10, 0)
 layout_direction = 3
 layout_mode = 1
@@ -68,22 +70,22 @@ offset_bottom = 186.5
 grow_vertical = 2
 alignment = 1
 
-[node name="Color one" type="Button" parent="ColorRect/RightContainer"]
+[node name="Color one" type="Button" parent="CanvasLayer/ColorRect/RightContainer"]
 custom_minimum_size = Vector2(200, 90)
 layout_mode = 2
 text = "Waw"
 
-[node name="Color two" type="Button" parent="ColorRect/RightContainer"]
+[node name="Color two" type="Button" parent="CanvasLayer/ColorRect/RightContainer"]
 custom_minimum_size = Vector2(200, 90)
 layout_mode = 2
 text = "Waw"
 
-[node name="Color Three" type="Button" parent="ColorRect/RightContainer"]
+[node name="Color Three" type="Button" parent="CanvasLayer/ColorRect/RightContainer"]
 custom_minimum_size = Vector2(200, 90)
 layout_mode = 2
 text = "Waw"
 
-[node name="Color Four" type="Button" parent="ColorRect/RightContainer"]
+[node name="Color Four" type="Button" parent="CanvasLayer/ColorRect/RightContainer"]
 custom_minimum_size = Vector2(200, 90)
 layout_mode = 2
 text = "Waw"

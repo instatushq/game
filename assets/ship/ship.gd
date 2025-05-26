@@ -19,7 +19,7 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @onready var sprites_animation_player: AnimationPlayer = $RigidBody2D/SpritesContainer/SpritesAnimations
 @onready var canon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var canon_2: Node2D = $RigidBody2D/ShipPoints/Canon2
-@onready var root_of_scene = get_tree().root.get_child(0)
+@onready var root_of_scene = get_tree().root.get_child(2)
 
 var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y: float = position.y;

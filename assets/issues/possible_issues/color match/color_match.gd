@@ -107,7 +107,7 @@ func _is_issue_resolved() -> bool:
 	return connected_colors.size() == COLOR_MATCH_COLOR.keys().size()
 
 func _resolve_issue() -> void:
-	var parent: Issue = get_parent()
+	var parent: Issue = get_parent().get_parent()
 	parent.issue_resolved.emit()
 
 func _update_buttons_view() -> void:
