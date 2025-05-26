@@ -16,7 +16,7 @@ const GREY = Color(0.5, 0.5, 0.5)
 const WHITE = Color(1, 1, 1)
 
 func _resolve_issue() -> void:
-	var parent: Issue = get_parent()
+	var parent: Issue = get_parent().get_parent()
 	parent.issue_resolved.emit()
 
 

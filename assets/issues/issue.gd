@@ -3,6 +3,7 @@ extends Node2D
 class_name Issue
 
 @export var default_visibility: bool = false
+@export var spawn_position: Vector2 = Vector2(5000, 5000)
 @onready var custom_camera: Camera2D = null
 @onready var canvas_layer: CanvasLayer = null
 @onready var scene_root = get_tree().root.get_child(get_tree().root.get_children().size() - 1)
@@ -36,11 +37,13 @@ func _ready() -> void:
 	custom_camera = _find_camera2d(self)
 	canvas_layer = _find_canvas_layer(self)
 	var game_manager: GameManager = scene_root.get_node("%GameManager")
-	main_camera = game_manager.camera
+	if game_manager != null:
+		main_camera = game_manager.camera
 	
 	if canvas_layer != null:
 		canvas_layer.visible = false
 	
+	global_position = spawn_position
 
 func open_issue() -> void:
 	if custom_camera:
@@ -51,7 +54,7 @@ func open_issue() -> void:
 	issue_opened.emit()
 
 func close_issue() -> void:
-	if custom_camera:
+	if custom_camera and main_camera:
 		main_camera.make_current()
 	if canvas_layer:
 		canvas_layer.visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=74 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -9,9 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dcnhyyeq5nybm" path="res://assets/internal ship/Fixed ship animationt.png" id="3_yxcn8"]
 [ext_resource type="PackedScene" uid="uid://d2burbt4yek8s" path="res://assets/issues/possible_issues/whack a mole/whack a mole.tscn" id="4_xw88r"]
 [ext_resource type="Texture2D" uid="uid://b08qkhhb12xhr" path="res://assets/main menu/light.png" id="7_7h0eb"]
+[ext_resource type="PackedScene" uid="uid://dk8p7gmca0jj1" path="res://assets/issues/possible_issues/camera game/camera game.tscn" id="9_adlbk"]
 [ext_resource type="Script" uid="uid://cq1kujf0104bc" path="res://assets/internal ship/visual_herd.gd" id="10_djmod"]
 [ext_resource type="Texture2D" uid="uid://bio6jl0ah80an" path="res://assets/main menu/ship_edge_light.png" id="10_igsmt"]
 [ext_resource type="PackedScene" uid="uid://bq85575w8bxgw" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 1.tscn" id="11_aiucs"]
+[ext_resource type="PackedScene" uid="uid://ryfuh1mblk5s" path="res://assets/issues/possible_issues/star_reactor/issue.tscn" id="11_g1y32"]
 [ext_resource type="PackedScene" uid="uid://b8mgilkn4xcd" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 2.tscn" id="13_adlbk"]
 [ext_resource type="PackedScene" uid="uid://35csyl7rx3c" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 3.tscn" id="14_5y73v"]
 [ext_resource type="PackedScene" uid="uid://ls4e8s8mqgmp" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 4.tscn" id="15_liemg"]
@@ -695,7 +697,7 @@ debug_color = Color(0.969519, 0, 0.460823, 0.42)
 
 [node name="Issues" type="Node2D" parent="."]
 script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("2_yxcn8"), ExtResource("4_xw88r")])
+possible_issues = Array[PackedScene]([ExtResource("9_adlbk"), ExtResource("2_yxcn8"), ExtResource("11_g1y32"), ExtResource("4_xw88r")])
 
 [node name="Right" type="Area2D" parent="Issues"]
 position = Vector2(93, 75)
