@@ -1,0 +1,165 @@
+[gd_scene load_steps=5 format=3 uid="uid://ryfuh1mblk5s"]
+
+[ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_rsvye"]
+[ext_resource type="Script" uid="uid://cte463m5ud226" path="res://assets/issues/possible_issues/star_reactor/star_reactor.gd" id="2_y3iom"]
+[ext_resource type="Texture2D" uid="uid://deru34c2306gq" path="res://assets/issues/possible_issues/star_reactor/button-pressed.png" id="3_tqaod"]
+[ext_resource type="Texture2D" uid="uid://d4646sqi4tt1" path="res://assets/issues/possible_issues/star_reactor/button.png" id="3_y3iom"]
+
+[node name="Issue" type="CanvasLayer"]
+script = ExtResource("1_rsvye")
+default_visibility = true
+metadata/_custom_type_script = "uid://5xn2u6ui2yf"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_y3iom")
+ButtonFlashTime = 0.25
+TimeBetweenFlashes = 0.1
+
+[node name="ProgressDots" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+offset_left = 815.0
+offset_top = 211.0
+offset_right = 1057.0
+offset_bottom = 261.0
+theme_override_constants/separation = 4
+
+[node name="0" type="ColorRect" parent="ColorRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="1" type="ColorRect" parent="ColorRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="2" type="ColorRect" parent="ColorRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="3" type="ColorRect" parent="ColorRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="4" type="ColorRect" parent="ColorRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputPanel" type="PanelContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 572.0
+offset_top = 298.0
+offset_right = 1332.0
+offset_bottom = 1313.0
+
+[node name="InputGrid" type="GridContainer" parent="ColorRect/InputPanel"]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+
+[node name="0" type="TextureButton" parent="ColorRect/InputPanel/InputGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_y3iom")
+texture_pressed = ExtResource("3_tqaod")
+stretch_mode = 0
+
+[node name="1" type="TextureButton" parent="ColorRect/InputPanel/InputGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_y3iom")
+texture_pressed = ExtResource("3_tqaod")
+stretch_mode = 0
+
+[node name="2" type="TextureButton" parent="ColorRect/InputPanel/InputGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_y3iom")
+texture_pressed = ExtResource("3_tqaod")
+stretch_mode = 0
+
+[node name="3" type="TextureButton" parent="ColorRect/InputPanel/InputGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_y3iom")
+texture_pressed = ExtResource("3_tqaod")
+stretch_mode = 0
+
+[node name="4" type="TextureButton" parent="ColorRect/InputPanel/InputGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_y3iom")
+texture_pressed = ExtResource("3_tqaod")
+stretch_mode = 0
+
+[node name="5" type="TextureButton" parent="ColorRect/InputPanel/InputGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_y3iom")
+texture_pressed = ExtResource("3_tqaod")
+stretch_mode = 0
+
+[node name="6" type="TextureButton" parent="ColorRect/InputPanel/InputGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_y3iom")
+texture_pressed = ExtResource("3_tqaod")
+stretch_mode = 0
+
+[node name="7" type="TextureButton" parent="ColorRect/InputPanel/InputGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_y3iom")
+texture_pressed = ExtResource("3_tqaod")
+stretch_mode = 0
+
+[node name="8" type="TextureButton" parent="ColorRect/InputPanel/InputGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("3_y3iom")
+texture_pressed = ExtResource("3_tqaod")
+stretch_mode = 0
+
+[node name="result" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -73.0
+offset_top = 130.0
+offset_right = 74.0
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Waiting"
+horizontal_alignment = 1
+
+[node name="match-the-sequence" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 27.0
+offset_right = 1209.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Match The Sequence"
