@@ -14,10 +14,10 @@ config/name="Instatus Inspace"
 config/version="0.7.6"
 run/main_scene="uid://e3terh5nct76"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-boot_splash/bg_color=Color(0.0313726, 0, 0.14902, 1)
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-boot_splash/image="uid://cp1qj3lyoacho"
+boot_splash/image="uid://cyfxnsf3nthaa"
 config/icon="uid://cp1qj3lyoacho"
 
 [autoload]
