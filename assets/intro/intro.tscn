@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb7w71gk4ysxt"]
+
+[ext_resource type="Script" uid="uid://cpi5io1flxtxj" path="res://assets/intro/intro.gd" id="1_qoky0"]
+[ext_resource type="Texture2D" uid="uid://cewyd85nbbq82" path="res://assets/intro/warning.png" id="2_ej07w"]
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_dn24k"]
+
+[sub_resource type="Theme" id="Theme_0dxup"]
+default_font = ExtResource("3_dn24k")
+default_font_size = 50
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_qoky0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="UnitsContainer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Unit" type="Control" parent="CanvasLayer/UnitsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UnitsContainer/Unit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/UnitsContainer/Unit/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UnitsContainer/Unit/VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_ej07w")
+stretch_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UnitsContainer/Unit/VBoxContainer"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+theme = SubResource("Theme_0dxup")
+text = "READ THIS NOTICE BEFORE PLAYING
+
+A very small percentage of people may experience epileptic seizures or blackouts when exposed to certain kinds of flashing lights or light patterns. These persons, or even people who have no history of seizures or epilepsy, may experience epileptic symptoms or seizures while playing video games.
+
+If you or any of your relatives has an epileptic condition or has had seizures of any kind, consult your physician before playing any video game.
+
+IMMEDIATELY DISCONTINUE use and consult a physician if you or your child experience any of the following symptoms: dizziness, altered vision, eye or muscle twitching, involuntary movements, loss of awareness, disorientation, or convulsions. Parents should watch for or ask their children about the above symptoms."
+horizontal_alignment = 1
+vertical_alignment = 1
