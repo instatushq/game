@@ -23,7 +23,7 @@ func _find_camera2d(node: Node) -> Camera2D:
 	return null
 
 func _find_canvas_layer(node: Node) -> CanvasLayer:
-	if node is CanvasLayer:
+	if node is CanvasLayer and not node is ParallaxBackground:
 		return node
 	for child in node.get_children():
 		var found = _find_canvas_layer(child)
@@ -32,7 +32,6 @@ func _find_canvas_layer(node: Node) -> CanvasLayer:
 	return null
 
 func _ready() -> void:
-	visible = default_visibility
 	issue_resolved.connect(close_issue)
 	custom_camera = _find_camera2d(self)
 	canvas_layer = _find_canvas_layer(self)

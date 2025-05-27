@@ -4,11 +4,9 @@ class_name ShipFuel;
 
 @export var fuel: float = 100
 @export var fuel_spending_rate = 0.015
-@onready var game_manager: GameManager = get_tree().get_current_scene().get_node("%GameManager")
 
 func _physics_process(_delta: float) -> void:
-	if game_manager.current_player == GameManager.Player.SHIP:
-		decrease_fuel(fuel_spending_rate)
+	decrease_fuel(fuel_spending_rate)
 
 signal on_fuel_change(old_fuel: float, new_fuel: float)
 

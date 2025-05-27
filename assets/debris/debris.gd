@@ -2,7 +2,6 @@ extends Node2D
 
 var ship_direction: Vector2 = Vector2.ZERO
 @onready var rb: ShipImpacter = $"Ship Impacter"
-@onready var game_manager: GameManager = get_tree().get_current_scene().get_node("%GameManager")
 @export var max_hits_to_break = 5
 var times_hit: int = 0
 
@@ -16,11 +15,7 @@ func _ready() -> void:
 	# scale = Vector2(random_scale, random_scale)
 	
 func _physics_process(_delta: float) -> void:
-	if game_manager.current_player == GameManager.Player.SHIP:
-		rb.linear_velocity = ship_direction * SPEED
-		# Rotate to face movement direction with 34 degree offset
-	else:
-		rb.linear_velocity = Vector2.ZERO
+	rb.linear_velocity = ship_direction * SPEED
 
 func _on_ship_impacter_on_shot(laser_bullet: Node2D) -> void:
 	times_hit += 1

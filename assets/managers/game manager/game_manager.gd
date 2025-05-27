@@ -10,9 +10,9 @@ enum Player {
 	ASTRONAUT
 }
 
-@onready var ship: Ship = %Ship
-@onready var ship_health: ShipHealth = %Ship/Health
-@onready var ship_fuel: ShipFuel = %Ship/Fuel
+#@onready var ship: Ship = %Ship
+@onready var ship_health: ShipHealth = %InternalShip/Health
+#@onready var ship_fuel: ShipFuel = %Ship/Fuel
 @onready var astronaut: Astronaut = %Astronaut
 @onready var camera: Camera = %Camera
 @onready var timer: Timer = $ScoreTimer
@@ -50,7 +50,7 @@ var is_solving_puzzle: bool = false
 
 func _ready() -> void:
 	meteor_herd_warning.connect(_on_meteor_herd_warning)
-	ship_fuel.on_fuel_change.connect(_on_readings_change)
+	#ship_fuel.on_fuel_change.connect(_on_readings_change)
 	ship_health.on_health_change.connect(_on_readings_change)
 	on_death.connect(_on_astronaut_death)
 	if play_music:
@@ -111,14 +111,14 @@ func _switch_to_ship() -> void:
 	Input.warp_mouse(last_mouse_position)
 	current_player = Player.SHIP
 	astronaut.toggle_control(false)
-	ship.toggle_control(true)
+	#ship.toggle_control(true)
 	camera.focus_ship()
 
 func _switch_to_astronaut() -> void:
 	last_mouse_position = get_viewport().get_mouse_position()
 	current_player = Player.ASTRONAUT
 	astronaut.toggle_control(true)
-	ship.toggle_control(false)
+	#ship.toggle_control(false)
 	camera.focus_astronaut()
 	var viewport_center = get_viewport_rect().size / 2
 	Input.warp_mouse(viewport_center)

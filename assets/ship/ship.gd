@@ -14,8 +14,6 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @export var fire_cooldown: float = 0.15
 
 @onready var rb: ShipRigidBody = $RigidBody2D
-@onready var health: ShipHealth = $Health
-@onready var game_manager: GameManager = %GameManager
 @onready var sprites_animation_player: AnimationPlayer = $RigidBody2D/SpritesContainer/SpritesAnimations
 @onready var canon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var canon_2: Node2D = $RigidBody2D/ShipPoints/Canon2
@@ -46,8 +44,6 @@ func _process(delta: float) -> void:
 				can_fire = false
 
 func _input(event: InputEvent) -> void:
-	if game_manager.current_player != GameManager.Player.SHIP: return
-	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -64,32 +60,28 @@ func _input(event: InputEvent) -> void:
 			mouse_world_position = get_global_mouse_position()
 			current_ship_y_position = clamp(current_ship_y_position - (event.relative.y * 0.5), 0, bottom_camera_movement_margin)
 
-func _handle_movement_score() -> void:
-	game_manager.increaseScore(1)
-
 func _physics_process(_delta: float) -> void:
-	_handle_movement_score()
-	if game_manager.current_player == GameManager.Player.SHIP:
-		mouse_world_position = get_global_mouse_position()
-		rb.global_position = mouse_world_position
-		var viewport_size = get_viewport_rect().size
-		var camera = get_viewport().get_camera_2d()
-		
-		var bottom_world_pos = camera.global_position + Vector2(0, viewport_size.y / (2 * camera.zoom.y))
-		var left_world_pos = camera.global_position - Vector2(viewport_size.x / (2 * camera.zoom.x), 0)
-		var right_world_pos = camera.global_position + Vector2(viewport_size.x / (2 * camera.zoom.x), 0)
-		
-		var restricted_y = clamp(bottom_world_pos.y - current_ship_y_position, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
-		var restricted_x = clamp(mouse_world_position.x, left_world_pos.x + side_movement_padding, right_world_pos.x - side_movement_padding)
-		
-		rb.global_position = Vector2(restricted_x, restricted_y)
+	mouse_world_position = get_global_mouse_position()
+	rb.global_position = mouse_world_position
+	var viewport_size = get_viewport_rect().size
+	var camera = get_viewport().get_camera_2d()
+	
+	var bottom_world_pos = camera.global_position + Vector2(0, viewport_size.y / (2 * camera.zoom.y))
+	var left_world_pos = camera.global_position - Vector2(viewport_size.x / (2 * camera.zoom.x), 0)
+	var right_world_pos = camera.global_position + Vector2(viewport_size.x / (2 * camera.zoom.x), 0)
+	
+	var restricted_y = clamp(bottom_world_pos.y - current_ship_y_position, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
+	var restricted_x = clamp(mouse_world_position.x, left_world_pos.x + side_movement_padding, right_world_pos.x - side_movement_padding)
+	
+	rb.global_position = Vector2(restricted_x, restricted_y)
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control
 	rb.freeze = not new_can_control
 
-func _on_impact_with_object(body: ShipImpacter) -> void:
-	health.decrease_health(randf_range(body.min_damage_range, body.max_damage_range))
+func _on_impact_with_object(_body: ShipImpacter) -> void:
+	print("impact")
+	#health.decrease_health(randf_range(body.min_damage_range, body.max_damage_range))
 
 func create_pew(canon: Node2D) -> void:
 	var pew: Pew = pew_scene.instantiate()

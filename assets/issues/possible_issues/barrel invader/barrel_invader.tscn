@@ -1,0 +1,339 @@
+[gd_scene load_steps=34 format=3 uid="uid://jjb3c4igolbf"]
+
+[ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_geevi"]
+[ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_8i5gp"]
+[ext_resource type="Script" uid="uid://cqj0wt1hgd1vv" path="res://assets/issues/possible_issues/barrel invader/barrel_invader.gd" id="2_pm5jl"]
+[ext_resource type="PackedScene" uid="uid://ccc72g2taxm5r" path="res://assets/environment/spawnable elements/big_planet.tscn" id="3_fd7t0"]
+[ext_resource type="PackedScene" uid="uid://dt0dai5l5rmx5" path="res://assets/environment/spawnable elements/small_planet.tscn" id="4_4kruc"]
+[ext_resource type="PackedScene" uid="uid://b3d8re4q4igwp" path="res://assets/environment/spawnable elements/medium planet.tscn" id="5_wjnbc"]
+[ext_resource type="PackedScene" uid="uid://kskx5h8v3qqm" path="res://assets/environment/spawnable elements/bigger-than-average-planet.tscn" id="6_0fngo"]
+[ext_resource type="PackedScene" uid="uid://x1eieaqt1a0v" path="res://assets/environment/spawnable elements/blackhole/blackhole.tscn" id="7_eytmv"]
+[ext_resource type="Texture2D" uid="uid://cse7rwxntb3w" path="res://assets/environment/backgrounds/stars/stars1.png" id="8_e5v2f"]
+[ext_resource type="Texture2D" uid="uid://b7u0ad703omfw" path="res://assets/environment/backgrounds/stars/stars2.png" id="9_lrr4d"]
+[ext_resource type="Texture2D" uid="uid://dcg17ivsklgrk" path="res://assets/environment/backgrounds/stars/stars3.png" id="10_tyx3f"]
+[ext_resource type="Texture2D" uid="uid://d0kk5ret3umsa" path="res://assets/environment/backgrounds/stars/stars4.png" id="11_2tnj0"]
+[ext_resource type="Texture2D" uid="uid://b8vi86k1c3u4" path="res://assets/environment/backgrounds/stars/stars5.png" id="12_pm5jl"]
+[ext_resource type="Texture2D" uid="uid://dfv1xcd4bydt5" path="res://assets/environment/backgrounds/stars/stars6.png" id="13_ny23e"]
+[ext_resource type="Texture2D" uid="uid://djx6ijpqiom1i" path="res://assets/environment/backgrounds/stars/stars7.png" id="14_efpm6"]
+[ext_resource type="Texture2D" uid="uid://oxfw1fcif0b3" path="res://assets/environment/backgrounds/stars/stars8.png" id="15_3oaur"]
+[ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="16_3tdpy"]
+[ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy2.png" id="17_7wsow"]
+[ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="18_2olap"]
+[ext_resource type="Texture2D" uid="uid://bfrcj1cva63yx" path="res://assets/environment/backgrounds/galaxy4.png" id="19_dm4ju"]
+[ext_resource type="Texture2D" uid="uid://dvhillf4ggqng" path="res://assets/environment/backgrounds/galaxy5.png" id="20_yayhl"]
+[ext_resource type="PackedScene" uid="uid://bjngyues28e0r" path="res://assets/managers/environment manager/environment_manager.tscn" id="21_fd7t0"]
+[ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/walls/camera walls.tscn" id="22_4kruc"]
+[ext_resource type="PackedScene" uid="uid://c8polkf2eiy1" path="res://assets/debris/debris spawner/debris spawner.tscn" id="23_lrr4d"]
+[ext_resource type="PackedScene" uid="uid://cqp7226e2sov4" path="res://assets/debris/debris-1.tscn" id="24_tyx3f"]
+[ext_resource type="PackedScene" uid="uid://brjhnky7i1mn" path="res://assets/debris/fuel rocks/fuel.tscn" id="25_2tnj0"]
+[ext_resource type="PackedScene" uid="uid://b5kof6gdc71fo" path="res://assets/debris/fuel rocks/fuel 2.tscn" id="26_pm5jl"]
+[ext_resource type="PackedScene" uid="uid://cnxk6ijntgefu" path="res://assets/debris/fuel rocks/fuel 3.tscn" id="27_ny23e"]
+[ext_resource type="Script" uid="uid://b7dqgngdm4d7m" path="res://assets/issues/possible_issues/barrel invader/barrel_invader_camera.gd" id="28_2tnj0"]
+[ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="28_tyx3f"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kne8y"]
+noise_type = 0
+frequency = 0.0043
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ue8vg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_e5v2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lrr4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tyx3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2tnj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pm5jl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ny23e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_efpm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3oaur")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_tyx3f"]
+script/source = "extends Node2D
+
+@onready var game_manager: GameManager = get_node(\"%GameManager\")
+@onready var rb = $RigidBody2D
+
+
+func _ready() -> void:
+	pass
+	#var movement_speed = game_manager.base_travelling_speed;
+	#rb.add_constant_force(Vector2.UP * movement_speed)
+"
+
+[node name="barrel invader" type="Node2D"]
+script = ExtResource("1_geevi")
+default_visibility = true
+spawn_position = Vector2(6000, 0)
+
+[node name="Game" type="Node2D" parent="."]
+script = ExtResource("2_pm5jl")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Game"]
+unique_name_in_owner = true
+offset = Vector2(154.19, -700)
+transform = Transform2D(1, 0, 0, 1, 154.19, -700)
+follow_viewport_scale = 0.3
+script = ExtResource("2_8i5gp")
+noise = SubResource("FastNoiseLite_kne8y")
+big_planet = ExtResource("3_fd7t0")
+small_planet = ExtResource("4_4kruc")
+medium_planet = ExtResource("5_wjnbc")
+average_planet = ExtResource("6_0fngo")
+black_hole = ExtResource("7_eytmv")
+big_planet_spawn_rate = 0.08
+max_total_objects = 4
+min_distance_between_bodies = 400.0
+
+[node name="Back Layer Of Stars" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+position = Vector2(-870.19, 286)
+scale = Vector2(0.9, 0.9)
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(0, 1050)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(942.889, 1348.88)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(656.223, 1342.22)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(245.111, 1342.22)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(1412.89, 1342.22)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(621.111, 1020)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(1306.67, 1030)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(265.556, 1020)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(788.889, 1020)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(1091.11, 643.333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(623.333, 645.556)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(434.444, 643.333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
+position = Vector2(1383.33, 643.333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+
+[node name="Galaxy Layer" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+motion_scale = Vector2(0.75, 0.75)
+motion_mirroring = Vector2(0, 1600)
+
+[node name="Sprite2D" type="Sprite2D" parent="Game/ParallaxBackground/Galaxy Layer"]
+position = Vector2(-149.19, 1299)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("16_3tdpy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Game/ParallaxBackground/Galaxy Layer"]
+position = Vector2(467.81, 501)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("17_7wsow")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Game/ParallaxBackground/Galaxy Layer"]
+position = Vector2(280.81, 355)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("18_2olap")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Game/ParallaxBackground/Galaxy Layer"]
+position = Vector2(-400.19, 602)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("19_dm4ju")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Game/ParallaxBackground/Galaxy Layer"]
+position = Vector2(-408.19, 25)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("20_yayhl")
+
+[node name="Front Layer Of Stars" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+position = Vector2(-401.19, 962)
+scale = Vector2(1.5, 1.5)
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(0, 717.81)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(-2.22202, -6.45294)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(-288.888, -13.113)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(-700, -13.113)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(467.779, -13.113)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(-324, -335.333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(361.559, -325.333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(-679.555, -335.333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(-156.222, -335.333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(145.999, -712)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(-321.778, -709.777)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(-510.667, -712)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
+position = Vector2(438, -712)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ue8vg")
+autoplay = "default"
+speed_scale = 1.5
+
+[node name="Celestials" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+
+[node name="Small Planet" parent="Game/ParallaxBackground/Celestials" instance=ExtResource("6_0fngo")]
+position = Vector2(-81.19, -204)
+scale = Vector2(0.7, 0.7)
+
+[node name="Medium Planet" parent="Game/ParallaxBackground/Celestials" instance=ExtResource("5_wjnbc")]
+position = Vector2(257.81, 332)
+
+[node name="Big Planet2" parent="Game/ParallaxBackground/Celestials" instance=ExtResource("3_fd7t0")]
+position = Vector2(-302.19, 646)
+
+[node name="Blackhole2" parent="Game/ParallaxBackground/Celestials" instance=ExtResource("7_eytmv")]
+position = Vector2(124.81, 435)
+scale = Vector2(2.3, 2.3)
+
+[node name="EnvironmentManager" parent="Game" instance=ExtResource("21_fd7t0")]
+unique_name_in_owner = true
+
+[node name="Walls" parent="Game" instance=ExtResource("22_4kruc")]
+unique_name_in_owner = true
+script = SubResource("GDScript_tyx3f")
+
+[node name="Debris Spawner" parent="Game" node_paths=PackedStringArray("ship_camera") instance=ExtResource("23_lrr4d")]
+position = Vector2(-180, -138)
+ship_camera = NodePath("../Camera2D")
+debris_objects = Array[PackedScene]([ExtResource("24_tyx3f")])
+fuel_rocks = Array[PackedScene]([ExtResource("25_2tnj0"), ExtResource("26_pm5jl"), ExtResource("27_ny23e")])
+
+[node name="Ship" parent="Game" instance=ExtResource("28_tyx3f")]
+unique_name_in_owner = true
+position = Vector2(-7, 535)
+
+[node name="Camera2D" type="Camera2D" parent="Game"]
+zoom = Vector2(2, 2)
+script = ExtResource("28_2tnj0")

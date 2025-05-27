@@ -4,7 +4,7 @@ class_name InternalShip
 
 @onready var ship_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var issues: Issues = $Issues
-@onready var ship_health: ShipHealth = %Ship/Health
+@onready var ship_health: ShipHealth = %InternalShip/Health
 @onready var animator: AnimationPlayer = $Animations
 @onready var game_manager: GameManager = %GameManager
 @onready var screens_light: PointLight2D = $AnimatedSprite2D/Lights/Screens

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var ship_camera: Camera2D = get_node("%Camera")
+@export var ship_camera: Camera2D = null
 @onready var walls: Array[Node] = get_node("%Walls/RigidBody2D/Left Right").get_children()
 @export var debris_objects: Array[PackedScene] = []
 @export var fuel_rocks: Array[PackedScene] = []

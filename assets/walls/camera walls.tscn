@@ -1,6 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw0ggx5ydt1qa"]
-
-[ext_resource type="Script" uid="uid://bs1lb4vwswrhd" path="res://assets/walls/camera_walls.gd" id="1_bvukq"]
+[gd_scene load_steps=3 format=3 uid="uid://dw0ggx5ydt1qa"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wtcfe"]
 
@@ -8,7 +6,6 @@
 radius = 0.0
 
 [node name="Walls" type="Node2D"]
-script = ExtResource("1_bvukq")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 0

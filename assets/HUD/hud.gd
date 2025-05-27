@@ -4,8 +4,8 @@ extends CanvasLayer
 @onready var health_label: Label = $Health
 @onready var fuel_label: Label = $Fuel
 @onready var game_manager: GameManager = %GameManager
-@onready var ship: ShipHealth = %Ship/Health
-@onready var fuel: ShipFuel = %Ship/Fuel
+@onready var ship: ShipHealth = %InternalShip/Health
+#@onready var fuel: ShipFuel = %Ship/Fuel
 @onready var issues: Issues = %InternalShip/Issues
 @onready var warning: AnimationPlayer = $WarningRectangle/Animation
 @onready var timer: Timer = $WarningRectangle/Timer
@@ -22,7 +22,7 @@ const HEALTH_COLORS = [
 func _ready():
 	game_manager.score_changed.connect(on_score_change)
 	ship.on_health_change.connect(_on_health_change)
-	fuel.on_fuel_change.connect(_on_fuel_change)
+	#fuel.on_fuel_change.connect(_on_fuel_change)
 	_update_health_text(100)
 	meteor_countdown_parent.visible = false
 	game_manager.meteor_herd_sequence_started.connect(_on_meteor_sequence_start)

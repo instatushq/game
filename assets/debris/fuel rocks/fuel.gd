@@ -2,7 +2,6 @@ extends Node2D
 
 var ship_direction: Vector2 = Vector2.ZERO
 @onready var rb: ShipImpacter = $"Ship Impacter"
-@onready var game_manager: GameManager = get_tree().get_current_scene().get_node("%GameManager")
 @export var max_hits_to_break = 5
 var times_hit: int = 0
 
@@ -16,10 +15,7 @@ func _ready() -> void:
 	# global_scale = Vector2(random_scale, random_scale)
 	
 func _physics_process(_delta: float) -> void:
-	if game_manager.current_player == GameManager.Player.SHIP:
-		rb.linear_velocity = ship_direction * SPEED
-	else:
-		rb.linear_velocity = Vector2.ZERO
+	rb.linear_velocity = ship_direction * SPEED
 
 func _release_fuel() -> void:
 	var ship_fuel: ShipFuel = get_tree().get_current_scene().get_node("%Ship/Fuel")
