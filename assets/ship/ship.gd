@@ -17,7 +17,7 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @onready var sprites_animation_player: AnimationPlayer = $RigidBody2D/SpritesContainer/SpritesAnimations
 @onready var canon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var canon_2: Node2D = $RigidBody2D/ShipPoints/Canon2
-@onready var root_of_scene = get_tree().root.get_child(2)
+@onready var game_manager: BarrelInvader = get_parent()
 
 var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y: float = position.y;
@@ -44,6 +44,8 @@ func _process(delta: float) -> void:
 				can_fire = false
 
 func _input(event: InputEvent) -> void:
+	if game_manager.is_playing == false: return
+	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -61,6 +63,8 @@ func _input(event: InputEvent) -> void:
 			current_ship_y_position = clamp(current_ship_y_position - (event.relative.y * 0.5), 0, bottom_camera_movement_margin)
 
 func _physics_process(_delta: float) -> void:
+	if game_manager.is_playing == false: return
+
 	mouse_world_position = get_global_mouse_position()
 	rb.global_position = mouse_world_position
 	var viewport_size = get_viewport_rect().size
@@ -85,7 +89,7 @@ func _on_impact_with_object(_body: ShipImpacter) -> void:
 
 func create_pew(canon: Node2D) -> void:
 	var pew: Pew = pew_scene.instantiate()
-	root_of_scene.add_child(pew)
+	game_manager.add_child(pew)
 	pew.global_position = canon.global_position
 	pew.linear_velocity = Vector2.UP * pew.speed
 

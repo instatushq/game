@@ -30,7 +30,6 @@ signal meteor_herd_warning
 signal meteor_herd_buffered
 signal meteor_herd_sequence_started
 signal meteor_herd_ended
-signal meteor_herd_value_changed(new_value: int)
 
 
 @export_range(0, 100) var meteor_herd_chance: float = 80.0
@@ -55,10 +54,6 @@ func _ready() -> void:
 	on_death.connect(_on_astronaut_death)
 	if play_music:
 		music.play()
-
-func _physics_process(_delta: float) -> void:
-	if not meteor_herd_ending_timer.is_stopped() and not meteor_herd_ending_timer.paused:
-		meteor_herd_value_changed.emit(meteor_herd_ending_timer.time_left)
 
 func _on_score_timer_timeout() -> void:
 	increaseScore()

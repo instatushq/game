@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://jjb3c4igolbf"]
+[gd_scene load_steps=38 format=3 uid="uid://jjb3c4igolbf"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_geevi"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_8i5gp"]
@@ -30,6 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://cnxk6ijntgefu" path="res://assets/debris/fuel rocks/fuel 3.tscn" id="27_ny23e"]
 [ext_resource type="Script" uid="uid://b7dqgngdm4d7m" path="res://assets/issues/possible_issues/barrel invader/barrel_invader_camera.gd" id="28_2tnj0"]
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="28_tyx3f"]
+[ext_resource type="Script" uid="uid://bbtlaikoxuc0p" path="res://assets/issues/possible_issues/barrel invader/barrel invader hud.gd" id="31_efpm6"]
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="32_3oaur"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kne8y"]
 noise_type = 0
@@ -68,22 +70,22 @@ animations = [{
 }]
 
 [sub_resource type="GDScript" id="GDScript_tyx3f"]
-script/source = "extends Node2D
 
-@onready var game_manager: GameManager = get_node(\"%GameManager\")
-@onready var rb = $RigidBody2D
+[sub_resource type="Theme" id="Theme_3tdpy"]
+default_font = ExtResource("32_3oaur")
+default_font_size = 80
 
-
-func _ready() -> void:
-	pass
-	#var movement_speed = game_manager.base_travelling_speed;
-	#rb.add_constant_force(Vector2.UP * movement_speed)
-"
+[sub_resource type="LabelSettings" id="LabelSettings_7wsow"]
+line_spacing = 40.0
+font_size = 70
+font_color = Color(0, 0.733333, 0.8, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="barrel invader" type="Node2D"]
 script = ExtResource("1_geevi")
 default_visibility = true
-spawn_position = Vector2(6000, 0)
+spawn_position = Vector2(0, 0)
 
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("2_pm5jl")
@@ -337,3 +339,37 @@ position = Vector2(-7, 535)
 [node name="Camera2D" type="Camera2D" parent="Game"]
 zoom = Vector2(2, 2)
 script = ExtResource("28_2tnj0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Game"]
+script = ExtResource("31_efpm6")
+
+[node name="MeteorCountdown" type="ColorRect" parent="Game/CanvasLayer"]
+show_behind_parent = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Countdown" type="Label" parent="Game/CanvasLayer/MeteorCountdown"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_3tdpy")
+theme_type_variation = &"HeaderSmall"
+text = "60 S"
+label_settings = SubResource("LabelSettings_7wsow")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Timer" type="Timer" parent="Game/CanvasLayer"]
+wait_time = 30.0
+one_shot = true
