@@ -41,8 +41,8 @@ func _on_animation_finish() -> void:
 			screens_light.texture = broken_lights_texture
 			on_ship_broken.emit()
 
-func _on_game_manager_current_player_changed(new_current_player: GameManager.Player) -> void:
-	if new_current_player == GameManager.Player.SHIP: return
+func _on_game_manager_solving_puzzle_changed(is_solving_puzzle: bool) -> void:
+	if not is_solving_puzzle: return
 	if has_played_broken_animation: return
 	if not issues.has_any_issues(): return
 	has_played_broken_animation = true

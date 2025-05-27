@@ -84,8 +84,8 @@ func toggle_control(new_can_control: bool) -> void:
 	rb.freeze = not new_can_control
 
 func _on_impact_with_object(_body: ShipImpacter) -> void:
-	print("impact")
 	#health.decrease_health(randf_range(body.min_damage_range, body.max_damage_range))
+	pass
 
 func create_pew(canon: Node2D) -> void:
 	var pew: Pew = pew_scene.instantiate()

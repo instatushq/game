@@ -52,7 +52,6 @@ func _on_internal_ship_broke() -> void:
 	astronaut_flashlight.on_ship_broken(_has_movement_begun_already)
 
 func _process(_delta: float) -> void:
-	if game_manager.current_player == GameManager.Player.SHIP: return
 	astronaut_sprite.modulate = internal_ship.ship_sprite.modulate
 
 func toggle_control(new_can_control: bool) -> void:
@@ -60,10 +59,7 @@ func toggle_control(new_can_control: bool) -> void:
 	frozen = not new_can_control
 
 func _physics_process(delta: float) -> void:
-	if frozen or game_manager.is_controlling_ship():
-		if game_manager.is_controlling_ship():
-			global_position = cockpit_node.global_position
-		return
+	if is_solving_puzzle: return
 	
 	if internal_ship.issues.is_issue_open: return
 

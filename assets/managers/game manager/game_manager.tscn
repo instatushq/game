@@ -9,24 +9,9 @@ script = ExtResource("1_b26y8")
 wait_time = 0.2
 autostart = true
 
-[node name="MeteorHerdTimer" type="Timer" parent="."]
-wait_time = 60.0
-autostart = true
-
-[node name="MeteorHerdWarning" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
-[node name="MeteorHerdEnd" type="Timer" parent="."]
-wait_time = 30.0
-one_shot = true
-
 [node name="ShipDamageTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
-[connection signal="timeout" from="MeteorHerdTimer" to="." method="_on_meteor_herd_timer_timeout"]
-[connection signal="timeout" from="MeteorHerdWarning" to="." method="_on_meteor_herd_warning_timeout"]
-[connection signal="timeout" from="MeteorHerdEnd" to="." method="_on_meteor_herd_end_timeout"]
 [connection signal="timeout" from="ShipDamageTimer" to="." method="_on_ship_damage_timer_timeout"]

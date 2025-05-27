@@ -80,5 +80,5 @@ damping = 2.0
 unique_name_in_owner = true
 start_dark = true
 
-[connection signal="current_player_changed" from="GameManager" to="InternalShip" method="_on_game_manager_current_player_changed"]
+[connection signal="on_solving_puzzle_changed" from="GameManager" to="InternalShip" method="_on_game_manager_solving_puzzle_changed"]
 [connection signal="on_movement_vector_changed" from="Astronaut" to="Camera" method="_on_astronaut_on_movement_vector_changed"]

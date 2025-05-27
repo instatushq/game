@@ -19,7 +19,7 @@ signal on_issue_generated(zone: Area2D, issues_count: int)
 
 func _ready() -> void:
 	possible_zones = find_children("*", "Area2D")
-	game_manager.current_player_changed.connect(_on_current_player_change)
+	timer.start()
 	for zone in possible_zones:
 		zone.connect("body_entered", Callable(self, "_on_area_entered").bind(zone))
 		zone.connect("body_exited", Callable(self, "_on_area_exited").bind(zone))
@@ -75,12 +75,6 @@ func _on_issue_resolved(zone: Area2D) -> void:
 	is_issue_open = false
 	game_manager.is_solving_puzzle = false
 	on_clear_issues.emit(has_any_issues())
-
-func _on_current_player_change(new_player: GameManager.Player):
-	if new_player == GameManager.Player.SHIP:
-		timer.start()
-	else:
-		timer.stop()
 
 func has_any_issues() -> bool:
 	return not current_issues.is_empty()

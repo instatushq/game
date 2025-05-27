@@ -1,26 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=7 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_lbn2g"]
-font_size = 30
+[ext_resource type="Texture2D" uid="uid://bs7yk6x0fivgg" path="res://assets/HUD/Handheld.png" id="2_jn2t8"]
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jn2t8"]
 font_size = 30
 font_color = Color(0, 0.94902, 0.686275, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_y0j1j"]
+font = ExtResource("3_y0j1j")
+font_size = 29
+font_color = Color(3.7542e-05, 0.973884, 0.915198, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vq446"]
+font = ExtResource("3_y0j1j")
+font_size = 30
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
-
-[node name="Score" type="Label" parent="."]
-offset_top = 13.0
-offset_right = 118.0
-offset_bottom = 55.0
-size_flags_horizontal = 4
-text = "0 XP"
-label_settings = SubResource("LabelSettings_lbn2g")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Health" type="Label" parent="."]
 offset_left = 1652.0
@@ -42,4 +40,168 @@ offset_bottom = 1394.0
 size_flags_horizontal = 4
 text = "Fuel: 100%"
 label_settings = SubResource("LabelSettings_jn2t8")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -756.0
+offset_right = 718.0
+offset_bottom = 1.26562
+grow_vertical = 0
+size_flags_stretch_ratio = 9.95
+texture = ExtResource("2_jn2t8")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.276
+anchor_top = 0.387
+anchor_right = 0.732
+anchor_bottom = 0.435
+offset_left = -2.16801
+offset_top = 4.93817
+offset_right = -1.57605
+offset_bottom = 4.87286
+text = "ALL SYSTEMS OPERATIONAL"
+label_settings = SubResource("LabelSettings_y0j1j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HFlowContainer" type="HFlowContainer" parent="TextureRect"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 216.0
+offset_top = 346.0
+offset_right = 501.0
+offset_bottom = 388.0
+alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect13" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect14" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect15" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect16" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect17" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ColorRect18" type="ColorRect" parent="TextureRect/HFlowContainer"]
+custom_minimum_size = Vector2(12.5, 40)
+layout_mode = 2
+color = Color(5.0056e-06, 0.967302, 0.736263, 1)
+
+[node name="ScoreContainer" type="Control" parent="TextureRect"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="TextureRect/ScoreContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.276
+anchor_top = 0.387
+anchor_right = 0.732
+anchor_bottom = 0.435
+offset_left = 205.96
+offset_top = 428.52
+offset_right = 295.72
+offset_bottom = 461.6
+text = "0"
+label_settings = SubResource("LabelSettings_vq446")
+vertical_alignment = 1
+
+[node name="XP" type="Label" parent="TextureRect/ScoreContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.276
+anchor_top = 0.387
+anchor_right = 0.732
+anchor_bottom = 0.435
+offset_left = 450.96
+offset_top = 428.52
+offset_right = 464.72
+offset_bottom = 461.6
+text = "XP"
+label_settings = SubResource("LabelSettings_vq446")
+horizontal_alignment = 1
 vertical_alignment = 1
