@@ -29,6 +29,9 @@ var input_buffered: bool = false
 var is_firing: bool = false
 var current_ship_y_position: float = 300.0
 
+var y_position = 0
+var is_keyboard_controlled: bool = true
+
 func _ready():
 	rb.on_impact.connect(_on_impact_with_object)
 
@@ -55,25 +58,47 @@ func _input(event: InputEvent) -> void:
 					input_buffered = true
 			else:
 				is_firing = false
-	elif event is InputEventMouseMotion:		
-		if event.relative.y != 0:
-			mouse_world_position = get_global_mouse_position()
-			current_ship_y_position = clamp(current_ship_y_position - (event.relative.y * 0.5), 0, bottom_camera_movement_margin)
+	elif event is InputEventMouseMotion:
+		is_keyboard_controlled = false
+	elif event is InputEventKey:
+		is_keyboard_controlled = true
 
 func _physics_process(_delta: float) -> void:
-	mouse_world_position = get_global_mouse_position()
-	rb.global_position = mouse_world_position
 	var viewport_size = get_viewport_rect().size
 	var camera = get_viewport().get_camera_2d()
 	
-	var bottom_world_pos = camera.global_position + Vector2(0, viewport_size.y / (2 * camera.zoom.y))
-	var left_world_pos = camera.global_position - Vector2(viewport_size.x / (2 * camera.zoom.x), 0)
-	var right_world_pos = camera.global_position + Vector2(viewport_size.x / (2 * camera.zoom.x), 0)
+	var top_edge = camera.global_position.y - viewport_size.y / 2 * camera.zoom.y
+	var bottom_edge = camera.global_position.y + viewport_size.y / 2 * camera.zoom.y
+	var right_edge = camera.global_position.x + viewport_size.x / 2 * camera.zoom.x
+	var left_edge = camera.global_position.x - viewport_size.x / 2 * camera.zoom.x
 	
-	var restricted_y = clamp(bottom_world_pos.y - current_ship_y_position, bottom_world_pos.y - bottom_camera_movement_margin, bottom_world_pos.y)
-	var restricted_x = clamp(mouse_world_position.x, left_world_pos.x + side_movement_padding, right_world_pos.x - side_movement_padding)
 	
-	rb.global_position = Vector2(restricted_x, restricted_y)
+	# mouse movement
+	if not is_keyboard_controlled:
+		mouse_world_position = get_global_mouse_position()
+		const vertical_ship_padding = 50
+		var restricted_y = clamp(mouse_world_position.y + vertical_ship_padding, camera.global_position.y, bottom_edge - 1000)
+		var restricted_x = clamp(mouse_world_position.x, left_edge + 1400, right_edge - 1400)
+		rb.global_position = Vector2(restricted_x, restricted_y)
+
+	# keyboard movement
+	if is_keyboard_controlled:
+		rb.global_position.y = camera.global_position.y + y_position
+		var verticalDirection := Input.get_axis("move_up", "move_down")
+		if verticalDirection < 0:
+			if camera.global_position.y + y_position > top_edge + 1200:
+				y_position -= 12
+		elif verticalDirection > 0:
+			if camera.global_position.y + y_position < bottom_edge - 1000:
+				y_position += 8
+		var direction := Input.get_axis("move_left", "move_right")
+		if direction < 0:
+			if (rb.global_position.x > left_edge + 1500):
+				rb.global_position.x -= 10
+		elif direction > 0:
+			if (rb.global_position.x < right_edge - 1500):
+				rb.global_position.x += 10
+
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control

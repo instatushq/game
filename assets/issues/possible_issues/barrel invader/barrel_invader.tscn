@@ -332,7 +332,7 @@ fuel_rocks = Array[PackedScene]([ExtResource("25_2tnj0"), ExtResource("26_pm5jl"
 
 [node name="Ship" parent="Game" instance=ExtResource("28_tyx3f")]
 unique_name_in_owner = true
-position = Vector2(-7, 535)
+position = Vector2(-8, 535)
 
 [node name="Camera2D" type="Camera2D" parent="Game"]
 zoom = Vector2(2, 2)
