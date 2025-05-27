@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://ch6bjky2l6cqq"]
 
-[ext_resource type="AudioStream" uid="uid://d2s2x8ikjuoq8" path="res://assets/audio/background/music.mp3" id="1_lxamp"]
+[ext_resource type="AudioStream" uid="uid://br8p0fmt0iaw8" path="res://assets/audio/background/music.mp3" id="1_mtm71"]
 
 [node name="Music" type="AudioStreamPlayer"]
-stream = ExtResource("1_lxamp")
+stream = ExtResource("1_mtm71")
 bus = &"Music"

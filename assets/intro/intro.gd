@@ -19,7 +19,6 @@ func _ready() -> void:
 	fade_timer.one_shot = true
 	fade_timer.timeout.connect(_on_fade_timer_timeout)
 	
-	# Start the sequence
 	start_fade_sequence()
 
 func start_fade_sequence() -> void:
