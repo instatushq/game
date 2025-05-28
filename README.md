@@ -1,6 +1,6 @@
 # instatus inspace
 
-Strap in and help our slightly-overwhelmed astronaut fix all the bizarre hazards popping up across the spaceship.
+Strap in and help our slightly-overwhelmed astronaut fix the bizarre hazards popping up across the spaceship.
 
 ![instaus inspace logo](https://github.com/user-attachments/assets/dcb2bd7c-dfb0-4935-bd76-f312f9a21184)
 
