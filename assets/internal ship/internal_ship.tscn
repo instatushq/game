@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=103 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -6,11 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://qabjpm77ite6" path="res://assets/internal ship/damaged ship loop.png" id="2_46acj"]
 [ext_resource type="Texture2D" uid="uid://cu1h8b8rww1x7" path="res://assets/main menu/light 2.png" id="3_i8hiq"]
 [ext_resource type="Texture2D" uid="uid://dcnhyyeq5nybm" path="res://assets/internal ship/Fixed ship animationt.png" id="3_yxcn8"]
-[ext_resource type="Texture2D" uid="uid://b08qkhhb12xhr" path="res://assets/main menu/light.png" id="7_7h0eb"]
+[ext_resource type="Texture2D" uid="uid://dx6we1spyn8kv" path="res://assets/internal ship/LeftPC.png" id="9_c6j7a"]
+[ext_resource type="Texture2D" uid="uid://be8b8jdr1fbgt" path="res://assets/internal ship/pc issue.png" id="9_g1y32"]
 [ext_resource type="Script" uid="uid://cq1kujf0104bc" path="res://assets/internal ship/visual_herd.gd" id="10_djmod"]
 [ext_resource type="Texture2D" uid="uid://bio6jl0ah80an" path="res://assets/main menu/ship_edge_light.png" id="10_igsmt"]
 [ext_resource type="Texture2D" uid="uid://wpu8fq5lvgoi" path="res://assets/internal ship/pc issue 2.png" id="10_liemg"]
 [ext_resource type="PackedScene" uid="uid://bq85575w8bxgw" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 1.tscn" id="11_aiucs"]
+[ext_resource type="Texture2D" uid="uid://bxvuvr5hv0x7b" path="res://assets/internal ship/RightPC.png" id="11_pqm3t"]
 [ext_resource type="PackedScene" uid="uid://b8mgilkn4xcd" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 2.tscn" id="13_adlbk"]
 [ext_resource type="PackedScene" uid="uid://jjb3c4igolbf" path="res://assets/issues/possible_issues/barrel invader/barrel_invader.tscn" id="13_pqm3t"]
 [ext_resource type="PackedScene" uid="uid://35csyl7rx3c" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 3.tscn" id="14_5y73v"]
@@ -609,6 +611,105 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_o86ff"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(370, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj8ym"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(740, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylxfl"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(1110, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv451"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(0, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkcyw"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(1480, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo3x3"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(1850, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3hbl"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(2220, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qajkw"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(2590, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46ovm"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(2960, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pehjm"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(3330, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6qlx"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(3700, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwgdq"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(4070, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0ybp"]
+atlas = ExtResource("9_g1y32")
+region = Rect2(4440, 0, 370, 490)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6ug6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o86ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj8ym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylxfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv451")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkcyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo3x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3hbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qajkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46ovm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pehjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6qlx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwgdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0ybp")
+}],
+"loop": true,
+"name": &"visible",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ir7vn"]
 atlas = ExtResource("10_liemg")
 region = Rect2(0, 0, 370, 490)
@@ -663,11 +764,6 @@ region = Rect2(4440, 0, 370, 490)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hv451"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ir7vn")
@@ -780,7 +876,7 @@ b = Vector2(-218, -13)
 
 [node name="InternalShip" type="Node2D"]
 script = ExtResource("1_jlxe3")
-default_lights_texutres = ExtResource("7_7h0eb")
+default_lights_texutres = null
 broken_lights_texture = ExtResource("3_i8hiq")
 
 [node name="Animations" type="AnimationPlayer" parent="."]
@@ -827,12 +923,33 @@ sprite_frames = SubResource("SpriteFrames_r65rw")
 autoplay = "default"
 
 [node name="RightPC" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_hv451")
-autoplay = "default"
+light_mask = 512
+sprite_frames = SubResource("SpriteFrames_h6ug6")
+animation = &"visible"
+autoplay = "visible"
+frame_progress = 0.881243
+
+[node name="Light" type="PointLight2D" parent="AnimatedSprite2D/RightPC"]
+position = Vector2(-14, 9)
+color = Color(0.44895, 5.47487e-07, 1.44392e-07, 1)
+energy = 8.0
+range_item_cull_mask = 513
+texture = ExtResource("11_pqm3t")
+texture_scale = 0.28
 
 [node name="LeftPC" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+light_mask = 512
 sprite_frames = SubResource("SpriteFrames_hv451")
-autoplay = "default"
+animation = &"visible"
+autoplay = "visible"
+
+[node name="Light" type="PointLight2D" parent="AnimatedSprite2D/LeftPC"]
+position = Vector2(6, 6)
+color = Color(0.44895, 5.47487e-07, 1.44392e-07, 1)
+energy = 8.0
+range_item_cull_mask = 513
+texture = ExtResource("9_c6j7a")
+texture_scale = 0.27
 
 [node name="Lights" type="Node2D" parent="AnimatedSprite2D"]
 
@@ -847,7 +964,7 @@ texture_scale = 8.0
 position = Vector2(-2, 8)
 color = Color(0.110346, 0.663815, 1, 1)
 energy = 1.78
-texture = ExtResource("7_7h0eb")
+texture = null
 texture_scale = 0.25
 
 [node name="Middle TV" type="PointLight2D" parent="AnimatedSprite2D/Lights"]

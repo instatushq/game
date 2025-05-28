@@ -14,7 +14,7 @@ var is_issue_open: bool = false
 
 signal zone_body_entered(zone: Area2D, body: Node2D)
 signal zone_body_exited(zone: Area2D, body: Node2D)
-signal on_clear_issues(issues_left: bool)
+signal on_clear_issues(zone: Area2D,issues_left: bool)
 signal on_issue_generated(zone: Area2D, issues_count: int)
 
 func _ready() -> void:
@@ -74,7 +74,24 @@ func _on_issue_resolved(zone: Area2D) -> void:
 	current_issues.erase(issue_id)
 	is_issue_open = false
 	game_manager.is_solving_puzzle = false
-	on_clear_issues.emit(has_any_issues())
+	on_clear_issues.emit(zone, has_any_issues())
 
 func has_any_issues() -> bool:
 	return not current_issues.is_empty()
+
+func does_right_zone_have_issues() -> bool:
+	for zone in possible_zones:
+		if zone.name.containsn("right") and current_issues.has(zone.get_instance_id()):
+			return true
+	return false
+
+enum ISSUE_DIRECTION {
+	RIGHT,
+	LEFT
+}
+
+func does_zone_have_issues(direction: ISSUE_DIRECTION) -> bool:
+	for zone in possible_zones:
+		if (direction == ISSUE_DIRECTION.RIGHT and zone.name.containsn("right")) or (direction == ISSUE_DIRECTION.LEFT and zone.name.containsn("left")) and current_issues.has(zone.get_instance_id()):
+			return true
+	return false

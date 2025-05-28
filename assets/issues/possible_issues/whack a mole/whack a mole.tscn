@@ -131,27 +131,34 @@ script = ExtResource("1_8boil")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -397.5
-offset_top = -277.48
-offset_right = 397.5
-offset_bottom = 277.48
+offset_left = 542.5
+offset_top = 402.52
+offset_right = 1337.5
+offset_bottom = 957.48
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.164706, 0.635294, 0.686275, 0.352941)
 script = ExtResource("2_00j50")
 metadata/_edit_use_anchors_ = true
 
-[node name="cooldown_timer" type="Timer" parent="CanvasLayer/ColorRect"]
+[node name="cooldown_timer" type="Timer" parent="CanvasLayer/Control/ColorRect"]
 wait_time = 0.5
 one_shot = true
 
-[node name="XPCounter" type="ColorRect" parent="CanvasLayer/ColorRect"]
+[node name="XPCounter" type="ColorRect" parent="CanvasLayer/Control/ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -163,7 +170,7 @@ offset_bottom = 122.48
 grow_horizontal = 2
 color = Color(0, 0, 0, 0)
 
-[node name="XP" type="Label" parent="CanvasLayer/ColorRect/XPCounter"]
+[node name="XP" type="Label" parent="CanvasLayer/Control/ColorRect/XPCounter"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -179,7 +186,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="MaxXP" type="Label" parent="CanvasLayer/ColorRect/XPCounter"]
+[node name="MaxXP" type="Label" parent="CanvasLayer/Control/ColorRect/XPCounter"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -199,7 +206,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="whack" type="Button" parent="CanvasLayer/ColorRect"]
+[node name="whack" type="Button" parent="CanvasLayer/Control/ColorRect"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 4
@@ -213,15 +220,15 @@ grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack"]
 position = Vector2(96, 46)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack"]
 one_shot = true
 
-[node name="whack2" type="Button" parent="CanvasLayer/ColorRect"]
+[node name="whack2" type="Button" parent="CanvasLayer/Control/ColorRect"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 4
@@ -235,15 +242,15 @@ grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack2"]
 position = Vector2(96, 46)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack2"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack2"]
 one_shot = true
 
-[node name="whack3" type="Button" parent="CanvasLayer/ColorRect"]
+[node name="whack3" type="Button" parent="CanvasLayer/Control/ColorRect"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 4
@@ -257,15 +264,15 @@ grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack3"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack3"]
 position = Vector2(96, 46)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack3"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack3"]
 one_shot = true
 
-[node name="whack4" type="Button" parent="CanvasLayer/ColorRect"]
+[node name="whack4" type="Button" parent="CanvasLayer/Control/ColorRect"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 4
@@ -279,15 +286,15 @@ grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack4"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack4"]
 position = Vector2(96, 46)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack4"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack4"]
 one_shot = true
 
-[node name="whack5" type="Button" parent="CanvasLayer/ColorRect"]
+[node name="whack5" type="Button" parent="CanvasLayer/Control/ColorRect"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 4
@@ -301,15 +308,15 @@ grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack5"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack5"]
 position = Vector2(96, 46)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack5"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack5"]
 one_shot = true
 
-[node name="whack6" type="Button" parent="CanvasLayer/ColorRect"]
+[node name="whack6" type="Button" parent="CanvasLayer/Control/ColorRect"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 4
@@ -323,10 +330,10 @@ grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack6"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack6"]
 position = Vector2(96, 46)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack6"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack6"]
 one_shot = true
