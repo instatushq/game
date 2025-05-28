@@ -2,7 +2,7 @@
 
 Strap in and help our slightly-overwhelmed astronaut fix all the bizarre hazards popping up across the spaceship.
 
-![CleanShot 2025-05-28 at 22 30 05@2x](https://github.com/user-attachments/assets/5619d457-acfe-4de7-a7c2-eb4494821874)
+![instaus inspace logo](https://github.com/user-attachments/assets/dcb2bd7c-dfb0-4935-bd76-f312f9a21184)
 
 
 ## Contribute
