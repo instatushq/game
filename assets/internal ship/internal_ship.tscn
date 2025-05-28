@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=87 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b08qkhhb12xhr" path="res://assets/main menu/light.png" id="7_7h0eb"]
 [ext_resource type="Script" uid="uid://cq1kujf0104bc" path="res://assets/internal ship/visual_herd.gd" id="10_djmod"]
 [ext_resource type="Texture2D" uid="uid://bio6jl0ah80an" path="res://assets/main menu/ship_edge_light.png" id="10_igsmt"]
+[ext_resource type="Texture2D" uid="uid://wpu8fq5lvgoi" path="res://assets/internal ship/pc issue 2.png" id="10_liemg"]
 [ext_resource type="PackedScene" uid="uid://bq85575w8bxgw" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 1.tscn" id="11_aiucs"]
 [ext_resource type="PackedScene" uid="uid://b8mgilkn4xcd" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 2.tscn" id="13_adlbk"]
 [ext_resource type="PackedScene" uid="uid://jjb3c4igolbf" path="res://assets/issues/possible_issues/barrel invader/barrel_invader.tscn" id="13_pqm3t"]
@@ -29,7 +30,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.78]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -41,7 +42,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [0.2]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -53,7 +54,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [5.3]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -65,7 +66,43 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(0.705882, 0.705882, 0.705882, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D/Lights/Screens:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.110346, 0.663815, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D/Lights/Ambience:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0180651, 0.65304, 0.816272, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D/Lights/Middle TV:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.018539, 0.113268, 0.138712, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_xw88r"]
@@ -81,43 +118,79 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.0196078, 0.0196078, 0.0196078, 1), Color(0.0196078, 0.0196078, 0.0196078, 1)]
+"values": [Color(0.784314, 0.784314, 0.784314, 1), Color(0.0196078, 0.0196078, 0.0196078, 1), Color(0.0196078, 0.0196078, 0.0196078, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D/Lights/Screens:visible")
+tracks/1/path = NodePath("AnimatedSprite2D/Lights/Screens:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, true]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.780392, 0.0156863, 0.168627, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D/Lights/Ambience:visible")
+tracks/2/path = NodePath("AnimatedSprite2D/Lights/Screens:energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 1.36667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, true]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D/Lights/Middle TV:visible")
+tracks/3/path = NodePath("AnimatedSprite2D/Lights/Ambience:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1, 1.36667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [false, true, true]
+"values": [Color(0.0196078, 0.654902, 0.815686, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D/Lights/Ambience:energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D/Lights/Middle TV:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.018539, 0.113268, 0.138712, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D/Lights/Middle TV:energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.3]
 }
 
 [sub_resource type="Animation" id="Animation_7h0eb"]
@@ -137,74 +210,74 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D/Lights/Screens:visible")
+tracks/1/path = NodePath("AnimatedSprite2D/Lights/Middle TV:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [true, true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D/Lights/Ambience:visible")
+tracks/2/path = NodePath("AnimatedSprite2D/Lights/Ambience:energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D/Lights/Middle TV:visible")
+tracks/3/path = NodePath("AnimatedSprite2D/Lights/Screens:energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [true, true]
+"values": [2.0, 2.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite2D/Lights/Ambience:energy")
+tracks/4/path = NodePath("AnimatedSprite2D/Lights/Middle TV:energy")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [2.85]
+"values": [0.0, 0.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimatedSprite2D/Lights/Screens:energy")
+tracks/5/path = NodePath("AnimatedSprite2D/Lights/Ambience:color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 0.0]
+"values": [Color(0.473363, 0, 0.0410657, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("AnimatedSprite2D/Lights/Middle TV:energy")
+tracks/6/path = NodePath("AnimatedSprite2D/Lights/Screens:color")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 0.0]
+"values": [Color(1, 0.335657, 0.268298, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_i8hiq"]
@@ -219,79 +292,79 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.196078, 0.196078, 0.196078, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.196078, 0.196078, 0.196078, 1), Color(0.784314, 0.784314, 0.784314, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D/Lights/Screens:visible")
+tracks/1/path = NodePath("AnimatedSprite2D/Lights/Screens:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
+"times": PackedFloat32Array(0, 0.433333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [10.0, 2.0, 3.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D/Lights/Ambience:visible")
+tracks/2/path = NodePath("AnimatedSprite2D/Lights/Middle TV:energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.36667),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
+"update": 0,
+"values": [1.5, 5.3]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D/Lights/Middle TV:visible")
+tracks/3/path = NodePath("AnimatedSprite2D/Lights/Ambience:energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.36667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.633333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [true, true]
+"values": [2.85, 0.6, 0.4]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite2D/Lights/Screens:energy")
+tracks/4/path = NodePath("AnimatedSprite2D/Lights/Middle TV:color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [10.0, 0.0]
+"values": [Color(0.018539, 0.113268, 0.138712, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimatedSprite2D/Lights/Middle TV:energy")
+tracks/5/path = NodePath("AnimatedSprite2D/Lights/Screens:color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.99, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1.5, 0.0]
+"values": [Color(0.780392, 0.0156863, 0.168627, 1), Color(0.780392, 0.0156863, 0.168627, 1), Color(0.0510165, 0.509337, 0.634807, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("AnimatedSprite2D/Lights/Ambience:energy")
+tracks/6/path = NodePath("AnimatedSprite2D/Lights/Ambience:color")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [2.85, 0.0]
+"values": [Color(0.47451, 0, 0.0392157, 1), Color(0.0180651, 0.65304, 0.816272, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_djmod"]
@@ -301,6 +374,12 @@ _data = {
 &"broken": SubResource("Animation_7h0eb"),
 &"revive": SubResource("Animation_i8hiq")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o88cq"]
+size = Vector2(102.5, 117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46acj"]
+size = Vector2(98, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_liemg"]
 atlas = ExtResource("1_o88cq")
@@ -530,6 +609,110 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir7vn"]
+atlas = ExtResource("10_liemg")
+region = Rect2(0, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aglr1"]
+atlas = ExtResource("10_liemg")
+region = Rect2(370, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph4x3"]
+atlas = ExtResource("10_liemg")
+region = Rect2(740, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fsu0"]
+atlas = ExtResource("10_liemg")
+region = Rect2(1110, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fus8m"]
+atlas = ExtResource("10_liemg")
+region = Rect2(1480, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2drq"]
+atlas = ExtResource("10_liemg")
+region = Rect2(1850, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4igo"]
+atlas = ExtResource("10_liemg")
+region = Rect2(2220, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgxdf"]
+atlas = ExtResource("10_liemg")
+region = Rect2(2590, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgfwy"]
+atlas = ExtResource("10_liemg")
+region = Rect2(2960, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28y15"]
+atlas = ExtResource("10_liemg")
+region = Rect2(3330, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4poh"]
+atlas = ExtResource("10_liemg")
+region = Rect2(3700, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o042n"]
+atlas = ExtResource("10_liemg")
+region = Rect2(4070, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofnuv"]
+atlas = ExtResource("10_liemg")
+region = Rect2(4440, 0, 370, 490)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hv451"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir7vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aglr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph4x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fsu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fus8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2drq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4igo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgxdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgfwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28y15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4poh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o042n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofnuv")
+}],
+"loop": true,
+"name": &"visible",
+"speed": 5.0
+}]
+
 [sub_resource type="Gradient" id="Gradient_aiucs"]
 offsets = PackedFloat32Array(0.010395, 0.733888)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -559,12 +742,6 @@ b = Vector2(0, 315.56)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xw88r"]
 a = Vector2(0, -152.33)
 b = Vector2(0, 155.92)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o88cq"]
-size = Vector2(102.5, 117)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_46acj"]
-size = Vector2(98, 122)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_djmod"]
 a = Vector2(1, -1)
@@ -616,38 +793,75 @@ libraries = {
 [node name="Cockpit" type="Node2D" parent="Points"]
 position = Vector2(0, 62)
 
+[node name="Issues" type="Node2D" parent="."]
+script = ExtResource("1_r65rw")
+possible_issues = Array[PackedScene]([ExtResource("13_pqm3t")])
+
+[node name="Right" type="Area2D" parent="Issues"]
+position = Vector2(93, 75)
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
+position = Vector2(0, 13.5)
+shape = SubResource("RectangleShape2D_o88cq")
+
+[node name="Left" type="Area2D" parent="Issues"]
+position = Vector2(-95, -67)
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
+position = Vector2(-1, 23)
+shape = SubResource("RectangleShape2D_46acj")
+debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
+
+[node name="Timer" type="Timer" parent="Issues"]
+wait_time = 100.0
+autostart = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-light_mask = 3
+modulate = Color(0.705882, 0.705882, 0.705882, 1)
+light_mask = 7
 sprite_frames = SubResource("SpriteFrames_r65rw")
+autoplay = "default"
+
+[node name="RightPC" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_hv451")
+autoplay = "default"
+
+[node name="LeftPC" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_hv451")
 autoplay = "default"
 
 [node name="Lights" type="Node2D" parent="AnimatedSprite2D"]
 
 [node name="Ambience" type="PointLight2D" parent="AnimatedSprite2D/Lights"]
 position = Vector2(-5, 41)
-color = Color(0.603922, 0.0784314, 0.137255, 1)
-energy = 0.0
+color = Color(0.0180651, 0.65304, 0.816272, 1)
+energy = 0.2
 texture = SubResource("GradientTexture2D_igsmt")
 texture_scale = 8.0
 
 [node name="Screens" type="PointLight2D" parent="AnimatedSprite2D/Lights"]
 position = Vector2(-2, 8)
-color = Color(0.556863, 0, 0, 1)
-energy = 0.0
+color = Color(0.110346, 0.663815, 1, 1)
+energy = 1.78
 texture = ExtResource("7_7h0eb")
 texture_scale = 0.25
 
 [node name="Middle TV" type="PointLight2D" parent="AnimatedSprite2D/Lights"]
 position = Vector2(-2, 17)
 scale = Vector2(1.22782, 0.847168)
-energy = 0.0
-range_item_cull_mask = 2
+color = Color(0.018539, 0.113268, 0.138712, 1)
+energy = 5.3
+range_item_cull_mask = 4
 texture = SubResource("GradientTexture2D_i8hiq")
 texture_scale = 0.25
 
 [node name="Edges" type="PointLight2D" parent="AnimatedSprite2D/Lights"]
 position = Vector2(-9, -63)
-color = Color(0.14902, 0.615686, 0.788235, 1)
+color = Color(0.526794, 0, 0, 1)
 energy = 5.0
 texture = ExtResource("10_igsmt")
 texture_scale = 0.5
@@ -692,33 +906,6 @@ debug_color = Color(0.937366, 1.30916e-05, 0.628279, 0.42)
 position = Vector2(3, 115)
 shape = SubResource("SegmentShape2D_jlxe3")
 debug_color = Color(0.969519, 0, 0.460823, 0.42)
-
-[node name="Issues" type="Node2D" parent="."]
-script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("13_pqm3t")])
-
-[node name="Right" type="Area2D" parent="Issues"]
-position = Vector2(93, 75)
-collision_layer = 64
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
-position = Vector2(0, 13.5)
-shape = SubResource("RectangleShape2D_o88cq")
-
-[node name="Left" type="Area2D" parent="Issues"]
-position = Vector2(-95, -67)
-collision_layer = 64
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
-position = Vector2(-1, 23)
-shape = SubResource("RectangleShape2D_46acj")
-debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
-
-[node name="Timer" type="Timer" parent="Issues"]
-wait_time = 5.0
-autostart = true
 
 [node name="Visual Herd" type="Node2D" parent="."]
 script = ExtResource("10_djmod")
@@ -783,8 +970,8 @@ position = Vector2(0, 1)
 script = ExtResource("19_c6j7a")
 
 [connection signal="animation_finished" from="Animations" to="." method="_on_animator_animation_finish"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finish"]
 [connection signal="on_clear_issues" from="Issues" to="." method="_on_issues_on_clear_issues"]
 [connection signal="on_issue_generated" from="Issues" to="." method="_on_issues_on_issue_generated"]
 [connection signal="timeout" from="Issues/Timer" to="Issues" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finish"]
 [connection signal="timeout" from="Visual Herd/Spawn Timer" to="Visual Herd" method="_on_spawn_timer_timeout"]
