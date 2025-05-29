@@ -59,7 +59,6 @@ panning_strength = 0.0
 bus = &"Ambience"
 
 [node name="HUD" parent="." instance=ExtResource("15_ens8i")]
-visible = false
 
 [node name="Camera" parent="." instance=ExtResource("19_eajmq")]
 unique_name_in_owner = true

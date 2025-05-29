@@ -5,6 +5,7 @@ signal mole_missed(mole: Mole)
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
+var is_player_on_cooldown: bool = false
 
 enum MoleState {DOWN, UP, OUT}
 var current_state: MoleState = MoleState.DOWN
@@ -33,13 +34,13 @@ func set_active(active: bool) -> void:
 		_start_random_timer()
 
 func _on_pressed() -> void:
-	if not is_active:
+	if not is_active or is_player_on_cooldown:
 		return
 		
 	match current_state:
 		MoleState.OUT:
 			mole_hit.emit(self)
-			animated_sprite.play("down")  # Immediately play down animation
+			animated_sprite.play("hit")
 			current_state = MoleState.DOWN
 			_start_random_timer()
 		_:
