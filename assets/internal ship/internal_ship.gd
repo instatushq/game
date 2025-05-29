@@ -77,7 +77,7 @@ func _on_game_manager_solving_puzzle_changed(is_solving_puzzle: bool) -> void:
 	ship_right_part.visible = false
 	ship_right_part.visible = false
 
-func _on_issues_on_clear_issues(issues_left: bool) -> void:
+func _on_issues_on_clear_issues(_zone: Area2D, issues_left: bool) -> void:
 	if not issues_left:
 		is_playing_revive_animation = true
 		ship_sprite.play_backwards("breakdown")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=104 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://qabjpm77ite6" path="res://assets/internal ship/damaged ship loop.png" id="2_46acj"]
 [ext_resource type="Texture2D" uid="uid://cu1h8b8rww1x7" path="res://assets/main menu/light 2.png" id="3_i8hiq"]
 [ext_resource type="Texture2D" uid="uid://dcnhyyeq5nybm" path="res://assets/internal ship/Fixed ship animationt.png" id="3_yxcn8"]
+[ext_resource type="PackedScene" uid="uid://d2burbt4yek8s" path="res://assets/issues/possible_issues/whack a mole/whack a mole.tscn" id="4_pqm3t"]
+[ext_resource type="Texture2D" uid="uid://b08qkhhb12xhr" path="res://assets/main menu/light.png" id="7_7h0eb"]
 [ext_resource type="Texture2D" uid="uid://dx6we1spyn8kv" path="res://assets/internal ship/LeftPC.png" id="9_c6j7a"]
 [ext_resource type="Texture2D" uid="uid://be8b8jdr1fbgt" path="res://assets/internal ship/pc issue.png" id="9_g1y32"]
 [ext_resource type="Script" uid="uid://cq1kujf0104bc" path="res://assets/internal ship/visual_herd.gd" id="10_djmod"]
@@ -14,14 +16,13 @@
 [ext_resource type="PackedScene" uid="uid://bq85575w8bxgw" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 1.tscn" id="11_aiucs"]
 [ext_resource type="Texture2D" uid="uid://bxvuvr5hv0x7b" path="res://assets/internal ship/RightPC.png" id="11_pqm3t"]
 [ext_resource type="PackedScene" uid="uid://b8mgilkn4xcd" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 2.tscn" id="13_adlbk"]
-[ext_resource type="PackedScene" uid="uid://jjb3c4igolbf" path="res://assets/issues/possible_issues/barrel invader/barrel_invader.tscn" id="13_pqm3t"]
 [ext_resource type="PackedScene" uid="uid://35csyl7rx3c" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 3.tscn" id="14_5y73v"]
 [ext_resource type="PackedScene" uid="uid://ls4e8s8mqgmp" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 4.tscn" id="15_liemg"]
 [ext_resource type="PackedScene" uid="uid://byafhmsqn2tyg" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 5.tscn" id="16_5y73v"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="19_c6j7a"]
 
 [sub_resource type="Animation" id="Animation_djmod"]
-length = 0.001
+length = 1.301
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -32,7 +33,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.78]
+"values": [2.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -44,7 +45,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.2]
+"values": [0.3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -303,10 +304,10 @@ tracks/1/path = NodePath("AnimatedSprite2D/Lights/Screens:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.433333, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [10.0, 2.0, 3.0]
+"values": [10.0, 3.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -327,10 +328,10 @@ tracks/3/path = NodePath("AnimatedSprite2D/Lights/Ambience:energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.633333, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [2.85, 0.6, 0.4]
+"values": [2.85, 0.3]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -876,7 +877,6 @@ b = Vector2(-218, -13)
 
 [node name="InternalShip" type="Node2D"]
 script = ExtResource("1_jlxe3")
-default_lights_texutres = null
 broken_lights_texture = ExtResource("3_i8hiq")
 
 [node name="Animations" type="AnimationPlayer" parent="."]
@@ -891,7 +891,7 @@ position = Vector2(0, 62)
 
 [node name="Issues" type="Node2D" parent="."]
 script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("13_pqm3t")])
+possible_issues = Array[PackedScene]([ExtResource("4_pqm3t")])
 
 [node name="Right" type="Area2D" parent="Issues"]
 position = Vector2(93, 75)
@@ -923,30 +923,32 @@ sprite_frames = SubResource("SpriteFrames_r65rw")
 autoplay = "default"
 
 [node name="RightPC" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+visible = false
 light_mask = 512
 sprite_frames = SubResource("SpriteFrames_h6ug6")
 animation = &"visible"
 autoplay = "visible"
-frame_progress = 0.881243
+frame_progress = 0.742872
 
 [node name="Light" type="PointLight2D" parent="AnimatedSprite2D/RightPC"]
 position = Vector2(-14, 9)
 color = Color(0.44895, 5.47487e-07, 1.44392e-07, 1)
-energy = 8.0
+energy = 14.0
 range_item_cull_mask = 513
 texture = ExtResource("11_pqm3t")
 texture_scale = 0.28
 
 [node name="LeftPC" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+visible = false
 light_mask = 512
 sprite_frames = SubResource("SpriteFrames_hv451")
 animation = &"visible"
 autoplay = "visible"
 
 [node name="Light" type="PointLight2D" parent="AnimatedSprite2D/LeftPC"]
-position = Vector2(6, 6)
+position = Vector2(6, 4)
 color = Color(0.44895, 5.47487e-07, 1.44392e-07, 1)
-energy = 8.0
+energy = 13.0
 range_item_cull_mask = 513
 texture = ExtResource("9_c6j7a")
 texture_scale = 0.27
@@ -956,15 +958,15 @@ texture_scale = 0.27
 [node name="Ambience" type="PointLight2D" parent="AnimatedSprite2D/Lights"]
 position = Vector2(-5, 41)
 color = Color(0.0180651, 0.65304, 0.816272, 1)
-energy = 0.2
+energy = 0.3
 texture = SubResource("GradientTexture2D_igsmt")
 texture_scale = 8.0
 
 [node name="Screens" type="PointLight2D" parent="AnimatedSprite2D/Lights"]
 position = Vector2(-2, 8)
 color = Color(0.110346, 0.663815, 1, 1)
-energy = 1.78
-texture = null
+energy = 2.0
+texture = ExtResource("7_7h0eb")
 texture_scale = 0.25
 
 [node name="Middle TV" type="PointLight2D" parent="AnimatedSprite2D/Lights"]

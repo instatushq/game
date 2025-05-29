@@ -1,114 +1,60 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2burbt4yek8s"]
+[gd_scene load_steps=33 format=3 uid="uid://d2burbt4yek8s"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_8boil"]
 [ext_resource type="Script" uid="uid://dsd2g1qv6ddsb" path="res://assets/issues/possible_issues/whack a mole/whack a mole.gd" id="2_00j50"]
+[ext_resource type="Texture2D" uid="uid://diydi5qnj65n5" path="res://assets/issues/possible_issues/whack a mole/TV-mole game.png" id="2_p5srt"]
 [ext_resource type="Script" uid="uid://c277f4hblehjv" path="res://assets/issues/possible_issues/whack a mole/mole.gd" id="3_hf4y4"]
-[ext_resource type="Texture2D" uid="uid://brtnbep1ca10l" path="res://assets/astronaut/sprites/up.png" id="4_hf4y4"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="5_hf4y4"]
-
-[sub_resource type="Theme" id="Theme_p5srt"]
-default_font = ExtResource("5_hf4y4")
-default_font_size = 80
-
-[sub_resource type="LabelSettings" id="LabelSettings_2p6su"]
-line_spacing = 40.0
-font_size = 70
-font_color = Color(0, 0.733333, 0.8, 1)
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_hf4y4"]
-line_spacing = 40.0
-font_size = 40
-font_color = Color(0, 0.733333, 0.8, 1)
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uemvr"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(472, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mv0ip"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(354, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sm7c6"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(236, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_klspp"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(118, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovrla"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(0, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_00j50"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(354, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hf4y4"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(472, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_keg7o"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(0, 0, 118, 91)
+[ext_resource type="Texture2D" uid="uid://ue7dqqrebdlg" path="res://assets/issues/possible_issues/whack a mole/mole in.png" id="5_p5srt"]
+[ext_resource type="Texture2D" uid="uid://c61usl5jfwyc5" path="res://assets/issues/possible_issues/whack a mole/mole out.png" id="6_p5srt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8fml2"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(118, 0, 118, 91)
+atlas = ExtResource("2_p5srt")
+region = Rect2(0, 0, 325, 242)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbh2y"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(236, 0, 118, 91)
+atlas = ExtResource("2_p5srt")
+region = Rect2(325, 0, 325, 242)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xe51f"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(354, 0, 118, 91)
+atlas = ExtResource("2_p5srt")
+region = Rect2(650, 0, 325, 242)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8xie"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(472, 0, 118, 91)
+atlas = ExtResource("2_p5srt")
+region = Rect2(975, 0, 325, 242)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_p6ds3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fqgx"]
+atlas = ExtResource("2_p5srt")
+region = Rect2(1300, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84hbw"]
+atlas = ExtResource("2_p5srt")
+region = Rect2(1625, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85nbs"]
+atlas = ExtResource("2_p5srt")
+region = Rect2(1950, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_872cy"]
+atlas = ExtResource("2_p5srt")
+region = Rect2(1950, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmtw2"]
+atlas = ExtResource("2_p5srt")
+region = Rect2(1625, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6ds3"]
+atlas = ExtResource("2_p5srt")
+region = Rect2(1300, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq4l3"]
+atlas = ExtResource("2_p5srt")
+region = Rect2(975, 0, 325, 242)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p5srt"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uemvr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mv0ip")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sm7c6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_klspp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ovrla")
-}],
-"loop": false,
-"name": &"down",
-"speed": 9.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_00j50")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hf4y4")
-}],
-"loop": true,
-"name": &"out",
-"speed": 9.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_keg7o")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8fml2")
 }, {
@@ -117,9 +63,131 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xe51f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c8xie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fqgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84hbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85nbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_872cy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmtw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6ds3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq4l3")
+}],
+"loop": true,
+"name": &"wink",
+"speed": 4.0
+}]
+
+[sub_resource type="Theme" id="Theme_p5srt"]
+default_font = ExtResource("5_hf4y4")
+default_font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_2p6su"]
+line_spacing = 40.0
+font_size = 70
+font_color = Color(0.223529, 0.611765, 0.701961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hf4y4"]
+line_spacing = 40.0
+font_size = 36
+font_color = Color(0.223529, 0.611765, 0.701961, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p6su"]
+atlas = ExtResource("5_p5srt")
+region = Rect2(0, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjar4"]
+atlas = ExtResource("5_p5srt")
+region = Rect2(325, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30w5n"]
+atlas = ExtResource("5_p5srt")
+region = Rect2(650, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uemvr"]
+atlas = ExtResource("5_p5srt")
+region = Rect2(975, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv0ip"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1625, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm7c6"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(975, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klspp"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1300, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovrla"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1625, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keg7o"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1950, 0, 325, 242)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6ds3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p6su")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjar4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30w5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uemvr")
+}],
+"loop": false,
+"name": &"down",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv0ip")
+}],
+"loop": true,
+"name": &"out",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm7c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klspp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovrla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keg7o")
 }],
 "loop": false,
 "name": &"up",
@@ -128,53 +196,65 @@ animations = [{
 
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_8boil")
+default_visibility = true
+spawn_position = Vector2(0, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
-layout_mode = 1
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 542.5
-offset_top = 402.52
-offset_right = 1337.5
-offset_bottom = 957.48
+offset_left = -397.5
+offset_top = -277.48
+offset_right = 397.5
+offset_bottom = 277.48
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.164706, 0.635294, 0.686275, 0.352941)
+color = Color(0, 0, 0, 0)
 script = ExtResource("2_00j50")
 metadata/_edit_use_anchors_ = true
 
-[node name="cooldown_timer" type="Timer" parent="CanvasLayer/Control/ColorRect"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect"]
+position = Vector2(-769.5, -381.52)
+scale = Vector2(15.3501, 15.3501)
+sprite_frames = SubResource("SpriteFrames_p5srt")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.129274
+
+[node name="cooldown_timer" type="Timer" parent="CanvasLayer/ColorRect"]
 wait_time = 0.5
 one_shot = true
 
-[node name="XPCounter" type="ColorRect" parent="CanvasLayer/Control/ColorRect"]
+[node name="XPCounter" type="ColorRect" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_top = 2.48001
-offset_right = 200.0
-offset_bottom = 122.48
-grow_horizontal = 2
-color = Color(0, 0, 0, 0)
-
-[node name="XP" type="Label" parent="CanvasLayer/Control/ColorRect/XPCounter"]
-layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -556.5
+offset_top = -273.48
+offset_right = -156.5
+offset_bottom = -153.48
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0, 0, 0, 0)
+
+[node name="XP" type="Label" parent="CanvasLayer/ColorRect/XPCounter"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.47
+anchor_top = 1.118
+anchor_right = -0.47
+anchor_bottom = 1.118
+offset_left = 1.52588e-05
+offset_top = -126.16
+offset_right = 458.0
+offset_bottom = -7.15999
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -182,19 +262,21 @@ theme = SubResource("Theme_p5srt")
 theme_type_variation = &"HeaderSmall"
 text = "0"
 label_settings = SubResource("LabelSettings_2p6su")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 uppercase = true
 
-[node name="MaxXP" type="Label" parent="CanvasLayer/Control/ColorRect/XPCounter"]
+[node name="MaxXP" type="Label" parent="CanvasLayer/ColorRect/XPCounter"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 164.0
-offset_top = 32.0
-offset_right = 164.0
-offset_bottom = 32.0
+anchors_preset = -1
+anchor_left = 1.139
+anchor_top = 0.871
+anchor_right = 1.139
+anchor_bottom = 0.875
+offset_left = -291.6
+offset_top = -88.52
+offset_right = 108.4
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -206,134 +288,152 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="whack" type="Button" parent="CanvasLayer/Control/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 106.5
-offset_top = -93.0
-offset_right = 256.5
-offset_bottom = 7.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = -105.635
+offset_top = -145.11
+offset_right = 106.365
+offset_bottom = 59.8898
 grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"up"
+autoplay = "down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack"]
+[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack"]
 one_shot = true
 
-[node name="whack2" type="Button" parent="CanvasLayer/Control/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack2" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 156.5
-offset_top = 62.0
-offset_right = 306.5
-offset_bottom = 162.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = 154.865
+offset_top = -145.11
+offset_right = 366.865
+offset_bottom = 59.8898
 grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack2"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack2"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"up"
+autoplay = "down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack2"]
+[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack2"]
 one_shot = true
 
-[node name="whack3" type="Button" parent="CanvasLayer/Control/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack3" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 21.5
-offset_top = 10.0
-offset_right = 171.5
-offset_bottom = 110.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = 417.865
+offset_top = -145.11
+offset_right = 629.865
+offset_bottom = 59.8898
 grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack3"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack3"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"up"
+autoplay = "down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack3"]
+[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack3"]
 one_shot = true
 
-[node name="whack4" type="Button" parent="CanvasLayer/Control/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack4" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 520.5
-offset_top = -98.0
-offset_right = 670.5
-offset_bottom = 2.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = -139.135
+offset_top = 25.3698
+offset_right = 72.865
+offset_bottom = 230.37
 grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack4"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack4"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"up"
+autoplay = "down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack4"]
+[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack4"]
 one_shot = true
 
-[node name="whack5" type="Button" parent="CanvasLayer/Control/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack5" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 570.5
-offset_top = 57.0
-offset_right = 720.5
-offset_bottom = 157.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = 154.865
+offset_top = 25.3698
+offset_right = 366.865
+offset_bottom = 230.37
 grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack5"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack5"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"up"
+autoplay = "down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack5"]
+[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack5"]
 one_shot = true
 
-[node name="whack6" type="Button" parent="CanvasLayer/Control/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack6" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 435.5
-offset_top = 5.0
-offset_right = 585.5
-offset_bottom = 105.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = 446.865
+offset_top = 25.3698
+offset_right = 658.865
+offset_bottom = 230.37
 grow_vertical = 2
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/ColorRect/whack6"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack6"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"up"
+autoplay = "down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Control/ColorRect/whack6"]
+[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack6"]
 one_shot = true

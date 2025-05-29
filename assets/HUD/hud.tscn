@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=7 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
 [ext_resource type="Texture2D" uid="uid://bs7yk6x0fivgg" path="res://assets/HUD/Handheld.png" id="2_jn2t8"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
-[ext_resource type="Texture2D" uid="uid://dompus3a8mg25" path="res://assets/HUD/projector.png" id="6_6axep"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y0j1j"]
 font = ExtResource("3_y0j1j")
@@ -200,12 +199,3 @@ text = "XP"
 label_settings = SubResource("LabelSettings_vq446")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
-layout_mode = 0
-offset_left = 557.0
-offset_top = 438.0
-offset_right = 697.0
-offset_bottom = 503.0
-scale = Vector2(5.16794, 5.16794)
-texture = ExtResource("6_6axep")
