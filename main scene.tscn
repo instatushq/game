@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=13 format=3 uid="uid://mtin8kgh74wb"]
 
+[ext_resource type="PackedScene" uid="uid://buerdali4hdwi" path="res://assets/post processing/post_processing.tscn" id="1_7fvey"]
 [ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="1_tfagm"]
 [ext_resource type="AudioStream" uid="uid://xmgb8tmdyuy0" path="res://assets/audio/background/ambience.mp3" id="5_cabrn"]
 [ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="12_t4yvt"]
@@ -13,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="34_t6o86"]
 
 [node name="Game" type="Node2D"]
+
+[node name="PostProcessing" parent="." instance=ExtResource("1_7fvey")]
+z_index = 200
+custom_minimum_size = Vector2(200, 200)
 
 [node name="GameManager" parent="." instance=ExtResource("16_yklg6")]
 unique_name_in_owner = true

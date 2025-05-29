@@ -203,13 +203,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -202.0
-offset_top = -838.0
-offset_right = 1671.0
-offset_bottom = 375.0
+offset_left = -16.0
+offset_top = -761.0
+offset_right = 1157.0
+offset_bottom = -1.0
 grow_vertical = 0
 texture = ExtResource("4_vq446")
+stretch_mode = 4

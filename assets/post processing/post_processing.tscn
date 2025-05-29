@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://buerdali4hdwi"]
+
+[ext_resource type="Shader" uid="uid://vlua2aacmu1b" path="res://assets/post processing/vignette.gdshader" id="1_0myr4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vky8c"]
+shader = ExtResource("1_0myr4")
+shader_parameter/inner_radius = 0.1
+shader_parameter/outer_radius = 1.0
+shader_parameter/vignette_strength = 0.5
+shader_parameter/dither_strength = 0.03
+shader_parameter/vignette_color = Color(0, 0, 0.180392, 1)
+
+[node name="PostProcessing" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vky8c")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
