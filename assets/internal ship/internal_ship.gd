@@ -49,13 +49,13 @@ func _on_animation_finish() -> void:
 				screens_light.texture = default_lights_texutres
 				on_ship_revived.emit()
 				if ship_health.health > 50:
-					ship_right_part.visible = true
-					ship_left_part.visible = true
-				else:
 					if issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.RIGHT):
 						ship_right_part.visible = true
 					if issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.LEFT):
 						ship_left_part.visible = true
+				else:
+					ship_right_part.visible = false
+					ship_left_part.visible = false
 					
 			is_playing_revive_animation = false
 			has_played_broken_animation = false
@@ -79,12 +79,15 @@ func _on_game_manager_solving_puzzle_changed(is_solving_puzzle: bool) -> void:
 
 func _on_issues_on_clear_issues(_zone: Area2D, issues_left: bool) -> void:
 	if not issues_left:
-		is_playing_revive_animation = true
-		ship_sprite.play_backwards("breakdown")
-		animator.play("revive")
+		if ship_health.health < 50 and not has_played_broken_animation:
+			is_playing_revive_animation = true
+			ship_sprite.play_backwards("breakdown")
+			animator.play("revive")
 	else:
-		ship_right_part.visible = false
-		ship_left_part.visible = false
+		if issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.RIGHT):
+			ship_right_part.visible = true
+		if issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.LEFT):
+			ship_left_part.visible = true
 
 func _on_animator_animation_finish(anim_name: StringName) -> void:
 	if anim_name == "breakdown":
