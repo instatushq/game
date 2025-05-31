@@ -175,8 +175,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		astronaut_sprite.play("flight")
 	elif astronaut_sprite.animation == "begin_up":
 		astronaut_sprite.play("up")
-	elif astronaut_sprite.animation == "begin_down":
-		astronaut_sprite.play("down")
+	elif astronaut_sprite.animation == "idle": # begin_down
+		astronaut_sprite.play("idle") #down
 
 func handle_movement_began(_direction: MovementDirection) -> void:
 	astronaut_flashlight.flame_on()
@@ -187,7 +187,7 @@ func handle_movement_began(_direction: MovementDirection) -> void:
 			astronaut_sprite.play("begin_up")
 			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.UP)
 		MovementDirection.DOWN:
-			astronaut_sprite.play("begin_down")
+			astronaut_sprite.play("idle") # begin_down
 			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.DOWN)
 
 func handle_movement_ended(_direction: MovementDirection) -> void:
@@ -198,7 +198,7 @@ func handle_movement_ended(_direction: MovementDirection) -> void:
 		MovementDirection.UP:
 			astronaut_sprite.play("halting_up")
 		MovementDirection.DOWN:
-			astronaut_sprite.play("halting_down")
+			astronaut_sprite.play("idle") #halting_down
 
 func _handle_direction_changed_while_moving(_old_direction: MovementDirection, new_direction: MovementDirection) -> void:
 	match new_direction:
@@ -208,5 +208,5 @@ func _handle_direction_changed_while_moving(_old_direction: MovementDirection, n
 			astronaut_sprite.play("begin_up")
 			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.UP)
 		MovementDirection.DOWN:
-			astronaut_sprite.play("begin_down")
+			astronaut_sprite.play("idle") #begin_down
 			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.DOWN)
