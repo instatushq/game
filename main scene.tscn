@@ -48,6 +48,7 @@ texture = ExtResource("13_t6o86")
 [node name="Big Planet2" parent="InternalShip/Background" instance=ExtResource("16_7wclo")]
 position = Vector2(-128, -71)
 scale = Vector2(0.397925, 0.397925)
+rotation_speed = null
 
 [node name="Sprite2D6" type="Sprite2D" parent="InternalShip/Background"]
 position = Vector2(-214, 74)
