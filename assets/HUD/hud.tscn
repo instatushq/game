@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=20 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
 [ext_resource type="Texture2D" uid="uid://bs7yk6x0fivgg" path="res://assets/HUD/Handheld.png" id="2_jn2t8"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
-[ext_resource type="Texture2D" uid="uid://br3aa4yfcavqj" path="res://assets/HUD/uiiiii.png" id="4_vq446"]
+[ext_resource type="Script" uid="uid://2auapvlkq5ww" path="res://assets/HUD/animated texture rect.gd" id="4_jggq7"]
+[ext_resource type="Texture2D" uid="uid://mvdb63jeb27a" path="res://assets/HUD/UI Sheet.png" id="5_6axep"]
+[ext_resource type="Texture2D" uid="uid://iyswg80gkq3v" path="res://assets/HUD/Radar.png" id="6_basyl"]
+[ext_resource type="Script" uid="uid://csrdlcisboh0e" path="res://assets/HUD/Radar.gd" id="7_x0bbd"]
+[ext_resource type="FontFile" uid="uid://b6j776xc5v64d" path="res://fonts/PixelifySans-Regular.ttf" id="8_x0bbd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y0j1j"]
 font = ExtResource("3_y0j1j")
@@ -17,6 +21,59 @@ font_size = 60
 [sub_resource type="LabelSettings" id="LabelSettings_vq446"]
 font = ExtResource("3_y0j1j")
 font_size = 30
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_basyl"]
+atlas = ExtResource("5_6axep")
+region = Rect2(0, 0, 303, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0bbd"]
+atlas = ExtResource("5_6axep")
+region = Rect2(303, 0, 303, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s042t"]
+atlas = ExtResource("5_6axep")
+region = Rect2(606, 0, 303, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13aas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_basyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0bbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s042t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_basyl"]
+line_spacing = -8.0
+font = ExtResource("3_y0j1j")
+font_size = 30
+font_color = Color(0.447059, 0.737255, 0.94902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s042t"]
+line_spacing = 0.0
+font = ExtResource("8_x0bbd")
+font_size = 40
+font_color = Color(0.447059, 0.737255, 0.94902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_13aas"]
+line_spacing = 0.0
+font = ExtResource("8_x0bbd")
+font_size = 48
+font_color = Color(0.447059, 0.737255, 0.94902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hhnhh"]
+line_spacing = 0.0
+font = ExtResource("8_x0bbd")
+font_size = 45
+font_color = Color(0.447059, 0.737255, 0.94902, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
@@ -202,15 +259,183 @@ label_settings = SubResource("LabelSettings_vq446")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="HUDUI" type="TextureRect" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -761.0
-offset_right = 1157.0
-offset_bottom = -1.0
+offset_left = -89.0
+offset_top = -749.0
+offset_right = 1084.0
+offset_bottom = 11.0
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("4_vq446")
+texture = SubResource("AtlasTexture_basyl")
 stretch_mode = 4
+script = ExtResource("4_jggq7")
+sprites = SubResource("SpriteFrames_13aas")
+
+[node name="Radar" type="TextureRect" parent="HUDUI"]
+modulate = Color(0, 0.141176, 0.333333, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21
+anchor_top = 0.813
+anchor_right = 0.21
+anchor_bottom = 0.813
+offset_left = -26.33
+offset_top = -51.88
+offset_right = 24.67
+offset_bottom = -1.88
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.27958, 1.22408)
+pivot_offset = Vector2(25.9, 50)
+texture = ExtResource("6_basyl")
+script = ExtResource("7_x0bbd")
+
+[node name="Bars" type="VBoxContainer" parent="HUDUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.162
+anchor_top = 0.286
+anchor_right = 0.211
+anchor_bottom = 0.541
+offset_left = -0.026001
+offset_top = -0.360016
+offset_right = -0.503006
+offset_bottom = -7.16
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0.860938, 0, 0.418928, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(1, 0.478431, 0.478431, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0, 1, 1, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0.47451, 0, 1, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0.478431, 0.388235, 0.266667, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0.027451, 0.858824, 0.878431, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(1, 0.482353, 0, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0.423529, 0, 0.176471, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0.847059, 0.768627, 0.462745, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0.164706, 0.34902, 1, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0.704632, 0.374452, 0.309003, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0.907714, 1.33803e-05, 0.602252, 1)
+
+[node name="ColorRect13" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 7.99)
+layout_mode = 2
+color = Color(0.682353, 0.313726, 1, 1)
+
+[node name="Label" type="Label" parent="HUDUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.133
+anchor_top = 0.122
+anchor_right = 0.352
+anchor_bottom = 0.224
+offset_left = -0.00900269
+offset_top = 0.279991
+offset_right = 0.103973
+offset_bottom = -0.240005
+text = "ALL SYSTEMS
+OPERATIONAL"
+label_settings = SubResource("LabelSettings_basyl")
+horizontal_alignment = 1
+
+[node name="Health" type="Control" parent="HUDUI"]
+layout_mode = 1
+anchor_left = 0.229
+anchor_top = 0.345
+anchor_right = 0.335
+anchor_bottom = 0.514
+offset_left = 3.38297
+offset_top = -0.200012
+offset_right = 0.0449829
+offset_bottom = 0.360016
+
+[node name="Arrows" type="Label" parent="HUDUI/Health"]
+layout_mode = 2
+offset_left = 11.0
+offset_top = 1.0
+offset_right = 71.0
+offset_bottom = 61.0
+rotation = 1.5708
+pivot_offset = Vector2(24.5, 24.5)
+text = ">>"
+label_settings = SubResource("LabelSettings_s042t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthContainer" type="HBoxContainer" parent="HUDUI/Health"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.025
+anchor_top = 0.558
+anchor_right = -0.025
+anchor_bottom = 0.558
+offset_left = 0.0250001
+offset_top = 0.0179977
+offset_right = 135.025
+offset_bottom = 60.018
+theme_override_constants/separation = 15
+
+[node name="HealthLabel" type="Label" parent="HUDUI/Health/HealthContainer"]
+custom_minimum_size = Vector2(76.37, 0)
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_13aas")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percentage" type="Label" parent="HUDUI/Health/HealthContainer"]
+layout_mode = 2
+text = "%"
+label_settings = SubResource("LabelSettings_hhnhh")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,56 +1,56 @@
 extends CanvasLayer
 
-@onready var health_label: Label = $TextureRect/Status
-@onready var health_label_percentage: Label = $TextureRect/Health
-@onready var health_bar_color_rects_container: Control = $TextureRect/StatusBars
+@onready var health_label: Label = $HUDUI/Health/HealthContainer/HealthLabel
+@onready var health_bar_color_rects_container: VBoxContainer = $HUDUI/Bars
 @onready var score_label: Label = $TextureRect/ScoreContainer/Score
 @onready var game_manager: GameManager = %GameManager
 @onready var ship: ShipHealth = %InternalShip/Health
 @onready var issues: Issues = %InternalShip/Issues
+@onready var bars: Array[ColorRect] = []
 
 
 const HEALTH_COLORS = [
-	{ "threshold": 75, "color": Color("#00f7bc"), "text": "All Systems Operational" },
-	{ "threshold": 50, "color": Color("#FFFF00"), "text": "Degraded Systems" },
-	{ "threshold": 25, "color": Color("#FF8000"), "text": "Partial Outage" },
-	{ "threshold": 0,  "color": Color("#FF0000"), "text": "Major Outage" }
+	{ "threshold": 75, "text": "All Systems Operational" },
+	{ "threshold": 50, "text": "Degraded Systems" },
+	{ "threshold": 25, "text": "Partial Outage" },
+	{ "threshold": 0, "text": "Major Outage" }
+]
+
+const BARS_COLORS = [
+	{ "bars_count": 3, "color": Color("216a7a")},
+	{ "bars_count": 4, "color": Color("399cb3")},
+	{ "bars_count": 4, "color": Color("72bcf2")},
 ]
 
 func _ready():
-	game_manager.score_changed.connect(on_score_change)
-	ship.on_health_change.connect(_on_health_change)
-	# Initialize all color rects with the default color
-	_update_health_text(100)
+	if game_manager != null:
+		game_manager.score_changed.connect(on_score_change)
+	if ship != null:
+		ship.on_health_change.connect(_on_health_change)
 
-func _update_color_rects(new_health: float) -> void:
-	var color_rects = health_bar_color_rects_container.get_children()	
+	var current_bars_count: int = 0
+	var current_colors_index: int = 0
+	var current_color: Color = BARS_COLORS[0].color
 
-	for entry in HEALTH_COLORS:
-		if new_health > entry.threshold:
-			for i in range(color_rects.size()):
-				color_rects[i].color = entry.color
-			return
-	
-	for i in range(color_rects.size()):
-		color_rects[i].color = HEALTH_COLORS[0].color
-
-
-func _update_health_text(new_health):
-	_update_color_rects(new_health)
-
-	for entry in HEALTH_COLORS:
-		if new_health > entry.threshold:
-			health_label.label_settings.font_color = entry.color
-			health_label.text = entry.text
-			health_label_percentage.text = str(int(new_health)) + "%"
-			return
-			
-	health_label.label_settings.font_color = HEALTH_COLORS[-1].color
-	health_label.text = HEALTH_COLORS[-1].text
-	health_label_percentage.text = str(int(new_health)) + "%"
+	for bar in health_bar_color_rects_container.get_children():
+		bar.color = current_color
+		current_bars_count += 1
+		if current_bars_count > BARS_COLORS[current_colors_index].bars_count:
+			current_bars_count = 0
+			current_colors_index += 1
+			current_color = BARS_COLORS[current_colors_index].color
 
 func _on_health_change(_old_health: float, new_health: float) -> void:
-	_update_health_text(new_health)
+	var color_rects = health_bar_color_rects_container.get_children()
+	health_label.text = str(int(new_health))
+	var percent_per_bar: float = 100.0 / health_bar_color_rects_container.get_child_count()
+
+	for i in range(color_rects.size()):
+		if new_health < percent_per_bar * (i + 1):
+			color_rects[color_rects.size() - i - 1].visible = false
+		else:
+			color_rects[color_rects.size() - i - 1].visible = true
+
 
 func on_score_change(_old_screen: int, new_score: int):
-	score_label.text = str(new_score)
+	pass

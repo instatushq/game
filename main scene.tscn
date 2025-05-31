@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=33 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://buerdali4hdwi" path="res://assets/post processing/post_processing.tscn" id="1_7fvey"]
 [ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="1_tfagm"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="12_t4yvt"]
 [ext_resource type="Texture2D" uid="uid://bfrcj1cva63yx" path="res://assets/environment/backgrounds/galaxy4.png" id="13_t6o86"]
 [ext_resource type="PackedScene" uid="uid://cqcmv5b3uo3sc" path="res://assets/HUD/hud.tscn" id="15_ens8i"]
-[ext_resource type="PackedScene" uid="uid://ccc72g2taxm5r" path="res://assets/environment/spawnable elements/big_planet.tscn" id="16_7wclo"]
 [ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="16_wgikr"]
 [ext_resource type="PackedScene" uid="uid://csv6n3lor4pje" path="res://assets/managers/game manager/game_manager.tscn" id="16_yklg6"]
 [ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy2.png" id="17_aw4ih"]
@@ -200,7 +199,7 @@ position = Vector2(-57, 35)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
-frame_progress = 0.618665
+frame_progress = 0.227256
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
 position = Vector2(-48.25, 45)
@@ -250,7 +249,7 @@ position = Vector2(124, 65)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
-frame_progress = 0.935789
+frame_progress = 0.54438
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
 position = Vector2(144.694, 142.75)
@@ -275,35 +274,6 @@ frame_progress = 0.809226
 unique_name_in_owner = true
 position = Vector2(0, -4)
 
-[node name="Background" type="Node2D" parent="InternalShip"]
-visible = false
-show_behind_parent = true
-
-[node name="Sprite2D3" type="Sprite2D" parent="InternalShip/Background"]
-position = Vector2(-142, -44)
-scale = Vector2(1.35511, 1.35511)
-texture = ExtResource("12_t4yvt")
-
-[node name="Sprite2D4" type="Sprite2D" parent="InternalShip/Background"]
-position = Vector2(200, -41)
-rotation = -0.0953066
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("13_t6o86")
-
-[node name="Sprite2D5" type="Sprite2D" parent="InternalShip/Background"]
-position = Vector2(92.9999, 188)
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("13_t6o86")
-
-[node name="Big Planet2" parent="InternalShip/Background" instance=ExtResource("16_7wclo")]
-position = Vector2(-128, -71)
-scale = Vector2(0.397925, 0.397925)
-
-[node name="Sprite2D6" type="Sprite2D" parent="InternalShip/Background"]
-position = Vector2(-214, 74)
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("13_t6o86")
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="InternalShip"]
 stream = ExtResource("5_cabrn")
 autoplay = true
@@ -312,10 +282,8 @@ panning_strength = 0.0
 bus = &"Ambience"
 
 [node name="PostProcessing" parent="." instance=ExtResource("1_7fvey")]
-visible = false
 
 [node name="HUD" parent="." instance=ExtResource("15_ens8i")]
-visible = false
 
 [node name="Camera" parent="." instance=ExtResource("19_eajmq")]
 unique_name_in_owner = true
