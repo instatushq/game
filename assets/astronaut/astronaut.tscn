@@ -258,7 +258,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"begin_down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -292,7 +292,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"begin_up",
-"speed": 6.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -487,8 +487,10 @@ light_mask = 3
 position = Vector2(-11, -2)
 scale = Vector2(0.51, 0.51)
 sprite_frames = SubResource("SpriteFrames_x1ufq")
-animation = &"begin_down"
+animation = &"begin_up"
 autoplay = "idle"
+frame = 4
+frame_progress = 1.0
 flip_h = true
 
 [node name="Timer" type="Timer" parent="SpriteContainer/AnimatedSprite2D"]
