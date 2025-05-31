@@ -16,8 +16,6 @@
 [node name="Game" type="Node2D"]
 
 [node name="PostProcessing" parent="." instance=ExtResource("1_7fvey")]
-z_index = 200
-custom_minimum_size = Vector2(200, 200)
 
 [node name="GameManager" parent="." instance=ExtResource("16_yklg6")]
 unique_name_in_owner = true

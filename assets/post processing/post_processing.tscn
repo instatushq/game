@@ -5,10 +5,10 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vky8c"]
 shader = ExtResource("1_0myr4")
 shader_parameter/inner_radius = 0.1
-shader_parameter/outer_radius = 1.0
+shader_parameter/outer_radius = 0.72
 shader_parameter/vignette_strength = 1.0
 shader_parameter/dither_strength = 0.03
-shader_parameter/vignette_color = Color(0, 0, 0.180392, 1)
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
 [node name="PostProcessing" type="CanvasLayer"]
 
@@ -19,4 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.2)
+pivot_offset = Vector2(0, 1399)
 mouse_filter = 2
