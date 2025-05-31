@@ -448,7 +448,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -479,9 +479,9 @@ animations = [{
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_8boil")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GameNode" type="Node2D" parent="."]
 
-[node name="Game" type="Control" parent="CanvasLayer"]
+[node name="Game" type="Control" parent="GameNode"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -491,42 +491,41 @@ grow_vertical = 2
 script = ExtResource("2_00j50")
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimatedSprite2D" type="Sprite2D" parent="CanvasLayer/Game"]
-position = Vector2(945.343, 696.561)
+[node name="AnimatedSprite2D" type="Sprite2D" parent="GameNode/Game"]
 scale = Vector2(15.3501, 15.3501)
 texture = ExtResource("3_2p6su")
 
-[node name="Face" type="AnimatedSprite2D" parent="CanvasLayer/Game/AnimatedSprite2D"]
+[node name="Face" type="AnimatedSprite2D" parent="GameNode/Game/AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_1yv70")
 animation = &"hit"
 autoplay = "default"
 frame = 9
 frame_progress = 1.0
 
-[node name="wink timer" type="Timer" parent="CanvasLayer/Game/AnimatedSprite2D/Face"]
+[node name="wink timer" type="Timer" parent="GameNode/Game/AnimatedSprite2D/Face"]
 one_shot = true
 
-[node name="Glow" type="Sprite2D" parent="CanvasLayer/Game/AnimatedSprite2D"]
+[node name="Glow" type="Sprite2D" parent="GameNode/Game/AnimatedSprite2D"]
 position = Vector2(-2.2373, -31.6976)
 scale = Vector2(0.739744, 0.739744)
 texture = ExtResource("7_mv0ip")
 
-[node name="XPCounter" type="ColorRect" parent="CanvasLayer/Game"]
+[node name="XPCounter" type="ColorRect" parent="GameNode/Game"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1097.0
+offset_left = -622.0
 offset_top = -719.0
-offset_right = -697.0
+offset_right = -222.0
 offset_bottom = -599.0
 grow_horizontal = 0
 grow_vertical = 0
 color = Color(0, 0, 0, 0)
 
-[node name="XP" type="Label" parent="CanvasLayer/Game/XPCounter"]
+[node name="XP" type="Label" parent="GameNode/Game/XPCounter"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.597
@@ -548,7 +547,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 uppercase = true
 
-[node name="MaxXP" type="Label" parent="CanvasLayer/Game/XPCounter"]
+[node name="MaxXP" type="Label" parent="GameNode/Game/XPCounter"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.139
@@ -570,23 +569,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="whack" type="Button" parent="CanvasLayer/Game"]
+[node name="whack" type="Button" parent="GameNode/Game"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.153
 anchor_top = 1.121
 anchor_right = 0.153
 anchor_bottom = 1.121
-offset_left = 300.24
-offset_top = -689.4
-offset_right = 512.24
-offset_bottom = -484.4
+offset_left = -347.0
+offset_top = 183.0
+offset_right = -135.0
+offset_bottom = 388.0
 grow_vertical = 2
 theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Game/whack"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack"]
 position = Vector2(-1354, -891.52)
 scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
@@ -595,26 +594,26 @@ autoplay = "down"
 frame = 10
 frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Game/whack"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack"]
 one_shot = true
 
-[node name="whack2" type="Button" parent="CanvasLayer/Game"]
+[node name="whack2" type="Button" parent="GameNode/Game"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.153
 anchor_top = 1.121
 anchor_right = 0.153
 anchor_bottom = 1.121
-offset_left = 564.24
-offset_top = -689.4
-offset_right = 776.24
-offset_bottom = -484.4
+offset_left = -83.0
+offset_top = 183.0
+offset_right = 129.0
+offset_bottom = 388.0
 grow_vertical = 2
 theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Game/whack2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack2"]
 position = Vector2(-1354, -891.52)
 scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
@@ -623,26 +622,26 @@ autoplay = "down"
 frame = 10
 frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Game/whack2"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack2"]
 one_shot = true
 
-[node name="whack3" type="Button" parent="CanvasLayer/Game"]
+[node name="whack3" type="Button" parent="GameNode/Game"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.153
 anchor_top = 1.121
 anchor_right = 0.153
 anchor_bottom = 1.121
-offset_left = 821.24
-offset_top = -689.4
-offset_right = 1033.24
-offset_bottom = -484.4
+offset_left = 174.0
+offset_top = 183.0
+offset_right = 386.0
+offset_bottom = 388.0
 grow_vertical = 2
 theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Game/whack3"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack3"]
 position = Vector2(-1354, -891.52)
 scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
@@ -651,26 +650,26 @@ autoplay = "down"
 frame = 10
 frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Game/whack3"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack3"]
 one_shot = true
 
-[node name="whack4" type="Button" parent="CanvasLayer/Game"]
+[node name="whack4" type="Button" parent="GameNode/Game"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.153
 anchor_top = 1.121
 anchor_right = 0.153
 anchor_bottom = 1.121
-offset_left = 855.24
-offset_top = -521.4
-offset_right = 1067.24
-offset_bottom = -316.4
+offset_left = 208.0
+offset_top = 351.0
+offset_right = 420.0
+offset_bottom = 556.0
 grow_vertical = 2
 theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Game/whack4"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack4"]
 position = Vector2(-1354, -891.52)
 scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
@@ -679,26 +678,26 @@ autoplay = "down"
 frame = 10
 frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Game/whack4"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack4"]
 one_shot = true
 
-[node name="whack5" type="Button" parent="CanvasLayer/Game"]
+[node name="whack5" type="Button" parent="GameNode/Game"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.153
 anchor_top = 1.121
 anchor_right = 0.153
 anchor_bottom = 1.121
-offset_left = 561.24
-offset_top = -521.4
-offset_right = 773.24
-offset_bottom = -316.4
+offset_left = -86.0
+offset_top = 351.0
+offset_right = 126.0
+offset_bottom = 556.0
 grow_vertical = 2
 theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Game/whack5"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack5"]
 position = Vector2(-1354, -891.52)
 scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
@@ -707,26 +706,26 @@ autoplay = "down"
 frame = 10
 frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Game/whack5"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack5"]
 one_shot = true
 
-[node name="whack6" type="Button" parent="CanvasLayer/Game"]
+[node name="whack6" type="Button" parent="GameNode/Game"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.153
 anchor_top = 1.121
 anchor_right = 0.153
 anchor_bottom = 1.121
-offset_left = 268.24
-offset_top = -521.4
-offset_right = 480.24
-offset_bottom = -316.4
+offset_left = -379.0
+offset_top = 351.0
+offset_right = -167.0
+offset_bottom = 556.0
 grow_vertical = 2
 theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Game/whack6"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack6"]
 position = Vector2(-1354, -891.52)
 scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
@@ -735,11 +734,13 @@ autoplay = "down"
 frame = 10
 frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Game/whack6"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack6"]
 one_shot = true
 
-[node name="cooldown_timer" type="Timer" parent="CanvasLayer/Game"]
+[node name="cooldown_timer" type="Timer" parent="GameNode/Game"]
 wait_time = 0.5
 one_shot = true
 
-[connection signal="timeout" from="CanvasLayer/Game/AnimatedSprite2D/Face/wink timer" to="CanvasLayer/Game" method="_on_wink_timer_timeout"]
+[node name="Camera2D" type="Camera2D" parent="GameNode"]
+
+[connection signal="timeout" from="GameNode/Game/AnimatedSprite2D/Face/wink timer" to="GameNode/Game" method="_on_wink_timer_timeout"]

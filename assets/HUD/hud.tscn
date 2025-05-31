@@ -211,5 +211,6 @@ offset_top = -761.0
 offset_right = 1157.0
 offset_bottom = -1.0
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("4_vq446")
 stretch_mode = 4
