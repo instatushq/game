@@ -23,6 +23,12 @@ func _ready() -> void:
 	issues.on_clear_issues.connect(_on_issue_resolved)
 	ship_right_part.visible = false
 	ship_left_part.visible = false
+	ship_sprite.frame_changed.connect(_on_ship_frame_change)
+
+func _on_ship_frame_change() -> void:
+	ship_right_part.frame = ship_sprite.frame
+	ship_left_part.frame = ship_sprite.frame
+	
 
 func _on_issue_resolved(zone: Area2D, _issues_left: bool) -> void:
 	ship_health.increase_health(randi_range(2, 5))
