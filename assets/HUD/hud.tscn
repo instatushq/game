@@ -189,7 +189,7 @@ RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
-score_for_complete_bar = 1000
+score_for_complete_bar = 100
 
 [node name="HUDUI" type="TextureRect" parent="."]
 anchors_preset = 2
@@ -480,16 +480,15 @@ offset_bottom = 27.314
 mouse_filter = 2
 
 [node name="Score" type="Label" parent="HUDUI/XP"]
-custom_minimum_size = Vector2(103, 0)
 layout_mode = 2
-anchor_left = 0.911
-anchor_top = 0.51
-anchor_right = 1.421
-anchor_bottom = 1.245
-offset_left = -18.022
-offset_top = 0.00999832
-offset_right = -5.04202
-offset_bottom = 4.995
+anchor_left = 0.886
+anchor_top = 0.469
+anchor_right = 1.46
+anchor_bottom = 1.306
+offset_left = 0.0279999
+offset_top = 0.0189991
+offset_right = 0.0799561
+offset_bottom = 0.00599289
 text = "1000000"
 label_settings = SubResource("LabelSettings_5hymx")
 horizontal_alignment = 1
@@ -534,6 +533,8 @@ material = SubResource("ShaderMaterial_13aas")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 9.0
+offset_right = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

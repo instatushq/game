@@ -1,6 +1,9 @@
 extends CanvasLayer
 
+signal score_cycle_completed
+
 @export var score_for_complete_bar: int = 500
+@export var xp_score_color_flash: Color = Color.WHITE
 @onready var score_xp_bar: ColorRect = $HUDUI/XP/BarContainer/Bar
 @onready var health_label: Label = $HUDUI/Health/HealthContainer/HealthLabel
 @onready var health_bar_color_rects_container: VBoxContainer = $HUDUI/Bars
@@ -8,12 +11,15 @@ extends CanvasLayer
 @onready var systems_label: Label = $HUDUI/Systems
 @onready var systems_label_font_size: int = systems_label.label_settings.font_size
 @onready var score_label: Label = $HUDUI/XP/Score
+@onready var score_label_original_color: Color = score_label.label_settings.font_color
 @onready var game_manager: GameManager = %GameManager
 @onready var ship: ShipHealth = %InternalShip/Health
 @onready var issues: Issues = %InternalShip/Issues
 @onready var bars: Array[ColorRect] = []
 @onready var dialog_box: DialogBox = $HUDUI/DialogBox
 @onready var time_label: Label = $HUDUI/DialogBox/Clock
+
+var _freeze_score_to_nearest_cycle = false
 
 enum COMPUTER_EMOTION {
 	DEFAULT
@@ -41,6 +47,7 @@ func _physics_process(_delta: float) -> void:
 
 func _ready():
 	_update_systems_titles(100.0)
+	score_cycle_completed.connect(_on_score_cycle_complete)
 	if game_manager != null:
 		game_manager.score_changed.connect(on_score_change)
 	if ship != null:
@@ -80,13 +87,31 @@ func _update_systems_titles(new_health: float) -> void:
 			systems_label.label_settings.font_size = systems_label_font_size + title.font_size_adjustment
 			break
 
-func _portray_emotion(emotion: COMPUTER_EMOTION, dialog: String) -> void:
+func _portray_emotion(_emotion: COMPUTER_EMOTION, dialog: String) -> void:
 	dialog_box.speak_words(dialog, "E N.Stat", 0.5, 1)
 
-func on_score_change(_old_screen: int, new_score: int):
-	score_label.text = str(new_score)
+func on_score_change(old_score: int, new_score: int):
+	if not _freeze_score_to_nearest_cycle:
+		score_label.text = str(new_score)
+	else:
+		var nearest_cycle = round(float(new_score) / float(score_for_complete_bar)) * score_for_complete_bar
+		score_label.text = str(int(nearest_cycle))
+
 	var remainder = fmod(new_score, score_for_complete_bar)
 	var completion_percentage = remainder / score_for_complete_bar
 	score_xp_bar.scale.x = completion_percentage
-	if completion_percentage <= 0.01:
-		dialog_box.speak_words("Conputer Is Here. \n I Am Conputer. But I am Good Conputer.", "E N.Stat", 0.1, 1)
+	
+	if remainder < old_score % score_for_complete_bar:
+		score_cycle_completed.emit()
+
+func _on_score_cycle_complete() -> void:
+	_freeze_score_to_nearest_cycle = true
+	dialog_box.speak_words("Conputer Is Here. \n I Am Conputer. But I am Good Conputer.", "E N.Stat", 0.1, 1)
+
+	for i in range(3):
+		score_label.label_settings.font_color = xp_score_color_flash
+		await get_tree().create_timer(0.2).timeout
+		score_label.label_settings.font_color = score_label_original_color
+		await get_tree().create_timer(0.2).timeout
+
+	_freeze_score_to_nearest_cycle = false
