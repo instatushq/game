@@ -232,76 +232,76 @@ anchor_left = 0.162
 anchor_top = 0.285
 anchor_right = 0.218
 anchor_bottom = 0.54
-offset_left = 9.65199
-offset_top = 2.05498
-offset_right = -10.172
-offset_bottom = 2.41998
+offset_left = 3.65199
+offset_top = -3.94499
+offset_right = -6.172
+offset_bottom = -2.58002
 mouse_filter = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 9
 alignment = 2
 
 [node name="ColorRect" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0.860938, 0, 0.418928, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(1, 0.478431, 0.478431, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0, 1, 1, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0.47451, 0, 1, 1)
 
 [node name="ColorRect5" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0.478431, 0.388235, 0.266667, 1)
 
 [node name="ColorRect6" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0.027451, 0.858824, 0.878431, 1)
 
 [node name="ColorRect7" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(1, 0.482353, 0, 1)
 
 [node name="ColorRect8" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0.423529, 0, 0.176471, 1)
 
 [node name="ColorRect9" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0.847059, 0.768627, 0.462745, 1)
 
 [node name="ColorRect10" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0.164706, 0.34902, 1, 1)
 
 [node name="ColorRect11" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0.704632, 0.374452, 0.309003, 1)
 
 [node name="ColorRect12" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0.907714, 1.33803e-05, 0.602252, 1)
 
 [node name="ColorRect13" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 8.6)
+custom_minimum_size = Vector2(0, 9)
 layout_mode = 2
 color = Color(0.682353, 0.313726, 1, 1)
 
@@ -538,3 +538,4 @@ grow_vertical = 2
 mouse_filter = 2
 theme = SubResource("Theme_hhnhh")
 texture = SubResource("CanvasTexture_j06ix")
+metadata/_edit_use_anchors_ = true
