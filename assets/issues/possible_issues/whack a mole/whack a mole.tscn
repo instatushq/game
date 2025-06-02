@@ -662,8 +662,6 @@ scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"hit"
 autoplay = "down"
-frame = 3
-frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="GameNode/Game/whack3"]
 one_shot = true

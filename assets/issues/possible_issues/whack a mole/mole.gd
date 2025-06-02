@@ -5,6 +5,8 @@ signal mole_missed(mole: Mole)
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
+@export var reset_colors_on_frame: int = 3
+
 var is_player_on_cooldown: bool = false
 
 enum MoleState {DOWN, UP, OUT}
@@ -17,9 +19,14 @@ const MIN_TIME_OUTSIDE = 0.5
 const MAX_TIME_OUTSIDE = 1.5
 
 func _ready() -> void:
+	self_modulate = Color.WHITE
 	pressed.connect(_on_pressed)
 	timer.timeout.connect(_on_timer_timeout)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
+	animated_sprite.frame_changed.connect(func(): 
+		if animated_sprite.animation == "hit" and animated_sprite.frame == reset_colors_on_frame:
+			animated_sprite.self_modulate = Color(1, 1, 1, 1))
+
 	
 	animated_sprite.play("down")
 	
@@ -41,6 +48,7 @@ func _on_pressed() -> void:
 		MoleState.OUT:
 			mole_hit.emit(self)
 			animated_sprite.play("hit")
+			animated_sprite.self_modulate = Color.from_rgba8(255, 80, 80)
 			current_state = MoleState.DOWN
 			_start_random_timer()
 		_:
@@ -67,6 +75,7 @@ func _on_animation_finished() -> void:
 			timer.start(randf_range(MIN_TIME_OUTSIDE, MAX_TIME_OUTSIDE))
 		"out":
 			if current_state == MoleState.OUT:
+				animated_sprite.self_modulate = Color(0, 0, 0, 1)
 				_set_state(MoleState.DOWN)
 				_start_random_timer()
 
