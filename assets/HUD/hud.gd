@@ -65,6 +65,8 @@ func _ready():
 			current_colors_index += 1
 			current_color = BARS_COLORS[current_colors_index].color
 
+	dialog_box.speak_words("Conputer Is Here. \n I Am Conputer. But I am Good Conputer.", "E N.Stat", 0.1, 1)
+
 func _on_health_change(old_health: float, new_health: float) -> void:
 	_update_systems_titles(new_health)
 	if old_health != new_health:
@@ -106,7 +108,6 @@ func on_score_change(old_score: int, new_score: int):
 
 func _on_score_cycle_complete() -> void:
 	_freeze_score_to_nearest_cycle = true
-	dialog_box.speak_words("Conputer Is Here. \n I Am Conputer. But I am Good Conputer.", "E N.Stat", 0.1, 1)
 
 	for i in range(3):
 		score_label.label_settings.font_color = xp_score_color_flash

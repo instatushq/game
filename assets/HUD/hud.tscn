@@ -189,7 +189,8 @@ RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
-score_for_complete_bar = 100
+score_for_complete_bar = 1000
+xp_score_color_flash = Color(0.627883, 0.866017, 0.998356, 1)
 
 [node name="HUDUI" type="TextureRect" parent="."]
 anchors_preset = 2
