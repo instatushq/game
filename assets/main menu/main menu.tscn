@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://e3terh5nct76"]
+[gd_scene load_steps=85 format=3 uid="uid://e3terh5nct76"]
 
 [ext_resource type="Script" uid="uid://cyvhedqbrq845" path="res://assets/main menu/main_menu.gd" id="1_plx4y"]
 [ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="2_5x655"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bmwg8e33sqa8n" path="res://assets/astronaut/sprites/idle anim.png" id="15_k0scp"]
 [ext_resource type="Texture2D" uid="uid://b8jx5gok84hjm" path="res://assets/astronaut/textures/helmet light.png" id="16_hbnyu"]
 [ext_resource type="AudioStream" uid="uid://xmgb8tmdyuy0" path="res://assets/audio/background/ambience.mp3" id="17_4il1l"]
+[ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="18_k0scp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5jlq"]
 atlas = ExtResource("3_gg27b")
@@ -439,6 +440,24 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgp4v"]
+shader = ExtResource("18_k0scp")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.1
+
+[sub_resource type="Theme" id="Theme_q7ux3"]
+default_font_size = 32
+RichTextLabel/colors/default_color = Color(0.435294, 0.72549, 0.94902, 1)
+RichTextLabel/colors/font_outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 28
+RichTextLabel/fonts/normal_font = ExtResource("5_tf0ie")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rlsq6"]
+
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_plx4y")
 ambience_light_on_hover = 25.0
@@ -682,6 +701,20 @@ wait_time = 4.0
 stream = ExtResource("17_4il1l")
 autoplay = true
 bus = &"Ambience"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VHS" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_qgp4v")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_q7ux3")
+texture = SubResource("CanvasTexture_rlsq6")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="focus_entered" from="Ship/Control/Start Game" to="." method="_on_hover_start_game"]
 [connection signal="focus_exited" from="Ship/Control/Start Game" to="." method="_on_unhover_start_game"]

@@ -189,6 +189,7 @@ RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
+score_for_complete_bar = 1000
 
 [node name="HUDUI" type="TextureRect" parent="."]
 anchors_preset = 2
@@ -228,14 +229,14 @@ script = ExtResource("7_x0bbd")
 [node name="Bars" type="VBoxContainer" parent="HUDUI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.162
-anchor_top = 0.285
-anchor_right = 0.218
-anchor_bottom = 0.54
-offset_left = 3.65199
-offset_top = -3.94499
-offset_right = -6.172
-offset_bottom = -2.58002
+anchor_left = 0.165
+anchor_top = 0.281
+anchor_right = 0.214
+anchor_bottom = 0.537
+offset_left = 0.589996
+offset_top = -0.437012
+offset_right = 0.243988
+offset_bottom = 0.0509949
 mouse_filter = 2
 theme_override_constants/separation = 9
 alignment = 2
