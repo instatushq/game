@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://d2burbt4yek8s"]
+[gd_scene load_steps=78 format=3 uid="uid://d2burbt4yek8s"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_8boil"]
 [ext_resource type="Script" uid="uid://dsd2g1qv6ddsb" path="res://assets/issues/possible_issues/whack a mole/whack a mole.gd" id="2_00j50"]
@@ -359,17 +359,13 @@ region = Rect2(975, 0, 325, 242)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5dy7"]
 atlas = ExtResource("6_p5srt")
-region = Rect2(650, 0, 325, 242)
+region = Rect2(0, 0, 325, 242)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c7thd"]
 atlas = ExtResource("6_p5srt")
 region = Rect2(325, 0, 325, 242)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ewyqk"]
-atlas = ExtResource("6_p5srt")
-region = Rect2(0, 0, 325, 242)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ugnpv"]
 atlas = ExtResource("6_p5srt")
 region = Rect2(975, 0, 325, 242)
 
@@ -429,22 +425,49 @@ animations = [{
 "texture": SubResource("AtlasTexture_v5dy7")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ewyqk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c7thd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ewyqk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c7thd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ugnpv")
 }],
 "loop": false,
 "name": &"hit",
@@ -506,23 +529,15 @@ frame_progress = 1.0
 one_shot = true
 
 [node name="Glow" type="Sprite2D" parent="GameNode/Game/AnimatedSprite2D"]
-position = Vector2(-2.2373, -31.6976)
-scale = Vector2(0.739744, 0.739744)
+position = Vector2(0.325731, -4.42994)
 texture = ExtResource("7_mv0ip")
 
 [node name="XPCounter" type="ColorRect" parent="GameNode/Game"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -622.0
-offset_top = -719.0
-offset_right = -222.0
-offset_bottom = -599.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = -94.0
+offset_top = -2.0
+offset_right = 306.0
+offset_bottom = 118.0
 color = Color(0, 0, 0, 0)
 
 [node name="XP" type="Label" parent="GameNode/Game/XPCounter"]
@@ -591,7 +606,7 @@ scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"hit"
 autoplay = "down"
-frame = 10
+frame = 19
 frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="GameNode/Game/whack"]
@@ -604,9 +619,9 @@ anchor_left = 0.153
 anchor_top = 1.121
 anchor_right = 0.153
 anchor_bottom = 1.121
-offset_left = -83.0
+offset_left = -87.0
 offset_top = 183.0
-offset_right = 129.0
+offset_right = 125.0
 offset_bottom = 388.0
 grow_vertical = 2
 theme = SubResource("Theme_ovrla")
@@ -619,7 +634,7 @@ scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"hit"
 autoplay = "down"
-frame = 10
+frame = 3
 frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="GameNode/Game/whack2"]
@@ -647,7 +662,7 @@ scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"hit"
 autoplay = "down"
-frame = 10
+frame = 3
 frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="GameNode/Game/whack3"]
@@ -660,10 +675,10 @@ anchor_left = 0.153
 anchor_top = 1.121
 anchor_right = 0.153
 anchor_bottom = 1.121
-offset_left = 208.0
-offset_top = 351.0
-offset_right = 420.0
-offset_bottom = 556.0
+offset_left = 203.0
+offset_top = 352.0
+offset_right = 415.0
+offset_bottom = 557.0
 grow_vertical = 2
 theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
@@ -675,7 +690,7 @@ scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"hit"
 autoplay = "down"
-frame = 10
+frame = 3
 frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="GameNode/Game/whack4"]
@@ -688,10 +703,10 @@ anchor_left = 0.153
 anchor_top = 1.121
 anchor_right = 0.153
 anchor_bottom = 1.121
-offset_left = -86.0
-offset_top = 351.0
-offset_right = 126.0
-offset_bottom = 556.0
+offset_left = -89.0
+offset_top = 352.0
+offset_right = 123.0
+offset_bottom = 557.0
 grow_vertical = 2
 theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
@@ -703,7 +718,7 @@ scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"hit"
 autoplay = "down"
-frame = 10
+frame = 3
 frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="GameNode/Game/whack5"]
@@ -717,21 +732,21 @@ anchor_top = 1.121
 anchor_right = 0.153
 anchor_bottom = 1.121
 offset_left = -379.0
-offset_top = 351.0
+offset_top = 368.0
 offset_right = -167.0
-offset_bottom = 556.0
+offset_bottom = 573.0
 grow_vertical = 2
 theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack6"]
-position = Vector2(-1354, -891.52)
+position = Vector2(-1355, -906)
 scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
 animation = &"hit"
 autoplay = "down"
-frame = 10
+frame = 3
 frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="GameNode/Game/whack6"]

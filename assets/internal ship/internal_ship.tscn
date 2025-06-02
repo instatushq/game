@@ -922,7 +922,8 @@ light_mask = 7
 sprite_frames = SubResource("SpriteFrames_r65rw")
 animation = &"broken"
 autoplay = "default"
-frame_progress = 0.0351444
+frame = 5
+frame_progress = 0.235395
 
 [node name="RightPC" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 visible = false
