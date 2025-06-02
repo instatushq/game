@@ -1,26 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=33 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
-[ext_resource type="Texture2D" uid="uid://bs7yk6x0fivgg" path="res://assets/HUD/Handheld.png" id="2_jn2t8"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
 [ext_resource type="Script" uid="uid://2auapvlkq5ww" path="res://assets/HUD/animated texture rect.gd" id="4_jggq7"]
 [ext_resource type="Texture2D" uid="uid://mvdb63jeb27a" path="res://assets/HUD/UI Sheet.png" id="5_6axep"]
 [ext_resource type="Texture2D" uid="uid://iyswg80gkq3v" path="res://assets/HUD/Radar.png" id="6_basyl"]
 [ext_resource type="Script" uid="uid://csrdlcisboh0e" path="res://assets/HUD/Radar.gd" id="7_x0bbd"]
 [ext_resource type="FontFile" uid="uid://b6j776xc5v64d" path="res://fonts/PixelifySans-Regular.ttf" id="8_x0bbd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_y0j1j"]
-font = ExtResource("3_y0j1j")
-font_size = 29
-font_color = Color(3.7542e-05, 0.973884, 0.915198, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_jggq7"]
-font = ExtResource("3_y0j1j")
-font_size = 60
-
-[sub_resource type="LabelSettings" id="LabelSettings_vq446"]
-font = ExtResource("3_y0j1j")
-font_size = 30
+[ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="9_13aas"]
+[ext_resource type="Texture2D" uid="uid://cvd4788tt5hhe" path="res://assets/HUD/UI smile emoticon.png" id="9_s042t"]
+[ext_resource type="Script" uid="uid://cjk5bcss5a74g" path="res://assets/HUD/dialog_box.gd" id="10_13aas"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_basyl"]
 atlas = ExtResource("5_6axep")
@@ -54,242 +43,185 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_basyl"]
 line_spacing = -8.0
 font = ExtResource("3_y0j1j")
-font_size = 30
-font_color = Color(0.447059, 0.737255, 0.94902, 1)
+font_size = 40
+font_color = Color(0.435294, 0.72549, 0.94902, 1)
+outline_size = 4
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_s042t"]
 line_spacing = 0.0
 font = ExtResource("8_x0bbd")
-font_size = 40
+font_size = 45
 font_color = Color(0.447059, 0.737255, 0.94902, 1)
+outline_size = 6
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+
+[sub_resource type="Animation" id="Animation_13aas"]
+resource_name = "FORWARD"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [">>", " >>", ">>"]
+}
+
+[sub_resource type="Animation" id="Animation_hhnhh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [">>"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j06ix"]
+_data = {
+&"FORWARD": SubResource("Animation_13aas"),
+&"RESET": SubResource("Animation_hhnhh")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_13aas"]
 line_spacing = 0.0
 font = ExtResource("8_x0bbd")
-font_size = 48
+font_size = 53
 font_color = Color(0.447059, 0.737255, 0.94902, 1)
+outline_size = 5
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hhnhh"]
 line_spacing = 0.0
 font = ExtResource("8_x0bbd")
-font_size = 45
+font_size = 50
 font_color = Color(0.447059, 0.737255, 0.94902, 1)
+outline_size = 5
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhnhh"]
+atlas = ExtResource("9_s042t")
+region = Rect2(303, 0, 303, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13aas"]
+atlas = ExtResource("9_s042t")
+region = Rect2(0, 0, 303, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j06ix"]
+atlas = ExtResource("9_s042t")
+region = Rect2(606, 0, 303, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5hymx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13aas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhnhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j06ix")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="Theme" id="Theme_s042t"]
+default_font_size = 32
+RichTextLabel/colors/default_color = Color(0.435294, 0.72549, 0.94902, 1)
+RichTextLabel/colors/font_outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 28
+RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
+
+[sub_resource type="LabelSettings" id="LabelSettings_j06ix"]
+line_spacing = 0.0
+font = ExtResource("3_y0j1j")
+font_size = 26
+font_color = Color(0.223529, 0.611765, 0.701961, 1)
+outline_size = 4
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3sx18"]
+line_spacing = 0.0
+font = ExtResource("3_y0j1j")
+font_size = 30
+font_color = Color(0.223529, 0.611765, 0.701961, 1)
+outline_size = 4
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5hymx"]
+line_spacing = 0.0
+font = ExtResource("3_y0j1j")
+font_size = 36
+font_color = Color(0.427451, 0.439216, 0.639216, 1)
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13aas"]
+shader = ExtResource("9_13aas")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.1
+
+[sub_resource type="Theme" id="Theme_hhnhh"]
+default_font_size = 32
+RichTextLabel/colors/default_color = Color(0.435294, 0.72549, 0.94902, 1)
+RichTextLabel/colors/font_outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 28
+RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j06ix"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -778.0
-offset_right = 718.0
-offset_bottom = -20.7344
-grow_vertical = 0
-size_flags_stretch_ratio = 9.95
-texture = ExtResource("2_jn2t8")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="Status" type="Label" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.276
-anchor_top = 0.387
-anchor_right = 0.732
-anchor_bottom = 0.435
-offset_left = -2.16801
-offset_top = 4.93817
-offset_right = -1.57605
-offset_bottom = 4.87286
-text = "ALL SYSTEMS OPERATIONAL"
-label_settings = SubResource("LabelSettings_y0j1j")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Health" type="Label" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.276
-anchor_top = 0.387
-anchor_right = 0.732
-anchor_bottom = 0.435
-offset_left = 21.832
-offset_top = 97.9382
-offset_right = -11.576
-offset_bottom = 129.589
-text = "100%"
-label_settings = SubResource("LabelSettings_jggq7")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StatusBars" type="HFlowContainer" parent="TextureRect"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 0
-offset_left = 216.0
-offset_top = 346.0
-offset_right = 501.0
-offset_bottom = 388.0
-alignment = 2
-
-[node name="ColorRect" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect5" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect6" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect7" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect8" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect9" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect10" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect11" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect12" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect13" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect14" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect15" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect16" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect17" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ColorRect18" type="ColorRect" parent="TextureRect/StatusBars"]
-custom_minimum_size = Vector2(12.5, 40)
-layout_mode = 2
-color = Color(5.0056e-06, 0.967302, 0.736263, 1)
-
-[node name="ScoreContainer" type="Control" parent="TextureRect"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Score" type="Label" parent="TextureRect/ScoreContainer"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.276
-anchor_top = 0.387
-anchor_right = 0.732
-anchor_bottom = 0.435
-offset_left = 205.96
-offset_top = 428.52
-offset_right = 295.72
-offset_bottom = 461.6
-text = "0"
-label_settings = SubResource("LabelSettings_vq446")
-vertical_alignment = 1
-
-[node name="XP" type="Label" parent="TextureRect/ScoreContainer"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.276
-anchor_top = 0.387
-anchor_right = 0.732
-anchor_bottom = 0.435
-offset_left = 450.96
-offset_top = 428.52
-offset_right = 464.72
-offset_bottom = 461.6
-text = "XP"
-label_settings = SubResource("LabelSettings_vq446")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="HUDUI" type="TextureRect" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -89.0
-offset_top = -749.0
-offset_right = 1084.0
-offset_bottom = 11.0
+offset_left = -136.0
+offset_top = -856.0
+offset_right = 1218.0
+offset_bottom = 21.0
 grow_vertical = 0
 mouse_filter = 2
 texture = SubResource("AtlasTexture_basyl")
-stretch_mode = 4
+stretch_mode = 6
 script = ExtResource("4_jggq7")
 sprites = SubResource("SpriteFrames_13aas")
 
 [node name="Radar" type="TextureRect" parent="HUDUI"]
-modulate = Color(0, 0.141176, 0.333333, 1)
+self_modulate = Color(0, 0.141176, 0.333333, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.21
-anchor_top = 0.813
-anchor_right = 0.21
-anchor_bottom = 0.813
-offset_left = -26.33
-offset_top = -51.88
-offset_right = 24.67
-offset_bottom = -1.88
+anchor_left = 0.212
+anchor_top = 0.821
+anchor_right = 0.212
+anchor_bottom = 0.821
+offset_left = -25.676
+offset_top = -50.96
+offset_right = 25.324
+offset_bottom = -0.960022
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.27958, 1.22408)
+scale = Vector2(1.42661, 1.36473)
 pivot_offset = Vector2(25.9, 50)
+mouse_filter = 2
 texture = ExtResource("6_basyl")
 script = ExtResource("7_x0bbd")
 
@@ -297,92 +229,93 @@ script = ExtResource("7_x0bbd")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.162
-anchor_top = 0.286
-anchor_right = 0.211
-anchor_bottom = 0.541
-offset_left = -0.026001
-offset_top = -0.360016
-offset_right = -0.503006
-offset_bottom = -7.16
-theme_override_constants/separation = 8
+anchor_top = 0.285
+anchor_right = 0.218
+anchor_bottom = 0.54
+offset_left = 9.65199
+offset_top = 2.05498
+offset_right = -10.172
+offset_bottom = 2.41998
+mouse_filter = 2
+theme_override_constants/separation = 10
 alignment = 2
 
 [node name="ColorRect" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0.860938, 0, 0.418928, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(1, 0.478431, 0.478431, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0, 1, 1, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0.47451, 0, 1, 1)
 
 [node name="ColorRect5" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0.478431, 0.388235, 0.266667, 1)
 
 [node name="ColorRect6" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0.027451, 0.858824, 0.878431, 1)
 
 [node name="ColorRect7" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(1, 0.482353, 0, 1)
 
 [node name="ColorRect8" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0.423529, 0, 0.176471, 1)
 
 [node name="ColorRect9" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0.847059, 0.768627, 0.462745, 1)
 
 [node name="ColorRect10" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0.164706, 0.34902, 1, 1)
 
 [node name="ColorRect11" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0.704632, 0.374452, 0.309003, 1)
 
 [node name="ColorRect12" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0.907714, 1.33803e-05, 0.602252, 1)
 
 [node name="ColorRect13" type="ColorRect" parent="HUDUI/Bars"]
-custom_minimum_size = Vector2(0, 7.99)
+custom_minimum_size = Vector2(0, 8.6)
 layout_mode = 2
 color = Color(0.682353, 0.313726, 1, 1)
 
-[node name="Label" type="Label" parent="HUDUI"]
+[node name="Systems" type="Label" parent="HUDUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.133
-anchor_top = 0.122
-anchor_right = 0.352
-anchor_bottom = 0.224
-offset_left = -0.00900269
-offset_top = 0.279991
-offset_right = 0.103973
-offset_bottom = -0.240005
+anchor_top = 0.101
+anchor_right = 0.359
+anchor_bottom = 0.209
+offset_left = 2.918
+offset_top = 0.423004
+offset_right = -0.0860291
+offset_bottom = -0.292999
 text = "ALL SYSTEMS
 OPERATIONAL"
 label_settings = SubResource("LabelSettings_basyl")
@@ -398,19 +331,28 @@ offset_left = 3.38297
 offset_top = -0.200012
 offset_right = 0.0449829
 offset_bottom = 0.360016
+mouse_filter = 2
 
 [node name="Arrows" type="Label" parent="HUDUI/Health"]
 layout_mode = 2
-offset_left = 11.0
-offset_top = 1.0
-offset_right = 71.0
-offset_bottom = 61.0
+anchor_left = 0.268
+anchor_top = 0.41
+anchor_right = 0.268
+anchor_bottom = 0.41
+offset_left = -32.0188
+offset_top = -60.3619
+offset_right = 27.9812
+offset_bottom = -0.361927
 rotation = 1.5708
-pivot_offset = Vector2(24.5, 24.5)
+pivot_offset = Vector2(29.5, 29.5)
 text = ">>"
 label_settings = SubResource("LabelSettings_s042t")
-horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDUI/Health/Arrows"]
+libraries = {
+&"": SubResource("AnimationLibrary_j06ix")
+}
+autoplay = "FORWARD"
 
 [node name="HealthContainer" type="HBoxContainer" parent="HUDUI/Health"]
 layout_mode = 1
@@ -426,7 +368,7 @@ offset_bottom = 60.018
 theme_override_constants/separation = 15
 
 [node name="HealthLabel" type="Label" parent="HUDUI/Health/HealthContainer"]
-custom_minimum_size = Vector2(76.37, 0)
+custom_minimum_size = Vector2(84.44, 0)
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_13aas")
@@ -439,3 +381,160 @@ text = "%"
 label_settings = SubResource("LabelSettings_hhnhh")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Emotion" type="TextureRect" parent="HUDUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 3.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_hhnhh")
+stretch_mode = 6
+script = ExtResource("4_jggq7")
+sprites = SubResource("SpriteFrames_5hymx")
+metadata/_custom_type_script = "uid://2auapvlkq5ww"
+
+[node name="DialogBox" type="Control" parent="HUDUI"]
+layout_mode = 1
+anchor_left = 0.37
+anchor_top = 0.698
+anchor_right = 0.651
+anchor_bottom = 0.914
+offset_left = 0.019989
+offset_top = 0.854004
+offset_right = -0.454041
+offset_bottom = 0.421997
+mouse_filter = 2
+script = ExtResource("10_13aas")
+default_name = "N/A"
+
+[node name="Dialog" type="RichTextLabel" parent="HUDUI/DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113
+anchor_top = 0.079
+anchor_right = 0.895
+anchor_bottom = 0.757
+offset_left = 0.0599976
+offset_top = 0.0689993
+offset_right = -0.100006
+offset_bottom = -0.072998
+mouse_filter = 2
+theme = SubResource("Theme_s042t")
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla dignissim nulla "
+fit_content = true
+scroll_following = true
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Speaker" type="Label" parent="HUDUI/DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.376
+anchor_top = 0.778
+anchor_right = 0.376
+anchor_bottom = 0.968
+offset_left = 11.12
+offset_top = -0.0420074
+offset_right = 97.12
+offset_bottom = 0.0479889
+text = "E N. Stat"
+label_settings = SubResource("LabelSettings_j06ix")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Clock" type="Label" parent="HUDUI/DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.99
+anchor_top = 0.895
+anchor_right = 0.99
+anchor_bottom = 0.895
+offset_left = -114.2
+offset_top = -22.155
+offset_right = -23.2
+offset_bottom = 12.845
+text = "12:33 AM"
+label_settings = SubResource("LabelSettings_3sx18")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XP" type="Control" parent="HUDUI"]
+layout_mode = 1
+anchor_left = 0.145
+anchor_top = 0.693
+anchor_right = 0.296
+anchor_bottom = 0.718
+offset_left = 0.669983
+offset_top = 0.239014
+offset_right = -1.784
+offset_bottom = 27.314
+mouse_filter = 2
+
+[node name="Score" type="Label" parent="HUDUI/XP"]
+custom_minimum_size = Vector2(103, 0)
+layout_mode = 2
+anchor_left = 0.911
+anchor_top = 0.51
+anchor_right = 1.421
+anchor_bottom = 1.245
+offset_left = -18.022
+offset_top = 0.00999832
+offset_right = -5.04202
+offset_bottom = 4.995
+text = "1000000"
+label_settings = SubResource("LabelSettings_5hymx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BarContainer" type="Control" parent="HUDUI/XP"]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.995
+anchor_top = 0.188
+anchor_right = 0.995
+anchor_bottom = 0.29
+offset_left = -116.99
+offset_top = 0.0169992
+offset_right = 0.00999451
+offset_bottom = 0.0189991
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="HUDUI/XP/BarContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.203922, 0.235294, 0.360784, 1)
+
+[node name="Bar" type="ColorRect" parent="HUDUI/XP/BarContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(117, 2.5)
+mouse_filter = 2
+color = Color(0.427451, 0.439216, 0.639216, 1)
+
+[node name="VHS" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_13aas")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_hhnhh")
+texture = SubResource("CanvasTexture_j06ix")
