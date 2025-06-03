@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
 [ext_resource type="Script" uid="uid://2auapvlkq5ww" path="res://assets/HUD/animated texture rect.gd" id="4_jggq7"]
 [ext_resource type="Texture2D" uid="uid://mvdb63jeb27a" path="res://assets/HUD/UI Sheet.png" id="5_6axep"]
-[ext_resource type="Texture2D" uid="uid://iyswg80gkq3v" path="res://assets/HUD/Radar.png" id="6_basyl"]
+[ext_resource type="Texture2D" uid="uid://dgmwgl7le0j" path="res://assets/HUD/Radar.png" id="6_basyl"]
 [ext_resource type="Script" uid="uid://csrdlcisboh0e" path="res://assets/HUD/Radar.gd" id="7_x0bbd"]
 [ext_resource type="FontFile" uid="uid://b6j776xc5v64d" path="res://fonts/PixelifySans-Regular.ttf" id="8_x0bbd"]
 [ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="9_13aas"]
@@ -226,6 +226,7 @@ pivot_offset = Vector2(25.9, 50)
 mouse_filter = 2
 texture = ExtResource("6_basyl")
 script = ExtResource("7_x0bbd")
+pause_duration = 0.5
 
 [node name="Bars" type="VBoxContainer" parent="HUDUI"]
 layout_mode = 1
