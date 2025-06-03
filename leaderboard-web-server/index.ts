@@ -15,11 +15,7 @@ const exactDateNow: string = new Date()
   })
   .replace(",", "");
 app.use(express.json());
-app.use(
-  cors({
-    origin: [/\.instatus\.com$/],
-  })
-);
+app.use(cors());
 
 app.get("/ping", (_, res) => {
   res.send("last deployment: " + exactDateNow);
