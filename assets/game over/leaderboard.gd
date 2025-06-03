@@ -19,7 +19,7 @@ var is_form_enabled: bool = true
 
 var entries_data: Array = []
 var ui_entries: Array[LeaderboardEntry] = []
-var base_url: String = "http://game-server-x7ywud-a14449-49-13-57-169.traefik.me"
+var base_url: String = "https://api.game.instatus.com"
 
 signal on_entries_data_updated
 
