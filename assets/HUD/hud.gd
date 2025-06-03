@@ -112,7 +112,11 @@ func _on_health_change(old_health: float, new_health: float) -> void:
 
 	for i in range(color_rects.size()):
 		if new_health < percent_per_bar * (i + 1):
-			color_rects[color_rects.size() - i - 1].visible = false
+			var current_bar_index = color_rects.size() - i - 1
+			if current_bar_index == color_rects.size() - 1:
+				color_rects[current_bar_index].visible = new_health > 0
+			else:
+				color_rects[current_bar_index].visible = false
 		else:
 			color_rects[color_rects.size() - i - 1].visible = true
 
