@@ -104,7 +104,7 @@ func _on_health_change(old_health: float, new_health: float) -> void:
 		_play_emotion_idle_animation(new_health)
 
 	if old_health != new_health:
-		health_arrows.rotation_degrees = 180 if new_health > old_health else 90
+		health_arrows.rotation_degrees = 270 if new_health > old_health else 90
 	
 	var color_rects = health_bar_color_rects_container.get_children()
 	health_label.text = str(int(new_health))
