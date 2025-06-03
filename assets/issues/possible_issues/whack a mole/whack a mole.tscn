@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://d2burbt4yek8s"]
+[gd_scene load_steps=79 format=3 uid="uid://d2burbt4yek8s"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_8boil"]
 [ext_resource type="Script" uid="uid://dsd2g1qv6ddsb" path="res://assets/issues/possible_issues/whack a mole/whack a mole.gd" id="2_00j50"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c61usl5jfwyc5" path="res://assets/issues/possible_issues/whack a mole/mole out.png" id="6_p5srt"]
 [ext_resource type="Texture2D" uid="uid://cuxgc1f1klhdf" path="res://assets/issues/possible_issues/whack a mole/wink.png" id="6_sm7c6"]
 [ext_resource type="Texture2D" uid="uid://ceewcdl51t0s" path="res://assets/issues/possible_issues/whack a mole/MOLE GAME glow.png" id="7_mv0ip"]
+[ext_resource type="Script" uid="uid://ccka2jdoupg3" path="res://assets/main menu/main menu camera.gd" id="12_sm7c6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1yv70"]
 atlas = ExtResource("6_sm7c6")
@@ -754,6 +755,12 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="GameNode"]
+[node name="Camera2D2" type="Camera2D" parent="GameNode"]
+position = Vector2(3, 0)
+offset = Vector2(-4, 20)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("12_sm7c6")
+margin = Vector2(20, 30)
 
 [connection signal="timeout" from="GameNode/Game/AnimatedSprite2D/Face/wink timer" to="GameNode/Game" method="_on_wink_timer_timeout"]
