@@ -153,7 +153,6 @@ func _on_score_cycle_complete() -> void:
 	_freeze_score_to_nearest_cycle = false
 
 func _play_emotion_idle_animation(health: float) -> void:
-	print("waw " + str(health))
 	if health <= 30:
 		if emotion_sprite._current_animation != "scared":
 			emotion_sprite.play("scared")
