@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=59 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
@@ -136,10 +136,6 @@ font_color = Color(0.447059, 0.737255, 0.94902, 1)
 outline_size = 5
 outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1gu38"]
-atlas = ExtResource("8_hhnhh")
-region = Rect2(2030, 0, 406, 278)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_aoaac"]
 atlas = ExtResource("8_j06ix")
 region = Rect2(0, 0, 406, 278)
@@ -163,6 +159,10 @@ region = Rect2(1218, 0, 406, 278)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6k1te"]
 atlas = ExtResource("8_hhnhh")
 region = Rect2(1624, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gu38"]
+atlas = ExtResource("8_hhnhh")
+region = Rect2(2030, 0, 406, 278)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lt8ei"]
 atlas = ExtResource("8_5hymx")
@@ -223,14 +223,6 @@ region = Rect2(5278, 0, 406, 278)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ev3q2"]
 atlas = ExtResource("8_5hymx")
 region = Rect2(5684, 0, 406, 278)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l4p2j"]
-atlas = ExtResource("11_5hymx")
-region = Rect2(0, 0, 406, 278)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ov7s3"]
-atlas = ExtResource("11_5hymx")
-region = Rect2(406, 0, 406, 278)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6eqdq"]
 atlas = ExtResource("11_5hymx")
@@ -332,12 +324,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l4p2j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ov7s3")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6eqdq")
 }, {
@@ -616,7 +602,7 @@ offset_bottom = 367.855
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_1gu38")
+texture = SubResource("AtlasTexture_aoaac")
 stretch_mode = 6
 script = ExtResource("4_jggq7")
 sprites = SubResource("SpriteFrames_5hymx")
