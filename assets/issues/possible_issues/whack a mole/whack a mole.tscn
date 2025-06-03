@@ -761,6 +761,6 @@ offset = Vector2(-4, 20)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("12_sm7c6")
-margin = Vector2(20, 30)
+margin = Vector2(50, 60)
 
 [connection signal="timeout" from="GameNode/Game/AnimatedSprite2D/Face/wink timer" to="GameNode/Game" method="_on_wink_timer_timeout"]
