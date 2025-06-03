@@ -3,6 +3,11 @@ import cors from "cors";
 import { getTopPlayers, addScore, getScoreRank } from "./leaderboard";
 const port = 3000;
 const app = express();
+app.use(
+  cors({
+    origin: [/\.instatus\.com$/],
+  })
+);
 const exactDateNow: string = new Date()
   .toLocaleString("en-US", {
     year: "numeric",
@@ -15,7 +20,6 @@ const exactDateNow: string = new Date()
   })
   .replace(",", "");
 app.use(express.json());
-app.use(cors());
 
 app.get("/ping", (_, res) => {
   res.send("last deployment: " + exactDateNow);
