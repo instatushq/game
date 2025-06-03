@@ -1,5 +1,7 @@
 class_name AnimatedTextureRect extends TextureRect
 
+signal on_animation_ending(animation_name: String)
+
 @export var sprites: SpriteFrames
 @export var autoplay: bool = true
 
@@ -7,6 +9,7 @@ var _current_animation: String
 var _current_frame: int = 0
 var _time_passed: float = 0.0
 var _is_playing: bool = false
+var _is_looping: bool = false
 
 func _ready() -> void:
 	if sprites == null:
@@ -36,6 +39,7 @@ func play(animation_name: String) -> void:
 	_current_animation = animation_name
 	_current_frame = 0
 	_is_playing = true
+	_is_looping = false
 	_update_texture()
 
 func stop() -> void:
@@ -52,11 +56,12 @@ func _advance_frame() -> void:
 	_current_frame += 1
 	
 	if _current_frame >= frame_count:
-		if sprites.get_animation_loop(_current_animation):
+		if _is_looping or sprites.get_animation_loop(_current_animation):
 			_current_frame = 0
 		else:
 			_current_frame = frame_count - 1
 			_is_playing = false
+			on_animation_ending.emit(_current_animation)
 			
 	_update_texture()
 
