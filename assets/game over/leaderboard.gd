@@ -19,7 +19,7 @@ var is_form_enabled: bool = true
 
 var entries_data: Array = []
 var ui_entries: Array[LeaderboardEntry] = []
-var base_url: String = "http://game-server-x7ywud-a14449-49-13-57-169.traefik.me"
+var base_url: String = "https://game-server-x7ywud-a14449-49-13-57-169.traefik.me"
 
 signal on_entries_data_updated
 
@@ -36,6 +36,7 @@ func _ready() -> void:
 	query_rank_request.request_completed.connect(_on_query_rank_request_completed)
 	submit_score_request.request_completed.connect(_on_submit_score_request_completed)
 	query_rank_request.set_tls_options(TLSOptions.client_unsafe())
+	submit_score_request.set_tls_options(TLSOptions.client_unsafe())
 	query_rank_request.request(base_url+"/leaderboard/rank/" + str(current_player_score))
 	
 	name_edit.grab_focus()
@@ -100,6 +101,7 @@ func save_score(score: int, player_name: String) -> void:
 	)
 	
 func _on_submit_score_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+	print(body.get_string_from_utf8())
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	if json == null:
 		push_error("Failed to parse JSON response")
