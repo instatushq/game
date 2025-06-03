@@ -1,8 +1,29 @@
 import express from "express";
+import cors from "cors";
 import { getTopPlayers, addScore, getScoreRank } from "./leaderboard";
 const port = 3000;
 const app = express();
+const exactDateNow: string = new Date()
+  .toLocaleString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  })
+  .replace(",", "");
 app.use(express.json());
+app.use(
+  cors({
+    origin: [/\.instatus\.com$/],
+  })
+);
+
+app.get("/ping", (_, res) => {
+  res.send("last deployment: " + exactDateNow);
+});
 
 app.get("/leaderboard", async (_, res) => {
   try {
