@@ -19,13 +19,11 @@ var is_form_enabled: bool = true
 
 var entries_data: Array = []
 var ui_entries: Array[LeaderboardEntry] = []
-var base_url: String = "http://localhost:3000"
+var base_url: String = "http://game-server-x7ywud-a14449-49-13-57-169.traefik.me"
 
 signal on_entries_data_updated
 
 func _ready() -> void:
-	if OS.has_environment("LEADERBOARD_URL"): base_url = OS.get_environment("LEADERBOARD_URL")
-
 	for i in 10:
 		var entry: LeaderboardEntry = entry_scene.instantiate()
 		entries_container.add_child(entry)

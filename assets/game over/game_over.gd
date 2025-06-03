@@ -2,10 +2,9 @@ extends Node2D
 
 @onready var http: HTTPRequest = $HTTPRequest
 @onready var leaderboard: LeaderboardUI = $Camera2D/Leaderboard
-var base_url: String = "http://localhost:3000"
+var base_url: String = "http://game-server-x7ywud-a14449-49-13-57-169.traefik.me"
 
 func _ready() -> void:
-	if OS.has_environment("LEADERBOARD_URL"): base_url = OS.get_environment("LEADERBOARD_URL")
 	http.request_completed.connect(_on_request_complete)
 	http.set_tls_options(TLSOptions.client_unsafe())
 	http.request(base_url+"/leaderboard")
