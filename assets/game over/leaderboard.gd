@@ -101,7 +101,6 @@ func save_score(score: int, player_name: String) -> void:
 	)
 	
 func _on_submit_score_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
-	print(body.get_string_from_utf8())
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	if json == null:
 		push_error("Failed to parse JSON response")

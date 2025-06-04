@@ -9,7 +9,7 @@ var possible_zones: Array = []
 var current_issues: Dictionary = {}
 var current_notifications: Dictionary = {}
 
-var chance_of_issues: int = 50
+@export var chance_of_issues: int = 50
 var last_entered_zone: IssueArea2D = null
 var is_issue_open: bool = false
 @onready var game_manager: GameManager = get_node("/root/Game/GameManager")

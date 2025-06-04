@@ -1069,6 +1069,7 @@ script = ExtResource("19_c6j7a")
 script = ExtResource("1_r65rw")
 possible_issues = Array[PackedScene]([ExtResource("4_pqm3t")])
 notification_icon_scene = ExtResource("22_qy0je")
+chance_of_issues = 70
 
 [node name="Right" type="Area2D" parent="Issues"]
 position = Vector2(74, 54)
@@ -1092,7 +1093,7 @@ shape = SubResource("RectangleShape2D_46acj")
 debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
 
 [node name="Timer" type="Timer" parent="Issues"]
-wait_time = 100.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="animation_finished" from="Animations" to="." method="_on_animator_animation_finish"]
