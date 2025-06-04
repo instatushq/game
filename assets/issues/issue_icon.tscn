@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://chit4g4gn4kv2"]
+
+[ext_resource type="Script" uid="uid://drnb0vnvaf5yt" path="res://assets/issues/issue_icon.gd" id="1_16rv3"]
+[ext_resource type="Texture2D" uid="uid://1o4ba601i7rk" path="res://assets/issues/issue icon.png" id="1_bmg3f"]
+[ext_resource type="Texture2D" uid="uid://cc04kge7tummp" path="res://assets/issues/issue interaction.png" id="2_16rv3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bmg3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bmg3f")
+}],
+"loop": true,
+"name": &"exclaim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_16rv3")
+}],
+"loop": true,
+"name": &"interact",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_bmg3f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_16rv3"]
+resource_name = "float"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o01bo"]
+_data = {
+&"RESET": SubResource("Animation_bmg3f"),
+&"float": SubResource("Animation_16rv3")
+}
+
+[node name="IssueIcon" type="Node2D"]
+script = ExtResource("1_16rv3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 20
+z_as_relative = false
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_bmg3f")
+animation = &"exclaim"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o01bo")
+}
+autoplay = "float"

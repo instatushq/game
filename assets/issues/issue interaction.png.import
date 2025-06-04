@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drod2wabmmrgq"
-path="res://.godot/imported/index.icon.png-d1dfa21869e78e0fa82212925b7cda6a.ctex"
+uid="uid://cc04kge7tummp"
+path="res://.godot/imported/issue interaction.png-8a93949aedffdf3c93d824ea67b58a88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build/game/index.icon.png"
-dest_files=["res://.godot/imported/index.icon.png-d1dfa21869e78e0fa82212925b7cda6a.ctex"]
+source_file="res://assets/issues/issue interaction.png"
+dest_files=["res://.godot/imported/issue interaction.png-8a93949aedffdf3c93d824ea67b58a88.ctex"]
 
 [params]
 

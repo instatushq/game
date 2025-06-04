@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=106 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://ls4e8s8mqgmp" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 4.tscn" id="15_liemg"]
 [ext_resource type="PackedScene" uid="uid://byafhmsqn2tyg" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 5.tscn" id="16_5y73v"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="19_c6j7a"]
+[ext_resource type="Script" uid="uid://bk4wts0vxeayo" path="res://assets/issues/issue area.gd" id="21_b4gsa"]
+[ext_resource type="PackedScene" uid="uid://chit4g4gn4kv2" path="res://assets/issues/issue_icon.tscn" id="22_qy0je"]
 
 [sub_resource type="Animation" id="Animation_djmod"]
 length = 1.301
@@ -377,12 +379,6 @@ _data = {
 &"broken": SubResource("Animation_7h0eb"),
 &"revive": SubResource("Animation_i8hiq")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o88cq"]
-size = Vector2(102.5, 117)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_46acj"]
-size = Vector2(98, 122)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_liemg"]
 atlas = ExtResource("1_o88cq")
@@ -875,6 +871,12 @@ b = Vector2(76, 121)
 a = Vector2(144, -9)
 b = Vector2(-218, -13)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o88cq"]
+size = Vector2(53.25, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46acj"]
+size = Vector2(53, 41)
+
 [node name="InternalShip" type="Node2D"]
 script = ExtResource("1_jlxe3")
 broken_lights_texture = ExtResource("3_i8hiq")
@@ -888,33 +890,6 @@ libraries = {
 
 [node name="Cockpit" type="Node2D" parent="Points"]
 position = Vector2(0, 62)
-
-[node name="Issues" type="Node2D" parent="."]
-script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("4_pqm3t")])
-
-[node name="Right" type="Area2D" parent="Issues"]
-position = Vector2(93, 75)
-collision_layer = 64
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
-position = Vector2(0, 13.5)
-shape = SubResource("RectangleShape2D_o88cq")
-
-[node name="Left" type="Area2D" parent="Issues"]
-position = Vector2(-95, -67)
-collision_layer = 64
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
-position = Vector2(-1, 23)
-shape = SubResource("RectangleShape2D_46acj")
-debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
-
-[node name="Timer" type="Timer" parent="Issues"]
-wait_time = 100.0
-autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.705882, 0.705882, 0.705882, 1)
@@ -1090,9 +1065,39 @@ autostart = true
 position = Vector2(0, 1)
 script = ExtResource("19_c6j7a")
 
+[node name="Issues" type="Node2D" parent="."]
+script = ExtResource("1_r65rw")
+possible_issues = Array[PackedScene]([ExtResource("4_pqm3t")])
+notification_icon_scene = ExtResource("22_qy0je")
+
+[node name="Right" type="Area2D" parent="Issues"]
+position = Vector2(74, 54)
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("21_b4gsa")
+notification_icon_local_position = Vector2(5, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
+shape = SubResource("RectangleShape2D_o88cq")
+
+[node name="Left" type="Area2D" parent="Issues"]
+position = Vector2(-78, -15)
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("21_b4gsa")
+notification_icon_local_position = Vector2(5, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
+shape = SubResource("RectangleShape2D_46acj")
+debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
+
+[node name="Timer" type="Timer" parent="Issues"]
+wait_time = 100.0
+autostart = true
+
 [connection signal="animation_finished" from="Animations" to="." method="_on_animator_animation_finish"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finish"]
+[connection signal="timeout" from="Visual Herd/Spawn Timer" to="Visual Herd" method="_on_spawn_timer_timeout"]
 [connection signal="on_clear_issues" from="Issues" to="." method="_on_issues_on_clear_issues"]
 [connection signal="on_issue_generated" from="Issues" to="." method="_on_issues_on_issue_generated"]
 [connection signal="timeout" from="Issues/Timer" to="Issues" method="_on_timer_timeout"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finish"]
-[connection signal="timeout" from="Visual Herd/Spawn Timer" to="Visual Herd" method="_on_spawn_timer_timeout"]

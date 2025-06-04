@@ -30,7 +30,7 @@ func _on_ship_frame_change() -> void:
 	ship_left_part.frame = ship_sprite.frame
 	
 
-func _on_issue_resolved(zone: Area2D, _issues_left: bool) -> void:
+func _on_issue_resolved(zone: IssueArea2D, _issues_left: bool) -> void:
 	ship_health.increase_health(randi_range(2, 5))
 	if ship_health.health > 50:
 		if zone.name.containsn("right"):
@@ -83,7 +83,7 @@ func _on_game_manager_solving_puzzle_changed(is_solving_puzzle: bool) -> void:
 	ship_right_part.visible = false
 	ship_right_part.visible = false
 
-func _on_issues_on_clear_issues(_zone: Area2D, issues_left: bool) -> void:
+func _on_issues_on_clear_issues(_zone: IssueArea2D, issues_left: bool) -> void:
 	if not issues_left:
 		if ship_health.health < 50 and not has_played_broken_animation:
 			is_playing_revive_animation = true
@@ -101,7 +101,7 @@ func _on_animator_animation_finish(anim_name: StringName) -> void:
 		if not is_playing_revive_animation:
 			on_ship_broken.emit()
 
-func _on_issues_on_issue_generated(_zone: Area2D, issues_count: int) -> void:
+func _on_issues_on_issue_generated(_zone: IssueArea2D, issues_count: int) -> void:
 	if is_playing_revive_animation:
 		issue_generated_during_revival = true
 		return

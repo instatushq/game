@@ -1,6 +1,4 @@
-extends CharacterBody2D
-
-class_name Astronaut
+class_name Astronaut extends CharacterBody2D
 
 enum MovementDirection { FORWARD, UP, DOWN }
 
