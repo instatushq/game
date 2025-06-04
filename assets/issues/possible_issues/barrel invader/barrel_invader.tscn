@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cnxk6ijntgefu" path="res://assets/debris/fuel rocks/fuel 3.tscn" id="27_ny23e"]
 [ext_resource type="Script" uid="uid://b7dqgngdm4d7m" path="res://assets/issues/possible_issues/barrel invader/barrel_invader_camera.gd" id="28_2tnj0"]
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="28_tyx3f"]
-[ext_resource type="Script" uid="uid://bbtlaikoxuc0p" path="res://assets/issues/possible_issues/barrel invader/barrel invader hud.gd" id="31_efpm6"]
+[ext_resource type="Script" path="res://assets/issues/possible_issues/barrel invader/barrel invader hud.gd" id="31_efpm6"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="32_3oaur"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kne8y"]
@@ -215,90 +215,89 @@ texture = ExtResource("20_yayhl")
 
 [node name="Front Layer Of Stars" type="ParallaxLayer" parent="Game/ParallaxBackground"]
 position = Vector2(-401.19, 962)
-scale = Vector2(1.5, 1.5)
 motion_scale = Vector2(1.2, 1.2)
-motion_mirroring = Vector2(0, 717.81)
+motion_mirroring = Vector2(0, 684.91)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(-2.22202, -6.45294)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(-288.888, -13.113)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(-700, -13.113)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(467.779, -13.113)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(-324, -335.333)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(361.559, -325.333)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(-679.555, -335.333)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(-156.222, -335.333)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(145.999, -712)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(-321.778, -709.777)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(-510.667, -712)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars"]
 position = Vector2(438, -712)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 speed_scale = 1.5
