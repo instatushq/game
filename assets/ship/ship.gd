@@ -31,6 +31,7 @@ var current_ship_y_position: float = 300.0
 
 var y_position = 0
 var is_keyboard_controlled: bool = true
+var y_position_synced: bool = false
 
 func _ready():
 	rb.on_impact.connect(_on_impact_with_object)
@@ -62,8 +63,13 @@ func _input(event: InputEvent) -> void:
 				is_firing = false
 	elif event is InputEventMouseMotion:
 		is_keyboard_controlled = false
+		y_position_synced = false
 	elif event is InputEventKey:
 		is_keyboard_controlled = true
+		if y_position_synced == false:
+			mouse_world_position = get_global_mouse_position()
+			y_position = mouse_world_position.y + 50
+			y_position_synced = true
 
 func _physics_process(_delta: float) -> void:
 	if game_manager.is_playing == false: return
@@ -90,7 +96,7 @@ func _physics_process(_delta: float) -> void:
 		rb.global_position.y = camera.global_position.y + y_position
 		var verticalDirection := Input.get_axis("move_up", "move_down")
 		if verticalDirection < 0:
-			if camera.global_position.y + y_position > top_edge + 1200:
+			if camera.global_position.y + y_position > top_edge + 1700:
 				y_position -= 12
 		elif verticalDirection > 0:
 			if camera.global_position.y + y_position < bottom_edge - 1000:
@@ -102,7 +108,9 @@ func _physics_process(_delta: float) -> void:
 		elif direction > 0:
 			if (rb.global_position.x < right_edge - 1500):
 				rb.global_position.x += 10
-
+		if Input.is_action_pressed("fire_cannon") and can_fire:
+			_fire_canons()
+			can_fire = false
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control
