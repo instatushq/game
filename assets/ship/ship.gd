@@ -8,15 +8,15 @@ var side_movement_padding: float = 48.0
 
 var mouse_world_position: Vector2 = Vector2.ZERO
 
-@export var canon_one_active: bool = true
-@export var canon_two_active: bool = true
+@export var cannon_one_active: bool = true
+@export var cannon_two_active: bool = true
 @export var pew_scene: PackedScene = preload("res://assets/ship/projectiles/pew.tscn")
 @export var fire_cooldown: float = 0.15
 
 @onready var rb: ShipRigidBody = $RigidBody2D
 @onready var sprites_animation_player: AnimationPlayer = $RigidBody2D/SpritesContainer/SpritesAnimations
-@onready var canon_1: Node2D = $RigidBody2D/ShipPoints/Canon
-@onready var canon_2: Node2D = $RigidBody2D/ShipPoints/Canon2
+@onready var cannon_1: Node2D = $RigidBody2D/ShipPoints/Canon
+@onready var cannon_2: Node2D = $RigidBody2D/ShipPoints/Canon2
 @onready var game_manager: BarrelInvader = get_parent()
 
 var current_velocity: Vector2 = Vector2(0, 0)
@@ -44,24 +44,12 @@ func _process(delta: float) -> void:
 			fire_timer = 0.0
 			if input_buffered or is_firing:
 				input_buffered = false
-				_fire_canons()
+				_fire_cannons()
 				can_fire = false
 
 func _input(event: InputEvent) -> void:
 	if game_manager.is_playing == false: return
-	
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				is_firing = true
-				if can_fire:
-					_fire_canons()
-					can_fire = false
-				else:
-					input_buffered = true
-			else:
-				is_firing = false
-	elif event is InputEventMouseMotion:
+	if event is InputEventMouseMotion:
 		is_keyboard_controlled = false
 		y_position_synced = false
 	elif event is InputEventKey:
@@ -90,6 +78,9 @@ func _physics_process(_delta: float) -> void:
 		var restricted_y = clamp(mouse_world_position.y + vertical_ship_padding, camera.global_position.y, bottom_edge - 1000)
 		var restricted_x = clamp(mouse_world_position.x, left_edge + 1400, right_edge - 1400)
 		rb.global_position = Vector2(restricted_x, restricted_y)
+		if Input.is_action_pressed("fire_cannon") and can_fire:
+			_fire_cannons()
+			can_fire = false
 
 	# keyboard movement
 	if is_keyboard_controlled:
@@ -109,7 +100,7 @@ func _physics_process(_delta: float) -> void:
 			if (rb.global_position.x < right_edge - 1500):
 				rb.global_position.x += 10
 		if Input.is_action_pressed("fire_cannon") and can_fire:
-			_fire_canons()
+			_fire_cannons()
 			can_fire = false
 
 func toggle_control(new_can_control: bool) -> void:
@@ -120,15 +111,15 @@ func _on_impact_with_object(_body: ShipImpacter) -> void:
 	#health.decrease_health(randf_range(body.min_damage_range, body.max_damage_range))
 	pass
 
-func create_pew(canon: Node2D) -> void:
+func create_pew(cannon: Node2D) -> void:
 	var pew: Pew = pew_scene.instantiate()
 	game_manager.add_child(pew)
-	pew.global_position = canon.global_position
+	pew.global_position = cannon.global_position
 	pew.linear_velocity = Vector2.UP * pew.speed
 
-func _fire_canons() -> void:
+func _fire_cannons() -> void:
 	sprites_animation_player.play("shoot")
-	if canon_one_active:
-		create_pew(canon_1)
-	if canon_two_active:
-		create_pew(canon_2)
+	if cannon_one_active:
+		create_pew(cannon_1)
+	if cannon_two_active:
+		create_pew(cannon_2)
