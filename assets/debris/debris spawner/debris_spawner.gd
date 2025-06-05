@@ -122,18 +122,11 @@ func _physics_process(_delta: float) -> void:
 		
 
 func _ready() -> void:
+	var game_manager: BarrelInvader = get_parent()
+	game_manager.game_started.connect(_on_game_started)
+
+func _on_game_started() -> void:
 	var viewport_size = get_viewport_rect().size
 	var camera_position = ship_camera.global_position
 	var top_center_world_pos = camera_position.y - (viewport_size.y / 2)
 	_spawn_batch(top_center_world_pos)
-
-#func _draw() -> void:
-	#for i in range(grid_locations.size()):
-		#var grid_size_x = grid_locations[i]["size"].x * 2
-		#var grid_size_y = grid_locations[i]["size"].y * 2
-		#var grid_position_x = grid_locations[i]["position"].x - grid_size_x / 2
-		#var grid_position_y = grid_locations[i]["position"].y - grid_size_y / 2
-#
-		#var color = grid_locations[i]["color"]
-#
-		#draw_rect(Rect2(grid_position_x, grid_position_y, grid_size_x, grid_size_y), color)

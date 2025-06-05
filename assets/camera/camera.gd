@@ -28,7 +28,7 @@ func focus_astronaut() -> void:
 	zoom = Vector2.ONE * 11.5
 
 func _on_astronaut_on_movement_vector_changed(movement_vector: Vector2) -> void:
-	if game_manager.current_player == GameManager.Player.SHIP:
+	if game_manager.is_solving_puzzle:
 		return
 
 	var target_position = movement_vector * camera_offset_margin

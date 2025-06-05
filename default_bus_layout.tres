@@ -18,4 +18,4 @@ bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = -21.4536
-bus/3/send = &"Master"
+bus/3/send = &"Sound FX"

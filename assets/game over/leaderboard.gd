@@ -19,11 +19,12 @@ var is_form_enabled: bool = true
 
 var entries_data: Array = []
 var ui_entries: Array[LeaderboardEntry] = []
+var base_url: String = "https://api.game.instatus.com"
 
 signal on_entries_data_updated
 
 func _ready() -> void:
-	for i in 10:    
+	for i in 10:
 		var entry: LeaderboardEntry = entry_scene.instantiate()
 		entries_container.add_child(entry)
 		ui_entries.append(entry)
@@ -34,7 +35,9 @@ func _ready() -> void:
 	on_entries_data_updated.connect(_on_entries_data_updated)
 	query_rank_request.request_completed.connect(_on_query_rank_request_completed)
 	submit_score_request.request_completed.connect(_on_submit_score_request_completed)
-	query_rank_request.request("http://localhost:3000/leaderboard/rank/" + str(current_player_score))
+	query_rank_request.set_tls_options(TLSOptions.client_unsafe())
+	submit_score_request.set_tls_options(TLSOptions.client_unsafe())
+	query_rank_request.request(base_url+"/leaderboard/rank/" + str(current_player_score))
 	
 	name_edit.grab_focus()
 
@@ -91,12 +94,12 @@ func save_score(score: int, player_name: String) -> void:
 	var payload = JSON.stringify({"score": score, "name": player_name})
 
 	submit_score_request.request(
-		"http://localhost:3000/leaderboard",
+		base_url+"/leaderboard",
 		headers,
 		HTTPClient.METHOD_POST,
 		payload
 	)
-
+	
 func _on_submit_score_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	if json == null:

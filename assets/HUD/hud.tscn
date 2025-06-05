@@ -1,188 +1,750 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=59 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
-[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="2_jn2t8"]
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
+[ext_resource type="Script" uid="uid://2auapvlkq5ww" path="res://assets/HUD/animated texture rect.gd" id="4_jggq7"]
+[ext_resource type="Texture2D" uid="uid://mvdb63jeb27a" path="res://assets/HUD/UI Sheet.png" id="5_6axep"]
+[ext_resource type="Texture2D" uid="uid://dgmwgl7le0j" path="res://assets/HUD/Radar.png" id="6_basyl"]
+[ext_resource type="Script" uid="uid://csrdlcisboh0e" path="res://assets/HUD/Radar.gd" id="7_x0bbd"]
+[ext_resource type="Texture2D" uid="uid://dh887p2uln6j" path="res://assets/HUD/UI Emotions/relief face.png" id="8_5hymx"]
+[ext_resource type="Texture2D" uid="uid://cmopp5lbqilt3" path="res://assets/HUD/UI Emotions/nervous face.png" id="8_hhnhh"]
+[ext_resource type="Texture2D" uid="uid://u1xqq67oomyg" path="res://assets/HUD/smile face.png" id="8_j06ix"]
+[ext_resource type="FontFile" uid="uid://b6j776xc5v64d" path="res://fonts/PixelifySans-Regular.ttf" id="8_x0bbd"]
+[ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="9_13aas"]
+[ext_resource type="Script" uid="uid://cjk5bcss5a74g" path="res://assets/HUD/dialog_box.gd" id="10_13aas"]
+[ext_resource type="Texture2D" uid="uid://ymmhrr3c5e20" path="res://assets/HUD/UI Emotions/scared face.png" id="11_5hymx"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_lbn2g"]
-font_size = 30
+[sub_resource type="AtlasTexture" id="AtlasTexture_basyl"]
+atlas = ExtResource("5_6axep")
+region = Rect2(0, 0, 303, 200)
 
-[sub_resource type="LabelSettings" id="LabelSettings_jn2t8"]
-font_size = 30
-font_color = Color(0, 0.94902, 0.686275, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0bbd"]
+atlas = ExtResource("5_6axep")
+region = Rect2(303, 0, 303, 200)
 
-[sub_resource type="Theme" id="Theme_y0j1j"]
-default_font = ExtResource("2_jn2t8")
-default_font_size = 80
+[sub_resource type="AtlasTexture" id="AtlasTexture_s042t"]
+atlas = ExtResource("5_6axep")
+region = Rect2(606, 0, 303, 200)
 
-[sub_resource type="LabelSettings" id="LabelSettings_vq446"]
-line_spacing = 15.0
-font_size = 70
-font_color = Color(0.8, 0.258824, 0, 1)
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="SpriteFrames" id="SpriteFrames_13aas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_basyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0bbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s042t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="Animation" id="Animation_y0j1j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[sub_resource type="LabelSettings" id="LabelSettings_basyl"]
+line_spacing = -8.0
+font = ExtResource("3_y0j1j")
+font_size = 40
+font_color = Color(0.435294, 0.72549, 0.94902, 1)
+outline_size = 4
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
 
-[sub_resource type="Animation" id="Animation_vq446"]
-resource_name = "hide"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+[sub_resource type="LabelSettings" id="LabelSettings_s042t"]
+line_spacing = 0.0
+font = ExtResource("8_x0bbd")
+font_size = 45
+font_color = Color(0.447059, 0.737255, 0.94902, 1)
+outline_size = 6
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
 
-[sub_resource type="Animation" id="Animation_jn2t8"]
-resource_name = "warning"
+[sub_resource type="Animation" id="Animation_13aas"]
+resource_name = "FORWARD"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath(".:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [">>", " >>", ">>"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Systems:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(183, 89), Vector2(183, 93), Vector2(183, 89)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0j1j"]
+[sub_resource type="Animation" id="Animation_hhnhh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [">>"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Systems:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(183, 89)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j06ix"]
 _data = {
-&"RESET": SubResource("Animation_y0j1j"),
-&"hide": SubResource("Animation_vq446"),
-&"warning": SubResource("Animation_jn2t8")
+&"FORWARD": SubResource("Animation_13aas"),
+&"RESET": SubResource("Animation_hhnhh")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_y0j1j"]
-line_spacing = 40.0
-font_size = 70
-font_color = Color(0, 0.733333, 0.8, 1)
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_13aas"]
+line_spacing = 0.0
+font = ExtResource("8_x0bbd")
+font_size = 53
+font_color = Color(0.447059, 0.737255, 0.94902, 1)
+outline_size = 5
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hhnhh"]
+line_spacing = 0.0
+font = ExtResource("8_x0bbd")
+font_size = 50
+font_color = Color(0.447059, 0.737255, 0.94902, 1)
+outline_size = 5
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoaac"]
+atlas = ExtResource("8_j06ix")
+region = Rect2(0, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkyo2"]
+atlas = ExtResource("8_j06ix")
+region = Rect2(406, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uesjw"]
+atlas = ExtResource("8_j06ix")
+region = Rect2(812, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b1ov"]
+atlas = ExtResource("8_hhnhh")
+region = Rect2(812, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc4br"]
+atlas = ExtResource("8_hhnhh")
+region = Rect2(1218, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k1te"]
+atlas = ExtResource("8_hhnhh")
+region = Rect2(1624, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gu38"]
+atlas = ExtResource("8_hhnhh")
+region = Rect2(2030, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt8ei"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(0, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dufh6"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(406, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dad8v"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(812, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obky0"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(1218, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omjy7"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(1624, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgypw"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(2030, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wimu4"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(2436, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ekcq"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(2842, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sh0o"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(3248, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1andu"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(3654, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeqip"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(4060, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppq8h"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(4466, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xitwf"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(4872, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n060a"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(5278, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev3q2"]
+atlas = ExtResource("8_5hymx")
+region = Rect2(5684, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eqdq"]
+atlas = ExtResource("11_5hymx")
+region = Rect2(812, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kftw"]
+atlas = ExtResource("11_5hymx")
+region = Rect2(1218, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeaf4"]
+atlas = ExtResource("11_5hymx")
+region = Rect2(1624, 0, 406, 278)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apdop"]
+atlas = ExtResource("11_5hymx")
+region = Rect2(2030, 0, 406, 278)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5hymx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoaac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkyo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uesjw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b1ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc4br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k1te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gu38")
+}],
+"loop": true,
+"name": &"nervous",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lt8ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dufh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dad8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obky0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omjy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgypw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wimu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ekcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sh0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1andu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeqip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppq8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xitwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n060a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev3q2")
+}],
+"loop": false,
+"name": &"relief",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eqdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kftw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeaf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apdop")
+}],
+"loop": true,
+"name": &"scared",
+"speed": 7.0
+}]
+
+[sub_resource type="Theme" id="Theme_s042t"]
+default_font_size = 32
+RichTextLabel/colors/default_color = Color(0.435294, 0.72549, 0.94902, 1)
+RichTextLabel/colors/font_outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 28
+RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
+
+[sub_resource type="LabelSettings" id="LabelSettings_j06ix"]
+line_spacing = 0.0
+font = ExtResource("3_y0j1j")
+font_size = 26
+font_color = Color(0.223529, 0.611765, 0.701961, 1)
+outline_size = 4
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3sx18"]
+line_spacing = 0.0
+font = ExtResource("3_y0j1j")
+font_size = 30
+font_color = Color(0.223529, 0.611765, 0.701961, 1)
+outline_size = 4
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5hymx"]
+line_spacing = 0.0
+font = ExtResource("3_y0j1j")
+font_size = 36
+font_color = Color(0.427451, 0.439216, 0.639216, 1)
+outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13aas"]
+shader = ExtResource("9_13aas")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.1
+
+[sub_resource type="Theme" id="Theme_hhnhh"]
+default_font_size = 32
+RichTextLabel/colors/default_color = Color(0.435294, 0.72549, 0.94902, 1)
+RichTextLabel/colors/font_outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 28
+RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j06ix"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
+score_for_complete_bar = 1000
+xp_score_color_flash = Color(0.627883, 0.866017, 0.998356, 1)
 
-[node name="Score" type="Label" parent="."]
-offset_top = 13.0
-offset_right = 118.0
-offset_bottom = 55.0
-size_flags_horizontal = 4
-text = "0 XP"
-label_settings = SubResource("LabelSettings_lbn2g")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Health" type="Label" parent="."]
-offset_left = 1652.0
-offset_top = 16.0
-offset_right = 1874.0
-offset_bottom = 103.0
-size_flags_horizontal = 4
-text = "100%
-"
-label_settings = SubResource("LabelSettings_jn2t8")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Fuel" type="Label" parent="."]
-offset_left = 4.0
-offset_top = 1307.0
-offset_right = 226.0
-offset_bottom = 1394.0
-size_flags_horizontal = 4
-text = "Fuel: 100%"
-label_settings = SubResource("LabelSettings_jn2t8")
-vertical_alignment = 1
-
-[node name="WarningRectangle" type="ColorRect" parent="."]
-show_behind_parent = true
-custom_minimum_size = Vector2(1000, 310)
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -500.0
-offset_right = 500.0
-offset_bottom = 310.0
-grow_horizontal = 2
-color = Color(0, 0, 0, 0.176471)
-
-[node name="Warning" type="Label" parent="WarningRectangle"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+[node name="HUDUI" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -1.0
-offset_bottom = -1.0
+offset_left = -136.0
+offset_top = -856.0
+offset_right = 1218.0
+offset_bottom = 21.0
+grow_vertical = 0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_basyl")
+stretch_mode = 6
+script = ExtResource("4_jggq7")
+sprites = SubResource("SpriteFrames_13aas")
+
+[node name="Radar" type="TextureRect" parent="HUDUI"]
+self_modulate = Color(0, 0.141176, 0.333333, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.212
+anchor_top = 0.821
+anchor_right = 0.212
+anchor_bottom = 0.821
+offset_left = -25.676
+offset_top = -50.96
+offset_right = 25.324
+offset_bottom = -0.960022
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-theme = SubResource("Theme_y0j1j")
-theme_type_variation = &"HeaderSmall"
-text = "WARNING
-METEOR HERD INCOMING
- SHOOT AND AVOID to survive"
-label_settings = SubResource("LabelSettings_vq446")
-horizontal_alignment = 1
-vertical_alignment = 1
+scale = Vector2(1.42661, 1.36473)
+pivot_offset = Vector2(25.9, 50)
+mouse_filter = 2
+texture = ExtResource("6_basyl")
+script = ExtResource("7_x0bbd")
+pause_duration = 0.5
 
-[node name="Animation" type="AnimationPlayer" parent="WarningRectangle"]
+[node name="Bars" type="VBoxContainer" parent="HUDUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.165
+anchor_top = 0.281
+anchor_right = 0.214
+anchor_bottom = 0.537
+offset_left = 0.589996
+offset_top = -0.437012
+offset_right = 0.243988
+offset_bottom = 0.0509949
+mouse_filter = 2
+theme_override_constants/separation = 9
+alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0.860938, 0, 0.418928, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(1, 0.478431, 0.478431, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0, 1, 1, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0.47451, 0, 1, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0.478431, 0.388235, 0.266667, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0.027451, 0.858824, 0.878431, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(1, 0.482353, 0, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0.423529, 0, 0.176471, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0.847059, 0.768627, 0.462745, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0.164706, 0.34902, 1, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0.704632, 0.374452, 0.309003, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0.907714, 1.33803e-05, 0.602252, 1)
+
+[node name="ColorRect13" type="ColorRect" parent="HUDUI/Bars"]
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+color = Color(0.682353, 0.313726, 1, 1)
+
+[node name="Systems" type="Label" parent="HUDUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.133
+anchor_top = 0.101
+anchor_right = 0.359
+anchor_bottom = 0.209
+offset_left = 2.918
+offset_top = 0.422997
+offset_right = -0.0860291
+offset_bottom = -0.292999
+text = "ALL SYSTEMS
+OPERATIONAL"
+label_settings = SubResource("LabelSettings_basyl")
+horizontal_alignment = 1
+
+[node name="Health" type="Control" parent="HUDUI"]
+layout_mode = 1
+anchor_left = 0.229
+anchor_top = 0.345
+anchor_right = 0.335
+anchor_bottom = 0.514
+offset_left = 3.38297
+offset_top = -0.200012
+offset_right = 0.0449829
+offset_bottom = 0.360016
+mouse_filter = 2
+
+[node name="Arrows" type="Label" parent="HUDUI/Health"]
+layout_mode = 2
+anchor_left = 0.268
+anchor_top = 0.41
+anchor_right = 0.268
+anchor_bottom = 0.41
+offset_left = -32.0188
+offset_top = -60.3619
+offset_right = 27.9812
+offset_bottom = -0.361927
+rotation = 1.5708
+pivot_offset = Vector2(29.5, 29.5)
+text = ">>"
+label_settings = SubResource("LabelSettings_s042t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDUI/Health/Arrows"]
 libraries = {
-&"": SubResource("AnimationLibrary_y0j1j")
+&"": SubResource("AnimationLibrary_j06ix")
 }
-autoplay = "hide"
+autoplay = "FORWARD"
 
-[node name="Timer" type="Timer" parent="WarningRectangle"]
-wait_time = 3.0
-one_shot = true
+[node name="HealthContainer" type="HBoxContainer" parent="HUDUI/Health"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.025
+anchor_top = 0.558
+anchor_right = -0.025
+anchor_bottom = 0.558
+offset_left = 0.0250001
+offset_top = 0.0179977
+offset_right = 135.025
+offset_bottom = 60.018
+theme_override_constants/separation = 15
 
-[node name="MeteorCountdown" type="ColorRect" parent="."]
-visible = false
-show_behind_parent = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_right = 200.0
-offset_bottom = 120.0
+[node name="HealthLabel" type="Label" parent="HUDUI/Health/HealthContainer"]
+custom_minimum_size = Vector2(84.44, 0)
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_13aas")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Percentage" type="Label" parent="HUDUI/Health/HealthContainer"]
+layout_mode = 2
+text = "%"
+label_settings = SubResource("LabelSettings_hhnhh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Emotion" type="TextureRect" parent="HUDUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.686
+anchor_top = 0.71
+anchor_right = 0.821
+anchor_bottom = 0.885
+offset_left = -780.844
+offset_top = -483.67
+offset_right = 588.366
+offset_bottom = 367.855
 grow_horizontal = 2
-color = Color(0, 0, 0, 0)
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_aoaac")
+stretch_mode = 6
+script = ExtResource("4_jggq7")
+sprites = SubResource("SpriteFrames_5hymx")
+metadata/_custom_type_script = "uid://2auapvlkq5ww"
 
-[node name="Countdown" type="Label" parent="MeteorCountdown"]
+[node name="DialogBox" type="Control" parent="HUDUI"]
+layout_mode = 1
+anchor_left = 0.37
+anchor_top = 0.698
+anchor_right = 0.651
+anchor_bottom = 0.914
+offset_left = 0.019989
+offset_top = 0.854004
+offset_right = -0.454041
+offset_bottom = 0.421997
+mouse_filter = 2
+script = ExtResource("10_13aas")
+default_name = "N/A"
+
+[node name="Dialog" type="RichTextLabel" parent="HUDUI/DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113
+anchor_top = 0.079
+anchor_right = 0.895
+anchor_bottom = 0.757
+offset_left = 0.0599976
+offset_top = 0.0689993
+offset_right = -0.100006
+offset_bottom = -0.072998
+mouse_filter = 2
+theme = SubResource("Theme_s042t")
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla dignissim nulla "
+fit_content = true
+scroll_following = true
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Speaker" type="Label" parent="HUDUI/DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.376
+anchor_top = 0.778
+anchor_right = 0.376
+anchor_bottom = 0.968
+offset_left = 11.12
+offset_top = -0.0420074
+offset_right = 97.12
+offset_bottom = 0.0479889
+text = "E N. Stat"
+label_settings = SubResource("LabelSettings_j06ix")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Clock" type="Label" parent="HUDUI/DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.99
+anchor_top = 0.895
+anchor_right = 0.99
+anchor_bottom = 0.895
+offset_left = -114.2
+offset_top = -22.155
+offset_right = -23.2
+offset_bottom = 12.845
+text = "12:33 AM"
+label_settings = SubResource("LabelSettings_3sx18")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="XP" type="Control" parent="HUDUI"]
+layout_mode = 1
+anchor_left = 0.145
+anchor_top = 0.693
+anchor_right = 0.296
+anchor_bottom = 0.718
+offset_left = 0.669983
+offset_top = 0.239014
+offset_right = -1.784
+offset_bottom = 27.314
+mouse_filter = 2
+
+[node name="Score" type="Label" parent="HUDUI/XP"]
+layout_mode = 2
+anchor_left = 0.886
+anchor_top = 0.469
+anchor_right = 1.46
+anchor_bottom = 1.306
+offset_left = 0.0279999
+offset_top = 0.0189991
+offset_right = 0.0799561
+offset_bottom = 0.00599289
+text = "1000000"
+label_settings = SubResource("LabelSettings_5hymx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BarContainer" type="Control" parent="HUDUI/XP"]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.995
+anchor_top = 0.188
+anchor_right = 0.995
+anchor_bottom = 0.29
+offset_left = -116.99
+offset_top = 0.0169992
+offset_right = 0.00999451
+offset_bottom = 0.0189991
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="HUDUI/XP/BarContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-theme = SubResource("Theme_y0j1j")
-theme_type_variation = &"HeaderSmall"
-text = "60 S"
-label_settings = SubResource("LabelSettings_y0j1j")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
+mouse_filter = 2
+color = Color(0.203922, 0.235294, 0.360784, 1)
 
-[connection signal="timeout" from="WarningRectangle/Timer" to="." method="_on_timer_timeout"]
+[node name="Bar" type="ColorRect" parent="HUDUI/XP/BarContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(117, 2.5)
+mouse_filter = 2
+color = Color(0.427451, 0.439216, 0.639216, 1)
+
+[node name="VHS" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_13aas")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_hhnhh")
+texture = SubResource("CanvasTexture_j06ix")
+metadata/_edit_use_anchors_ = true

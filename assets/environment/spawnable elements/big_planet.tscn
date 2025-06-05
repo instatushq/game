@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccc72g2taxm5r"]
+[gd_scene load_steps=5 format=3 uid="uid://ccc72g2taxm5r"]
 
 [ext_resource type="Texture2D" uid="uid://buwtxtti63nnx" path="res://assets/environment/spawnable elements/textures/planets.png" id="1_cpbfc"]
-[ext_resource type="Script" uid="uid://b5d53kutlo8de" path="res://assets/environment/spawnable elements/planet_rotate.gd" id="1_plye1"]
 [ext_resource type="Texture2D" uid="uid://cf4k274dg12qu" path="res://assets/environment/spawnable elements/textures/planet ring.png" id="2_plye1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rk8b"]
@@ -20,8 +19,6 @@ animations = [{
 }]
 
 [node name="Big Planet" type="Node2D"]
-script = ExtResource("1_plye1")
-has_ring = true
 
 [node name="Container" type="Node2D" parent="."]
 

@@ -6,8 +6,10 @@
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "6.8.2",
+    "@types/cors": "^2.8.18",
     "@types/express": "^5.0.2",
     "@types/node": "^22.15.21",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
     "prisma": "^6.8.2",
     "tsx": "^4.19.4",

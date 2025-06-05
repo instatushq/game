@@ -1,114 +1,167 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2burbt4yek8s"]
+[gd_scene load_steps=79 format=3 uid="uid://d2burbt4yek8s"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_8boil"]
 [ext_resource type="Script" uid="uid://dsd2g1qv6ddsb" path="res://assets/issues/possible_issues/whack a mole/whack a mole.gd" id="2_00j50"]
+[ext_resource type="Texture2D" uid="uid://dvqpwqfb2qlyu" path="res://assets/issues/possible_issues/whack a mole/MOLE GAME UI.png" id="3_2p6su"]
 [ext_resource type="Script" uid="uid://c277f4hblehjv" path="res://assets/issues/possible_issues/whack a mole/mole.gd" id="3_hf4y4"]
-[ext_resource type="Texture2D" uid="uid://brtnbep1ca10l" path="res://assets/astronaut/sprites/up.png" id="4_hf4y4"]
+[ext_resource type="Texture2D" uid="uid://c6t3lfld57ggq" path="res://assets/issues/possible_issues/whack a mole/gotchu.png" id="4_uemvr"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="5_hf4y4"]
+[ext_resource type="Texture2D" uid="uid://crnf3w0x04at1" path="res://assets/issues/possible_issues/whack a mole/miss.png" id="5_mv0ip"]
+[ext_resource type="Texture2D" uid="uid://ue7dqqrebdlg" path="res://assets/issues/possible_issues/whack a mole/mole in.png" id="5_p5srt"]
+[ext_resource type="Texture2D" uid="uid://c61usl5jfwyc5" path="res://assets/issues/possible_issues/whack a mole/mole out.png" id="6_p5srt"]
+[ext_resource type="Texture2D" uid="uid://cuxgc1f1klhdf" path="res://assets/issues/possible_issues/whack a mole/wink.png" id="6_sm7c6"]
+[ext_resource type="Texture2D" uid="uid://ceewcdl51t0s" path="res://assets/issues/possible_issues/whack a mole/MOLE GAME glow.png" id="7_mv0ip"]
+[ext_resource type="Script" uid="uid://ccka2jdoupg3" path="res://assets/main menu/main menu camera.gd" id="12_sm7c6"]
 
-[sub_resource type="Theme" id="Theme_p5srt"]
-default_font = ExtResource("5_hf4y4")
-default_font_size = 80
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yv70"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(0, 0, 359, 226)
 
-[sub_resource type="LabelSettings" id="LabelSettings_2p6su"]
-line_spacing = 40.0
-font_size = 70
-font_color = Color(0, 0.733333, 0.8, 1)
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_71xmf"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(359, 0, 359, 226)
 
-[sub_resource type="LabelSettings" id="LabelSettings_hf4y4"]
-line_spacing = 40.0
-font_size = 40
-font_color = Color(0, 0.733333, 0.8, 1)
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uemvr"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(472, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mv0ip"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(354, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sm7c6"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(236, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_klspp"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(118, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovrla"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(0, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_00j50"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(354, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hf4y4"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(472, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_keg7o"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(0, 0, 118, 91)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss6jj"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(718, 0, 359, 226)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8fml2"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(118, 0, 118, 91)
+atlas = ExtResource("4_uemvr")
+region = Rect2(0, 0, 359, 226)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbh2y"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(236, 0, 118, 91)
+atlas = ExtResource("4_uemvr")
+region = Rect2(359, 0, 359, 226)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xe51f"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(354, 0, 118, 91)
+atlas = ExtResource("4_uemvr")
+region = Rect2(718, 0, 359, 226)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8xie"]
-atlas = ExtResource("4_hf4y4")
-region = Rect2(472, 0, 118, 91)
+atlas = ExtResource("4_uemvr")
+region = Rect2(1077, 0, 359, 226)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_p6ds3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fqgx"]
+atlas = ExtResource("4_uemvr")
+region = Rect2(1436, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84hbw"]
+atlas = ExtResource("4_uemvr")
+region = Rect2(1436, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85nbs"]
+atlas = ExtResource("4_uemvr")
+region = Rect2(1077, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_872cy"]
+atlas = ExtResource("4_uemvr")
+region = Rect2(718, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmtw2"]
+atlas = ExtResource("4_uemvr")
+region = Rect2(359, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6ds3"]
+atlas = ExtResource("4_uemvr")
+region = Rect2(0, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq4l3"]
+atlas = ExtResource("5_mv0ip")
+region = Rect2(0, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc0jc"]
+atlas = ExtResource("5_mv0ip")
+region = Rect2(359, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gr5u"]
+atlas = ExtResource("5_mv0ip")
+region = Rect2(718, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8cp8"]
+atlas = ExtResource("5_mv0ip")
+region = Rect2(718, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpmka"]
+atlas = ExtResource("5_mv0ip")
+region = Rect2(359, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_253av"]
+atlas = ExtResource("5_mv0ip")
+region = Rect2(0, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1dh6"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(0, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ddrf"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(359, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hymwf"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(718, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8omj"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(1077, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cg6e"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(1436, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k7cw"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(1795, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx5kn"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(2154, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68i21"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(2154, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8noir"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(1795, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xevh5"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(1436, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o84bi"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(1077, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw5pr"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(718, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nave"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(359, 0, 359, 226)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8thm"]
+atlas = ExtResource("6_sm7c6")
+region = Rect2(0, 0, 359, 226)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1yv70"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uemvr")
+"texture": SubResource("AtlasTexture_1yv70")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mv0ip")
+"texture": SubResource("AtlasTexture_71xmf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sm7c6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_klspp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ovrla")
-}],
-"loop": false,
-"name": &"down",
-"speed": 9.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_00j50")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hf4y4")
+"texture": SubResource("AtlasTexture_ss6jj")
 }],
 "loop": true,
-"name": &"out",
-"speed": 9.0
+"name": &"default",
+"speed": 1.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_keg7o")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8fml2")
 }, {
@@ -120,6 +173,327 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c8xie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fqgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84hbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85nbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_872cy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmtw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6ds3")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq4l3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc0jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gr5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gr5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8cp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8cp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8cp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpmka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_253av")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1dh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ddrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hymwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8omj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cg6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k7cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx5kn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68i21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8noir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xevh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o84bi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw5pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nave")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8thm")
+}],
+"loop": false,
+"name": &"wink",
+"speed": 10.0
+}]
+
+[sub_resource type="Theme" id="Theme_p5srt"]
+default_font = ExtResource("5_hf4y4")
+default_font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_2p6su"]
+line_spacing = 40.0
+font_size = 70
+font_color = Color(0.223529, 0.611765, 0.701961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hf4y4"]
+line_spacing = 40.0
+font_size = 70
+font_color = Color(0.223529, 0.611765, 0.701961, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ovrla"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_keg7o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fml2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbh2y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mv0ip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sm7c6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_klspp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xe51f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c8xie"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5fqgx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84hbw"]
+
+[sub_resource type="Theme" id="Theme_ovrla"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_ovrla")
+Button/styles/disabled_mirrored = SubResource("StyleBoxEmpty_keg7o")
+Button/styles/focus = SubResource("StyleBoxEmpty_8fml2")
+Button/styles/hover = SubResource("StyleBoxEmpty_cbh2y")
+Button/styles/hover_mirrored = SubResource("StyleBoxEmpty_mv0ip")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_sm7c6")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_klspp")
+Button/styles/normal = SubResource("StyleBoxEmpty_xe51f")
+Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_c8xie")
+Button/styles/pressed = SubResource("StyleBoxEmpty_5fqgx")
+Button/styles/pressed_mirrored = SubResource("StyleBoxEmpty_84hbw")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p6su"]
+atlas = ExtResource("5_p5srt")
+region = Rect2(0, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjar4"]
+atlas = ExtResource("5_p5srt")
+region = Rect2(325, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30w5n"]
+atlas = ExtResource("5_p5srt")
+region = Rect2(650, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uemvr"]
+atlas = ExtResource("5_p5srt")
+region = Rect2(975, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5qaa"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1950, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vljnu"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1625, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adhhi"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1300, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7282"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(975, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5dy7"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(0, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7thd"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(325, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewyqk"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(975, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv0ip"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1625, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm7c6"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(975, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klspp"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1300, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovrla"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1625, 0, 325, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keg7o"]
+atlas = ExtResource("6_p5srt")
+region = Rect2(1950, 0, 325, 242)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6ds3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p6su")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjar4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30w5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uemvr")
+}],
+"loop": false,
+"name": &"down",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5qaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vljnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adhhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7282")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5dy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewyqk")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv0ip")
+}],
+"loop": true,
+"name": &"out",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm7c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klspp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovrla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keg7o")
 }],
 "loop": false,
 "name": &"up",
@@ -129,204 +503,264 @@ animations = [{
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_8boil")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GameNode" type="Node2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -397.5
-offset_top = -277.48
-offset_right = 397.5
-offset_bottom = 277.48
+[node name="Game" type="Control" parent="GameNode"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.164706, 0.635294, 0.686275, 0.352941)
 script = ExtResource("2_00j50")
 metadata/_edit_use_anchors_ = true
 
-[node name="cooldown_timer" type="Timer" parent="CanvasLayer/ColorRect"]
-wait_time = 0.5
+[node name="AnimatedSprite2D" type="Sprite2D" parent="GameNode/Game"]
+scale = Vector2(15.3501, 15.3501)
+texture = ExtResource("3_2p6su")
+
+[node name="Face" type="AnimatedSprite2D" parent="GameNode/Game/AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_1yv70")
+animation = &"hit"
+autoplay = "default"
+frame = 9
+frame_progress = 1.0
+
+[node name="wink timer" type="Timer" parent="GameNode/Game/AnimatedSprite2D/Face"]
 one_shot = true
 
-[node name="XPCounter" type="ColorRect" parent="CanvasLayer/ColorRect"]
+[node name="Glow" type="Sprite2D" parent="GameNode/Game/AnimatedSprite2D"]
+position = Vector2(0.325731, -4.42994)
+texture = ExtResource("7_mv0ip")
+
+[node name="XPCounter" type="ColorRect" parent="GameNode/Game"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_top = 2.48001
-offset_right = 200.0
-offset_bottom = 122.48
-grow_horizontal = 2
+offset_left = -94.0
+offset_top = -2.0
+offset_right = 306.0
+offset_bottom = 118.0
 color = Color(0, 0, 0, 0)
 
-[node name="XP" type="Label" parent="CanvasLayer/ColorRect/XPCounter"]
+[node name="XP" type="Label" parent="GameNode/Game/XPCounter"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.597
+anchor_top = -0.117
+anchor_right = 0.867
+anchor_bottom = 0.875
+offset_left = 0.199997
+offset_top = 0.0400028
+offset_right = 0.199982
+offset_bottom = -2.28882e-05
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_p5srt")
 theme_type_variation = &"HeaderSmall"
-text = "0"
+text = "100"
 label_settings = SubResource("LabelSettings_2p6su")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 uppercase = true
 
-[node name="MaxXP" type="Label" parent="CanvasLayer/ColorRect/XPCounter"]
+[node name="MaxXP" type="Label" parent="GameNode/Game/XPCounter"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 164.0
-offset_top = 32.0
-offset_right = 164.0
-offset_bottom = 32.0
+anchors_preset = -1
+anchor_left = 1.139
+anchor_top = 0.871
+anchor_right = 1.139
+anchor_bottom = 0.875
+offset_left = -147.6
+offset_top = -114.52
+offset_right = -5.60004
+offset_bottom = 4.99998
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_p5srt")
 theme_type_variation = &"HeaderSmall"
-text = "/ 14000 XP"
+text = "%"
 label_settings = SubResource("LabelSettings_hf4y4")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="whack" type="Button" parent="CanvasLayer/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack" type="Button" parent="GameNode/Game"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 106.5
-offset_top = -93.0
-offset_right = 256.5
-offset_bottom = 7.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = -347.0
+offset_top = 183.0
+offset_right = -135.0
+offset_bottom = 388.0
 grow_vertical = 2
+theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"hit"
+autoplay = "down"
+frame = 19
+frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack"]
 one_shot = true
 
-[node name="whack2" type="Button" parent="CanvasLayer/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack2" type="Button" parent="GameNode/Game"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 156.5
-offset_top = 62.0
-offset_right = 306.5
-offset_bottom = 162.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = -87.0
+offset_top = 183.0
+offset_right = 125.0
+offset_bottom = 388.0
 grow_vertical = 2
+theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack2"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack2"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"hit"
+autoplay = "down"
+frame = 3
+frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack2"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack2"]
 one_shot = true
 
-[node name="whack3" type="Button" parent="CanvasLayer/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack3" type="Button" parent="GameNode/Game"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 21.5
-offset_top = 10.0
-offset_right = 171.5
-offset_bottom = 110.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = 174.0
+offset_top = 183.0
+offset_right = 386.0
+offset_bottom = 388.0
 grow_vertical = 2
+theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack3"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack3"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"hit"
+autoplay = "down"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack3"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack3"]
 one_shot = true
 
-[node name="whack4" type="Button" parent="CanvasLayer/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack4" type="Button" parent="GameNode/Game"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 520.5
-offset_top = -98.0
-offset_right = 670.5
-offset_bottom = 2.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = 203.0
+offset_top = 352.0
+offset_right = 415.0
+offset_bottom = 557.0
 grow_vertical = 2
+theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack4"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack4"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"hit"
+autoplay = "down"
+frame = 3
+frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack4"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack4"]
 one_shot = true
 
-[node name="whack5" type="Button" parent="CanvasLayer/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack5" type="Button" parent="GameNode/Game"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 570.5
-offset_top = 57.0
-offset_right = 720.5
-offset_bottom = 157.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = -89.0
+offset_top = 352.0
+offset_right = 123.0
+offset_bottom = 557.0
 grow_vertical = 2
+theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack5"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack5"]
+position = Vector2(-1354, -891.52)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"hit"
+autoplay = "down"
+frame = 3
+frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack5"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack5"]
 one_shot = true
 
-[node name="whack6" type="Button" parent="CanvasLayer/ColorRect"]
-custom_minimum_size = Vector2(100, 100)
+[node name="whack6" type="Button" parent="GameNode/Game"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 435.5
-offset_top = 5.0
-offset_right = 585.5
-offset_bottom = 105.0
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 1.121
+anchor_right = 0.153
+anchor_bottom = 1.121
+offset_left = -379.0
+offset_top = 368.0
+offset_right = -167.0
+offset_bottom = 573.0
 grow_vertical = 2
+theme = SubResource("Theme_ovrla")
 theme_type_variation = &"FlatButton"
 script = ExtResource("3_hf4y4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/ColorRect/whack6"]
-position = Vector2(96, 46)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode/Game/whack6"]
+position = Vector2(-1355, -906)
+scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
-animation = &"down"
+animation = &"hit"
+autoplay = "down"
+frame = 3
+frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ColorRect/whack6"]
+[node name="Timer" type="Timer" parent="GameNode/Game/whack6"]
 one_shot = true
+
+[node name="cooldown_timer" type="Timer" parent="GameNode/Game"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Camera2D2" type="Camera2D" parent="GameNode"]
+position = Vector2(3, 0)
+offset = Vector2(-4, 20)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("12_sm7c6")
+margin = Vector2(50, 60)
+
+[connection signal="timeout" from="GameNode/Game/AnimatedSprite2D/Face/wink timer" to="GameNode/Game" method="_on_wink_timer_timeout"]

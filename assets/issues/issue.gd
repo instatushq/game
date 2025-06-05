@@ -40,7 +40,7 @@ func _ready() -> void:
 		main_camera = game_manager.camera
 	
 	if canvas_layer != null:
-		canvas_layer.visible = false
+		canvas_layer.visible = default_visibility
 	
 	global_position = spawn_position
 
