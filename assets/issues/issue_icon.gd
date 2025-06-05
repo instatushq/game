@@ -31,7 +31,6 @@ func _process(_delta: float) -> void:
 
 	_place_indicator_sprite_on_edge_of_screen(camera)
 	
-	# Calculate angle from indicator position to target
 	var direction = aim_at_global_position - indicator_sprite.global_position
 	indicator_sprite_arrow.rotation = direction.angle()
 

@@ -28,7 +28,7 @@ Stats="*res://assets/globals/game stats.tscn"
 [display]
 
 window/size/viewport_width=1920
-window/size/viewport_height=1700
+window/size/viewport_height=1400
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"

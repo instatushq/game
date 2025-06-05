@@ -89,6 +89,10 @@ func _ready():
 		on_emotionally_triggering_event.emit(EMOTIONALLY_TRIGGER_EVENT.ISSUE_FIXED, ship.health)
 	)
 
+	issues.on_issue_generated.connect(func(zone: IssueArea2D, _issues_count: int) -> void:
+		on_emotionally_triggering_event.emit(EMOTIONALLY_TRIGGER_EVENT.ISSUE_SPAWNED_RIGHT if zone.name.containsn("right") else EMOTIONALLY_TRIGGER_EVENT.ISSUE_SPAWNED_LEFT, ship.health)
+	)
+
 	_portray_emotion(COMPUTER_EMOTION.DEFAULT, "Conputer Is Here.\nI Am Conputer. But I am Good Conputer. Have fun")
 
 func _physics_process(_delta: float) -> void:
@@ -177,16 +181,18 @@ func _play_emotion_triggering_animation(event_type: EMOTIONALLY_TRIGGER_EVENT, _
 	if event_type == EMOTIONALLY_TRIGGER_EVENT.ISSUE_FIXED:
 		_portray_emotion(COMPUTER_EMOTION.RELIEF, ISSUE_FIXED_DIALOGS.pick_random())
 		emotion_sprite.play("relief")
+	elif event_type == EMOTIONALLY_TRIGGER_EVENT.ISSUE_SPAWNED_RIGHT:
+		_portray_emotion(COMPUTER_EMOTION.NERVOUS, ISSUE_SPAWNED_DIALOGS.pick_random())
+		emotion_sprite.play("issue_right")
+	elif event_type == EMOTIONALLY_TRIGGER_EVENT.ISSUE_SPAWNED_LEFT:
+		_portray_emotion(COMPUTER_EMOTION.NERVOUS, ISSUE_SPAWNED_DIALOGS.pick_random())
+		emotion_sprite.play("issue_left")
 
 const ISSUE_FIXED_DIALOGS = [
 	"This is not the time to be dead in space! Keep going!",
 	"Phew, that was close! Let's hope it's not going to happen again.",
 	"Dang, You fixed this one instantly! You are a PRO!",
 	"Houston, We HAD a problem. All good now!"
-]
-
-const SHIP_BREAKDOWN_DIALOGS = [
-	"NO! NO! NO! NO! NO!\n WAIT! WAIT! WAIT!"
 ]
 
 const NERVOUS_DIALOGS = [
@@ -197,4 +203,10 @@ const NERVOUS_DIALOGS = [
 const SCARED_DIALOGS = [
 	"We're at risk here move faster!",
 	"I'm scared, I'm scared, I'm scared!",
+]
+
+const ISSUE_SPAWNED_DIALOGS = [
+	"Houston, we have a problem!",
+	"I Discovered a problem on the ship, Head there quick!",
+	"THE SYSTEMS ARE DOWN! FIX IT!"
 ]
