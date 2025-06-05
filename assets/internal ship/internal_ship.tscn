@@ -1076,7 +1076,7 @@ position = Vector2(74, 54)
 collision_layer = 64
 collision_mask = 2
 script = ExtResource("21_b4gsa")
-notification_icon_local_position = Vector2(5, -25)
+notification_icon_local_position = Vector2(3, -23.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
 shape = SubResource("RectangleShape2D_o88cq")
@@ -1086,7 +1086,7 @@ position = Vector2(-78, -15)
 collision_layer = 64
 collision_mask = 2
 script = ExtResource("21_b4gsa")
-notification_icon_local_position = Vector2(5, -15)
+notification_icon_local_position = Vector2(4, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Left"]
 shape = SubResource("RectangleShape2D_46acj")
