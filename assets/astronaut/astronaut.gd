@@ -212,7 +212,7 @@ func handle_movement_ended(_direction: MovementDirection) -> void:
 func _handle_direction_changed_while_moving(_old_direction: MovementDirection, new_direction: MovementDirection) -> void:
 	match new_direction:
 		MovementDirection.FORWARD:
-			astronaut_sprite.play("flight")
+			astronaut_sprite.play("begin_flight")
 		MovementDirection.UP:
 			astronaut_sprite.play("begin_up")
 			astronaut_flashlight.set_light_facing_direction(AstronautFlashlight.LightDirection.UP)
