@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cnxk6ijntgefu" path="res://assets/debris/fuel rocks/fuel 3.tscn" id="27_ny23e"]
 [ext_resource type="Script" uid="uid://b7dqgngdm4d7m" path="res://assets/issues/possible_issues/barrel invader/barrel_invader_camera.gd" id="28_2tnj0"]
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="28_tyx3f"]
-[ext_resource type="Script" path="res://assets/issues/possible_issues/barrel invader/barrel invader hud.gd" id="31_efpm6"]
+[ext_resource type="Script" uid="uid://bbtlaikoxuc0p" path="res://assets/issues/possible_issues/barrel invader/barrel invader hud.gd" id="31_efpm6"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="32_3oaur"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kne8y"]
@@ -333,7 +333,7 @@ fuel_rocks = Array[PackedScene]([ExtResource("25_2tnj0"), ExtResource("26_pm5jl"
 
 [node name="Ship" parent="Game" instance=ExtResource("28_tyx3f")]
 unique_name_in_owner = true
-position = Vector2(-7, 535)
+position = Vector2(-8, 535)
 
 [node name="Camera2D" type="Camera2D" parent="Game"]
 zoom = Vector2(2, 2)
