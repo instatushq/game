@@ -35,7 +35,7 @@ var y_position_synced: bool = false
 
 func _ready():
 	rb.on_impact.connect(_on_impact_with_object)
-
+	
 func _process(delta: float) -> void:
 	if not can_fire:
 		fire_timer += delta
@@ -44,7 +44,8 @@ func _process(delta: float) -> void:
 			fire_timer = 0.0
 			if input_buffered or is_firing:
 				input_buffered = false
-				_fire_cannons()
+				if game_manager.is_playing:
+					_fire_cannons()
 				can_fire = false
 
 func _input(event: InputEvent) -> void:
@@ -70,8 +71,6 @@ func _physics_process(_delta: float) -> void:
 	var right_edge = camera.global_position.x + viewport_size.x / 2 * camera.zoom.x
 	var left_edge = camera.global_position.x - viewport_size.x / 2 * camera.zoom.x
 	
-	
-	# mouse movement
 	if not is_keyboard_controlled:
 		mouse_world_position = get_global_mouse_position()
 		const vertical_ship_padding = 50
@@ -82,7 +81,6 @@ func _physics_process(_delta: float) -> void:
 			_fire_cannons()
 			can_fire = false
 
-	# keyboard movement
 	if is_keyboard_controlled:
 		rb.global_position.y = camera.global_position.y + y_position
 		var verticalDirection := Input.get_axis("move_up", "move_down")

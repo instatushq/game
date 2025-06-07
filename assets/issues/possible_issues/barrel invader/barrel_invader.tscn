@@ -72,7 +72,6 @@ animations = [{
 [sub_resource type="GDScript" id="GDScript_tyx3f"]
 script/source = "extends Node2D
 
-@onready var game_manager: GameManager = get_node(\"%GameManager\")
 @onready var rb = $RigidBody2D
 
 

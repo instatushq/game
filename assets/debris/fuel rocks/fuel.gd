@@ -18,7 +18,8 @@ func _physics_process(_delta: float) -> void:
 	rb.linear_velocity = ship_direction * SPEED
 
 func _release_fuel() -> void:
-	print("fuel")
+	# print("fuel")
+	pass
 	#var ship_fuel: ShipFuel = get_tree().get_current_scene().get_node("%Ship/Fuel")
 	#ship_fuel.increase_fuel(randf_range(7, 15))
 

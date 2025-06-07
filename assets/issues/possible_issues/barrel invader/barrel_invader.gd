@@ -16,10 +16,12 @@ func _ready() -> void:
 		vector_offset = parent_issue.spawn_position
 	
 	init_offset = parallax_background.offset
+	parallax_background.visible = false
 
 func _process(_delta: float) -> void:
 	parallax_background.offset = init_offset + (vector_offset * 2)
 
 func _on_game_start() -> void:
 	is_playing = true
+	parallax_background.visible = true
 	game_started.emit()

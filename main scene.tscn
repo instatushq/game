@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://buerdali4hdwi" path="res://assets/post processing/post_processing.tscn" id="1_7fvey"]
 [ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="1_tfagm"]
-[ext_resource type="Script" path="res://assets/environment/background autoscroll.gd" id="2_abrck"]
+[ext_resource type="Script" uid="uid://7352jsts8ku3" path="res://assets/environment/background autoscroll.gd" id="2_abrck"]
 [ext_resource type="Texture2D" uid="uid://dkcebv41tfxwl" path="res://assets/environment/backgrounds/stars/stars-sprite.png" id="4_lslek"]
 [ext_resource type="AudioStream" uid="uid://xmgb8tmdyuy0" path="res://assets/audio/background/ambience.mp3" id="5_cabrn"]
 [ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="12_t4yvt"]
@@ -138,6 +138,7 @@ meteor_herd_chance = 100.0
 play_music = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_abrck")
 scroll_speed = 500.0
 
