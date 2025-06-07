@@ -880,6 +880,7 @@ size = Vector2(53, 41)
 [node name="InternalShip" type="Node2D"]
 script = ExtResource("1_jlxe3")
 broken_lights_texture = ExtResource("3_i8hiq")
+ship_major_outage_health_amount = 34
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {

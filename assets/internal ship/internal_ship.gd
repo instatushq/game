@@ -15,6 +15,7 @@ class_name InternalShip
 var has_played_broken_animation: bool = false
 var is_playing_revive_animation: bool = false
 var issue_generated_during_revival: bool = false
+@export var ship_major_outage_health_amount: int = 50
 
 signal on_ship_broken
 signal on_ship_revived
@@ -24,6 +25,8 @@ func _ready() -> void:
 	ship_right_part.visible = false
 	ship_left_part.visible = false
 	ship_sprite.frame_changed.connect(_on_ship_frame_change)
+	if ship_health != null:
+		ship_health.on_health_change.connect(_on_health_change)
 
 func _on_ship_frame_change() -> void:
 	ship_right_part.frame = ship_sprite.frame
@@ -32,7 +35,7 @@ func _on_ship_frame_change() -> void:
 
 func _on_issue_resolved(zone: IssueArea2D, _issues_left: bool) -> void:
 	ship_health.increase_health(randi_range(2, 5))
-	if ship_health.health > 50:
+	if ship_health.health > ship_major_outage_health_amount:
 		if zone.name.containsn("right"):
 			ship_right_part.visible = false
 		elif zone.name.containsn("left"):
@@ -45,16 +48,13 @@ func _on_animation_finish() -> void:
 	if ship_sprite.animation == "breakdown":
 		if is_playing_revive_animation:
 			if issue_generated_during_revival:
-				ship_sprite.play("breakdown")
-				animator.play("breakdown")
-				ship_right_part.visible = false
-				ship_right_part.visible = false
+				_toggle_major_outage(true)
 				issue_generated_during_revival = false
 			else:
 				ship_sprite.play("default")
 				screens_light.texture = default_lights_texutres
 				on_ship_revived.emit()
-				if ship_health.health > 50:
+				if ship_health.health > ship_major_outage_health_amount:
 					if issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.RIGHT):
 						ship_right_part.visible = true
 					if issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.LEFT):
@@ -73,22 +73,16 @@ func _on_animation_finish() -> void:
 			on_ship_broken.emit()
 
 func _on_game_manager_solving_puzzle_changed(is_solving_puzzle: bool) -> void:
-	if ship_health.health > 50: return
+	if ship_health.health > ship_major_outage_health_amount: return
 	if not is_solving_puzzle: return
 	if has_played_broken_animation: return
 	if not issues.has_any_issues(): return
-	has_played_broken_animation = true
-	ship_sprite.play("breakdown")
-	animator.play("breakdown")
-	ship_right_part.visible = false
-	ship_right_part.visible = false
+	_toggle_major_outage(true)
 
 func _on_issues_on_clear_issues(_zone: IssueArea2D, issues_left: bool) -> void:
 	if not issues_left:
-		if ship_health.health < 50 and not has_played_broken_animation:
-			is_playing_revive_animation = true
-			ship_sprite.play_backwards("breakdown")
-			animator.play("revive")
+		if ship_health.health < ship_major_outage_health_amount and not has_played_broken_animation:
+			_toggle_major_outage(false)
 	else:
 		if issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.RIGHT):
 			ship_right_part.visible = true
@@ -106,14 +100,27 @@ func _on_issues_on_issue_generated(_zone: IssueArea2D, issues_count: int) -> voi
 		issue_generated_during_revival = true
 		return
 		
-	if issues_count == 1 and not has_played_broken_animation and ship_health.health <= 50:
-		has_played_broken_animation = true
-		ship_sprite.play("breakdown")
-		animator.play("breakdown")
-		ship_right_part.visible = false
-		ship_left_part.visible = false
+	if issues_count == 1 and not has_played_broken_animation and ship_health.health <= ship_major_outage_health_amount:
+		_toggle_major_outage(true)
 	
 	if _zone.name.containsn("right"):
 		ship_right_part.visible = true
 	elif _zone.name.containsn("left"):
 		ship_left_part.visible = true
+
+func _on_health_change(_old_health: int, new_health: int) -> void:
+	if new_health < ship_major_outage_health_amount and not has_played_broken_animation:
+		has_played_broken_animation = true
+		_toggle_major_outage(true)
+
+func _toggle_major_outage(toggled: bool) -> void:
+	if toggled:
+		has_played_broken_animation = true
+		ship_sprite.play("breakdown")
+		animator.play("breakdown")
+		ship_right_part.visible = false
+		ship_right_part.visible = false
+	else:
+		is_playing_revive_animation = true
+		ship_sprite.play_backwards("breakdown")
+		animator.play("revive")
