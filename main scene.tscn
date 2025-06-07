@@ -300,6 +300,8 @@ position = Vector2(8, 37)
 movement_speed = 60.0
 maximum_speed = 60.0
 damping = 2.0
+acceleration = 100.0
+deceleration = 100.0
 
 [node name="Transition Screen" parent="." instance=ExtResource("34_t6o86")]
 unique_name_in_owner = true

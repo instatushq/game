@@ -17,6 +17,7 @@ const MAX_RADIUS := 100
 @export var maximum_speed: float = 300.0
 @export var damping: float = 0.0
 @export var acceleration: float = 2000.0
+@export var deceleration: float = 3000.0
 @export var rotation_speed: float = 5.0
 const MAX_ROTATION: float = deg_to_rad(45)
 const ROTATION_CHANGE_THRESHOLD: float = deg_to_rad(80.0)
@@ -60,12 +61,14 @@ func _physics_process(delta: float) -> void:
 	if internal_ship.issues.is_issue_open: return
 
 	if joystick_movement_vector.length() > MOVEMENT_DEADZONE_PERCENTAGE:
-
-
 		var movement_direction := joystick_movement_vector
 		on_movement_vector_changed.emit(movement_direction)
 		var target_velocity = movement_direction * movement_speed
-		velocity = velocity.move_toward(target_velocity, acceleration * delta)
+		
+		var dot_product = velocity.normalized().dot(target_velocity.normalized())
+		var current_accel = acceleration if dot_product > 0 else deceleration
+		
+		velocity = velocity.move_toward(target_velocity, current_accel * delta)
 		
 		var new_target = atan2(movement_direction.y, abs(movement_direction.x))
 		if movement_direction.x < 0:
