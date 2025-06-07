@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cnxk6ijntgefu" path="res://assets/debris/fuel rocks/fuel 3.tscn" id="27_ny23e"]
 [ext_resource type="Script" uid="uid://b7dqgngdm4d7m" path="res://assets/issues/possible_issues/barrel invader/barrel_invader_camera.gd" id="28_2tnj0"]
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="28_tyx3f"]
-[ext_resource type="Script" uid="uid://bbtlaikoxuc0p" path="res://assets/issues/possible_issues/barrel invader/barrel invader hud.gd" id="31_efpm6"]
+[ext_resource type="Script" path="res://assets/issues/possible_issues/barrel invader/barrel invader hud.gd" id="31_efpm6"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="32_3oaur"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kne8y"]
@@ -70,6 +70,17 @@ animations = [{
 }]
 
 [sub_resource type="GDScript" id="GDScript_tyx3f"]
+script/source = "extends Node2D
+
+@onready var game_manager: GameManager = get_node(\"%GameManager\")
+@onready var rb = $RigidBody2D
+
+
+func _ready() -> void:
+	pass
+	#var movement_speed = game_manager.base_travelling_speed;
+	#rb.add_constant_force(Vector2.UP * movement_speed)
+"
 
 [sub_resource type="Theme" id="Theme_3tdpy"]
 default_font = ExtResource("32_3oaur")
