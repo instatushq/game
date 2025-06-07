@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://qabjpm77ite6" path="res://assets/internal ship/damaged ship loop.png" id="2_46acj"]
 [ext_resource type="Texture2D" uid="uid://cu1h8b8rww1x7" path="res://assets/main menu/light 2.png" id="3_i8hiq"]
 [ext_resource type="Texture2D" uid="uid://dcnhyyeq5nybm" path="res://assets/internal ship/Fixed ship animationt.png" id="3_yxcn8"]
-[ext_resource type="PackedScene" uid="uid://d2burbt4yek8s" path="res://assets/issues/possible_issues/whack a mole/whack a mole.tscn" id="4_pqm3t"]
 [ext_resource type="Texture2D" uid="uid://b08qkhhb12xhr" path="res://assets/main menu/light.png" id="7_7h0eb"]
 [ext_resource type="Texture2D" uid="uid://dx6we1spyn8kv" path="res://assets/internal ship/LeftPC.png" id="9_c6j7a"]
 [ext_resource type="Texture2D" uid="uid://be8b8jdr1fbgt" path="res://assets/internal ship/pc issue.png" id="9_g1y32"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bq85575w8bxgw" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 1.tscn" id="11_aiucs"]
 [ext_resource type="Texture2D" uid="uid://bxvuvr5hv0x7b" path="res://assets/internal ship/RightPC.png" id="11_pqm3t"]
 [ext_resource type="PackedScene" uid="uid://b8mgilkn4xcd" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 2.tscn" id="13_adlbk"]
+[ext_resource type="PackedScene" uid="uid://jjb3c4igolbf" path="res://assets/issues/possible_issues/barrel invader/barrel_invader.tscn" id="13_pqm3t"]
 [ext_resource type="PackedScene" uid="uid://35csyl7rx3c" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 3.tscn" id="14_5y73v"]
 [ext_resource type="PackedScene" uid="uid://ls4e8s8mqgmp" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 4.tscn" id="15_liemg"]
 [ext_resource type="PackedScene" uid="uid://byafhmsqn2tyg" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 5.tscn" id="16_5y73v"]
@@ -1068,7 +1068,7 @@ script = ExtResource("19_c6j7a")
 
 [node name="Issues" type="Node2D" parent="."]
 script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("4_pqm3t")])
+possible_issues = Array[PackedScene]([ExtResource("13_pqm3t")])
 notification_icon_scene = ExtResource("22_qy0je")
 chance_of_issues = 0
 
@@ -1077,7 +1077,7 @@ position = Vector2(74, 54)
 collision_layer = 64
 collision_mask = 2
 script = ExtResource("21_b4gsa")
-notification_icon_local_position = Vector2(3, -23.5)
+notification_icon_local_position = Vector2(3, -25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Issues/Right"]
 shape = SubResource("RectangleShape2D_o88cq")

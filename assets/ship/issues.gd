@@ -42,7 +42,7 @@ func _on_area_exited(body: Node, zone: IssueArea2D) -> void:
 	set_notification_icon_type(zone, IssueIcon.ICON_TYPE.EXCLAMATION_MARK)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
+	if Input.is_action_just_pressed("interact"):
 		if last_entered_zone != null and current_issues.has(last_entered_zone.get_instance_id()):
 			var current_issue = current_issues[last_entered_zone.get_instance_id()]
 			current_issue.open_issue()
