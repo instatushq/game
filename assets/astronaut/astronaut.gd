@@ -61,9 +61,7 @@ func _physics_process(delta: float) -> void:
 	if internal_ship.issues.is_issue_open: return
 
 	if joystick_movement_vector.length() > MOVEMENT_DEADZONE_PERCENTAGE:
-		if not _has_movement_begun_already:
-			_has_movement_begun_already = true
-			movement_began.emit(current_direction)
+
 
 		var movement_direction := joystick_movement_vector
 		on_movement_vector_changed.emit(movement_direction)
@@ -82,9 +80,13 @@ func _physics_process(delta: float) -> void:
 			current_direction = MovementDirection.FORWARD
 			if abs(AngleDifference.angle_difference(sprite_container.rotation, new_target)) > ROTATION_CHANGE_THRESHOLD:
 				sprite_container.rotation = new_target
-
-		if old_direction != current_direction:
+	
+		if old_direction != current_direction and _has_movement_begun_already:
 			direction_changed_while_moving.emit(old_direction, current_direction)
+
+		if not _has_movement_begun_already:
+			_has_movement_begun_already = true
+			movement_began.emit(current_direction)
 	else:
 		if _has_movement_begun_already:
 			movement_ended.emit(current_direction)
