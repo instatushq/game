@@ -35,6 +35,12 @@ const MOVEMENT_DEADZONE_PERCENTAGE: float = 0.5
 var joystick_movement_vector: Vector2 = Vector2.ZERO
 var _has_movement_begun_already: bool = false
 var keyboard_movement_vector: Vector2 = Vector2.ZERO
+var key_states: Dictionary = {
+	KEY_W: false,
+	KEY_S: false,
+	KEY_A: false,
+	KEY_D: false
+}
 
 func _ready() -> void:
 	idle_timer.stop()
@@ -116,16 +122,19 @@ func _input(event: InputEvent) -> void:
 
 func handle_keyboard_input(event: InputEvent) -> bool:
 	if event is InputEventKey:
-		var key_pressed = event.pressed
-		match event.keycode:
-			KEY_W:
-				keyboard_movement_vector.y = -1 if key_pressed else 0
-			KEY_S:
-				keyboard_movement_vector.y = 1 if key_pressed else 0
-			KEY_A:
-				keyboard_movement_vector.x = -1 if key_pressed else 0
-			KEY_D:
-				keyboard_movement_vector.x = 1 if key_pressed else 0
+		if event.keycode in key_states:
+			key_states[event.keycode] = event.pressed
+			
+			keyboard_movement_vector.x = 0
+			keyboard_movement_vector.y = 0
+			
+			if key_states[KEY_W]: keyboard_movement_vector.y -= 1
+			if key_states[KEY_S]: keyboard_movement_vector.y += 1
+			if key_states[KEY_A]: keyboard_movement_vector.x -= 1
+			if key_states[KEY_D]: keyboard_movement_vector.x += 1
+			
+			if keyboard_movement_vector.length() > 1:
+				keyboard_movement_vector = keyboard_movement_vector.normalized()
 	
 	joystick_movement_vector = keyboard_movement_vector
 	return keyboard_movement_vector != Vector2.ZERO
