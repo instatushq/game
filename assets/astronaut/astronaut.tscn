@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://byp6hvrh54j2d"]
+[gd_scene load_steps=64 format=3 uid="uid://byp6hvrh54j2d"]
 
 [ext_resource type="Script" uid="uid://i57yks2tesb6" path="res://assets/astronaut/astronaut.gd" id="1_ultts"]
 [ext_resource type="Texture2D" uid="uid://tfqkwo3oeep6" path="res://assets/astronaut/sprites/halting.png" id="2_2cjcx"]
@@ -165,37 +165,9 @@ region = Rect2(118, 0, 118, 91)
 atlas = ExtResource("3_ubged")
 region = Rect2(0, 0, 118, 91)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ultts"]
-atlas = ExtResource("2_ultts")
-region = Rect2(0, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bqctt"]
-atlas = ExtResource("2_ultts")
-region = Rect2(118, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cjcx"]
-atlas = ExtResource("2_ultts")
-region = Rect2(236, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oxxbp"]
-atlas = ExtResource("2_ultts")
-region = Rect2(354, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ubged"]
-atlas = ExtResource("2_ultts")
-region = Rect2(472, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgym5"]
-atlas = ExtResource("2_ultts")
-region = Rect2(472, 0, 118, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ahefm"]
-atlas = ExtResource("2_ultts")
-region = Rect2(354, 0, 118, 91)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmyod"]
 atlas = ExtResource("2_ultts")
-region = Rect2(236, 0, 118, 91)
+region = Rect2(0, 0, 118, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrds1"]
 atlas = ExtResource("2_ultts")
@@ -203,7 +175,15 @@ region = Rect2(118, 0, 118, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_022t7"]
 atlas = ExtResource("2_ultts")
-region = Rect2(0, 0, 118, 91)
+region = Rect2(236, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urbga"]
+atlas = ExtResource("2_ultts")
+region = Rect2(354, 0, 118, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oshdd"]
+atlas = ExtResource("2_ultts")
+region = Rect2(472, 0, 118, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6rke4"]
 atlas = ExtResource("3_bqctt")
@@ -396,27 +376,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ultts")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bqctt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cjcx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oxxbp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ubged")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rgym5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ahefm")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_mmyod")
 }, {
 "duration": 1.0,
@@ -424,10 +383,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_022t7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urbga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oshdd")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -456,7 +421,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle_blink",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -486,23 +451,24 @@ light_mask = 3
 position = Vector2(-11, -2)
 scale = Vector2(0.51, 0.51)
 sprite_frames = SubResource("SpriteFrames_x1ufq")
-animation = &"idle"
+animation = &"idle_blink"
 autoplay = "idle"
-frame_progress = 0.326964
+frame = 7
+frame_progress = 1.0
 flip_h = true
 
 [node name="Timer" type="Timer" parent="SpriteContainer/AnimatedSprite2D"]
 wait_time = 4.0
 
 [node name="PointLight2D" type="PointLight2D" parent="SpriteContainer"]
-position = Vector2(1, -9)
+position = Vector2(0, -5)
 rotation = -0.698132
 scale = Vector2(0.5, 0.5)
 color = Color(0.117647, 0.552941, 0.827451, 1)
 energy = 4.0
 range_item_cull_mask = 2
 texture = ExtResource("8_ahefm")
-offset = Vector2(50, 45)
+offset = Vector2(45, 40)
 texture_scale = 0.35
 script = ExtResource("9_mmyod")
 
