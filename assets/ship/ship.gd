@@ -29,7 +29,7 @@ var input_buffered: bool = false
 var is_firing: bool = false
 var current_ship_y_position: float = 300.0
 
-var y_position = 0
+var ship_position: Vector2 = Vector2.ZERO
 var is_keyboard_controlled: bool = true
 var y_position_synced: bool = false
 
@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 		is_keyboard_controlled = true
 		if y_position_synced == false:
 			mouse_world_position = get_global_mouse_position()
-			y_position = mouse_world_position.y + 50
+			ship_position.y = mouse_world_position.y + 50
 			y_position_synced = true
 
 func _physics_process(_delta: float) -> void:
@@ -82,21 +82,22 @@ func _physics_process(_delta: float) -> void:
 			can_fire = false
 
 	if is_keyboard_controlled:
-		rb.global_position.y = camera.global_position.y + y_position
+		rb.global_position = camera.global_position + ship_position
 		var verticalDirection := Input.get_axis("move_up", "move_down")
 		if verticalDirection < 0:
-			if camera.global_position.y + y_position > top_edge + 1700:
-				y_position -= 12
+			if camera.global_position.y + ship_position.y > top_edge + 1700:
+				ship_position.y -= 12
 		elif verticalDirection > 0:
-			if camera.global_position.y + y_position < bottom_edge - 1000:
-				y_position += 8
+			if camera.global_position.y + ship_position.y < bottom_edge - 1000:
+				ship_position.y += 8
+				
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction < 0:
-			if (rb.global_position.x > left_edge + 1500):
-				rb.global_position.x -= 10
+			if (ship_position.x > left_edge + 1500):
+				ship_position.x -= 10
 		elif direction > 0:
-			if (rb.global_position.x < right_edge - 1500):
-				rb.global_position.x += 10
+			if (ship_position.x < right_edge - 1500):
+				ship_position.x += 10
 		if Input.is_action_pressed("fire_cannon") and can_fire:
 			_fire_cannons()
 			can_fire = false
