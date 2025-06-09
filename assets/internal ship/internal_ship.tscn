@@ -918,6 +918,7 @@ texture = ExtResource("11_pqm3t")
 texture_scale = 0.28
 
 [node name="LeftPC" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+visible = false
 light_mask = 512
 sprite_frames = SubResource("SpriteFrames_hv451")
 animation = &"visible"
