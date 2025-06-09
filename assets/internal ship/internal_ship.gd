@@ -24,6 +24,7 @@ signal on_ship_reviving
 
 func _ready() -> void:
 	issues.on_clear_issues.connect(_on_issue_resolved)
+	game_manager.on_solving_puzzle_changed.connect(func(solving: bool) -> void: visible = not solving)
 	ship_right_part.visible = false
 	ship_left_part.visible = false
 	ship_sprite.frame_changed.connect(_on_ship_frame_change)
