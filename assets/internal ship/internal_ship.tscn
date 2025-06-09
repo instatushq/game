@@ -918,7 +918,6 @@ texture = ExtResource("11_pqm3t")
 texture_scale = 0.28
 
 [node name="LeftPC" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-visible = false
 light_mask = 512
 sprite_frames = SubResource("SpriteFrames_hv451")
 animation = &"visible"
@@ -926,7 +925,7 @@ animation = &"visible"
 [node name="Light" type="PointLight2D" parent="AnimatedSprite2D/LeftPC"]
 position = Vector2(6, 4)
 color = Color(0.44895, 5.47487e-07, 1.44392e-07, 1)
-energy = 13.0
+energy = 9.0
 range_item_cull_mask = 513
 texture = ExtResource("9_c6j7a")
 texture_scale = 0.27
