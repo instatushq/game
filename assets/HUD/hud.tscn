@@ -1,20 +1,21 @@
-[gd_scene load_steps=79 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=89 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
-[ext_resource type="Script" uid="uid://2auapvlkq5ww" path="res://assets/HUD/animated texture rect.gd" id="4_jggq7"]
+[ext_resource type="Script" path="res://assets/HUD/animated texture rect.gd" id="4_jggq7"]
 [ext_resource type="Texture2D" uid="uid://mvdb63jeb27a" path="res://assets/HUD/UI Sheet.png" id="5_6axep"]
 [ext_resource type="Texture2D" uid="uid://dgmwgl7le0j" path="res://assets/HUD/Radar.png" id="6_basyl"]
-[ext_resource type="Script" uid="uid://csrdlcisboh0e" path="res://assets/HUD/Radar.gd" id="7_x0bbd"]
+[ext_resource type="Script" path="res://assets/HUD/Radar.gd" id="7_x0bbd"]
 [ext_resource type="Texture2D" uid="uid://dh887p2uln6j" path="res://assets/HUD/UI Emotions/relief face.png" id="8_5hymx"]
 [ext_resource type="Texture2D" uid="uid://be6psg7pg37sy" path="res://assets/HUD/UI Emotions/look right face.png" id="8_8b1ov"]
 [ext_resource type="Texture2D" uid="uid://cmopp5lbqilt3" path="res://assets/HUD/UI Emotions/nervous face.png" id="8_hhnhh"]
 [ext_resource type="Texture2D" uid="uid://u1xqq67oomyg" path="res://assets/HUD/smile face.png" id="8_j06ix"]
 [ext_resource type="FontFile" uid="uid://b6j776xc5v64d" path="res://fonts/PixelifySans-Regular.ttf" id="8_x0bbd"]
-[ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="9_13aas"]
-[ext_resource type="Script" uid="uid://cjk5bcss5a74g" path="res://assets/HUD/dialog_box.gd" id="10_13aas"]
+[ext_resource type="Shader" path="res://assets/HUD/glitch.gdshader" id="9_13aas"]
+[ext_resource type="Script" path="res://assets/HUD/dialog_box.gd" id="10_13aas"]
 [ext_resource type="Texture2D" uid="uid://jwwo8an3potp" path="res://assets/HUD/UI Emotions/look left face.png" id="10_vc4br"]
 [ext_resource type="Texture2D" uid="uid://ymmhrr3c5e20" path="res://assets/HUD/UI Emotions/scared face.png" id="11_5hymx"]
+[ext_resource type="Texture2D" uid="uid://b5kvc5d6xbshd" path="res://assets/HUD/controls ui.png" id="16_vc4br"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_basyl"]
 atlas = ExtResource("5_6axep")
@@ -528,6 +529,50 @@ RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j06ix"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgx70"]
+atlas = ExtResource("16_vc4br")
+region = Rect2(92, 0, 92, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnjfb"]
+atlas = ExtResource("16_vc4br")
+region = Rect2(0, 0, 92, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xjw8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnjfb")
+}],
+"loop": true,
+"name": &"audible",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgx70")
+}],
+"loop": true,
+"name": &"muted",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vc4br"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6k1te"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1gu38"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uesjw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aoaac"]
+
+[sub_resource type="Theme" id="Theme_pkyo2"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_vc4br")
+Button/styles/focus = SubResource("StyleBoxEmpty_6k1te")
+Button/styles/hover = SubResource("StyleBoxEmpty_1gu38")
+Button/styles/normal = SubResource("StyleBoxEmpty_uesjw")
+Button/styles/pressed = SubResource("StyleBoxEmpty_aoaac")
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
 score_for_complete_bar = 1000
@@ -744,7 +789,6 @@ texture = SubResource("AtlasTexture_aoaac")
 stretch_mode = 6
 script = ExtResource("4_jggq7")
 sprites = SubResource("SpriteFrames_5hymx")
-metadata/_custom_type_script = "uid://2auapvlkq5ww"
 
 [node name="DialogBox" type="Control" parent="HUDUI"]
 layout_mode = 1
@@ -886,3 +930,37 @@ mouse_filter = 2
 theme = SubResource("Theme_hhnhh")
 texture = SubResource("CanvasTexture_j06ix")
 metadata/_edit_use_anchors_ = true
+
+[node name="Controls" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -327.0
+offset_top = -112.0
+offset_right = -35.0
+offset_bottom = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_fgx70")
+stretch_mode = 6
+script = ExtResource("4_jggq7")
+sprites = SubResource("SpriteFrames_0xjw8")
+
+[node name="MuteButton" type="Button" parent="Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.162
+anchor_right = 0.962
+anchor_bottom = 0.892
+offset_left = -1.52588e-05
+offset_top = 0.0120001
+offset_right = 0.0959778
+offset_bottom = -0.00800323
+theme = SubResource("Theme_pkyo2")
+theme_type_variation = &"FlatButton"
+flat = true
+
+[connection signal="pressed" from="Controls/MuteButton" to="." method="_on_mute_button_pressed"]

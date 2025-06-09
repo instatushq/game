@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bmwg8e33sqa8n" path="res://assets/astronaut/sprites/idle anim.png" id="15_k0scp"]
 [ext_resource type="Texture2D" uid="uid://b8jx5gok84hjm" path="res://assets/astronaut/textures/helmet light.png" id="16_hbnyu"]
 [ext_resource type="AudioStream" uid="uid://xmgb8tmdyuy0" path="res://assets/audio/background/ambience.mp3" id="17_4il1l"]
-[ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="18_k0scp"]
+[ext_resource type="Shader" path="res://assets/HUD/glitch.gdshader" id="18_k0scp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5jlq"]
 atlas = ExtResource("3_gg27b")

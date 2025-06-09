@@ -20,6 +20,15 @@ signal on_emotionally_triggering_event(event_type: EMOTIONALLY_TRIGGER_EVENT, he
 @onready var dialog_box: DialogBox = $HUDUI/DialogBox
 @onready var time_label: Label = $HUDUI/DialogBox/Clock
 @onready var emotion_sprite: AnimatedTextureRect = $HUDUI/Emotion
+@onready var controls_animated_texture: AnimatedTextureRect = $Controls
+
+
+var music_bus = AudioServer.get_bus_index("Music")
+var sfx_bus = AudioServer.get_bus_index("Sound FX")
+var music_bus_muted: bool = AudioServer.is_bus_mute(music_bus)
+var sfx_bus_muted: bool = AudioServer.is_bus_mute(sfx_bus)
+var is_force_mute: bool = true if music_bus_muted and sfx_bus_muted else false
+var started_with_force_mute: bool = is_force_mute
 
 var _freeze_score_to_nearest_cycle = false
 
@@ -61,7 +70,11 @@ const BARS_COLORS = [
 const IDLE_ANIMATIONS_LIST: Array[String] = ["default", "nervous", "scared"]
 const EVENTS_LINKED_DIALOGS = []
 
+
 func _ready():
+	if is_force_mute:
+		controls_animated_texture.play('muted')
+
 	_update_systems_titles(100.0)
 	score_cycle_completed.connect(_on_score_cycle_complete)
 	if game_manager != null:
@@ -210,3 +223,23 @@ const ISSUE_SPAWNED_DIALOGS = [
 	"I Discovered a problem on the ship, Head there quick!",
 	"THE SYSTEMS ARE DOWN! FIX IT!"
 ]
+
+
+func _on_mute_button_pressed() -> void:
+	_toggle_audible_animation()
+
+func _input(event: InputEvent) -> void:	
+	if event.is_action_pressed("mute"):
+		_toggle_audible_animation()
+
+func _toggle_audible_animation() -> void:
+	if is_force_mute:
+		controls_animated_texture.play('audible')
+		AudioServer.set_bus_mute(music_bus, false if started_with_force_mute else music_bus_muted)
+		AudioServer.set_bus_mute(sfx_bus, false if started_with_force_mute else sfx_bus_muted)
+		is_force_mute = false
+	else:
+		controls_animated_texture.play('muted')
+		AudioServer.set_bus_mute(music_bus, true)
+		AudioServer.set_bus_mute(sfx_bus, true)
+		is_force_mute = true

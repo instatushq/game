@@ -36,12 +36,16 @@ var last_mouse_position: Vector2 = Vector2.ZERO
 var timepassed: int = 0
 var is_solving_puzzle: bool = false
 var last_is_solving_puzzle: bool = is_solving_puzzle
+var music_bus_index: int = AudioServer.get_bus_index("Music")
 
 func _ready() -> void:
 	ship_health.on_health_change.connect(_on_readings_change)
 	on_death.connect(_on_astronaut_death)
-	if play_music:
-		music.play()
+	music.play()
+	if not play_music:
+		AudioServer.set_bus_mute(music_bus_index, true)
+
+	
 	
 func _on_score_timer_timeout() -> void:
 	increaseScore()
