@@ -10,6 +10,7 @@ enum Player {
 }
 
 @onready var ship_health: ShipHealth = %InternalShip/Health
+@onready var internal_ship: InternalShip = %InternalShip
 @onready var astronaut: Astronaut = %Astronaut
 @onready var camera: Camera = %Camera
 @onready var timer: Timer = $ScoreTimer
@@ -39,6 +40,7 @@ var last_is_solving_puzzle: bool = is_solving_puzzle
 var music_bus_index: int = AudioServer.get_bus_index("Music")
 
 func _ready() -> void:
+
 	ship_health.on_health_change.connect(_on_readings_change)
 	on_death.connect(_on_astronaut_death)
 	music.play()

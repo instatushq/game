@@ -44,6 +44,7 @@ func _ready() -> void:
 	direction_changed_while_moving.connect(_handle_direction_changed_while_moving)
 	internal_ship.on_ship_revived.connect(func(): astronaut_flashlight.on_ship_revived())
 	internal_ship.on_ship_broken.connect(_on_internal_ship_broke)
+	game_manager.on_solving_puzzle_changed.connect(func(solving: bool) -> void: visible = not solving)
 
 func _on_internal_ship_broke() -> void:
 	astronaut_flashlight.on_ship_broken(_has_movement_begun_already)

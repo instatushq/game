@@ -76,8 +76,11 @@ func _ready():
 	if is_force_mute:
 		controls_animated_texture.play('muted')
 
-	ship_node.on_ship_breakdown.connect(func() -> void: vhs_effect.play("HIGH"))
-	ship_node.on_ship_broken.connect(func() -> void: vhs_effect.play("MEDIUM"))
+	ship_node.on_ship_breakdown.connect(func() -> void: 
+		vhs_effect.play("HIGH")
+		await get_tree().create_timer(vhs_effect.get_animation("HIGH").length).timeout
+		vhs_effect.play_backwards("HIGH")
+	)
 	ship_node.on_ship_reviving.connect(func() -> void: vhs_effect.play("LOW"))
 	ship_node.on_ship_revived.connect(func() -> void: vhs_effect.play("LOW"))
 

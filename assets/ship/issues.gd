@@ -63,7 +63,8 @@ func _get_random_issueless_zone() -> IssueArea2D:
 func _generate_random_issue(zone: IssueArea2D) -> void:
 	var random_issue = possible_issues.pick_random()
 	var issue_instance: Issue = random_issue.instantiate()
-	zone.add_child(issue_instance)
+	var root_scene_node: Node = get_tree().current_scene
+	root_scene_node.add_child(issue_instance)
 	issue_instance.issue_resolved.connect(Callable(self, "_on_issue_resolved").bind(zone))
 	current_issues[zone.get_instance_id()] = issue_instance
 	generate_notification_for_zone(zone)
@@ -102,8 +103,10 @@ enum ISSUE_DIRECTION {
 
 func does_zone_have_issues(direction: ISSUE_DIRECTION) -> bool:
 	for zone in possible_zones:
-		if (direction == ISSUE_DIRECTION.RIGHT and zone.name.containsn("right")) or (direction == ISSUE_DIRECTION.LEFT and zone.name.containsn("left")) and current_issues.has(zone.get_instance_id()):
-			return true
+		if direction == ISSUE_DIRECTION.RIGHT and zone.name.containsn("right"):
+			return current_issues.has(zone.get_instance_id())
+		elif direction == ISSUE_DIRECTION.LEFT and zone.name.containsn("left"):
+			return current_issues.has(zone.get_instance_id())
 	return false
 
 func generate_notification_for_zone(zone: IssueArea2D) -> void:

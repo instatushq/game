@@ -114,6 +114,9 @@ func _on_health_change(_old_health: int, new_health: int) -> void:
 	if new_health < ship_major_outage_health_amount and not has_played_broken_animation:
 		has_played_broken_animation = true
 		_toggle_major_outage(true)
+	
+	if new_health > ship_major_outage_health_amount and has_played_broken_animation:
+		_toggle_major_outage(false)
 
 func _toggle_major_outage(toggled: bool) -> void:
 	if toggled:
@@ -128,3 +131,5 @@ func _toggle_major_outage(toggled: bool) -> void:
 		ship_sprite.play_backwards("breakdown")
 		animator.play("revive")
 		on_ship_reviving.emit()
+		ship_right_part.visible = issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.RIGHT)
+		ship_left_part.visible = issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.LEFT)
