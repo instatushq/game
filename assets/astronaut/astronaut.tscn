@@ -486,10 +486,9 @@ light_mask = 3
 position = Vector2(-11, -2)
 scale = Vector2(0.51, 0.51)
 sprite_frames = SubResource("SpriteFrames_x1ufq")
-animation = &"begin_flight"
+animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
+frame_progress = 0.326964
 flip_h = true
 
 [node name="Timer" type="Timer" parent="SpriteContainer/AnimatedSprite2D"]

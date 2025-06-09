@@ -511,24 +511,6 @@ font_size = 36
 font_color = Color(0.427451, 0.439216, 0.639216, 1)
 outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_13aas"]
-shader = ExtResource("9_13aas")
-shader_parameter/shake = 0.0
-shader_parameter/noiseQuality = 250.0
-shader_parameter/noiseIntensity = 0.001
-shader_parameter/offsetIntensity = 0.0
-shader_parameter/colorOffsetIntensity = 0.1
-
-[sub_resource type="Theme" id="Theme_hhnhh"]
-default_font_size = 32
-RichTextLabel/colors/default_color = Color(0.435294, 0.72549, 0.94902, 1)
-RichTextLabel/colors/font_outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
-RichTextLabel/constants/outline_size = 4
-RichTextLabel/font_sizes/normal_font_size = 28
-RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_j06ix"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgx70"]
 atlas = ExtResource("16_vc4br")
 region = Rect2(92, 0, 92, 31)
@@ -572,6 +554,24 @@ Button/styles/focus = SubResource("StyleBoxEmpty_6k1te")
 Button/styles/hover = SubResource("StyleBoxEmpty_1gu38")
 Button/styles/normal = SubResource("StyleBoxEmpty_uesjw")
 Button/styles/pressed = SubResource("StyleBoxEmpty_aoaac")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13aas"]
+shader = ExtResource("9_13aas")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.1
+
+[sub_resource type="Theme" id="Theme_hhnhh"]
+default_font_size = 32
+RichTextLabel/colors/default_color = Color(0.435294, 0.72549, 0.94902, 1)
+RichTextLabel/colors/font_outline_color = Color(0.0117647, 0.32549, 0.603922, 1)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 28
+RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j06ix"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
@@ -917,20 +917,6 @@ pivot_offset = Vector2(117, 2.5)
 mouse_filter = 2
 color = Color(0.427451, 0.439216, 0.639216, 1)
 
-[node name="VHS" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_13aas")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_right = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = SubResource("Theme_hhnhh")
-texture = SubResource("CanvasTexture_j06ix")
-metadata/_edit_use_anchors_ = true
-
 [node name="Controls" type="TextureRect" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
@@ -962,5 +948,19 @@ offset_bottom = -0.00800323
 theme = SubResource("Theme_pkyo2")
 theme_type_variation = &"FlatButton"
 flat = true
+
+[node name="VHS" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_13aas")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_right = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_hhnhh")
+texture = SubResource("CanvasTexture_j06ix")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Controls/MuteButton" to="." method="_on_mute_button_pressed"]

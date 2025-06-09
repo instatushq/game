@@ -37,7 +37,7 @@ var joystick_movement_vector: Vector2 = Vector2.ZERO
 var _has_movement_begun_already: bool = false
 
 func _ready() -> void:
-	idle_timer.stop()
+	idle_timer.start()
 	idle_timer.timeout.connect(handle_animation_idle_blink)
 	movement_began.connect(handle_movement_began)
 	movement_ended.connect(handle_movement_ended)
