@@ -1,5 +1,6 @@
 extends Node2D
 
+var game_manager: BarrelInvader = null
 @export var ship_camera: Camera2D = null
 @onready var walls: Array[Node] = get_node("%Walls/RigidBody2D/Left Right").get_children()
 @export var debris_objects: Array[PackedScene] = []
@@ -75,8 +76,9 @@ func _spawn_batch(y_level: float = 0) -> void:
 	queue_redraw()
 
 func _input(event):
+	if game_manager == null: return
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_W:
+		if event.keycode == KEY_R and game_manager.is_playing:
 			spawn_batch_above_player()
 
 func spawn_batch_above_player():
@@ -112,7 +114,7 @@ func _physics_process(_delta: float) -> void:
 		queue_redraw()
 		
 func _ready() -> void:
-	var game_manager: BarrelInvader = get_parent()
+	game_manager = get_parent()
 	game_manager.game_started.connect(_on_game_started)
 
 func _on_game_started() -> void:
