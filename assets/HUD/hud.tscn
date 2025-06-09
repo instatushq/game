@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=94 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cmopp5lbqilt3" path="res://assets/HUD/UI Emotions/nervous face.png" id="8_hhnhh"]
 [ext_resource type="Texture2D" uid="uid://u1xqq67oomyg" path="res://assets/HUD/smile face.png" id="8_j06ix"]
 [ext_resource type="FontFile" uid="uid://b6j776xc5v64d" path="res://fonts/PixelifySans-Regular.ttf" id="8_x0bbd"]
-[ext_resource type="Shader" path="res://assets/HUD/glitch.gdshader" id="9_13aas"]
+[ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="9_13aas"]
 [ext_resource type="Script" path="res://assets/HUD/dialog_box.gd" id="10_13aas"]
 [ext_resource type="Texture2D" uid="uid://jwwo8an3potp" path="res://assets/HUD/UI Emotions/look left face.png" id="10_vc4br"]
 [ext_resource type="Texture2D" uid="uid://ymmhrr3c5e20" path="res://assets/HUD/UI Emotions/scared face.png" id="11_5hymx"]
@@ -573,6 +573,266 @@ RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j06ix"]
 
+[sub_resource type="Animation" id="Animation_vc4br"]
+resource_name = "LOW"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VHS:material:shader_parameter/noiseQuality")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [250.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VHS:material:shader_parameter/shake")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VHS:material:shader_parameter/noiseIntensity")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.001]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VHS:material:shader_parameter/offsetIntensity")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VHS:material:shader_parameter/colorOffsetIntensity")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+
+[sub_resource type="Animation" id="Animation_6k1te"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VHS:material:shader_parameter/noiseQuality")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [250.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VHS:material:shader_parameter/shake")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VHS:material:shader_parameter/noiseIntensity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.001]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VHS:material:shader_parameter/offsetIntensity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VHS:material:shader_parameter/colorOffsetIntensity")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+
+[sub_resource type="Animation" id="Animation_1gu38"]
+resource_name = "MEDIUM"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VHS:material:shader_parameter/noiseQuality")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [250.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VHS:material:shader_parameter/shake")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.001]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VHS:material:shader_parameter/noiseIntensity")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.003]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VHS:material:shader_parameter/offsetIntensity")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.05]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VHS:material:shader_parameter/colorOffsetIntensity")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+
+[sub_resource type="Animation" id="Animation_uesjw"]
+resource_name = "HIGH"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VHS:material:shader_parameter/noiseQuality")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [250.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VHS:material:shader_parameter/shake")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.015]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VHS:material:shader_parameter/noiseIntensity")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.008]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VHS:material:shader_parameter/offsetIntensity")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.05]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VHS:material:shader_parameter/colorOffsetIntensity")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gu38"]
+_data = {
+&"HIGH": SubResource("Animation_uesjw"),
+&"LOW": SubResource("Animation_vc4br"),
+&"MEDIUM": SubResource("Animation_1gu38"),
+&"RESET": SubResource("Animation_6k1te")
+}
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_lbn2g")
 score_for_complete_bar = 1000
@@ -962,5 +1222,11 @@ mouse_filter = 2
 theme = SubResource("Theme_hhnhh")
 texture = SubResource("CanvasTexture_j06ix")
 metadata/_edit_use_anchors_ = true
+
+[node name="NoiseAnimation" type="AnimationPlayer" parent="VHS"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_1gu38")
+}
 
 [connection signal="pressed" from="Controls/MuteButton" to="." method="_on_mute_button_pressed"]

@@ -123,7 +123,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.784314, 0.784314, 0.784314, 1), Color(0.0784314, 0.0784314, 0.0784314, 1)]
+"values": [Color(0.784314, 0.784314, 0.784314, 1), Color(0.196078, 0.196078, 0.196078, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -915,6 +915,7 @@ texture = ExtResource("11_pqm3t")
 texture_scale = 0.28
 
 [node name="LeftPC" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+visible = false
 light_mask = 512
 sprite_frames = SubResource("SpriteFrames_hv451")
 animation = &"visible"

@@ -17,8 +17,10 @@ var is_playing_revive_animation: bool = false
 var issue_generated_during_revival: bool = false
 @export var ship_major_outage_health_amount: int = 50
 
+signal on_ship_breakdown
 signal on_ship_broken
 signal on_ship_revived
+signal on_ship_reviving
 
 func _ready() -> void:
 	issues.on_clear_issues.connect(_on_issue_resolved)
@@ -120,7 +122,9 @@ func _toggle_major_outage(toggled: bool) -> void:
 		animator.play("breakdown")
 		ship_right_part.visible = false
 		ship_right_part.visible = false
+		on_ship_breakdown.emit()
 	else:
 		is_playing_revive_animation = true
 		ship_sprite.play_backwards("breakdown")
 		animator.play("revive")
+		on_ship_reviving.emit()

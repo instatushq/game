@@ -17,7 +17,6 @@ var can_spawn: bool = true
 var asteroid_rocks_chance: int = 92
 var fuel_rocks_chance: int = 8
 
-# debug tools
 var debris_positions: Array = []
 var grid_locations: Array = []
 
@@ -26,7 +25,7 @@ func _spawn_batch(y_level: float = 0) -> void:
 	var view_port_y_size = 600
 	var view_port_x_size = get_viewport().size.x
 
-	var area_width = (view_port_x_size * 0.25) * 0.9 # 0.5 * 0.5 * 0.8
+	var area_width = (view_port_x_size * 0.25) * 0.9
 
 	var grid_size = Vector2(area_width, view_port_y_size)
 	
@@ -35,7 +34,7 @@ func _spawn_batch(y_level: float = 0) -> void:
 	var grid_position = Vector2(center_x_position, y_level - grid_size.y)
 	grid_size_draw = grid_size
 	grid_position_draw = grid_position
-		
+	
 	var generated_points = PoissonDiscSampling.generate_points(140, grid_size, 50, grid_position)
 	grid_locations.append({
 		"position": Vector2(center_x_position, y_level),
@@ -43,12 +42,6 @@ func _spawn_batch(y_level: float = 0) -> void:
 		"color": RandomColor.get_random_color(0.2, 0.5),
 		"points_color": RandomColor.get_random_pastel_color()
 	})
-	# grid_locations.append({
-	# 	"position": grid_position,
-	# 	"size": grid_size,
-	# 	"color": RandomColor.get_random_color(0.2, 0.5 ),
-	# 	"points_color": RandomColor.get_random_pastel_color()
-	# })
 
 	highest_element_in_the_latest_batch = null
 
@@ -70,8 +63,6 @@ func _spawn_batch(y_level: float = 0) -> void:
 			if spawned_element != null:
 				if spawned_element.global_position.y < highest_element_in_the_latest_batch.global_position.y:
 					highest_element_in_the_latest_batch = spawned_element.get_node("Ship Impacter")
-
-	# debris_positions.append(generated_points)
 
 	debris_batches.append(batch_container)
 	if debris_batches.size() >= MAX_DEBRIS_BATCHES_AT_A_TIME:
@@ -120,7 +111,6 @@ func _physics_process(_delta: float) -> void:
 		debris_positions.append([[Vector2(0, top_center_world_pos)]])
 		queue_redraw()
 		
-
 func _ready() -> void:
 	var game_manager: BarrelInvader = get_parent()
 	game_manager.game_started.connect(_on_game_started)

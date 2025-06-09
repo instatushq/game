@@ -14,6 +14,7 @@ signal on_emotionally_triggering_event(event_type: EMOTIONALLY_TRIGGER_EVENT, he
 @onready var score_label: Label = $HUDUI/XP/Score
 @onready var score_label_original_color: Color = score_label.label_settings.font_color
 @onready var game_manager: GameManager = %GameManager
+@onready var ship_node: InternalShip = %InternalShip
 @onready var ship: ShipHealth = %InternalShip/Health
 @onready var issues: Issues = %InternalShip/Issues
 @onready var bars: Array[ColorRect] = []
@@ -21,7 +22,7 @@ signal on_emotionally_triggering_event(event_type: EMOTIONALLY_TRIGGER_EVENT, he
 @onready var time_label: Label = $HUDUI/DialogBox/Clock
 @onready var emotion_sprite: AnimatedTextureRect = $HUDUI/Emotion
 @onready var controls_animated_texture: AnimatedTextureRect = $Controls
-
+@onready var vhs_effect: AnimationPlayer = $VHS/NoiseAnimation
 
 var music_bus = AudioServer.get_bus_index("Music")
 var sfx_bus = AudioServer.get_bus_index("Sound FX")
@@ -75,6 +76,11 @@ func _ready():
 	if is_force_mute:
 		controls_animated_texture.play('muted')
 
+	ship_node.on_ship_breakdown.connect(func() -> void: vhs_effect.play("HIGH"))
+	ship_node.on_ship_broken.connect(func() -> void: vhs_effect.play("MEDIUM"))
+	ship_node.on_ship_reviving.connect(func() -> void: vhs_effect.play("LOW"))
+	ship_node.on_ship_revived.connect(func() -> void: vhs_effect.play("LOW"))
+
 	_update_systems_titles(100.0)
 	score_cycle_completed.connect(_on_score_cycle_complete)
 	if game_manager != null:
@@ -105,6 +111,8 @@ func _ready():
 	issues.on_issue_generated.connect(func(zone: IssueArea2D, _issues_count: int) -> void:
 		on_emotionally_triggering_event.emit(EMOTIONALLY_TRIGGER_EVENT.ISSUE_SPAWNED_RIGHT if zone.name.containsn("right") else EMOTIONALLY_TRIGGER_EVENT.ISSUE_SPAWNED_LEFT, ship.health)
 	)
+
+	vhs_effect.play("LOW")
 
 	_portray_emotion(COMPUTER_EMOTION.DEFAULT, "Conputer Is Here.\nI Am Conputer. But I am Good Conputer. Have fun")
 
@@ -243,3 +251,9 @@ func _toggle_audible_animation() -> void:
 		AudioServer.set_bus_mute(music_bus, true)
 		AudioServer.set_bus_mute(sfx_bus, true)
 		is_force_mute = true
+
+enum VHS_EFFECT_INTENSITY {
+	LOW,
+	MEDIUM,
+	HIGH
+}
