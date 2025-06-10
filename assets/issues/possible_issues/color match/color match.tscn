@@ -1,91 +1,576 @@
-[gd_scene load_steps=3 format=3 uid="uid://tkhk7817dbdm"]
+[gd_scene load_steps=34 format=3 uid="uid://tkhk7817dbdm"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_la0fh"]
+[ext_resource type="Script" path="res://assets/HUD/animated texture rect.gd" id="2_4iblf"]
 [ext_resource type="Script" uid="uid://qp2bjvhly0yn" path="res://assets/issues/possible_issues/color match/color_match.gd" id="2_sgv0c"]
+[ext_resource type="Texture2D" uid="uid://c8f03expy81ky" path="res://assets/issues/possible_issues/color match/color matching game UI.png" id="3_4iblf"]
+[ext_resource type="Texture2D" uid="uid://iytx5qfkg3nn" path="res://assets/issues/possible_issues/color match/color matching button 1.png" id="5_per3n"]
+[ext_resource type="Texture2D" uid="uid://d2fxiwtxft6my" path="res://assets/issues/possible_issues/color match/color matching button 2.png" id="6_c5drq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_per3n"]
+atlas = ExtResource("3_4iblf")
+region = Rect2(0, 0, 433, 266)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5drq"]
+atlas = ExtResource("3_4iblf")
+region = Rect2(433, 0, 433, 266)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfmd7"]
+atlas = ExtResource("3_4iblf")
+region = Rect2(866, 0, 433, 266)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r64c"]
+atlas = ExtResource("3_4iblf")
+region = Rect2(1299, 0, 433, 266)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qni4q"]
+atlas = ExtResource("3_4iblf")
+region = Rect2(1299, 0, 433, 266)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnvj1"]
+atlas = ExtResource("3_4iblf")
+region = Rect2(866, 0, 433, 266)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf4x0"]
+atlas = ExtResource("3_4iblf")
+region = Rect2(433, 0, 433, 266)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pehlc"]
+atlas = ExtResource("3_4iblf")
+region = Rect2(0, 0, 433, 266)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tvri4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_per3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5drq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfmd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r64c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qni4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnvj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf4x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pehlc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ovrla"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_keg7o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fml2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbh2y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mv0ip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sm7c6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_klspp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xe51f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c8xie"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5fqgx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84hbw"]
+
+[sub_resource type="Theme" id="Theme_c5drq"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_ovrla")
+Button/styles/disabled_mirrored = SubResource("StyleBoxEmpty_keg7o")
+Button/styles/focus = SubResource("StyleBoxEmpty_8fml2")
+Button/styles/hover = SubResource("StyleBoxEmpty_cbh2y")
+Button/styles/hover_mirrored = SubResource("StyleBoxEmpty_mv0ip")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_sm7c6")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_klspp")
+Button/styles/normal = SubResource("StyleBoxEmpty_xe51f")
+Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_c8xie")
+Button/styles/pressed = SubResource("StyleBoxEmpty_5fqgx")
+Button/styles/pressed_mirrored = SubResource("StyleBoxEmpty_84hbw")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvri4"]
+atlas = ExtResource("5_per3n")
+region = Rect2(0, 0, 6, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anx3r"]
+atlas = ExtResource("5_per3n")
+region = Rect2(6, 0, 6, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grpkp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anx3r")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvri4")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grpkp"]
+atlas = ExtResource("6_c5drq")
+region = Rect2(0, 0, 14, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m75qs"]
+atlas = ExtResource("6_c5drq")
+region = Rect2(14, 0, 14, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xcn4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m75qs")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grpkp")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_la0fh")
+default_visibility = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="Node2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -397.5
-offset_top = -277.48
-offset_right = 397.5
-offset_bottom = 277.48
+[node name="AnimatedTextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1776.0
+offset_top = -1213.0
+offset_right = 1776.0
+offset_bottom = 969.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("AtlasTexture_per3n")
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_tvri4")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/AnimatedTextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 700.0
+offset_right = -960.0
+offset_bottom = -700.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 script = ExtResource("2_sgv0c")
 
-[node name="LeftContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
+[node name="LeftContainer" type="Control" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
 custom_minimum_size = Vector2(10, 0)
 layout_direction = 2
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 32.65
-offset_top = -186.0
-offset_right = 232.65
-offset_bottom = 186.0
+anchor_left = 0.5
+anchor_top = 0.72
+anchor_right = 0.613
+anchor_bottom = 0.857
+offset_left = -4.0
+offset_top = -0.0400391
+offset_right = 0.583984
+offset_bottom = -0.174072
+grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
-[node name="Color one" type="Button" parent="CanvasLayer/ColorRect/LeftContainer"]
-custom_minimum_size = Vector2(200, 90)
-layout_mode = 2
-text = "Waw"
+[node name="button" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.079
+anchor_right = 0.087
+anchor_bottom = 0.383
+offset_left = -10.0
+offset_top = -0.453
+offset_right = 9.557
+offset_bottom = 0.0189972
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c5drq")
+theme_type_variation = &"FlatButton"
 
-[node name="Color two" type="Button" parent="CanvasLayer/ColorRect/LeftContainer"]
-custom_minimum_size = Vector2(200, 90)
-layout_mode = 2
-text = "Waw"
+[node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button"]
+modulate = Color(0.965501, 0.763303, 0.830983, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_right = 0.723
+anchor_bottom = 1.0
+offset_left = -16.9
+offset_top = -16.0
+offset_right = 16.972
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_tvri4")
+stretch_mode = 4
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_grpkp")
 
-[node name="Color Three" type="Button" parent="CanvasLayer/ColorRect/LeftContainer"]
-custom_minimum_size = Vector2(200, 90)
-layout_mode = 2
-text = "Waw"
+[node name="button2" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.079
+anchor_right = 0.087
+anchor_bottom = 0.383
+offset_left = 31.0
+offset_top = -0.453
+offset_right = 50.557
+offset_bottom = 0.0189972
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c5drq")
+theme_type_variation = &"FlatButton"
 
-[node name="Color Four" type="Button" parent="CanvasLayer/ColorRect/LeftContainer"]
-custom_minimum_size = Vector2(200, 90)
-layout_mode = 2
-text = "Waw"
+[node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button2"]
+modulate = Color(0.965501, 0.763303, 0.830983, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_right = 0.723
+anchor_bottom = 1.0
+offset_left = -16.9
+offset_top = -16.0
+offset_right = 16.972
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_tvri4")
+stretch_mode = 4
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_grpkp")
 
-[node name="RightContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
+[node name="button3" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.079
+anchor_right = 0.087
+anchor_bottom = 0.383
+offset_left = 80.0
+offset_top = -8.453
+offset_right = 99.557
+offset_bottom = -7.981
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c5drq")
+theme_type_variation = &"FlatButton"
+
+[node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button3"]
+modulate = Color(0.965501, 0.763303, 0.830983, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_right = 0.723
+anchor_bottom = 1.0
+offset_left = -16.9
+offset_top = -16.0
+offset_right = 16.972
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_tvri4")
+stretch_mode = 4
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_grpkp")
+
+[node name="button4" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.079
+anchor_right = 0.087
+anchor_bottom = 0.383
+offset_left = 121.0
+offset_top = -8.453
+offset_right = 140.557
+offset_bottom = -7.981
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c5drq")
+theme_type_variation = &"FlatButton"
+
+[node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button4"]
+modulate = Color(0.965501, 0.763303, 0.830983, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_right = 0.723
+anchor_bottom = 1.0
+offset_left = -16.9
+offset_top = -16.0
+offset_right = 16.972
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_tvri4")
+stretch_mode = 4
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_grpkp")
+
+[node name="button5" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.079
+anchor_right = 0.087
+anchor_bottom = 0.383
+offset_left = 164.0
+offset_top = -8.453
+offset_right = 183.557
+offset_bottom = -7.981
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c5drq")
+theme_type_variation = &"FlatButton"
+
+[node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button5"]
+modulate = Color(0.965501, 0.763303, 0.830983, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_right = 0.723
+anchor_bottom = 1.0
+offset_left = -16.9
+offset_top = -16.0
+offset_right = 16.972
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_tvri4")
+stretch_mode = 4
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_grpkp")
+
+[node name="RightContainer" type="Control" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
 custom_minimum_size = Vector2(10, 0)
 layout_direction = 3
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 43.0
-offset_top = -185.5
-offset_right = 243.0
-offset_bottom = 186.5
+anchor_left = 0.446
+anchor_top = 1.101
+anchor_right = 0.633
+anchor_bottom = 1.428
+offset_left = -47.872
+offset_top = 0.0179443
+offset_right = -0.0560303
+offset_bottom = 0.303955
 grow_vertical = 2
-alignment = 1
 
-[node name="Color one" type="Button" parent="CanvasLayer/ColorRect/RightContainer"]
-custom_minimum_size = Vector2(200, 90)
-layout_mode = 2
-text = "Waw"
+[node name="button6" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.722
+anchor_top = 0.762
+anchor_right = 1.003
+anchor_bottom = 0.969
+offset_left = 1.13397
+offset_top = -0.0720062
+offset_right = -0.059021
+offset_bottom = -0.0640106
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c5drq")
+theme_type_variation = &"FlatButton"
 
-[node name="Color two" type="Button" parent="CanvasLayer/ColorRect/RightContainer"]
-custom_minimum_size = Vector2(200, 90)
-layout_mode = 2
-text = "Waw"
+[node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer/button6"]
+modulate = Color(0.965501, 0.763303, 0.830983, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.143
+anchor_top = -0.321
+anchor_right = 1.082
+anchor_bottom = 1.214
+offset_left = 0.0140009
+offset_top = 0.0130005
+offset_right = -0.0360031
+offset_bottom = 0.657997
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_grpkp")
+stretch_mode = 4
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_4xcn4")
 
-[node name="Color Three" type="Button" parent="CanvasLayer/ColorRect/RightContainer"]
-custom_minimum_size = Vector2(200, 90)
-layout_mode = 2
-text = "Waw"
+[node name="button7" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.561
+anchor_top = 0.602
+anchor_right = 0.839
+anchor_bottom = 0.809
+offset_left = -0.03302
+offset_top = -0.112015
+offset_right = -0.167023
+offset_bottom = -0.104004
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c5drq")
+theme_type_variation = &"FlatButton"
 
-[node name="Color Four" type="Button" parent="CanvasLayer/ColorRect/RightContainer"]
-custom_minimum_size = Vector2(200, 90)
-layout_mode = 2
-text = "Waw"
+[node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer/button7"]
+modulate = Color(0.965501, 0.763303, 0.830983, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.143
+anchor_top = -0.321
+anchor_right = 1.082
+anchor_bottom = 1.214
+offset_left = 0.0140009
+offset_top = 0.0130005
+offset_right = -0.0360031
+offset_bottom = 0.657997
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_grpkp")
+stretch_mode = 4
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_4xcn4")
+
+[node name="button8" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422
+anchor_top = 0.441
+anchor_right = 0.7
+anchor_bottom = 0.648
+offset_left = 0.0339966
+offset_top = 0.103996
+offset_right = -0.100021
+offset_bottom = 0.112
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c5drq")
+theme_type_variation = &"FlatButton"
+
+[node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer/button8"]
+modulate = Color(0.965501, 0.763303, 0.830983, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.143
+anchor_top = -0.321
+anchor_right = 1.082
+anchor_bottom = 1.214
+offset_left = 0.0140009
+offset_top = 0.0130005
+offset_right = -0.0360031
+offset_bottom = 0.657997
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_grpkp")
+stretch_mode = 4
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_4xcn4")
+
+[node name="button9" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28
+anchor_top = 0.281
+anchor_right = 0.558
+anchor_bottom = 0.488
+offset_left = 0.159996
+offset_top = 0.0639954
+offset_right = 0.0259857
+offset_bottom = 0.071991
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c5drq")
+theme_type_variation = &"FlatButton"
+
+[node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer/button9"]
+modulate = Color(0.965501, 0.763303, 0.830983, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.143
+anchor_top = -0.321
+anchor_right = 1.082
+anchor_bottom = 1.214
+offset_left = 0.0140009
+offset_top = 0.0130005
+offset_right = -0.0360031
+offset_bottom = 0.657997
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_grpkp")
+stretch_mode = 4
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_4xcn4")
+
+[node name="button10" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.142
+anchor_top = 0.121
+anchor_right = 0.419
+anchor_bottom = 0.328
+offset_left = -0.126003
+offset_top = 0.0239983
+offset_right = 0.0929871
+offset_bottom = 0.0319977
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c5drq")
+theme_type_variation = &"FlatButton"
+
+[node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer/button10"]
+modulate = Color(0.965501, 0.763303, 0.830983, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.143
+anchor_top = -0.321
+anchor_right = 1.082
+anchor_bottom = 1.214
+offset_left = 0.0140009
+offset_top = 0.0130005
+offset_right = -0.0360031
+offset_bottom = 0.657997
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_grpkp")
+stretch_mode = 4
+script = ExtResource("2_4iblf")
+sprites = SubResource("SpriteFrames_4xcn4")
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer"]

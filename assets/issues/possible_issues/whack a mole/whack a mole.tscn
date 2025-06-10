@@ -291,6 +291,10 @@ font_size = 70
 font_color = Color(0.223529, 0.611765, 0.701961, 1)
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sm7c6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_klspp"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ovrla"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_keg7o"]
@@ -298,12 +302,6 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fml2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbh2y"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mv0ip"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sm7c6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_klspp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xe51f"]
 
@@ -313,18 +311,20 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84hbw"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85nbs"]
+
 [sub_resource type="Theme" id="Theme_ovrla"]
-Button/styles/disabled = SubResource("StyleBoxEmpty_ovrla")
-Button/styles/disabled_mirrored = SubResource("StyleBoxEmpty_keg7o")
-Button/styles/focus = SubResource("StyleBoxEmpty_8fml2")
-Button/styles/hover = SubResource("StyleBoxEmpty_cbh2y")
-Button/styles/hover_mirrored = SubResource("StyleBoxEmpty_mv0ip")
-Button/styles/hover_pressed = SubResource("StyleBoxEmpty_sm7c6")
-Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_klspp")
-Button/styles/normal = SubResource("StyleBoxEmpty_xe51f")
-Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_c8xie")
-Button/styles/pressed = SubResource("StyleBoxEmpty_5fqgx")
-Button/styles/pressed_mirrored = SubResource("StyleBoxEmpty_84hbw")
+Button/styles/disabled = SubResource("StyleBoxEmpty_sm7c6")
+Button/styles/disabled_mirrored = SubResource("StyleBoxEmpty_klspp")
+Button/styles/focus = SubResource("StyleBoxEmpty_ovrla")
+Button/styles/hover = SubResource("StyleBoxEmpty_keg7o")
+Button/styles/hover_mirrored = SubResource("StyleBoxEmpty_8fml2")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_cbh2y")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_xe51f")
+Button/styles/normal = SubResource("StyleBoxEmpty_c8xie")
+Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_5fqgx")
+Button/styles/pressed = SubResource("StyleBoxEmpty_84hbw")
+Button/styles/pressed_mirrored = SubResource("StyleBoxEmpty_85nbs")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5qaa"]
 atlas = ExtResource("6_p5srt")
