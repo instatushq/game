@@ -170,10 +170,10 @@ default_visibility = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1776.0
-offset_top = -1213.0
-offset_right = 1776.0
-offset_bottom = 969.0
+offset_left = -1820.0
+offset_top = -1453.0
+offset_right = 1732.0
+offset_bottom = 729.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_per3n")
@@ -223,9 +223,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
+text = "  "
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button"]
-modulate = Color(0.965501, 0.763303, 0.830983, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.275
@@ -257,9 +257,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
+text = "     "
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button2"]
-modulate = Color(0.965501, 0.763303, 0.830983, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.275
@@ -293,7 +293,6 @@ theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button3"]
-modulate = Color(0.965501, 0.763303, 0.830983, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.275
@@ -327,7 +326,6 @@ theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button4"]
-modulate = Color(0.965501, 0.763303, 0.830983, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.275
@@ -361,7 +359,6 @@ theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button5"]
-modulate = Color(0.965501, 0.763303, 0.830983, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.275
@@ -410,7 +407,6 @@ theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer/button6"]
-modulate = Color(0.965501, 0.763303, 0.830983, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.143
@@ -446,7 +442,6 @@ theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer/button7"]
-modulate = Color(0.965501, 0.763303, 0.830983, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.143
@@ -482,7 +477,6 @@ theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer/button8"]
-modulate = Color(0.965501, 0.763303, 0.830983, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.143
@@ -518,7 +512,6 @@ theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer/button9"]
-modulate = Color(0.965501, 0.763303, 0.830983, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.143
@@ -554,7 +547,6 @@ theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer/button10"]
-modulate = Color(0.965501, 0.763303, 0.830983, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.143
@@ -574,3 +566,4 @@ script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_4xcn4")
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer"]
+zoom = Vector2(1.5, 1.5)

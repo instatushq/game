@@ -7,7 +7,8 @@ enum COLOR_MATCH_COLOR {
 	RED,
 	BLUE,
 	YELLOW,
-	GREEN
+	GREEN,
+	PURPLE
 }
 
 var current_selected_node = null
@@ -16,7 +17,8 @@ const colors_values = {
 	COLOR_MATCH_COLOR.RED: Color(1, 0, 0),
 	COLOR_MATCH_COLOR.BLUE: Color(0, 0, 1),
 	COLOR_MATCH_COLOR.YELLOW: Color(1, 1, 0),
-	COLOR_MATCH_COLOR.GREEN: Color(0, 1, 0)
+	COLOR_MATCH_COLOR.GREEN: Color(0, 1, 0),
+	COLOR_MATCH_COLOR.PURPLE: Color(0.5, 0, 0.5)
 }
 
 var assigned_left_colors: Dictionary = {}
@@ -77,7 +79,8 @@ func _assign_colors_randomly() -> void:
 		assigned_left_colors[str(button.get_instance_id())] = selected_color
 		button.text = COLOR_MATCH_COLOR.keys()[selected_color]
 		button.add_theme_color_override("font_color", colors_values[assigned_left_colors[str(button.get_instance_id())]])
-	
+		button.modulate = colors_values[assigned_left_colors[str(button.get_instance_id())]]
+
 	used_colors.clear()
 	
 	for buttonNode in right_group:
@@ -92,6 +95,7 @@ func _assign_colors_randomly() -> void:
 		assigned_right_colors[str(button.get_instance_id())] = selected_color
 		button.text = COLOR_MATCH_COLOR.keys()[selected_color]
 		button.add_theme_color_override("font_color", colors_values[assigned_right_colors[str(button.get_instance_id())]])
+		button.modulate = colors_values[assigned_right_colors[str(button.get_instance_id())]]
 
 func _assign_controls() -> void:
 	for button in left_group:

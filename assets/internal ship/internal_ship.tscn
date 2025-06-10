@@ -15,11 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://bq85575w8bxgw" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 1.tscn" id="11_aiucs"]
 [ext_resource type="Texture2D" uid="uid://bxvuvr5hv0x7b" path="res://assets/internal ship/RightPC.png" id="11_pqm3t"]
 [ext_resource type="PackedScene" uid="uid://b8mgilkn4xcd" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 2.tscn" id="13_adlbk"]
-[ext_resource type="PackedScene" uid="uid://jjb3c4igolbf" path="res://assets/issues/possible_issues/barrel invader/barrel_invader.tscn" id="13_pqm3t"]
 [ext_resource type="PackedScene" uid="uid://35csyl7rx3c" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 3.tscn" id="14_5y73v"]
 [ext_resource type="PackedScene" uid="uid://ls4e8s8mqgmp" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 4.tscn" id="15_liemg"]
 [ext_resource type="PackedScene" uid="uid://byafhmsqn2tyg" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 5.tscn" id="16_5y73v"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="19_c6j7a"]
+[ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="20_qy0je"]
 [ext_resource type="Script" path="res://assets/issues/issue area.gd" id="21_b4gsa"]
 [ext_resource type="PackedScene" uid="uid://chit4g4gn4kv2" path="res://assets/issues/issue_icon.tscn" id="22_qy0je"]
 
@@ -1065,7 +1065,7 @@ script = ExtResource("19_c6j7a")
 
 [node name="Issues" type="Node2D" parent="."]
 script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("13_pqm3t")])
+possible_issues = Array[PackedScene]([ExtResource("20_qy0je")])
 notification_icon_scene = ExtResource("22_qy0je")
 chance_of_issues = 0
 
