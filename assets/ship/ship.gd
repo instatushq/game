@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Ship
 
-@export var movement_speed: float = 20
+@export var movement_speed: float = 10
 @export var bottom_camera_movement_margin: float = 100.0
 var side_movement_padding: float = 48.0
 
@@ -52,17 +52,24 @@ func _physics_process(_delta: float) -> void:
 	var input_axis = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	var camera = get_viewport().get_camera_2d()
 
-	_handle_keyboard_movement(input_axis, camera)
-
-	var final_ship_position = camera.global_position + ship_position
+	_handle_ship_movement(input_axis, camera)
 	
-	rb.enforce_global_position(final_ship_position)
+	rb.enforce_global_position(camera.global_position + ship_position)
 
 	if Input.is_action_pressed("fire_cannon") and can_fire:
 		_fire_cannons()
 		can_fire = false
 
-func _handle_keyboard_movement(input_axis: Vector2, camera: Camera2D) -> void:
+func _input(event: InputEvent) -> void:
+	var camera = get_viewport().get_camera_2d()
+	var input_axis = Vector2.ZERO
+	
+	if event is InputEventMouseMotion:
+		input_axis = Vector2(event.relative.x, event.relative.y).normalized() * 0.5
+
+	_handle_ship_movement(input_axis, camera)
+
+func _handle_ship_movement(input_axis: Vector2, camera: Camera2D) -> void:
 	var viewport_size = get_viewport_rect().size
 	var bottom_edge = ((camera.global_position.y + (viewport_size.y / camera.zoom.y) / 2))
 	var right_edge = ((camera.global_position.x + (viewport_size.x / camera.zoom.x) / 2))
