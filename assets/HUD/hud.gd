@@ -119,6 +119,8 @@ func _ready():
 
 	_portray_emotion(COMPUTER_EMOTION.DEFAULT, "Conputer Is Here.\nI Am Conputer. But I am Good Conputer. Have fun")
 
+	game_manager.on_solving_puzzle_changed.connect(func(is_solving_puzzle: bool) -> void: visible = not is_solving_puzzle)
+
 func _physics_process(_delta: float) -> void:
 	var time_dict = Time.get_datetime_dict_from_system()
 	var hour = time_dict.hour % 12
