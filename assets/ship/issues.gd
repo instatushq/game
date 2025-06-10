@@ -43,7 +43,7 @@ func _on_area_exited(body: Node, zone: IssueArea2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
-		if last_entered_zone != null and current_issues.has(last_entered_zone.get_instance_id()):
+		if last_entered_zone != null and current_issues.has(last_entered_zone.get_instance_id()) and not game_manager.is_solving_puzzle:
 			var current_issue = current_issues[last_entered_zone.get_instance_id()]
 			current_issue.open_issue()
 			is_issue_open = true
