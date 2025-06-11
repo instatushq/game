@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=114 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -19,7 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://ls4e8s8mqgmp" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 4.tscn" id="15_liemg"]
 [ext_resource type="PackedScene" uid="uid://byafhmsqn2tyg" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 5.tscn" id="16_5y73v"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="19_c6j7a"]
+[ext_resource type="PackedScene" uid="uid://jjb3c4igolbf" path="res://assets/issues/possible_issues/barrel invader/barrel_invader.tscn" id="20_atttj"]
 [ext_resource type="PackedScene" uid="uid://ryfuh1mblk5s" path="res://assets/issues/possible_issues/star_reactor/issue.tscn" id="20_ojjh1"]
+[ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="20_qy0je"]
+[ext_resource type="PackedScene" uid="uid://d2burbt4yek8s" path="res://assets/issues/possible_issues/whack a mole/whack a mole.tscn" id="21_63gkj"]
 [ext_resource type="Script" path="res://assets/issues/issue area.gd" id="21_b4gsa"]
 [ext_resource type="PackedScene" uid="uid://chit4g4gn4kv2" path="res://assets/issues/issue_icon.tscn" id="22_qy0je"]
 [ext_resource type="AudioStream" uid="uid://dknuambxafns1" path="res://assets/audio/FX/health up.ogg" id="23_6trai"]
@@ -1070,7 +1073,7 @@ script = ExtResource("19_c6j7a")
 
 [node name="Issues" type="Node2D" parent="."]
 script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("20_ojjh1")])
+possible_issues = Array[PackedScene]([ExtResource("20_atttj"), ExtResource("20_qy0je"), ExtResource("20_ojjh1"), ExtResource("21_63gkj")])
 notification_icon_scene = ExtResource("22_qy0je")
 chance_of_issues = 0
 
