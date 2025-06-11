@@ -65,6 +65,7 @@ func _switch_to_game() -> void:
 	get_tree().change_scene_to_file("res://main scene.tscn")
 
 func _on_hover_start_game() -> void:
+	menu_hover_sound.play(0.1)
 	_set_ambience_light_maximized(true)
 	start_game_button.grab_focus()
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
@@ -81,6 +82,7 @@ func _on_unhover_start_game() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 func _on_hover_options() -> void:
+	menu_hover_sound.play(0.1)
 	if not music_button.visible and not sfx_button.visible:
 		_set_ambience_light_maximized(true)
 		ambience_lights.position = options_ambience_light_position

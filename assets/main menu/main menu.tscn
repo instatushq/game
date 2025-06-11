@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://e3terh5nct76"]
+[gd_scene load_steps=90 format=3 uid="uid://e3terh5nct76"]
 
 [ext_resource type="Script" uid="uid://cyvhedqbrq845" path="res://assets/main menu/main_menu.gd" id="1_plx4y"]
 [ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="2_5x655"]
@@ -169,6 +169,15 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_k5jlq"]
 normal = Vector2(0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q7ux3"]
+bounce = 5000.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7ux3"]
+size = Vector2(64, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlsq6"]
+size = Vector2(35, 33)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gg27b"]
 radius = 7.0
@@ -657,6 +666,22 @@ shape = SubResource("WorldBoundaryShape2D_gg27b")
 [node name="Ceiling" type="CollisionShape2D" parent="Ship/StaticBody"]
 position = Vector2(0, -40)
 shape = SubResource("WorldBoundaryShape2D_k5jlq")
+
+[node name="ForbiddenArea" type="StaticBody2D" parent="."]
+position = Vector2(0, -8)
+physics_material_override = SubResource("PhysicsMaterial_q7ux3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForbiddenArea"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_q7ux3")
+
+[node name="ForbiddenArea2" type="StaticBody2D" parent="."]
+position = Vector2(-71, -12)
+physics_material_override = SubResource("PhysicsMaterial_q7ux3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForbiddenArea2"]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_rlsq6")
 
 [node name="Astronaut" type="RigidBody2D" parent="."]
 position = Vector2(0, 63)
