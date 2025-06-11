@@ -71,7 +71,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ovrla"]
@@ -616,8 +616,8 @@ volume_db = -10.0
 pitch_scale = 1.5
 
 [node name="PointLight2D" type="PointLight2D" parent="CanvasLayer/AnimatedTextureRect"]
-position = Vector2(1525, 1561)
-scale = Vector2(11.5266, 7.74761)
+position = Vector2(1525, 1612)
+scale = Vector2(7.73461, 5.19882)
 color = Color(0, 0.628268, 0.632915, 1)
 energy = 2.0
 texture = SubResource("GradientTexture2D_3r64c")

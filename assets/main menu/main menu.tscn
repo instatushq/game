@@ -739,6 +739,12 @@ volume_db = -20.0
 pitch_scale = 0.8
 bus = &"Sound FX"
 
+[node name="StartGame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_rlsq6")
+volume_db = -20.0
+pitch_scale = 0.6
+bus = &"Sound FX"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="VHS" type="TextureRect" parent="CanvasLayer"]

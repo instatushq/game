@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ls4e8s8mqgmp" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 4.tscn" id="15_liemg"]
 [ext_resource type="PackedScene" uid="uid://byafhmsqn2tyg" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid 5.tscn" id="16_5y73v"]
 [ext_resource type="Script" uid="uid://ctiojekr837vj" path="res://assets/ship/ship_health.gd" id="19_c6j7a"]
-[ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="20_qy0je"]
+[ext_resource type="PackedScene" uid="uid://ryfuh1mblk5s" path="res://assets/issues/possible_issues/star_reactor/issue.tscn" id="20_ojjh1"]
 [ext_resource type="Script" path="res://assets/issues/issue area.gd" id="21_b4gsa"]
 [ext_resource type="PackedScene" uid="uid://chit4g4gn4kv2" path="res://assets/issues/issue_icon.tscn" id="22_qy0je"]
 [ext_resource type="AudioStream" uid="uid://dknuambxafns1" path="res://assets/audio/FX/health up.ogg" id="23_6trai"]
@@ -1070,7 +1070,7 @@ script = ExtResource("19_c6j7a")
 
 [node name="Issues" type="Node2D" parent="."]
 script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("20_qy0je")])
+possible_issues = Array[PackedScene]([ExtResource("20_ojjh1")])
 notification_icon_scene = ExtResource("22_qy0je")
 chance_of_issues = 0
 
@@ -1106,7 +1106,7 @@ bus = &"Sound FX"
 
 [node name="Alarm" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_v5d4y")
-volume_db = -16.0
+volume_db = -25.0
 bus = &"Sound FX"
 
 [node name="EngineRun" type="AudioStreamPlayer2D" parent="."]

@@ -10,6 +10,7 @@ extends Node2D
 @onready var menu_astronaut: MenuAstronaut = $Astronaut
 @onready var menu_hover_sound: AudioStreamPlayer = $MenuHover
 @onready var menu_click_sound: AudioStreamPlayer = $MenuClick
+@onready var start_game_sound: AudioStreamPlayer = $StartGame
 var menu_click_sound_offset: float = 0.05
 var original_ambience_light_energy: float = 0.0
 var default_ambience_light_position: Vector2 = Vector2(0, -21)
@@ -51,7 +52,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_click_start_game() -> void:
 	transitions.transition(_switch_to_game, TransitionScreen.TransitionPoint.MIDDLE)
-	menu_click_sound.play(menu_click_sound_offset)
+	start_game_sound.play()
 
 func _on_click_options() -> void:
 	options_button.visible = false
