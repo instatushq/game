@@ -5,6 +5,9 @@ signal mole_missed(mole: Mole)
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
+@onready var hit_sound: AudioStreamPlayer = $HitSound
+@onready var coming_up_sound: AudioStreamPlayer = $ComingUp
+@onready var going_down_sound: AudioStreamPlayer = $GoingDown
 @export var reset_colors_on_frame: int = 3
 
 var is_player_on_cooldown: bool = false

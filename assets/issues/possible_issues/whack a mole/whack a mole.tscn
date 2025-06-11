@@ -621,6 +621,12 @@ frame_progress = 1.0
 [node name="Timer" type="Timer" parent="GameNode/Game/whack"]
 one_shot = true
 
+[node name="HitSound" type="AudioStreamPlayer" parent="GameNode/Game/whack"]
+
+[node name="ComingUp" type="AudioStreamPlayer" parent="GameNode/Game/whack"]
+
+[node name="GoingDown" type="AudioStreamPlayer" parent="GameNode/Game/whack"]
+
 [node name="whack2" type="Button" parent="GameNode/Game"]
 layout_mode = 1
 anchors_preset = -1
