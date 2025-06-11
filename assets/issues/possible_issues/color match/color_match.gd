@@ -14,11 +14,11 @@ enum COLOR_MATCH_COLOR {
 var current_selected_node = null
 
 const colors_values = {
-	COLOR_MATCH_COLOR.RED: Color(1, 0, 0),
-	COLOR_MATCH_COLOR.BLUE: Color(0, 0, 1),
-	COLOR_MATCH_COLOR.YELLOW: Color(1, 1, 0),
-	COLOR_MATCH_COLOR.GREEN: Color(0, 1, 0),
-	COLOR_MATCH_COLOR.PURPLE: Color(0.5, 0, 0.5)
+	COLOR_MATCH_COLOR.RED: Color("#CC3D94"),
+	COLOR_MATCH_COLOR.BLUE: Color("#3159BA"),
+	COLOR_MATCH_COLOR.YELLOW: Color("#CC3D40"),
+	COLOR_MATCH_COLOR.GREEN: Color("#23DEBC"),
+	COLOR_MATCH_COLOR.PURPLE: Color("#02B4CF")
 }
 
 var assigned_left_colors: Dictionary = {}
@@ -53,6 +53,7 @@ func _on_click_colored_button(button: Button) -> void:
 
 	if current_selected_node == null:
 		current_selected_node = clicked_button
+		button.get_node("AnimatedSprite2D").play("down")
 		return
 
 	if (not clicked_button.is_left and current_selected_node.is_left) or (clicked_button.is_left and not current_selected_node.is_left):
@@ -68,6 +69,7 @@ func _assign_colors_randomly() -> void:
 	var used_colors: Array[COLOR_MATCH_COLOR] = []
 	
 	for buttonNode in left_group:
+		buttonNode.get_node("AnimatedSprite2D").play("up")
 		var button: Button = buttonNode
 		var available_colors = COLOR_MATCH_COLOR.values().filter(func(color_value): return not color_value in used_colors)
 		var selected_color = COLOR_MATCH_COLOR.RED
@@ -77,13 +79,12 @@ func _assign_colors_randomly() -> void:
 			used_colors.append(selected_color)
 		
 		assigned_left_colors[str(button.get_instance_id())] = selected_color
-		button.text = COLOR_MATCH_COLOR.keys()[selected_color]
-		button.add_theme_color_override("font_color", colors_values[assigned_left_colors[str(button.get_instance_id())]])
 		button.modulate = colors_values[assigned_left_colors[str(button.get_instance_id())]]
 
 	used_colors.clear()
 	
 	for buttonNode in right_group:
+		buttonNode.get_node("AnimatedSprite2D").play("up")
 		var button: Button = buttonNode
 		var available_colors = COLOR_MATCH_COLOR.values().filter(func(color_value): return not color_value in used_colors)
 		var selected_color = COLOR_MATCH_COLOR.RED
@@ -93,8 +94,6 @@ func _assign_colors_randomly() -> void:
 			used_colors.append(selected_color)
 		
 		assigned_right_colors[str(button.get_instance_id())] = selected_color
-		button.text = COLOR_MATCH_COLOR.keys()[selected_color]
-		button.add_theme_color_override("font_color", colors_values[assigned_right_colors[str(button.get_instance_id())]])
 		button.modulate = colors_values[assigned_right_colors[str(button.get_instance_id())]]
 
 func _assign_controls() -> void:
@@ -119,8 +118,10 @@ func _update_buttons_view() -> void:
 		var button_info = _find_element_in_dictionaries(button)
 		if button_info.found and button_info.color in connected_colors:
 			button.disabled = true
+			button.get_node("AnimatedSprite2D").play("down")
 	
 	for button in right_group:
 		var button_info = _find_element_in_dictionaries(button)
 		if button_info.found and button_info.color in connected_colors:
 			button.disabled = true
+			button.get_node("AnimatedSprite2D").play("down")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://tkhk7817dbdm"]
+[gd_scene load_steps=37 format=3 uid="uid://tkhk7817dbdm"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_la0fh"]
 [ext_resource type="Script" path="res://assets/HUD/animated texture rect.gd" id="2_4iblf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://blle1tc1d47fk" path="res://assets/issues/possible_issues/color match/color matching game UI.png" id="3_4iblf"]
 [ext_resource type="Texture2D" uid="uid://iytx5qfkg3nn" path="res://assets/issues/possible_issues/color match/color matching button 1.png" id="5_per3n"]
 [ext_resource type="Texture2D" uid="uid://d2fxiwtxft6my" path="res://assets/issues/possible_issues/color match/color matching button 2.png" id="6_c5drq"]
+[ext_resource type="Script" uid="uid://ccka2jdoupg3" path="res://assets/main menu/main menu camera.gd" id="7_nfmd7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5drq"]
 atlas = ExtResource("3_4iblf")
@@ -160,6 +161,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_nfmd7"]
+offsets = PackedFloat32Array(0, 0.778107)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3r64c"]
+gradient = SubResource("Gradient_nfmd7")
+fill = 1
+fill_from = Vector2(0.502146, 0.454936)
+
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_la0fh")
 default_visibility = true
@@ -167,15 +177,14 @@ default_visibility = true
 [node name="CanvasLayer" type="Node2D" parent="."]
 
 [node name="AnimatedTextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 15
+self_modulate = Color(0.588235, 0.588235, 0.588235, 1)
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = -1820.0
 offset_top = -1453.0
 offset_right = 1732.0
 offset_bottom = 729.0
 grow_horizontal = 2
-grow_vertical = 2
 texture = SubResource("AtlasTexture_c5drq")
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_tvri4")
@@ -221,6 +230,7 @@ offset_right = 5.68101
 offset_bottom = 2.01902
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
@@ -256,6 +266,7 @@ offset_right = 4.91202
 offset_bottom = 2.01902
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
@@ -273,7 +284,7 @@ offset_bottom = 42.99
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_per3n")
+texture = SubResource("AtlasTexture_tvri4")
 stretch_mode = 4
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_grpkp")
@@ -291,6 +302,7 @@ offset_right = 5.71703
 offset_bottom = 0.151016
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
@@ -325,6 +337,7 @@ offset_right = 46.717
 offset_bottom = 0.151016
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
@@ -359,6 +372,7 @@ offset_right = 87.717
 offset_bottom = 0.151016
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
@@ -407,6 +421,7 @@ offset_right = -1.05902
 offset_bottom = -0.0640106
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
@@ -444,6 +459,7 @@ offset_right = -0.167023
 offset_bottom = -1.104
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
@@ -481,6 +497,7 @@ offset_right = -0.100021
 offset_bottom = -0.888
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
@@ -518,6 +535,7 @@ offset_right = 0.0259857
 offset_bottom = -0.928009
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
@@ -555,6 +573,7 @@ offset_right = 0.0929871
 offset_bottom = -0.968002
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
 
@@ -579,5 +598,14 @@ flip_v = true
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_4xcn4")
 
+[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer/AnimatedTextureRect"]
+position = Vector2(1525, 1561)
+scale = Vector2(11.5266, 7.74761)
+color = Color(0, 0.628268, 0.632915, 1)
+energy = 2.0
+texture = SubResource("GradientTexture2D_3r64c")
+
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer"]
 zoom = Vector2(1.5, 1.5)
+script = ExtResource("7_nfmd7")
+margin = Vector2(30, 20)
