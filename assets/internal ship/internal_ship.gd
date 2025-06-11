@@ -10,6 +10,10 @@ class_name InternalShip
 @onready var animator: AnimationPlayer = $Animations
 @onready var game_manager: GameManager = %GameManager
 @onready var screens_light: PointLight2D = $AnimatedSprite2D/Lights/Screens
+@onready var alarm_sound: AudioStreamPlayer2D = $Alarm
+@onready var engine_run: AudioStreamPlayer2D = $EngineRun
+@onready var engine_running: AudioStreamPlayer2D = $EngineRunning
+@onready var engine_fail: AudioStreamPlayer2D = $EngineFail
 @export var default_lights_texutres: Texture2D
 @export var broken_lights_texture: Texture2D
 var has_played_broken_animation: bool = false
@@ -23,8 +27,11 @@ signal on_ship_revived
 signal on_ship_reviving
 
 func _ready() -> void:
+	engine_run.finished.connect(func(): engine_running.play(0.1))
+	_do_engine_sound_transition(true)
 	issues.on_clear_issues.connect(_on_issue_resolved)
-	game_manager.on_solving_puzzle_changed.connect(func(solving: bool) -> void: visible = not solving)
+	if game_manager != null:
+		game_manager.on_solving_puzzle_changed.connect(func(solving: bool) -> void: visible = not solving)
 	ship_right_part.visible = false
 	ship_left_part.visible = false
 	ship_sprite.frame_changed.connect(_on_ship_frame_change)
@@ -106,10 +113,11 @@ func _on_issues_on_issue_generated(_zone: IssueArea2D, issues_count: int) -> voi
 	if issues_count == 1 and not has_played_broken_animation and ship_health.health <= ship_major_outage_health_amount:
 		_toggle_major_outage(true)
 	
-	if _zone.name.containsn("right"):
-		ship_right_part.visible = true
-	elif _zone.name.containsn("left"):
-		ship_left_part.visible = true
+	if not has_played_broken_animation:
+		if _zone.name.containsn("right"):
+			ship_right_part.visible = true
+		elif _zone.name.containsn("left"):
+			ship_left_part.visible = true
 
 func _on_health_change(_old_health: int, new_health: int) -> void:
 	if new_health < ship_major_outage_health_amount and not has_played_broken_animation:
@@ -127,6 +135,7 @@ func _toggle_major_outage(toggled: bool) -> void:
 		ship_right_part.visible = false
 		ship_right_part.visible = false
 		on_ship_breakdown.emit()
+		_do_engine_sound_transition(false)
 	else:
 		is_playing_revive_animation = true
 		ship_sprite.play_backwards("breakdown")
@@ -134,3 +143,13 @@ func _toggle_major_outage(toggled: bool) -> void:
 		on_ship_reviving.emit()
 		ship_right_part.visible = issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.RIGHT)
 		ship_left_part.visible = issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.LEFT)
+		_do_engine_sound_transition(true)
+
+func _do_engine_sound_transition(engine_state: bool) -> void:
+	if engine_state:
+		engine_run.play()
+		alarm_sound.stop()
+	else:
+		engine_running.stop()
+		engine_fail.play(0.1)
+		alarm_sound.play()

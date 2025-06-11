@@ -8,6 +8,9 @@ extends Node2D
 @onready var music_button: Button = $Ship/Control/Node2D/Music
 @onready var sfx_button: Button = $Ship/Control/Node2D/SFX
 @onready var menu_astronaut: MenuAstronaut = $Astronaut
+@onready var menu_hover_sound: AudioStreamPlayer = $MenuHover
+@onready var menu_click_sound: AudioStreamPlayer = $MenuClick
+var menu_click_sound_offset: float = 0.05
 var original_ambience_light_energy: float = 0.0
 var default_ambience_light_position: Vector2 = Vector2(0, -21)
 var options_ambience_light_position: Vector2 = Vector2(-64.0, -14.0)
@@ -32,7 +35,6 @@ func _ready() -> void:
 	# Connect focus signals
 	music_button.focus_entered.connect(_on_music_focus_entered)
 	sfx_button.focus_entered.connect(_on_sfx_focus_entered)
-	pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_focus_next") and get_viewport().gui_get_focus_owner() == null:
@@ -49,6 +51,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_click_start_game() -> void:
 	transitions.transition(_switch_to_game, TransitionScreen.TransitionPoint.MIDDLE)
+	menu_click_sound.play(menu_click_sound_offset)
 
 func _on_click_options() -> void:
 	options_button.visible = false
@@ -56,6 +59,7 @@ func _on_click_options() -> void:
 	sfx_button.visible = true
 	music_button.grab_focus()
 	ambience_lights.position = music_ambience_light_position
+	menu_click_sound.play(menu_click_sound_offset)
 
 func _switch_to_game() -> void:
 	get_tree().change_scene_to_file("res://main scene.tscn")
@@ -69,17 +73,14 @@ func _on_hover_start_game() -> void:
 		sfx_button.visible = false
 		options_button.visible = true
 		ambience_lights.position = default_ambience_light_position
-	pass
 
 func _on_unhover_start_game() -> void:
 	_set_ambience_light_maximized(false)
 	if get_viewport().gui_get_focus_owner() == start_game_button:
 		start_game_button.release_focus()
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
-	pass
 
 func _on_hover_options() -> void:
-	# Only handle hover if options menu is not visible
 	if not music_button.visible and not sfx_button.visible:
 		_set_ambience_light_maximized(true)
 		ambience_lights.position = options_ambience_light_position
@@ -111,8 +112,10 @@ func _on_music_pressed() -> void:
 	AudioServer.set_bus_mute(music_bus, not AudioServer.is_bus_mute(music_bus))
 	music_button.text = "Music: " + ("On" if not AudioServer.is_bus_mute(music_bus) else "Off")
 	music_button.grab_focus()
+	menu_click_sound.play(menu_click_sound_offset)
 
 func _on_sfx_pressed() -> void:
 	AudioServer.set_bus_mute(sfx_bus, not AudioServer.is_bus_mute(sfx_bus))
 	sfx_button.text = "SFX: " + ("On" if not AudioServer.is_bus_mute(sfx_bus) else "Off")
 	sfx_button.grab_focus()
+	menu_click_sound.play(menu_click_sound_offset)

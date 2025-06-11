@@ -41,8 +41,8 @@ func _on_typewriter_tick() -> void:
 		current_typewriter_task.timeout.connect(_on_typewriter_tick)
 	else:
 		current_typewriter_task = null
+		dialog_finished.emit()
 		if hold_time > 0:
 			await get_tree().create_timer(hold_time).timeout
 			dialog_speaker.text = default_name
 			dialog_content.text = default_text
-		dialog_finished.emit()

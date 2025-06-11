@@ -23,6 +23,7 @@ signal on_emotionally_triggering_event(event_type: EMOTIONALLY_TRIGGER_EVENT, he
 @onready var emotion_sprite: AnimatedTextureRect = $HUDUI/Emotion
 @onready var controls_animated_texture: AnimatedTextureRect = $Controls
 @onready var vhs_effect: AnimationPlayer = $VHS/NoiseAnimation
+@onready var speech_bubble_sound: AudioStreamPlayer = $E_N_Stat
 
 var music_bus = AudioServer.get_bus_index("Music")
 var sfx_bus = AudioServer.get_bus_index("Sound FX")
@@ -55,6 +56,12 @@ const EMOTION_ANIMATIONS: Dictionary = {
 	COMPUTER_EMOTION.RELIEF: "relief"
 }
 
+const EMOTION_SOUND_PITCHES: Dictionary = {
+	COMPUTER_EMOTION.DEFAULT: 1.0,
+	COMPUTER_EMOTION.NERVOUS: 1.2,
+	COMPUTER_EMOTION.SCARED: 1.4,
+}
+
 const SYSTEMS_TITLES = [
 	{ "threshold": 75, "text": "All Systems\nOperational", "font_size_adjustment": 0 },
 	{ "threshold": 50, "text": "All Systems\nDegraded", "font_size_adjustment": 0 },
@@ -75,6 +82,8 @@ const EVENTS_LINKED_DIALOGS = []
 func _ready():
 	if is_force_mute:
 		controls_animated_texture.play('muted')
+
+	dialog_box.dialog_finished.connect(func() -> void: speech_bubble_sound.stop())
 
 	ship_node.on_ship_breakdown.connect(func() -> void: 
 		vhs_effect.play("HIGH")
@@ -158,6 +167,11 @@ func _update_systems_titles(new_health: float) -> void:
 			break
 
 func _portray_emotion(emotion: COMPUTER_EMOTION, dialog: String, display_animation: bool = true) -> void:
+	if emotion in EMOTION_SOUND_PITCHES:
+		speech_bubble_sound.pitch_scale = EMOTION_SOUND_PITCHES[emotion]
+	
+	speech_bubble_sound.play(0.1)
+
 	dialog_box.speak_words(dialog, "E N.Stat", 0.03, 7)
 	if display_animation: emotion_sprite.play(EMOTION_ANIMATIONS[emotion])
 
@@ -236,7 +250,6 @@ const ISSUE_SPAWNED_DIALOGS = [
 	"I Discovered a problem on the ship, Head there quick!",
 	"THE SYSTEMS ARE DOWN! FIX IT!"
 ]
-
 
 func _on_mute_button_pressed() -> void:
 	_toggle_audible_animation()

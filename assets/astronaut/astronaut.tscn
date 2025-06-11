@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://byp6hvrh54j2d"]
+[gd_scene load_steps=66 format=3 uid="uid://byp6hvrh54j2d"]
 
 [ext_resource type="Script" uid="uid://i57yks2tesb6" path="res://assets/astronaut/astronaut.gd" id="1_ultts"]
 [ext_resource type="Texture2D" uid="uid://tfqkwo3oeep6" path="res://assets/astronaut/sprites/halting.png" id="2_2cjcx"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://brtnbep1ca10l" path="res://assets/astronaut/sprites/up.png" id="3_ubged"]
 [ext_resource type="Texture2D" uid="uid://b8jx5gok84hjm" path="res://assets/astronaut/textures/helmet light.png" id="8_ahefm"]
 [ext_resource type="Script" uid="uid://2gpupc8ev16h" path="res://assets/astronaut/astronaut_flashlight.gd" id="9_mmyod"]
+[ext_resource type="AudioStream" uid="uid://care15wokkjkt" path="res://assets/audio/FX/astronaut_moving.ogg" id="10_022t7"]
+[ext_resource type="AudioStream" uid="uid://caoeb7gsjljy2" path="res://assets/audio/FX/astronaut_stopping.ogg" id="11_6rke4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1dmai"]
 radius = 8.0
@@ -471,5 +473,15 @@ texture = ExtResource("8_ahefm")
 offset = Vector2(45, 40)
 texture_scale = 0.35
 script = ExtResource("9_mmyod")
+
+[node name="FlyBegin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_022t7")
+volume_db = -10.0
+bus = &"Sound FX"
+
+[node name="FlyEnd" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_6rke4")
+volume_db = -10.0
+bus = &"Sound FX"
 
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

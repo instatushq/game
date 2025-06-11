@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=111 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -22,6 +22,11 @@
 [ext_resource type="PackedScene" uid="uid://tkhk7817dbdm" path="res://assets/issues/possible_issues/color match/color match.tscn" id="20_qy0je"]
 [ext_resource type="Script" path="res://assets/issues/issue area.gd" id="21_b4gsa"]
 [ext_resource type="PackedScene" uid="uid://chit4g4gn4kv2" path="res://assets/issues/issue_icon.tscn" id="22_qy0je"]
+[ext_resource type="AudioStream" uid="uid://dknuambxafns1" path="res://assets/audio/FX/health up.ogg" id="23_6trai"]
+[ext_resource type="AudioStream" uid="uid://cdvgfttmdh22y" path="res://assets/audio/FX/alarm.ogg" id="24_v5d4y"]
+[ext_resource type="AudioStream" uid="uid://bjgymc4ycn24y" path="res://assets/audio/FX/engine run.ogg" id="25_yl61a"]
+[ext_resource type="AudioStream" uid="uid://1gtid23l8wv3" path="res://assets/audio/FX/engine running.ogg" id="26_vhwim"]
+[ext_resource type="AudioStream" uid="uid://dxkc0yxc4snm4" path="res://assets/audio/FX/engine down.ogg" id="27_ojjh1"]
 
 [sub_resource type="Animation" id="Animation_djmod"]
 length = 1.301
@@ -1093,6 +1098,33 @@ debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
 [node name="Timer" type="Timer" parent="Issues"]
 wait_time = 5.0
 autostart = true
+
+[node name="IssueSolved" type="AudioStreamPlayer" parent="Issues"]
+stream = ExtResource("23_6trai")
+volume_db = -20.0
+bus = &"Sound FX"
+
+[node name="Alarm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_v5d4y")
+bus = &"Sound FX"
+
+[node name="EngineRun" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_yl61a")
+volume_db = -10.0
+pitch_scale = 0.7
+bus = &"Sound FX"
+
+[node name="EngineRunning" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_vhwim")
+volume_db = -10.0
+pitch_scale = 0.7
+bus = &"Sound FX"
+
+[node name="EngineFail" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_ojjh1")
+volume_db = -10.0
+pitch_scale = 0.7
+bus = &"Sound FX"
 
 [connection signal="animation_finished" from="Animations" to="." method="_on_animator_animation_finish"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finish"]

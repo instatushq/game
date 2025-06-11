@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=95 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
@@ -12,10 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://u1xqq67oomyg" path="res://assets/HUD/smile face.png" id="8_j06ix"]
 [ext_resource type="FontFile" uid="uid://b6j776xc5v64d" path="res://fonts/PixelifySans-Regular.ttf" id="8_x0bbd"]
 [ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="9_13aas"]
-[ext_resource type="Script" path="res://assets/HUD/dialog_box.gd" id="10_13aas"]
+[ext_resource type="Script" uid="uid://cjk5bcss5a74g" path="res://assets/HUD/dialog_box.gd" id="10_13aas"]
 [ext_resource type="Texture2D" uid="uid://jwwo8an3potp" path="res://assets/HUD/UI Emotions/look left face.png" id="10_vc4br"]
 [ext_resource type="Texture2D" uid="uid://ymmhrr3c5e20" path="res://assets/HUD/UI Emotions/scared face.png" id="11_5hymx"]
 [ext_resource type="Texture2D" uid="uid://b5kvc5d6xbshd" path="res://assets/HUD/controls ui.png" id="16_vc4br"]
+[ext_resource type="AudioStream" uid="uid://bfu1c7j4w1i3g" path="res://assets/audio/FX/mascot speech.ogg" id="17_6k1te"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_basyl"]
 atlas = ExtResource("5_6axep")
@@ -573,6 +574,70 @@ RichTextLabel/fonts/normal_font = ExtResource("3_y0j1j")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_j06ix"]
 
+[sub_resource type="Animation" id="Animation_uesjw"]
+resource_name = "HIGH"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VHS:material:shader_parameter/noiseQuality")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [250.0, 250.0, 250.0, 250.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VHS:material:shader_parameter/shake")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.02, 0.02]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VHS:material:shader_parameter/noiseIntensity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.001, 0.001, 0.012, 0.012]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VHS:material:shader_parameter/offsetIntensity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.05, 0.05]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VHS:material:shader_parameter/colorOffsetIntensity")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.1, 0.1, 1.5, 1.5]
+}
+
 [sub_resource type="Animation" id="Animation_vc4br"]
 resource_name = "LOW"
 tracks/0/type = "value"
@@ -628,69 +693,6 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/path = NodePath("VHS:material:shader_parameter/colorOffsetIntensity")
 tracks/4/interp = 0
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.1]
-}
-
-[sub_resource type="Animation" id="Animation_6k1te"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VHS:material:shader_parameter/noiseQuality")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [250.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VHS:material:shader_parameter/shake")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("VHS:material:shader_parameter/noiseIntensity")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.001]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("VHS:material:shader_parameter/offsetIntensity")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("VHS:material:shader_parameter/colorOffsetIntensity")
-tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
@@ -762,9 +764,8 @@ tracks/4/keys = {
 "values": [0.2]
 }
 
-[sub_resource type="Animation" id="Animation_uesjw"]
-resource_name = "HIGH"
-length = 1.4
+[sub_resource type="Animation" id="Animation_6k1te"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -772,10 +773,10 @@ tracks/0/path = NodePath("VHS:material:shader_parameter/noiseQuality")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.03333, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [250.0, 250.0, 250.0, 250.0]
+"values": [250.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -784,10 +785,10 @@ tracks/1/path = NodePath("VHS:material:shader_parameter/shake")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.03333, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 0.0, 0.02, 0.02]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -796,10 +797,10 @@ tracks/2/path = NodePath("VHS:material:shader_parameter/noiseIntensity")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.03333, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.001, 0.001, 0.012, 0.012]
+"values": [0.001]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -808,10 +809,10 @@ tracks/3/path = NodePath("VHS:material:shader_parameter/offsetIntensity")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.03333, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 0.0, 0.05, 0.05]
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -820,10 +821,10 @@ tracks/4/path = NodePath("VHS:material:shader_parameter/colorOffsetIntensity")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.03333, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.1, 0.1, 1.5, 1.5]
+"values": [0.1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1gu38"]
@@ -1229,5 +1230,10 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_1gu38")
 }
+
+[node name="E_N_Stat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_6k1te")
+volume_db = -10.0
+bus = &"Sound FX"
 
 [connection signal="pressed" from="Controls/MuteButton" to="." method="_on_mute_button_pressed"]

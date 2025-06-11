@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://e3terh5nct76"]
+[gd_scene load_steps=87 format=3 uid="uid://e3terh5nct76"]
 
 [ext_resource type="Script" uid="uid://cyvhedqbrq845" path="res://assets/main menu/main_menu.gd" id="1_plx4y"]
 [ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="2_5x655"]
@@ -17,7 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://bmwg8e33sqa8n" path="res://assets/astronaut/sprites/idle anim.png" id="15_k0scp"]
 [ext_resource type="Texture2D" uid="uid://b8jx5gok84hjm" path="res://assets/astronaut/textures/helmet light.png" id="16_hbnyu"]
 [ext_resource type="AudioStream" uid="uid://xmgb8tmdyuy0" path="res://assets/audio/background/ambience.mp3" id="17_4il1l"]
-[ext_resource type="Shader" path="res://assets/HUD/glitch.gdshader" id="18_k0scp"]
+[ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="18_k0scp"]
+[ext_resource type="AudioStream" uid="uid://diagdagsrtodi" path="res://assets/audio/FX/menu hover.ogg" id="18_q7ux3"]
+[ext_resource type="AudioStream" uid="uid://yj7lrhkcguwh" path="res://assets/audio/FX/menu click.ogg" id="19_rlsq6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5jlq"]
 atlas = ExtResource("3_gg27b")
@@ -701,6 +703,16 @@ wait_time = 4.0
 stream = ExtResource("17_4il1l")
 autoplay = true
 bus = &"Ambience"
+
+[node name="MenuHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_q7ux3")
+bus = &"Sound FX"
+
+[node name="MenuClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_rlsq6")
+volume_db = -20.0
+pitch_scale = 0.8
+bus = &"Sound FX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

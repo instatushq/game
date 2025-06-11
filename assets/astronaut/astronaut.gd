@@ -29,8 +29,11 @@ var last_movement_direction: Vector2 = Vector2.ZERO
 @onready var sprite_container: Node2D = $SpriteContainer
 @onready var idle_timer: Timer =  $SpriteContainer/AnimatedSprite2D/Timer
 @onready var astronaut_flashlight: AstronautFlashlight = $SpriteContainer/PointLight2D
-var is_solving_puzzle: bool = false
 @onready var astronaut_local_position: Vector2 = astronaut_sprite.position
+@onready var begin_flight_sound: AudioStreamPlayer2D = $FlyBegin
+@onready var end_flight_sound: AudioStreamPlayer2D = $FlyEnd
+
+var is_solving_puzzle: bool = false
 var current_direction: MovementDirection = MovementDirection.FORWARD
 const MOVEMENT_DEADZONE_PERCENTAGE: float = 0.5
 var joystick_movement_vector: Vector2 = Vector2.ZERO
@@ -191,6 +194,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func handle_movement_began(_direction: MovementDirection) -> void:
 	astronaut_flashlight.flame_on()
+	begin_flight_sound.play()
 	match _direction:
 		MovementDirection.FORWARD:
 			astronaut_sprite.play("begin_flight")
@@ -211,6 +215,14 @@ func handle_movement_ended(_direction: MovementDirection) -> void:
 			astronaut_sprite.play("halting_up")
 		MovementDirection.DOWN:
 			astronaut_sprite.play("idle") #halting_down
+
+	# delay the stop sound a little to match animations.
+	var timer = Timer.new()
+	timer.wait_time = 0.35
+	timer.one_shot = true
+	timer.timeout.connect(func(): end_flight_sound.play())
+	add_child(timer)
+	timer.start()
 
 func _handle_direction_changed_while_moving(_old_direction: MovementDirection, new_direction: MovementDirection) -> void:
 	match new_direction:

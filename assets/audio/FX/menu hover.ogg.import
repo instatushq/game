@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://diagdagsrtodi"
+path="res://.godot/imported/menu hover.ogg-d5b2e82c2bfae3e765d7b57ff31334ad.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/FX/menu hover.ogg"
+dest_files=["res://.godot/imported/menu hover.ogg-d5b2e82c2bfae3e765d7b57ff31334ad.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

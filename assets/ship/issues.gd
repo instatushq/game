@@ -14,6 +14,7 @@ var last_entered_zone: IssueArea2D = null
 var is_issue_open: bool = false
 @onready var game_manager: GameManager = get_node("/root/Game/GameManager")
 @onready var timer: Timer = $Timer
+@onready var issue_resolved_sound: AudioStreamPlayer = $IssueSolved
 
 signal zone_body_entered(zone: IssueArea2D, body: Node2D)
 signal zone_body_exited(zone: IssueArea2D, body: Node2D)
@@ -85,7 +86,7 @@ func _on_issue_resolved(zone: IssueArea2D) -> void:
 	game_manager.is_solving_puzzle = false
 	remove_notification_for_zone(zone)
 	on_clear_issues.emit(zone, has_any_issues())
-
+	issue_resolved_sound.play()
 
 func has_any_issues() -> bool:
 	return not current_issues.is_empty()
