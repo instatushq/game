@@ -174,7 +174,7 @@ normal = Vector2(0, 1)
 bounce = 5000.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fefhc"]
-size = Vector2(44, 4)
+size = Vector2(40, 4)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gg27b"]
 radius = 7.0

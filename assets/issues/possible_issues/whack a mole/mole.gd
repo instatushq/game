@@ -54,6 +54,7 @@ func _on_pressed() -> void:
 			animated_sprite.self_modulate = Color.from_rgba8(255, 80, 80)
 			current_state = MoleState.DOWN
 			_start_random_timer()
+			hit_sound.play()
 		_:
 			mole_missed.emit(self)
 
@@ -87,8 +88,10 @@ func _set_state(new_state: MoleState) -> void:
 	match current_state:
 		MoleState.DOWN:
 			animated_sprite.play("down")
+			going_down_sound.play()
 		MoleState.UP:
 			animated_sprite.play("up")
+			coming_up_sound.play()
 		MoleState.OUT:
 			animated_sprite.play("out")
 
