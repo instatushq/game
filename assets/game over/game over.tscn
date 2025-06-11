@@ -222,89 +222,89 @@ scale = Vector2(1.8, 1.8)
 texture = ExtResource("5_wph33")
 
 [node name="Front Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-401.19, 962)
+position = Vector2(-505.19, 962)
 motion_scale = Vector2(1.2, 1.2)
-motion_mirroring = Vector2(0, 758.27)
+motion_mirroring = Vector2(0, 1100.44)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(28.278, -6.45294)
+position = Vector2(-189.722, 907.047)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(-258.388, -13.113)
+position = Vector2(-476.388, 900.387)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(-669.5, -13.113)
+position = Vector2(-887.5, 900.387)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(498.279, -13.113)
+position = Vector2(280.279, 900.387)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(-293.5, -335.333)
+position = Vector2(-511.5, 578.167)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(392.059, -325.333)
+position = Vector2(174.059, 588.167)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(-649.055, -335.333)
+position = Vector2(-867.055, 578.167)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(-125.722, -335.333)
+position = Vector2(-343.722, 578.167)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(176.499, -712)
+position = Vector2(-41.501, 201.5)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(-291.278, -709.777)
+position = Vector2(-509.278, 203.723)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(-480.167, -712)
+position = Vector2(-698.167, 201.5)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="ParallaxBackground/Front Layer Of Stars"]
-position = Vector2(468.5, -712)
+position = Vector2(250.5, 201.5)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_q4pyq")
 autoplay = "default"
