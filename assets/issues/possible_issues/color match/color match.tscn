@@ -3,25 +3,21 @@
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_la0fh"]
 [ext_resource type="Script" path="res://assets/HUD/animated texture rect.gd" id="2_4iblf"]
 [ext_resource type="Script" uid="uid://qp2bjvhly0yn" path="res://assets/issues/possible_issues/color match/color_match.gd" id="2_sgv0c"]
-[ext_resource type="Texture2D" uid="uid://c8f03expy81ky" path="res://assets/issues/possible_issues/color match/color matching game UI.png" id="3_4iblf"]
+[ext_resource type="Texture2D" uid="uid://blle1tc1d47fk" path="res://assets/issues/possible_issues/color match/color matching game UI.png" id="3_4iblf"]
 [ext_resource type="Texture2D" uid="uid://iytx5qfkg3nn" path="res://assets/issues/possible_issues/color match/color matching button 1.png" id="5_per3n"]
 [ext_resource type="Texture2D" uid="uid://d2fxiwtxft6my" path="res://assets/issues/possible_issues/color match/color matching button 2.png" id="6_c5drq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_per3n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5drq"]
 atlas = ExtResource("3_4iblf")
 region = Rect2(0, 0, 433, 266)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5drq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfmd7"]
 atlas = ExtResource("3_4iblf")
 region = Rect2(433, 0, 433, 266)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfmd7"]
-atlas = ExtResource("3_4iblf")
-region = Rect2(866, 0, 433, 266)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3r64c"]
 atlas = ExtResource("3_4iblf")
-region = Rect2(1299, 0, 433, 266)
+region = Rect2(866, 0, 433, 266)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qni4q"]
 atlas = ExtResource("3_4iblf")
@@ -29,22 +25,23 @@ region = Rect2(1299, 0, 433, 266)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnvj1"]
 atlas = ExtResource("3_4iblf")
-region = Rect2(866, 0, 433, 266)
+region = Rect2(1299, 0, 433, 266)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tf4x0"]
 atlas = ExtResource("3_4iblf")
-region = Rect2(433, 0, 433, 266)
+region = Rect2(866, 0, 433, 266)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pehlc"]
+atlas = ExtResource("3_4iblf")
+region = Rect2(433, 0, 433, 266)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xcn4"]
 atlas = ExtResource("3_4iblf")
 region = Rect2(0, 0, 433, 266)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tvri4"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_per3n")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c5drq")
 }, {
@@ -65,6 +62,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pehlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xcn4")
 }],
 "loop": true,
 "name": &"default",
@@ -106,15 +106,42 @@ Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_c8xie")
 Button/styles/pressed = SubResource("StyleBoxEmpty_5fqgx")
 Button/styles/pressed_mirrored = SubResource("StyleBoxEmpty_84hbw")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_per3n"]
+atlas = ExtResource("6_c5drq")
+region = Rect2(0, 0, 8, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tvri4"]
-atlas = ExtResource("5_per3n")
-region = Rect2(0, 0, 6, 8)
+atlas = ExtResource("6_c5drq")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grpkp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvri4")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_per3n")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anx3r"]
 atlas = ExtResource("5_per3n")
-region = Rect2(6, 0, 6, 8)
+region = Rect2(0, 0, 14, 10)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_grpkp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m75qs"]
+atlas = ExtResource("5_per3n")
+region = Rect2(14, 0, 14, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xcn4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -126,34 +153,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tvri4")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_grpkp"]
-atlas = ExtResource("6_c5drq")
-region = Rect2(0, 0, 14, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m75qs"]
-atlas = ExtResource("6_c5drq")
-region = Rect2(14, 0, 14, 10)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4xcn4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_m75qs")
-}],
-"loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_grpkp")
 }],
 "loop": true,
 "name": &"up",
@@ -176,7 +176,7 @@ offset_right = 1732.0
 offset_bottom = 729.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_per3n")
+texture = SubResource("AtlasTexture_c5drq")
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_tvri4")
 
@@ -212,33 +212,33 @@ grow_vertical = 2
 [node name="button" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.079
-anchor_right = 0.087
+anchor_top = 0.073
+anchor_right = 0.171
 anchor_bottom = 0.383
-offset_left = -10.0
-offset_top = -0.453
-offset_right = 9.557
-offset_bottom = 0.0189972
+offset_left = -5.0
+offset_top = 1.189
+offset_right = 5.68101
+offset_bottom = 2.01902
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
-text = "  "
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.275
-anchor_right = 0.723
-anchor_bottom = 1.0
-offset_left = -16.9
-offset_top = -16.0
-offset_right = 16.972
-offset_bottom = 25.0
+anchor_left = 0.12
+anchor_top = -0.03
+anchor_right = 0.898
+anchor_bottom = 0.97
+offset_left = -16.04
+offset_top = -16.01
+offset_right = 16.284
+offset_bottom = 42.99
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_tvri4")
+texture = SubResource("AtlasTexture_per3n")
 stretch_mode = 4
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_grpkp")
@@ -246,33 +246,34 @@ sprites = SubResource("SpriteFrames_grpkp")
 [node name="button2" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.079
-anchor_right = 0.087
+anchor_left = 0.218
+anchor_top = 0.071
+anchor_right = 0.392
 anchor_bottom = 0.383
-offset_left = 31.0
-offset_top = -0.453
-offset_right = 50.557
-offset_bottom = 0.0189972
+offset_left = -5.20199
+offset_top = 1.403
+offset_right = 4.91202
+offset_bottom = 2.01902
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
 theme_type_variation = &"FlatButton"
-text = "     "
 
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button2"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.275
-anchor_right = 0.723
-anchor_bottom = 1.0
-offset_left = -16.9
-offset_top = -16.0
-offset_right = 16.972
-offset_bottom = 25.0
+anchor_left = 0.12
+anchor_top = -0.03
+anchor_right = 0.898
+anchor_bottom = 0.97
+offset_left = -16.04
+offset_top = -16.01
+offset_right = 16.284
+offset_bottom = 42.99
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_tvri4")
+texture = SubResource("AtlasTexture_per3n")
 stretch_mode = 4
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_grpkp")
@@ -280,13 +281,14 @@ sprites = SubResource("SpriteFrames_grpkp")
 [node name="button3" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.079
-anchor_right = 0.087
-anchor_bottom = 0.383
-offset_left = 80.0
-offset_top = -8.453
-offset_right = 99.557
-offset_bottom = -7.981
+anchor_left = 0.479
+anchor_top = 0.009
+anchor_right = 0.647
+anchor_bottom = 0.307
+offset_left = -5.53098
+offset_top = -1.963
+offset_right = 5.71703
+offset_bottom = 0.151016
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
@@ -295,17 +297,17 @@ theme_type_variation = &"FlatButton"
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button3"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.275
-anchor_right = 0.723
-anchor_bottom = 1.0
-offset_left = -16.9
-offset_top = -16.0
-offset_right = 16.972
-offset_bottom = 25.0
+anchor_left = 0.123
+anchor_right = 0.898
+anchor_bottom = 0.97
+offset_left = -16.169
+offset_top = -15.03
+offset_right = 16.284
+offset_bottom = 44.99
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_tvri4")
+texture = SubResource("AtlasTexture_per3n")
 stretch_mode = 4
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_grpkp")
@@ -313,13 +315,14 @@ sprites = SubResource("SpriteFrames_grpkp")
 [node name="button4" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.079
-anchor_right = 0.087
-anchor_bottom = 0.383
-offset_left = 121.0
-offset_top = -8.453
-offset_right = 140.557
-offset_bottom = -7.981
+anchor_left = 0.479
+anchor_top = 0.009
+anchor_right = 0.647
+anchor_bottom = 0.307
+offset_left = 35.469
+offset_top = -1.963
+offset_right = 46.717
+offset_bottom = 0.151016
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
@@ -328,17 +331,17 @@ theme_type_variation = &"FlatButton"
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button4"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.275
-anchor_right = 0.723
-anchor_bottom = 1.0
-offset_left = -16.9
-offset_top = -16.0
-offset_right = 16.972
-offset_bottom = 25.0
+anchor_left = 0.123
+anchor_right = 0.898
+anchor_bottom = 0.97
+offset_left = -16.169
+offset_top = -15.03
+offset_right = 16.284
+offset_bottom = 44.99
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_tvri4")
+texture = SubResource("AtlasTexture_per3n")
 stretch_mode = 4
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_grpkp")
@@ -346,13 +349,14 @@ sprites = SubResource("SpriteFrames_grpkp")
 [node name="button5" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.079
-anchor_right = 0.087
-anchor_bottom = 0.383
-offset_left = 164.0
-offset_top = -8.453
-offset_right = 183.557
-offset_bottom = -7.981
+anchor_left = 0.479
+anchor_top = 0.009
+anchor_right = 0.647
+anchor_bottom = 0.307
+offset_left = 76.469
+offset_top = -1.963
+offset_right = 87.717
+offset_bottom = 0.151016
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
@@ -361,17 +365,17 @@ theme_type_variation = &"FlatButton"
 [node name="AnimatedSprite2D" type="TextureRect" parent="CanvasLayer/AnimatedTextureRect/ColorRect/LeftContainer/button5"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.275
-anchor_right = 0.723
-anchor_bottom = 1.0
-offset_left = -16.9
-offset_top = -16.0
-offset_right = 16.972
-offset_bottom = 25.0
+anchor_left = 0.123
+anchor_right = 0.898
+anchor_bottom = 0.97
+offset_left = -16.169
+offset_top = -15.03
+offset_right = 16.284
+offset_bottom = 44.99
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_tvri4")
+texture = SubResource("AtlasTexture_per3n")
 stretch_mode = 4
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_grpkp")
@@ -385,9 +389,9 @@ anchor_top = 1.101
 anchor_right = 0.633
 anchor_bottom = 1.428
 offset_left = -47.872
-offset_top = 0.0179443
+offset_top = 1.01794
 offset_right = -0.0560303
-offset_bottom = 0.303955
+offset_bottom = 1.30396
 grow_vertical = 2
 
 [node name="button6" type="Button" parent="CanvasLayer/AnimatedTextureRect/ColorRect/RightContainer"]
@@ -397,9 +401,9 @@ anchor_left = 0.722
 anchor_top = 0.762
 anchor_right = 1.003
 anchor_bottom = 0.969
-offset_left = 1.13397
+offset_left = 0.133972
 offset_top = -0.0720062
-offset_right = -0.059021
+offset_right = -1.05902
 offset_bottom = -0.0640106
 grow_horizontal = 2
 grow_vertical = 2
@@ -420,8 +424,10 @@ offset_bottom = 0.657997
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_grpkp")
+texture = SubResource("AtlasTexture_anx3r")
 stretch_mode = 4
+flip_h = true
+flip_v = true
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_4xcn4")
 
@@ -433,9 +439,9 @@ anchor_top = 0.602
 anchor_right = 0.839
 anchor_bottom = 0.809
 offset_left = -0.03302
-offset_top = -0.112015
+offset_top = -1.11201
 offset_right = -0.167023
-offset_bottom = -0.104004
+offset_bottom = -1.104
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
@@ -455,8 +461,10 @@ offset_bottom = 0.657997
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_grpkp")
+texture = SubResource("AtlasTexture_m75qs")
 stretch_mode = 4
+flip_h = true
+flip_v = true
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_4xcn4")
 
@@ -468,9 +476,9 @@ anchor_top = 0.441
 anchor_right = 0.7
 anchor_bottom = 0.648
 offset_left = 0.0339966
-offset_top = 0.103996
+offset_top = -0.896004
 offset_right = -0.100021
-offset_bottom = 0.112
+offset_bottom = -0.888
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
@@ -490,8 +498,10 @@ offset_bottom = 0.657997
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_grpkp")
+texture = SubResource("AtlasTexture_anx3r")
 stretch_mode = 4
+flip_h = true
+flip_v = true
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_4xcn4")
 
@@ -503,9 +513,9 @@ anchor_top = 0.281
 anchor_right = 0.558
 anchor_bottom = 0.488
 offset_left = 0.159996
-offset_top = 0.0639954
+offset_top = -0.936005
 offset_right = 0.0259857
-offset_bottom = 0.071991
+offset_bottom = -0.928009
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
@@ -525,8 +535,10 @@ offset_bottom = 0.657997
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_grpkp")
+texture = SubResource("AtlasTexture_m75qs")
 stretch_mode = 4
+flip_h = true
+flip_v = true
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_4xcn4")
 
@@ -538,9 +550,9 @@ anchor_top = 0.121
 anchor_right = 0.419
 anchor_bottom = 0.328
 offset_left = -0.126003
-offset_top = 0.0239983
+offset_top = -0.976
 offset_right = 0.0929871
-offset_bottom = 0.0319977
+offset_bottom = -0.968002
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c5drq")
@@ -560,8 +572,10 @@ offset_bottom = 0.657997
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_grpkp")
+texture = SubResource("AtlasTexture_anx3r")
 stretch_mode = 4
+flip_h = true
+flip_v = true
 script = ExtResource("2_4iblf")
 sprites = SubResource("SpriteFrames_4xcn4")
 

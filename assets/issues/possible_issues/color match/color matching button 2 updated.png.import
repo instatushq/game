@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blle1tc1d47fk"
-path="res://.godot/imported/color matching game UI.png-d6180e23d9591129604a33d98c66070d.ctex"
+uid="uid://qkst8078ase8"
+path="res://.godot/imported/color matching button 2 updated.png-187086904b3bad279c54612a79ca896a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/issues/possible_issues/color match/color matching game UI.png"
-dest_files=["res://.godot/imported/color matching game UI.png-d6180e23d9591129604a33d98c66070d.ctex"]
+source_file="res://assets/issues/possible_issues/color match/color matching button 2 updated.png"
+dest_files=["res://.godot/imported/color matching button 2 updated.png-187086904b3bad279c54612a79ca896a.ctex"]
 
 [params]
 
