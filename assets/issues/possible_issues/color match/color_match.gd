@@ -2,6 +2,8 @@ extends ColorRect
 
 @onready var left_group: Array[Node] = $LeftContainer.get_children(false)
 @onready var right_group: Array[Node] = $RightContainer.get_children(false)
+@onready var button_click_sound: AudioStreamPlayer = $ButtonClick
+@onready var button_match_sound: AudioStreamPlayer = $ButtonMatch
 
 enum COLOR_MATCH_COLOR {
 	RED,
@@ -54,6 +56,7 @@ func _on_click_colored_button(button: Button) -> void:
 	if current_selected_node == null:
 		current_selected_node = clicked_button
 		button.get_node("AnimatedSprite2D").play("down")
+		button_click_sound.play()
 		return
 
 	if (not clicked_button.is_left and current_selected_node.is_left) or (clicked_button.is_left and not current_selected_node.is_left):
@@ -61,6 +64,7 @@ func _on_click_colored_button(button: Button) -> void:
 			connected_colors.append(clicked_button.color)
 			current_selected_node = null
 			_update_buttons_view()
+			button_match_sound.play()
 			if _is_issue_resolved():
 				_resolve_issue()
 			return
