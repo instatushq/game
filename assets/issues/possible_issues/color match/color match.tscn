@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://tkhk7817dbdm"]
+[gd_scene load_steps=39 format=3 uid="uid://tkhk7817dbdm"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_la0fh"]
 [ext_resource type="Script" path="res://assets/HUD/animated texture rect.gd" id="2_4iblf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d2fxiwtxft6my" path="res://assets/issues/possible_issues/color match/color matching button 2.png" id="6_c5drq"]
 [ext_resource type="AudioStream" uid="uid://yj7lrhkcguwh" path="res://assets/audio/FX/menu click.ogg" id="7_3r64c"]
 [ext_resource type="Script" uid="uid://ccka2jdoupg3" path="res://assets/main menu/main menu camera.gd" id="7_nfmd7"]
+[ext_resource type="AudioStream" uid="uid://rluoflivyjy0" path="res://assets/issues/possible_issues/color match/mismatch.ogg" id="8_qni4q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5drq"]
 atlas = ExtResource("3_4iblf")
@@ -608,6 +609,11 @@ pitch_scale = 3.0
 stream = ExtResource("7_3r64c")
 volume_db = -10.0
 pitch_scale = 2.4
+
+[node name="ButtonMismatch" type="AudioStreamPlayer" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
+stream = ExtResource("8_qni4q")
+volume_db = -10.0
+pitch_scale = 1.5
 
 [node name="PointLight2D" type="PointLight2D" parent="CanvasLayer/AnimatedTextureRect"]
 position = Vector2(1525, 1561)

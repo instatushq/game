@@ -4,6 +4,7 @@ extends ColorRect
 @onready var right_group: Array[Node] = $RightContainer.get_children(false)
 @onready var button_click_sound: AudioStreamPlayer = $ButtonClick
 @onready var button_match_sound: AudioStreamPlayer = $ButtonMatch
+@onready var button_mismatch_sound: AudioStreamPlayer = $ButtonMismatch
 
 enum COLOR_MATCH_COLOR {
 	RED,
@@ -67,7 +68,8 @@ func _on_click_colored_button(button: Button) -> void:
 			button_match_sound.play()
 			if _is_issue_resolved():
 				_resolve_issue()
-			return
+		else:
+			button_mismatch_sound.play()
 	
 func _assign_colors_randomly() -> void:
 	var used_colors: Array[COLOR_MATCH_COLOR] = []
@@ -102,9 +104,9 @@ func _assign_colors_randomly() -> void:
 
 func _assign_controls() -> void:
 	for button in left_group:
-		button.connect("pressed", func(): _on_click_colored_button(button))
+		button.pressed.connect(func(): _on_click_colored_button(button))
 	for button in right_group:
-		button.connect("pressed", func(): _on_click_colored_button(button))
+		button.pressed.connect(func(): _on_click_colored_button(button))
 
 func _ready() -> void:
 	_assign_colors_randomly()
