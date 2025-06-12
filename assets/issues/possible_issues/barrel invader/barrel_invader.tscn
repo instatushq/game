@@ -94,7 +94,6 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="barrel invader" type="Node2D"]
 script = ExtResource("1_geevi")
-default_visibility = true
 spawn_position = Vector2(0, 0)
 
 [node name="Game" type="Node2D" parent="."]
