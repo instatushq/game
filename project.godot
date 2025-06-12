@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Instatus Inspace"
-config/version="0.7.6"
+config/version="0.9"
 run/main_scene="uid://bb7w71gk4ysxt"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
