@@ -8,7 +8,7 @@ font = ExtResource("1_6js57")
 font_size = 26
 
 [node name="Entry" type="HBoxContainer"]
-theme_override_constants/separation = 90
+theme_override_constants/separation = -10
 script = ExtResource("1_1wn1q")
 
 [node name="Rank" type="Label" parent="."]
@@ -18,12 +18,13 @@ text = "1ST"
 label_settings = SubResource("LabelSettings_36qrg")
 
 [node name="Name" type="Label" parent="."]
-custom_minimum_size = Vector2(39, 0)
+custom_minimum_size = Vector2(235, 0)
 layout_mode = 2
-text = "zzz"
 label_settings = SubResource("LabelSettings_36qrg")
 horizontal_alignment = 1
 vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
 
 [node name="Score" type="Label" parent="."]
 custom_minimum_size = Vector2(150, 0)

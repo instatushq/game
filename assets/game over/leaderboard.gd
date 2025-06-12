@@ -2,7 +2,7 @@ class_name LeaderboardUI extends Control
 
 signal on_added_new_score
 
-@onready var entries_container = $VBoxContainer/VBoxContainer
+@onready var entries_container = $VBoxContainer/VScrollBar/VBoxContainer
 
 @onready var submit_score_request: HTTPRequest = $VBoxContainer/Form/SubmitScore
 @onready var query_rank_request: HTTPRequest = $VBoxContainer/Form/QueryRank
@@ -21,14 +21,16 @@ var entries_data: Array = []
 var ui_entries: Array[LeaderboardEntry] = []
 var base_url: String = "https://api.game.instatus.com"
 
+@export var displayed_entries_count: int = 20
+
 signal on_entries_data_updated
 
 func _ready() -> void:
-	for i in 10:
+	for i in displayed_entries_count:
 		var entry: LeaderboardEntry = entry_scene.instantiate()
 		entries_container.add_child(entry)
 		ui_entries.append(entry)
-		entry.set_entry_data("N/A", "N/A", 0)
+		entry.set_entry_data("N/A", "N/A", 0, i + 1)
 	
 	new_score_label.text = str(current_player_score)
 	
@@ -48,7 +50,7 @@ func set_entries_data(entries: Array) -> void:
 func _update_entries_values() -> void:
 	for i in entries_data.size():
 		var ordinal_suffix = " " + Rank.get_ordinal_suffix(i + 1)
-		ui_entries[i].set_entry_data(str(i + 1) + ordinal_suffix, entries_data[i].name, entries_data[i].score)
+		ui_entries[i].set_entry_data(str(i + 1) + ordinal_suffix, entries_data[i].name, entries_data[i].score, i + 1)
 
 func _on_entries_data_updated() -> void:
 	_update_entries_values()
