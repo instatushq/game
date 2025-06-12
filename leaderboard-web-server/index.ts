@@ -5,7 +5,13 @@ const port = 3000;
 const app = express();
 app.use(
   cors({
-    origin: [/\.instatus\.com$/],
+    origin: [
+      /^https?:\/\/(.*\.)?instatus\.co$/,
+      /^https?:\/\/(.*\.)?instatus\.app$/,
+      /^https?:\/\/(.*\.)?supstatus\.com$/,
+      /^https?:\/\/(.*\.)?instatus\.io$/,
+      /^https?:\/\/(.*\.)?instatus\.com$/,
+    ],
   })
 );
 const exactDateNow: string = new Date()
