@@ -30,7 +30,7 @@ func _ready() -> void:
 		var entry: LeaderboardEntry = entry_scene.instantiate()
 		entries_container.add_child(entry)
 		ui_entries.append(entry)
-		entry.set_entry_data("N/A", "N/A", 0, i + 1)
+		entry.set_entry_data("N/A", "N/A", 0, i + 1, "")
 	
 	new_score_label.text = str(current_player_score)
 	
@@ -50,7 +50,7 @@ func set_entries_data(entries: Array) -> void:
 func _update_entries_values() -> void:
 	for i in entries_data.size():
 		var ordinal_suffix = " " + Rank.get_ordinal_suffix(i + 1)
-		ui_entries[i].set_entry_data(str(i + 1) + ordinal_suffix, entries_data[i].name, entries_data[i].score, i + 1)
+		ui_entries[i].set_entry_data(str(i + 1) + ordinal_suffix, entries_data[i].name, entries_data[i].score, i + 1, "")
 
 func _on_entries_data_updated() -> void:
 	_update_entries_values()
