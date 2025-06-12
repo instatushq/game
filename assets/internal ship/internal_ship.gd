@@ -46,7 +46,7 @@ func _on_ship_frame_change() -> void:
 	
 
 func _on_issue_resolved(zone: IssueArea2D, _issues_left: bool) -> void:
-	ship_health.increase_health(randi_range(12, 15))
+	ship_health.increase_health(randi_range(8, 12))
 	if ship_health.health > ship_major_outage_health_amount:
 		if zone.name.containsn("right"):
 			ship_right_part.visible = false
