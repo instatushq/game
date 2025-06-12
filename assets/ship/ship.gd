@@ -1,6 +1,4 @@
-extends Node2D
-
-class_name Ship
+class_name Ship extends Node2D
 
 @export var movement_speed: float = 10
 @export var bottom_camera_movement_margin: float = 100.0
@@ -33,10 +31,16 @@ var ship_position: Vector2 = Vector2.ZERO
 var is_keyboard_controlled: bool = true
 var y_position_synced: bool = false
 
+@export var game_camera: Camera2D
+
 func _ready():
 	rb.on_impact.connect(_on_impact_with_object)
+	visible = false
+	game_manager.game_started.connect(func(): visible = true)
 	
 func _process(delta: float) -> void:
+	if not game_manager.is_playing: return
+
 	if not can_fire:
 		fire_timer += delta
 		if fire_timer >= fire_cooldown:
@@ -44,30 +48,26 @@ func _process(delta: float) -> void:
 			fire_timer = 0.0
 			if input_buffered or is_firing:
 				input_buffered = false
-				if game_manager.is_playing:
-					_fire_cannons()
 				can_fire = false
 
 func _physics_process(_delta: float) -> void:
 	var input_axis = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
-	var camera = get_viewport().get_camera_2d()
 
-	_handle_ship_movement(input_axis, camera)
+	_handle_ship_movement(input_axis, game_camera)
 	
-	rb.enforce_global_position(camera.global_position + ship_position)
+	rb.enforce_global_position(game_camera.global_position + ship_position)
 
-	if Input.is_action_pressed("fire_cannon") and can_fire:
+	if Input.is_action_pressed("fire_cannon") and can_fire and game_manager.is_playing:
 		_fire_cannons()
 		can_fire = false
 
 func _input(event: InputEvent) -> void:
-	var camera = get_viewport().get_camera_2d()
 	var input_axis = Vector2.ZERO
 	
 	if event is InputEventMouseMotion:
 		input_axis = Vector2(event.relative.x, event.relative.y).normalized() * 0.5
 
-	_handle_ship_movement(input_axis, camera)
+	_handle_ship_movement(input_axis, game_camera)
 
 func _handle_ship_movement(input_axis: Vector2, camera: Camera2D) -> void:
 	var viewport_size = get_viewport_rect().size

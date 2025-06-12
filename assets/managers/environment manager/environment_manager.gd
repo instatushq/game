@@ -1,6 +1,4 @@
-class_name EnvironmentManager
-
-extends Node2D
+class_name EnvironmentManager extends Node2D
 
 @onready var background_controller: ParallaxBackgroundController = %ParallaxBackground
 var list_of_celestials: Array = []
