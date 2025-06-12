@@ -75,11 +75,11 @@ func _spawn_batch(y_level: float = 0) -> void:
 		
 	queue_redraw()
 
-func _input(event):
-	if game_manager == null: return
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_R and game_manager.is_playing:
-			spawn_batch_above_player()
+# func _input(event):
+# 	if game_manager == null: return
+# 	if event is InputEventKey and event.pressed:
+# 		if event.keycode == KEY_R and game_manager.is_playing:
+# 			spawn_batch_above_player()
 
 func spawn_batch_above_player():
 	var viewport_size = get_viewport_rect().size

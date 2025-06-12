@@ -42,15 +42,15 @@ func _on_area_exited(body: Node, zone: IssueArea2D) -> void:
 	zone_body_exited.emit(zone, body)
 	set_notification_icon_type(zone, IssueIcon.ICON_TYPE.EXCLAMATION_MARK)
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if last_entered_zone != null and current_issues.has(last_entered_zone.get_instance_id()) and not game_manager.is_solving_puzzle:
 			var current_issue = current_issues[last_entered_zone.get_instance_id()]
 			current_issue.open_issue()
 			is_issue_open = true
 			game_manager.is_solving_puzzle = true
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_Q:
-		_generate_random_issue(_get_random_issueless_zone())
+	# elif event is InputEventKey and event.pressed and event.keycode == KEY_Q:
+	# 	_generate_random_issue(_get_random_issueless_zone())
 
 func _get_random_issueless_zone() -> IssueArea2D:
 	var issueless_zones: Array = []
