@@ -1075,7 +1075,6 @@ script = ExtResource("19_c6j7a")
 script = ExtResource("1_r65rw")
 possible_issues = Array[PackedScene]([ExtResource("20_atttj"), ExtResource("21_atttj"), ExtResource("22_r17pm"), ExtResource("23_atttj")])
 notification_icon_scene = ExtResource("22_qy0je")
-chance_of_issues = 100
 
 [node name="Right" type="Area2D" parent="Issues"]
 position = Vector2(74, 54)
