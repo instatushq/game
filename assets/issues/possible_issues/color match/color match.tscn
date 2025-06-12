@@ -174,6 +174,7 @@ fill_from = Vector2(0.502146, 0.454936)
 
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_la0fh")
+spawn_position = Vector2(0, 0)
 
 [node name="CanvasLayer" type="Node2D" parent="."]
 

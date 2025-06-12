@@ -43,8 +43,10 @@ func _ready() -> void:
 		canvas_layer.visible = default_visibility
 	
 	global_position = spawn_position
+	visible = false
 
 func open_issue() -> void:
+	visible = true
 	if custom_camera:
 		custom_camera.make_current()
 	if canvas_layer:
