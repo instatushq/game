@@ -1,11 +1,6 @@
 import express from "express";
 import cors from "cors";
-import {
-  getTopPlayers,
-  addScore,
-  getScoreRank,
-  clearLeaderboard,
-} from "./leaderboard";
+import { getTopPlayers, addScore, getScoreRank } from "./leaderboard";
 const port = 3000;
 const app = express();
 app.use(
@@ -100,7 +95,7 @@ app.post("/leaderboard", async (req, res) => {
     return;
   }
 
-  if (name.length > 2 && name.length <= 24) {
+  if (!(name.length > 2 && name.length <= 24)) {
     res.status(400).send("Name must be 24 characters or less");
     return;
   }
@@ -112,11 +107,6 @@ app.post("/leaderboard", async (req, res) => {
     console.error(e);
     res.status(500).send("Internal server error");
   }
-});
-
-app.delete("/clear-leaderboard-zn2e4dan3ij", async (_, res) => {
-  const success = await clearLeaderboard();
-  res.send(success ? "Leaderboard cleared" : "Failed to clear leaderboard");
 });
 
 app.listen(port, () => {

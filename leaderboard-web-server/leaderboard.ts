@@ -46,13 +46,3 @@ export async function addScore(name: string, score: number) {
     });
   }
 }
-
-export async function clearLeaderboard() {
-  try {
-    await prisma.scores.deleteMany();
-    return true;
-  } catch (e) {
-    console.error(e);
-    return false;
-  }
-}
