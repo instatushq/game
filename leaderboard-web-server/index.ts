@@ -1,6 +1,11 @@
 import express from "express";
 import cors from "cors";
-import { getTopPlayers, addScore, getScoreRank } from "./leaderboard";
+import {
+  getTopPlayers,
+  addScore,
+  getScoreRank,
+  clearLeaderboard,
+} from "./leaderboard";
 const port = 3000;
 const app = express();
 app.use(
@@ -25,9 +30,18 @@ app.get("/ping", (_, res) => {
   res.send("last deployment: " + exactDateNow);
 });
 
-app.get("/leaderboard", async (_, res) => {
+app.get("/leaderboard", async (req, res) => {
   try {
-    const topPlayers = await getTopPlayers();
+    const players_count = Number(req.query.players ?? 10);
+    if (isNaN(players_count)) {
+      res.status(400).send("Players count must be a number");
+      return;
+    }
+    if (players_count < 1 || players_count > 100) {
+      res.status(400).send("Players count must be between 1 and 100");
+      return;
+    }
+    const topPlayers = await getTopPlayers(players_count);
     res.json(topPlayers);
   } catch (e) {
     console.error(e);
@@ -63,7 +77,13 @@ app.get("/leaderboard/rank/:score", async (req, res) => {
 });
 
 app.post("/leaderboard", async (req, res) => {
-  const { name, score } = req.body;
+  let { name, score } = req.body;
+
+  // Trim the name and normalize multiple spaces to single space
+  if (typeof name === "string") {
+    name = name.trim().replace(/\s+/g, " ");
+  }
+
   if (
     name === null ||
     name === undefined ||
@@ -73,16 +93,18 @@ app.post("/leaderboard", async (req, res) => {
     res.status(400).send("Name and score are required");
     return;
   }
-  if (name.length > 3) {
-    res.status(400).send("Name must be 3 characters or less");
-    return;
-  }
   if (!(score >= 0 && score < Number.MAX_SAFE_INTEGER)) {
     res
       .status(400)
       .send("Score must be between 0 and " + Number.MAX_SAFE_INTEGER);
     return;
   }
+
+  if (name.length > 2 && name.length <= 24) {
+    res.status(400).send("Name must be 24 characters or less");
+    return;
+  }
+
   try {
     const newScore = await addScore(name, score);
     res.json(newScore);
@@ -90,6 +112,11 @@ app.post("/leaderboard", async (req, res) => {
     console.error(e);
     res.status(500).send("Internal server error");
   }
+});
+
+app.delete("/clear-leaderboard-zn2e4dan3ij", async (_, res) => {
+  const success = await clearLeaderboard();
+  res.send(success ? "Leaderboard cleared" : "Failed to clear leaderboard");
 });
 
 app.listen(port, () => {
