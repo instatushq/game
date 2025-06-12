@@ -18,8 +18,10 @@ class_name InternalShip
 @export var broken_lights_texture: Texture2D
 var has_played_broken_animation: bool = false
 var is_playing_revive_animation: bool = false
-var issue_generated_during_revival: bool = false
+var ship_broke_during_revival: bool = false
 @export var ship_major_outage_health_amount: int = 50
+var queue_ship_status_change: bool = false
+var queued_ship_status_change_toggled: bool = false
 
 signal on_ship_breakdown
 signal on_ship_broken
@@ -57,9 +59,9 @@ func _on_issue_resolved(zone: IssueArea2D, _issues_left: bool) -> void:
 func _on_animation_finish() -> void:
 	if ship_sprite.animation == "breakdown":
 		if is_playing_revive_animation:
-			if issue_generated_during_revival:
+			if ship_broke_during_revival:
 				_toggle_major_outage(true)
-				issue_generated_during_revival = false
+				ship_broke_during_revival = false
 			else:
 				ship_sprite.play("default")
 				screens_light.texture = default_lights_texutres
@@ -83,11 +85,9 @@ func _on_animation_finish() -> void:
 			on_ship_broken.emit()
 
 func _on_game_manager_solving_puzzle_changed(is_solving_puzzle: bool) -> void:
-	if ship_health.health > ship_major_outage_health_amount: return
-	if not is_solving_puzzle: return
-	if has_played_broken_animation: return
-	if not issues.has_any_issues(): return
-	_toggle_major_outage(true)
+	if queue_ship_status_change and not is_solving_puzzle:
+		_toggle_major_outage(queued_ship_status_change_toggled)
+		queue_ship_status_change = false
 
 func _on_issues_on_clear_issues(_zone: IssueArea2D, issues_left: bool) -> void:
 	if not issues_left:
@@ -105,14 +105,7 @@ func _on_animator_animation_finish(anim_name: StringName) -> void:
 		if not is_playing_revive_animation:
 			on_ship_broken.emit()
 
-func _on_issues_on_issue_generated(_zone: IssueArea2D, issues_count: int) -> void:
-	if is_playing_revive_animation:
-		issue_generated_during_revival = true
-		return
-		
-	if issues_count == 1 and not has_played_broken_animation and ship_health.health <= ship_major_outage_health_amount:
-		_toggle_major_outage(true)
-	
+func _on_issues_on_issue_generated(_zone: IssueArea2D, _issues_count: int) -> void:	
 	if not has_played_broken_animation:
 		if _zone.name.containsn("right"):
 			ship_right_part.visible = true
@@ -120,12 +113,24 @@ func _on_issues_on_issue_generated(_zone: IssueArea2D, issues_count: int) -> voi
 			ship_left_part.visible = true
 
 func _on_health_change(_old_health: int, new_health: int) -> void:
+	if is_playing_revive_animation and new_health < ship_major_outage_health_amount:
+		ship_broke_during_revival = true
+		return
+
 	if new_health < ship_major_outage_health_amount and not has_played_broken_animation:
 		has_played_broken_animation = true
-		_toggle_major_outage(true)
+		if game_manager.is_solving_puzzle:
+			queue_ship_status_change = true
+			queued_ship_status_change_toggled = true
+		else:
+			_toggle_major_outage(true)
 	
 	if new_health > ship_major_outage_health_amount and has_played_broken_animation:
-		_toggle_major_outage(false)
+		if game_manager.is_solving_puzzle:
+			queue_ship_status_change = true
+			queued_ship_status_change_toggled = false
+		else:
+			_toggle_major_outage(false)
 
 func _toggle_major_outage(toggled: bool) -> void:
 	if toggled:
