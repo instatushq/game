@@ -14,6 +14,7 @@ app.use(
     ],
   })
 );
+
 const exactDateNow: string = new Date()
   .toLocaleString("en-US", {
     year: "numeric",
@@ -26,6 +27,16 @@ const exactDateNow: string = new Date()
   })
   .replace(",", "");
 app.use(express.json());
+
+enum SocialMedia {
+  X = "X",
+  INSTAGRAM = "INSTAGRAM",
+  TIKTOK = "TIKTOK",
+  YOUTUBE = "YOUTUBE",
+  FACEBOOK = "FACEBOOK",
+  TWITTER = "TWITTER",
+  LINKEDIN = "LINKEDIN",
+}
 
 app.get("/ping", (_, res) => {
   res.send("last deployment: " + exactDateNow);
@@ -78,7 +89,7 @@ app.get("/leaderboard/rank/:score", async (req, res) => {
 });
 
 app.post("/leaderboard", async (req, res) => {
-  let { name, score } = req.body;
+  let { name, score, socialMediaUrl } = req.body;
 
   // Trim the name and normalize multiple spaces to single space
   if (typeof name === "string") {
@@ -107,7 +118,10 @@ app.post("/leaderboard", async (req, res) => {
   }
 
   try {
-    const newScore = await addScore(name, score);
+    const newScore = await addScore(name, score, {
+      url: socialMediaUrl,
+      socialMedia: SocialMedia.X,
+    });
     res.json(newScore);
   } catch (e) {
     console.error(e);

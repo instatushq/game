@@ -5,13 +5,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@prisma/client": "6.8.2",
+    "@prisma/client": "^6.9.0",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.2",
     "@types/node": "^22.15.21",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "prisma": "^6.8.2",
+    "prisma": "^6.9.0",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   },
