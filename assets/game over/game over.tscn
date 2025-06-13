@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bnb6fd0uu1p82"]
+[gd_scene load_steps=38 format=3 uid="uid://bnb6fd0uu1p82"]
 
 [ext_resource type="Script" uid="uid://ckjc6b027vyxq" path="res://assets/game over/game_over.gd" id="1_5d7i2"]
 [ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="1_064we"]
@@ -93,6 +93,10 @@ default_font_size = 26
 [sub_resource type="Theme" id="Theme_1hdpe"]
 default_font = ExtResource("22_36qrg")
 default_font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_1hdpe"]
+font = ExtResource("22_36qrg")
+font_size = 20
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_5d7i2")
@@ -457,6 +461,69 @@ text = "MAIN MENU"
 
 [node name="QueryRank" type="HTTPRequest" parent="Camera2D/Leaderboard/VBoxContainer/Form"]
 
+[node name="SocialMediaContainer" type="ColorRect" parent="Camera2D/Leaderboard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -85.0
+offset_right = 215.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Form2" type="VBoxContainer" parent="Camera2D/Leaderboard/SocialMediaContainer"]
+z_index = 30
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 3.0
+offset_right = -26.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Control" type="VBoxContainer" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2/Control"]
+layout_mode = 2
+text = "Do you want to add a link to your social med"
+label_settings = SubResource("LabelSettings_1hdpe")
+
+[node name="NameEdit" type="LineEdit" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2/Control"]
+custom_minimum_size = Vector2(235, 0)
+layout_mode = 2
+theme = SubResource("Theme_aqfd3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vf5at")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aqfd3")
+placeholder_text = "SOCIAL MEDIA URL"
+max_length = 2000
+caret_blink = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Save" type="Button" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_1hdpe")
+text = "SAVE"
+
+[node name="Skip" type="Button" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vf5at")
+text = "SKIP"
+
 [node name="Transition Screen" parent="." instance=ExtResource("22_ypvgp")]
 unique_name_in_owner = true
 start_dark = true
@@ -466,3 +533,6 @@ start_dark = true
 [connection signal="text_submitted" from="Camera2D/Leaderboard/VBoxContainer/Form/CenterContainer/HBoxContainer/NameEdit" to="Camera2D/Leaderboard" method="_on_name_edit_text_submitted"]
 [connection signal="pressed" from="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer/SaveScore" to="Camera2D/Leaderboard" method="_on_save_score_pressed"]
 [connection signal="pressed" from="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer/MainMenu" to="Camera2D/Leaderboard" method="_on_press_main_menu"]
+[connection signal="text_submitted" from="Camera2D/Leaderboard/SocialMediaContainer/Form2/Control/NameEdit" to="Camera2D/Leaderboard" method="_on_name_edit_text_submitted"]
+[connection signal="pressed" from="Camera2D/Leaderboard/SocialMediaContainer/Form2/HBoxContainer/Save" to="Camera2D/Leaderboard" method="_on_click_social_media_save"]
+[connection signal="pressed" from="Camera2D/Leaderboard/SocialMediaContainer/Form2/HBoxContainer/Skip" to="Camera2D/Leaderboard" method="_on_click_social_media_skip"]

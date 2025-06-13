@@ -36,7 +36,7 @@ func set_entry_data(rank: String, entry_name: String, score: int, numerical_rank
 	name_label.text = entry_name
 	link_name.text = "@"+entry_name
 	score_label.text = str(score)
-	link_underline.scale.x = (entry_name.length() + 1) * link_underline.scale.x
+	link_underline.scale.x = entry_name.length() + 1
 	
 	if name_link != "":
 		name_label.visible = false

@@ -10,22 +10,25 @@ signal on_added_new_score
 @onready var name_edit: LineEdit = $VBoxContainer/Form/CenterContainer/HBoxContainer/NameEdit
 @onready var new_score_label: Label = $VBoxContainer/Form/CenterContainer/HBoxContainer/Score
 @onready var save_button: Button = $VBoxContainer/Form/HBoxContainer/SaveScore
+@onready var social_media_container: ColorRect = $SocialMediaContainer
 @onready var current_player_score = Stats.current_score
 @onready var music: AudioStreamPlayer = Music
 @onready var music_volume: float = music.volume_db
+@onready var social_media_url_input: LineEdit = $SocialMediaContainer/Form2/Control/NameEdit
 @export var screen_transition: TransitionScreen
 @export var entry_scene: PackedScene = null
 var is_form_enabled: bool = true
 
 var entries_data: Array = []
 var ui_entries: Array[LeaderboardEntry] = []
-var base_url: String = "https://api.game.instatus.com"
+var base_url: String = "http://localhost:3000"
 
 @export var displayed_entries_count: int = 20
 
 signal on_entries_data_updated
 
 func _ready() -> void:
+	social_media_container.visible = false
 	for i in displayed_entries_count:
 		var entry: LeaderboardEntry = entry_scene.instantiate()
 		entries_container.add_child(entry)
@@ -50,7 +53,7 @@ func set_entries_data(entries: Array) -> void:
 func _update_entries_values() -> void:
 	for i in entries_data.size():
 		var ordinal_suffix = " " + Rank.get_ordinal_suffix(i + 1)
-		ui_entries[i].set_entry_data(str(i + 1) + ordinal_suffix, entries_data[i].name, entries_data[i].score, i + 1, "")
+		ui_entries[i].set_entry_data(str(i + 1) + ordinal_suffix, entries_data[i].name, entries_data[i].score, i + 1, entries_data[i].socialMediaUrl)
 
 func _on_entries_data_updated() -> void:
 	_update_entries_values()
@@ -80,20 +83,18 @@ func _on_press_main_menu() -> void:
 
 
 func _on_save_score_pressed() -> void:
-	if is_form_enabled:
-		save_score(current_player_score, name_edit.text)
+	social_media_container.visible = true
 
 
-func _on_name_edit_text_submitted(new_text: String) -> void:
-	if is_form_enabled:
-		save_score(current_player_score, new_text)
+func _on_name_edit_text_submitted(_new_text: String) -> void:
+	social_media_container.visible = true
 
-func save_score(score: int, player_name: String) -> void:
+func save_score(score: int, player_name: String, social_media_url: String) -> void:
 	if player_name.strip_edges().is_empty():
 		return
 		
 	var headers = ["Content-Type: application/json"]
-	var payload = JSON.stringify({"score": score, "name": player_name})
+	var payload = JSON.stringify({"score": score, "name": player_name, "socialMediaUrl": social_media_url})
 
 	submit_score_request.request(
 		base_url+"/leaderboard",
@@ -135,3 +136,14 @@ func _on_name_edit_text_changed(new_text: String) -> void:
 	if filtered_text != new_text:
 		name_edit.text = filtered_text
 		name_edit.caret_column = filtered_text.length()
+
+func _on_click_social_media_save() -> void:
+	social_media_container.visible = false
+	var social_media_url_text = social_media_url_input.text
+	if is_form_enabled:
+		save_score(current_player_score, name_edit.text, social_media_url_text)
+
+func _on_click_social_media_skip() -> void:
+	social_media_container.visible = false
+	if is_form_enabled:
+		save_score(current_player_score, name_edit.text, "")

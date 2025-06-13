@@ -69,9 +69,9 @@ func _process(_delta: float) -> void:
 		current_player_changed.emit(current_player)
 		timer.start()
 
-# func _input(event: InputEvent) -> void:
-# 	if event is InputEventKey and event.pressed and event.keycode == KEY_N:
-# 		on_death.emit()
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_N:
+		on_death.emit()
 
 func _switch_to_astronaut() -> void:
 	last_mouse_position = get_viewport().get_mouse_position()
