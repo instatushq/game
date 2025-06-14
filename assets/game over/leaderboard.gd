@@ -21,7 +21,7 @@ var is_form_enabled: bool = true
 
 var entries_data: Array = []
 var ui_entries: Array[LeaderboardEntry] = []
-var base_url: String = "http://localhost:3000"
+var base_url: String = "https://api.game.instatus.com"
 
 @export var displayed_entries_count: int = 20
 
