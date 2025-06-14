@@ -1,16 +1,239 @@
-[gd_scene load_steps=5 format=3 uid="uid://ryfuh1mblk5s"]
+[gd_scene load_steps=51 format=3 uid="uid://ryfuh1mblk5s"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_rsvye"]
+[ext_resource type="Texture2D" uid="uid://8nhhg17wdxfr" path="res://assets/issues/possible_issues/star_reactor/visuals/sequence game intro.png" id="2_c2sib"]
 [ext_resource type="Script" uid="uid://cte463m5ud226" path="res://assets/issues/possible_issues/star_reactor/star_reactor.gd" id="2_y3iom"]
-[ext_resource type="Texture2D" uid="uid://deru34c2306gq" path="res://assets/issues/possible_issues/star_reactor/button-pressed.png" id="3_tqaod"]
-[ext_resource type="Texture2D" uid="uid://d4646sqi4tt1" path="res://assets/issues/possible_issues/star_reactor/button.png" id="3_y3iom"]
+[ext_resource type="Script" path="res://assets/HUD/animated texture rect.gd" id="3_evb0c"]
+[ext_resource type="Texture2D" uid="uid://ch6mg4khrrhyk" path="res://assets/issues/possible_issues/star_reactor/visuals/sequence game bg.png" id="5_kfyb7"]
+[ext_resource type="Texture2D" uid="uid://cw6g4da0hb04o" path="res://assets/issues/possible_issues/star_reactor/visuals/top button neutral color.png" id="5_txk66"]
+[ext_resource type="Texture2D" uid="uid://brl0odgq76hcs" path="res://assets/issues/possible_issues/star_reactor/visuals/middle button neutral color.png" id="7_aacwl"]
+[ext_resource type="Script" uid="uid://4snrniypd78t" path="res://assets/issues/possible_issues/star_reactor/sequence-texture-button.gd" id="8_6d1xq"]
+[ext_resource type="Texture2D" uid="uid://b40amqtjkaskr" path="res://assets/issues/possible_issues/star_reactor/visuals/top button sequence color.png" id="8_iench"]
+[ext_resource type="Texture2D" uid="uid://cipv72453s5a6" path="res://assets/issues/possible_issues/star_reactor/visuals/bottom button neutral color.png" id="8_kfyb7"]
+[ext_resource type="Texture2D" uid="uid://cr256bqiy7uy3" path="res://assets/issues/possible_issues/star_reactor/visuals/top button correct color.png" id="9_023wq"]
+[ext_resource type="Texture2D" uid="uid://si3olfkjaxc8" path="res://assets/issues/possible_issues/star_reactor/visuals/sequence pc glow.png" id="10_0c410"]
+[ext_resource type="Texture2D" uid="uid://b2e447go567ir" path="res://assets/issues/possible_issues/star_reactor/visuals/top button incorrect color.png" id="10_iw52k"]
+[ext_resource type="Texture2D" uid="uid://ddi0hbhowaity" path="res://assets/issues/possible_issues/star_reactor/visuals/sequence game tv effect.png" id="11_s4s8c"]
+[ext_resource type="Texture2D" uid="uid://7hopk22jw1xn" path="res://assets/issues/possible_issues/star_reactor/visuals/middle button sequence color.png" id="12_yuqd7"]
+[ext_resource type="Texture2D" uid="uid://r0n43jekyhjb" path="res://assets/issues/possible_issues/star_reactor/visuals/middle button correct color.png" id="13_jp2cv"]
+[ext_resource type="Texture2D" uid="uid://dp0vnjym7gkxn" path="res://assets/issues/possible_issues/star_reactor/visuals/middle button incorrect color.png" id="14_yo3ah"]
+[ext_resource type="Texture2D" uid="uid://dut0delk6fbkv" path="res://assets/issues/possible_issues/star_reactor/visuals/bottom button sequence color.png" id="16_uhpqh"]
+[ext_resource type="Texture2D" uid="uid://cvdoi1miipl7b" path="res://assets/issues/possible_issues/star_reactor/visuals/bottom button correct color.png" id="17_vf0yf"]
+[ext_resource type="Texture2D" uid="uid://poibdr3f6w8b" path="res://assets/issues/possible_issues/star_reactor/visuals/bottom button incorrect color.png" id="18_sc3ti"]
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="21_vf0yf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r65ol"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(6180, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txk66"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(0, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aacwl"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(309, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfyb7"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(618, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c410"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(927, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4s8c"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(1236, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d1xq"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(1545, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufkqi"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(1854, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iench"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(2163, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_023wq"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(2472, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw52k"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(2781, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuqd7"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(3090, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp2cv"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(3399, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo3ah"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(3708, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhpqh"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(4017, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf0yf"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(4326, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc3ti"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(4635, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pak7d"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(4944, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om34s"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(5253, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a6sr"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(5562, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib2pv"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(5871, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufdci"]
+atlas = ExtResource("5_kfyb7")
+region = Rect2(0, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6s04"]
+atlas = ExtResource("5_kfyb7")
+region = Rect2(309, 0, 309, 212)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ufdci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txk66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aacwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfyb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c410")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4s8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d1xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufkqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iench")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_023wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw52k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuqd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp2cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo3ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhpqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf0yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc3ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pak7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om34s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a6sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ib2pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r65ol")
+}],
+"loop": false,
+"name": &"intro",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufdci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6s04")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e63d0"]
+atlas = ExtResource("11_s4s8c")
+region = Rect2(0, 0, 309, 212)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7dc0"]
+atlas = ExtResource("11_s4s8c")
+region = Rect2(309, 0, 309, 212)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qow7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e63d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7dc0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sc3ti"]
+font = ExtResource("21_vf0yf")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_vf0yf"]
+line_spacing = -10.0
+font = ExtResource("21_vf0yf")
+font_size = 33
+font_color = Color(0.0799036, 0.364517, 0.621739, 1)
 
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_rsvye")
+default_visibility = true
+spawn_position = Vector2(0, 0)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,146 +243,234 @@ script = ExtResource("2_y3iom")
 ButtonFlashTime = 0.25
 TimeBetweenFlashes = 0.1
 
-[node name="ProgressDots" type="HBoxContainer" parent="CanvasLayer/ColorRect"]
-layout_mode = 1
-offset_left = 815.0
-offset_top = 211.0
-offset_right = 1057.0
-offset_bottom = 261.0
-theme_override_constants/separation = 4
+[node name="AnimatedTextureRect" type="TextureRect" parent="ColorRect"]
+offset_left = -1549.0
+offset_top = -1143.0
+offset_right = 1602.0
+offset_bottom = 1019.0
+texture = SubResource("AtlasTexture_r65ol")
+script = ExtResource("3_evb0c")
+sprites = SubResource("SpriteFrames_ufdci")
 
-[node name="0" type="ColorRect" parent="CanvasLayer/ColorRect/ProgressDots"]
-custom_minimum_size = Vector2(10, 10)
+[node name="InputGrid" type="GridContainer" parent="ColorRect/AnimatedTextureRect"]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="1" type="ColorRect" parent="CanvasLayer/ColorRect/ProgressDots"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="2" type="ColorRect" parent="CanvasLayer/ColorRect/ProgressDots"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="3" type="ColorRect" parent="CanvasLayer/ColorRect/ProgressDots"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="4" type="ColorRect" parent="CanvasLayer/ColorRect/ProgressDots"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="InputPanel" type="PanelContainer" parent="CanvasLayer/ColorRect"]
-layout_mode = 0
-offset_left = 572.0
-offset_top = 298.0
-offset_right = 1332.0
-offset_bottom = 1313.0
-
-[node name="InputGrid" type="GridContainer" parent="CanvasLayer/ColorRect/InputPanel"]
-custom_minimum_size = Vector2(600, 600)
-layout_mode = 2
+anchor_left = 0.427
+anchor_top = 0.364
+anchor_right = 0.527
+anchor_bottom = 0.509
+offset_left = 1.52295
+offset_top = -0.968079
+offset_right = 0.422974
+offset_bottom = -0.458008
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/h_separation = 22
+theme_override_constants/v_separation = 22
 columns = 3
 
-[node name="0" type="TextureButton" parent="CanvasLayer/ColorRect/InputPanel/InputGrid"]
+[node name="0" type="TextureButton" parent="ColorRect/AnimatedTextureRect/InputGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource("3_y3iom")
-texture_pressed = ExtResource("3_tqaod")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_txk66")
 stretch_mode = 0
+script = ExtResource("8_6d1xq")
+neutral_sequence = ExtResource("5_txk66")
+showing_sequence = ExtResource("8_iench")
+correct_sequence = ExtResource("9_023wq")
+incorrect_sequence = ExtResource("10_iw52k")
 
-[node name="1" type="TextureButton" parent="CanvasLayer/ColorRect/InputPanel/InputGrid"]
+[node name="1" type="TextureButton" parent="ColorRect/AnimatedTextureRect/InputGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource("3_y3iom")
-texture_pressed = ExtResource("3_tqaod")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_txk66")
 stretch_mode = 0
+script = ExtResource("8_6d1xq")
+neutral_sequence = ExtResource("5_txk66")
+showing_sequence = ExtResource("8_iench")
+correct_sequence = ExtResource("9_023wq")
+incorrect_sequence = ExtResource("10_iw52k")
 
-[node name="2" type="TextureButton" parent="CanvasLayer/ColorRect/InputPanel/InputGrid"]
+[node name="2" type="TextureButton" parent="ColorRect/AnimatedTextureRect/InputGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource("3_y3iom")
-texture_pressed = ExtResource("3_tqaod")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_txk66")
 stretch_mode = 0
+script = ExtResource("8_6d1xq")
+neutral_sequence = ExtResource("5_txk66")
+showing_sequence = ExtResource("8_iench")
+correct_sequence = ExtResource("9_023wq")
+incorrect_sequence = ExtResource("10_iw52k")
 
-[node name="3" type="TextureButton" parent="CanvasLayer/ColorRect/InputPanel/InputGrid"]
+[node name="3" type="TextureButton" parent="ColorRect/AnimatedTextureRect/InputGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource("3_y3iom")
-texture_pressed = ExtResource("3_tqaod")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_aacwl")
 stretch_mode = 0
+script = ExtResource("8_6d1xq")
+neutral_sequence = ExtResource("7_aacwl")
+showing_sequence = ExtResource("12_yuqd7")
+correct_sequence = ExtResource("13_jp2cv")
+incorrect_sequence = ExtResource("14_yo3ah")
 
-[node name="4" type="TextureButton" parent="CanvasLayer/ColorRect/InputPanel/InputGrid"]
+[node name="4" type="TextureButton" parent="ColorRect/AnimatedTextureRect/InputGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource("3_y3iom")
-texture_pressed = ExtResource("3_tqaod")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_aacwl")
 stretch_mode = 0
+script = ExtResource("8_6d1xq")
+neutral_sequence = ExtResource("7_aacwl")
+showing_sequence = ExtResource("12_yuqd7")
+correct_sequence = ExtResource("13_jp2cv")
+incorrect_sequence = ExtResource("14_yo3ah")
 
-[node name="5" type="TextureButton" parent="CanvasLayer/ColorRect/InputPanel/InputGrid"]
+[node name="5" type="TextureButton" parent="ColorRect/AnimatedTextureRect/InputGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource("3_y3iom")
-texture_pressed = ExtResource("3_tqaod")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_aacwl")
 stretch_mode = 0
+script = ExtResource("8_6d1xq")
+neutral_sequence = ExtResource("7_aacwl")
+showing_sequence = ExtResource("12_yuqd7")
+correct_sequence = ExtResource("13_jp2cv")
+incorrect_sequence = ExtResource("14_yo3ah")
 
-[node name="6" type="TextureButton" parent="CanvasLayer/ColorRect/InputPanel/InputGrid"]
+[node name="6" type="TextureButton" parent="ColorRect/AnimatedTextureRect/InputGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource("3_y3iom")
-texture_pressed = ExtResource("3_tqaod")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_kfyb7")
 stretch_mode = 0
+script = ExtResource("8_6d1xq")
+neutral_sequence = ExtResource("8_kfyb7")
+showing_sequence = ExtResource("16_uhpqh")
+correct_sequence = ExtResource("17_vf0yf")
+incorrect_sequence = ExtResource("18_sc3ti")
 
-[node name="7" type="TextureButton" parent="CanvasLayer/ColorRect/InputPanel/InputGrid"]
+[node name="7" type="TextureButton" parent="ColorRect/AnimatedTextureRect/InputGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource("3_y3iom")
-texture_pressed = ExtResource("3_tqaod")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_kfyb7")
 stretch_mode = 0
+script = ExtResource("8_6d1xq")
+neutral_sequence = ExtResource("8_kfyb7")
+showing_sequence = ExtResource("16_uhpqh")
+correct_sequence = ExtResource("17_vf0yf")
+incorrect_sequence = ExtResource("18_sc3ti")
 
-[node name="8" type="TextureButton" parent="CanvasLayer/ColorRect/InputPanel/InputGrid"]
+[node name="8" type="TextureButton" parent="ColorRect/AnimatedTextureRect/InputGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource("3_y3iom")
-texture_pressed = ExtResource("3_tqaod")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_kfyb7")
 stretch_mode = 0
+script = ExtResource("8_6d1xq")
+neutral_sequence = ExtResource("8_kfyb7")
+showing_sequence = ExtResource("16_uhpqh")
+correct_sequence = ExtResource("17_vf0yf")
+incorrect_sequence = ExtResource("18_sc3ti")
 
-[node name="result" type="Label" parent="CanvasLayer/ColorRect"]
+[node name="TVGlow" type="TextureRect" parent="ColorRect/AnimatedTextureRect"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -73.0
-offset_top = 130.0
-offset_right = 74.0
-offset_bottom = 185.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_0c410")
+stretch_mode = 4
+
+[node name="ScreenVHS" type="TextureRect" parent="ColorRect/AnimatedTextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = 2.0
+offset_right = -26.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_0c410")
+stretch_mode = 4
+script = ExtResource("3_evb0c")
+sprites = SubResource("SpriteFrames_3qow7")
+
+[node name="ProgressDots" type="HBoxContainer" parent="ColorRect/AnimatedTextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.563
+anchor_top = 0.547
+anchor_right = 0.615
+anchor_bottom = 0.557
+offset_left = 3.98694
+offset_top = 5.38586
+offset_right = -2.86499
+offset_bottom = -6.23413
+theme_override_constants/separation = 4
+
+[node name="0" type="ColorRect" parent="ColorRect/AnimatedTextureRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="1" type="ColorRect" parent="ColorRect/AnimatedTextureRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="2" type="ColorRect" parent="ColorRect/AnimatedTextureRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="3" type="ColorRect" parent="ColorRect/AnimatedTextureRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="4" type="ColorRect" parent="ColorRect/AnimatedTextureRect/ProgressDots"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="result" type="Label" parent="ColorRect/AnimatedTextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.553
+anchor_top = 0.522
+anchor_right = 0.625
+anchor_bottom = 0.546
+offset_left = -0.503052
+offset_top = 0.435913
+offset_right = -0.375
+offset_bottom = -0.452026
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Waiting"
+label_settings = SubResource("LabelSettings_sc3ti")
 horizontal_alignment = 1
 
-[node name="match-the-sequence" type="Label" parent="CanvasLayer/ColorRect"]
-layout_mode = 0
-offset_left = 700.0
-offset_top = 27.0
-offset_right = 1209.0
-offset_bottom = 96.0
+[node name="title" type="Label" parent="ColorRect/AnimatedTextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.553
+anchor_top = 0.522
+anchor_right = 0.625
+anchor_bottom = 0.546
+offset_left = 12.4969
+offset_top = 72.4359
+offset_right = -50.375
+offset_bottom = 92.548
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "Match The Sequence"
+theme_override_font_sizes/font_size = 40
+text = "Sequence
+Matching"
+label_settings = SubResource("LabelSettings_vf0yf")
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="ColorRect"]
+position = Vector2(0, -186)
+zoom = Vector2(1.5, 1.5)

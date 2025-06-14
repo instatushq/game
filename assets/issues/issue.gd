@@ -43,7 +43,7 @@ func _ready() -> void:
 		canvas_layer.visible = default_visibility
 	
 	global_position = spawn_position
-	visible = false
+	visible = default_visibility
 
 func open_issue() -> void:
 	visible = true
