@@ -84,10 +84,13 @@ func _on_press_main_menu() -> void:
 
 func _on_save_score_pressed() -> void:
 	social_media_container.visible = true
+	toggle_form(false)
+
 
 
 func _on_name_edit_text_submitted(_new_text: String) -> void:
 	social_media_container.visible = true
+	toggle_form(false)
 
 func save_score(score: int, player_name: String, social_media_url: String) -> void:
 	if player_name.strip_edges().is_empty():
@@ -105,7 +108,7 @@ func save_score(score: int, player_name: String, social_media_url: String) -> vo
 	
 func _on_submit_score_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	var json = JSON.parse_string(body.get_string_from_utf8())
-	if json == null:
+	if json == null or _response_code != 200:
 		push_error("Failed to parse JSON response")
 		toggle_form(true)
 		return
@@ -140,10 +143,8 @@ func _on_name_edit_text_changed(new_text: String) -> void:
 func _on_click_social_media_save() -> void:
 	social_media_container.visible = false
 	var social_media_url_text = social_media_url_input.text
-	if is_form_enabled:
-		save_score(current_player_score, name_edit.text, social_media_url_text)
+	save_score(current_player_score, name_edit.text, social_media_url_text)
 
 func _on_click_social_media_skip() -> void:
 	social_media_container.visible = false
-	if is_form_enabled:
-		save_score(current_player_score, name_edit.text, "")
+	save_score(current_player_score, name_edit.text, "")

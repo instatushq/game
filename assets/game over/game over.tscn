@@ -476,6 +476,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="borders" type="ColorRect" parent="Camera2D/Leaderboard/SocialMediaContainer"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.383619, 0.990645, 0.743325, 1)
+
 [node name="Form2" type="VBoxContainer" parent="Camera2D/Leaderboard/SocialMediaContainer"]
 z_index = 30
 layout_mode = 1
@@ -488,14 +502,14 @@ offset_right = -26.0
 offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 40
 
 [node name="Control" type="VBoxContainer" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2/Control"]
 layout_mode = 2
-text = "Do you want to add a link to your social med"
+text = "Do you want to add a link to your social media?"
 label_settings = SubResource("LabelSettings_1hdpe")
 
 [node name="NameEdit" type="LineEdit" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2/Control"]
