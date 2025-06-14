@@ -8,6 +8,7 @@ extends ColorRect
 @onready var result_label: Label = $AnimatedTextureRect/result
 @onready var game_title_label: Label = $AnimatedTextureRect/title
 @onready var parent: Issue = get_parent()
+@onready var button_tick: AudioStreamPlayer = $ButtonTick
 
 @export var ButtonFlashTime: float = 0.5
 @export var TimeBetweenFlashes: float = 0.2
@@ -19,9 +20,11 @@ var maxRuns: int = 5
 var canAcceptInput: bool = false
 var isShowingSequence: bool = false
 
-const POSITIVE = Color("#17dd92")
-const NEGATIVE = Color("#c61b1c")
-const NEUTRAL = Color("#18bfcf")
+const POSITIVE = Color("#18bfcf")
+const NEGATIVE = Color("#0e3498")
+const NEUTRAL = Color("#1771dd")
+
+var buttons_pitches: Array[float] = [.75, .7, .65, .6, .55, .5, .45, .4, .35, .3]
 
 signal on_button_preview(button: SequenceTextureButton)
 signal on_button_successful_press(button: SequenceTextureButton)
@@ -93,7 +96,7 @@ func _check_sequence() -> void:
 		dot.modulate = POSITIVE
 		canAcceptInput = false
 		result_label.text = "resolved"
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1).timeout
 		_resolve_issue()
 	buttonSequence.clear()
 
@@ -134,7 +137,6 @@ func _on_background_animation_ending(animation_name: String) -> void:
 		result_label.visible = true
 		game_title_label.visible = true
 		await get_tree().create_timer(0.6).timeout
-		_update_progress_dots()
 		_generate_new_sequence()
 		for button in input_grid.get_children():
 			button.connect("pressed", _on_button_pressed.bind(button))
@@ -144,6 +146,16 @@ func _ready() -> void:
 	screens_vhs_effect.visible = false
 	screens_glow.visible = false
 	game_title_label.visible = false
+	result_label.visible = false
 	parent.issue_opened.connect(func(): background.play("intro"))
 	background.on_animation_ending.connect(_on_background_animation_ending)
-	result_label.visible = false
+	on_button_preview.connect(func(button: SequenceTextureButton):
+		button_tick.pitch_scale = buttons_pitches[int(button.name)]
+		button_tick.play(0.0)
+	)
+
+	on_button_successful_press.connect(func(button: SequenceTextureButton):
+		button_tick.pitch_scale = buttons_pitches[int(button.name)]
+		button_tick.play(0.0)
+	)
+	_update_progress_dots()

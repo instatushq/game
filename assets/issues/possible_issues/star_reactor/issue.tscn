@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://ryfuh1mblk5s"]
+[gd_scene load_steps=53 format=3 uid="uid://ryfuh1mblk5s"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_rsvye"]
 [ext_resource type="Texture2D" uid="uid://8nhhg17wdxfr" path="res://assets/issues/possible_issues/star_reactor/visuals/sequence game intro.png" id="2_c2sib"]
@@ -22,10 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://poibdr3f6w8b" path="res://assets/issues/possible_issues/star_reactor/visuals/bottom button incorrect color.png" id="18_sc3ti"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="21_vf0yf"]
 [ext_resource type="Script" uid="uid://ccka2jdoupg3" path="res://assets/main menu/main menu camera.gd" id="22_sc3ti"]
+[ext_resource type="AudioStream" uid="uid://c6p4nkyrgsa3j" path="res://assets/issues/possible_issues/star_reactor/higher.ogg" id="23_pak7d"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r65ol"]
-atlas = ExtResource("2_c2sib")
-region = Rect2(6180, 0, 309, 212)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufdci"]
+atlas = ExtResource("5_kfyb7")
+region = Rect2(0, 0, 309, 212)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_txk66"]
 atlas = ExtResource("2_c2sib")
@@ -107,9 +108,9 @@ region = Rect2(5562, 0, 309, 212)
 atlas = ExtResource("2_c2sib")
 region = Rect2(5871, 0, 309, 212)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufdci"]
-atlas = ExtResource("5_kfyb7")
-region = Rect2(0, 0, 309, 212)
+[sub_resource type="AtlasTexture" id="AtlasTexture_r65ol"]
+atlas = ExtResource("2_c2sib")
+region = Rect2(6180, 0, 309, 212)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6s04"]
 atlas = ExtResource("5_kfyb7")
@@ -231,7 +232,6 @@ font_color = Color(0.0799036, 0.364517, 0.621739, 1)
 
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_rsvye")
-default_visibility = true
 spawn_position = Vector2(0, 0)
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -249,11 +249,13 @@ offset_left = -1549.0
 offset_top = -1143.0
 offset_right = 1602.0
 offset_bottom = 1019.0
-texture = SubResource("AtlasTexture_r65ol")
+texture = SubResource("AtlasTexture_ufdci")
 script = ExtResource("3_evb0c")
 sprites = SubResource("SpriteFrames_ufdci")
+autoplay = false
 
 [node name="InputGrid" type="GridContainer" parent="ColorRect/AnimatedTextureRect"]
+visible = false
 layout_mode = 2
 anchor_left = 0.427
 anchor_top = 0.364
@@ -369,6 +371,7 @@ correct_sequence = ExtResource("17_vf0yf")
 incorrect_sequence = ExtResource("18_sc3ti")
 
 [node name="TVGlow" type="TextureRect" parent="ColorRect/AnimatedTextureRect"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -456,24 +459,28 @@ horizontal_alignment = 1
 [node name="title" type="Label" parent="ColorRect/AnimatedTextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.553
-anchor_top = 0.522
-anchor_right = 0.625
-anchor_bottom = 0.546
-offset_left = 3.49695
-offset_top = 77.4359
-offset_right = -59.375
-offset_bottom = 97.548
+anchor_left = 0.564
+anchor_top = 0.558
+anchor_right = 0.601
+anchor_bottom = 0.584
+offset_left = 2.83594
+offset_top = -0.396118
+offset_right = -12.751
+offset_bottom = 1.39185
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Sequence
 Matching"
 label_settings = SubResource("LabelSettings_vf0yf")
-horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="ColorRect"]
-position = Vector2(0, -186)
+position = Vector2(0, -119)
 zoom = Vector2(1.2, 1.2)
 script = ExtResource("22_sc3ti")
 margin = Vector2(50, 50)
+
+[node name="ButtonTick" type="AudioStreamPlayer" parent="ColorRect"]
+stream = ExtResource("23_pak7d")
+volume_db = -8.0
+pitch_scale = 0.3
