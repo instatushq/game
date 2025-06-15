@@ -1088,6 +1088,7 @@ shape = SubResource("RectangleShape2D_o88cq")
 [node name="ErrorNoise" type="AudioStreamPlayer2D" parent="Issues/Right"]
 position = Vector2(29, 7)
 stream = ExtResource("23_63gkj")
+volume_db = -4.0
 pitch_scale = 2.0
 max_distance = 300.0
 panning_strength = 10.0
@@ -1107,6 +1108,7 @@ debug_color = Color(0.849194, 0.268597, 0.658815, 0.42)
 [node name="ErrorNoise" type="AudioStreamPlayer2D" parent="Issues/Left"]
 position = Vector2(-26, -11)
 stream = ExtResource("24_k7oje")
+volume_db = -4.0
 pitch_scale = 2.0
 max_distance = 300.0
 panning_strength = 10.0
