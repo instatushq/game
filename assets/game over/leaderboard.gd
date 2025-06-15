@@ -14,7 +14,10 @@ signal on_added_new_score
 @onready var current_player_score = Stats.current_score
 @onready var music: AudioStreamPlayer = Music
 @onready var music_volume: float = music.volume_db
+@onready var error_label: Label = $SocialMediaContainer/Form2/Error
 @onready var social_media_url_input: LineEdit = $SocialMediaContainer/Form2/Control/NameEdit
+@onready var skip_button: Button = $SocialMediaContainer/Form2/HBoxContainer/Skip
+@onready var save_button_form_2: Button = $SocialMediaContainer/Form2/HBoxContainer/Save
 @export var screen_transition: TransitionScreen
 @export var entry_scene: PackedScene = null
 var is_form_enabled: bool = true
@@ -68,8 +71,6 @@ func _on_query_rank_request_completed(_result: int, _response_code: int, _header
 	score_rank.text = str(int(json.rank)) + " " + Rank.get_ordinal_suffix(int(json.rank))
 	save_button.disabled = false
 
-
-
 func _on_press_main_menu() -> void:
 	screen_transition.transition(func():
 		get_tree().change_scene_to_file("res://assets/main menu/main menu.tscn")
@@ -85,8 +86,6 @@ func _on_press_main_menu() -> void:
 func _on_save_score_pressed() -> void:
 	social_media_container.visible = true
 	toggle_form(false)
-
-
 
 func _on_name_edit_text_submitted(_new_text: String) -> void:
 	social_media_container.visible = true
@@ -107,12 +106,20 @@ func save_score(score: int, player_name: String, social_media_url: String) -> vo
 	)
 	
 func _on_submit_score_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+	if _response_code != 200:
+		error_label.text = body.get_string_from_utf8()
+		skip_button.disabled = false
+		save_button_form_2.disabled = false
+		social_media_url_input.editable = true
+		return
+	
 	var json = JSON.parse_string(body.get_string_from_utf8())
-	if json == null or _response_code != 200:
-		push_error("Failed to parse JSON response")
+	if json == null:
+		error_label.text = body.get_string_from_utf8()
 		toggle_form(true)
 		return
 	
+	social_media_container.visible = false
 	toggle_form(false)
 	on_added_new_score.emit()
 
@@ -141,10 +148,14 @@ func _on_name_edit_text_changed(new_text: String) -> void:
 		name_edit.caret_column = filtered_text.length()
 
 func _on_click_social_media_save() -> void:
-	social_media_container.visible = false
+	skip_button.disabled = true
+	save_button_form_2.disabled = true
+	social_media_url_input.editable = false
 	var social_media_url_text = social_media_url_input.text
 	save_score(current_player_score, name_edit.text, social_media_url_text)
 
 func _on_click_social_media_skip() -> void:
-	social_media_container.visible = false
+	skip_button.disabled = true
+	save_button_form_2.disabled = true
+	social_media_url_input.editable = false
 	save_score(current_player_score, name_edit.text, "")

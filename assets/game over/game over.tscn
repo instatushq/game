@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bnb6fd0uu1p82"]
+[gd_scene load_steps=39 format=3 uid="uid://bnb6fd0uu1p82"]
 
 [ext_resource type="Script" uid="uid://ckjc6b027vyxq" path="res://assets/game over/game_over.gd" id="1_5d7i2"]
 [ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="1_064we"]
@@ -97,6 +97,12 @@ default_font_size = 26
 [sub_resource type="LabelSettings" id="LabelSettings_1hdpe"]
 font = ExtResource("22_36qrg")
 font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_jkowm"]
+line_spacing = 0.0
+font = ExtResource("22_36qrg")
+font_size = 20
+font_color = Color(0.716751, 0, 0.144332, 1)
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_5d7i2")
@@ -502,7 +508,6 @@ offset_right = -26.0
 offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
 
 [node name="Control" type="VBoxContainer" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2"]
 layout_mode = 2
@@ -521,6 +526,11 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_aqfd3")
 placeholder_text = "SOCIAL MEDIA URL"
 max_length = 2000
 caret_blink = true
+
+[node name="Error" type="Label" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_jkowm")
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Leaderboard/SocialMediaContainer/Form2"]
 layout_mode = 2

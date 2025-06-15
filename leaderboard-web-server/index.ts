@@ -29,16 +29,6 @@ const exactDateNow: string = new Date()
   .replace(",", "");
 app.use(express.json());
 
-enum SocialMedia {
-  X = "X",
-  INSTAGRAM = "INSTAGRAM",
-  TIKTOK = "TIKTOK",
-  YOUTUBE = "YOUTUBE",
-  FACEBOOK = "FACEBOOK",
-  TWITTER = "TWITTER",
-  LINKEDIN = "LINKEDIN",
-}
-
 app.get("/ping", (_, res) => {
   res.send("last deployment: " + exactDateNow);
 });
