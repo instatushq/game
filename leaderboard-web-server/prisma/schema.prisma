@@ -18,16 +18,5 @@ model scores {
   name      String
   score     Int
   socialMediaUrl String @default("")
-  socialMedia SocialMedia @default(X)
   createdAt DateTime @default(now())
-}
-
-enum SocialMedia {
-  X
-  INSTAGRAM
-  TIKTOK
-  YOUTUBE
-  FACEBOOK
-  TWITTER
-  LINKEDIN
 }

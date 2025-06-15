@@ -1,4 +1,4 @@
-import { PrismaClient, SocialMedia } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function getTopPlayers(amount: number = 10) {
@@ -22,10 +22,7 @@ export async function getScoreRank(score: number) {
 export async function addScore(
   name: string,
   score: number,
-  socialMediaData?: {
-    url: string;
-    socialMedia: SocialMedia;
-  }
+  socialMediaURL = ""
 ) {
   const topPlayers = await prisma.scores.findMany({
     where: {
@@ -51,8 +48,7 @@ export async function addScore(
       data: {
         name,
         score,
-        socialMedia: socialMediaData?.socialMedia,
-        socialMediaUrl: socialMediaData?.url,
+        socialMediaUrl: socialMediaURL,
       },
     });
   }

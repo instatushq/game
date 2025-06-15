@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { getTopPlayers, addScore, getScoreRank } from "./leaderboard";
+import { isEmptyOrWhitespace, validateSocialMediaUrl } from "./utils";
 const port = 3000;
 const app = express();
 app.use(
@@ -90,6 +91,7 @@ app.get("/leaderboard/rank/:score", async (req, res) => {
 
 app.post("/leaderboard", async (req, res) => {
   let { name, score, socialMediaUrl } = req.body;
+  const { isValid } = validateSocialMediaUrl(socialMediaUrl);
 
   // Trim the name and normalize multiple spaces to single space
   if (typeof name === "string") {
@@ -117,11 +119,13 @@ app.post("/leaderboard", async (req, res) => {
     return;
   }
 
+  if (!isValid && !isEmptyOrWhitespace(socialMediaUrl)) {
+    res.status(400).send("Invalid social media URL");
+    return;
+  }
+
   try {
-    const newScore = await addScore(name, score, {
-      url: socialMediaUrl,
-      socialMedia: SocialMedia.X,
-    });
+    const newScore = await addScore(name, score, socialMediaUrl);
     res.json(newScore);
   } catch (e) {
     console.error(e);
