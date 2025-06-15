@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ek80hkg0c8jc"
+path="res://.godot/imported/mole down.ogg-5ef3bb82dd1a1634dda7d2f46b076e59.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/issues/possible_issues/whack a mole/mole down.ogg"
+dest_files=["res://.godot/imported/mole down.ogg-5ef3bb82dd1a1634dda7d2f46b076e59.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

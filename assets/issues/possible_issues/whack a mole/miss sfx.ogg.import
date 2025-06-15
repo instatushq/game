@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cvo8m586imi51"
+path="res://.godot/imported/miss sfx.ogg-812793a94f6cbabc788fc212b174064f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/issues/possible_issues/whack a mole/miss sfx.ogg"
+dest_files=["res://.godot/imported/miss sfx.ogg-812793a94f6cbabc788fc212b174064f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

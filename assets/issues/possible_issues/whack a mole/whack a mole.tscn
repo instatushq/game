@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://d2burbt4yek8s"]
+[gd_scene load_steps=49 format=3 uid="uid://d2burbt4yek8s"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_8boil"]
 [ext_resource type="Script" uid="uid://dsd2g1qv6ddsb" path="res://assets/issues/possible_issues/whack a mole/whack a mole.gd" id="2_00j50"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cuxgc1f1klhdf" path="res://assets/issues/possible_issues/whack a mole/wink.png" id="6_sm7c6"]
 [ext_resource type="Texture2D" uid="uid://ceewcdl51t0s" path="res://assets/issues/possible_issues/whack a mole/MOLE GAME glow.png" id="7_mv0ip"]
 [ext_resource type="PackedScene" uid="uid://bd0p0cx8fwkim" path="res://assets/issues/possible_issues/whack a mole/mole.tscn" id="9_klspp"]
+[ext_resource type="AudioStream" uid="uid://cvo8m586imi51" path="res://assets/issues/possible_issues/whack a mole/miss sfx.ogg" id="10_mv0ip"]
 [ext_resource type="Script" uid="uid://ccka2jdoupg3" path="res://assets/main menu/main menu camera.gd" id="12_sm7c6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1yv70"]
@@ -375,18 +376,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="mole1" parent="GameNode/Game" instance=ExtResource("9_klspp")]
+layout_mode = 1
+offset_left = -350.0
+offset_top = 182.5
+offset_right = -138.0
+offset_bottom = 387.5
+grow_vertical = 1
+
 [node name="mole2" parent="GameNode/Game" instance=ExtResource("9_klspp")]
 layout_mode = 1
 offset_left = -87.5
 offset_right = 124.5
-grow_vertical = 1
-
-[node name="mole7" parent="GameNode/Game/mole2" instance=ExtResource("9_klspp")]
-layout_mode = 1
-offset_left = -294.936
-offset_top = -230.305
-offset_right = -82.936
-offset_bottom = -25.305
 grow_vertical = 1
 
 [node name="mole3" parent="GameNode/Game" instance=ExtResource("9_klspp")]
@@ -424,6 +425,11 @@ grow_vertical = 1
 [node name="cooldown_timer" type="Timer" parent="GameNode/Game"]
 wait_time = 0.5
 one_shot = true
+
+[node name="Miss" type="AudioStreamPlayer" parent="GameNode/Game"]
+stream = ExtResource("10_mv0ip")
+volume_db = 3.0
+bus = &"Sound FX"
 
 [node name="Camera2D2" type="Camera2D" parent="GameNode"]
 position = Vector2(3, 0)

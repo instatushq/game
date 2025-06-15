@@ -38,6 +38,7 @@ func _on_mole_missed(_mole: Mole) -> void:
 		is_on_cooldown_for_failing = true
 		cooldown_timer.start(0.6)
 		pc_face.play("miss")
+		$Miss.play()
 		pc_face_wink_timer.stop()
 		for mole in moles:
 			mole.is_player_on_cooldown = true

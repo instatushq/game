@@ -87,7 +87,10 @@ func _ready():
 
 	ship_node.on_ship_breakdown.connect(func() -> void: 
 		vhs_effect.play("HIGH")
-		await get_tree().create_timer(vhs_effect.get_animation("HIGH").length).timeout
+		var time_to_play_audio: float = 1.0
+		await get_tree().create_timer(time_to_play_audio).timeout
+		$VHS/GlitchNoise.play(0.0)
+		await get_tree().create_timer(vhs_effect.get_animation("HIGH").length - time_to_play_audio).timeout
 		vhs_effect.play_backwards("HIGH")
 	)
 	ship_node.on_ship_reviving.connect(func() -> void: vhs_effect.play("LOW"))

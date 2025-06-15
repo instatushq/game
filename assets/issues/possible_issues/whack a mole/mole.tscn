@@ -1,8 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://bd0p0cx8fwkim"]
+[gd_scene load_steps=37 format=3 uid="uid://bd0p0cx8fwkim"]
 
 [ext_resource type="Script" uid="uid://c277f4hblehjv" path="res://assets/issues/possible_issues/whack a mole/mole.gd" id="1_qitvb"]
 [ext_resource type="Texture2D" uid="uid://c61usl5jfwyc5" path="res://assets/issues/possible_issues/whack a mole/mole out.png" id="2_c2ugc"]
 [ext_resource type="Texture2D" uid="uid://ue7dqqrebdlg" path="res://assets/issues/possible_issues/whack a mole/mole in.png" id="3_lhbmu"]
+[ext_resource type="AudioStream" uid="uid://c67ou3a2tfmau" path="res://assets/issues/possible_issues/whack a mole/hit sfx.ogg" id="4_xrqln"]
+[ext_resource type="AudioStream" uid="uid://caiww357abhb6" path="res://assets/issues/possible_issues/whack a mole/mole up.ogg" id="5_j3mqj"]
+[ext_resource type="AudioStream" uid="uid://ek80hkg0c8jc" path="res://assets/issues/possible_issues/whack a mole/mole down.ogg" id="6_8g346"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sm7c6"]
 
@@ -248,7 +251,13 @@ frame_progress = 1.0
 one_shot = true
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xrqln")
+bus = &"Sound FX"
 
 [node name="ComingUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_j3mqj")
+bus = &"Sound FX"
 
 [node name="GoingDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8g346")
+bus = &"Sound FX"

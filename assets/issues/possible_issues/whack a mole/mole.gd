@@ -88,6 +88,7 @@ func _set_state(new_state: MoleState) -> void:
 	match current_state:
 		MoleState.DOWN:
 			animated_sprite.play("down")
+			await get_tree().create_timer(0.15).timeout
 			going_down_sound.play()
 		MoleState.UP:
 			animated_sprite.play("up")

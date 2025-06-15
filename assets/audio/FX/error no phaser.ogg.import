@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c6ng8pggfcooj"
+path="res://.godot/imported/error no phaser.ogg-6aa5b2a5e3f82237f128d491a2af6c7c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/FX/error no phaser.ogg"
+dest_files=["res://.godot/imported/error no phaser.ogg-6aa5b2a5e3f82237f128d491a2af6c7c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

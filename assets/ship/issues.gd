@@ -49,8 +49,8 @@ func _input(_event: InputEvent) -> void:
 			current_issue.open_issue()
 			is_issue_open = true
 			game_manager.is_solving_puzzle = true
-	# elif event is InputEventKey and event.pressed and event.keycode == KEY_Q:
-	# 	_generate_random_issue(_get_random_issueless_zone())
+	elif _event is InputEventKey and _event.pressed and _event.keycode == KEY_Q:
+		_generate_random_issue(_get_random_issueless_zone())
 
 func _get_random_issueless_zone() -> IssueArea2D:
 	var issueless_zones: Array = []
@@ -69,6 +69,9 @@ func _generate_random_issue(zone: IssueArea2D) -> void:
 	issue_instance.issue_resolved.connect(Callable(self, "_on_issue_resolved").bind(zone))
 	current_issues[zone.get_instance_id()] = issue_instance
 	generate_notification_for_zone(zone)
+	var zone_error_sound: AudioStreamPlayer2D = zone.get_node("ErrorNoise")
+	if zone_error_sound != null:
+		zone_error_sound.play(0.0)
 	on_issue_generated.emit(zone, current_issues.size())
 	
 func _on_timer_timeout() -> void:

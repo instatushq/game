@@ -174,7 +174,6 @@ fill_from = Vector2(0.502146, 0.454936)
 
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_la0fh")
-spawn_position = Vector2(0, 0)
 
 [node name="CanvasLayer" type="Node2D" parent="."]
 
@@ -602,17 +601,17 @@ sprites = SubResource("SpriteFrames_4xcn4")
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
 stream = ExtResource("7_3r64c")
-volume_db = -10.0
+volume_db = -20.0
 pitch_scale = 3.0
 
 [node name="ButtonMatch" type="AudioStreamPlayer" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
 stream = ExtResource("7_3r64c")
-volume_db = -10.0
+volume_db = -20.0
 pitch_scale = 2.4
 
 [node name="ButtonMismatch" type="AudioStreamPlayer" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
 stream = ExtResource("8_qni4q")
-volume_db = -10.0
+volume_db = -20.0
 pitch_scale = 1.5
 
 [node name="PointLight2D" type="PointLight2D" parent="CanvasLayer/AnimatedTextureRect"]

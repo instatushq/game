@@ -476,12 +476,14 @@ script = ExtResource("9_mmyod")
 
 [node name="FlyBegin" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_022t7")
-volume_db = -10.0
+volume_db = -7.0
+pitch_scale = 2.0
 bus = &"Sound FX"
 
 [node name="FlyEnd" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_6rke4")
-volume_db = -10.0
+volume_db = -7.0
+pitch_scale = 2.0
 bus = &"Sound FX"
 
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

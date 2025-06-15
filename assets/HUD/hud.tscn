@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=96 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://jwwo8an3potp" path="res://assets/HUD/UI Emotions/look left face.png" id="10_vc4br"]
 [ext_resource type="Texture2D" uid="uid://ymmhrr3c5e20" path="res://assets/HUD/UI Emotions/scared face.png" id="11_5hymx"]
 [ext_resource type="Texture2D" uid="uid://b5kvc5d6xbshd" path="res://assets/HUD/controls ui.png" id="16_vc4br"]
+[ext_resource type="AudioStream" uid="uid://ds8dhq6grw34b" path="res://assets/audio/FX/electricity.ogg" id="17_1gu38"]
 [ext_resource type="AudioStream" uid="uid://bfu1c7j4w1i3g" path="res://assets/audio/FX/mascot speech.ogg" id="17_6k1te"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_basyl"]
@@ -1230,6 +1231,10 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_1gu38")
 }
+
+[node name="GlitchNoise" type="AudioStreamPlayer" parent="VHS"]
+stream = ExtResource("17_1gu38")
+bus = &"Sound FX"
 
 [node name="E_N_Stat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_6k1te")
