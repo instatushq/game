@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drod2wabmmrgq"
-path="res://.godot/imported/index.icon.png-d1dfa21869e78e0fa82212925b7cda6a.ctex"
+uid="uid://bolms6ajjw0hu"
+path="res://.godot/imported/asteroid_1.png-4bf8a7ee2b6cc70d1037174d670ac830.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build/game/index.icon.png"
-dest_files=["res://.godot/imported/index.icon.png-d1dfa21869e78e0fa82212925b7cda6a.ctex"]
+source_file="res://assets/issues/possible_issues/tempest/assets/asteroid_1.png"
+dest_files=["res://.godot/imported/asteroid_1.png-4bf8a7ee2b6cc70d1037174d670ac830.ctex"]
 
 [params]
 

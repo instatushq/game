@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drod2wabmmrgq"
-path="res://.godot/imported/index.icon.png-d1dfa21869e78e0fa82212925b7cda6a.ctex"
+uid="uid://bfl2mxslhwic3"
+path="res://.godot/imported/bg3.png-926007751d994aebb8e86e8896d5a30a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build/game/index.icon.png"
-dest_files=["res://.godot/imported/index.icon.png-d1dfa21869e78e0fa82212925b7cda6a.ctex"]
+source_file="res://assets/issues/possible_issues/tempest/assets/bg3.png"
+dest_files=["res://.godot/imported/bg3.png-926007751d994aebb8e86e8896d5a30a.ctex"]
 
 [params]
 

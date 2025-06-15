@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxytu8vqv7tk5"]
+
+[ext_resource type="Script" uid="uid://dr50nea0653ke" path="res://assets/issues/possible_issues/tempest/scripts/screen.gd" id="1_erqjc"]
+[ext_resource type="Texture2D" uid="uid://b10cx23we77me" path="res://assets/issues/possible_issues/tempest/assets/bg1.png" id="1_qc0hx"]
+[ext_resource type="AudioStream" uid="uid://bmgns4777qqd3" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_countdown.wav" id="3_nexl8"]
+
+[node name="Screen" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qc0hx")
+script = ExtResource("1_erqjc")
+
+[node name="LabelTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 95.0
+offset_right = 160.0
+offset_bottom = 156.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 44
+text = "Tempest Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelSubtitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.5
+offset_right = 20.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerSecond" type="Timer" parent="."]
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Countdown" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("3_nexl8")
+
+[connection signal="timeout" from="TimerSecond" to="." method="_on_timer_second_timeout"]

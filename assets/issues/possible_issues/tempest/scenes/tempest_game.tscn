@@ -1,0 +1,192 @@
+[gd_scene load_steps=23 format=3 uid="uid://boali0pdrgia"]
+
+[ext_resource type="Script" uid="uid://dpo4t4nrncpfb" path="res://assets/issues/possible_issues/tempest/scripts/tempest_game.gd" id="1_apfcl"]
+[ext_resource type="PackedScene" uid="uid://brw5e1ur3qm8b" path="res://assets/issues/possible_issues/tempest/scenes/enemy.tscn" id="2_ngumx"]
+[ext_resource type="PackedScene" uid="uid://dqxmisvem3r8" path="res://assets/issues/possible_issues/tempest/scenes/projectile.tscn" id="3_whwra"]
+[ext_resource type="Texture2D" uid="uid://b10cx23we77me" path="res://assets/issues/possible_issues/tempest/assets/bg1.png" id="4_kng1r"]
+[ext_resource type="Texture2D" uid="uid://clqaljxlns7sx" path="res://assets/issues/possible_issues/tempest/assets/spaceship.png" id="5_5xcva"]
+[ext_resource type="Texture2D" uid="uid://d7a8aqka1u5x" path="res://assets/issues/possible_issues/tempest/assets/bg2.png" id="5_nhumg"]
+[ext_resource type="Texture2D" uid="uid://bfl2mxslhwic3" path="res://assets/issues/possible_issues/tempest/assets/bg3.png" id="6_lhvw7"]
+[ext_resource type="Texture2D" uid="uid://cbu2vr6oqlnp0" path="res://assets/issues/possible_issues/tempest/assets/health_progress_under.png" id="6_qkqqc"]
+[ext_resource type="Texture2D" uid="uid://ddnsj147ajkp7" path="res://assets/issues/possible_issues/tempest/assets/health_progress.png" id="7_mmaet"]
+[ext_resource type="Texture2D" uid="uid://cxqk7cldmhgem" path="res://assets/issues/possible_issues/tempest/assets/bg4.png" id="7_yxemk"]
+[ext_resource type="PackedScene" uid="uid://bxytu8vqv7tk5" path="res://assets/issues/possible_issues/tempest/scenes/screen.tscn" id="8_5xcva"]
+[ext_resource type="AudioStream" uid="uid://byvb0tvd0eo0k" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_move.wav" id="9_5xcva"]
+[ext_resource type="AudioStream" uid="uid://cbrqnbs3c1bht" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_shoot.wav" id="10_q04p6"]
+[ext_resource type="Shader" uid="uid://teqriy72chh6" path="res://assets/issues/possible_issues/tempest/scripts/screen_shake.gdshader" id="11_l4s75"]
+[ext_resource type="AudioStream" uid="uid://dm7xt7nahfonl" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_enemy_destroyed.wav" id="11_luoa5"]
+[ext_resource type="AudioStream" uid="uid://bkmucq4bm00bo" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_health_decreased.wav" id="12_l4s75"]
+[ext_resource type="AudioStream" uid="uid://crcwi0idb7l0o" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_new_arena.wav" id="13_kng1r"]
+[ext_resource type="AudioStream" uid="uid://bgovvm70u5uj7" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_lose.wav" id="14_nhumg"]
+[ext_resource type="AudioStream" uid="uid://cygvxr4127rkj" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_win.wav" id="15_5xcva"]
+
+[sub_resource type="Environment" id="Environment_5xcva"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.75
+glow_hdr_threshold = 0.5
+
+[sub_resource type="Gradient" id="Gradient_5xcva"]
+colors = PackedColorArray(1.06, 3.705, 1.08, 1, 1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kng1r"]
+shader = ExtResource("11_l4s75")
+shader_parameter/shake_power = 0.015
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[node name="TempestGame" type="Node2D"]
+script = ExtResource("1_apfcl")
+enemy_scene = ExtResource("2_ngumx")
+projectile_scene = ExtResource("3_whwra")
+line_color = Color(0.596078, 0.596078, 0.596078, 0.301961)
+line_highlight_color = Color(1.195, 3.215, 4.825, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5xcva")
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(392, 822)
+scale = Vector2(1.11143, 1.11143)
+
+[node name="Clip" type="Control" parent="Background"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="Parallax2D1" type="Parallax2D" parent="Background/Clip"]
+repeat_size = Vector2(0, 540)
+autoscroll = Vector2(0, 10)
+ignore_camera_scroll = true
+
+[node name="Bg" type="Sprite2D" parent="Background/Clip/Parallax2D1"]
+texture = ExtResource("4_kng1r")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background/Clip"]
+repeat_size = Vector2(0, 540)
+autoscroll = Vector2(0, 20)
+ignore_camera_scroll = true
+
+[node name="Bg" type="Sprite2D" parent="Background/Clip/Parallax2D2"]
+scale = Vector2(1.14988, 1.1)
+texture = ExtResource("5_nhumg")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background/Clip"]
+repeat_size = Vector2(0, 540)
+autoscroll = Vector2(0, 30)
+ignore_camera_scroll = true
+
+[node name="Bg" type="Sprite2D" parent="Background/Clip/Parallax2D3"]
+scale = Vector2(1.14988, 1.1)
+texture = ExtResource("6_lhvw7")
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background/Clip"]
+repeat_size = Vector2(0, 540)
+autoscroll = Vector2(0, 40)
+ignore_camera_scroll = true
+
+[node name="Bg" type="Sprite2D" parent="Background/Clip/Parallax2D4"]
+scale = Vector2(1.14988, 1.1)
+texture = ExtResource("7_yxemk")
+centered = false
+
+[node name="ContainerVFX" type="Node2D" parent="."]
+
+[node name="ContainerEnemy" type="Node2D" parent="."]
+
+[node name="ContainerProjectile" type="Node2D" parent="."]
+
+[node name="ContainerLaneLine" type="Node2D" parent="."]
+
+[node name="Player" type="Sprite2D" parent="."]
+texture = ExtResource("5_5xcva")
+region_rect = Rect2(0, 0, 384.446, 490)
+
+[node name="CPUParticles2D1" type="CPUParticles2D" parent="Player"]
+position = Vector2(0, 21)
+amount = 77
+lifetime = 0.35
+randomness = 1.0
+direction = Vector2(0, 1)
+spread = 4.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 52.0
+initial_velocity_max = 52.0
+radial_accel_max = 92.93
+damping_max = 22.222
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_5xcva")
+
+[node name="TimerEnemySpawn" type="Timer" parent="."]
+
+[node name="TimerGame" type="Timer" parent="."]
+
+[node name="TimerArenaGenerate" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_right = 0.508
+anchor_bottom = 0.5
+offset_right = 0.639954
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 3.0
+value = 3.0
+rounded = true
+texture_under = ExtResource("6_qkqqc")
+texture_progress = ExtResource("7_mmaet")
+
+[node name="Screen" parent="CanvasLayer/Control" instance=ExtResource("8_5xcva")]
+layout_mode = 1
+
+[node name="ScreenShake" type="ColorRect" parent="CanvasLayer/Control"]
+visible = false
+material = SubResource("ShaderMaterial_kng1r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sfx" type="Node" parent="."]
+process_mode = 3
+
+[node name="Move" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("9_5xcva")
+
+[node name="Shoot" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("10_q04p6")
+
+[node name="EnemyDestroyed" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("11_luoa5")
+
+[node name="HealthDecreased" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("12_l4s75")
+
+[node name="NewArena" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("13_kng1r")
+
+[node name="Lose" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("14_nhumg")
+
+[node name="Win" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource("15_5xcva")

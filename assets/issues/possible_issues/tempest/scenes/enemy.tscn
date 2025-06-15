@@ -1,0 +1,165 @@
+[gd_scene load_steps=23 format=3 uid="uid://brw5e1ur3qm8b"]
+
+[ext_resource type="Script" uid="uid://dh02e8dwels2q" path="res://scripts/enemy.gd" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://bolms6ajjw0hu" path="res://assets/asteroid_1.png" id="2_c4w8v"]
+[ext_resource type="PackedScene" uid="uid://be6qa8lmv7lic" path="res://scenes/vfx_asteroid_explode.tscn" id="2_ipns3"]
+[ext_resource type="Texture2D" uid="uid://blt6gplddiqfm" path="res://assets/asteroid_2.png" id="3_xwavj"]
+[ext_resource type="Texture2D" uid="uid://xwti3bgo3oah" path="res://assets/asteroid_3.png" id="4_nenq2"]
+[ext_resource type="Texture2D" uid="uid://duhda7bjyynuu" path="res://assets/asteroid_4.png" id="5_nenq2"]
+[ext_resource type="Texture2D" uid="uid://dwhsejpx23yvk" path="res://assets/asteroid_5.png" id="6_md484"]
+[ext_resource type="Texture2D" uid="uid://l6p47xoxup8o" path="res://assets/asteroid_special_1.png" id="7_ipns3"]
+[ext_resource type="Texture2D" uid="uid://b0bo5g1fohffb" path="res://assets/asteroid_break.png" id="7_md484"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ipns3"]
+radius = 23.0
+
+[sub_resource type="Gradient" id="Gradient_md484"]
+offsets = PackedFloat32Array(0, 0.305556, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.461522, 0.189119, 0.314384, 1, 0.39, 0.35, 0.45, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipns3"]
+atlas = ExtResource("7_md484")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shcg2"]
+atlas = ExtResource("7_md484")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ile5s"]
+atlas = ExtResource("7_md484")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qclf"]
+atlas = ExtResource("7_ipns3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8i8w"]
+atlas = ExtResource("7_ipns3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otmr2"]
+atlas = ExtResource("7_ipns3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
+atlas = ExtResource("7_ipns3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
+atlas = ExtResource("7_ipns3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0wcc"]
+atlas = ExtResource("7_ipns3")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1ycm"]
+atlas = ExtResource("7_ipns3")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2pwtc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c4w8v")
+}],
+"loop": true,
+"name": &"asteroid_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xwavj")
+}],
+"loop": true,
+"name": &"asteroid_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nenq2")
+}],
+"loop": true,
+"name": &"asteroid_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_nenq2")
+}],
+"loop": true,
+"name": &"asteroid_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_md484")
+}],
+"loop": true,
+"name": &"asteroid_5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipns3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shcg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ile5s")
+}],
+"loop": false,
+"name": &"asteroid_break",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qclf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8i8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otmr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtq4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0cyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0wcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1ycm")
+}],
+"loop": true,
+"name": &"asteroid_special_1",
+"speed": 13.0
+}]
+
+[node name="Enemy" type="Area2D" groups=["enemies"]]
+script = ExtResource("1_7k104")
+vfx_explode_scene = ExtResource("2_ipns3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ipns3")
+
+[node name="ParticlesTrack" type="CPUParticles2D" parent="."]
+lifetime = 0.5
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, -1)
+spread = 2.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 130.0
+initial_velocity_max = 150.0
+color_ramp = SubResource("Gradient_md484")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2pwtc")
+animation = &"asteroid_break"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

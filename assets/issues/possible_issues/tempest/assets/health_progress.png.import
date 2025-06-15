@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drod2wabmmrgq"
-path="res://.godot/imported/index.icon.png-d1dfa21869e78e0fa82212925b7cda6a.ctex"
+uid="uid://ddnsj147ajkp7"
+path="res://.godot/imported/health_progress.png-63e42f57e727363871e64b9dfecf2263.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build/game/index.icon.png"
-dest_files=["res://.godot/imported/index.icon.png-d1dfa21869e78e0fa82212925b7cda6a.ctex"]
+source_file="res://assets/issues/possible_issues/tempest/assets/health_progress.png"
+dest_files=["res://.godot/imported/health_progress.png-63e42f57e727363871e64b9dfecf2263.ctex"]
 
 [params]
 

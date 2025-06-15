@@ -245,6 +245,7 @@ ButtonFlashTime = 0.25
 TimeBetweenFlashes = 0.1
 
 [node name="AnimatedTextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
 offset_left = -1549.0
 offset_top = -1143.0
 offset_right = 1602.0

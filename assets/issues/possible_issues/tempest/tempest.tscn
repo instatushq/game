@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://e648hhte12dw"]
+
+[ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_nq3rd"]
+[ext_resource type="Script" uid="uid://1drfnpfgygao" path="res://assets/issues/possible_issues/tempest/tempest.gd" id="2_qd1fy"]
+[ext_resource type="PackedScene" uid="uid://boali0pdrgia" path="res://assets/issues/possible_issues/tempest/scenes/tempest_game.tscn" id="2_ybee6"]
+
+[node name="Tempest" type="Node2D"]
+script = ExtResource("1_nq3rd")
+spawn_position = Vector2(0, 0)
+
+[node name="TempestWrap" type="Node2D" parent="."]
+position = Vector2(973, 1110)
+script = ExtResource("2_qd1fy")
+
+[node name="TempestGame" parent="TempestWrap" instance=ExtResource("2_ybee6")]
+position = Vector2(-973, -1110)
+game_duration = 10.0
+arena_count = 2
+
+[node name="Camera2D" type="Camera2D" parent="TempestWrap"]
+position = Vector2(2, 1)
+zoom = Vector2(2.5, 2.5)

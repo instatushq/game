@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqxmisvem3r8"]
+
+[ext_resource type="Script" uid="uid://djawl3bmsgew0" path="res://assets/issues/possible_issues/tempest/scripts/projectile.gd" id="1_a85iw"]
+[ext_resource type="Texture2D" uid="uid://thju46o43h6d" path="res://assets/issues/possible_issues/tempest/assets/bullet.png" id="2_q3m7n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_softn"]
+radius = 3.0
+
+[node name="Projectile" type="Area2D" groups=["projectiles"]]
+script = ExtResource("1_a85iw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_softn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.195, 3.215, 4.825, 1)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_q3m7n")
