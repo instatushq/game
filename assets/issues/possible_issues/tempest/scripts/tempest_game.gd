@@ -42,6 +42,8 @@ signal enemy_destroyed(score_weight: int)
 @onready var screen: Screen = $CanvasLayer/Control/Screen
 @onready var screen_shake: ColorRect = $CanvasLayer/Control/ScreenShake
 
+var _is_game_playing: bool = false
+
 var lane_lines: Array[Line2D] = [] # Array to store references to the generated Line2D nodes.
 var base_contour_offsets: PackedFloat32Array # Stores the Y-offset for each base point of the lines.
 
@@ -58,6 +60,7 @@ var total_base_width: float
 var base_leftmost_x: float # X-coord of the leftmost line at the base.
 
 func _input(event):
+	if not _is_game_playing: return
 	if event.is_action_pressed("move_left"):
 		current_lane_index = max(0, current_lane_index - 1)
 		update_player_position_and_rotation(false)
@@ -100,6 +103,7 @@ func _physics_process(delta: float) -> void:
 	player.position = elerp(player.position, player_target_position, player_elerp_decay, delta)
 
 func start_game() -> void:
+	_is_game_playing = true
 	randomize()
 	screen_shake.hide()
 	
