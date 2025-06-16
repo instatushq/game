@@ -118,7 +118,8 @@ func _on_submit_score_request_completed(_result: int, _response_code: int, _head
 		error_label.text = body.get_string_from_utf8()
 		toggle_form(true)
 		return
-	
+		
+	error_label.text = ""	
 	social_media_container.visible = false
 	toggle_form(false)
 	on_added_new_score.emit()
