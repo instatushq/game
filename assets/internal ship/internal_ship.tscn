@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://34pxxoahuuaj"]
+[gd_scene load_steps=118 format=3 uid="uid://34pxxoahuuaj"]
 
 [ext_resource type="Script" uid="uid://brxj0shvxeu56" path="res://assets/internal ship/internal_ship.gd" id="1_jlxe3"]
 [ext_resource type="Texture2D" uid="uid://bceqn5qna7tl0" path="res://assets/internal ship/ship shutting down.png" id="1_o88cq"]
@@ -27,10 +27,11 @@
 [ext_resource type="AudioStream" uid="uid://dknuambxafns1" path="res://assets/audio/FX/health up.ogg" id="23_6trai"]
 [ext_resource type="AudioStream" uid="uid://l0euwlddcrnr" path="res://assets/audio/FX/error.ogg" id="23_63gkj"]
 [ext_resource type="PackedScene" uid="uid://e648hhte12dw" path="res://assets/issues/possible_issues/tempest/tempest.tscn" id="23_aglr1"]
+[ext_resource type="PackedScene" uid="uid://d2burbt4yek8s" path="res://assets/issues/possible_issues/whack a mole/whack a mole.tscn" id="24_ir7vn"]
 [ext_resource type="AudioStream" uid="uid://c6ng8pggfcooj" path="res://assets/audio/FX/error no phaser.ogg" id="24_k7oje"]
-[ext_resource type="PackedScene" uid="uid://bd0p0cx8fwkim" path="res://assets/issues/possible_issues/whack a mole/mole.tscn" id="24_ph4x3"]
 [ext_resource type="AudioStream" uid="uid://cdvgfttmdh22y" path="res://assets/audio/FX/alarm.ogg" id="24_v5d4y"]
 [ext_resource type="AudioStream" uid="uid://bjgymc4ycn24y" path="res://assets/audio/FX/engine run.ogg" id="25_yl61a"]
+[ext_resource type="Script" uid="uid://cydby3ac6cda7" path="res://assets/issues/issues-randomizer.gd" id="26_ir7vn"]
 [ext_resource type="AudioStream" uid="uid://1gtid23l8wv3" path="res://assets/audio/FX/engine running.ogg" id="26_vhwim"]
 [ext_resource type="AudioStream" uid="uid://dxkc0yxc4snm4" path="res://assets/audio/FX/engine down.ogg" id="27_ojjh1"]
 
@@ -1076,8 +1077,11 @@ script = ExtResource("19_c6j7a")
 
 [node name="Issues" type="Node2D" parent="."]
 script = ExtResource("1_r65rw")
-possible_issues = Array[PackedScene]([ExtResource("20_16jwm"), ExtResource("21_atttj"), ExtResource("22_ir7vn"), ExtResource("23_aglr1"), ExtResource("24_ph4x3")])
+possible_issues = Array[PackedScene]([ExtResource("20_16jwm"), ExtResource("21_atttj"), ExtResource("22_ir7vn"), ExtResource("23_aglr1"), ExtResource("24_ir7vn")])
 notification_icon_scene = ExtResource("22_qy0je")
+
+[node name="IssuesRandomizer" type="Node2D" parent="Issues"]
+script = ExtResource("26_ir7vn")
 
 [node name="Right" type="Area2D" parent="Issues"]
 position = Vector2(74, 54)

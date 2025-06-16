@@ -15,6 +15,7 @@ var is_issue_open: bool = false
 @onready var game_manager: GameManager = get_node("/root/Game/GameManager")
 @onready var timer: Timer = $Timer
 @onready var issue_resolved_sound: AudioStreamPlayer = $IssueSolved
+@onready var issues_randomizer: IssuesRandomizer = $IssuesRandomizer
 
 signal zone_body_entered(zone: IssueArea2D, body: Node2D)
 signal zone_body_exited(zone: IssueArea2D, body: Node2D)
@@ -29,6 +30,8 @@ func _ready() -> void:
 		zone.connect("body_exited", Callable(self, "_on_area_exited").bind(zone))
 
 	on_clear_issues.connect(Callable(self, "_on_clear_issues"))
+	issues_randomizer.init_weights(possible_issues.size())
+
 
 func _on_area_entered(body: Node, zone: IssueArea2D) -> void:
 	last_entered_zone = zone
@@ -62,7 +65,9 @@ func _get_random_issueless_zone() -> IssueArea2D:
 	return issueless_zones.pick_random()
 
 func _generate_random_issue(zone: IssueArea2D) -> void:
-	var random_issue = possible_issues.pick_random()
+	var random_issue_index = issues_randomizer.get_random_index()
+	issues_randomizer.step_randomizer(random_issue_index)
+	var random_issue = possible_issues[random_issue_index]
 	var issue_instance: Issue = random_issue.instantiate()
 	var root_scene_node: Node = get_tree().current_scene
 	root_scene_node.add_child(issue_instance)
