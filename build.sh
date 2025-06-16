@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mkdir -p build
+[ ! -f build/.gdignore ] && touch build/.gdignore
 godot --headless --export-release "WebGL" build/index.html
 mkdir -p build/game
 cp -r build/* build/game/
