@@ -56,6 +56,17 @@ func _on_issue_resolved(zone: IssueArea2D, _issues_left: bool) -> void:
 		ship_right_part.visible = false
 		ship_left_part.visible = false
 
+func _on_issue_failed(zone: IssueArea2D) -> void:
+	ship_health.decrease_health(3)
+	if ship_health.health > ship_major_outage_health_amount:
+		if zone.name.containsn("right"):
+			ship_right_part.visible = false
+		elif zone.name.containsn("left"):
+			ship_left_part.visible = false
+	else:
+		ship_right_part.visible = false
+		ship_left_part.visible = false
+		
 func _on_animation_finish() -> void:
 	if ship_sprite.animation == "breakdown":
 		if is_playing_revive_animation:

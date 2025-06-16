@@ -12,6 +12,7 @@ var main_camera: Camera2D = null
 signal issue_resolved
 signal issue_opened
 signal issue_closed
+signal issue_failed
 
 func _find_camera2d(node: Node) -> Camera2D:
 	if node is Camera2D:
@@ -33,6 +34,7 @@ func _find_canvas_layer(node: Node) -> CanvasLayer:
 
 func _ready() -> void:
 	issue_resolved.connect(close_issue)
+	issue_failed.connect(close_issue)
 	custom_camera = _find_camera2d(self)
 	canvas_layer = _find_canvas_layer(self)
 	var game_manager: GameManager = scene_root.get_node("%GameManager")

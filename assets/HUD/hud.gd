@@ -119,7 +119,7 @@ func _ready():
 
 	on_emotionally_triggering_event.connect(_play_emotion_triggering_animation)
 
-	issues.on_clear_issues.connect(func(_zone: IssueArea2D, _issues_left: bool) -> void:
+	issues.on_issue_resolved.connect(func(_zone: IssueArea2D) -> void:
 		on_emotionally_triggering_event.emit(EMOTIONALLY_TRIGGER_EVENT.ISSUE_FIXED, ship.health)
 	)
 

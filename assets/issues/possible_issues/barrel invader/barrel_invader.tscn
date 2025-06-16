@@ -363,6 +363,7 @@ offset_right = 200.0
 offset_bottom = 120.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
 
 [node name="Countdown" type="Label" parent="Game/CanvasLayer/MeteorCountdown"]
 layout_mode = 1

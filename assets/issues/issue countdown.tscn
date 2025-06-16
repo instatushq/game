@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://byp1l7l26b54t"]
+
+[ext_resource type="Script" uid="uid://vndlhx03kdxl" path="res://assets/issues/issue_countdown.gd" id="1_3s5ny"]
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="2_mnt84"]
+
+[sub_resource type="Theme" id="Theme_avydm"]
+default_font = ExtResource("2_mnt84")
+default_font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_csk3x"]
+line_spacing = 40.0
+font_size = 70
+font_color = Color(0, 0.733333, 0.8, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Countdown" type="CanvasLayer"]
+script = ExtResource("1_3s5ny")
+
+[node name="CountdownContainer" type="ColorRect" parent="."]
+show_behind_parent = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="Countdown" type="Label" parent="CountdownContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_avydm")
+theme_type_variation = &"HeaderSmall"
+text = "60 S"
+label_settings = SubResource("LabelSettings_csk3x")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true

@@ -21,6 +21,8 @@ signal zone_body_entered(zone: IssueArea2D, body: Node2D)
 signal zone_body_exited(zone: IssueArea2D, body: Node2D)
 signal on_clear_issues(zone: IssueArea2D,issues_left: bool)
 signal on_issue_generated(zone: IssueArea2D, issues_count: int)
+signal on_issue_resolved(zone: IssueArea2D)
+signal on_issue_failed(zone: IssueArea2D)
 
 func _ready() -> void:
 	possible_zones = find_children("*", "IssueArea2D")
@@ -29,7 +31,6 @@ func _ready() -> void:
 		zone.connect("body_entered", Callable(self, "_on_area_entered").bind(zone))
 		zone.connect("body_exited", Callable(self, "_on_area_exited").bind(zone))
 
-	on_clear_issues.connect(Callable(self, "_on_clear_issues"))
 	issues_randomizer.init_weights(possible_issues.size())
 
 
@@ -72,6 +73,7 @@ func _generate_random_issue(zone: IssueArea2D) -> void:
 	var root_scene_node: Node = get_tree().current_scene
 	root_scene_node.add_child(issue_instance)
 	issue_instance.issue_resolved.connect(Callable(self, "_on_issue_resolved").bind(zone))
+	issue_instance.issue_failed.connect(Callable(self, "_on_issue_failed").bind(zone))
 	current_issues[zone.get_instance_id()] = issue_instance
 	generate_notification_for_zone(zone)
 	var zone_error_sound: AudioStreamPlayer2D = zone.get_node("ErrorNoise")
@@ -93,8 +95,19 @@ func _on_issue_resolved(zone: IssueArea2D) -> void:
 	is_issue_open = false
 	game_manager.is_solving_puzzle = false
 	remove_notification_for_zone(zone)
-	on_clear_issues.emit(zone, has_any_issues())
 	issue_resolved_sound.play()
+	on_clear_issues.emit(zone, has_any_issues())
+	on_issue_resolved.emit(zone)
+
+func _on_issue_failed(zone: IssueArea2D) -> void:
+	var issue_id = zone.get_instance_id()
+	current_issues[issue_id].queue_free()
+	current_issues.erase(issue_id)
+	is_issue_open = false
+	game_manager.is_solving_puzzle = false
+	remove_notification_for_zone(zone)
+	on_clear_issues.emit(zone, has_any_issues())
+	on_issue_failed.emit(zone)
 
 func has_any_issues() -> bool:
 	return not current_issues.is_empty()
