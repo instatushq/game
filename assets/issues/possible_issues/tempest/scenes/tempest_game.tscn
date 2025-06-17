@@ -38,10 +38,9 @@ projectile_scene = ExtResource("3_whwra")
 line_color = Color(0.596078, 0.596078, 0.596078, 0.301961)
 line_highlight_color = Color(1.195, 3.215, 4.825, 1)
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
-scale = Vector2(3, 3)
-transform = Transform2D(3, 0, 0, 3, 0, 0)
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(0, 335)
+scale = Vector2(2, 2)
 
 [node name="Clip" type="Control" parent="Background"]
 clip_contents = true
@@ -123,6 +122,7 @@ color_ramp = SubResource("Gradient_5xcva")
 [node name="TimerArenaGenerate" type="Timer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
