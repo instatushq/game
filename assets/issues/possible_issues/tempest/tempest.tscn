@@ -16,8 +16,8 @@ script = ExtResource("2_qd1fy")
 [node name="TempestGame" parent="TempestWrap" node_paths=PackedStringArray("game_camera") instance=ExtResource("2_ybee6")]
 position = Vector2(-973, -1110)
 game_camera = NodePath("../Camera2D")
-game_duration = 20.0
-arena_count = 2
+game_duration = 60.0
+arena_count = 3
 lanes_y_offset = 425.0
 
 [node name="Camera2D" type="Camera2D" parent="TempestWrap"]
