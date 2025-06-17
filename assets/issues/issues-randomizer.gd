@@ -1,7 +1,7 @@
 class_name IssuesRandomizer extends Node2D
 
 @export_range(0.0, 1.0) var weight_reduction_factor: float = 1
-@export_range(0.0, 1.0) var weight_increase_amount: float = 0.3
+@export_range(0.0, 1.0) var weight_increase_amount: float = 0.15
 
 var rng = RandomNumberGenerator.new()
 var _weights: Array[float] = []

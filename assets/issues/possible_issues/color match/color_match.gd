@@ -1,5 +1,7 @@
 extends ColorRect
 
+@export_range(10, 60) var game_max_length: float = 30
+
 @onready var left_group: Array[Node] = $LeftContainer.get_children(false)
 @onready var right_group: Array[Node] = $RightContainer.get_children(false)
 @onready var button_click_sound: AudioStreamPlayer = $ButtonClick
@@ -113,7 +115,7 @@ func _ready() -> void:
 	_assign_colors_randomly()
 	_assign_controls()
 	var parent: Issue = get_parent().get_parent().get_parent()
-	parent.issue_opened.connect(func(): issue_countdown.start_game_countdown(10))
+	parent.issue_opened.connect(func(): issue_countdown.start_game_countdown(game_max_length))
 	
 
 func _is_issue_resolved() -> bool:
