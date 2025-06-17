@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dompus3a8mg25"
-path="res://.godot/imported/projector.png-14441986fd9397558da0c28419479759.ctex"
+uid="uid://c01jc1kpw3o6v"
+path="res://.godot/imported/healthhud.png-113c18f400f8f23587653502f232c75e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/HUD/projector.png"
-dest_files=["res://.godot/imported/projector.png-14441986fd9397558da0c28419479759.ctex"]
+source_file="res://assets/HUD/healthhud.png"
+dest_files=["res://.godot/imported/healthhud.png-113c18f400f8f23587653502f232c75e.ctex"]
 
 [params]
 

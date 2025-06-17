@@ -5,9 +5,13 @@ signal on_emotionally_triggering_event(event_type: EMOTIONALLY_TRIGGER_EVENT, he
 
 @export var score_for_complete_bar: int = 500
 @export var xp_score_color_flash: Color = Color.WHITE
+@onready var HUD_MAIN_CONTAINER: AnimatedTextureRect = $HUDUI
+@onready var HUD_HEALTH_CONTAINER: AnimatedTextureRect = $HUDHEALTH
 @onready var score_xp_bar: ColorRect = $HUDUI/XP/BarContainer/Bar
 @onready var health_label: Label = $HUDUI/Health/HealthContainer/HealthLabel
+@onready var health_hud_label: Label = $HUDHEALTH/HealthContainer/HealthLabel
 @onready var health_bar_color_rects_container: VBoxContainer = $HUDUI/Bars
+@onready var health_hud_bar_color_rects_container: VBoxContainer = $HUDHEALTH/Bars
 @onready var health_arrows: Label = $HUDUI/Health/Arrows
 @onready var systems_label: Label = $HUDUI/Systems
 @onready var systems_label_font_size: int = systems_label.label_settings.font_size
@@ -17,7 +21,7 @@ signal on_emotionally_triggering_event(event_type: EMOTIONALLY_TRIGGER_EVENT, he
 @onready var ship_node: InternalShip = %InternalShip
 @onready var ship: ShipHealth = %InternalShip/Health
 @onready var issues: Issues = %InternalShip/Issues
-@onready var bars: Array[ColorRect] = []
+@onready var health_hud_bars: Array[ColorRect] = []
 @onready var dialog_box: DialogBox = $HUDUI/DialogBox
 @onready var time_label: Label = $HUDUI/DialogBox/Clock
 @onready var emotion_sprite: AnimatedTextureRect = $HUDUI/Emotion
@@ -78,7 +82,6 @@ const BARS_COLORS = [
 const IDLE_ANIMATIONS_LIST: Array[String] = ["default", "nervous", "scared"]
 const EVENTS_LINKED_DIALOGS = []
 
-
 func _ready():
 	if is_force_mute:
 		controls_animated_texture.play('muted')
@@ -109,8 +112,9 @@ func _ready():
 	var current_colors_index: int = 0
 	var current_color: Color = BARS_COLORS[0].color
 
-	for bar in health_bar_color_rects_container.get_children():
-		bar.color = current_color
+	for i in range(health_bar_color_rects_container.get_child_count()):
+		health_bar_color_rects_container.get_children()[i].color = current_color
+		health_hud_bar_color_rects_container.get_children()[i].color = current_color
 		current_bars_count += 1
 		if current_bars_count > BARS_COLORS[current_colors_index].bars_count:
 			current_bars_count = 0
@@ -131,7 +135,13 @@ func _ready():
 
 	_portray_emotion(COMPUTER_EMOTION.DEFAULT, "Conputer Is Here.\nI Am Conputer. But I am Good Conputer. Have fun")
 
-	game_manager.on_solving_puzzle_changed.connect(func(is_solving_puzzle: bool) -> void: visible = not is_solving_puzzle)
+	game_manager.on_solving_puzzle_changed.connect(func(is_solving_puzzle: bool) -> void: _toggle_hud_health_visible(is_solving_puzzle))
+
+	_toggle_hud_health_visible(false)
+
+func _toggle_hud_health_visible(viewed: bool) -> void:
+	HUD_MAIN_CONTAINER.visible = not viewed
+	HUD_HEALTH_CONTAINER.visible = viewed
 
 func _physics_process(_delta: float) -> void:
 	var time_dict = Time.get_datetime_dict_from_system()
@@ -149,7 +159,9 @@ func _on_health_change(old_health: float, new_health: float) -> void:
 		health_arrows.rotation_degrees = 270 if new_health > old_health else 90
 	
 	var color_rects = health_bar_color_rects_container.get_children()
+	var health_hud_color_rects = health_hud_bar_color_rects_container.get_children()
 	health_label.text = str(int(new_health))
+	health_hud_label.text = str(int(new_health))
 	var percent_per_bar: float = 100.0 / health_bar_color_rects_container.get_child_count()
 
 	for i in range(color_rects.size()):
@@ -157,10 +169,13 @@ func _on_health_change(old_health: float, new_health: float) -> void:
 			var current_bar_index = color_rects.size() - i - 1
 			if current_bar_index == color_rects.size() - 1:
 				color_rects[current_bar_index].visible = new_health > 0
+				health_hud_color_rects[current_bar_index].visible = new_health > 0
 			else:
 				color_rects[current_bar_index].visible = false
+				health_hud_color_rects[current_bar_index].visible = false
 		else:
 			color_rects[color_rects.size() - i - 1].visible = true
+			health_hud_color_rects[color_rects.size() - i - 1].visible = true
 
 func _update_systems_titles(new_health: float) -> void:
 	for title in SYSTEMS_TITLES:
