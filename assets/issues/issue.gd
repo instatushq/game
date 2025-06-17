@@ -2,6 +2,9 @@ extends Node2D
 
 class_name Issue
 
+@export_range(0, 100) var min_hp_revive: int = 20
+@export_range(0, 100) var max_hp_revive: int = 25
+
 @export var default_visibility: bool = false
 @export var spawn_position: Vector2 = Vector2(5000, 5000)
 @onready var custom_camera: Camera2D = null

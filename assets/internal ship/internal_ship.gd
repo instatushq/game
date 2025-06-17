@@ -31,7 +31,7 @@ signal on_ship_reviving
 func _ready() -> void:
 	engine_run.finished.connect(func(): engine_running.play(0.1))
 	_do_engine_sound_transition(true)
-	issues.on_clear_issues.connect(_on_issue_resolved)
+	issues.on_issue_resolved.connect(_on_issue_resolved)
 	if game_manager != null:
 		game_manager.on_solving_puzzle_changed.connect(func(solving: bool) -> void: visible = not solving)
 	ship_right_part.visible = false
@@ -45,8 +45,8 @@ func _on_ship_frame_change() -> void:
 	ship_left_part.frame = ship_sprite.frame
 	
 
-func _on_issue_resolved(zone: IssueArea2D, _issues_left: bool) -> void:
-	ship_health.increase_health(randi_range(8, 12))
+func _on_issue_resolved(zone: IssueArea2D, issue_instance: Issue) -> void:
+	ship_health.increase_health(randi_range(issue_instance.min_hp_revive, issue_instance.max_hp_revive))
 	if ship_health.health > ship_major_outage_health_amount:
 		if zone.name.containsn("right"):
 			ship_right_part.visible = false
