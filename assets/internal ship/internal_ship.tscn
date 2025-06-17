@@ -1082,7 +1082,6 @@ notification_icon_scene = ExtResource("22_qy0je")
 
 [node name="IssuesRandomizer" type="Node2D" parent="Issues"]
 script = ExtResource("26_ir7vn")
-weight_increase_amount = 0.15
 
 [node name="Right" type="Area2D" parent="Issues"]
 position = Vector2(74, 54)
