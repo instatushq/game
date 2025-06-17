@@ -23,8 +23,10 @@ const MAX_TIME_BETWEEN_APPEARANCES = 3.0
 const MIN_TIME_OUTSIDE = 0.5
 const MAX_TIME_OUTSIDE = 1.5
 
+@onready var parent: WhackAMole = get_parent()
+
 func _ready() -> void:
-	var parent: WhackAMole = get_parent()
+	z_index = 0
 	parent.on_game_started.connect(func(): is_game_started = true)
 	self_modulate = Color.WHITE
 	pressed.connect(_on_pressed)
@@ -53,6 +55,7 @@ func _on_pressed() -> void:
 		
 	match current_state:
 		MoleState.OUT:
+			mouse_filter = Control.MOUSE_FILTER_IGNORE
 			mole_hit.emit(self)
 			animated_sprite.play("hit")
 			animated_sprite.self_modulate = Color.from_rgba8(255, 80, 80)
@@ -81,6 +84,7 @@ func _on_animation_finished() -> void:
 		"up":
 			_set_state(MoleState.OUT)
 			timer.start(randf_range(MIN_TIME_OUTSIDE, MAX_TIME_OUTSIDE))
+			mouse_filter = Control.MOUSE_FILTER_STOP
 		"out":
 			if current_state == MoleState.OUT:
 				animated_sprite.self_modulate = Color(0, 0, 0, 1)
@@ -94,6 +98,7 @@ func _set_state(new_state: MoleState) -> void:
 			animated_sprite.play("down")
 			await get_tree().create_timer(0.15).timeout
 			if is_game_started: going_down_sound.play()
+			mouse_filter = Control.MOUSE_FILTER_IGNORE
 		MoleState.UP:
 			animated_sprite.play("up")
 			if is_game_started: coming_up_sound.play()
@@ -103,3 +108,7 @@ func _set_state(new_state: MoleState) -> void:
 func _start_random_timer() -> void:
 	if is_active:
 		timer.start(randf_range(MIN_TIME_BETWEEN_APPEARANCES, MAX_TIME_BETWEEN_APPEARANCES))
+
+func get_adjacent_node_name() -> String:
+	var index: int = int(name)
+	return str(index + 4) if index < 4 else str(index - 3)

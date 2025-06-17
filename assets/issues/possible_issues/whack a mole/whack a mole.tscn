@@ -376,7 +376,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="mole1" parent="GameNode/Game" instance=ExtResource("9_klspp")]
+[node name="1" parent="GameNode/Game" instance=ExtResource("9_klspp")]
 layout_mode = 1
 offset_left = -350.0
 offset_top = 182.5
@@ -384,13 +384,14 @@ offset_right = -138.0
 offset_bottom = 387.5
 grow_vertical = 1
 
-[node name="mole2" parent="GameNode/Game" instance=ExtResource("9_klspp")]
+[node name="2" parent="GameNode/Game" instance=ExtResource("9_klspp")]
+y_sort_enabled = true
 layout_mode = 1
 offset_left = -87.5
 offset_right = 124.5
 grow_vertical = 1
 
-[node name="mole3" parent="GameNode/Game" instance=ExtResource("9_klspp")]
+[node name="3" parent="GameNode/Game" instance=ExtResource("9_klspp")]
 layout_mode = 1
 offset_left = 172.5
 offset_top = 182.5
@@ -398,7 +399,7 @@ offset_right = 384.5
 offset_bottom = 387.5
 grow_vertical = 1
 
-[node name="mole4" parent="GameNode/Game" instance=ExtResource("9_klspp")]
+[node name="4" parent="GameNode/Game" instance=ExtResource("9_klspp")]
 layout_mode = 1
 offset_left = -385.0
 offset_top = 352.5
@@ -406,7 +407,7 @@ offset_right = -173.0
 offset_bottom = 557.5
 grow_vertical = 1
 
-[node name="mole5" parent="GameNode/Game" instance=ExtResource("9_klspp")]
+[node name="5" parent="GameNode/Game" instance=ExtResource("9_klspp")]
 layout_mode = 1
 offset_left = -91.25
 offset_top = 352.5
@@ -414,7 +415,7 @@ offset_right = 120.75
 offset_bottom = 557.5
 grow_vertical = 1
 
-[node name="mole6" parent="GameNode/Game" instance=ExtResource("9_klspp")]
+[node name="6" parent="GameNode/Game" instance=ExtResource("9_klspp")]
 layout_mode = 1
 offset_left = 205.0
 offset_top = 352.5

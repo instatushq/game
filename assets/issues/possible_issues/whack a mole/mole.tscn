@@ -239,6 +239,7 @@ theme_type_variation = &"FlatButton"
 script = ExtResource("1_qitvb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+show_behind_parent = true
 position = Vector2(-1354, -891.52)
 scale = Vector2(15.8598, 15.8598)
 sprite_frames = SubResource("SpriteFrames_p6ds3")
