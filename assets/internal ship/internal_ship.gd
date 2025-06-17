@@ -23,6 +23,11 @@ var ship_broke_during_revival: bool = false
 var queue_ship_status_change: bool = false
 var queued_ship_status_change_toggled: bool = false
 
+@onready var alarm_sound_volume: float = alarm_sound.volume_db
+@onready var engine_run_volume: float = engine_run.volume_db
+@onready var engine_running_volume: float = engine_running.volume_db
+@onready var engine_fail_volume: float = engine_fail.volume_db
+
 signal on_ship_breakdown
 signal on_ship_broken
 signal on_ship_revived
@@ -33,7 +38,10 @@ func _ready() -> void:
 	_do_engine_sound_transition(true)
 	issues.on_issue_resolved.connect(_on_issue_resolved)
 	if game_manager != null:
-		game_manager.on_solving_puzzle_changed.connect(func(solving: bool) -> void: visible = not solving)
+		game_manager.on_solving_puzzle_changed.connect(func(solving: bool) -> void:
+			visible = not solving
+			_toggle_ship_parts_sound(not solving)
+		)
 	ship_right_part.visible = false
 	ship_left_part.visible = false
 	ship_sprite.frame_changed.connect(_on_ship_frame_change)
@@ -169,3 +177,15 @@ func _do_engine_sound_transition(engine_state: bool) -> void:
 		engine_running.stop()
 		engine_fail.play(0.1)
 		alarm_sound.play()
+
+func _toggle_ship_parts_sound(toggled: bool) -> void:
+	if toggled:
+		engine_run.volume_db = engine_run_volume
+		alarm_sound.volume_db = alarm_sound_volume
+		engine_running.volume_db = engine_running_volume
+		engine_fail.volume_db = engine_fail_volume
+	else:
+		engine_run.volume_db = 0
+		alarm_sound.volume_db = 0
+		engine_running.volume_db = 0
+		engine_fail.volume_db = 0
