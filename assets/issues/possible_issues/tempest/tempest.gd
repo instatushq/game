@@ -6,3 +6,4 @@ extends Node2D
 func _ready() -> void:
 	parent.issue_opened.connect(func() -> void: game.start_game())
 	game.on_issue_resolved.connect(func() -> void: parent.issue_resolved.emit())
+	game.start_game()

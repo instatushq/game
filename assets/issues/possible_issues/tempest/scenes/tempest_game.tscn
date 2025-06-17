@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://boali0pdrgia"]
+[gd_scene load_steps=22 format=3 uid="uid://boali0pdrgia"]
 
 [ext_resource type="Script" uid="uid://dpo4t4nrncpfb" path="res://assets/issues/possible_issues/tempest/scripts/tempest_game.gd" id="1_apfcl"]
 [ext_resource type="PackedScene" uid="uid://brw5e1ur3qm8b" path="res://assets/issues/possible_issues/tempest/scenes/enemy.tscn" id="2_ngumx"]
@@ -20,12 +20,6 @@
 [ext_resource type="AudioStream" uid="uid://bgovvm70u5uj7" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_lose.wav" id="14_nhumg"]
 [ext_resource type="AudioStream" uid="uid://cygvxr4127rkj" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_win.wav" id="15_5xcva"]
 
-[sub_resource type="Environment" id="Environment_5xcva"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 0.75
-glow_hdr_threshold = 0.5
-
 [sub_resource type="Gradient" id="Gradient_5xcva"]
 colors = PackedColorArray(1.06, 3.705, 1.08, 1, 1, 1, 1, 1)
 
@@ -44,12 +38,10 @@ projectile_scene = ExtResource("3_whwra")
 line_color = Color(0.596078, 0.596078, 0.596078, 0.301961)
 line_highlight_color = Color(1.195, 3.215, 4.825, 1)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5xcva")
-
-[node name="Background" type="Node2D" parent="."]
-position = Vector2(392, 822)
-scale = Vector2(1.11143, 1.11143)
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
 
 [node name="Clip" type="Control" parent="Background"]
 clip_contents = true
@@ -131,7 +123,6 @@ color_ramp = SubResource("Gradient_5xcva")
 [node name="TimerArenaGenerate" type="Timer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 

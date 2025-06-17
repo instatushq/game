@@ -3,6 +3,8 @@ class_name TempestGame extends Node2D
 signal on_issue_resolved
 signal enemy_destroyed(score_weight: int)
 
+@export var game_camera: Camera2D
+
 @export_category("Params - Game Logic")
 @export var game_duration: float = 120.0 ## Duration of entire minigame in seconds.
 @export var arena_count: int = 5 ## Number of arenas to generate during the game.
@@ -22,6 +24,7 @@ signal enemy_destroyed(score_weight: int)
 @export var contour_smoothness: int = 1 ## Number of smoothing passes for the base contour (0 for jagged, 1+ for smoother).
 @export var top_offset_propagation_factor: float = 0.5 ## How much the base's Y-offset propagates to the top of the lines (0.0=flat top, 1.0=same wiggle as base).
 @export var top_scale_factor : float = 0.15 ## Controls convergence of top points towards vanishing point (0.0: vanishing point, 1.0: straight lines).
+@export var lanes_y_offset: float = 400.0 ## Offset of the lanes from the bottom of the viewport.
 
 @export_category("Params - Visual")
 @export var line_color: Color = Color(1, 1, 1, 0.3) ## Default lane line color (white with alpha 0.3).
@@ -76,10 +79,15 @@ func _input(event):
 		$Sfx/Shoot.play()
 
 func _ready() -> void:
-	# Calculate key drawing points that define the overall perspective.
-	vp_size = get_viewport_rect().size
-	vanishing_point_x = vp_size.x / 2
-	base_y_center = vp_size.y - lane_base_height # Y-coordinate at the *average* bottom of the lanes.
+	# Calculate key drawing points that define the overall perspective relative to camera.
+	if game_camera:
+		vp_size = game_camera.get_viewport_rect().size
+		vanishing_point_x = game_camera.global_position.x
+	else:
+		vp_size = get_viewport_rect().size
+		vanishing_point_x = vp_size.x / 2
+	
+	base_y_center = game_camera.global_position.y + (vp_size.y / 2) - lane_base_height - lanes_y_offset # Y-coordinate at the *average* bottom of the lanes.
 	top_y_center = base_y_center - lane_depth # Y-coordinate at the *average* top (towards vanishing point).
 	
 	total_base_width = lane_count * lane_width
@@ -95,6 +103,21 @@ func _ready() -> void:
 	
 	# For testing.
 	# start_game()
+
+func update_camera_relative_coordinates():
+	# Update coordinates when camera moves
+	if game_camera:
+		vp_size = game_camera.get_viewport_rect().size
+		vanishing_point_x = game_camera.global_position.x
+	else:
+		vp_size = get_viewport_rect().size
+		vanishing_point_x = vp_size.x / 2
+	
+	base_y_center = game_camera.global_position.y + (vp_size.y / 2) - lane_base_height - lanes_y_offset
+	top_y_center = base_y_center - lane_depth
+	
+	total_base_width = lane_count * lane_width
+	base_leftmost_x = vanishing_point_x - (total_base_width / 2)
 
 func elerp(a, b, decay : float, dt : float):
 	# Frame-independent lerp smoothing using exponential decay. Useful decay range 1 to 25 from slow to fast.
@@ -180,6 +203,7 @@ func generate_base_contour_offsets():
 
 func generate_lane_lines():
 	# Creates and configures Line2D nodes based on the generated base contour.
+	update_camera_relative_coordinates()
 	generate_base_contour_offsets()
 	
 	# Clear any existing lines before regenerating.
@@ -378,3 +402,10 @@ func _on_timer_game_timeout() -> void:
 func _on_timer_arena_generate_timeout() -> void:
 	$Sfx/NewArena.play()
 	generate_new_arena()
+
+func on_camera_moved():
+	# Call this when the camera moves to update all coordinates and regenerate lane lines
+	if _is_game_playing:
+		generate_lane_lines()
+		update_player_position_and_rotation(false)
+		refresh_line_colors()

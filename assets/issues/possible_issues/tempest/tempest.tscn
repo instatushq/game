@@ -6,17 +6,20 @@
 
 [node name="Tempest" type="Node2D"]
 script = ExtResource("1_nq3rd")
+default_visibility = true
 spawn_position = Vector2(0, 0)
 
 [node name="TempestWrap" type="Node2D" parent="."]
 position = Vector2(973, 1110)
 script = ExtResource("2_qd1fy")
 
-[node name="TempestGame" parent="TempestWrap" instance=ExtResource("2_ybee6")]
+[node name="TempestGame" parent="TempestWrap" node_paths=PackedStringArray("game_camera") instance=ExtResource("2_ybee6")]
 position = Vector2(-973, -1110)
-game_duration = 10.0
+game_camera = NodePath("../Camera2D")
+game_duration = 20.0
 arena_count = 2
+lanes_y_offset = 425.0
 
 [node name="Camera2D" type="Camera2D" parent="TempestWrap"]
-position = Vector2(2, 1)
+position = Vector2(-53, 1)
 zoom = Vector2(2.5, 2.5)
