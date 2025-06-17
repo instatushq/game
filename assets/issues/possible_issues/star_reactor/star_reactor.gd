@@ -1,6 +1,7 @@
 extends ColorRect
 
 @onready var input_grid: GridContainer = $AnimatedTextureRect/InputGrid
+@onready var all_buttons = input_grid.get_children()
 @onready var background: AnimatedTextureRect = $AnimatedTextureRect
 @onready var screens_vhs_effect: AnimatedTextureRect = $AnimatedTextureRect/ScreenVHS
 @onready var screens_glow: TextureRect = $AnimatedTextureRect/TVGlow
@@ -43,7 +44,7 @@ func _generate_new_sequence() -> void:
 func _show_sequence() -> void:
 	if isShowingSequence:
 		return
-		
+	_toggle_cursor_icon_for_buttons(false)
 	isShowingSequence = true
 	canAcceptInput = false
 	
@@ -57,6 +58,7 @@ func _show_sequence() -> void:
 	
 	isShowingSequence = false
 	canAcceptInput = true
+	_toggle_cursor_icon_for_buttons(true)
 
 func _on_button_pressed(button: SequenceTextureButton) -> void:
 	if not canAcceptInput or isShowingSequence:
@@ -106,7 +108,7 @@ func _set_buttons_sequence_texture(state: SequenceTextureButton.SequenceState) -
 
 func _show_mistake() -> void:
 	canAcceptInput = false
-
+	_toggle_cursor_icon_for_buttons(false)
 	_set_buttons_sequence_texture(SequenceTextureButton.SequenceState.INCORRECT)
 	await get_tree().create_timer(0.5).timeout
 	_set_buttons_sequence_texture(SequenceTextureButton.SequenceState.NEUTRAL)
@@ -142,6 +144,7 @@ func _on_background_animation_ending(animation_name: String) -> void:
 			button.connect("pressed", _on_button_pressed.bind(button))
 
 func _ready() -> void:
+	_toggle_cursor_icon_for_buttons(false)
 	input_grid.visible = false
 	screens_vhs_effect.visible = false
 	screens_glow.visible = false
@@ -159,3 +162,11 @@ func _ready() -> void:
 		button_tick.play(0.0)
 	)
 	_update_progress_dots()
+
+func _toggle_cursor_icon_for_buttons(pointer: bool) -> void:
+	if not pointer:
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	
+	for button in all_buttons:
+		var typed_button: TextureButton = button
+		typed_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND if pointer else Control.CURSOR_ARROW
