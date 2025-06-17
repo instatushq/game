@@ -1,16 +1,21 @@
-extends Control
+class_name WhackAMole extends Control
 
 var moles: Array[Node] = []
 var score: int = 0
 var score_goal: int = 14000
 var score_per_mole: int = 1
 var is_on_cooldown_for_failing: bool = false
+var is_playing: bool = false
 @onready var cooldown_timer: Timer = $cooldown_timer
 @onready var XP: Label = $XPCounter/XP
 @onready var pc_face: AnimatedSprite2D = $AnimatedSprite2D/Face
 @onready var pc_face_wink_timer: Timer = $"AnimatedSprite2D/Face/wink timer"
 
+signal on_game_started
+
 func _ready() -> void:
+	var parent: Issue = get_parent().get_parent()
+	parent.issue_opened.connect(func(): on_game_started.emit())
 	moles = get_children().filter(func(child): return child is Mole)
 	for mole in moles:
 		mole.mole_hit.connect(_on_mole_hit)

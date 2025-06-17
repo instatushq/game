@@ -14,7 +14,9 @@ var is_player_on_cooldown: bool = false
 
 enum MoleState {DOWN, UP, OUT}
 var current_state: MoleState = MoleState.DOWN
-var is_active: bool = true  # New variable to track if mole is active
+var is_active: bool = true
+
+var is_game_started: bool = false
 
 const MIN_TIME_BETWEEN_APPEARANCES = 1.0
 const MAX_TIME_BETWEEN_APPEARANCES = 3.0
@@ -22,6 +24,8 @@ const MIN_TIME_OUTSIDE = 0.5
 const MAX_TIME_OUTSIDE = 1.5
 
 func _ready() -> void:
+	var parent: WhackAMole = get_parent()
+	parent.on_game_started.connect(func(): is_game_started = true)
 	self_modulate = Color.WHITE
 	pressed.connect(_on_pressed)
 	timer.timeout.connect(_on_timer_timeout)
@@ -54,7 +58,7 @@ func _on_pressed() -> void:
 			animated_sprite.self_modulate = Color.from_rgba8(255, 80, 80)
 			current_state = MoleState.DOWN
 			_start_random_timer()
-			hit_sound.play()
+			if is_game_started: hit_sound.play()
 		_:
 			mole_missed.emit(self)
 
@@ -89,10 +93,10 @@ func _set_state(new_state: MoleState) -> void:
 		MoleState.DOWN:
 			animated_sprite.play("down")
 			await get_tree().create_timer(0.15).timeout
-			going_down_sound.play()
+			if is_game_started: going_down_sound.play()
 		MoleState.UP:
 			animated_sprite.play("up")
-			coming_up_sound.play()
+			if is_game_started: coming_up_sound.play()
 		MoleState.OUT:
 			animated_sprite.play("out")
 
