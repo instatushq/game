@@ -669,7 +669,7 @@ position = Vector2(52, -5)
 physics_material_override = SubResource("PhysicsMaterial_q7ux3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForbiddenArea3"]
-position = Vector2(0, -1)
+position = Vector2(-2, 20)
 shape = SubResource("RectangleShape2D_fefhc")
 
 [node name="Astronaut" type="RigidBody2D" parent="."]
@@ -715,6 +715,7 @@ wait_time = 4.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_4il1l")
+volume_db = 3.0
 autoplay = true
 bus = &"Ambience"
 
