@@ -83,7 +83,6 @@ func _on_press_main_menu() -> void:
 	music.stop()
 	music.volume_db = music_volume
 
-
 func _on_save_score_pressed() -> void:
 	social_media_container.visible = true
 	toggle_form(false)
@@ -106,7 +105,6 @@ func save_score(score: int, player_name: String, social_media_url: String) -> vo
 		payload
 	)
 
-	
 func _on_submit_score_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	if _response_code != 200:
 		error_label.text = body.get_string_from_utf8()
@@ -126,7 +124,6 @@ func _on_submit_score_request_completed(_result: int, _response_code: int, _head
 	toggle_form(false)
 	on_added_new_score.emit()
 
-
 func toggle_form(enabled: bool) -> void:
 	is_form_enabled = enabled
 	save_button.disabled = not enabled
@@ -137,7 +134,6 @@ func toggle_form(enabled: bool) -> void:
 	name_edit.caret_blink = enabled
 	if not enabled:
 		name_edit.release_focus()
-
 
 func _on_name_edit_text_changed(new_text: String) -> void:
 	var filtered_text = ""
@@ -164,7 +160,6 @@ func _on_click_social_media_skip() -> void:
 	save_button_form_2.disabled = true
 	social_media_url_input.editable = false
 	save_score(current_player_score, name_edit.text, "")
-
 
 func _on_close_form_pressed() -> void:
 	social_media_container.visible = false
