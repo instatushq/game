@@ -108,11 +108,9 @@ func _on_game_manager_solving_puzzle_changed(is_solving_puzzle: bool) -> void:
 		_toggle_major_outage(queued_ship_status_change_toggled)
 		queue_ship_status_change = false
 
-func _on_issues_on_clear_issues(_zone: IssueArea2D, issues_left: bool) -> void:
-	if not issues_left:
-		if ship_health.health < ship_major_outage_health_amount and not has_played_broken_animation:
-			_toggle_major_outage(false)
-	else:
+func _on_issues_on_clear_issues(_zone: IssueArea2D, _issues_left: bool) -> void:
+	var is_ship_healthy = ship_health.health > ship_major_outage_health_amount and not has_played_broken_animation
+	if is_ship_healthy:
 		ship_right_part.visible = issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.RIGHT)
 		ship_left_part.visible = issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.LEFT)
 
