@@ -64,7 +64,7 @@ func _on_issue_resolved(zone: IssueArea2D, issue_instance: Issue) -> void:
 		ship_right_part.visible = false
 		ship_left_part.visible = false
 
-func _on_issue_failed(zone: IssueArea2D) -> void:
+func _on_issue_failed(zone: IssueArea2D, _issue_instance: Issue) -> void:
 	ship_health.decrease_health(3)
 	if ship_health.health > ship_major_outage_health_amount:
 		if zone.name.containsn("right"):
@@ -113,10 +113,8 @@ func _on_issues_on_clear_issues(_zone: IssueArea2D, issues_left: bool) -> void:
 		if ship_health.health < ship_major_outage_health_amount and not has_played_broken_animation:
 			_toggle_major_outage(false)
 	else:
-		if issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.RIGHT):
-			ship_right_part.visible = true
-		if issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.LEFT):
-			ship_left_part.visible = true
+		ship_right_part.visible = issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.RIGHT)
+		ship_left_part.visible = issues.does_zone_have_issues(Issues.ISSUE_DIRECTION.LEFT)
 
 func _on_animator_animation_finish(anim_name: StringName) -> void:
 	if anim_name == "breakdown":

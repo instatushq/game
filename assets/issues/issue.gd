@@ -11,11 +11,13 @@ class_name Issue
 @onready var canvas_layer: CanvasLayer = null
 @onready var scene_root = get_tree().root.get_child(get_tree().root.get_children().size() - 1)
 var main_camera: Camera2D = null
+var is_open: bool = false
 
 signal issue_resolved
 signal issue_opened
 signal issue_closed
 signal issue_failed
+signal issue_aborted
 
 func _find_camera2d(node: Node) -> Camera2D:
 	if node is Camera2D:
@@ -38,6 +40,7 @@ func _find_canvas_layer(node: Node) -> CanvasLayer:
 func _ready() -> void:
 	issue_resolved.connect(close_issue)
 	issue_failed.connect(close_issue)
+	issue_aborted.connect(abort_issue)
 	custom_camera = _find_camera2d(self)
 	canvas_layer = _find_canvas_layer(self)
 	var game_manager: GameManager = scene_root.get_node("%GameManager")
@@ -51,6 +54,7 @@ func _ready() -> void:
 	visible = default_visibility
 
 func open_issue() -> void:
+	is_open = true
 	visible = true
 	if custom_camera:
 		custom_camera.make_current()
@@ -60,9 +64,19 @@ func open_issue() -> void:
 	issue_opened.emit()
 
 func close_issue() -> void:
+	is_open = false
 	if custom_camera and main_camera:
 		main_camera.make_current()
 	if canvas_layer:
 		canvas_layer.visible = false
 
 	issue_closed.emit()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("abort"):
+		abort_issue()
+
+func abort_issue() -> void:
+	if is_open:
+		close_issue()
+		issue_aborted.emit()

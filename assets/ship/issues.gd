@@ -23,6 +23,7 @@ signal on_clear_issues(zone: IssueArea2D,issues_left: bool)
 signal on_issue_generated(zone: IssueArea2D, issues_count: int)
 signal on_issue_resolved(zone: IssueArea2D, issue_instance: Issue)
 signal on_issue_failed(zone: IssueArea2D, issue_instance: Issue)
+signal on_issue_aborted(zone: IssueArea2D, issue_instance: Issue)
 
 func _ready() -> void:
 	possible_zones = find_children("*", "IssueArea2D")
@@ -53,8 +54,8 @@ func _input(_event: InputEvent) -> void:
 			current_issue.open_issue()
 			is_issue_open = true
 			game_manager.is_solving_puzzle = true
-	# elif _event is InputEventKey and _event.pressed and _event.keycode == KEY_Q:
-	# 	_generate_random_issue(_get_random_issueless_zone())
+	elif _event is InputEventKey and _event.pressed and _event.keycode == KEY_Q:
+		_generate_random_issue(_get_random_issueless_zone())
 
 func _get_random_issueless_zone() -> IssueArea2D:
 	var issueless_zones: Array = []
@@ -74,6 +75,7 @@ func _generate_random_issue(zone: IssueArea2D) -> void:
 	root_scene_node.add_child(issue_instance)
 	issue_instance.issue_resolved.connect(Callable(self, "_on_issue_resolved").bind(zone, issue_instance))
 	issue_instance.issue_failed.connect(Callable(self, "_on_issue_failed").bind(zone, issue_instance))
+	issue_instance.issue_aborted.connect(Callable(self, "_on_issue_aborted").bind(zone, issue_instance))
 	current_issues[zone.get_instance_id()] = issue_instance
 	generate_notification_for_zone(zone)
 	var zone_error_sound: AudioStreamPlayer2D = zone.get_node("ErrorNoise")
@@ -102,6 +104,16 @@ func _on_issue_resolved(zone: IssueArea2D, issue_instance: Issue) -> void:
 func _on_issue_failed(zone: IssueArea2D, issue_instance: Issue) -> void:
 	var issue_id = zone.get_instance_id()
 	on_issue_failed.emit(zone, issue_instance)
+	current_issues[issue_id].queue_free()
+	current_issues.erase(issue_id)
+	is_issue_open = false
+	game_manager.is_solving_puzzle = false
+	remove_notification_for_zone(zone)
+	on_clear_issues.emit(zone, has_any_issues())
+
+func _on_issue_aborted(zone: IssueArea2D, issue_instance: Issue) -> void:
+	var issue_id = zone.get_instance_id()
+	on_issue_aborted.emit(zone, issue_instance)
 	current_issues[issue_id].queue_free()
 	current_issues.erase(issue_id)
 	is_issue_open = false
