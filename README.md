@@ -4,7 +4,7 @@ Strap in and help our slightly-overwhelmed astronaut fix the bizarre hazards pop
 
 ![instaus inspace logo](https://github.com/user-attachments/assets/dcb2bd7c-dfb0-4935-bd76-f312f9a21184)
 
-### 🛠️ Get started
+### 🚀 Get started
 
 You'll need [Godot](https://godotengine.org/download/) installed and accessible from your terminal using the godot command.
 
@@ -14,7 +14,7 @@ If you're on macOS and godot isn't recognized, you can link it with:
 sudo ln -s /Applications/Godot.app/Contents/MacOS/Godot /usr/local/bin/godot
 ```
 
-### 🧱 Build
+### 🛰️ Build
 
 To generate a new build, run:
 
@@ -24,7 +24,7 @@ To generate a new build, run:
 
 This compiles the game and prepares it for deployment.
 
-### 🤝 Contribute
+### 👽 Contribute
 
 Help us make the game better! 
 
