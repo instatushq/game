@@ -105,6 +105,7 @@ func save_score(score: int, player_name: String, social_media_url: String) -> vo
 		HTTPClient.METHOD_POST,
 		payload
 	)
+
 	
 func _on_submit_score_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	if _response_code != 200:
@@ -163,3 +164,9 @@ func _on_click_social_media_skip() -> void:
 	save_button_form_2.disabled = true
 	social_media_url_input.editable = false
 	save_score(current_player_score, name_edit.text, "")
+
+
+func _on_close_form_pressed() -> void:
+	social_media_container.visible = false
+	toggle_form(true)
+	social_media_url_input.text = ""
