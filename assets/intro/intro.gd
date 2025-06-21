@@ -21,32 +21,17 @@ func skip_intro() -> void:
 	get_tree().change_scene_to_file("res://assets/main menu/main menu.tscn")
 
 func start_intro_sequence() -> void:
-	# Start with black screen
 	for control in controls:
 		control.modulate.a = 0.0
 	
-	# Wait 1 second, then show first unit
 	await get_tree().create_timer(1.0).timeout
 	show_current_unit()
 
 func show_current_unit() -> void:
-	if current_control_index >= controls.size():
-		get_tree().change_scene_to_file("res://assets/main menu/main menu.tscn")
-		return
-	
-	# Show current unit instantly
 	controls[current_control_index].modulate.a = 1.0
-	
-	# Wait 2 seconds, then hide it
 	await get_tree().create_timer(2.0).timeout
-	
-	# Hide current unit instantly
 	controls[current_control_index].modulate.a = 0.0
-	
-	# Wait 1 second, then continue to next unit
 	await get_tree().create_timer(1.0).timeout
-	
-	current_control_index += 1
 	fade_in_current_control()
 
 func fade_in_current_control() -> void:
