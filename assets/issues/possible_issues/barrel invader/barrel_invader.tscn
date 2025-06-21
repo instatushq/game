@@ -340,7 +340,6 @@ debris_objects = Array[PackedScene]([ExtResource("24_tyx3f")])
 fuel_rocks = Array[PackedScene]([ExtResource("25_2tnj0"), ExtResource("26_pm5jl"), ExtResource("27_ny23e")])
 
 [node name="Ship" parent="Game" node_paths=PackedStringArray("game_camera") instance=ExtResource("28_tyx3f")]
-unique_name_in_owner = true
 position = Vector2(-8, 535)
 game_camera = NodePath("../Camera2D")
 

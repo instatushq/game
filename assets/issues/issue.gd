@@ -52,6 +52,8 @@ func _ready() -> void:
 	
 	global_position = spawn_position
 	visible = default_visibility
+	
+	open_issue()
 
 func open_issue() -> void:
 	is_open = true

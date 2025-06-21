@@ -357,22 +357,23 @@ func enemy_reached_base(lane_idx: int):
 		start_game()
 		return
 	
+	print("updated")
 	# Briefly show screen shake.
-	screen_shake.show()
-	await get_tree().create_timer(sceen_shake_duration).timeout
-	screen_shake.hide()
+	# screen_shake.show()
+	# await get_tree().create_timer(sceen_shake_duration).timeout
+	# screen_shake.hide()
 	
 	# Briefly show a redline indicating where enemy hit us.
-	var left_base_point = lane_lines[lane_idx].points[0]
-	var right_base_point = lane_lines[lane_idx + 1].points[0]
-	var line_hit = Line2D.new()
-	line_hit.width = line_thickness
-	line_hit.default_color = Color(0.8, 0.25, 0.25) * 5.0
-	line_hit.points = PackedVector2Array([left_base_point, right_base_point])
-	container_lane_line.call_deferred("add_child", line_hit)
-	await get_tree().create_timer(0.5).timeout
-	if is_instance_valid(line_hit):
-		line_hit.queue_free()
+	# var left_base_point = lane_lines[lane_idx].points[0]
+	# var right_base_point = lane_lines[lane_idx + 1].points[0]
+	# var line_hit = Line2D.new()
+	# line_hit.width = line_thickness
+	# line_hit.default_color = Color(0.8, 0.25, 0.25) * 5.0
+	# line_hit.points = PackedVector2Array([left_base_point, right_base_point])
+	# container_lane_line.call_deferred("add_child", line_hit)
+	# await get_tree().create_timer(0.5).timeout
+	# if is_instance_valid(line_hit):
+	# 	line_hit.queue_free()
 
 func enemy_killed(progress: float, special: bool) -> void:
 	var score : float = enemy_score_min + enemy_score_max * progress
