@@ -2,7 +2,6 @@ extends Node2D
 
 var game_manager: BarrelInvader = null
 @export var ship_camera: Camera2D = null
-@onready var walls: Array[Node] = get_node("%Walls/RigidBody2D/Left Right").get_children()
 @export var debris_objects: Array[PackedScene] = []
 @export var fuel_rocks: Array[PackedScene] = []
 const MAX_DEBRIS_BATCHES_AT_A_TIME: int = 3

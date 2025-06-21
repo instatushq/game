@@ -555,12 +555,11 @@ text = "SKIP"
 [node name="CloseForm" type="Button" parent="Camera2D/Leaderboard/SocialMediaContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.911
+anchor_left = 0.998
 anchor_right = 0.998
-anchor_bottom = 0.198
-offset_left = -0.175018
+offset_left = -37.15
 offset_right = 0.849976
-offset_bottom = -0.076004
+offset_bottom = 32.0
 theme = SubResource("Theme_1hdpe")
 theme_override_font_sizes/font_size = 20
 text = "X"

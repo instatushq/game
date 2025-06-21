@@ -1,7 +1,7 @@
 class_name BarrelInvader extends Node2D
 
 var parallax_background_offset: Vector2 = Vector2(0, 0)
-@onready var parallax_background:  ParallaxBackgroundController = %ParallaxBackground
+@onready var parallax_background:  ParallaxBackgroundController = $ParallaxBackground
 @export var vector_offset: Vector2 = Vector2(0, 0)
 var init_offset: Vector2 = Vector2(0, 0)
 var is_playing: bool = false

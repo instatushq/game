@@ -100,7 +100,6 @@ spawn_position = Vector2(0, 0)
 script = ExtResource("2_pm5jl")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Game"]
-unique_name_in_owner = true
 offset = Vector2(154.19, -700)
 transform = Transform2D(1, 0, 0, 1, 154.19, -700)
 follow_viewport_scale = 0.3
@@ -327,12 +326,11 @@ position = Vector2(-302.19, 646)
 position = Vector2(124.81, 435)
 scale = Vector2(2.3, 2.3)
 
-[node name="EnvironmentManager" parent="Game" node_paths=PackedStringArray("camera") instance=ExtResource("21_fd7t0")]
-unique_name_in_owner = true
+[node name="EnvironmentManager" parent="Game" node_paths=PackedStringArray("background_controller", "camera") instance=ExtResource("21_fd7t0")]
+background_controller = NodePath("../ParallaxBackground")
 camera = NodePath("../Camera2D")
 
 [node name="Walls" parent="Game" instance=ExtResource("22_4kruc")]
-unique_name_in_owner = true
 script = SubResource("GDScript_tyx3f")
 
 [node name="Debris Spawner" parent="Game" node_paths=PackedStringArray("ship_camera") instance=ExtResource("23_lrr4d")]

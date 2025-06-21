@@ -1,6 +1,6 @@
 class_name EnvironmentManager extends Node2D
 
-@onready var background_controller: ParallaxBackgroundController = %ParallaxBackground
+@export var background_controller: ParallaxBackgroundController
 var list_of_celestials: Array = []
 @export var max_background_segments: int = 3
 @export var camera: Camera2D

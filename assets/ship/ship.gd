@@ -35,8 +35,6 @@ var y_position_synced: bool = false
 
 func _ready():
 	rb.on_impact.connect(_on_impact_with_object)
-	visible = false
-	game_manager.game_started.connect(func(): visible = true)
 	
 func _process(delta: float) -> void:
 	if not game_manager.is_playing: return

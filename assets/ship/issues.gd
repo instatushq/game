@@ -54,8 +54,8 @@ func _input(_event: InputEvent) -> void:
 			current_issue.open_issue()
 			is_issue_open = true
 			game_manager.is_solving_puzzle = true
-	# elif _event is InputEventKey and _event.pressed and _event.keycode == KEY_Q:
-	# 	_generate_random_issue(_get_random_issueless_zone())
+	elif _event is InputEventKey and _event.pressed and _event.keycode == KEY_Q:
+		_generate_random_issue(_get_random_issueless_zone())
 
 func _get_random_issueless_zone() -> IssueArea2D:
 	var issueless_zones: Array = []
