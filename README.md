@@ -2,7 +2,8 @@
 
 Strap in and help our slightly-overwhelmed astronaut fix the bizarre hazards popping up across the spaceship.
 
-![instaus inspace logo](https://github.com/user-attachments/assets/dcb2bd7c-dfb0-4935-bd76-f312f9a21184)
+![instatus-inspace](https://github.com/user-attachments/assets/0caa2a5d-218c-4ebf-a3b0-c50a3f1e12ef)
+
 
 ### 🚀 Get started
 
@@ -29,3 +30,5 @@ This compiles the game and prepares it for deployment.
 Help us make the game better! 
 
 Feel free to fix bugs, or even develop a new mini game. You can fork, branch, and send a pull request.
+
+![instaus inspace logo](https://github.com/user-attachments/assets/dcb2bd7c-dfb0-4935-bd76-f312f9a21184)
