@@ -48,6 +48,7 @@ func _ready() -> void:
 	query_rank_request.request(base_url+"/leaderboard/rank/" + str(current_player_score))
 	
 	name_edit.grab_focus()
+	save_button.disabled = true
 
 func set_entries_data(entries: Array) -> void:
 	entries_data = entries
@@ -147,6 +148,8 @@ func _on_name_edit_text_changed(new_text: String) -> void:
 	if filtered_text != new_text:
 		name_edit.text = filtered_text
 		name_edit.caret_column = filtered_text.length()
+	
+	save_button.disabled = filtered_text.is_empty()
 
 func _on_click_social_media_save() -> void:
 	skip_button.disabled = true
