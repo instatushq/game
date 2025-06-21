@@ -26,5 +26,6 @@ This compiles the game and prepares it for deployment.
 
 ### 🤝 Contribute
 
-Contributions are welcome! Whether it's a bug fix, or a new mini-game, feel free to fork, branch, and send a pull request.
+Help us make the game better! 
 
+Feel free to fix bugs, or even develop a new mini game. You can fork, branch, and send a pull request.
