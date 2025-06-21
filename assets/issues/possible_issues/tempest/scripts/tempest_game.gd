@@ -122,6 +122,7 @@ func update_camera_relative_coordinates():
 func elerp(a, b, decay : float, dt : float):
 	# Frame-independent lerp smoothing using exponential decay. Useful decay range 1 to 25 from slow to fast.
 	return lerp(b, a, exp(-decay * dt))
+	
 func _physics_process(delta: float) -> void:
 	player.position = elerp(player.position, player_target_position, player_elerp_decay, delta)
 

@@ -14,7 +14,7 @@ func init(_start_point: Vector2, _end_point: Vector2, _lane_idx: int):
 	lane_idx = _lane_idx
 	position = start_point
 
-func _process(delta):
+func _physics_process(delta):
 	var total_distance = start_point.distance_to(end_point)
 	progress += (speed / total_distance) * delta
 	

@@ -39,7 +39,7 @@ func _ready() -> void:
 	# Init particles.
 	particles_track.amount = randi_range(8, 24)
 
-func _process(delta) -> void:
+func _physics_process(delta) -> void:
 	# Calculate progress along the lane based on time and total distance.
 	var total_distance = start_point.distance_to(end_point)
 	progress += (speed / total_distance) * delta
