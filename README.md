@@ -4,17 +4,27 @@ Strap in and help our slightly-overwhelmed astronaut fix the bizarre hazards pop
 
 ![instaus inspace logo](https://github.com/user-attachments/assets/dcb2bd7c-dfb0-4935-bd76-f312f9a21184)
 
+### 🛠️ Get started
 
-## Contribute
+You'll need [Godot](https://godotengine.org/download/) installed and accessible from your terminal using the godot command.
 
-Make sure you have godot installed and the binary is accessible via command "godot"
+If you're on macOS and godot isn't recognized, you can link it with:
 
-If not, link it by running this command:
+```
+sudo ln -s /Applications/Godot.app/Contents/MacOS/Godot /usr/local/bin/godot
+```
 
-`sudo ln -s /Applications/Godot.app/Contents/MacOS/Godot /usr/local/bin/godot`
+### 🧱 Build
 
-Generate a new by running build.sh
+To generate a new build, run:
 
-`./build.sh`
+```
+./build.sh
+```
 
-deploy by simply pushing to the master branch.
+This compiles the game and prepares it for deployment.
+
+### 🤝 Contribute
+
+Contributions are welcome! Whether it's a bug fix, or a new mini-game, feel free to fork, branch, and send a pull request.
+
