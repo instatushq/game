@@ -40,6 +40,10 @@ func _ready() -> void:
 	particles_track.amount = randi_range(8, 24)
 
 func _physics_process(delta) -> void:
+	# Check if game is paused
+	if game_ref and game_ref._is_game_paused:
+		return
+	
 	# Calculate progress along the lane based on time and total distance.
 	var total_distance = start_point.distance_to(end_point)
 	progress += (speed / total_distance) * delta

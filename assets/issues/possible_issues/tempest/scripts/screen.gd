@@ -16,6 +16,11 @@ func _ready() -> void:
 	hide()
 
 func _process(_delta: float) -> void:
+	# Check if game is paused
+	var parent_game = get_parent().get_parent()
+	if parent_game and parent_game.has_method("_is_game_paused") and parent_game._is_game_paused:
+		return
+	
 	if screen_mode == 0:
 		label_subtitle.text = str(countdown_duration - seconds_passed)
 

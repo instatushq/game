@@ -46,6 +46,7 @@ signal enemy_destroyed(score_weight: int)
 @onready var screen_shake: ColorRect = $CanvasLayer/Control/ScreenShake
 
 var _is_game_playing: bool = false
+var _is_game_paused: bool = false
 
 var lane_lines: Array[Line2D] = [] # Array to store references to the generated Line2D nodes.
 var base_contour_offsets: PackedFloat32Array # Stores the Y-offset for each base point of the lines.
@@ -63,7 +64,7 @@ var total_base_width: float
 var base_leftmost_x: float # X-coord of the leftmost line at the base.
 
 func _input(event):
-	if not _is_game_playing: return
+	if not _is_game_playing or _is_game_paused: return
 	if event.is_action_pressed("move_left"):
 		current_lane_index = max(0, current_lane_index - 1)
 		update_player_position_and_rotation(false)
@@ -124,18 +125,20 @@ func elerp(a, b, decay : float, dt : float):
 	return lerp(b, a, exp(-decay * dt))
 	
 func _physics_process(delta: float) -> void:
+	if _is_game_paused: return
 	player.position = elerp(player.position, player_target_position, player_elerp_decay, delta)
 
 func start_game() -> void:
 	_is_game_playing = true
+	_is_game_paused = false
 	randomize()
 	screen_shake.hide()
 	
 	# 3,2,1 countdown.
-	process_mode = Node.PROCESS_MODE_DISABLED
+	_is_game_paused = true
 	screen.game_start()
 	await screen.screen_finished
-	process_mode = Node.PROCESS_MODE_INHERIT
+	_is_game_paused = false
 	
 	# Initialize healthbar.
 	health_bar.max_value = health_max
@@ -351,7 +354,7 @@ func enemy_reached_base(lane_idx: int):
 	if health_current <= 0:
 		print("You lose!")
 		$Sfx/Lose.play()
-		process_mode = Node.PROCESS_MODE_DISABLED
+		_is_game_paused = true
 		screen.game_lose()
 		await screen.screen_finished
 		start_game()
@@ -396,7 +399,7 @@ func _on_timer_enemy_spawn_timeout():
 func _on_timer_game_timeout() -> void:
 	print("You win!")
 	$Sfx/Win.play()
-	process_mode = Node.PROCESS_MODE_DISABLED
+	_is_game_paused = true
 	screen.game_win()
 	await screen.screen_finished
 	on_issue_resolved.emit()

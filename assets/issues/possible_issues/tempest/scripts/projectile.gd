@@ -15,6 +15,11 @@ func init(_start_point: Vector2, _end_point: Vector2, _lane_idx: int):
 	position = start_point
 
 func _physics_process(delta):
+	# Check if game is paused
+	var parent_game = get_parent().get_parent()
+	if parent_game and parent_game.has_method("_is_game_paused") and parent_game._is_game_paused:
+		return
+	
 	var total_distance = start_point.distance_to(end_point)
 	progress += (speed / total_distance) * delta
 	
