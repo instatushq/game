@@ -20,6 +20,9 @@ var current_light_tween: Tween = null
 var target_light_energy: float = 0.0
 var stand_away_from_mouse: bool = false
 
+var max_movement_time_to_play_halt_animation: float = 0.6
+var started_moving_timer: float = 0.0
+
 signal movement_began
 signal movement_ended
 
@@ -37,6 +40,7 @@ func _ready() -> void:
 	gravity_scale = 0.0
 
 func _physics_process(_delta: float) -> void:
+	print(linear_velocity)
 	var target_position = get_global_mouse_position() if not stand_away_from_mouse else get_global_mouse_position() + Vector2(40, 30)
 	
 	var distance_to_target = global_position.distance_to(target_position)
@@ -93,9 +97,16 @@ func _on_sprite_animation_finished() -> void:
 		astronaut_sprite.play("flight")
 
 func handle_movement_began() -> void:
+	started_moving_timer = Time.get_unix_time_from_system()
 	astronaut_sprite.play("begin_flight")
 	interpolate_light_energy(astronaut_light_energy)
 
 func handle_movement_ended() -> void:
-	astronaut_sprite.play("halting")
 	interpolate_light_energy(0.0)
+	var time_now = Time.get_unix_time_from_system()
+	var time_since_started_moving = time_now - started_moving_timer
+
+	if time_since_started_moving < max_movement_time_to_play_halt_animation:
+		astronaut_sprite.play("idle")
+	else:
+		astronaut_sprite.play("halting")
