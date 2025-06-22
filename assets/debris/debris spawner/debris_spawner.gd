@@ -1,6 +1,6 @@
 extends Node2D
 
-var game_manager: BarrelInvader = null
+@onready var game_manager: BarrelInvader = get_parent()
 @export var ship_camera: Camera2D = null
 @export var debris_objects: Array[PackedScene] = []
 @export var fuel_rocks: Array[PackedScene] = []
@@ -113,7 +113,6 @@ func _physics_process(_delta: float) -> void:
 		queue_redraw()
 		
 func _ready() -> void:
-	game_manager = get_parent()
 	game_manager.game_started.connect(_on_game_started)
 
 func _on_game_started() -> void:
