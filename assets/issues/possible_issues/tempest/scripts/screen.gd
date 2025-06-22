@@ -7,25 +7,31 @@ signal screen_finished
 @onready var label_title: Label = $LabelTitle
 @onready var label_subtitle: Label = $LabelSubtitle
 @onready var timer_second: Timer = $TimerSecond ## Timer that timeouts every 1 second.
+@onready var game_manager: TempestGame = get_parent().get_parent().get_parent()
 
-var screen_mode: int = -1 # 0 = game_start, 1 = game_win, 2 = game_lose
+enum ScreenMode {
+	START,
+	WIN,
+	LOSE,
+	NONE
+}
+
+var screen_mode: ScreenMode = ScreenMode.START
 var seconds_passed: int = 0
 
 func _ready() -> void:
-	process_mode = PROCESS_MODE_ALWAYS
 	hide()
 
 func _process(_delta: float) -> void:
-	# Check if game is paused
-	var parent_game = get_parent().get_parent()
-	if parent_game and parent_game.has_method("_is_game_paused") and parent_game._is_game_paused:
-		return
+	if game_manager == null:
+		if game_manager._is_game_paused:
+			return
 	
-	if screen_mode == 0:
+	if screen_mode == ScreenMode.START:
 		label_subtitle.text = str(countdown_duration - seconds_passed)
 
 func game_start() -> void:
-	screen_mode = 0
+	screen_mode = ScreenMode.START
 	label_title.text = "Game starting!"
 	label_subtitle.text = ""
 	seconds_passed = 0
@@ -35,7 +41,7 @@ func game_start() -> void:
 	$Sfx/Countdown.play()
 
 func game_win() -> void:
-	screen_mode = 1
+	screen_mode = ScreenMode.WIN
 	label_title.text = "You win!"
 	label_subtitle.text = ""
 	seconds_passed = 0
@@ -43,7 +49,7 @@ func game_win() -> void:
 	show()
 
 func game_lose() -> void:
-	screen_mode = 2
+	screen_mode = ScreenMode.LOSE
 	label_title.text = "You lose!"
 	label_subtitle.text = ""
 	seconds_passed = 0
@@ -53,26 +59,26 @@ func game_lose() -> void:
 func _on_timer_second_timeout() -> void:
 	seconds_passed += 1
 	match screen_mode:
-		0: # Game start.
+		ScreenMode.START:
 			if seconds_passed >= countdown_duration:
 				timer_second.stop()
 				$Sfx/Countdown.pitch_scale = 1.5
 				$Sfx/Countdown.play()
-				screen_mode = -1
+				screen_mode = ScreenMode.NONE
 				hide()
 				screen_finished.emit()
 			else:
 				$Sfx/Countdown.pitch_scale = 1.0
 				$Sfx/Countdown.play()
-		1: # Game win.
+		ScreenMode.WIN:
 			if seconds_passed >= 3:
 				timer_second.stop()
-				screen_mode = -1
+				screen_mode = ScreenMode.NONE
 				hide()
 				screen_finished.emit()
-		2: # Game lose.
+		ScreenMode.LOSE:
 			if seconds_passed >= 3:
 				timer_second.stop()
-				screen_mode = -1
+				screen_mode = ScreenMode.NONE
 				hide()
 				screen_finished.emit()
