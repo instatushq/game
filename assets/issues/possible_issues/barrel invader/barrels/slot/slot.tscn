@@ -115,9 +115,8 @@ shader_parameter/colorOffsetIntensity = 0.498
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_2egle"]
 
-[sub_resource type="Animation" id="Animation_ai5ul"]
-resource_name = "normal"
-length = 0.1
+[sub_resource type="Animation" id="Animation_gsv55"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,10 +124,10 @@ tracks/0/path = NodePath(".:material:shader_parameter/noiseIntensity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 0.007]
+"values": [0.007]
 }
 
 [sub_resource type="Animation" id="Animation_gq8sr"]
@@ -147,8 +146,9 @@ tracks/0/keys = {
 "values": [0.007, 0.03]
 }
 
-[sub_resource type="Animation" id="Animation_gsv55"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ai5ul"]
+resource_name = "normal"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -156,10 +156,10 @@ tracks/0/path = NodePath(".:material:shader_parameter/noiseIntensity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.007]
+"values": [0.0, 0.007]
 }
 
 [sub_resource type="Animation" id="Animation_n4r3l"]
@@ -230,6 +230,7 @@ autoplay = "picking"
 frame_progress = 0.407903
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
 material = SubResource("ShaderMaterial_ai5ul")
 position = Vector2(0.333333, -0.333333)
 scale = Vector2(22, 28.3333)
