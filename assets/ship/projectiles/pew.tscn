@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7rklw8gicmio"]
+[gd_scene load_steps=4 format=3 uid="uid://c7rklw8gicmio"]
 
 [ext_resource type="Script" uid="uid://b4rdb8v2nwvfj" path="res://assets/ship/projectiles/pew.gd" id="1_trei1"]
-
-[sub_resource type="Gradient" id="Gradient_trei1"]
-offsets = PackedFloat32Array(0, 0.53527, 1)
-colors = PackedColorArray(0.54902, 1, 1, 1, 0.923265, 0.943532, 0.988932, 1, 0.844921, 1, 0.918867, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fojv6"]
-gradient = SubResource("Gradient_trei1")
-fill_to = Vector2(0, 1)
+[ext_resource type="Texture2D" uid="uid://et0srl7oxjls" path="res://assets/ship/bullet.png" id="2_fojv6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l2de3"]
 radius = 7.0
@@ -23,8 +16,8 @@ linear_damp = -1.0
 script = ExtResource("1_trei1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.071, 0.401)
-texture = SubResource("GradientTexture2D_fojv6")
+scale = Vector2(1.4718, 1.4718)
+texture = ExtResource("2_fojv6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_l2de3")

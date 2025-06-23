@@ -1,13 +1,17 @@
-[gd_scene load_steps=37 format=3 uid="uid://jjb3c4igolbf"]
+[gd_scene load_steps=40 format=3 uid="uid://jjb3c4igolbf"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_geevi"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_8i5gp"]
 [ext_resource type="Script" uid="uid://cqj0wt1hgd1vv" path="res://assets/issues/possible_issues/barrel invader/barrel_invader.gd" id="2_pm5jl"]
 [ext_resource type="Script" uid="uid://b76kaneeig6y7" path="res://assets/issues/possible_issues/barrel invader/barrel_spawner.gd" id="3_2tnj0"]
 [ext_resource type="PackedScene" uid="uid://ccc72g2taxm5r" path="res://assets/environment/spawnable elements/big_planet.tscn" id="3_fd7t0"]
+[ext_resource type="PackedScene" uid="uid://cif1mlbvvg0sx" path="res://assets/issues/possible_issues/barrel invader/barrels/normal barrel/normal_barrel.tscn" id="3_kne8y"]
+[ext_resource type="PackedScene" uid="uid://87kn8k2jgo8a" path="res://assets/issues/possible_issues/barrel invader/barrels/tnt/tnt.tscn" id="4_3oaur"]
 [ext_resource type="PackedScene" uid="uid://dt0dai5l5rmx5" path="res://assets/environment/spawnable elements/small_planet.tscn" id="4_4kruc"]
+[ext_resource type="PackedScene" uid="uid://d1ej5smsffdy7" path="res://assets/issues/possible_issues/barrel invader/barrels/slot/slot.tscn" id="5_3tdpy"]
 [ext_resource type="PackedScene" uid="uid://b3d8re4q4igwp" path="res://assets/environment/spawnable elements/medium planet.tscn" id="5_wjnbc"]
 [ext_resource type="PackedScene" uid="uid://kskx5h8v3qqm" path="res://assets/environment/spawnable elements/bigger-than-average-planet.tscn" id="6_0fngo"]
+[ext_resource type="PackedScene" uid="uid://thm4h5ok0mx4" path="res://assets/issues/possible_issues/barrel invader/barrels/nuke/nuke.tscn" id="6_7wsow"]
 [ext_resource type="PackedScene" uid="uid://x1eieaqt1a0v" path="res://assets/environment/spawnable elements/blackhole/blackhole.tscn" id="7_eytmv"]
 [ext_resource type="Texture2D" uid="uid://cse7rwxntb3w" path="res://assets/environment/backgrounds/stars/stars1.png" id="8_e5v2f"]
 [ext_resource type="Texture2D" uid="uid://b7u0ad703omfw" path="res://assets/environment/backgrounds/stars/stars2.png" id="9_lrr4d"]
@@ -29,11 +33,6 @@
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="28_tyx3f"]
 [ext_resource type="Script" path="res://assets/issues/possible_issues/barrel invader/barrel invader hud.gd" id="31_efpm6"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="32_3oaur"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2tnj0"]
-noise_type = 3
-frequency = 0.0139
-fractal_lacunarity = 1.5
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kne8y"]
 noise_type = 0
@@ -68,7 +67,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 3.0
+"speed": 50.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tyx3f"]
@@ -100,7 +99,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 3.0
+"speed": 50.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_tyx3f"]
@@ -133,12 +132,26 @@ spawn_position = Vector2(0, 0)
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("2_pm5jl")
 
+[node name="BarrelContainer" type="Node2D" parent="Game"]
+
+[node name="NormalBarrel" parent="Game/BarrelContainer" instance=ExtResource("3_kne8y")]
+position = Vector2(-261, -373)
+
+[node name="TNT" parent="Game/BarrelContainer" instance=ExtResource("4_3oaur")]
+position = Vector2(192, 18)
+
+[node name="Slot" parent="Game/BarrelContainer" instance=ExtResource("5_3tdpy")]
+position = Vector2(-6, -402)
+
+[node name="Nuke" parent="Game/BarrelContainer" instance=ExtResource("6_7wsow")]
+position = Vector2(141, -388)
+
 [node name="BarrelSpawner" type="Node2D" parent="Game" node_paths=PackedStringArray("camera")]
 script = ExtResource("3_2tnj0")
 camera = NodePath("../Camera2D")
-spawn_map = SubResource("FastNoiseLite_2tnj0")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Game"]
+visible = false
 offset = Vector2(154.19, -676.84)
 transform = Transform2D(1, 0, 0, 1, 154.19, -676.84)
 follow_viewport_scale = 0.3
@@ -286,6 +299,7 @@ position = Vector2(-189.722, 907.047)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_tyx3f")
 autoplay = "default"
+frame_progress = 0.825192
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars2"]
@@ -394,7 +408,7 @@ autoplay = "default"
 speed_scale = 1.5
 
 [node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Front Layer Of Stars2"]
-position = Vector2(-556, 1207.5)
+position = Vector2(-556, 1210)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_tyx3f")
 autoplay = "default"

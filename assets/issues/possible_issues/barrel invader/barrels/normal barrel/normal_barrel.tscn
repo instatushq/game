@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cif1mlbvvg0sx"]
+
+[ext_resource type="Script" uid="uid://co5cdw38syq8c" path="res://assets/issues/possible_issues/barrel invader/barrels/barrel_body.gd" id="1_r55qb"]
+[ext_resource type="Script" uid="uid://b5ytj11fr2xmm" path="res://assets/issues/possible_issues/barrel invader/barrels/normal barrel/normal-barrel.gd" id="2_5rcff"]
+[ext_resource type="Texture2D" uid="uid://c4cq8gt11aaxb" path="res://assets/issues/possible_issues/barrel invader/barrels/normal barrel/neutral barrel.png" id="3_t5t3d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tnj0"]
+size = Vector2(68, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny23e"]
+size = Vector2(75.5114, 96.3848)
+
+[node name="NormalBarrel" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 33
+gravity_scale = 0.0
+can_sleep = false
+angular_damp_mode = 1
+script = ExtResource("1_r55qb")
+
+[node name="Barrel" type="Node2D" parent="."]
+script = ExtResource("2_5rcff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2tnj0")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 129
+
+[node name="Shape" type="CollisionShape2D" parent="HitBox"]
+rotation = -0.00507969
+shape = SubResource("RectangleShape2D_ny23e")
+debug_color = Color(0.981076, 0, 0.374203, 0.42)
+
+[node name="Screen" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.2517e-06, 0.500008)
+scale = Vector2(6.5, 7.05)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("3_t5t3d")

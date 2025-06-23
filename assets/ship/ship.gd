@@ -7,14 +7,12 @@ var side_movement_padding: float = 48.0
 var mouse_world_position: Vector2 = Vector2.ZERO
 
 @export var cannon_one_active: bool = true
-@export var cannon_two_active: bool = true
 @export var pew_scene: PackedScene = preload("res://assets/ship/projectiles/pew.tscn")
 @export var fire_cooldown: float = 0.15
 
 @onready var rb: ShipRigidBody = $RigidBody2D
 @onready var sprites_animation_player: AnimationPlayer = $RigidBody2D/SpritesContainer/SpritesAnimations
 @onready var cannon_1: Node2D = $RigidBody2D/ShipPoints/Canon
-@onready var cannon_2: Node2D = $RigidBody2D/ShipPoints/Canon2
 @onready var game_manager: BarrelInvader = get_parent()
 
 var current_velocity: Vector2 = Vector2(0, 0)
@@ -100,5 +98,3 @@ func _fire_cannons() -> void:
 	sprites_animation_player.play("shoot")
 	if cannon_one_active:
 		create_pew(cannon_1)
-	if cannon_two_active:
-		create_pew(cannon_2)

@@ -327,9 +327,6 @@ position = Vector2(0, -67)
 [node name="Canon" type="Node2D" parent="RigidBody2D/ShipPoints"]
 position = Vector2(0, -81)
 
-[node name="Canon2" type="Node2D" parent="RigidBody2D/ShipPoints"]
-position = Vector2(0, -81)
-
 [node name="SpritesContainer" type="Node2D" parent="RigidBody2D"]
 
 [node name="ShipSprite" type="AnimatedSprite2D" parent="RigidBody2D/SpritesContainer"]

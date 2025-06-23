@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://87kn8k2jgo8a"]
+
+[ext_resource type="Script" uid="uid://co5cdw38syq8c" path="res://assets/issues/possible_issues/barrel invader/barrels/barrel_body.gd" id="1_odwwu"]
+[ext_resource type="Script" uid="uid://b5ytj11fr2xmm" path="res://assets/issues/possible_issues/barrel invader/barrels/normal barrel/normal-barrel.gd" id="2_hiew4"]
+[ext_resource type="Texture2D" uid="uid://6xsvy3ua0wcc" path="res://assets/issues/possible_issues/barrel invader/barrels/tnt/tnt barrels.png" id="3_nqcfy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tnj0"]
+size = Vector2(68, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny23e"]
+size = Vector2(75.5114, 96.3848)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm4ju"]
+atlas = ExtResource("3_nqcfy")
+region = Rect2(34, 0, 34, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yayhl"]
+atlas = ExtResource("3_nqcfy")
+region = Rect2(0, 0, 34, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kne8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm4ju")
+}],
+"loop": true,
+"name": &"expanded",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yayhl")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_2olap"]
+colors = PackedColorArray(0.0745098, 0.0196078, 0.027451, 1, 0.0745098, 0.0196078, 0.027451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dm4ju"]
+gradient = SubResource("Gradient_2olap")
+
+[sub_resource type="Gradient" id="Gradient_dm4ju"]
+colors = PackedColorArray(1, 0.364706, 0, 1, 1, 0.364706, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yayhl"]
+gradient = SubResource("Gradient_dm4ju")
+
+[node name="TNT" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 33
+gravity_scale = 0.0
+can_sleep = false
+script = ExtResource("1_odwwu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_2tnj0")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 129
+
+[node name="Shape" type="CollisionShape2D" parent="HitBox"]
+rotation = -0.00507969
+shape = SubResource("RectangleShape2D_ny23e")
+debug_color = Color(0.981076, 0, 0.374203, 0.42)
+
+[node name="Barrel" type="Node2D" parent="."]
+script = ExtResource("2_hiew4")
+
+[node name="Screen" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.2517e-06, 0.500008)
+scale = Vector2(6.5, 7.05)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_kne8y")
+animation = &"normal"
+
+[node name="background" type="Sprite2D" parent="Sprite2D"]
+show_behind_parent = true
+position = Vector2(0, 3.33333)
+scale = Vector2(0.145833, 0.125)
+texture = SubResource("GradientTexture2D_dm4ju")
+
+[node name="HoleFiller" type="Sprite2D" parent="Sprite2D"]
+show_behind_parent = true
+position = Vector2(0, 6)
+scale = Vector2(1e-05, 1e-05)
+texture = SubResource("GradientTexture2D_yayhl")
+offset = Vector2(0, -32)
