@@ -6,7 +6,7 @@ extends Node2D
 @export var barrel_sprite: AnimatedSprite2D = null
 @export var glitch_effect: AnimationPlayer = null
 
-@export_range(0.5, 4) var picking_time: float = 0.3
+@export_range(0.5, 4) var picking_time: float = 0.6
 @export_range(0.5, 4) var waiting_time: float = 1
 @export_range(0.1, 0.4) var reduce_waiting_time_by_on_exposure: float = 0.2
 var original_waiting_time: float = waiting_time
@@ -65,7 +65,7 @@ func begin_picking() -> void:
 			glitch_effect.play("normal")
 		elif waiting_time <= original_waiting_time * 0.25:
 			glitch_effect.play("critical")
-			
+
 		if waiting_time <= 0.0 and not is_going_to_pick_reinforced:
 			is_going_to_pick_reinforced = true
 			pick_reinforced_in(1.4)

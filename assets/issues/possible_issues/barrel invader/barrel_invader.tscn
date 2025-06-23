@@ -142,7 +142,6 @@ position = Vector2(192, 18)
 
 [node name="Slot" parent="Game/BarrelContainer" instance=ExtResource("5_3tdpy")]
 position = Vector2(-6, -512)
-movement_speed = -75.0
 
 [node name="Nuke" parent="Game/BarrelContainer" instance=ExtResource("6_7wsow")]
 position = Vector2(141, -388)
@@ -152,7 +151,6 @@ script = ExtResource("3_2tnj0")
 camera = NodePath("../Camera2D")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Game"]
-visible = false
 offset = Vector2(154.19, -676.84)
 transform = Transform2D(1, 0, 0, 1, 154.19, -676.84)
 follow_viewport_scale = 0.3
