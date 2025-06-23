@@ -141,7 +141,8 @@ position = Vector2(-261, -373)
 position = Vector2(192, 18)
 
 [node name="Slot" parent="Game/BarrelContainer" instance=ExtResource("5_3tdpy")]
-position = Vector2(-6, -402)
+position = Vector2(-6, -512)
+movement_speed = -75.0
 
 [node name="Nuke" parent="Game/BarrelContainer" instance=ExtResource("6_7wsow")]
 position = Vector2(141, -388)

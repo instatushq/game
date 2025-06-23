@@ -1,5 +1,6 @@
 class_name BarrelBody extends RigidBody2D
 
+
 @onready var screen_detector: VisibleOnScreenNotifier2D = $Screen
 @onready var hitbox: Area2D = $HitBox
 @export var destruction_particles_scene: PackedScene = null
@@ -7,7 +8,7 @@ class_name BarrelBody extends RigidBody2D
 @export_range(-100, 100) var max_angular_velocity: float = 3.0
 
 var amount_of_impacts = 0;
-var movement_speed: float = 150.0
+@export_range(-100, 100) var movement_speed: float = 100.0
 
 signal on_impact_ship(ship: Node2D)
 signal on_shot()
