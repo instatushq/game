@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://thm4h5ok0mx4"]
+[gd_scene load_steps=15 format=3 uid="uid://thm4h5ok0mx4"]
 
 [ext_resource type="Script" uid="uid://co5cdw38syq8c" path="res://assets/issues/possible_issues/barrel invader/barrels/barrel_body.gd" id="1_q2su2"]
-[ext_resource type="Script" uid="uid://b5ytj11fr2xmm" path="res://assets/issues/possible_issues/barrel invader/barrels/normal barrel/normal-barrel.gd" id="2_dt4f0"]
+[ext_resource type="PackedScene" uid="uid://owcqacaj6qt3" path="res://assets/issues/possible_issues/barrel invader/barrels/nuke/nuke_explosion_area.tscn" id="2_dt4f0"]
+[ext_resource type="Script" uid="uid://cjotqx4ilivt4" path="res://assets/issues/possible_issues/barrel invader/barrels/nuke/nuke_barrel.gd" id="2_q2su2"]
 [ext_resource type="Texture2D" uid="uid://bndn1lqrhfhdc" path="res://assets/issues/possible_issues/barrel invader/barrels/nuke/nuke barrel.png" id="3_ytxxb"]
 [ext_resource type="Texture2D" uid="uid://dwon3onotk47o" path="res://assets/issues/possible_issues/barrel invader/barrels/nuke/BarrelBlend.png" id="4_vs5ps"]
 
@@ -33,6 +34,21 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_3tdpy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_3oaur"]
 resource_name = "shake"
 length = 0.3
@@ -48,21 +64,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-2, -1), Vector2(0, 0), Vector2(2, 3), Vector2(1, 0), Vector2(-2, 3), Vector2(0, 0), Vector2(-2, 4)]
-}
-
-[sub_resource type="Animation" id="Animation_3tdpy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-2, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7wsow"]
@@ -82,9 +83,14 @@ gravity_scale = 0.0
 can_sleep = false
 angular_velocity = 0.349066
 script = ExtResource("1_q2su2")
+destruction_particles_scene = ExtResource("2_dt4f0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2tnj0")
+
+[node name="NukeBarrel" type="Node2D" parent="."]
+script = ExtResource("2_q2su2")
+explosion_scene = ExtResource("2_dt4f0")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 4
@@ -95,15 +101,12 @@ rotation = -0.00507969
 shape = SubResource("RectangleShape2D_ny23e")
 debug_color = Color(0.981076, 0, 0.374203, 0.42)
 
-[node name="Barrel" type="Node2D" parent="."]
-script = ExtResource("2_dt4f0")
-
 [node name="Screen" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(1.2517e-06, 0.500008)
 scale = Vector2(6.5, 7.05)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -1)
+position = Vector2(-2, 0)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2olap")
 autoplay = "default"

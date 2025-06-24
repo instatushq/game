@@ -7,13 +7,18 @@ extends Node2D
 @onready var flash_time: float = 0.1
 @onready var barrel_body: BarrelBody = get_parent()
 
+var triggered: bool = false
+
 var time_intervals: Array[float] = [0.5, 0.2, 0.15]
 
 signal on_explosion_triggered
 
 func _ready() -> void:
 	on_explosion_triggered.connect(_on_explode)
-	barrel_body.on_shot.connect(trigger_tnt)
+	barrel_body.on_shot.connect(_on_shoot_tnt)
+
+func _on_shoot_tnt() -> void:
+	trigger_tnt()
 
 func _on_explode() -> void:
 	if explosion_scene != null:
@@ -23,6 +28,9 @@ func _on_explode() -> void:
 	barrel_body.queue_free()
 
 func trigger_tnt() -> void:
+	if triggered: return
+	triggered = true
+	
 	var current_index = 1
 	var beginning_size: int = time_intervals.size()
 	

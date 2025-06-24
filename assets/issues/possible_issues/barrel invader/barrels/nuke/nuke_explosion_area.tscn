@@ -1,0 +1,223 @@
+[gd_scene load_steps=21 format=3 uid="uid://owcqacaj6qt3"]
+
+[ext_resource type="Script" uid="uid://cgh7qfvo53wu3" path="res://assets/issues/possible_issues/barrel invader/barrels/nuke/nuke_explosion_area.gd" id="1_th1kl"]
+[ext_resource type="Texture2D" uid="uid://cbx37oeuooghq" path="res://assets/issues/possible_issues/barrel invader/barrels/nuke explosion.png" id="2_jhoep"]
+[ext_resource type="Texture2D" uid="uid://ce77ghu4ogn1u" path="res://assets/issues/possible_issues/barrel invader/barrels/explosion.png" id="2_yx7m6"]
+[ext_resource type="AudioStream" uid="uid://tm0jsaoaowi7" path="res://assets/issues/possible_issues/barrel invader/barrels/tnt/tntexplode.mp3" id="3_jhoep"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7q8ft"]
+radius = 250.0
+
+[sub_resource type="Curve" id="Curve_rmh68"]
+_data = [Vector2(0, 0.0865747), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_cr7xv"]
+_data = [Vector2(0, 1), 0.0, -1.19833, 0, 0, Vector2(0.458128, 0), -1.26104, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_itwtq"]
+offsets = PackedFloat32Array(0, 0.491477, 1)
+colors = PackedColorArray(0, 0.866667, 0.741176, 1, 0, 0.915, 0.222651, 1, 0, 0.866667, 0.741176, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygnpx"]
+atlas = ExtResource("2_jhoep")
+region = Rect2(0, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3wi7"]
+atlas = ExtResource("2_jhoep")
+region = Rect2(106, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg8jq"]
+atlas = ExtResource("2_jhoep")
+region = Rect2(212, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maxy6"]
+atlas = ExtResource("2_jhoep")
+region = Rect2(318, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux8oo"]
+atlas = ExtResource("2_jhoep")
+region = Rect2(424, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwayy"]
+atlas = ExtResource("2_jhoep")
+region = Rect2(530, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s23h5"]
+atlas = ExtResource("2_jhoep")
+region = Rect2(636, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r74ko"]
+atlas = ExtResource("2_jhoep")
+region = Rect2(742, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko7bb"]
+atlas = ExtResource("2_jhoep")
+region = Rect2(848, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix0if"]
+atlas = ExtResource("2_jhoep")
+region = Rect2(954, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itwtq"]
+atlas = ExtResource("2_yx7m6")
+region = Rect2(954, 0, 106, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_40unr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygnpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3wi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg8jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maxy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux8oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwayy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s23h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r74ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko7bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix0if")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itwtq")
+}],
+"loop": true,
+"name": &"nothing",
+"speed": 5.0
+}]
+
+[node name="NukeExplosionArea" type="Area2D"]
+script = ExtResource("1_th1kl")
+auto_explode = true
+explosion_radius = 300.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7q8ft")
+debug_color = Color(0.745098, 0, 0, 0.419608)
+
+[node name="ExplosionParticles" type="CPUParticles2D" parent="."]
+position = Vector2(1, 1)
+emitting = false
+amount = 300
+lifetime = 5.0
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 128.0
+particle_flag_align_y = true
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+scale_amount_min = 25.0
+scale_amount_max = 35.0
+split_scale = true
+scale_curve_x = SubResource("Curve_rmh68")
+scale_curve_y = SubResource("Curve_cr7xv")
+color_initial_ramp = SubResource("Gradient_itwtq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_40unr")
+animation = &"boom"
+autoplay = "nothing"
+frame_progress = 1.0
+
+[node name="SurroundSprites" type="Node2D" parent="."]
+position = Vector2(28, 18)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SurroundSprites"]
+position = Vector2(96, -21)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_40unr")
+animation = &"boom"
+autoplay = "nothing"
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="SurroundSprites"]
+position = Vector2(123, 94)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_40unr")
+animation = &"boom"
+autoplay = "nothing"
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="SurroundSprites"]
+position = Vector2(123, 94)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_40unr")
+animation = &"boom"
+autoplay = "nothing"
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="SurroundSprites"]
+position = Vector2(-100, -109)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_40unr")
+animation = &"boom"
+autoplay = "nothing"
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SurroundSprites"]
+position = Vector2(10, 92)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_40unr")
+animation = &"boom"
+autoplay = "nothing"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="SurroundSprites"]
+position = Vector2(-213, -95)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_40unr")
+animation = &"boom"
+autoplay = "nothing"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="SurroundSprites"]
+position = Vector2(-140, 6)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_40unr")
+animation = &"boom"
+autoplay = "nothing"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="SurroundSprites"]
+position = Vector2(9, -147)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_40unr")
+animation = &"boom"
+autoplay = "nothing"
+
+[node name="Explode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jhoep")
+volume_db = -3.525
+bus = &"Sound FX"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.25, 1.25)

@@ -17,7 +17,7 @@ offsets = PackedFloat32Array(0, 0.491477, 1)
 colors = PackedColorArray(0.184314, 0.188235, 0.309804, 1, 0.788235, 0.513726, 0.172549, 1, 0.184314, 0.188235, 0.309804, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7q8ft"]
-radius = 300.0
+radius = 200.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nldmf"]
 atlas = ExtResource("2_itwtq")
@@ -144,7 +144,7 @@ shape = SubResource("CircleShape2D_7q8ft")
 debug_color = Color(0.745098, 0, 0, 0.419608)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
+scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"
@@ -152,40 +152,24 @@ autoplay = "nothing"
 [node name="SurroundSprites" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(120, 0)
-scale = Vector2(3, 3)
+position = Vector2(71, -33)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"
 frame = 2
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(80, 120)
-scale = Vector2(3, 3)
+position = Vector2(13, 94)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"
 frame = 2
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(-80, 120)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_40unr")
-animation = &"boom"
-autoplay = "nothing"
-frame = 2
-
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(-120, 0)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_40unr")
-animation = &"boom"
-autoplay = "nothing"
-frame = 2
-
-[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(0, -107)
-scale = Vector2(3, 3)
+position = Vector2(-67, -28)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"

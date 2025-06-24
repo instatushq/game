@@ -1,4 +1,4 @@
-class_name ExplosionTNT extends Area2D
+class_name ExplosionNuke extends Area2D
 
 @export var auto_explode: bool = false
 @onready var explosion_collision_shape: CollisionShape2D = $CollisionShape2D
@@ -6,8 +6,8 @@ class_name ExplosionTNT extends Area2D
 @onready var explosion_sprites_container: Node2D = $SurroundSprites
 @onready var explosion_audio: AudioStreamPlayer2D = $Explode
 @onready var explosion_particles: CPUParticles2D = $ExplosionParticles
-@export_range(10, 150) var harsh_explosion_radius: float = 100
-@export_range(10, 250) var explosion_radius: float = 250
+@export_range(10, 300) var harsh_explosion_radius: float = 100
+@export_range(10, 400) var explosion_radius: float = 350
 
 enum ExplosionIntensity {
 	LOW,
@@ -30,15 +30,16 @@ func _begin_explosion_sequence() -> void:
 	explosion_audio.play(0.15)
 	
 func _play_surround_sprites() -> void:
+	explosion_sprites.shuffle()
 	for sprite in explosion_sprites:
 		sprite.play("boom")
-		await get_tree().create_timer(0.03).timeout
+		await get_tree().create_timer(0.019).timeout
 
 func _on_explosion_frame_changed() -> void:
 	if explosion_sprite.animation != "boom": return
 	var explosion_shape: CircleShape2D = explosion_collision_shape.shape
 	
-	if explosion_sprite.frame == 2:
+	if explosion_sprite.frame == 3:
 		explosion_sprite.pause()
 		explosion_shape.radius = harsh_explosion_radius
 		_play_surround_sprites()
@@ -56,3 +57,6 @@ func calculate_explosion_intensity_percentage(target_global_position: Vector2) -
 		return ExplosionIntensity.MEDIUM
 	
 	return ExplosionIntensity.LOW
+
+func _draw() -> void:
+	draw_circle(Vector2.ZERO, explosion_radius, Color.RED)
