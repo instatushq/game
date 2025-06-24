@@ -14,6 +14,7 @@ size = Vector2(68, 90)
 size = Vector2(75.5114, 96.3848)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nk7nb"]
+resource_local_to_scene = true
 shader = ExtResource("3_nldmf")
 shader_parameter/end_time = 2.0
 shader_parameter/start_freq = 0.0

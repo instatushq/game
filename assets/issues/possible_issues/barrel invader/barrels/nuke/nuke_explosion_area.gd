@@ -8,6 +8,7 @@ class_name ExplosionNuke extends Area2D
 @onready var explosion_particles: CPUParticles2D = $ExplosionParticles
 @export_range(10, 300) var harsh_explosion_radius: float = 100
 @export_range(10, 400) var explosion_radius: float = 350
+@export_range(0, 3) var self_destruct_in: float = 0.8
 
 enum ExplosionIntensity {
 	LOW,
@@ -48,6 +49,8 @@ func _on_explosion_frame_changed() -> void:
 		explosion_particles.emitting = true
 		await get_tree().create_timer(0.09).timeout
 		explosion_shape.radius = explosion_radius
+		await get_tree().create_timer(self_destruct_in).timeout
+		queue_free()
 
 func calculate_explosion_intensity_percentage(target_global_position: Vector2) -> ExplosionIntensity:
 	var distance_to_target: float = global_position.distance_to(target_global_position)
