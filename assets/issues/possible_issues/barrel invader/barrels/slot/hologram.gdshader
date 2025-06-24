@@ -16,13 +16,13 @@ vec2 tilingAndOffset(vec2 uv, vec2 tiling, vec2 offset) {
 void fragment() {
     vec2 offset = vec2(TIME * speed / 100.0);
     vec2 tiling = tilingAndOffset(UV, hologramTextureTiling, offset);
-    
+
     vec4 noise = texture(hologramTexture, tiling);
-    
+
     float fresnel = 0.71;
     vec4 colorLines = linesColor * vec4(vec3(linesColorIntensity), 1.0);
     vec4 emission = colorLines * fresnel * noise;
-    
+
     vec4 albedo = baseColor;
     float alpha_noise = dot(noise.rgb, vec3(1.0));
     vec4 hologram;
@@ -30,16 +30,16 @@ void fragment() {
     hologram.a = emission.a + (1.0 - emission.a) * alpha_noise;
     hologram.a = hologram.a + (1.0 - hologram.a) * albedo.a;
     COLOR = texture(TEXTURE, UV);
-    
+
     // Apply grayscale if enabled
     if (grayscale) {
         float gray = dot(COLOR.rgb, vec3(0.299, 0.587, 0.114));
         COLOR.rgb = vec3(gray);
     }
-    
+
     // Apply alpha uniform to underlying texture only
     COLOR.a *= alpha;
-    
+
     COLOR.rgb = COLOR.rgb + (1.0 - COLOR.rgb) * hologram.rgb;
     COLOR.a = min(COLOR.a, hologram.a);
 }

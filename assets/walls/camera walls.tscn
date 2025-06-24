@@ -1,4 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw0ggx5ydt1qa"]
+[gd_scene load_steps=4 format=3 uid="uid://dw0ggx5ydt1qa"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oyc4m"]
+friction = 0.1
+bounce = 1.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wtcfe"]
 
@@ -7,23 +11,23 @@ radius = 0.0
 
 [node name="Walls" type="Node2D"]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="RigidBody2D" type="StaticBody2D" parent="."]
 collision_layer = 0
 collision_mask = 0
-gravity_scale = 0.0
+physics_material_override = SubResource("PhysicsMaterial_oyc4m")
 
 [node name="Left Right" type="StaticBody2D" parent="RigidBody2D"]
 collision_layer = 32
 collision_mask = 7
 
 [node name="Left Wall" type="CollisionShape2D" parent="RigidBody2D/Left Right"]
-position = Vector2(-752, -18)
+position = Vector2(-630, -18)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_wtcfe")
 debug_color = Color(1, 0.252555, 0.614493, 0.42)
 
 [node name="Right Wall" type="CollisionShape2D" parent="RigidBody2D/Left Right"]
-position = Vector2(752, 0)
+position = Vector2(630, 0)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_wtcfe")
 debug_color = Color(1, 0.252555, 0.614493, 0.42)

@@ -15,7 +15,7 @@ curve = SubResource("Curve_icqtw")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t6o86"]
 shader = ExtResource("1_1y1st")
 shader_parameter/curve = SubResource("CurveTexture_1y1st")
-shader_parameter/strength = -0.304
+shader_parameter/strength = 0.441
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icqtw"]
 atlas = ExtResource("3_nsrke")
