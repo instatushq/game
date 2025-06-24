@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://ce77ghu4ogn1u" path="res://assets/issues/possible_issues/barrel invader/barrels/explosion.png" id="2_yx7m6"]
 [ext_resource type="AudioStream" uid="uid://tm0jsaoaowi7" path="res://assets/issues/possible_issues/barrel invader/barrels/tnt/tntexplode.mp3" id="3_jhoep"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7q8ft"]
-radius = 250.0
-
 [sub_resource type="Curve" id="Curve_rmh68"]
 _data = [Vector2(0, 0.0865747), 0.0, 0.0, 0, 0]
 point_count = 1
@@ -19,6 +16,9 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_itwtq"]
 offsets = PackedFloat32Array(0, 0.491477, 1)
 colors = PackedColorArray(0, 0.866667, 0.741176, 1, 0, 0.915, 0.222651, 1, 0, 0.866667, 0.741176, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7q8ft"]
+radius = 200.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygnpx"]
 atlas = ExtResource("2_jhoep")
@@ -113,11 +113,7 @@ animations = [{
 [node name="NukeExplosionArea" type="Area2D"]
 script = ExtResource("1_th1kl")
 auto_explode = true
-explosion_radius = 300.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_7q8ft")
-debug_color = Color(0.745098, 0, 0, 0.419608)
+explosion_radius = 200.0
 
 [node name="ExplosionParticles" type="CPUParticles2D" parent="."]
 position = Vector2(1, 1)
@@ -144,6 +140,10 @@ scale_curve_x = SubResource("Curve_rmh68")
 scale_curve_y = SubResource("Curve_cr7xv")
 color_initial_ramp = SubResource("Gradient_itwtq")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7q8ft")
+debug_color = Color(0.745098, 0, 0, 0.419608)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_40unr")
@@ -155,61 +155,53 @@ frame_progress = 1.0
 position = Vector2(28, 18)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(96, -21)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_40unr")
-animation = &"boom"
-autoplay = "nothing"
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(123, 94)
-scale = Vector2(3, 3)
+position = Vector2(87, -21)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"
 frame_progress = 1.0
 
 [node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(123, 94)
-scale = Vector2(3, 3)
+position = Vector2(94, 65)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"
 frame_progress = 1.0
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(-100, -109)
-scale = Vector2(3, 3)
+position = Vector2(-82, -116)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"
 frame_progress = 1.0
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(10, 92)
-scale = Vector2(3, 3)
+position = Vector2(9.53674e-07, 84)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(-213, -95)
-scale = Vector2(3, 3)
+position = Vector2(-173, -96)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(-140, 6)
-scale = Vector2(3, 3)
+position = Vector2(-128, 19)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="SurroundSprites"]
-position = Vector2(9, -147)
-scale = Vector2(3, 3)
+position = Vector2(18, -137)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_40unr")
 animation = &"boom"
 autoplay = "nothing"
