@@ -8,7 +8,7 @@ class_name ExplosionTNT extends Area2D
 @onready var explosion_particles: CPUParticles2D = $ExplosionParticles
 @export_range(10, 150) var harsh_explosion_radius: float = 100
 @export_range(10, 250) var explosion_radius: float = 250
-@export_range(1, 10) var self_destruct_in: float = 0.8
+@export_range(0, 3) var self_destruct_in: float = 0.8
 
 enum ExplosionIntensity {
 	LOW,
