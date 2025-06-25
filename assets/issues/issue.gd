@@ -54,7 +54,7 @@ func _ready() -> void:
 	visible = default_visibility
 	
 	# for testing bugs
-	open_issue()
+	# open_issue()
 
 func open_issue() -> void:
 	is_open = true

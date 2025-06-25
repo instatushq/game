@@ -40,7 +40,6 @@ func _ready() -> void:
 	gravity_scale = 0.0
 
 func _physics_process(_delta: float) -> void:
-	print(linear_velocity)
 	var target_position = get_global_mouse_position() if not stand_away_from_mouse else get_global_mouse_position() + Vector2(40, 30)
 	
 	var distance_to_target = global_position.distance_to(target_position)

@@ -21,7 +21,7 @@ func blow_away(cause_location: Vector2) -> void:
 	barrel_body.apply_force(effect_direction * 100_000 * explosion_force_multiplier)
 	barrel_body.apply_torque(randf_range(100_000, 100_000))
 
-func _on_explosion_contact(body: Node2D, explosion_type: BarrelBody.EXPLOSION_TYPE, intensity: ExplosionNuke.ExplosionIntensity) -> void:
+func _on_explosion_contact(body: Node2D, explosion_type: BarrelBody.EXPLOSION_TYPE, _intensity: ExplosionNuke.ExplosionIntensity) -> void:
 	if frames_since_last_explosion <= blowing_invincibility_frames:
 		return
 	else:
@@ -29,10 +29,7 @@ func _on_explosion_contact(body: Node2D, explosion_type: BarrelBody.EXPLOSION_TY
 
 	match explosion_type:
 		BarrelBody.EXPLOSION_TYPE.NUKE:
-			if intensity == ExplosionNuke.ExplosionIntensity.HIGH:
-				barrel_body.queue_free()
-			elif intensity == ExplosionNuke.ExplosionIntensity.MEDIUM:
-				blow_away(body.global_position)
+			blow_away(body.global_position)
 		BarrelBody.EXPLOSION_TYPE.TNT:
 			blow_away(body.global_position)
 

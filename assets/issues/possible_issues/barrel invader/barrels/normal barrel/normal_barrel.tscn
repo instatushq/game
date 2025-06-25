@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cif1mlbvvg0sx"]
+[gd_scene load_steps=11 format=3 uid="uid://cif1mlbvvg0sx"]
 
+[ext_resource type="Shader" uid="uid://cpra1w8ir15sl" path="res://assets/issues/possible_issues/barrel invader/barrels/slot/dissolve.gdshader" id="1_5rcff"]
 [ext_resource type="Script" uid="uid://co5cdw38syq8c" path="res://assets/issues/possible_issues/barrel invader/barrels/barrel_body.gd" id="1_r55qb"]
 [ext_resource type="Script" uid="uid://b5ytj11fr2xmm" path="res://assets/issues/possible_issues/barrel invader/barrels/normal barrel/normal-barrel.gd" id="2_5rcff"]
 [ext_resource type="Texture2D" uid="uid://c4cq8gt11aaxb" path="res://assets/issues/possible_issues/barrel invader/barrels/normal barrel/neutral barrel.png" id="3_t5t3d"]
@@ -13,6 +14,27 @@ size = Vector2(68, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny23e"]
 size = Vector2(75.5114, 96.3848)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5rcff"]
+noise_type = 2
+frequency = 0.1
+offset = Vector3(385.32, 0, 0)
+fractal_type = 0
+cellular_jitter = 0.0
+cellular_return_type = 0
+domain_warp_type = 2
+domain_warp_amplitude = 19.12
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t5t3d"]
+width = 200
+height = 200
+bump_strength = 0.0
+noise = SubResource("FastNoiseLite_5rcff")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5rcff"]
+shader = ExtResource("1_5rcff")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_t5t3d")
+shader_parameter/dissolve_value = 1.0
 
 [node name="NormalBarrel" type="RigidBody2D"]
 collision_layer = 2048
@@ -43,5 +65,6 @@ position = Vector2(1.2517e-06, 0.500008)
 scale = Vector2(6.5, 7.05)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5rcff")
 scale = Vector2(3, 3)
 texture = ExtResource("3_t5t3d")
