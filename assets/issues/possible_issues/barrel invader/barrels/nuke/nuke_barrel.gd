@@ -10,7 +10,7 @@ func _ready() -> void:
 	barrel_body.on_shot.connect(trigger_nuke)
 	barrel_body.on_contact_explosion.connect(_on_contact_explosion)
 
-func _on_contact_explosion(body: Node2D, explosion_type: BarrelBody.EXPLOSION_TYPE, intensity: ExplosionNuke.ExplosionIntensity) -> void:
+func _on_contact_explosion(_body: Node2D, explosion_type: BarrelBody.EXPLOSION_TYPE, _intensity: ExplosionNuke.ExplosionIntensity) -> void:
 	if explosion_type == BarrelBody.EXPLOSION_TYPE.TNT:
 		on_explosion_triggered.emit()
 	elif explosion_type == BarrelBody.EXPLOSION_TYPE.NUKE:
