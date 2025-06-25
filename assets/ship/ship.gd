@@ -14,6 +14,7 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @onready var sprites_animation_player: AnimationPlayer = $RigidBody2D/SpritesContainer/SpritesAnimations
 @onready var cannon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var game_manager: BarrelInvader = get_parent()
+@onready var cannon_fire: AudioStreamPlayer = $Shoot
 
 var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y: float = position.y;
@@ -93,6 +94,7 @@ func create_pew(cannon: Node2D) -> void:
 	game_manager.add_child(pew)
 	pew.global_position = cannon.global_position
 	pew.linear_velocity = Vector2.UP * pew.speed
+	cannon_fire.play()
 
 func _fire_cannons() -> void:
 	sprites_animation_player.play("shoot")

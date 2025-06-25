@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bbkif523pefv5"]
+[gd_scene load_steps=48 format=3 uid="uid://bbkif523pefv5"]
 
 [ext_resource type="Script" uid="uid://0duwjoixufm0" path="res://assets/ship/ship.gd" id="1_n8q6x"]
 [ext_resource type="Script" uid="uid://b0cbditwjg02n" path="res://assets/ship/ShipRigidBody.gd" id="2_pxrqm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b4b0pks0g1nvb" path="res://assets/ship/ship_animation.gd" id="4_o01ar"]
 [ext_resource type="Script" uid="uid://dh22gcbjgib3h" path="res://assets/ship/ship_fuel.gd" id="5_1h06k"]
 [ext_resource type="Texture2D" uid="uid://dlwjglw3walvr" path="res://assets/ship/sprites/animations/lights-off.png" id="5_gkfdw"]
+[ext_resource type="AudioStream" uid="uid://boeq8fmkvrbb2" path="res://assets/issues/possible_issues/barrel invader/pew_pew.ogg" id="8_o01ar"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dmai"]
 atlas = ExtResource("3_1h06k")
@@ -366,3 +367,8 @@ shape = SubResource("CapsuleShape2D_gpou2")
 [node name="Fuel" type="Node2D" parent="."]
 script = ExtResource("5_1h06k")
 metadata/_custom_type_script = "uid://dh22gcbjgib3h"
+
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_o01ar")
+pitch_scale = 1.1
+bus = &"Sound FX"

@@ -3,6 +3,7 @@ extends Node2D
 @export var explosion_scene: PackedScene = null
 @export var tnt_sprite: AnimatedSprite2D = null
 @export var hole_filler: Sprite2D = null
+@export var times_shot_to_blow_up_post_activation: int = 1
 @onready var tnt_countdown_audio: AudioStreamPlayer2D = $TNTCountdownAudio
 @onready var flash_time: float = 0.1
 @onready var barrel_body: BarrelBody = get_parent()

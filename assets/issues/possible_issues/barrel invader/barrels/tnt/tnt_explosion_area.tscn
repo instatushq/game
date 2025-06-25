@@ -17,6 +17,7 @@ offsets = PackedFloat32Array(0, 0.491477, 1)
 colors = PackedColorArray(0.184314, 0.188235, 0.309804, 1, 0.788235, 0.513726, 0.172549, 1, 0.184314, 0.188235, 0.309804, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7q8ft"]
+resource_local_to_scene = true
 radius = 150.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nldmf"]

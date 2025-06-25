@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://boeq8fmkvrbb2"
+path="res://.godot/imported/pew_pew.ogg-baa8a5d774914410b6b7e6ba586df7f7.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/issues/possible_issues/barrel invader/pew_pew.ogg"
+dest_files=["res://.godot/imported/pew_pew.ogg-baa8a5d774914410b6b7e6ba586df7f7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

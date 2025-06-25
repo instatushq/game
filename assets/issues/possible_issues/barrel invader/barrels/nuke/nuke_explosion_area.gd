@@ -10,6 +10,8 @@ class_name ExplosionNuke extends Area2D
 @export_range(10, 400) var explosion_radius: float = 350
 @export_range(0, 3) var self_destruct_in: float = 0.8
 
+var effected_bodies_ids: Array[String] = []
+
 enum ExplosionIntensity {
 	LOW,
 	MEDIUM,
@@ -63,3 +65,10 @@ func calculate_explosion_intensity_percentage(target_global_position: Vector2) -
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, explosion_radius, Color.RED)
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.has_method("_nuke_explosion") and not body.get_instance_id() in effected_bodies_ids:
+		effected_bodies_ids.append(body.get_instance_id())
+		var intensity: ExplosionIntensity = calculate_explosion_intensity_percentage(body.global_position)
+		body._nuke_explosion(intensity)
