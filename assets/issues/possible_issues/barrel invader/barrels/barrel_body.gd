@@ -10,12 +10,17 @@ class_name BarrelBody extends RigidBody2D
 var amount_of_impacts = 0;
 @export_range(-100, 100) var movement_speed: float = 100.0
 
+enum EXPLOSION_TYPE {
+	TNT,
+	NUKE
+}
+
 signal on_impact_ship(ship: Node2D)
 signal on_shot()
 signal on_barrel_destroyed()
+signal on_contact_explosion(body: Node2D, explosion_type: EXPLOSION_TYPE, intensity: ExplosionNuke.ExplosionIntensity)
 
 func _ready():
-	# body_entered.connect(_on_body_entered)
 	screen_detector.screen_exited.connect(func(): queue_free())
 	hitbox.body_entered.connect(_on_body_entered)
 	linear_velocity = Vector2(0, movement_speed)
@@ -37,3 +42,9 @@ func _on_body_entered(body: Node2D) -> void:
 	elif body is Pew:
 		on_shot.emit()
 		body.queue_free()
+
+func _nuke_explosion(body: Node2D, intensity: ExplosionNuke.ExplosionIntensity) -> void:
+	on_contact_explosion.emit(body, EXPLOSION_TYPE.NUKE, intensity)
+
+func _tnt_explosion(body: Node2D, intensity: ExplosionNuke.ExplosionIntensity) -> void:
+	on_contact_explosion.emit(body, EXPLOSION_TYPE.TNT, intensity)

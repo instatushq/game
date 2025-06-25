@@ -188,7 +188,7 @@ _data = {
 }
 
 [node name="Slot" type="RigidBody2D"]
-collision_layer = 4
+collision_layer = 2048
 collision_mask = 33
 gravity_scale = 0.0
 can_sleep = false

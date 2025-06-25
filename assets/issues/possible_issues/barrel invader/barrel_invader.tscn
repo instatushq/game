@@ -135,10 +135,10 @@ script = ExtResource("2_pm5jl")
 [node name="BarrelContainer" type="Node2D" parent="Game"]
 
 [node name="NormalBarrel" parent="Game/BarrelContainer" instance=ExtResource("3_kne8y")]
-position = Vector2(-261, -373)
+position = Vector2(347, -430)
 
 [node name="TNT" parent="Game/BarrelContainer" instance=ExtResource("4_3oaur")]
-position = Vector2(287, -470)
+position = Vector2(231, -470)
 
 [node name="Slot" parent="Game/BarrelContainer" instance=ExtResource("5_3tdpy")]
 position = Vector2(-6, -512)

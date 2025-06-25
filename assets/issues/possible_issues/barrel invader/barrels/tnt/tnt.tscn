@@ -64,7 +64,7 @@ gradient = SubResource("Gradient_dm4ju")
 height = 10
 
 [node name="TNT" type="RigidBody2D"]
-collision_layer = 4
+collision_layer = 2048
 collision_mask = 33
 gravity_scale = 0.0
 can_sleep = false

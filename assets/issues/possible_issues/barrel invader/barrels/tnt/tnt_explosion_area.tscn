@@ -18,7 +18,7 @@ colors = PackedColorArray(0.184314, 0.188235, 0.309804, 1, 0.788235, 0.513726, 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7q8ft"]
 resource_local_to_scene = true
-radius = 150.0
+radius = 0.01
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nldmf"]
 atlas = ExtResource("2_itwtq")
@@ -111,6 +111,8 @@ animations = [{
 }]
 
 [node name="TNTExplosionArea" type="Area2D"]
+collision_layer = 1024
+collision_mask = 2048
 script = ExtResource("1_0yrar")
 auto_explode = true
 explosion_radius = 97.65
@@ -183,3 +185,5 @@ bus = &"Sound FX"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.25, 1.25)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
