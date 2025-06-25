@@ -181,6 +181,7 @@ frame = 2
 [node name="Explode" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_itwtq")
 volume_db = -3.525
+pitch_scale = 1.2
 bus = &"Sound FX"
 
 [node name="Camera2D" type="Camera2D" parent="."]

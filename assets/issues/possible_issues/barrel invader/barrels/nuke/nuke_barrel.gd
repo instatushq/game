@@ -12,12 +12,9 @@ func _ready() -> void:
 
 func _on_contact_explosion(body: Node2D, explosion_type: BarrelBody.EXPLOSION_TYPE, intensity: ExplosionNuke.ExplosionIntensity) -> void:
 	if explosion_type == BarrelBody.EXPLOSION_TYPE.TNT:
-		if intensity == ExplosionNuke.ExplosionIntensity.HIGH:
-			on_explosion_triggered.emit()
-		elif intensity == ExplosionNuke.ExplosionIntensity.MEDIUM:
-			on_explosion_triggered.emit()
-			pass
-			# add force here.
+		on_explosion_triggered.emit()
+	elif explosion_type == BarrelBody.EXPLOSION_TYPE.NUKE:
+		on_explosion_triggered.emit()
 
 func _on_explode() -> void:
 	if explosion_scene != null:

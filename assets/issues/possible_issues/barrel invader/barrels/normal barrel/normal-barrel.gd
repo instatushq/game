@@ -27,8 +27,6 @@ func _on_explosion_contact(body: Node2D, explosion_type: BarrelBody.EXPLOSION_TY
 	else:
 		frames_since_last_explosion = 0
 
-	print(":boom!")
-
 	match explosion_type:
 		BarrelBody.EXPLOSION_TYPE.NUKE:
 			if intensity == ExplosionNuke.ExplosionIntensity.HIGH:

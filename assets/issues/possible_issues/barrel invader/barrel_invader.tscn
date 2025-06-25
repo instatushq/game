@@ -140,11 +140,29 @@ position = Vector2(347, -430)
 [node name="TNT" parent="Game/BarrelContainer" instance=ExtResource("4_3oaur")]
 position = Vector2(231, -470)
 
+[node name="TNT2" parent="Game/BarrelContainer" instance=ExtResource("4_3oaur")]
+position = Vector2(233, -571)
+
+[node name="TNT3" parent="Game/BarrelContainer" instance=ExtResource("4_3oaur")]
+position = Vector2(233, -682)
+
+[node name="TNT4" parent="Game/BarrelContainer" instance=ExtResource("4_3oaur")]
+position = Vector2(233, -798)
+
+[node name="TNT5" parent="Game/BarrelContainer" instance=ExtResource("4_3oaur")]
+position = Vector2(233, -931)
+
 [node name="Slot" parent="Game/BarrelContainer" instance=ExtResource("5_3tdpy")]
-position = Vector2(-6, -512)
+position = Vector2(-447, -548)
 
 [node name="Nuke" parent="Game/BarrelContainer" instance=ExtResource("6_7wsow")]
 position = Vector2(142, -476)
+
+[node name="Nuke2" parent="Game/BarrelContainer" instance=ExtResource("6_7wsow")]
+position = Vector2(18, -554)
+
+[node name="Nuke3" parent="Game/BarrelContainer" instance=ExtResource("6_7wsow")]
+position = Vector2(-131, -639)
 
 [node name="BarrelSpawner" type="Node2D" parent="Game" node_paths=PackedStringArray("camera")]
 script = ExtResource("3_2tnj0")
