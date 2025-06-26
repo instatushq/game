@@ -40,6 +40,7 @@ shape = SubResource("CapsuleShape2D_l2de3")
 debug_color = Color(1, 0.803621, 0.865858, 0.42)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(1.78655e-05, 4)
 emitting = false
 amount = 30
 one_shot = true
