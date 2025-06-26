@@ -1,6 +1,4 @@
-extends Node2D
-
-class_name ShipFuel;
+class_name ShipFuel extends Node2D
 
 @export var fuel: float = 100
 @export var fuel_spending_rate = 0.015

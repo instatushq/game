@@ -1,7 +1,7 @@
 class_name Ship extends Node2D
 
 @export var movement_speed: float = 10
-@export var bottom_camera_movement_margin: float = 100.0
+@export var bottom_camera_movement_margin: float = 700.0
 var side_movement_padding: float = 48.0
 
 var mouse_world_position: Vector2 = Vector2.ZERO
