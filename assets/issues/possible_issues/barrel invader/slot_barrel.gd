@@ -73,12 +73,15 @@ func begin_picking() -> void:
 	begin_picking()
 
 func pick(index: int) -> void:
+	call_deferred("_pick_barrel", index)
+	barrel_body.queue_free()
+
+func _pick_barrel(index: int) -> void:
 	var scene = barrels_scenes[index] if index != -1 else reinforced_barrel
 	var barrel: BarrelBody = scene.instantiate()
 	barrel.global_position = barrel_body.global_position
 	barrel.global_rotation = barrel_body.global_rotation
 	barrel_body.get_parent().add_child(barrel)
-	barrel_body.queue_free()
 
 func pick_based_on_frame() -> void:
 	if not barrel_sprite.animation == "picking": return

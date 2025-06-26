@@ -17,11 +17,14 @@ func _on_contact_explosion(_body: Node2D, explosion_type: BarrelBody.EXPLOSION_T
 		on_explosion_triggered.emit()
 
 func _on_explode() -> void:
+	call_deferred("_spawn_explosion")
+	barrel_body.call_deferred("queue_free")
+
+func _spawn_explosion() -> void:
 	if explosion_scene != null:
 		var explosion = explosion_scene.instantiate()
 		explosion.global_position = barrel_body.global_position
 		barrel_body.get_parent().add_child(explosion)
-	barrel_body.call_deferred("queue_free")
 
 func trigger_nuke() -> void:
 	on_explosion_triggered.emit()

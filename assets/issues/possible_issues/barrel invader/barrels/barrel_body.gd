@@ -41,7 +41,7 @@ func _on_body_entered(body: Node2D) -> void:
 		on_impact_ship.emit(body.get_parent())
 	elif body is Pew:
 		on_shot.emit()
-		body.queue_free()
+		body._on_impact()
 
 func _nuke_explosion(body: Node2D, intensity: ExplosionNuke.ExplosionIntensity) -> void:
 	on_contact_explosion.emit(body, EXPLOSION_TYPE.NUKE, intensity)

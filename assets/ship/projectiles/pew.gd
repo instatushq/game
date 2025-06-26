@@ -5,31 +5,16 @@ class_name Pew
 @export var movement_direction: Vector2 = Vector2.ZERO
 @export var speed: int = 1000
 @onready var sprite = $Sprite2D
+@onready var particle_impact_effect = $CPUParticles2D
+@onready var collision_shape_2d = $CollisionShape2D
 
 func _ready() -> void:
 	linear_velocity = movement_direction * speed
 
 
 func _process(_delta: float) -> void:
-	if not is_on_screen():
-		queue_free()
 	var angle = movement_direction.angle()
 	sprite.rotation = angle
-
-func is_on_screen() -> bool:
-	var viewport_rect = get_viewport_rect()
-	var camera = get_viewport().get_camera_2d()
-	if camera:
-		var global_pos = global_position
-		var camera_pos = camera.global_position
-		var view_size = viewport_rect.size
-		
-		# Check if the projectile is outside the camera view with some margin
-		return (global_pos.x > camera_pos.x - view_size.x/2 and
-				global_pos.x < camera_pos.x + view_size.x/2 and
-				global_pos.y > camera_pos.y - view_size.y/2 and
-				global_pos.y < camera_pos.y + view_size.y/2)
-	return true
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is ShipImpacter:
@@ -38,5 +23,14 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_impact() -> void:
 	sprite.visible = false
 	linear_velocity = Vector2.ZERO
-	await get_tree().create_timer(1.0).timeout
+	particle_impact_effect.emitting = true
+	call_deferred("disable_collision")
+
+func disable_collision() -> void:
+	collision_shape_2d.disabled = true
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()
+
+func _on_cpu_particles_2d_finished() -> void:
 	queue_free()
