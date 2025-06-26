@@ -61,11 +61,6 @@ func begin_picking() -> void:
 	current_picked_element = (current_picked_element + 1) % picking_array.size()
 	if exposed:
 		waiting_time = max(waiting_time - reduce_waiting_time_by_on_exposure, 0.0)
-		if waiting_time <= original_waiting_time * 0.5:
-			glitch_effect.play("normal")
-		elif waiting_time <= original_waiting_time * 0.25:
-			glitch_effect.play("critical")
-
 		if waiting_time <= 0.0 and not is_going_to_pick_reinforced:
 			is_going_to_pick_reinforced = true
 			pick_reinforced_in(1.4)

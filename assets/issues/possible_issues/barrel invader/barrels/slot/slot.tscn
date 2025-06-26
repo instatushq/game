@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d1ej5smsffdy7"]
+[gd_scene load_steps=23 format=3 uid="uid://d1ej5smsffdy7"]
 
 [ext_resource type="Script" uid="uid://co5cdw38syq8c" path="res://assets/issues/possible_issues/barrel invader/barrels/barrel_body.gd" id="1_n1u4p"]
 [ext_resource type="Script" uid="uid://ck5nhnkveec8u" path="res://assets/issues/possible_issues/barrel invader/slot_barrel.gd" id="2_rpr8n"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://87kn8k2jgo8a" path="res://assets/issues/possible_issues/barrel invader/barrels/tnt/tnt.tscn" id="4_ufcpx"]
 [ext_resource type="Texture2D" uid="uid://bfa5p8i0uira3" path="res://assets/issues/possible_issues/barrel invader/barrels/slot/holo2.png" id="5_2egle"]
 [ext_resource type="PackedScene" uid="uid://thm4h5ok0mx4" path="res://assets/issues/possible_issues/barrel invader/barrels/nuke/nuke.tscn" id="5_jvhve"]
-[ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="9_2egle"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tnj0"]
 size = Vector2(68, 90)
@@ -105,88 +104,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ai5ul"]
-shader = ExtResource("9_2egle")
-shader_parameter/shake = 0.0
-shader_parameter/noiseQuality = 250.0
-shader_parameter/noiseIntensity = 0.007
-shader_parameter/offsetIntensity = 0.05
-shader_parameter/colorOffsetIntensity = 0.498
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_2egle"]
-
-[sub_resource type="Animation" id="Animation_gsv55"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/noiseIntensity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.007]
-}
-
-[sub_resource type="Animation" id="Animation_gq8sr"]
-resource_name = "critical"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/noiseIntensity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.007, 0.03]
-}
-
-[sub_resource type="Animation" id="Animation_ai5ul"]
-resource_name = "normal"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/noiseIntensity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.007]
-}
-
-[sub_resource type="Animation" id="Animation_n4r3l"]
-resource_name = "nothing"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/noiseIntensity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_n4r3l"]
-_data = {
-&"RESET": SubResource("Animation_gsv55"),
-&"critical": SubResource("Animation_gq8sr"),
-&"normal": SubResource("Animation_ai5ul"),
-&"nothing": SubResource("Animation_n4r3l")
-}
-
 [node name="Slot" type="RigidBody2D"]
 collision_layer = 2048
 collision_mask = 33
@@ -197,11 +114,10 @@ min_angular_velocity = 0.0
 max_angular_velocity = 0.0
 movement_speed = -75.0
 
-[node name="SlotBarrel" type="Node2D" parent="." node_paths=PackedStringArray("screen_detector", "barrel_sprite", "glitch_effect")]
+[node name="SlotBarrel" type="Node2D" parent="." node_paths=PackedStringArray("screen_detector", "barrel_sprite")]
 script = ExtResource("2_rpr8n")
 screen_detector = NodePath("../Screen")
 barrel_sprite = NodePath("../AnimatedSprite2D")
-glitch_effect = NodePath("../AnimatedSprite2D/Sprite2D/glitch_animation")
 reinforced_barrel = ExtResource("3_ai5ul")
 barrels_scenes = Array[PackedScene]([ExtResource("3_rpr8n"), ExtResource("4_ufcpx"), ExtResource("5_jvhve")])
 
@@ -228,16 +144,3 @@ sprite_frames = SubResource("SpriteFrames_dm4ju")
 animation = &"normal"
 autoplay = "picking"
 frame_progress = 0.407903
-
-[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
-visible = false
-material = SubResource("ShaderMaterial_ai5ul")
-position = Vector2(0.333333, -0.333333)
-scale = Vector2(22, 28.3333)
-texture = SubResource("CanvasTexture_2egle")
-
-[node name="glitch_animation" type="AnimationPlayer" parent="AnimatedSprite2D/Sprite2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_n4r3l")
-}
-autoplay = "nothing"
