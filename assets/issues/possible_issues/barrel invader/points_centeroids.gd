@@ -1,7 +1,10 @@
 class_name PointsCenteroids
 
+# needs major optimization because this shit is slow as fuck
+# read more on https://godotengine.org/asset-library/asset/1995
 
-static func get_cell_centers(noise_texture: FastNoiseLite, noise_size: Vector2, threshold := 0.9) -> Array:
+
+static func get_cell_centers(noise_texture: FastNoiseLite, noise_size: Vector2, threshold := 0.9) -> Array[Vector2]:
 	var width = roundi(noise_size.x)
 	var height = roundi(noise_size.y)
 	
@@ -11,7 +14,7 @@ static func get_cell_centers(noise_texture: FastNoiseLite, noise_size: Vector2, 
 		for y in height:
 			visited[x].append(false)
 
-	var centers_with_values := []
+	var centers_with_values: Array[Vector2] = []
 
 	for x in width:
 		for y in height:
@@ -22,7 +25,7 @@ static func get_cell_centers(noise_texture: FastNoiseLite, noise_size: Vector2, 
 				# BFS for the connected region
 				var queue := [Vector2i(x, y)]
 				var region := []
-				var total_noise := 0.0
+				var total_noise = 0.0
 				
 				while queue.size() > 0:
 					var current: Vector2i = queue.pop_front()

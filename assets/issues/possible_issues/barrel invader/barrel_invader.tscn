@@ -187,10 +187,15 @@ position = Vector2(-447, -548)
 [node name="Nuke" parent="Game/BarrelContainer" instance=ExtResource("6_7wsow")]
 position = Vector2(142, -476)
 
-[node name="BarrelSpawner" type="Node2D" parent="Game" node_paths=PackedStringArray("camera")]
+[node name="BarrelSpawner" type="Node2D" parent="Game" node_paths=PackedStringArray("camera", "barrels_container")]
 script = ExtResource("3_2tnj0")
 camera = NodePath("../Camera2D")
 noise_texture = SubResource("FastNoiseLite_3oaur")
+normal_barrel_scene = ExtResource("3_kne8y")
+tnt_barrel_scene = ExtResource("4_3oaur")
+nuke_barrel_scene = ExtResource("6_7wsow")
+slot_barrel_scene = ExtResource("5_3tdpy")
+barrels_container = NodePath("../BarrelContainer")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Game"]
 offset = Vector2(154.19, -676.84)
