@@ -69,7 +69,7 @@ func begin_picking() -> void:
 
 func pick(index: int) -> void:
 	call_deferred("_pick_barrel", index)
-	barrel_body.queue_free()
+	barrel_body.call_deferred("queue_free")
 
 func _pick_barrel(index: int) -> void:
 	var scene = barrels_scenes[index] if index != -1 else reinforced_barrel

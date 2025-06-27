@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c4cq8gt11aaxb" path="res://assets/issues/possible_issues/barrel invader/barrels/normal barrel/neutral barrel.png" id="3_t5t3d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r55qb"]
-bounce = 0.15
-absorbent = true
+friction = 0.6
+bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tnj0"]
 size = Vector2(68, 90)
@@ -38,7 +38,7 @@ shader_parameter/dissolve_value = 1.0
 
 [node name="NormalBarrel" type="RigidBody2D"]
 collision_layer = 2048
-collision_mask = 33
+collision_mask = 2081
 physics_material_override = SubResource("PhysicsMaterial_r55qb")
 gravity_scale = 0.0
 can_sleep = false

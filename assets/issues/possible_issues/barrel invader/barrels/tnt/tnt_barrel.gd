@@ -38,7 +38,7 @@ func _on_shoot_tnt() -> void:
 
 func _on_explode() -> void:
 	call_deferred("_spawn_explosion")
-	barrel_body.queue_free()
+	barrel_body.call_deferred("queue_free")
 
 func _spawn_explosion() -> void:
 	if explosion_scene != null:
@@ -48,6 +48,7 @@ func _spawn_explosion() -> void:
 
 func trigger_tnt() -> void:
 	if triggered: return
+	barrel_body._prevent_auto_destroy()
 	triggered = true
 	
 	var current_index = 1

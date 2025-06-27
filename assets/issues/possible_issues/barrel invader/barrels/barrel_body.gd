@@ -21,19 +21,21 @@ signal on_barrel_destroyed()
 signal on_contact_explosion(body: Node2D, explosion_type: EXPLOSION_TYPE, intensity: ExplosionNuke.ExplosionIntensity)
 
 func _ready():
-	screen_detector.screen_exited.connect(func(): queue_free())
+	screen_detector.screen_exited.connect(queue_free)
 	hitbox.body_entered.connect(_on_body_entered)
 	linear_velocity = Vector2(0, movement_speed)
 	angular_velocity = randf_range(min_angular_velocity, max_angular_velocity)
 	on_barrel_destroyed.connect(_on_barrel_destroyed)
 
 func _on_barrel_destroyed() -> void:
-	
 	queue_free()
 	if destruction_particles_scene == null: return
 	var particles = destruction_particles_scene.instantiate()
 	particles.global_position = global_position
 	get_parent().add_child(particles)
+
+func _prevent_auto_destroy() -> void:
+	screen_detector.screen_exited.disconnect(queue_free)
 
 func _on_body_entered(body: Node2D) -> void:	
 	if body.get_parent().name.to_lower() == "ship":
