@@ -483,5 +483,4 @@ margin = Vector2(50, 50)
 
 [node name="ButtonTick" type="AudioStreamPlayer" parent="ColorRect"]
 stream = ExtResource("23_pak7d")
-volume_db = -8.0
 pitch_scale = 0.3

@@ -721,17 +721,18 @@ bus = &"Ambience"
 
 [node name="MenuHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_q7ux3")
+volume_db = 5.0
 bus = &"Sound FX"
 
 [node name="MenuClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_rlsq6")
-volume_db = -20.0
+volume_db = -10.0
 pitch_scale = 0.8
 bus = &"Sound FX"
 
 [node name="StartGame" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_rlsq6")
-volume_db = -20.0
+volume_db = -10.0
 pitch_scale = 0.6
 bus = &"Sound FX"
 

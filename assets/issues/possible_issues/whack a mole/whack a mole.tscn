@@ -547,7 +547,7 @@ one_shot = true
 
 [node name="Miss" type="AudioStreamPlayer" parent="GameNode/Game"]
 stream = ExtResource("10_mv0ip")
-volume_db = 3.0
+volume_db = 10.0
 bus = &"Sound FX"
 
 [node name="Cursor" type="AnimatedSprite2D" parent="GameNode" node_paths=PackedStringArray("whack_a_mole")]

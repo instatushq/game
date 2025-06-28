@@ -275,8 +275,9 @@ frame_progress = 0.809226
 unique_name_in_owner = true
 position = Vector2(0, -4)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="InternalShip"]
+[node name="Ambience" type="AudioStreamPlayer2D" parent="InternalShip"]
 stream = ExtResource("5_cabrn")
+volume_db = 3.0
 autoplay = true
 max_distance = 500.0
 panning_strength = 0.0

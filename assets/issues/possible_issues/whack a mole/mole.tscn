@@ -253,12 +253,15 @@ one_shot = true
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_xrqln")
+volume_db = 10.0
 bus = &"Sound FX"
 
 [node name="ComingUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_j3mqj")
+volume_db = 10.0
 bus = &"Sound FX"
 
 [node name="GoingDown" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_8g346")
+volume_db = 10.0
 bus = &"Sound FX"

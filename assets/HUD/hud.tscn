@@ -1372,7 +1372,7 @@ bus = &"Sound FX"
 
 [node name="E_N_Stat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_6k1te")
-volume_db = -30.0
+volume_db = -5.0
 bus = &"Sound FX"
 
 [connection signal="pressed" from="Controls/MuteButton" to="." method="_on_mute_button_pressed"]

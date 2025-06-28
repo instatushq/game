@@ -1127,29 +1127,28 @@ autostart = true
 
 [node name="IssueSolved" type="AudioStreamPlayer" parent="Issues"]
 stream = ExtResource("23_6trai")
-volume_db = -20.0
 bus = &"Sound FX"
 
 [node name="Alarm" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_v5d4y")
-volume_db = -10.0
+volume_db = 7.0
 bus = &"Sound FX"
 
 [node name="EngineRun" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("25_yl61a")
-volume_db = -10.0
+volume_db = 2.0
 pitch_scale = 0.7
 bus = &"Sound FX"
 
 [node name="EngineRunning" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("26_vhwim")
-volume_db = -10.0
+volume_db = 2.0
 pitch_scale = 0.7
 bus = &"Sound FX"
 
 [node name="EngineFail" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("27_ojjh1")
-volume_db = -10.0
+volume_db = 2.0
 pitch_scale = 0.7
 bus = &"Sound FX"
 

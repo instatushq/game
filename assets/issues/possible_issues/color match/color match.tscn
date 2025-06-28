@@ -602,17 +602,17 @@ sprites = SubResource("SpriteFrames_4xcn4")
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
 stream = ExtResource("7_3r64c")
-volume_db = -20.0
+volume_db = -5.0
 pitch_scale = 3.0
 
 [node name="ButtonMatch" type="AudioStreamPlayer" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
 stream = ExtResource("7_3r64c")
-volume_db = -20.0
+volume_db = -5.0
 pitch_scale = 2.4
 
 [node name="ButtonMismatch" type="AudioStreamPlayer" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
 stream = ExtResource("8_qni4q")
-volume_db = -20.0
+volume_db = -5.0
 pitch_scale = 1.5
 
 [node name="Countdown" parent="CanvasLayer/AnimatedTextureRect/ColorRect" instance=ExtResource("9_jnvj1")]
