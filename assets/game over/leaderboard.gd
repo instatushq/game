@@ -31,6 +31,7 @@ var base_url: String = "https://api.game.instatus.com"
 signal on_entries_data_updated
 
 func _ready() -> void:
+	name_edit.editable = false
 	social_media_container.visible = false
 	for i in displayed_entries_count:
 		var entry: LeaderboardEntry = entry_scene.instantiate()
@@ -70,7 +71,8 @@ func _on_query_rank_request_completed(_result: int, _response_code: int, _header
 		return
 	
 	score_rank.text = str(int(json.rank)) + " " + Rank.get_ordinal_suffix(int(json.rank))
-	save_button.disabled = false
+	name_edit.editable = true
+	name_edit.grab_focus()
 
 func _on_press_main_menu() -> void:
 	screen_transition.transition(func():
