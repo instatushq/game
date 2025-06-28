@@ -8,6 +8,7 @@ signal mole_missed(mole: Mole)
 @onready var hit_sound: AudioStreamPlayer = $HitSound
 @onready var coming_up_sound: AudioStreamPlayer = $ComingUp
 @onready var going_down_sound: AudioStreamPlayer = $GoingDown
+@onready var parent: WhackAMole = get_parent()
 @export var reset_colors_on_frame: int = 3
 
 var is_player_on_cooldown: bool = false
@@ -23,7 +24,6 @@ const MAX_TIME_BETWEEN_APPEARANCES = 3.0
 const MIN_TIME_OUTSIDE = 0.5
 const MAX_TIME_OUTSIDE = 1.5
 
-@onready var parent: WhackAMole = get_parent()
 
 func _ready() -> void:
 	z_index = 0

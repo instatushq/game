@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://d2burbt4yek8s"]
+[gd_scene load_steps=61 format=3 uid="uid://d2burbt4yek8s"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_8boil"]
 [ext_resource type="Script" uid="uid://dsd2g1qv6ddsb" path="res://assets/issues/possible_issues/whack a mole/whack a mole.gd" id="2_00j50"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://ceewcdl51t0s" path="res://assets/issues/possible_issues/whack a mole/MOLE GAME glow.png" id="7_mv0ip"]
 [ext_resource type="PackedScene" uid="uid://bd0p0cx8fwkim" path="res://assets/issues/possible_issues/whack a mole/mole.tscn" id="9_klspp"]
 [ext_resource type="AudioStream" uid="uid://cvo8m586imi51" path="res://assets/issues/possible_issues/whack a mole/miss sfx.ogg" id="10_mv0ip"]
+[ext_resource type="Texture2D" uid="uid://brr7y27shj084" path="res://assets/issues/possible_issues/whack a mole/hammers.png" id="11_ovrla"]
+[ext_resource type="Script" uid="uid://dkmfxjg80i10q" path="res://assets/issues/possible_issues/whack a mole/sprite_cursor.gd" id="11_sm7c6"]
+[ext_resource type="Texture2D" uid="uid://bth24mas1he7e" path="res://assets/issues/possible_issues/whack a mole/gammer glow.png" id="12_klspp"]
 [ext_resource type="Script" uid="uid://ccka2jdoupg3" path="res://assets/main menu/main menu camera.gd" id="12_sm7c6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1yv70"]
@@ -290,6 +293,120 @@ font_size = 70
 font_color = Color(0.223529, 0.611765, 0.701961, 1)
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_keg7o"]
+atlas = ExtResource("11_ovrla")
+region = Rect2(0, 0, 44, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovrla"]
+atlas = ExtResource("11_ovrla")
+region = Rect2(44, 0, 44, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5qaa"]
+atlas = ExtResource("11_ovrla")
+region = Rect2(132, 0, 44, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vljnu"]
+atlas = ExtResource("11_ovrla")
+region = Rect2(88, 0, 44, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adhhi"]
+atlas = ExtResource("11_ovrla")
+region = Rect2(132, 0, 44, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sm7c6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keg7o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovrla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5qaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovrla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5qaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovrla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5qaa")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vljnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adhhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vljnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adhhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vljnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adhhi")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_ovrla"]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.12, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.785398, -0.785398, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_keg7o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8fml2"]
+_data = {
+&"Hit": SubResource("Animation_ovrla"),
+&"RESET": SubResource("Animation_keg7o")
+}
+
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_8boil")
 
@@ -431,6 +548,28 @@ one_shot = true
 stream = ExtResource("10_mv0ip")
 volume_db = 3.0
 bus = &"Sound FX"
+
+[node name="Cursor" type="AnimatedSprite2D" parent="GameNode" node_paths=PackedStringArray("whack_a_mole")]
+position = Vector2(643, 269)
+scale = Vector2(9, 9)
+sprite_frames = SubResource("SpriteFrames_sm7c6")
+animation = &"hit"
+autoplay = "default"
+centered = false
+offset = Vector2(-44, -47)
+script = ExtResource("11_sm7c6")
+offset_from_cursor = Vector2(40, -10)
+whack_a_mole = NodePath("../Game")
+
+[node name="Glow" type="Sprite2D" parent="GameNode/Cursor"]
+texture = ExtResource("12_klspp")
+centered = false
+offset = Vector2(-44, -47)
+
+[node name="Hit" type="AnimationPlayer" parent="GameNode/Cursor"]
+libraries = {
+&"": SubResource("AnimationLibrary_8fml2")
+}
 
 [node name="Camera2D2" type="Camera2D" parent="GameNode"]
 position = Vector2(3, 0)

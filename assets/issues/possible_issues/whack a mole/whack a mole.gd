@@ -12,6 +12,8 @@ var is_playing: bool = false
 @onready var pc_face_wink_timer: Timer = $"AnimatedSprite2D/Face/wink timer"
 
 signal on_game_started
+signal on_successful_hit
+signal on_missed_hit
 
 func _ready() -> void:
 	var parent: Issue = get_parent().get_parent()
@@ -30,7 +32,7 @@ func _ready() -> void:
 
 func _on_mole_hit(_mole: Mole) -> void:
 	if is_on_cooldown_for_failing: return
-
+	on_successful_hit.emit()
 	score += score_per_mole
 	_update_xp_counter()
 	pc_face.play("hit")
@@ -43,6 +45,7 @@ func _on_mole_missed(_mole: Mole) -> void:
 		is_on_cooldown_for_failing = true
 		cooldown_timer.start(0.6)
 		pc_face.play("miss")
+		on_missed_hit.emit()
 		$Miss.play()
 		pc_face_wink_timer.stop()
 		for mole in moles:
