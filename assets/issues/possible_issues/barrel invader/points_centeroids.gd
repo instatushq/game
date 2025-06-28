@@ -3,7 +3,6 @@ class_name PointsCenteroids
 # needs major optimization because this shit is slow as fuck
 # read more on https://godotengine.org/asset-library/asset/1995
 
-
 static func get_cell_centers(noise_texture: FastNoiseLite, noise_size: Vector2, threshold := 0.9) -> Array[Vector2]:
 	var width = roundi(noise_size.x)
 	var height = roundi(noise_size.y)

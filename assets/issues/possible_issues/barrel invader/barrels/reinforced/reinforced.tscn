@@ -9,13 +9,14 @@ size = Vector2(68, 90)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny23e"]
 size = Vector2(75.5114, 96.3848)
 
-[node name="ReinforcedBarrel" type="RigidBody2D"]
+[node name="Reinforced" type="RigidBody2D"]
 collision_layer = 2048
 collision_mask = 33
 gravity_scale = 0.0
 can_sleep = false
 angular_damp_mode = 1
 script = ExtResource("1_yadso")
+barrel_type = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2tnj0")

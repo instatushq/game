@@ -9,12 +9,17 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @export var cannon_one_active: bool = true
 @export var pew_scene: PackedScene = preload("res://assets/ship/projectiles/pew.tscn")
 @export var fire_cooldown: float = 0.15
+@export var damage_cooldown_seconds: float = 3
+var is_invincible: bool = false
 
 @onready var rb: ShipRigidBody = $RigidBody2D
+@onready var ship_sprite: AnimatedSprite2D = $RigidBody2D/SpritesContainer/ShipSprite
 @onready var sprites_animation_player: AnimationPlayer = $RigidBody2D/SpritesContainer/SpritesAnimations
+@onready var hit_animation_player: AnimationPlayer = $RigidBody2D/SpritesContainer/ShipStates
 @onready var cannon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var game_manager: BarrelInvader = get_parent()
 @onready var cannon_fire: AudioStreamPlayer = $Shoot
+@onready var ship_fuel: ShipFuel = $Fuel
 
 var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y: float = position.y;
@@ -34,7 +39,23 @@ var y_position_synced: bool = false
 
 func _ready():
 	rb.on_impact.connect(_on_impact_with_object)
+	rb.on_barrel_impact.connect(_on_barrel_impact)
+
+func _on_barrel_impact(_barrel: BarrelBody) -> void:
+	if is_invincible: return
 	
+	# To trigger the damage effect:
+	ship_sprite.material.set_shader_parameter("trigger_time", (Time.get_ticks_msec() / 1000.0) - 0.2)
+	
+	ship_fuel.decrease_fuel(25)
+	is_invincible = true
+	hit_animation_player.play("Took Damage")
+	await get_tree().create_timer(damage_cooldown_seconds).timeout
+	# To disable the effect (reset it):
+	ship_sprite.material.set_shader_parameter("trigger_time", -1.0)
+	hit_animation_player.play("normal")
+	is_invincible = false
+
 func _process(delta: float) -> void:
 	if not game_manager.is_playing: return
 

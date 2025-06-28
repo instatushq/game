@@ -19,7 +19,7 @@ var next_y_to_spawn: float = 0
 
 func _spawn_batch(center: Vector2, radius: float) -> void:
 	var cells_centroids = PointsCenteroids.get_cell_centers(noise_texture, _get_camera_dimensions(), 0.92)
-	var density_calculator_grid = GridDensityCalculator.new(cells_centroids, 1000)
+	var density_calculator_grid = GridDensityCalculator.new(cells_centroids, 50)
 	var sorted_points: Array[Vector3] = density_calculator_grid.get_sorted_points_by_density_and_x(radius)
 	for point in sorted_points:
 		var point_position: Vector2 = Vector2(point.x, point.y)

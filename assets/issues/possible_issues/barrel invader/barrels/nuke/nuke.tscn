@@ -83,6 +83,7 @@ gravity_scale = 0.0
 can_sleep = false
 angular_velocity = 0.349066
 script = ExtResource("1_q2su2")
+barrel_type = 2
 destruction_particles_scene = ExtResource("2_dt4f0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

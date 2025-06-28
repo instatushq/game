@@ -69,6 +69,7 @@ collision_mask = 33
 gravity_scale = 0.0
 can_sleep = false
 script = ExtResource("1_odwwu")
+barrel_type = 1
 
 [node name="TNTBarrel" type="Node2D" parent="." node_paths=PackedStringArray("tnt_sprite", "hole_filler")]
 script = ExtResource("2_hiew4")

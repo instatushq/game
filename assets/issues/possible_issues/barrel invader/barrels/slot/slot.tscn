@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://d1ej5smsffdy7"]
 
 [ext_resource type="Script" uid="uid://co5cdw38syq8c" path="res://assets/issues/possible_issues/barrel invader/barrels/barrel_body.gd" id="1_n1u4p"]
-[ext_resource type="Script" uid="uid://ck5nhnkveec8u" path="res://assets/issues/possible_issues/barrel invader/slot_barrel.gd" id="2_rpr8n"]
+[ext_resource type="Script" path="res://assets/issues/possible_issues/barrel invader/slot_barrel.gd" id="2_rpr8n"]
 [ext_resource type="PackedScene" uid="uid://bxvpgt0wn8lc8" path="res://assets/issues/possible_issues/barrel invader/barrels/reinforced/reinforced.tscn" id="3_ai5ul"]
 [ext_resource type="PackedScene" uid="uid://cif1mlbvvg0sx" path="res://assets/issues/possible_issues/barrel invader/barrels/normal barrel/normal_barrel.tscn" id="3_rpr8n"]
 [ext_resource type="Texture2D" uid="uid://duc0y3p3da65v" path="res://assets/issues/possible_issues/barrel invader/barrels/slot/holo1.png" id="3_ufcpx"]
@@ -110,6 +110,7 @@ collision_mask = 33
 gravity_scale = 0.0
 can_sleep = false
 script = ExtResource("1_n1u4p")
+barrel_type = 3
 min_angular_velocity = 0.0
 max_angular_velocity = 0.0
 movement_speed = -75.0

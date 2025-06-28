@@ -1,6 +1,14 @@
 class_name BarrelBody extends RigidBody2D
 
+enum BARREL_TYPE {
+	NORMAL,
+	TNT,
+	NUKE,
+	SLOT,
+	REINFORCED
+}
 
+@export var barrel_type: BARREL_TYPE = BARREL_TYPE.NORMAL
 @onready var screen_detector: VisibleOnScreenNotifier2D = $Screen
 @onready var hitbox: Area2D = $HitBox
 @export var destruction_particles_scene: PackedScene = null

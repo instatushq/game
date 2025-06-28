@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bd0p0cx8fwkim" path="res://assets/issues/possible_issues/whack a mole/mole.tscn" id="9_klspp"]
 [ext_resource type="AudioStream" uid="uid://cvo8m586imi51" path="res://assets/issues/possible_issues/whack a mole/miss sfx.ogg" id="10_mv0ip"]
 [ext_resource type="Texture2D" uid="uid://brr7y27shj084" path="res://assets/issues/possible_issues/whack a mole/hammers.png" id="11_ovrla"]
-[ext_resource type="Script" uid="uid://dkmfxjg80i10q" path="res://assets/issues/possible_issues/whack a mole/sprite_cursor.gd" id="11_sm7c6"]
+[ext_resource type="Script" path="res://assets/issues/possible_issues/whack a mole/sprite_cursor.gd" id="11_sm7c6"]
 [ext_resource type="Texture2D" uid="uid://bth24mas1he7e" path="res://assets/issues/possible_issues/whack a mole/gammer glow.png" id="12_klspp"]
 [ext_resource type="Script" uid="uid://ccka2jdoupg3" path="res://assets/main menu/main menu camera.gd" id="12_sm7c6"]
 
