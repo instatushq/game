@@ -344,7 +344,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -367,7 +367,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"miss",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="Animation" id="Animation_ovrla"]
@@ -553,7 +553,7 @@ bus = &"Sound FX"
 position = Vector2(643, 269)
 scale = Vector2(9, 9)
 sprite_frames = SubResource("SpriteFrames_sm7c6")
-animation = &"hit"
+animation = &"miss"
 autoplay = "default"
 centered = false
 offset = Vector2(-44, -47)

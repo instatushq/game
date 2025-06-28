@@ -5,6 +5,7 @@ class_name SpriteCursor extends AnimatedSprite2D
 @export var whack_a_mole: WhackAMole = null
 
 func _ready() -> void:
+	global_position = get_global_mouse_position() + (offset_from_cursor * scale)
 	animation_finished.connect(_on_animation_finished)
 	whack_a_mole.on_successful_hit.connect(_on_hit)
 	whack_a_mole.on_missed_hit.connect(_on_miss)

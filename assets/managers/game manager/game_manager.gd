@@ -38,17 +38,22 @@ var timepassed: int = 0
 var is_solving_puzzle: bool = false
 var last_is_solving_puzzle: bool = is_solving_puzzle
 var music_bus_index: int = AudioServer.get_bus_index("Music")
+@onready var death_timer: Timer = Timer.new()
 
 func _ready() -> void:
-
+	add_child(death_timer)
+	death_timer.one_shot = true
+	death_timer.wait_time = 1.5
 	ship_health.on_health_change.connect(_on_readings_change)
 	on_death.connect(_on_astronaut_death)
+	death_timer.timeout.connect(func(): 
+		_switch_to_game_over()
+		death_timer.queue_free()
+	)
 	music.play()
 	if not play_music:
 		AudioServer.set_bus_mute(music_bus_index, true)
 
-	
-	
 func _on_score_timer_timeout() -> void:
 	increaseScore()
 
@@ -82,11 +87,14 @@ func _switch_to_astronaut() -> void:
 	Input.warp_mouse(viewport_center)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-
 func _on_ship_damage_timer_timeout() -> void:
-	ship_health.decrease_health(randi_range(1, 3))
+	ship_health.decrease_health(randi_range(2, 4))
 
 func _on_readings_change(_old_value: float, new_value: float) -> void:
+	if is_dead_already and new_value > 0:
+		death_timer.stop()
+		is_dead_already = false
+
 	if new_value <= 0 and not is_dead_already:
 		is_dead_already = true
 		on_death.emit()
@@ -97,12 +105,4 @@ func _switch_to_game_over() -> void:
 	,TransitionScreen.TransitionPoint.MIDDLE)
 
 func _on_astronaut_death() -> void:
-	var death_timer = Timer.new()
-	add_child(death_timer)
-	death_timer.one_shot = true
-	death_timer.wait_time = 1.5
-	death_timer.timeout.connect(func(): 
-		_switch_to_game_over()
-		death_timer.queue_free()
-	)
 	death_timer.start()
