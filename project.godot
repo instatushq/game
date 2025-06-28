@@ -24,6 +24,7 @@ config/icon="uid://cp1qj3lyoacho"
 
 Music="*res://assets/audio/music.tscn"
 Stats="*res://assets/globals/game stats.tscn"
+VolumeManager="*res://assets/volume manager/volume manager.gd"
 
 [display]
 
@@ -92,6 +93,16 @@ mute={
 abort={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":71,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+increase_volume={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":true,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":61,"key_label":0,"unicode":43,"location":0,"echo":false,"script":null)
+]
+}
+decrease_volume={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":true,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":45,"key_label":0,"unicode":95,"location":0,"echo":false,"script":null)
 ]
 }
 
