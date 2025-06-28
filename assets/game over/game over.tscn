@@ -456,6 +456,7 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme = SubResource("Theme_vf5at")
+disabled = true
 text = "SAVE"
 
 [node name="MainMenu" type="Button" parent="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer"]
