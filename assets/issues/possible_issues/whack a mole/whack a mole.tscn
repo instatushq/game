@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://d2burbt4yek8s"]
+[gd_scene load_steps=61 format=3 uid="uid://c5gj1p3uvpkak"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_8boil"]
 [ext_resource type="Script" uid="uid://dsd2g1qv6ddsb" path="res://assets/issues/possible_issues/whack a mole/whack a mole.gd" id="2_00j50"]
