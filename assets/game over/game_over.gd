@@ -4,7 +4,7 @@ extends Node2D
 @onready var leaderboard: LeaderboardUI = $Camera2D/Leaderboard
 var base_url: String = "https://api.game.instatus.com"
 @export var leaderboard_count = 20
-var LEADERBOARD_ENTRIES_URL: String = base_url+"/leaderboard?count_player="+str(leaderboard_count)
+var LEADERBOARD_ENTRIES_URL: String = base_url+"/leaderboard?players="+str(leaderboard_count)
 
 func _ready() -> void:
 	http.request_completed.connect(_on_request_complete)
