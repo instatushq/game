@@ -232,7 +232,7 @@ font_color = Color(0.0799036, 0.364517, 0.621739, 1)
 
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_rsvye")
-spawn_position = Vector2(0, 0)
+spawn_position = Vector2(-5000, -5000)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

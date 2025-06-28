@@ -409,6 +409,7 @@ _data = {
 
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_8boil")
+spawn_position = Vector2(-5000, 0)
 
 [node name="GameNode" type="Node2D" parent="."]
 
