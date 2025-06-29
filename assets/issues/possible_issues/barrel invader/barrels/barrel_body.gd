@@ -16,6 +16,7 @@ enum BARREL_TYPE {
 @export_range(-100, 100) var max_angular_velocity: float = 3.0
 
 var amount_of_impacts = 0;
+var can_be_shot: bool = true
 @export_range(-100, 100) var movement_speed: float = 100.0
 
 enum EXPLOSION_TYPE {
@@ -24,7 +25,7 @@ enum EXPLOSION_TYPE {
 }
 
 signal on_impact_ship(ship: Node2D)
-signal on_shot()
+signal on_shot
 signal on_barrel_destroyed()
 signal on_contact_explosion(body: Node2D, explosion_type: EXPLOSION_TYPE, intensity: ExplosionNuke.ExplosionIntensity)
 
@@ -34,6 +35,10 @@ func _ready():
 	linear_velocity = Vector2(0, movement_speed)
 	angular_velocity = randf_range(min_angular_velocity, max_angular_velocity)
 	on_barrel_destroyed.connect(_on_barrel_destroyed)
+	screen_detector.screen_entered.connect(_on_screen_entered)
+
+func _on_screen_entered() -> void:
+	can_be_shot = true
 
 func _on_barrel_destroyed() -> void:
 	queue_free()
@@ -50,6 +55,7 @@ func _on_body_entered(body: Node2D) -> void:
 		amount_of_impacts += 1
 		on_impact_ship.emit(body.get_parent())
 	elif body is Pew:
+		if not can_be_shot: return
 		on_shot.emit()
 		body._on_impact()
 

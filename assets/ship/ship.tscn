@@ -1,11 +1,10 @@
-[gd_scene load_steps=54 format=3 uid="uid://bbkif523pefv5"]
+[gd_scene load_steps=46 format=3 uid="uid://bbkif523pefv5"]
 
 [ext_resource type="Script" uid="uid://0duwjoixufm0" path="res://assets/ship/ship.gd" id="1_n8q6x"]
 [ext_resource type="Script" uid="uid://b0cbditwjg02n" path="res://assets/ship/ShipRigidBody.gd" id="2_pxrqm"]
 [ext_resource type="Texture2D" uid="uid://b6lo1kcjrne4v" path="res://assets/ship/sprites/ship.png" id="3_1h06k"]
 [ext_resource type="Shader" uid="uid://ih4ylds4eks3" path="res://assets/issues/possible_issues/barrel invader/damage.gdshader" id="3_gpou2"]
 [ext_resource type="Texture2D" uid="uid://bxev6rpvpvft3" path="res://assets/ship/sprites/animations/trail-end.png" id="4_1dmai"]
-[ext_resource type="Script" uid="uid://b4b0pks0g1nvb" path="res://assets/ship/ship_animation.gd" id="4_o01ar"]
 [ext_resource type="Script" uid="uid://dh22gcbjgib3h" path="res://assets/ship/ship_fuel.gd" id="5_1h06k"]
 [ext_resource type="Texture2D" uid="uid://dlwjglw3walvr" path="res://assets/ship/sprites/animations/lights-off.png" id="5_gkfdw"]
 [ext_resource type="AudioStream" uid="uid://boeq8fmkvrbb2" path="res://assets/issues/possible_issues/barrel invader/pew_pew.ogg" id="8_o01ar"]
@@ -22,41 +21,13 @@ shader_parameter/duration = 3.0
 atlas = ExtResource("3_1h06k")
 region = Rect2(0, 0, 370, 490)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1h06k"]
-atlas = ExtResource("3_1h06k")
-region = Rect2(0, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gkfdw"]
-atlas = ExtResource("3_1h06k")
-region = Rect2(370, 0, 370, 490)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_o01ar"]
 atlas = ExtResource("3_1h06k")
 region = Rect2(740, 0, 370, 490)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gpou2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkfdw"]
 atlas = ExtResource("3_1h06k")
-region = Rect2(1110, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nqv73"]
-atlas = ExtResource("3_1h06k")
-region = Rect2(1480, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hw3ol"]
-atlas = ExtResource("3_1h06k")
-region = Rect2(1850, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1l14q"]
-atlas = ExtResource("3_1h06k")
-region = Rect2(2220, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tl6is"]
-atlas = ExtResource("3_1h06k")
-region = Rect2(2590, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ruyo7"]
-atlas = ExtResource("3_1h06k")
-region = Rect2(2960, 0, 370, 490)
+region = Rect2(370, 0, 370, 490)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gkfdw"]
 animations = [{
@@ -70,34 +41,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1h06k")
+"texture": SubResource("AtlasTexture_o01ar")
+}],
+"loop": true,
+"name": &"left",
+"speed": 15.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gkfdw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o01ar")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gpou2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nqv73")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hw3ol")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1l14q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl6is")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ruyo7")
 }],
-"loop": false,
-"name": &"fuel_end",
+"loop": true,
+"name": &"right",
 "speed": 15.0
 }]
 
@@ -397,13 +352,13 @@ position = Vector2(0, -81)
 material = SubResource("ShaderMaterial_nqv73")
 position = Vector2(0, -120)
 sprite_frames = SubResource("SpriteFrames_gkfdw")
-script = ExtResource("4_o01ar")
 
 [node name="Trail" type="AnimatedSprite2D" parent="RigidBody2D/SpritesContainer/ShipSprite"]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_psj3n")
 
 [node name="Light" type="AnimatedSprite2D" parent="RigidBody2D/SpritesContainer/ShipSprite"]
+visible = false
 z_index = -1
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_57ngg")

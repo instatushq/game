@@ -18,7 +18,10 @@ var density_calculator: GridDensityCalculator = null
 var next_y_to_spawn: float = 0
 
 func _spawn_batch(center: Vector2, radius: float) -> void:
-	var cells_centroids = PointsCenteroids.get_cell_centers(noise_texture, _get_camera_dimensions(), 0.92)
+	var cells_centroids = PointsCenteroids.get_cell_centers_2(noise_texture, _get_camera_dimensions(), 0.525)
+	points_centroids = cells_centroids
+	# queue_redraw()
+	# var cells_centroids = PointsCenteroids.get_cell_centers(noise_texture, _get_camera_dimensions(), 0.92)
 	var density_calculator_grid = GridDensityCalculator.new(cells_centroids, 50)
 	var sorted_points: Array[Vector3] = density_calculator_grid.get_sorted_points_by_density_and_x(radius)
 	for point in sorted_points:
@@ -80,7 +83,7 @@ func _get_barrel_spawn(density: int) -> BARREL_TYPE:
 
 func _ready() -> void:
 	var camera_dimensions = _get_camera_dimensions()
-	_spawn_batch(Vector2(camera.global_position.x - camera_dimensions.x / 2, _get_camera_top_edge_y() - _get_camera_dimensions().y), 125)
+	_spawn_batch(Vector2(camera.global_position.x - camera_dimensions.x / 2.5, _get_camera_top_edge_y() - camera_dimensions.y), 125)
 	next_y_to_spawn = _get_camera_top_edge_y() - _get_camera_dimensions().y
 
 func _get_camera_top_edge_y() -> float:
@@ -93,10 +96,14 @@ func _get_camera_dimensions() -> Vector2:
 	var viewport_distance: Vector2 = camera.get_viewport_rect().size / camera.zoom
 	return viewport_distance
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	var top_edge = _get_camera_top_edge_y()
 	global_position = Vector2(camera.global_position.x, top_edge)
 	if top_edge <= next_y_to_spawn:
 		next_y_to_spawn = _get_camera_top_edge_y() - _get_camera_dimensions().y
 		var camera_dimensions = _get_camera_dimensions()
 		_spawn_batch(Vector2(camera.global_position.x - camera_dimensions.x / 2, _get_camera_top_edge_y() - _get_camera_dimensions().y), 125)
+
+# func _draw() -> void:
+# 	for point in points_centroids:
+# 		draw_circle(point, 5, Color.RED)
