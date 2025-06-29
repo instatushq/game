@@ -34,6 +34,7 @@ var current_ship_y_position: float = 300.0
 var ship_position: Vector2 = Vector2.ZERO
 var is_keyboard_controlled: bool = true
 var y_position_synced: bool = false
+var global_input_axis: Vector2 = Vector2.ZERO
 
 @export var game_camera: Camera2D
 
@@ -67,10 +68,12 @@ func _process(delta: float) -> void:
 			if input_buffered or is_firing:
 				input_buffered = false
 				can_fire = false
+	
+	_handle_ship_tilt(global_input_axis)
 
 func _physics_process(_delta: float) -> void:
 	var input_axis = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
-
+	global_input_axis = input_axis
 	_handle_ship_movement(input_axis, game_camera)
 	
 	rb.enforce_global_position(game_camera.global_position + ship_position)
@@ -121,3 +124,11 @@ func _fire_cannons() -> void:
 	sprites_animation_player.play("shoot")
 	if cannon_one_active:
 		create_pew(cannon_1)
+
+func _handle_ship_tilt(input_axis: Vector2) -> void:
+	if input_axis.x > 0:
+		ship_sprite.play("right")
+	elif input_axis.x < 0:
+		ship_sprite.play("left")
+	else:
+		ship_sprite.play("default")
