@@ -18,7 +18,7 @@ var density_calculator: GridDensityCalculator = null
 var next_y_to_spawn: float = 0
 
 func _spawn_batch(center: Vector2, radius: float) -> void:
-	var cells_centroids = PointsCenteroids.get_cell_centers_2(noise_texture, _get_camera_dimensions(), 0.525)
+	var cells_centroids = PointsCenteroids.get_cell_centers_poisson(noise_texture, _get_camera_dimensions(), 0.525)
 	points_centroids = cells_centroids
 	# queue_redraw()
 	# var cells_centroids = PointsCenteroids.get_cell_centers(noise_texture, _get_camera_dimensions(), 0.92)
