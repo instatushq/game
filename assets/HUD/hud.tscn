@@ -574,11 +574,11 @@ Button/styles/pressed = SubResource("StyleBoxEmpty_aoaac")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pnjfb"]
 atlas = ExtResource("17_aoaac")
-region = Rect2(0, 0, 110, 31)
+region = Rect2(0, 0, 91, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4qfj"]
 atlas = ExtResource("17_aoaac")
-region = Rect2(110, 0, 110, 31)
+region = Rect2(91, 0, 91, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mqcfg"]
 animations = [{
@@ -1379,16 +1379,15 @@ theme_type_variation = &"FlatButton"
 flat = true
 
 [node name="ControlsIssue" type="TextureRect" parent="."]
-visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -380.0
-offset_top = -124.0
-offset_right = -40.0
-offset_bottom = -25.0
+offset_left = -327.0
+offset_top = -112.0
+offset_right = -35.0
+offset_bottom = -38.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_pnjfb")
