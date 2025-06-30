@@ -16,11 +16,14 @@ enum Player {
 @onready var timer: Timer = $ScoreTimer
 @onready var screen_transition: TransitionScreen = %"Transition Screen"
 
+@export var post_processing: PostProcessing = null
 @export var current_player: Player = Player.ASTRONAUT
 
 signal score_changed(old_value: int, new_value: int)
 signal current_player_changed(new_current_player: Player)
 signal on_solving_puzzle_changed(is_solving_puzzle: bool)
+signal on_open_issue(issue: Issue)
+signal on_close_issue(issue: Issue)
 
 
 @export_range(0, 100) var meteor_herd_chance: float = 80.0
@@ -53,6 +56,16 @@ func _ready() -> void:
 	music.play()
 	if not play_music:
 		AudioServer.set_bus_mute(music_bus_index, true)
+
+	on_open_issue.connect(_on_open_issue)
+	on_close_issue.connect(_on_close_issue)
+
+func _on_open_issue(issue: Issue) -> void:
+	if issue.hide_vignette:
+		post_processing.toggle_vignette(false)
+
+func _on_close_issue(_issue: Issue) -> void:
+	post_processing.toggle_vignette(true)
 
 func _on_score_timer_timeout() -> void:
 	increaseScore()

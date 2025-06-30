@@ -178,6 +178,7 @@ animations = [{
 [node name="barrel invader" type="Node2D"]
 script = ExtResource("1_geevi")
 spawn_position = Vector2(0, 0)
+hide_vignette = true
 
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("2_pm5jl")

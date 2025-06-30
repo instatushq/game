@@ -132,8 +132,9 @@ animations = [{
 
 [node name="Game" type="Node2D"]
 
-[node name="GameManager" parent="." instance=ExtResource("16_yklg6")]
+[node name="GameManager" parent="." node_paths=PackedStringArray("post_processing") instance=ExtResource("16_yklg6")]
 unique_name_in_owner = true
+post_processing = NodePath("../PostProcessing")
 meteor_herd_chance = 100.0
 play_music = true
 
@@ -284,6 +285,7 @@ panning_strength = 0.0
 bus = &"Ambience"
 
 [node name="PostProcessing" parent="." instance=ExtResource("1_7fvey")]
+unique_name_in_owner = true
 
 [node name="HUD" parent="." instance=ExtResource("15_ens8i")]
 

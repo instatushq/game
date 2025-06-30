@@ -55,6 +55,7 @@ func _input(_event: InputEvent) -> void:
 			current_issue.open_issue()
 			is_issue_open = true
 			game_manager.is_solving_puzzle = true
+			game_manager.on_open_issue.emit(current_issue)
 	# elif _event is InputEventKey and _event.pressed and _event.keycode == KEY_Q:
 	# 	_generate_random_issue(_get_random_issueless_zone())
 
@@ -96,10 +97,11 @@ func _on_issue_resolved(zone: IssueArea2D, issue_instance: Issue) -> void:
 	on_issue_resolved.emit(zone, issue_instance)
 	var issue_id = str(zone.get_instance_id())
 	if current_issues.has(issue_id):
-		current_issues[issue_id].queue_free()
+		current_issues[issue_id].call_deferred("queue_free")
 		current_issues.erase(issue_id)
 	is_issue_open = false
 	game_manager.is_solving_puzzle = false
+	game_manager.on_close_issue.emit(issue_instance)
 	remove_notification_for_zone(zone)
 	issue_resolved_sound.play()
 	on_clear_issues.emit(zone, has_any_issues())
@@ -109,20 +111,22 @@ func _on_issue_failed(zone: IssueArea2D, issue_instance: Issue) -> void:
 	var issue_id = str(zone.get_instance_id())
 	on_issue_failed.emit(zone, issue_instance)
 	if current_issues.has(issue_id):
-		current_issues[issue_id].queue_free()
+		current_issues[issue_id].call_deferred("queue_free")
 		current_issues.erase(issue_id)
 	is_issue_open = false
 	game_manager.is_solving_puzzle = false
+	game_manager.on_close_issue.emit(issue_instance)
 	remove_notification_for_zone(zone)
 
 func _on_issue_aborted(zone: IssueArea2D, issue_instance: Issue) -> void:
 	var issue_id = str(zone.get_instance_id())
 	on_issue_aborted.emit(zone, issue_instance)
 	if current_issues.has(issue_id):
-		current_issues[issue_id].queue_free()
+		current_issues[issue_id].call_deferred("queue_free")
 		current_issues.erase(issue_id)
 	is_issue_open = false
 	game_manager.is_solving_puzzle = false
+	game_manager.on_close_issue.emit(issue_instance)
 	remove_notification_for_zone(zone)
 	on_clear_issues.emit(zone, has_any_issues())
 

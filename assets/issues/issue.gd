@@ -5,6 +5,7 @@ class_name Issue extends Node2D
 
 @export var default_visibility: bool = false
 @export var spawn_position: Vector2 = Vector2(5000, 5000)
+@export var hide_vignette: bool = false
 @export var allow_abort: bool = true
 @export_range(-1, 10) var hp_revive_per_issue_segment: int = 2
 

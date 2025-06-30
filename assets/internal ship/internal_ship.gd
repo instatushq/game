@@ -1,6 +1,4 @@
-extends Node2D
-
-class_name InternalShip
+class_name InternalShip extends Node2D
 
 @onready var ship_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ship_right_part: AnimatedSprite2D = $AnimatedSprite2D/RightPC
