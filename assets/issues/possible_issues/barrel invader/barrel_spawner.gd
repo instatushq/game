@@ -101,14 +101,11 @@ func _get_camera_dimensions() -> Vector2:
 	var viewport_distance: Vector2 = camera.get_viewport_rect().size / camera.zoom
 	return viewport_distance
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if not game_manager.is_playing: return
 	var top_edge = _get_camera_top_edge_y()
 	global_position = Vector2(camera.global_position.x, top_edge)
 	if top_edge <= next_y_to_spawn:
 		next_y_to_spawn = _get_camera_top_edge_y() - _get_camera_dimensions().y
 		var camera_dimensions = _get_camera_dimensions()
 		_spawn_batch(Vector2(camera.global_position.x - camera_dimensions.x / 2, _get_camera_top_edge_y() - _get_camera_dimensions().y), 125)
-
-# func _draw() -> void:
-# 	for point in points_centroids:
-# 		draw_circle(point, 5, Color.RED)
