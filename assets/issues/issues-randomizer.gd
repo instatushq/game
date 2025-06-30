@@ -8,7 +8,7 @@ var _weights: Array[float] = []
 
 func init_weights(elements_length: int) -> void:
     for i in elements_length:
-        _weights.append(1.0 if i == 0 else 0.0)
+        _weights.append(1.0)
 
 func step_randomizer(index: int) -> void:
     _weights[index] -= _weights[index] * weight_reduction_factor
