@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://brvd4206odn83"]
+
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="1_b0c8q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pqcwb"]
+font = ExtResource("1_b0c8q")
+font_size = 52
+
+[node name="AbortUI" type="CanvasLayer"]
+
+[node name="Container" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(127.28, 78.31)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Container"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+color = Color(0, 0, 0, 0.235294)
+
+[node name="BarBG" type="ColorRect" parent="Container/Background"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.095
+anchor_top = 0.62
+anchor_right = 0.892
+anchor_bottom = 0.875
+offset_right = -0.200012
+offset_bottom = -1.52588e-05
+color = Color(0, 0.0156863, 0.184314, 0.603922)
+
+[node name="BarBG2" type="ColorRect" parent="Container/Background"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.095
+anchor_top = 0.619
+anchor_right = 0.893
+anchor_bottom = 0.876
+offset_top = 0.199997
+offset_right = -0.800049
+offset_bottom = -0.200012
+pivot_offset = Vector2(0, 26)
+
+[node name="Label" type="Label" parent="Container/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_right = 1.0
+anchor_bottom = 0.4
+offset_left = 3.2
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 43.0
+text = "ABORTING"
+label_settings = SubResource("LabelSettings_pqcwb")
+horizontal_alignment = 1
+vertical_alignment = 1
