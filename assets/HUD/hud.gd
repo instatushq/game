@@ -26,6 +26,7 @@ signal on_emotionally_triggering_event(event_type: EMOTIONALLY_TRIGGER_EVENT, he
 @onready var time_label: Label = $HUDUI/DialogBox/Clock
 @onready var emotion_sprite: AnimatedTextureRect = $HUDUI/Emotion
 @onready var controls_animated_texture: AnimatedTextureRect = $Controls
+@onready var controls_issue_animated_texture: AnimatedTextureRect = $ControlsIssue
 @onready var vhs_effect: AnimationPlayer = $VHS/NoiseAnimation
 @onready var speech_bubble_sound: AudioStreamPlayer = $E_N_Stat
 
@@ -85,6 +86,7 @@ const EVENTS_LINKED_DIALOGS = []
 func _ready():
 	if is_force_mute:
 		controls_animated_texture.play('muted')
+		controls_issue_animated_texture.play('muted')
 
 	dialog_box.dialog_finished.connect(func() -> void: speech_bubble_sound.stop())
 
@@ -135,9 +137,17 @@ func _ready():
 
 	_portray_emotion(COMPUTER_EMOTION.DEFAULT, "Conputer Is Here.\nI Am Conputer. But I am Good Conputer. Have fun")
 
-	game_manager.on_solving_puzzle_changed.connect(func(is_solving_puzzle: bool) -> void: _toggle_hud_health_visible(is_solving_puzzle))
+	game_manager.on_solving_puzzle_changed.connect(func(is_solving_puzzle: bool) -> void:
+		_toggle_hud_health_visible(is_solving_puzzle)
+		_toggle_controls_issue_visible(is_solving_puzzle)
+	)
 
 	_toggle_hud_health_visible(false)
+	_toggle_controls_issue_visible(false)
+
+func _toggle_controls_issue_visible(viewed: bool) -> void:
+	controls_animated_texture.visible = not viewed
+	controls_issue_animated_texture.visible = viewed
 
 func _toggle_hud_health_visible(viewed: bool) -> void:
 	HUD_MAIN_CONTAINER.visible = not viewed
@@ -279,11 +289,13 @@ func _input(event: InputEvent) -> void:
 func _toggle_audible_animation() -> void:
 	if is_force_mute:
 		controls_animated_texture.play('audible')
+		controls_issue_animated_texture.play('audible')
 		AudioServer.set_bus_mute(music_bus, false if started_with_force_mute else music_bus_muted)
 		AudioServer.set_bus_mute(sfx_bus, false if started_with_force_mute else sfx_bus_muted)
 		is_force_mute = false
 	else:
 		controls_animated_texture.play('muted')
+		controls_issue_animated_texture.play('muted')
 		AudioServer.set_bus_mute(music_bus, true)
 		AudioServer.set_bus_mute(sfx_bus, true)
 		is_force_mute = true
