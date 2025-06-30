@@ -66,7 +66,8 @@ func _ready() -> void:
 	add_child(abort_ui_instance)
 	abort_ui_instance.visible = false
 	abort_loading_bar = abort_ui_instance.get_node("Container/Background/BarBG2")
-
+	abort_loading_bar.scale.x = 0
+	
 	# for testing bugs
 	# open_issue()
 
@@ -97,11 +98,12 @@ func _input(event: InputEvent) -> void:
 			abort_ui_instance.visible = true
 	elif event.is_action_released("abort"):
 		abort_timer.stop()
+		abort_loading_bar.scale.x = 0
 		abort_ui_instance.visible = false
 
 func _physics_process(_delta: float) -> void:
 	if not abort_timer.paused and not abort_timer.is_stopped():
-		var time_progress = 1 - (abort_timer.time_left / abort_timer.wait_time)
+		var time_progress = clamp(1 - (abort_timer.time_left / abort_timer.wait_time), 0, 1)
 		abort_loading_bar.scale.x = time_progress
 
 func abort_issue() -> void:

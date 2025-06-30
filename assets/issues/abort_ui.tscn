@@ -19,7 +19,7 @@ grow_vertical = 2
 [node name="Background" type="ColorRect" parent="Container"]
 custom_minimum_size = Vector2(600, 200)
 layout_mode = 2
-color = Color(0, 0, 0, 0.235294)
+color = Color(0, 0, 0, 0.392157)
 
 [node name="BarBG" type="ColorRect" parent="Container/Background"]
 custom_minimum_size = Vector2(200, 20)
