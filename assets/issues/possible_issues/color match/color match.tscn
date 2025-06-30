@@ -175,6 +175,8 @@ fill_from = Vector2(0.502146, 0.454936)
 
 [node name="Issue" type="Node2D"]
 script = ExtResource("1_la0fh")
+min_hp_revive = 10
+max_hp_revive = 16
 
 [node name="CanvasLayer" type="Node2D" parent="."]
 
@@ -614,7 +616,6 @@ bus = &"Sound FX"
 
 [node name="ButtonMismatch" type="AudioStreamPlayer" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
 stream = ExtResource("8_qni4q")
-volume_db = -5.0
 pitch_scale = 1.5
 bus = &"Sound FX"
 

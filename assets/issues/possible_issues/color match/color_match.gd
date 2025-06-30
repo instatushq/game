@@ -8,6 +8,8 @@ extends ColorRect
 @onready var button_match_sound: AudioStreamPlayer = $ButtonMatch
 @onready var button_mismatch_sound: AudioStreamPlayer = $ButtonMismatch
 @onready var issue_countdown: IssueCountdown = $Countdown
+@onready var parent: Issue = get_parent().get_parent().get_parent()
+
 
 enum COLOR_MATCH_COLOR {
 	RED,
@@ -65,6 +67,7 @@ func _on_click_colored_button(button: Button) -> void:
 
 	if (not clicked_button.is_left and current_selected_node.is_left) or (clicked_button.is_left and not current_selected_node.is_left):
 		if clicked_button.color == current_selected_node.color:
+			parent.on_issue_segment_success()
 			connected_colors.append(clicked_button.color)
 			current_selected_node = null
 			_update_buttons_view()
@@ -114,7 +117,6 @@ func _assign_controls() -> void:
 func _ready() -> void:
 	_assign_colors_randomly()
 	_assign_controls()
-	var parent: Issue = get_parent().get_parent().get_parent()
 	parent.issue_opened.connect(func(): issue_countdown.start_game_countdown(game_max_length))
 	
 
@@ -122,11 +124,9 @@ func _is_issue_resolved() -> bool:
 	return connected_colors.size() == COLOR_MATCH_COLOR.keys().size()
 
 func _resolve_issue() -> void:
-	var parent: Issue = get_parent().get_parent().get_parent()
 	parent.issue_resolved.emit()
 
 func _fail_issue() -> void:
-	var parent: Issue = get_parent().get_parent().get_parent()
 	parent.issue_failed.emit()
 
 func _update_buttons_view() -> void:
