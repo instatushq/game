@@ -24,6 +24,7 @@ signal on_issue_generated(zone: IssueArea2D, issues_count: int)
 signal on_issue_resolved(zone: IssueArea2D, issue_instance: Issue)
 signal on_issue_failed(zone: IssueArea2D, issue_instance: Issue)
 signal on_issue_aborted(zone: IssueArea2D, issue_instance: Issue)
+signal on_issue_segment_success(zone: IssueArea2D, issue_instance: Issue)
 
 func _ready() -> void:
 	possible_zones = find_children("*", "IssueArea2D")
@@ -41,7 +42,7 @@ func _on_area_entered(body: Node, zone: IssueArea2D) -> void:
 	set_notification_icon_type(zone, IssueIcon.ICON_TYPE.INTERACTABLE)
 
 func _on_area_exited(body: Node, zone: IssueArea2D) -> void:
-	if last_entered_zone and last_entered_zone.get_instance_id() == zone.get_instance_id():
+	if last_entered_zone and str(last_entered_zone.get_instance_id()) == str(zone.get_instance_id()):
 		last_entered_zone = null
 
 	zone_body_exited.emit(zone, body)
@@ -49,8 +50,8 @@ func _on_area_exited(body: Node, zone: IssueArea2D) -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
-		if last_entered_zone != null and current_issues.has(last_entered_zone.get_instance_id()) and not game_manager.is_solving_puzzle:
-			var current_issue = current_issues[last_entered_zone.get_instance_id()]
+		if last_entered_zone != null and current_issues.has(str(last_entered_zone.get_instance_id())) and not game_manager.is_solving_puzzle:
+			var current_issue = current_issues[str(last_entered_zone.get_instance_id())]
 			current_issue.open_issue()
 			is_issue_open = true
 			game_manager.is_solving_puzzle = true
@@ -60,7 +61,7 @@ func _input(_event: InputEvent) -> void:
 func _get_random_issueless_zone() -> IssueArea2D:
 	var issueless_zones: Array = []
 	for zone in possible_zones:
-		if not current_issues.has(zone.get_instance_id()):
+		if not current_issues.has(str(zone.get_instance_id())):
 			issueless_zones.append(zone)
 	if issueless_zones.is_empty():
 		return null
@@ -76,7 +77,8 @@ func _generate_random_issue(zone: IssueArea2D) -> void:
 	issue_instance.issue_resolved.connect(Callable(self, "_on_issue_resolved").bind(zone, issue_instance))
 	issue_instance.issue_failed.connect(Callable(self, "_on_issue_failed").bind(zone, issue_instance))
 	issue_instance.issue_aborted.connect(Callable(self, "_on_issue_aborted").bind(zone, issue_instance))
-	current_issues[zone.get_instance_id()] = issue_instance
+	issue_instance.issue_segment_success.connect(Callable(self, "_on_issue_segment_success").bind(zone, issue_instance))
+	current_issues[str(zone.get_instance_id())] = issue_instance
 	generate_notification_for_zone(zone)
 	var zone_error_sound: AudioStreamPlayer2D = zone.get_node("ErrorNoise")
 	if zone_error_sound != null:
@@ -92,9 +94,10 @@ func _on_timer_timeout() -> void:
 
 func _on_issue_resolved(zone: IssueArea2D, issue_instance: Issue) -> void:
 	on_issue_resolved.emit(zone, issue_instance)
-	var issue_id = zone.get_instance_id()
-	current_issues[issue_id].queue_free()
-	current_issues.erase(issue_id)
+	var issue_id = str(zone.get_instance_id())
+	if current_issues.has(issue_id):
+		current_issues[issue_id].queue_free()
+		current_issues.erase(issue_id)
 	is_issue_open = false
 	game_manager.is_solving_puzzle = false
 	remove_notification_for_zone(zone)
@@ -102,31 +105,36 @@ func _on_issue_resolved(zone: IssueArea2D, issue_instance: Issue) -> void:
 	on_clear_issues.emit(zone, has_any_issues())
 	
 func _on_issue_failed(zone: IssueArea2D, issue_instance: Issue) -> void:
-	var issue_id = zone.get_instance_id()
+	on_clear_issues.emit(zone, has_any_issues())
+	var issue_id = str(zone.get_instance_id())
 	on_issue_failed.emit(zone, issue_instance)
-	current_issues[issue_id].queue_free()
-	current_issues.erase(issue_id)
+	if current_issues.has(issue_id):
+		current_issues[issue_id].queue_free()
+		current_issues.erase(issue_id)
+	is_issue_open = false
+	game_manager.is_solving_puzzle = false
+	remove_notification_for_zone(zone)
+
+func _on_issue_aborted(zone: IssueArea2D, issue_instance: Issue) -> void:
+	var issue_id = str(zone.get_instance_id())
+	on_issue_aborted.emit(zone, issue_instance)
+	if current_issues.has(issue_id):
+		current_issues[issue_id].queue_free()
+		current_issues.erase(issue_id)
 	is_issue_open = false
 	game_manager.is_solving_puzzle = false
 	remove_notification_for_zone(zone)
 	on_clear_issues.emit(zone, has_any_issues())
 
-func _on_issue_aborted(zone: IssueArea2D, issue_instance: Issue) -> void:
-	var issue_id = zone.get_instance_id()
-	on_issue_aborted.emit(zone, issue_instance)
-	current_issues[issue_id].queue_free()
-	current_issues.erase(issue_id)
-	is_issue_open = false
-	game_manager.is_solving_puzzle = false
-	remove_notification_for_zone(zone)
-	on_clear_issues.emit(zone, has_any_issues())
+func _on_issue_segment_success(zone: IssueArea2D, issue_instance: Issue) -> void:
+	on_issue_segment_success.emit(zone, issue_instance)
 
 func has_any_issues() -> bool:
 	return not current_issues.is_empty()
 
 func does_right_zone_have_issues() -> bool:
 	for zone in possible_zones:
-		if zone.name.containsn("right") and current_issues.has(zone.get_instance_id()):
+		if zone.name.containsn("right") and current_issues.has(str(zone.get_instance_id())):
 			return true
 	return false
 
@@ -138,25 +146,26 @@ enum ISSUE_DIRECTION {
 func does_zone_have_issues(direction: ISSUE_DIRECTION) -> bool:
 	for zone in possible_zones:
 		if direction == ISSUE_DIRECTION.RIGHT and zone.name.containsn("right"):
-			return current_issues.has(zone.get_instance_id())
+			return current_issues.has(str(zone.get_instance_id()))
 		elif direction == ISSUE_DIRECTION.LEFT and zone.name.containsn("left"):
-			return current_issues.has(zone.get_instance_id())
+			return current_issues.has(str(zone.get_instance_id()))
 	return false
 
 func generate_notification_for_zone(zone: IssueArea2D) -> void:
 	var notification_instance: IssueIcon = notification_icon_scene.instantiate()
 	zone.add_child(notification_instance)
-	if last_entered_zone and last_entered_zone.get_instance_id() == zone.get_instance_id():
+	if last_entered_zone and str(last_entered_zone.get_instance_id()) == str(zone.get_instance_id()):
 		notification_instance.set_icon(IssueIcon.ICON_TYPE.INTERACTABLE)
 
 	notification_instance.position = zone.notification_icon_local_position
-	current_notifications[zone.get_instance_id()] = notification_instance
+	current_notifications[str(zone.get_instance_id())] = notification_instance
 
 func remove_notification_for_zone(zone: IssueArea2D) -> void:
-	current_notifications[zone.get_instance_id()].queue_free()
-	current_notifications.erase(zone.get_instance_id())
+	if not current_notifications.has(str(zone.get_instance_id())): return
+	current_notifications[str(zone.get_instance_id())].queue_free()
+	current_notifications.erase(str(zone.get_instance_id()))
 
 func set_notification_icon_type(zone: IssueArea2D, icon_type: IssueIcon.ICON_TYPE) -> void:
-	if not current_notifications.has(zone.get_instance_id()): return
-	var notification_instance: IssueIcon = current_notifications[zone.get_instance_id()]
+	if not current_notifications.has(str(zone.get_instance_id())): return
+	var notification_instance: IssueIcon = current_notifications[str(zone.get_instance_id())]
 	notification_instance.set_icon(icon_type)
