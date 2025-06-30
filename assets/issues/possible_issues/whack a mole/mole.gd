@@ -6,6 +6,7 @@ signal mole_missed(mole: Mole)
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 @onready var hit_sound: AudioStreamPlayer = $HitSound
+@onready var whack_sound: AudioStreamPlayer = $WhackSound
 @onready var coming_up_sound: AudioStreamPlayer = $ComingUp
 @onready var going_down_sound: AudioStreamPlayer = $GoingDown
 @onready var parent: WhackAMole = get_parent()
@@ -24,7 +25,6 @@ const MAX_TIME_BETWEEN_APPEARANCES = 3.0
 const MIN_TIME_OUTSIDE = 0.5
 const MAX_TIME_OUTSIDE = 1.5
 
-
 func _ready() -> void:
 	z_index = 0
 	parent.on_game_started.connect(func(): is_game_started = true)
@@ -36,7 +36,6 @@ func _ready() -> void:
 		if animated_sprite.animation == "hit" and animated_sprite.frame == reset_colors_on_frame:
 			animated_sprite.self_modulate = Color(1, 1, 1, 1))
 
-	
 	animated_sprite.play("down")
 	
 	_start_random_timer()
@@ -57,11 +56,14 @@ func _on_pressed() -> void:
 		MoleState.OUT:
 			mouse_filter = Control.MOUSE_FILTER_IGNORE
 			mole_hit.emit(self)
-			animated_sprite.play("hit")
-			animated_sprite.self_modulate = Color.from_rgba8(255, 80, 80)
 			current_state = MoleState.DOWN
 			_start_random_timer()
-			if is_game_started: hit_sound.play()
+			await get_tree().create_timer(0.025).timeout
+			if is_game_started:
+				hit_sound.play()
+				whack_sound.play()
+			animated_sprite.play("hit")
+			animated_sprite.self_modulate = Color.from_rgba8(255, 80, 80)
 		_:
 			mole_missed.emit(self)
 

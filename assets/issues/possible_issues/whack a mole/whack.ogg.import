@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://433ykgyxnoxv"
+path="res://.godot/imported/whack.ogg-1b8f8c6e0b3e4eecc1e7d50a8b6f433c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/issues/possible_issues/whack a mole/whack.ogg"
+dest_files=["res://.godot/imported/whack.ogg-1b8f8c6e0b3e4eecc1e7d50a8b6f433c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
