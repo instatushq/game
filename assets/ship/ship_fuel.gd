@@ -1,10 +1,6 @@
 class_name ShipFuel extends Node2D
 
 @export var fuel: float = 100
-@export var fuel_spending_rate = 0.015
-
-func _physics_process(_delta: float) -> void:
-	decrease_fuel(fuel_spending_rate)
 
 signal on_fuel_change(old_fuel: float, new_fuel: float)
 
