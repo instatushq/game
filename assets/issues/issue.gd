@@ -23,6 +23,7 @@ signal issue_opened
 signal issue_closed
 signal issue_failed
 signal issue_aborted
+signal issue_segment_success(hp_restored: int)
 
 func _find_camera2d(node: Node) -> Camera2D:
 	if node is Camera2D:
@@ -111,3 +112,6 @@ func abort_issue() -> void:
 	if is_open:
 		close_issue()
 		issue_aborted.emit()
+
+func on_issue_segment_success(hp_restored: int) -> void:
+	issue_segment_success.emit(hp_restored)
