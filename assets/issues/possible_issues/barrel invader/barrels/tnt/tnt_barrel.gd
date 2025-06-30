@@ -34,6 +34,7 @@ func _on_shoot_tnt() -> void:
 	if not triggered:
 		trigger_tnt()
 	else:
+		barrel_body.on_segment_progress()
 		on_explosion_triggered.emit()
 
 func _on_explode() -> void:

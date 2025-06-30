@@ -37,6 +37,7 @@ func _ready() -> void:
 	engine_run.finished.connect(func(): engine_running.play(0.1))
 	_do_engine_sound_transition(true)
 	issues.on_issue_resolved.connect(_on_issue_resolved)
+	issues.on_issue_segment_success.connect(_on_issue_segment_success)
 	if game_manager != null:
 		game_manager.on_solving_puzzle_changed.connect(func(solving: bool) -> void:
 			visible = not solving
@@ -75,6 +76,9 @@ func _on_issue_failed(zone: IssueArea2D, _issue_instance: Issue) -> void:
 		ship_right_part.visible = false
 		ship_left_part.visible = false
 		
+func _on_issue_segment_success(_zone: IssueArea2D, issue_instance: Issue) -> void:
+	ship_health.increase_health(issue_instance.hp_revive_per_issue_segment)
+
 func _on_animation_finish() -> void:
 	if ship_sprite.animation == "breakdown":
 		if is_playing_revive_animation:

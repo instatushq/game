@@ -27,4 +27,5 @@ func _spawn_explosion() -> void:
 		barrel_body.get_parent().add_child(explosion)
 
 func trigger_nuke() -> void:
+	barrel_body.on_segment_progress()
 	on_explosion_triggered.emit()

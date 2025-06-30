@@ -10,13 +10,15 @@ var is_playing: bool = false
 @onready var XP: Label = $XPCounter/XP
 @onready var pc_face: AnimatedSprite2D = $AnimatedSprite2D/Face
 @onready var pc_face_wink_timer: Timer = $"AnimatedSprite2D/Face/wink timer"
+@onready var parent: Issue = get_parent().get_parent()
+@export_range(0, 10) var revive_hp_every_n_mole_hit: int = 3
+var mole_hit_count: int = 0
 
 signal on_game_started
 signal on_successful_hit
 signal on_missed_hit
 
 func _ready() -> void:
-	var parent: Issue = get_parent().get_parent()
 	parent.issue_opened.connect(func(): on_game_started.emit())
 	moles = get_children().filter(func(child): return child is Mole)
 	for mole in moles:
@@ -34,6 +36,9 @@ func _on_mole_hit(_mole: Mole) -> void:
 	if is_on_cooldown_for_failing: return
 	on_successful_hit.emit()
 	score += score_per_mole
+	mole_hit_count += 1
+	if revive_hp_every_n_mole_hit != 0 and mole_hit_count % revive_hp_every_n_mole_hit == 0:
+		parent.on_issue_segment_success()
 	_update_xp_counter()
 	pc_face.play("hit")
 	pc_face_wink_timer.stop()
@@ -52,7 +57,6 @@ func _on_mole_missed(_mole: Mole) -> void:
 			mole.is_player_on_cooldown = true
 
 func _resolve_issue() -> void:
-	var parent: Issue = get_parent().get_parent()
 	parent.issue_resolved.emit()
 
 func _update_xp_counter() -> void:

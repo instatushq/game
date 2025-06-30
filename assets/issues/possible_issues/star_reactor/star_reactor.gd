@@ -87,6 +87,7 @@ func _on_button_pressed(button: SequenceTextureButton) -> void:
 func _check_sequence() -> void:
 	result_label.text = "Correct"
 	if currentRun < maxRuns:
+		parent.on_issue_segment_success()
 		currentRun += 1
 		_update_progress_dots()
 		await get_tree().create_timer(0.75).timeout

@@ -2,6 +2,8 @@ class_name BarrelSpawner extends Node2D
 
 const MAX_DENSITY: int = 5
 
+@onready var game_manager: BarrelInvader = get_parent()
+
 @export_category("ASSIGNABLES")
 @export var camera: Camera2D = null
 @export var noise_texture: FastNoiseLite = null
@@ -82,6 +84,9 @@ func _get_barrel_spawn(density: int) -> BARREL_TYPE:
 	return BARREL_TYPE.values()[random_index]
 
 func _ready() -> void:
+	game_manager.game_started.connect(_on_game_start)
+
+func _on_game_start() -> void:
 	var camera_dimensions = _get_camera_dimensions()
 	_spawn_batch(Vector2(camera.global_position.x - camera_dimensions.x / 2.5, _get_camera_top_edge_y() - camera_dimensions.y), 125)
 	next_y_to_spawn = _get_camera_top_edge_y() - _get_camera_dimensions().y

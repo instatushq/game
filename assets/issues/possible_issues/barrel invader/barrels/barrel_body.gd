@@ -11,6 +11,7 @@ enum BARREL_TYPE {
 @export var barrel_type: BARREL_TYPE = BARREL_TYPE.NORMAL
 @onready var screen_detector: VisibleOnScreenNotifier2D = $Screen
 @onready var hitbox: Area2D = $HitBox
+@onready var game_manager: BarrelInvader = get_parent().get_parent()
 @export var destruction_particles_scene: PackedScene = null
 @export_range(-100, 100) var min_angular_velocity: float = -3.0
 @export_range(-100, 100) var max_angular_velocity: float = 3.0
@@ -64,3 +65,6 @@ func _nuke_explosion(body: Node2D, intensity: ExplosionNuke.ExplosionIntensity) 
 
 func _tnt_explosion(body: Node2D, intensity: ExplosionNuke.ExplosionIntensity) -> void:
 	on_contact_explosion.emit(body, EXPLOSION_TYPE.TNT, intensity)
+
+func on_segment_progress() -> void:
+	game_manager.parent_issue.on_issue_segment_success()

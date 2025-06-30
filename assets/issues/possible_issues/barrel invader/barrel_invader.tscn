@@ -181,6 +181,7 @@ spawn_position = Vector2(0, 0)
 
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("2_pm5jl")
+vector_offset = null
 
 [node name="BarrelContainer" type="Node2D" parent="Game"]
 
@@ -523,7 +524,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Timer" type="Timer" parent="Game/CanvasLayer"]
-wait_time = 200.0
+wait_time = 30.0
 one_shot = true
 
 [node name="Health" type="TextureRect" parent="Game/CanvasLayer"]
