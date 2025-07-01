@@ -1,6 +1,7 @@
 class_name TempestGame extends Node2D
 
 signal on_issue_resolved
+signal on_game_lost
 signal enemy_destroyed(score_weight: int)
 
 @export var game_camera: Camera2D
@@ -357,7 +358,8 @@ func enemy_reached_base(lane_idx: int):
 		_is_game_paused = true
 		screen.game_lose()
 		await screen.screen_finished
-		start_game()
+		on_game_lost.emit()
+		# start_game()
 		return
 	
 	# Briefly show screen shake.
