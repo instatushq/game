@@ -1,14 +1,14 @@
 [gd_scene load_steps=23 format=3 uid="uid://brw5e1ur3qm8b"]
 
-[ext_resource type="Script" uid="uid://dh02e8dwels2q" path="res://scripts/enemy.gd" id="1_7k104"]
-[ext_resource type="Texture2D" uid="uid://bolms6ajjw0hu" path="res://assets/asteroid_1.png" id="2_c4w8v"]
-[ext_resource type="PackedScene" uid="uid://be6qa8lmv7lic" path="res://scenes/vfx_asteroid_explode.tscn" id="2_ipns3"]
-[ext_resource type="Texture2D" uid="uid://blt6gplddiqfm" path="res://assets/asteroid_2.png" id="3_xwavj"]
-[ext_resource type="Texture2D" uid="uid://xwti3bgo3oah" path="res://assets/asteroid_3.png" id="4_nenq2"]
-[ext_resource type="Texture2D" uid="uid://duhda7bjyynuu" path="res://assets/asteroid_4.png" id="5_nenq2"]
-[ext_resource type="Texture2D" uid="uid://dwhsejpx23yvk" path="res://assets/asteroid_5.png" id="6_md484"]
-[ext_resource type="Texture2D" uid="uid://l6p47xoxup8o" path="res://assets/asteroid_special_1.png" id="7_ipns3"]
-[ext_resource type="Texture2D" uid="uid://b0bo5g1fohffb" path="res://assets/asteroid_break.png" id="7_md484"]
+[ext_resource type="Script" uid="uid://dh02e8dwels2q" path="res://assets/issues/possible_issues/tempest/scripts/enemy.gd" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://bolms6ajjw0hu" path="res://assets/issues/possible_issues/tempest/assets/asteroid_1.png" id="2_c4w8v"]
+[ext_resource type="PackedScene" uid="uid://be6qa8lmv7lic" path="res://assets/issues/possible_issues/tempest/scenes/vfx_asteroid_explode.tscn" id="2_ipns3"]
+[ext_resource type="Texture2D" uid="uid://blt6gplddiqfm" path="res://assets/issues/possible_issues/tempest/assets/asteroid_2.png" id="3_xwavj"]
+[ext_resource type="Texture2D" uid="uid://xwti3bgo3oah" path="res://assets/issues/possible_issues/tempest/assets/asteroid_3.png" id="4_nenq2"]
+[ext_resource type="Texture2D" uid="uid://duhda7bjyynuu" path="res://assets/issues/possible_issues/tempest/assets/asteroid_4.png" id="5_nenq2"]
+[ext_resource type="Texture2D" uid="uid://dwhsejpx23yvk" path="res://assets/issues/possible_issues/tempest/assets/asteroid_5.png" id="6_md484"]
+[ext_resource type="Texture2D" uid="uid://l6p47xoxup8o" path="res://assets/issues/possible_issues/tempest/assets/asteroid_special_1.png" id="7_ipns3"]
+[ext_resource type="Texture2D" uid="uid://b0bo5g1fohffb" path="res://assets/issues/possible_issues/tempest/assets/asteroid_break.png" id="7_md484"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ipns3"]
 radius = 23.0
@@ -161,5 +161,7 @@ color_ramp = SubResource("Gradient_md484")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2pwtc")
 animation = &"asteroid_break"
+frame = 2
+frame_progress = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

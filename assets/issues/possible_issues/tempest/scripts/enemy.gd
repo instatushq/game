@@ -86,6 +86,7 @@ func _on_area_entered(area: Area2D) -> void:
 			var instance = vfx_explode_scene.instantiate()
 			instance.position = position
 			instance.modulate = modulate
+			instance.normal_explosion = not special
 			game_ref.container_vfx.add_child(instance)
 		if special:
 			queue_free()

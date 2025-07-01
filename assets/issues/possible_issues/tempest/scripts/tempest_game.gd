@@ -130,14 +130,14 @@ func _physics_process(delta: float) -> void:
 
 func start_game() -> void:
 	_is_game_playing = true
-	_is_game_paused = false
+	# _is_game_paused = false
 	randomize()
 	screen_shake.hide()
 	
 	# 3,2,1 countdown.
-	_is_game_paused = true
-	screen.game_start()
-	await screen.screen_finished
+	# _is_game_paused = true
+	# screen.game_start()
+	# await screen.screen_finished
 	_is_game_paused = false
 	
 	# Initialize healthbar.
