@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=3 uid="uid://cyux82xnkqjlk"]
+
+[ext_resource type="Texture2D" uid="uid://cpm5lo4o84n3k" path="res://assets/issues/possible_issues/barrel invader/barrels/dust.png" id="1_8kauw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8iab"]
+atlas = ExtResource("1_8kauw")
+region = Rect2(0, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10pb2"]
+atlas = ExtResource("1_8kauw")
+region = Rect2(106, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unbok"]
+atlas = ExtResource("1_8kauw")
+region = Rect2(212, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15isb"]
+atlas = ExtResource("1_8kauw")
+region = Rect2(318, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlh46"]
+atlas = ExtResource("1_8kauw")
+region = Rect2(424, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vmcs"]
+atlas = ExtResource("1_8kauw")
+region = Rect2(530, 0, 106, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71a0r"]
+atlas = ExtResource("1_8kauw")
+region = Rect2(636, 0, 106, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqgu8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8iab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10pb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unbok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15isb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlh46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vmcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71a0r")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 15.0
+}]
+
+[sub_resource type="Curve" id="Curve_8kauw"]
+_data = [Vector2(0, 0.0865747), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_h8iab"]
+_data = [Vector2(0, 1), 0.0, -1.19833, 0, 0, Vector2(0.458128, 0), -1.26104, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_10pb2"]
+offsets = PackedFloat32Array(0, 0.491477, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.414331, 0.439193, 0.399149, 1, 0.31792, 0.340126, 0.378113, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_bqgu8")
+animation = &"boom"
+autoplay = "boom"
+frame = 6
+frame_progress = 1.0
+
+[node name="ExplosionParticles" type="CPUParticles2D" parent="."]
+position = Vector2(1, 1)
+emitting = false
+amount = 100
+lifetime = 0.75
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 20.0
+particle_flag_align_y = true
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+scale_amount_min = 25.0
+scale_amount_max = 35.0
+split_scale = true
+scale_curve_x = SubResource("Curve_8kauw")
+scale_curve_y = SubResource("Curve_h8iab")
+color_initial_ramp = SubResource("Gradient_10pb2")

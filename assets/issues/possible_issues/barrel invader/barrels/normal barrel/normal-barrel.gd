@@ -10,11 +10,15 @@ var frames_since_last_explosion: int = 0
 func _ready() -> void:
 	barrel_body.on_shot.connect(_on_shot)
 	barrel_body.on_contact_explosion.connect(_on_explosion_contact)
+	barrel_body.on_impact_ship.connect(_touched_ship)
 
 func _on_shot() -> void:
 	times_shot += 1
 	if times_shot >= max_shots:
 		barrel_body.on_barrel_destroyed.emit()
+
+func _touched_ship(_body: Node2D) -> void:
+	barrel_body.on_barrel_destroyed.emit()
 
 func blow_away(cause_location: Vector2) -> void:
 	var effect_direction: Vector2 = cause_location.direction_to(barrel_body.global_position)

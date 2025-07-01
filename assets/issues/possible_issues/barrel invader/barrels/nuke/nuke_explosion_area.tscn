@@ -213,7 +213,4 @@ stream = ExtResource("3_jhoep")
 volume_db = -3.0
 bus = &"Sound FX"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.25, 1.25)
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
