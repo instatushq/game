@@ -1,10 +1,9 @@
-[gd_scene load_steps=61 format=3 uid="uid://c5gj1p3uvpkak"]
+[gd_scene load_steps=57 format=3 uid="uid://c5gj1p3uvpkak"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_8boil"]
 [ext_resource type="Script" uid="uid://dsd2g1qv6ddsb" path="res://assets/issues/possible_issues/whack a mole/whack a mole.gd" id="2_00j50"]
 [ext_resource type="Texture2D" uid="uid://dvqpwqfb2qlyu" path="res://assets/issues/possible_issues/whack a mole/MOLE GAME UI.png" id="3_2p6su"]
 [ext_resource type="Texture2D" uid="uid://c6t3lfld57ggq" path="res://assets/issues/possible_issues/whack a mole/gotchu.png" id="4_uemvr"]
-[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="5_hf4y4"]
 [ext_resource type="Texture2D" uid="uid://crnf3w0x04at1" path="res://assets/issues/possible_issues/whack a mole/miss.png" id="5_mv0ip"]
 [ext_resource type="Texture2D" uid="uid://cuxgc1f1klhdf" path="res://assets/issues/possible_issues/whack a mole/wink.png" id="6_sm7c6"]
 [ext_resource type="Texture2D" uid="uid://ceewcdl51t0s" path="res://assets/issues/possible_issues/whack a mole/MOLE GAME glow.png" id="7_mv0ip"]
@@ -278,21 +277,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Theme" id="Theme_p5srt"]
-default_font = ExtResource("5_hf4y4")
-default_font_size = 80
-
-[sub_resource type="LabelSettings" id="LabelSettings_2p6su"]
-line_spacing = 40.0
-font_size = 70
-font_color = Color(0.223529, 0.611765, 0.701961, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_hf4y4"]
-line_spacing = 40.0
-font_size = 70
-font_color = Color(0.223529, 0.611765, 0.701961, 1)
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_keg7o"]
 atlas = ExtResource("11_ovrla")
 region = Rect2(0, 0, 44, 47)
@@ -425,6 +409,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 script = ExtResource("2_00j50")
+progress_bar_color = Color(0.219608, 0.607843, 0.705882, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="GameNode/Game"]
@@ -445,57 +430,68 @@ one_shot = true
 position = Vector2(0.325731, -4.42994)
 texture = ExtResource("7_mv0ip")
 
-[node name="XPCounter" type="ColorRect" parent="GameNode/Game"]
+[node name="XPCounter" type="HFlowContainer" parent="GameNode/Game"]
 layout_mode = 1
-offset_left = -94.0
-offset_top = -2.0
-offset_right = 306.0
-offset_bottom = 118.0
-color = Color(0, 0, 0, 0)
+offset_left = -285.25
+offset_top = 36.25
+offset_right = 316.75
+offset_bottom = 36.25
+theme_override_constants/h_separation = 10
 
-[node name="XP" type="Label" parent="GameNode/Game/XPCounter"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.597
-anchor_top = -0.117
-anchor_right = 0.867
-anchor_bottom = 0.875
-offset_left = 0.199997
-offset_top = 0.0400028
-offset_right = 0.199982
-offset_bottom = -2.28882e-05
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme = SubResource("Theme_p5srt")
-theme_type_variation = &"HeaderSmall"
-text = "100"
-label_settings = SubResource("LabelSettings_2p6su")
-horizontal_alignment = 2
-vertical_alignment = 1
-uppercase = true
+[node name="ColorRect" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
 
-[node name="MaxXP" type="Label" parent="GameNode/Game/XPCounter"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.139
-anchor_top = 0.871
-anchor_right = 1.139
-anchor_bottom = 0.875
-offset_left = -147.6
-offset_top = -114.52
-offset_right = -5.60004
-offset_bottom = 4.99998
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme = SubResource("Theme_p5srt")
-theme_type_variation = &"HeaderSmall"
-text = "%"
-label_settings = SubResource("LabelSettings_hf4y4")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
+[node name="ColorRect2" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+
+[node name="ColorRect11" type="ColorRect" parent="GameNode/Game/XPCounter"]
+visible = false
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
 
 [node name="1" parent="GameNode/Game" instance=ExtResource("9_klspp")]
 layout_mode = 1

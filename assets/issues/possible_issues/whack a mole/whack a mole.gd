@@ -7,11 +7,12 @@ var score_per_mole: int = 1
 var is_on_cooldown_for_failing: bool = false
 var is_playing: bool = false
 @onready var cooldown_timer: Timer = $cooldown_timer
-@onready var XP: Label = $XPCounter/XP
+@onready var xp_progress_Bar: FlowContainer = $XPCounter
 @onready var pc_face: AnimatedSprite2D = $AnimatedSprite2D/Face
 @onready var pc_face_wink_timer: Timer = $"AnimatedSprite2D/Face/wink timer"
 @onready var parent: Issue = get_parent().get_parent()
 @export_range(0, 10) var revive_hp_every_n_mole_hit: int = 3
+@export var progress_bar_color: Color = Color.WHITE
 var mole_hit_count: int = 0
 
 signal on_game_started
@@ -26,11 +27,12 @@ func _ready() -> void:
 		mole.mole_missed.connect(_on_mole_missed)
 
 	score_per_mole = randi_range(650, 800)
-	var percentage: int = int((float(score) / score_goal) * 100)
-	XP.text = str(percentage)
+	_update_xp_counter()
 	cooldown_timer.timeout.connect(_on_cooldown_timer_timeout)
 	pc_face.animation_finished.connect(_on_pc_face_animation_finished)
 	pc_face_wink_timer.start(randf_range(3, 5))
+	for child in xp_progress_Bar.get_children():
+		child.color = progress_bar_color
 
 func _on_mole_hit(_mole: Mole) -> void:
 	if is_on_cooldown_for_failing: return
@@ -60,8 +62,10 @@ func _resolve_issue() -> void:
 	parent.issue_resolved.emit()
 
 func _update_xp_counter() -> void:
-	var percentage: int = int((float(score) / score_goal) * 100)
-	XP.text = str(percentage)
+	var percentage: float = float(score) / score_goal
+	var xp_bar_max = xp_progress_Bar.get_child_count() * percentage
+	for i in xp_progress_Bar.get_child_count():
+		xp_progress_Bar.get_child(i).visible = i < xp_bar_max
 
 func _on_cooldown_timer_timeout() -> void:
 	is_on_cooldown_for_failing = false
