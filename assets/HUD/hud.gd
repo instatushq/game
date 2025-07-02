@@ -5,6 +5,7 @@ signal on_emotionally_triggering_event(event_type: EMOTIONALLY_TRIGGER_EVENT, he
 
 @export var score_for_complete_bar: int = 500
 @export var xp_score_color_flash: Color = Color.WHITE
+@export_range(0, 1) var healing_animation_length_seconds: float
 @onready var HUD_MAIN_CONTAINER: AnimatedTextureRect = $HUDUI
 @onready var HUD_HEALTH_CONTAINER: AnimatedTextureRect = $HUDHEALTH
 @onready var score_xp_bar: ColorRect = $HUDUI/XP/BarContainer/Bar
@@ -29,6 +30,12 @@ signal on_emotionally_triggering_event(event_type: EMOTIONALLY_TRIGGER_EVENT, he
 @onready var controls_issue_animated_texture: AnimatedTextureRect = $ControlsIssue
 @onready var vhs_effect: AnimationPlayer = $VHS/NoiseAnimation
 @onready var speech_bubble_sound: AudioStreamPlayer = $E_N_Stat
+@onready var healing_glow_big: TextureRect = $HUDUI/HPIncrease
+@onready var healing_glow_small: TextureRect = $HUDHEALTH/HPIncrease
+@onready var healing_particles_big: CPUParticles2D = $HUDUI/HealthIncrease
+@onready var healing_particles_small: CPUParticles2D = $HUDHEALTH/HealthIncrease
+
+var remove_healing_effect_timer: Timer
 
 var music_bus = AudioServer.get_bus_index("Music")
 var sfx_bus = AudioServer.get_bus_index("Sound FX")
@@ -38,6 +45,7 @@ var is_force_mute: bool = true if music_bus_muted and sfx_bus_muted else false
 var started_with_force_mute: bool = is_force_mute
 
 var _freeze_score_to_nearest_cycle = false
+var _healing_tween: Tween
 
 enum EMOTIONALLY_TRIGGER_EVENT {
 	ISSUE_SPAWNED_RIGHT,
@@ -84,6 +92,9 @@ const IDLE_ANIMATIONS_LIST: Array[String] = ["default", "nervous", "scared"]
 const EVENTS_LINKED_DIALOGS = []
 
 func _ready():
+	healing_particles_big.finished.connect(_on_healing_particles_finished)
+	healing_particles_small.finished.connect(_on_healing_particles_finished)
+
 	if is_force_mute:
 		controls_animated_texture.play('muted')
 		controls_issue_animated_texture.play('muted')
@@ -145,6 +156,20 @@ func _ready():
 	_toggle_hud_health_visible(false)
 	_toggle_controls_issue_visible(false)
 
+	remove_healing_effect_timer = Timer.new()
+	remove_healing_effect_timer.wait_time = 0.6
+	remove_healing_effect_timer.one_shot = true
+	remove_healing_effect_timer.timeout.connect(_remove_healing_effect)
+	add_child(remove_healing_effect_timer)
+
+func _on_healing_particles_finished() -> void:
+	if remove_healing_effect_timer.is_stopped() or remove_healing_effect_timer.paused:
+		healing_particles_big.emitting = false
+		healing_particles_small.emitting = false
+	else:
+		healing_particles_big.emitting = true
+		healing_particles_small.emitting = true
+		
 func _toggle_controls_issue_visible(viewed: bool) -> void:
 	controls_animated_texture.visible = not viewed
 	controls_issue_animated_texture.visible = viewed
@@ -161,6 +186,9 @@ func _physics_process(_delta: float) -> void:
 	time_label.text = str(hour) + ":" + str(time_dict.minute).pad_zeros(2) + " " + ("AM" if time_dict.hour < 12 else "PM")
 
 func _on_health_change(old_health: float, new_health: float) -> void:
+	if new_health > old_health:
+		_handle_health_increase(new_health - old_health)
+	
 	_update_systems_titles(new_health)
 	if emotion_sprite._current_animation in IDLE_ANIMATIONS_LIST:
 		_play_emotion_idle_animation(new_health)
@@ -186,6 +214,40 @@ func _on_health_change(old_health: float, new_health: float) -> void:
 		else:
 			color_rects[color_rects.size() - i - 1].visible = true
 			health_hud_color_rects[color_rects.size() - i - 1].visible = true
+
+func _handle_health_increase(_increase_amount: float) -> void:
+	#healing_glow_big: TextureRect
+	#healing_glow_small: TextureRect
+	#healing_particles_big: CPUParticles2D
+	#healing_particles_small: CPUParticles2D
+	remove_healing_effect_timer.start(1.5)
+	
+	# Stop existing tween if it's running
+	if _healing_tween and _healing_tween.is_valid():
+		_healing_tween.kill()
+	
+	# Create new tween
+	_healing_tween = create_tween()
+	_healing_tween.set_parallel(false)  # Set to sequential for proper timing
+	
+	healing_particles_big.emitting = true
+	healing_particles_small.emitting = true
+	
+	_healing_tween.tween_property(healing_glow_big, "modulate:a", 1.0, 0.2)
+	_healing_tween.tween_property(healing_glow_small, "modulate:a", 1.0, 0.2)
+
+func _remove_healing_effect() -> void:
+	if _healing_tween and _healing_tween.is_valid():
+		_healing_tween.kill()
+	
+	_healing_tween = create_tween()
+	_healing_tween.set_parallel(false)
+	_healing_tween.tween_property(healing_glow_big, "modulate:a", 0.0, 0.2)
+	_healing_tween.tween_property(healing_glow_small, "modulate:a", 0.0, 0.2)
+
+
+	healing_particles_big.emitting = false
+	healing_particles_small.emitting = false
 
 func _update_systems_titles(new_health: float) -> void:
 	for title in SYSTEMS_TITLES:
