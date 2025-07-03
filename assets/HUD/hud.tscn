@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://cqcmv5b3uo3sc"]
+[gd_scene load_steps=114 format=3 uid="uid://cqcmv5b3uo3sc"]
 
 [ext_resource type="Script" uid="uid://dk8cgmg1qnahw" path="res://assets/HUD/hud.gd" id="1_lbn2g"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="3_y0j1j"]
@@ -17,11 +17,14 @@
 [ext_resource type="Texture2D" uid="uid://ymmhrr3c5e20" path="res://assets/HUD/UI Emotions/scared face.png" id="11_5hymx"]
 [ext_resource type="Texture2D" uid="uid://c86vmfyieuv5m" path="res://assets/HUD/main health glow.png" id="15_pkyo2"]
 [ext_resource type="Texture2D" uid="uid://c01jc1kpw3o6v" path="res://assets/HUD/healthhud.png" id="15_uesjw"]
+[ext_resource type="Texture2D" uid="uid://bb3agdexemcun" path="res://assets/HUD/main red health glow.png" id="16_obky0"]
 [ext_resource type="Texture2D" uid="uid://b5kvc5d6xbshd" path="res://assets/HUD/controls ui.png" id="16_vc4br"]
 [ext_resource type="AudioStream" uid="uid://ds8dhq6grw34b" path="res://assets/audio/FX/electricity.ogg" id="17_1gu38"]
 [ext_resource type="AudioStream" uid="uid://bfu1c7j4w1i3g" path="res://assets/audio/FX/mascot speech.ogg" id="17_6k1te"]
 [ext_resource type="Texture2D" uid="uid://igi2ivbo2ggt" path="res://assets/HUD/issue controls.png" id="17_aoaac"]
+[ext_resource type="Texture2D" uid="uid://bcqp5gcuxfbso" path="res://assets/HUD/health decline sign.png" id="17_dufh6"]
 [ext_resource type="Texture2D" uid="uid://cjw5pal7iimab" path="res://assets/HUD/small health glow.png" id="17_xeqip"]
+[ext_resource type="Texture2D" uid="uid://bpfkywwlvfew" path="res://assets/HUD/small red health glow.png" id="20_dad8v"]
 [ext_resource type="Texture2D" uid="uid://b4bcqjpierari" path="res://assets/HUD/health sign.png" id="20_lt8ei"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_basyl"]
@@ -1243,6 +1246,20 @@ mouse_filter = 2
 texture = ExtResource("15_pkyo2")
 stretch_mode = 6
 
+[node name="HPDecrease" type="TextureRect" parent="HUDUI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 19.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_obky0")
+stretch_mode = 6
+
 [node name="HealthIncrease" type="CPUParticles2D" parent="HUDUI"]
 position = Vector2(350, 403)
 emitting = false
@@ -1257,8 +1274,21 @@ scale_amount_min = 2.0
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_aoaac")
 
+[node name="HealthDecrease" type="CPUParticles2D" parent="HUDUI"]
+position = Vector2(362, 403)
+emitting = false
+amount = 4
+texture = ExtResource("17_dufh6")
+one_shot = true
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 72.0
+gravity = Vector2(0, -300)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_aoaac")
+
 [node name="HUDHEALTH" type="TextureRect" parent="."]
-visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -1393,11 +1423,37 @@ mouse_filter = 2
 texture = ExtResource("17_xeqip")
 stretch_mode = 6
 
+[node name="HPDecrease" type="TextureRect" parent="HUDHEALTH"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("20_dad8v")
+stretch_mode = 6
+
 [node name="HealthIncrease" type="CPUParticles2D" parent="HUDHEALTH"]
 position = Vector2(264, 156)
 emitting = false
 amount = 4
 texture = ExtResource("20_lt8ei")
+one_shot = true
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 72.0
+gravity = Vector2(0, -300)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_aoaac")
+
+[node name="HealthDecrease" type="CPUParticles2D" parent="HUDHEALTH"]
+position = Vector2(264, 156)
+emitting = false
+amount = 4
+texture = ExtResource("17_dufh6")
 one_shot = true
 local_coords = true
 emission_shape = 1
