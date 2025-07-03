@@ -1,11 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://bbkif523pefv5"]
+[gd_scene load_steps=33 format=3 uid="uid://bbkif523pefv5"]
 
 [ext_resource type="Script" uid="uid://0duwjoixufm0" path="res://assets/ship/ship.gd" id="1_n8q6x"]
 [ext_resource type="Script" uid="uid://b0cbditwjg02n" path="res://assets/ship/ShipRigidBody.gd" id="2_pxrqm"]
 [ext_resource type="Texture2D" uid="uid://b6lo1kcjrne4v" path="res://assets/ship/sprites/ship.png" id="3_1h06k"]
 [ext_resource type="Shader" uid="uid://ih4ylds4eks3" path="res://assets/issues/possible_issues/barrel invader/damage.gdshader" id="3_gpou2"]
-[ext_resource type="Texture2D" uid="uid://bxev6rpvpvft3" path="res://assets/ship/sprites/animations/trail-end.png" id="4_1dmai"]
 [ext_resource type="Script" uid="uid://dh22gcbjgib3h" path="res://assets/ship/ship_fuel.gd" id="5_1h06k"]
+[ext_resource type="Texture2D" uid="uid://dwjf2ufdm27s8" path="res://assets/ship/sprites/animations/fuel.png" id="5_o01ar"]
+[ext_resource type="Texture2D" uid="uid://d2bhvqw80v44d" path="res://assets/ship/sprites/animations/fuel stop 5 frames.png" id="6_gpou2"]
 [ext_resource type="AudioStream" uid="uid://boeq8fmkvrbb2" path="res://assets/issues/possible_issues/barrel invader/pew_pew.ogg" id="8_o01ar"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nqv73"]
@@ -55,57 +56,61 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_psj3n"]
-atlas = ExtResource("4_1dmai")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqv73"]
+atlas = ExtResource("5_o01ar")
 region = Rect2(0, 0, 370, 490)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_757ar"]
-atlas = ExtResource("4_1dmai")
-region = Rect2(0, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_btq10"]
-atlas = ExtResource("4_1dmai")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw3ol"]
+atlas = ExtResource("5_o01ar")
 region = Rect2(370, 0, 370, 490)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yh1tt"]
-atlas = ExtResource("4_1dmai")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l14q"]
+atlas = ExtResource("5_o01ar")
 region = Rect2(740, 0, 370, 490)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5ijm"]
-atlas = ExtResource("4_1dmai")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl6is"]
+atlas = ExtResource("6_gpou2")
+region = Rect2(0, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruyo7"]
+atlas = ExtResource("6_gpou2")
+region = Rect2(370, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_757ar"]
+atlas = ExtResource("6_gpou2")
+region = Rect2(740, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btq10"]
+atlas = ExtResource("6_gpou2")
 region = Rect2(1110, 0, 370, 490)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_penkp"]
-atlas = ExtResource("4_1dmai")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh1tt"]
+atlas = ExtResource("6_gpou2")
 region = Rect2(1480, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bfi3q"]
-atlas = ExtResource("4_1dmai")
-region = Rect2(1850, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hsjvq"]
-atlas = ExtResource("4_1dmai")
-region = Rect2(2220, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kkuds"]
-atlas = ExtResource("4_1dmai")
-region = Rect2(2590, 0, 370, 490)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p2gq4"]
-atlas = ExtResource("4_1dmai")
-region = Rect2(2960, 0, 370, 490)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_psj3n"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_psj3n")
+"texture": SubResource("AtlasTexture_nqv73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hw3ol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l14q")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 15.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl6is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruyo7")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_757ar")
 }, {
@@ -114,24 +119,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yh1tt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b5ijm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_penkp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bfi3q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hsjvq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kkuds")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p2gq4")
 }],
 "loop": false,
 "name": &"fuel_end",
@@ -270,9 +257,10 @@ position = Vector2(0, -120)
 sprite_frames = SubResource("SpriteFrames_gkfdw")
 
 [node name="Trail" type="AnimatedSprite2D" parent="RigidBody2D/SpritesContainer/ShipSprite"]
-visible = false
+show_behind_parent = true
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_psj3n")
+autoplay = "default"
 
 [node name="SpritesAnimations" type="AnimationPlayer" parent="RigidBody2D/SpritesContainer"]
 libraries = {
