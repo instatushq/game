@@ -1289,6 +1289,7 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_aoaac")
 
 [node name="HUDHEALTH" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
