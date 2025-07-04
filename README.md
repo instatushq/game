@@ -30,4 +30,4 @@ Help us make the game better!
 
 Feel free to fix bugs, or even develop a new mini game. You can fork, branch, and send a pull request.
 
-![instaus inspace logo](https://github.com/user-attachments/assets/dcb2bd7c-dfb0-4935-bd76-f312f9a21184)
+![logo](https://github.com/user-attachments/assets/770110ef-1894-4f54-8548-ffb08231b141)
