@@ -2,8 +2,7 @@
 
 Strap in and help our slightly-overwhelmed astronaut fix the bizarre hazards popping up across the spaceship.
 
-![instatus-inspace](https://github.com/user-attachments/assets/0caa2a5d-218c-4ebf-a3b0-c50a3f1e12ef)
-
+![gggg](https://github.com/user-attachments/assets/4d5bac07-7c97-464c-8445-18e0c085ddbc)
 
 ### 🚀 Get started
 
