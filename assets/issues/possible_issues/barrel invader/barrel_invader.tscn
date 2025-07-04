@@ -213,6 +213,7 @@ max_total_objects = 4
 min_distance_between_bodies = 400.0
 
 [node name="Back Layer Of Stars" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+visible = false
 position = Vector2(-999.19, 286)
 motion_scale = Vector2(0.6, 0.6)
 motion_mirroring = Vector2(0, 1050)
@@ -335,6 +336,7 @@ position = Vector2(124.81, 435)
 scale = Vector2(2.3, 2.3)
 
 [node name="Front Layer Of Stars2" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+visible = false
 position = Vector2(-435.19, -26.16)
 motion_scale = Vector2(1.2, 1.2)
 motion_mirroring = Vector2(0, 1349.82)

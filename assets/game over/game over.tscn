@@ -125,6 +125,7 @@ max_total_objects = 4
 min_distance_between_bodies = 400.0
 
 [node name="Back Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 position = Vector2(-870.19, 286)
 scale = Vector2(0.9, 0.9)
 motion_scale = Vector2(0.6, 0.6)
@@ -232,6 +233,7 @@ scale = Vector2(1.8, 1.8)
 texture = ExtResource("5_wph33")
 
 [node name="Front Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 position = Vector2(-505.19, 962)
 motion_scale = Vector2(1.2, 1.2)
 motion_mirroring = Vector2(0, 1100.44)
@@ -342,12 +344,14 @@ background_controller = NodePath("../ParallaxBackground")
 camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(0, 515)
 zoom = Vector2(2, 2)
 script = ExtResource("21_wph33")
 movement_speed = 100.0
 
 [node name="Leaderboard" type="Control" parent="Camera2D" node_paths=PackedStringArray("screen_transition")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
