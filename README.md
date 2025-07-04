@@ -2,7 +2,7 @@
 
 Strap in and help our slightly-overwhelmed astronaut fix the bizarre hazards popping up across the spaceship.
 
-![gggg](https://github.com/user-attachments/assets/4d5bac07-7c97-464c-8445-18e0c085ddbc)
+![gg](https://github.com/user-attachments/assets/a1636847-3f64-45d0-8f48-e8404bd2b0b9)
 
 ### 🚀 Get started
 
