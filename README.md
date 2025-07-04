@@ -30,4 +30,4 @@ Help us make the game better!
 
 Feel free to fix bugs, or even develop a new mini game. You can fork, branch, and send a pull request.
 
-![logo](https://github.com/user-attachments/assets/770110ef-1894-4f54-8548-ffb08231b141)
+![logo](https://github.com/user-attachments/assets/154cf349-17ab-4ef1-a491-e2c1a0294d6b)
