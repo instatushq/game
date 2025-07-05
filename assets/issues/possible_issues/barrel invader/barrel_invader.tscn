@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://jjb3c4igolbf"]
+[gd_scene load_steps=43 format=3 uid="uid://jjb3c4igolbf"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_geevi"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_8i5gp"]
@@ -33,8 +33,6 @@
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="28_tyx3f"]
 [ext_resource type="Script" uid="uid://bbtlaikoxuc0p" path="res://assets/issues/possible_issues/barrel invader/barrel invader hud.gd" id="31_efpm6"]
 [ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="32_3oaur"]
-[ext_resource type="Texture2D" uid="uid://dg1k6acbe2uk2" path="res://assets/issues/possible_issues/barrel invader/ingame health bar.png" id="34_7wsow"]
-[ext_resource type="Script" path="res://assets/HUD/animated texture rect.gd" id="35_2olap"]
 [ext_resource type="Shader" uid="uid://ih4ylds4eks3" path="res://assets/issues/possible_issues/barrel invader/damage.gdshader" id="36_2olap"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3oaur"]
@@ -146,35 +144,6 @@ font_color = Color(0, 0.733333, 0.8, 1)
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dm4ju"]
-atlas = ExtResource("34_7wsow")
-region = Rect2(0, 0, 303, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yayhl"]
-atlas = ExtResource("34_7wsow")
-region = Rect2(303, 0, 303, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kne8y"]
-atlas = ExtResource("34_7wsow")
-region = Rect2(606, 0, 303, 200)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_to71f"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dm4ju")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yayhl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kne8y")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="barrel invader" type="Node2D"]
 script = ExtResource("1_geevi")
 spawn_position = Vector2(0, 0)
@@ -182,7 +151,6 @@ hide_vignette = true
 
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("2_pm5jl")
-vector_offset = null
 
 [node name="BarrelContainer" type="Node2D" parent="Game"]
 
@@ -494,9 +462,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Game" node_paths=PackedStringArray("ship")]
+[node name="CanvasLayer" type="CanvasLayer" parent="Game"]
 script = ExtResource("31_efpm6")
-ship = NodePath("../Ship")
 
 [node name="MeteorCountdown" type="ColorRect" parent="Game/CanvasLayer"]
 show_behind_parent = true
@@ -529,30 +496,3 @@ uppercase = true
 [node name="Timer" type="Timer" parent="Game/CanvasLayer"]
 wait_time = 90.0
 one_shot = true
-
-[node name="Health" type="TextureRect" parent="Game/CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -825.0
-offset_top = -500.0
-offset_right = 469.0
-offset_bottom = 354.0
-grow_horizontal = 0
-texture = SubResource("AtlasTexture_dm4ju")
-stretch_mode = 5
-script = ExtResource("35_2olap")
-sprites = SubResource("SpriteFrames_to71f")
-
-[node name="HealthBar" type="ColorRect" parent="Game/CanvasLayer/Health"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.153
-anchor_top = 0.66
-anchor_right = 0.574
-anchor_bottom = 0.67
-offset_left = -13.982
-offset_top = 0.359985
-offset_right = 0.244019
-offset_bottom = -0.179993
-color = Color(0.109804, 0.356863, 0.921569, 1)

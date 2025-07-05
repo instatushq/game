@@ -3,9 +3,6 @@ extends CanvasLayer
 @onready var meteor_countdown: Label = $MeteorCountdown/Countdown
 @onready var meteor_timer: Timer = $Timer
 @onready var parent_issue: BarrelInvader = get_parent()
-@onready var health_bar: ColorRect = $Health/HealthBar
-@export var ship: Ship
-@onready var ship_fuel: ShipFuel = ship.get_node("Fuel")
 
 signal meteor_herd_value_changed(time_left: float)
 
@@ -14,10 +11,6 @@ func _ready():
 	meteor_countdown.visible = false
 	meteor_timer.timeout.connect(_on_timer_timeout)
 	meteor_herd_value_changed.connect(_on_meteor_event_value_changed)
-	ship_fuel.on_fuel_change.connect(_on_fuel_changed)
-
-func _on_fuel_changed(_sold_fuel: float, new_fuel: float) -> void:
-	health_bar.scale.x = new_fuel / 100.0
 
 func _on_game_started() -> void:
 	meteor_countdown.visible = true

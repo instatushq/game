@@ -19,7 +19,7 @@ var is_invincible: bool = false
 @onready var cannon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var game_manager: BarrelInvader = get_parent()
 @onready var cannon_fire: AudioStreamPlayer = $Shoot
-@onready var ship_fuel: ShipFuel = $Fuel
+# @onready var ship_fuel: ShipFuel = $Fuel
 
 var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y: float = position.y;
@@ -48,7 +48,9 @@ func _on_barrel_impact(_barrel: BarrelBody) -> void:
 	# To trigger the damage effect:
 	ship_sprite.material.set_shader_parameter("trigger_time", (Time.get_ticks_msec() / 1000.0) - 0.2)
 	
-	ship_fuel.decrease_fuel(25)
+	# ship_fuel.decrease_fuel(25)
+	game_manager.parent_issue.game_manager.ship_health.decrease_health(3)
+
 	is_invincible = true
 	hit_animation_player.play("Took Damage")
 	await get_tree().create_timer(damage_cooldown_seconds).timeout

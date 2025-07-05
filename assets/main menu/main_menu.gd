@@ -63,7 +63,7 @@ func _on_click_options() -> void:
 	menu_click_sound.play(menu_click_sound_offset)
 
 func _switch_to_game() -> void:
-	get_tree().change_scene_to_file("res://main scene.tscn")
+	get_tree().change_scene_to_file("res://assets/main scene.tscn")
 
 func _on_hover_start_game() -> void:
 	menu_hover_sound.play(0.1)

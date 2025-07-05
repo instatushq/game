@@ -1,14 +1,14 @@
 {
   "rewrites": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "game.instatus.com"
-        }
-      ],
-      "destination": "/game/:path*"
-    }
+	{
+	  "source": "/:path*",
+	  "has": [
+		{
+		  "type": "host",
+		  "value": "game.instatus.com"
+		}
+	  ],
+	  "destination": "/game/:path*"
+	}
   ]
 }

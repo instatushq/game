@@ -17,6 +17,9 @@ var abort_ui: PackedScene = preload("res://assets/issues/abort_ui.tscn")
 @onready var scene_root = get_tree().root.get_child(get_tree().root.get_children().size() - 1)
 @onready var abort_timer: Timer = Timer.new()
 
+#assigned on ready from issues.gd
+var game_manager: GameManager = null
+
 var main_camera: Camera2D = null
 var is_open: bool = false
 
@@ -52,7 +55,6 @@ func _ready() -> void:
 	abort_timer.timeout.connect(abort_issue)
 	custom_camera = _find_camera2d(self)
 	canvas_layer = _find_canvas_layer(self)
-	var game_manager: GameManager = scene_root.get_node("%GameManager")
 	if game_manager != null:
 		main_camera = game_manager.camera
 	

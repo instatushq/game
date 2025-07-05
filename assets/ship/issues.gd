@@ -73,6 +73,7 @@ func _generate_random_issue(zone: IssueArea2D) -> void:
 	issues_randomizer.step_randomizer(random_issue_index)
 	var random_issue = possible_issues[random_issue_index]
 	var issue_instance: Issue = random_issue.instantiate()
+	issue_instance.game_manager = game_manager
 	var root_scene_node: Node = get_tree().current_scene
 	root_scene_node.add_child(issue_instance)
 	issue_instance.issue_resolved.connect(Callable(self, "_on_issue_resolved").bind(zone, issue_instance))
