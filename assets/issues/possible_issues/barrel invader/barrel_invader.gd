@@ -12,8 +12,6 @@ signal game_started
 
 func _ready() -> void:
 	parent_issue.issue_opened.connect(_on_game_start)
-	# ship_fuel.on_fuel_change.connect(_on_fuel_change)
-	print(parent_issue.game_manager.ship_health)
 	parent_issue.game_manager.ship_health.on_health_change.connect(_on_health_change)
 
 	if parent_issue != null:

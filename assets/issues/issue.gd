@@ -96,7 +96,7 @@ func close_issue() -> void:
 	issue_closed.emit()
 
 func _input(event: InputEvent) -> void:
-	if not allow_abort: return
+	if not allow_abort or not is_open: return
 	if event.is_action_pressed("abort"):
 		if abort_timer.is_stopped() or abort_timer.paused:
 			abort_timer.start(1.5)
