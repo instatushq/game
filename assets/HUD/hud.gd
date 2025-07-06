@@ -157,7 +157,7 @@ func _ready():
 
 	vhs_effect.play("LOW")
 
-	_portray_emotion(COMPUTER_EMOTION.DEFAULT, "Conputer Is Here.\nI Am Conputer. But I am Good Conputer. Have fun")
+	_portray_emotion(COMPUTER_EMOTION.DEFAULT, "My name is E. N Stat.\nI will assist you in fixing the ship!")
 
 	game_manager.on_solving_puzzle_changed.connect(func(is_solving_puzzle: bool) -> void:
 		_toggle_hud_health_visible(is_solving_puzzle)
