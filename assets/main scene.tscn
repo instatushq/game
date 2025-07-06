@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://buerdali4hdwi" path="res://assets/post processing/post_processing.tscn" id="1_7fvey"]
 [ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="1_tfagm"]
 [ext_resource type="Script" uid="uid://7352jsts8ku3" path="res://assets/environment/background autoscroll.gd" id="2_abrck"]
-[ext_resource type="AudioStream" uid="uid://xmgb8tmdyuy0" path="res://assets/audio/background/ambience.mp3" id="5_cabrn"]
 [ext_resource type="Texture2D" uid="uid://b1rbs2ilxulc7" path="res://assets/environment/backgrounds/stars/stars animation.png" id="8_b2n0l"]
+[ext_resource type="AudioStream" uid="uid://de1c0jr6my3c1" path="res://assets/audio/background/ambience.ogg" id="10_b2n0l"]
 [ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="12_t4yvt"]
 [ext_resource type="Texture2D" uid="uid://bfrcj1cva63yx" path="res://assets/environment/backgrounds/galaxy4.png" id="13_t6o86"]
 [ext_resource type="PackedScene" uid="uid://cqcmv5b3uo3sc" path="res://assets/HUD/hud.tscn" id="15_ens8i"]
@@ -419,7 +419,7 @@ unique_name_in_owner = true
 position = Vector2(0, -4)
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="InternalShip"]
-stream = ExtResource("5_cabrn")
+stream = ExtResource("10_b2n0l")
 volume_db = 3.0
 autoplay = true
 max_distance = 500.0

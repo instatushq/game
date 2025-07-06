@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://jumkphn087od" path="res://assets/astronaut/sprites/idle.png" id="14_4il1l"]
 [ext_resource type="Texture2D" uid="uid://bmwg8e33sqa8n" path="res://assets/astronaut/sprites/idle anim.png" id="15_k0scp"]
 [ext_resource type="Texture2D" uid="uid://b8jx5gok84hjm" path="res://assets/astronaut/textures/helmet light.png" id="16_hbnyu"]
-[ext_resource type="AudioStream" uid="uid://xmgb8tmdyuy0" path="res://assets/audio/background/ambience.mp3" id="17_4il1l"]
+[ext_resource type="AudioStream" uid="uid://de1c0jr6my3c1" path="res://assets/audio/background/ambience.ogg" id="17_q7ux3"]
 [ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="18_k0scp"]
 [ext_resource type="AudioStream" uid="uid://diagdagsrtodi" path="res://assets/audio/FX/menu hover.ogg" id="18_q7ux3"]
 [ext_resource type="AudioStream" uid="uid://yj7lrhkcguwh" path="res://assets/audio/FX/menu click.ogg" id="19_rlsq6"]
@@ -713,10 +713,9 @@ flip_h = true
 [node name="Timer" type="Timer" parent="Astronaut/SpriteContainer/Sprite"]
 wait_time = 4.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("17_4il1l")
-volume_db = 3.0
-autoplay = true
+[node name="Ambience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_q7ux3")
+volume_db = 5.0
 bus = &"Ambience"
 
 [node name="MenuHover" type="AudioStreamPlayer" parent="."]

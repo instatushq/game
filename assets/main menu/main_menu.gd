@@ -11,6 +11,8 @@ extends Node2D
 @onready var menu_hover_sound: AudioStreamPlayer = $MenuHover
 @onready var menu_click_sound: AudioStreamPlayer = $MenuClick
 @onready var start_game_sound: AudioStreamPlayer = $StartGame
+@onready var ambience: AudioStreamPlayer2D = $Ambience
+@onready var music_stream: AudioStreamOggVorbis = preload("res://assets/audio/background/ambience.ogg")
 var menu_click_sound_offset: float = 0.05
 var original_ambience_light_energy: float = 0.0
 var default_ambience_light_position: Vector2 = Vector2(0, -21)
@@ -25,6 +27,8 @@ func _process(_delta: float) -> void:
 	menu_astronaut.stand_away_from_mouse = not options_button.visible
 
 func _ready() -> void:
+	ambience.stream = music_stream
+	ambience.play()
 	transitions.on_transition_finish.connect(_switch_to_game)
 	original_ambience_light_energy = ambience_lights.energy
 	ambience_lights.position = default_ambience_light_position
