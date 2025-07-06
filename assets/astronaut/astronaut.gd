@@ -9,10 +9,7 @@ signal direction_changed_while_moving(old_direction: MovementDirection, new_dire
 
 var frozen: bool = false
 var can_control: bool = false
-var movement_axis: Vector2 = Vector2.ZERO
-var screen_touch_position: Vector2 = Vector2.ZERO
-var isTouching: bool = false
-const MAX_RADIUS := 100
+const MAX_RADIUS := 150
 @export var movement_speed: float = 300.0
 @export var maximum_speed: float = 300.0
 @export var damping: float = 0.0
@@ -32,6 +29,7 @@ var last_movement_direction: Vector2 = Vector2.ZERO
 @onready var astronaut_local_position: Vector2 = astronaut_sprite.position
 @onready var begin_flight_sound: AudioStreamPlayer2D = $FlyBegin
 @onready var end_flight_sound: AudioStreamPlayer2D = $FlyEnd
+@onready var main_camera: Camera2D = %Camera
 
 var is_solving_puzzle: bool = false
 var current_direction: MovementDirection = MovementDirection.FORWARD
@@ -111,14 +109,11 @@ func _input(event: InputEvent) -> void:
 	if not can_control:
 		return
 
-	if (event is InputEventMouseButton or event is InputEventScreenTouch) or (isTouching and (event is InputEventScreenDrag or event is InputEventMouseMotion)):
-		handle_mouse_input(event)
-
 	if event is InputEventKey:
 		handle_keyboard_input(event)
 
+	handle_mouse_movement()
 	handle_animation(joystick_movement_vector)
-	
 
 func handle_keyboard_input(event: InputEvent) -> bool:
 	var keyboard_movement_vector: Vector2 = Vector2.ZERO
@@ -135,27 +130,16 @@ func handle_keyboard_input(event: InputEvent) -> bool:
 	joystick_movement_vector = keyboard_movement_vector
 	return keyboard_movement_vector != Vector2.ZERO
 
-func handle_mouse_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch or event is InputEventMouseButton:
-		var was_touching = isTouching
-		isTouching = event.pressed
-		screen_touch_position = event.position if event.pressed else Vector2.ZERO
-		
-		if event.pressed and not was_touching:
-			var movement_direction := movement_axis.normalized()
-			joystick_movement_vector = movement_direction
-		elif not event.pressed and was_touching and _has_movement_begun_already:
-			movement_axis = Vector2.ZERO
-			joystick_movement_vector = Vector2.ZERO
+func handle_mouse_movement() -> void:
+	var mouse_global_pos = get_global_mouse_position()
+	var distance_to_mouse = global_position.distance_to(mouse_global_pos)
+	var max_radius_scaled = MAX_RADIUS / main_camera.zoom.x
 	
-	elif isTouching and (event is InputEventScreenDrag or event is InputEventMouseMotion):
-		var drag_vector: Vector2 = event.position - screen_touch_position
-		if drag_vector.length() > MAX_RADIUS:
-			drag_vector = drag_vector.normalized() * MAX_RADIUS
-
-		movement_axis = drag_vector
-		var normalized_joystick = drag_vector / MAX_RADIUS
-		joystick_movement_vector = normalized_joystick
+	if distance_to_mouse > max_radius_scaled:
+		var direction_to_mouse = (mouse_global_pos - global_position).normalized()
+		joystick_movement_vector = direction_to_mouse
+	else:
+		joystick_movement_vector = Vector2.ZERO
 
 func handle_animation(movement_vector: Vector2) -> void:
 	if movement_vector.length() <= MOVEMENT_DEADZONE_PERCENTAGE:

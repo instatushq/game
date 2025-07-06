@@ -144,270 +144,271 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("18_abrck")
 
 [node name="Back Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-23, 0)
 motion_scale = Vector2(0.6, 0.6)
 motion_mirroring = Vector2(0, 224.55)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-63.25, 35)
+position = Vector2(-38.25, 35)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.847632
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-54.5, 45)
+position = Vector2(-29.5, 45)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-53.25, 69)
+position = Vector2(-28.25, 69)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-63.25, 142.75)
+position = Vector2(-38.25, 142.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.770853
 
 [node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-54.5, 152.75)
+position = Vector2(-29.5, 152.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-53.25, 176.75)
+position = Vector2(-28.25, 176.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-125.25, 35)
+position = Vector2(-100.25, 35)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.770575
 
 [node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-116.5, 45)
+position = Vector2(-91.5, 45)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-115.25, 69)
+position = Vector2(-90.25, 69)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-125.25, 142.75)
+position = Vector2(-100.25, 142.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.770853
 
 [node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-116.5, 152.75)
+position = Vector2(-91.5, 152.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D18" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-115.25, 176.75)
+position = Vector2(-90.25, 176.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D19" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-181.25, 35)
+position = Vector2(-156.25, 35)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.770575
 
 [node name="AnimatedSprite2D20" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-172.5, 45)
+position = Vector2(-147.5, 45)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D21" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-171.25, 69)
+position = Vector2(-146.25, 69)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D22" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-181.25, 142.75)
+position = Vector2(-156.25, 142.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.770853
 
 [node name="AnimatedSprite2D23" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-172.5, 152.75)
+position = Vector2(-147.5, 152.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D24" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(-171.25, 176.75)
+position = Vector2(-146.25, 176.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(138.444, 28.75)
+position = Vector2(118.444, 28.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(147.333, 46)
+position = Vector2(127.333, 46)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(117.75, 65)
+position = Vector2(97.75, 65)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.54438
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(138.444, 142.75)
+position = Vector2(118.444, 142.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(147.333, 160)
+position = Vector2(127.333, 160)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(117.75, 179)
+position = Vector2(97.75, 179)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.809226
 
 [node name="AnimatedSprite2D25" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(183.444, 28.75)
+position = Vector2(163.444, 28.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D26" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(192.333, 46)
+position = Vector2(172.333, 46)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D27" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(162.75, 65)
+position = Vector2(142.75, 65)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.54438
 
 [node name="AnimatedSprite2D28" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(183.444, 142.75)
+position = Vector2(163.444, 142.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D29" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(192.333, 160)
+position = Vector2(172.333, 160)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D30" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(162.75, 179)
+position = Vector2(142.75, 179)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.809226
 
 [node name="AnimatedSprite2D31" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(226.444, 28.75)
+position = Vector2(206.444, 28.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D32" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(235.333, 46)
+position = Vector2(215.333, 46)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D33" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(205.75, 65)
+position = Vector2(185.75, 65)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.54438
 
 [node name="AnimatedSprite2D34" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(226.444, 142.75)
+position = Vector2(206.444, 142.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D35" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(235.333, 160)
+position = Vector2(215.333, 160)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D36" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(205.75, 179)
+position = Vector2(185.75, 179)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.809226
 
 [node name="AnimatedSprite2D37" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(283.444, 28.75)
+position = Vector2(263.444, 28.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D38" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(292.333, 46)
+position = Vector2(272.333, 46)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D39" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(262.75, 65)
+position = Vector2(242.75, 65)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 frame_progress = 0.54438
 
 [node name="AnimatedSprite2D40" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(283.444, 142.75)
+position = Vector2(263.444, 142.75)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D41" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(292.333, 160)
+position = Vector2(272.333, 160)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D42" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars"]
-position = Vector2(262.75, 179)
+position = Vector2(242.75, 179)
 scale = Vector2(0.25, 0.5)
 sprite_frames = SubResource("SpriteFrames_icqtw")
 autoplay = "default"
