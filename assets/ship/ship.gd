@@ -49,7 +49,7 @@ func _on_barrel_impact(_barrel: BarrelBody) -> void:
 	ship_sprite.material.set_shader_parameter("trigger_time", (Time.get_ticks_msec() / 1000.0) - 0.2)
 	
 	# ship_fuel.decrease_fuel(25)
-	if game_manager.parent_issue != null:
+	if game_manager.parent_issue.game_manager != null:
 		game_manager.parent_issue.game_manager.ship_health.decrease_health(3)
 
 	is_invincible = true
