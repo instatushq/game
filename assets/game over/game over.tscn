@@ -237,7 +237,6 @@ autoplay = "default"
 [node name="stars54" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars2"]
 position = Vector2(914, 1176.46)
 rotation = 2.5841
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_1pgb8")
 autoplay = "default"
 
@@ -298,7 +297,6 @@ autoplay = "default"
 [node name="stars64" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars2"]
 position = Vector2(6.99997, 1253.46)
 rotation = 2.04746
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_1pgb8")
 autoplay = "default"
 
@@ -317,14 +315,12 @@ autoplay = "default"
 [node name="stars67" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars2"]
 position = Vector2(-275, 1253.46)
 rotation = -0.0756115
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_1pgb8")
 autoplay = "default"
 
 [node name="stars68" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars2"]
 position = Vector2(-389, 1253.46)
 rotation = -0.0756115
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_1pgb8")
 autoplay = "default"
 
