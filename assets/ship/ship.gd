@@ -19,7 +19,6 @@ var is_invincible: bool = false
 @onready var cannon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var game_manager: BarrelInvader = get_parent()
 @onready var cannon_fire: AudioStreamPlayer = $Shoot
-# @onready var ship_fuel: ShipFuel = $Fuel
 
 var current_velocity: Vector2 = Vector2(0, 0)
 var last_recorded_y: float = position.y;
@@ -31,7 +30,7 @@ var input_buffered: bool = false
 var is_firing: bool = false
 var current_ship_y_position: float = 300.0
 
-var ship_position: Vector2 = Vector2.ZERO
+var ship_position: Vector2 = Vector2.DOWN * 400
 var is_keyboard_controlled: bool = true
 var y_position_synced: bool = false
 var global_input_axis: Vector2 = Vector2.ZERO

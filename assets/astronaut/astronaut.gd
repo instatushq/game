@@ -9,7 +9,7 @@ signal direction_changed_while_moving(old_direction: MovementDirection, new_dire
 
 var frozen: bool = false
 var can_control: bool = false
-const MAX_RADIUS := 150
+const MAX_RADIUS := 165
 @export var movement_speed: float = 300.0
 @export var maximum_speed: float = 300.0
 @export var damping: float = 0.0
@@ -36,6 +36,7 @@ var current_direction: MovementDirection = MovementDirection.FORWARD
 const MOVEMENT_DEADZONE_PERCENTAGE: float = 0.5
 var joystick_movement_vector: Vector2 = Vector2.ZERO
 var _has_movement_begun_already: bool = false
+var using_keyboard: bool = true
 
 func _ready() -> void:
 	idle_timer.start()
@@ -52,6 +53,24 @@ func _on_internal_ship_broke() -> void:
 
 func _process(_delta: float) -> void:
 	astronaut_sprite.modulate = internal_ship.ship_sprite.modulate
+	
+	if can_control:
+		var keyboard_input = Vector2.ZERO
+		var vertical_axis = Input.get_axis("move_up", "move_down")
+		var horizontal_axis = Input.get_axis("move_left", "move_right")
+		keyboard_input.x = horizontal_axis
+		keyboard_input.y = vertical_axis
+		
+		if keyboard_input.length() > 0.1 and not using_keyboard:
+			using_keyboard = true
+
+		if using_keyboard:
+			joystick_movement_vector = keyboard_input.normalized()
+		else:
+			handle_mouse_movement()
+
+	
+	handle_animation(joystick_movement_vector)
 
 func toggle_control(new_can_control: bool) -> void:
 	can_control = new_can_control
@@ -108,27 +127,15 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if not can_control:
 		return
-
-	if event is InputEventKey:
-		handle_keyboard_input(event)
-
-	handle_mouse_movement()
-	handle_animation(joystick_movement_vector)
-
-func handle_keyboard_input(event: InputEvent) -> bool:
-	var keyboard_movement_vector: Vector2 = Vector2.ZERO
-	if event is InputEventKey:
-		
-		var vertical_axis = Input.get_axis("move_up", "move_down")
-		var horizontal_axis = Input.get_axis("move_left", "move_right")
-		keyboard_movement_vector.x = horizontal_axis
-		keyboard_movement_vector.y = vertical_axis
-		
-		if keyboard_movement_vector.length() > 1:
-			keyboard_movement_vector = keyboard_movement_vector.normalized()
 	
-	joystick_movement_vector = keyboard_movement_vector
-	return keyboard_movement_vector != Vector2.ZERO
+	# Check if mouse moves outside radius zone to switch to mouse input
+	if event is InputEventMouseMotion:
+		var mouse_global_pos = get_global_mouse_position()
+		var distance_to_mouse = global_position.distance_to(mouse_global_pos)
+		var max_radius_scaled = MAX_RADIUS / main_camera.zoom.x
+		
+		if distance_to_mouse > max_radius_scaled:
+			using_keyboard = false
 
 func handle_mouse_movement() -> void:
 	var mouse_global_pos = get_global_mouse_position()
