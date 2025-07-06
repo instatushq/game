@@ -12,7 +12,8 @@ signal game_started
 
 func _ready() -> void:
 	parent_issue.issue_opened.connect(_on_game_start)
-	parent_issue.game_manager.ship_health.on_health_change.connect(_on_health_change)
+	if parent_issue.game_manager != null:
+		parent_issue.game_manager.ship_health.on_health_change.connect(_on_health_change)
 
 	if parent_issue != null:
 		vector_offset = parent_issue.spawn_position
