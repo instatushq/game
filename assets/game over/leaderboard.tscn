@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bhasn5r8ykfgl"]
+[gd_scene load_steps=59 format=3 uid="uid://bhasn5r8ykfgl"]
 
 [ext_resource type="Script" uid="uid://ckjc6b027vyxq" path="res://assets/game over/game_over.gd" id="1_aww1h"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_1jm15"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b3d8re4q4igwp" path="res://assets/environment/spawnable elements/medium planet.tscn" id="5_wsffk"]
 [ext_resource type="PackedScene" uid="uid://kskx5h8v3qqm" path="res://assets/environment/spawnable elements/bigger-than-average-planet.tscn" id="6_gm2i1"]
 [ext_resource type="PackedScene" uid="uid://x1eieaqt1a0v" path="res://assets/environment/spawnable elements/blackhole/blackhole.tscn" id="7_iacry"]
+[ext_resource type="Texture2D" uid="uid://dnq0t7po81jem" path="res://assets/environment/backgrounds/stars/stars & big starst.png" id="8_1jm15"]
 [ext_resource type="Texture2D" uid="uid://b1rbs2ilxulc7" path="res://assets/environment/backgrounds/stars/stars animation.png" id="8_n40ve"]
 [ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="9_onbaa"]
 [ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy2.png" id="10_mwyvr"]
@@ -23,6 +24,70 @@
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_36qrg"]
 noise_type = 0
 frequency = 0.0043
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf5at"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(0, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hdpe"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(304, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkowm"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(608, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxsys"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(912, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mpri"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(1216, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85wje"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(1520, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3olx"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(1824, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00yes"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(2128, 0, 304, 216)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r77rn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf5at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hdpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkowm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxsys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mpri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85wje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3olx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00yes")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wsow"]
 atlas = ExtResource("8_n40ve")
@@ -213,7 +278,111 @@ big_planet_spawn_rate = 0.08
 max_total_objects = 4
 min_distance_between_bodies = 400.0
 
+[node name="Back Layer Of Stars3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-242.19, 286)
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(0, 889.33)
+
+[node name="stars51" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(582.18, 657.274)
+rotation = -14.0239
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars64" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(148.18, 469.274)
+rotation = -12.5128
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars52" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(582.18, 657.274)
+rotation = -14.0239
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars53" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(16.1801, 657.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars54" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(-625.82, 1002.27)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars63" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(217.18, 884.273)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars55" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(921.18, 880.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars57" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(1147.18, 580.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars58" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(-271.82, 467.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars56" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(-836.82, 574.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars59" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(-518.82, 584.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars60" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(-307.82, 834.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars61" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(653.18, 1121.27)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
+[node name="stars62" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(104.18, 1121.27)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r77rn")
+autoplay = "default"
+
 [node name="Back Layer Of Stars2" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 position = Vector2(-242.19, 286)
 motion_scale = Vector2(0.6, 0.6)
 motion_mirroring = Vector2(0, 825.93)
