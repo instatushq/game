@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://jjb3c4igolbf"]
+[gd_scene load_steps=62 format=3 uid="uid://jjb3c4igolbf"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_geevi"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_8i5gp"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bjngyues28e0r" path="res://assets/managers/environment manager/environment_manager.tscn" id="21_fd7t0"]
 [ext_resource type="PackedScene" uid="uid://dw0ggx5ydt1qa" path="res://assets/walls/camera walls.tscn" id="22_4kruc"]
 [ext_resource type="PackedScene" uid="uid://c8polkf2eiy1" path="res://assets/debris/debris spawner/debris spawner.tscn" id="23_lrr4d"]
+[ext_resource type="Texture2D" uid="uid://dnq0t7po81jem" path="res://assets/environment/backgrounds/stars/stars & big starst.png" id="28_2olap"]
 [ext_resource type="Script" uid="uid://b7dqgngdm4d7m" path="res://assets/issues/possible_issues/barrel invader/barrel_invader_camera.gd" id="28_2tnj0"]
 [ext_resource type="PackedScene" uid="uid://bbkif523pefv5" path="res://assets/ship/ship.tscn" id="28_tyx3f"]
 [ext_resource type="Script" uid="uid://bbtlaikoxuc0p" path="res://assets/issues/possible_issues/barrel invader/barrel invader hud.gd" id="31_efpm6"]
@@ -146,6 +147,70 @@ animations = [{
 "speed": 50.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf5at"]
+atlas = ExtResource("28_2olap")
+region = Rect2(0, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hdpe"]
+atlas = ExtResource("28_2olap")
+region = Rect2(304, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkowm"]
+atlas = ExtResource("28_2olap")
+region = Rect2(608, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxsys"]
+atlas = ExtResource("28_2olap")
+region = Rect2(912, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mpri"]
+atlas = ExtResource("28_2olap")
+region = Rect2(1216, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85wje"]
+atlas = ExtResource("28_2olap")
+region = Rect2(1520, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3olx"]
+atlas = ExtResource("28_2olap")
+region = Rect2(1824, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00yes"]
+atlas = ExtResource("28_2olap")
+region = Rect2(2128, 0, 304, 216)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dm4ju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf5at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hdpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkowm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxsys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mpri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85wje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3olx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00yes")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
 [sub_resource type="GDScript" id="GDScript_tyx3f"]
 script/source = "extends Node2D
 
@@ -181,7 +246,7 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_geevi")
 spawn_position = Vector2(0, 0)
 hide_vignette = true
-hp_revive_per_issue_segment = 3
+hp_revive_per_issue_segment = 5
 
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("2_pm5jl")
@@ -215,6 +280,7 @@ max_total_objects = 4
 min_distance_between_bodies = 400.0
 
 [node name="Back Layer Of Stars" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+visible = false
 position = Vector2(-242.19, 286)
 motion_scale = Vector2(0.6, 0.6)
 motion_mirroring = Vector2(0, 825.93)
@@ -238,7 +304,6 @@ autoplay = "default"
 [node name="stars54" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
 position = Vector2(914, 1176.46)
 rotation = 2.5841
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 
@@ -299,7 +364,6 @@ autoplay = "default"
 [node name="stars64" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
 position = Vector2(6.99997, 1253.46)
 rotation = 2.04746
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 
@@ -318,14 +382,12 @@ autoplay = "default"
 [node name="stars67" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
 position = Vector2(-275, 1253.46)
 rotation = -0.0756115
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 
 [node name="stars68" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars"]
 position = Vector2(-389, 1253.46)
 rotation = -0.0756115
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ue8vg")
 autoplay = "default"
 
@@ -811,6 +873,144 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_tyx3f")
 autoplay = "default"
 speed_scale = 1.5
+
+[node name="Back Layer Of Stars3" type="ParallaxLayer" parent="Game/ParallaxBackground"]
+position = Vector2(-242.19, 286)
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(0, 889.33)
+
+[node name="stars51" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(582.18, 657.274)
+rotation = -14.0239
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars64" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(148.18, 469.274)
+rotation = -12.5128
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars52" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(582.18, 657.274)
+rotation = -14.0239
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars53" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(16.1801, 657.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars54" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(-625.82, 1002.27)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars63" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(217.18, 884.273)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars55" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(921.18, 880.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars65" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(1163, 1149.84)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars66" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(1407, 898.84)
+rotation = -9.25614
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars67" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(1578, 1264.84)
+rotation = -12.2538
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars68" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(1681, 614.84)
+rotation = -15.2446
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars69" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(1696, 1067.84)
+rotation = -13.6808
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars57" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(1147.18, 580.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars58" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(-271.82, 467.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars56" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(-836.82, 574.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars59" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(-518.82, 584.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars60" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(-307.82, 834.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars61" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(653.18, 1121.27)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
+
+[node name="stars62" type="AnimatedSprite2D" parent="Game/ParallaxBackground/Back Layer Of Stars3"]
+position = Vector2(104.18, 1121.27)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dm4ju")
+autoplay = "default"
 
 [node name="EnvironmentManager" parent="Game" node_paths=PackedStringArray("background_controller", "camera") instance=ExtResource("21_fd7t0")]
 background_controller = NodePath("../ParallaxBackground")
