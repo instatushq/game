@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw0ggx5ydt1qa"]
+[gd_scene load_steps=5 format=3 uid="uid://dw0ggx5ydt1qa"]
+
+[ext_resource type="Script" uid="uid://cuui5u7adigsd" path="res://assets/walls/camera_walls.gd" id="1_rdpm7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oyc4m"]
 friction = 0.1
@@ -10,6 +12,7 @@ bounce = 1.0
 radius = 0.0
 
 [node name="Walls" type="Node2D"]
+script = ExtResource("1_rdpm7")
 
 [node name="RigidBody2D" type="StaticBody2D" parent="."]
 collision_layer = 0

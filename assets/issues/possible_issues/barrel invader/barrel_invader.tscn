@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://jjb3c4igolbf"]
+[gd_scene load_steps=61 format=3 uid="uid://jjb3c4igolbf"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_geevi"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_8i5gp"]
@@ -210,18 +210,6 @@ animations = [{
 "name": &"default",
 "speed": 1.0
 }]
-
-[sub_resource type="GDScript" id="GDScript_tyx3f"]
-script/source = "extends Node2D
-
-@onready var rb = $RigidBody2D
-
-
-func _ready() -> void:
-	pass
-	#var movement_speed = game_manager.base_travelling_speed;
-	#rb.add_constant_force(Vector2.UP * movement_speed)
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dm4ju"]
 shader = ExtResource("36_2olap")
@@ -1016,8 +1004,8 @@ autoplay = "default"
 background_controller = NodePath("../ParallaxBackground")
 camera = NodePath("../Camera2D")
 
-[node name="Walls" parent="Game" instance=ExtResource("22_4kruc")]
-script = SubResource("GDScript_tyx3f")
+[node name="Walls" parent="Game" node_paths=PackedStringArray("game_camera") instance=ExtResource("22_4kruc")]
+game_camera = NodePath("../Camera2D")
 
 [node name="Debris Spawner" parent="Game" instance=ExtResource("23_lrr4d")]
 position = Vector2(-180, -138)
