@@ -484,6 +484,7 @@ rotation = -0.308859
 texture = ExtResource("2_wyofo")
 
 [node name="Galaxy 2" type="Sprite2D" parent="Backgrounds"]
+light_mask = 0
 position = Vector2(507, -139)
 texture = ExtResource("3_8kyfx")
 
