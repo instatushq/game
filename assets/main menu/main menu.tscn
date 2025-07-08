@@ -555,7 +555,7 @@ zoom = Vector2(11.5, 11.5)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("3_k5jlq")
-margin = Vector2(15, 15)
+margin = Vector2(17, 15)
 
 [node name="Ship" type="Node2D" parent="."]
 
@@ -670,6 +670,7 @@ icon_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Ship/Control/Leaderboard"]
 modulate = Color(0, 0, 0, 0.403922)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -232.0
 offset_top = -272.0
 offset_right = 138.0

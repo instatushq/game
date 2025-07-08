@@ -40,6 +40,8 @@ func _ready() -> void:
 	# Connect focus signals
 	music_button.focus_entered.connect(_on_music_focus_entered)
 	sfx_button.focus_entered.connect(_on_sfx_focus_entered)
+	sfx_button.text = "SFX: " + ("On" if not AudioServer.is_bus_mute(sfx_bus) else "Off")
+	music_button.text = "Music: " + ("On" if not AudioServer.is_bus_mute(music_bus) else "Off")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_focus_next") and get_viewport().gui_get_focus_owner() == null:
@@ -144,7 +146,6 @@ func _on_sfx_pressed() -> void:
 	sfx_button.text = "SFX: " + ("On" if not AudioServer.is_bus_mute(sfx_bus) else "Off")
 	sfx_button.grab_focus()
 	menu_click_sound.play(menu_click_sound_offset)
-
 
 func _on_leaderboard_pressed() -> void:
 	pass # Replace with function body.
