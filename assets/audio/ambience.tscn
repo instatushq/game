@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpim8avsm75oe"]
+
+[ext_resource type="AudioStream" uid="uid://de1c0jr6my3c1" path="res://assets/audio/background/ambience.ogg" id="1_i6pgp"]
+[ext_resource type="Script" uid="uid://ccnqo2ba2ktg8" path="res://assets/audio/ambience.gd" id="2_fs2ct"]
+
+[node name="Ambience" type="AudioStreamPlayer"]
+stream = ExtResource("1_i6pgp")
+volume_db = 5.0
+bus = &"Ambience"
+script = ExtResource("2_fs2ct")
