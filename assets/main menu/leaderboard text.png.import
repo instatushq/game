@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdecihpovsqep"
-path="res://.godot/imported/leaderboard text animation.png-6f0103cac4f1900a08ba9a89f4ec6ebd.ctex"
+uid="uid://bbu4xn1088b8"
+path="res://.godot/imported/leaderboard text.png-c6c1a4846eeb97e95e845b36fcd6bcc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/main menu/leaderboard text animation.png"
-dest_files=["res://.godot/imported/leaderboard text animation.png-6f0103cac4f1900a08ba9a89f4ec6ebd.ctex"]
+source_file="res://assets/main menu/leaderboard text.png"
+dest_files=["res://.godot/imported/leaderboard text.png-c6c1a4846eeb97e95e845b36fcd6bcc6.ctex"]
 
 [params]
 
