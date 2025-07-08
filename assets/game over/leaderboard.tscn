@@ -1,124 +1,59 @@
-[gd_scene load_steps=59 format=3 uid="uid://bnb6fd0uu1p82"]
+[gd_scene load_steps=49 format=3 uid="uid://bhasn5r8ykfgl"]
 
-[ext_resource type="Script" uid="uid://ckjc6b027vyxq" path="res://assets/game over/game_over.gd" id="1_5d7i2"]
-[ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="1_064we"]
-[ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="1_jps65"]
-[ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy2.png" id="2_qs7s7"]
-[ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="3_1pgb8"]
-[ext_resource type="PackedScene" uid="uid://dt0dai5l5rmx5" path="res://assets/environment/spawnable elements/small_planet.tscn" id="3_wph33"]
-[ext_resource type="Texture2D" uid="uid://bfrcj1cva63yx" path="res://assets/environment/backgrounds/galaxy4.png" id="4_jps65"]
-[ext_resource type="Texture2D" uid="uid://dvhillf4ggqng" path="res://assets/environment/backgrounds/galaxy5.png" id="5_wph33"]
-[ext_resource type="Texture2D" uid="uid://b1rbs2ilxulc7" path="res://assets/environment/backgrounds/stars/stars animation.png" id="8_1pgb8"]
-[ext_resource type="Texture2D" uid="uid://dnq0t7po81jem" path="res://assets/environment/backgrounds/stars/stars & big starst.png" id="8_jps65"]
-[ext_resource type="PackedScene" uid="uid://kskx5h8v3qqm" path="res://assets/environment/spawnable elements/bigger-than-average-planet.tscn" id="14_wxsys"]
-[ext_resource type="PackedScene" uid="uid://b3d8re4q4igwp" path="res://assets/environment/spawnable elements/medium planet.tscn" id="15_1mpri"]
-[ext_resource type="PackedScene" uid="uid://ccc72g2taxm5r" path="res://assets/environment/spawnable elements/big_planet.tscn" id="16_85wje"]
-[ext_resource type="PackedScene" uid="uid://x1eieaqt1a0v" path="res://assets/environment/spawnable elements/blackhole/blackhole.tscn" id="17_w3olx"]
-[ext_resource type="PackedScene" uid="uid://bjngyues28e0r" path="res://assets/managers/environment manager/environment_manager.tscn" id="20_ypvgp"]
-[ext_resource type="Script" uid="uid://df6mg4hdegm0q" path="res://assets/game over/game over camera.gd" id="21_wph33"]
-[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="22_36qrg"]
-[ext_resource type="Script" uid="uid://cy4uajxv2llta" path="res://assets/game over/leaderboard.gd" id="22_q4pyq"]
-[ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="22_ypvgp"]
-[ext_resource type="PackedScene" uid="uid://bvwxedgu7n73u" path="res://assets/game over/leaderboard_entry.tscn" id="25_aqfd3"]
+[ext_resource type="Script" uid="uid://ckjc6b027vyxq" path="res://assets/game over/game_over.gd" id="1_aww1h"]
+[ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_1jm15"]
+[ext_resource type="PackedScene" uid="uid://ccc72g2taxm5r" path="res://assets/environment/spawnable elements/big_planet.tscn" id="3_r77rn"]
+[ext_resource type="PackedScene" uid="uid://dt0dai5l5rmx5" path="res://assets/environment/spawnable elements/small_planet.tscn" id="4_e44dp"]
+[ext_resource type="PackedScene" uid="uid://b3d8re4q4igwp" path="res://assets/environment/spawnable elements/medium planet.tscn" id="5_wsffk"]
+[ext_resource type="PackedScene" uid="uid://kskx5h8v3qqm" path="res://assets/environment/spawnable elements/bigger-than-average-planet.tscn" id="6_gm2i1"]
+[ext_resource type="PackedScene" uid="uid://x1eieaqt1a0v" path="res://assets/environment/spawnable elements/blackhole/blackhole.tscn" id="7_iacry"]
+[ext_resource type="Texture2D" uid="uid://b1rbs2ilxulc7" path="res://assets/environment/backgrounds/stars/stars animation.png" id="8_n40ve"]
+[ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="9_onbaa"]
+[ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy2.png" id="10_mwyvr"]
+[ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="11_v162x"]
+[ext_resource type="Texture2D" uid="uid://bfrcj1cva63yx" path="res://assets/environment/backgrounds/galaxy4.png" id="12_clrl6"]
+[ext_resource type="Texture2D" uid="uid://dvhillf4ggqng" path="res://assets/environment/backgrounds/galaxy5.png" id="13_csqot"]
+[ext_resource type="PackedScene" uid="uid://bjngyues28e0r" path="res://assets/managers/environment manager/environment_manager.tscn" id="14_rtkun"]
+[ext_resource type="Script" uid="uid://df6mg4hdegm0q" path="res://assets/game over/game over camera.gd" id="15_rq537"]
+[ext_resource type="Script" uid="uid://cy4uajxv2llta" path="res://assets/game over/leaderboard.gd" id="16_jfcji"]
+[ext_resource type="PackedScene" uid="uid://bvwxedgu7n73u" path="res://assets/game over/leaderboard_entry.tscn" id="17_ly2o1"]
+[ext_resource type="FontFile" uid="uid://bxyhcqr4at0jk" path="res://fonts/munro-small.ttf" id="18_juhfn"]
+[ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="19_ax5qa"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_36qrg"]
 noise_type = 0
 frequency = 0.0043
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vf5at"]
-atlas = ExtResource("8_jps65")
-region = Rect2(0, 0, 304, 216)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1hdpe"]
-atlas = ExtResource("8_jps65")
-region = Rect2(304, 0, 304, 216)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkowm"]
-atlas = ExtResource("8_jps65")
-region = Rect2(608, 0, 304, 216)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wxsys"]
-atlas = ExtResource("8_jps65")
-region = Rect2(912, 0, 304, 216)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1mpri"]
-atlas = ExtResource("8_jps65")
-region = Rect2(1216, 0, 304, 216)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_85wje"]
-atlas = ExtResource("8_jps65")
-region = Rect2(1520, 0, 304, 216)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w3olx"]
-atlas = ExtResource("8_jps65")
-region = Rect2(1824, 0, 304, 216)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_00yes"]
-atlas = ExtResource("8_jps65")
-region = Rect2(2128, 0, 304, 216)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sddn0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vf5at")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1hdpe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jkowm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wxsys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1mpri")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_85wje")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w3olx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_00yes")
-}],
-"loop": true,
-"name": &"default",
-"speed": 1.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wsow"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(0, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2olap"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(318, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dm4ju"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(636, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yayhl"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(954, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kne8y"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(1272, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ue8vg"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(1590, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_to71f"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(1908, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yo441"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(2226, 0, 318, 222)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1pgb8"]
@@ -154,35 +89,35 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1pgb8"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(0, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jps65"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(318, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wph33"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(636, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypvgp"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(954, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_36qrg"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(1272, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4pyq"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(1590, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5d7i2"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(1908, 0, 318, 222)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqfd3"]
-atlas = ExtResource("8_1pgb8")
+atlas = ExtResource("8_n40ve")
 region = Rect2(2226, 0, 318, 222)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q4pyq"]
@@ -218,20 +153,20 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aqfd3"]
-font = ExtResource("22_36qrg")
+font = ExtResource("18_juhfn")
 font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_36qrg"]
-font = ExtResource("22_36qrg")
+font = ExtResource("18_juhfn")
 font_size = 26
 
 [sub_resource type="LabelSettings" id="LabelSettings_vf5at"]
-font = ExtResource("22_36qrg")
+font = ExtResource("18_juhfn")
 font_size = 26
 font_color = Color(4.71681e-06, 0.625889, 0.830778, 1)
 
 [sub_resource type="Theme" id="Theme_aqfd3"]
-default_font = ExtResource("22_36qrg")
+default_font = ExtResource("18_juhfn")
 default_font_size = 26
 LineEdit/colors/selection_color = Color(0.5, 0.5, 0.5, 1)
 LineEdit/styles/focus = null
@@ -241,25 +176,25 @@ LineEdit/styles/focus = null
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqfd3"]
 
 [sub_resource type="Theme" id="Theme_vf5at"]
-default_font = ExtResource("22_36qrg")
+default_font = ExtResource("18_juhfn")
 default_font_size = 26
 
 [sub_resource type="Theme" id="Theme_1hdpe"]
-default_font = ExtResource("22_36qrg")
+default_font = ExtResource("18_juhfn")
 default_font_size = 26
 
 [sub_resource type="LabelSettings" id="LabelSettings_1hdpe"]
-font = ExtResource("22_36qrg")
+font = ExtResource("18_juhfn")
 font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_jkowm"]
 line_spacing = 0.0
-font = ExtResource("22_36qrg")
+font = ExtResource("18_juhfn")
 font_size = 20
 font_color = Color(0.716751, 0, 0.144332, 1)
 
 [node name="GameOver" type="Node2D"]
-script = ExtResource("1_5d7i2")
+script = ExtResource("1_aww1h")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
@@ -267,122 +202,18 @@ script = ExtResource("1_5d7i2")
 unique_name_in_owner = true
 offset = Vector2(154.19, -700)
 transform = Transform2D(1, 0, 0, 1, 154.19, -700)
-script = ExtResource("1_jps65")
+script = ExtResource("2_1jm15")
 noise = SubResource("FastNoiseLite_36qrg")
-big_planet = ExtResource("16_85wje")
-small_planet = ExtResource("3_wph33")
-medium_planet = ExtResource("15_1mpri")
-average_planet = ExtResource("14_wxsys")
-black_hole = ExtResource("17_w3olx")
+big_planet = ExtResource("3_r77rn")
+small_planet = ExtResource("4_e44dp")
+medium_planet = ExtResource("5_wsffk")
+average_planet = ExtResource("6_gm2i1")
+black_hole = ExtResource("7_iacry")
 big_planet_spawn_rate = 0.08
 max_total_objects = 4
 min_distance_between_bodies = 400.0
 
-[node name="Back Layer Of Stars3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-242.19, 286)
-motion_scale = Vector2(0.6, 0.6)
-motion_mirroring = Vector2(0, 889.33)
-
-[node name="stars51" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(582.18, 657.274)
-rotation = -14.0239
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars64" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(148.18, 469.274)
-rotation = -12.5128
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars52" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(582.18, 657.274)
-rotation = -14.0239
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars53" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(16.1801, 657.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars54" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(-625.82, 1002.27)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars63" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(217.18, 884.273)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars55" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(921.18, 880.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars57" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(1147.18, 580.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars58" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(-271.82, 467.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars56" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(-836.82, 574.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars59" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(-518.82, 584.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars60" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(-307.82, 834.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars61" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(653.18, 1121.27)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
-[node name="stars62" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
-position = Vector2(104.18, 1121.27)
-rotation = -12.3296
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_sddn0")
-autoplay = "default"
-
 [node name="Back Layer Of Stars2" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 position = Vector2(-242.19, 286)
 motion_scale = Vector2(0.6, 0.6)
 motion_mirroring = Vector2(0, 825.93)
@@ -954,27 +785,27 @@ motion_mirroring = Vector2(0, 1600)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
 position = Vector2(-149.19, 1299)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("1_064we")
+texture = ExtResource("9_onbaa")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
 position = Vector2(467.81, 501)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("2_qs7s7")
+texture = ExtResource("10_mwyvr")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
 position = Vector2(280.81, 355)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("3_1pgb8")
+texture = ExtResource("11_v162x")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
 position = Vector2(-400.19, 602)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("4_jps65")
+texture = ExtResource("12_clrl6")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Galaxy Layer"]
 position = Vector2(-408.19, 25)
 scale = Vector2(1.8, 1.8)
-texture = ExtResource("5_wph33")
+texture = ExtResource("13_csqot")
 
 [node name="Front Layer Of Stars" type="ParallaxLayer" parent="ParallaxBackground"]
 visible = false
@@ -1068,21 +899,21 @@ speed_scale = 1.5
 
 [node name="Celestials" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="Small Planet" parent="ParallaxBackground/Celestials" instance=ExtResource("14_wxsys")]
+[node name="Small Planet" parent="ParallaxBackground/Celestials" instance=ExtResource("6_gm2i1")]
 position = Vector2(-81.19, -204)
 scale = Vector2(0.7, 0.7)
 
-[node name="Medium Planet" parent="ParallaxBackground/Celestials" instance=ExtResource("15_1mpri")]
+[node name="Medium Planet" parent="ParallaxBackground/Celestials" instance=ExtResource("5_wsffk")]
 position = Vector2(257.81, 332)
 
-[node name="Big Planet2" parent="ParallaxBackground/Celestials" instance=ExtResource("16_85wje")]
+[node name="Big Planet2" parent="ParallaxBackground/Celestials" instance=ExtResource("3_r77rn")]
 position = Vector2(-302.19, 646)
 
-[node name="Blackhole2" parent="ParallaxBackground/Celestials" instance=ExtResource("17_w3olx")]
+[node name="Blackhole2" parent="ParallaxBackground/Celestials" instance=ExtResource("7_iacry")]
 position = Vector2(124.81, 435)
 scale = Vector2(2.3, 2.3)
 
-[node name="EnvironmentManager" parent="." node_paths=PackedStringArray("background_controller", "camera") instance=ExtResource("20_ypvgp")]
+[node name="EnvironmentManager" parent="." node_paths=PackedStringArray("background_controller", "camera") instance=ExtResource("14_rtkun")]
 unique_name_in_owner = true
 background_controller = NodePath("../ParallaxBackground")
 camera = NodePath("../Camera2D")
@@ -1090,7 +921,7 @@ camera = NodePath("../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 515)
 zoom = Vector2(2, 2)
-script = ExtResource("21_wph33")
+script = ExtResource("15_rq537")
 movement_speed = 100.0
 
 [node name="Leaderboard" type="Control" parent="Camera2D" node_paths=PackedStringArray("screen_transition")]
@@ -1100,9 +931,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("22_q4pyq")
+script = ExtResource("16_jfcji")
 screen_transition = NodePath("../../Transition Screen")
-entry_scene = ExtResource("25_aqfd3")
+entry_scene = ExtResource("17_ly2o1")
 
 [node name="BG" type="ColorRect" parent="Camera2D/Leaderboard"]
 layout_mode = 1
@@ -1167,6 +998,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Leaderboard/VBoxContainer/Form/CenterContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -10
 
@@ -1199,6 +1031,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="SaveScore" type="Button" parent="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme = SubResource("Theme_vf5at")
@@ -1206,7 +1039,7 @@ disabled = true
 text = "SAVE"
 
 [node name="MainMenu" type="Button" parent="Camera2D/Leaderboard/VBoxContainer/Form/HBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 57.28)
 layout_mode = 2
 theme = SubResource("Theme_1hdpe")
 text = "MAIN MENU"
@@ -1311,7 +1144,7 @@ theme = SubResource("Theme_1hdpe")
 theme_override_font_sizes/font_size = 20
 text = "X"
 
-[node name="Transition Screen" parent="." instance=ExtResource("22_ypvgp")]
+[node name="Transition Screen" parent="." instance=ExtResource("19_ax5qa")]
 unique_name_in_owner = true
 start_dark = true
 

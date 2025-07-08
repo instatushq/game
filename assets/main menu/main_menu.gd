@@ -4,6 +4,7 @@ extends Node2D
 @onready var transitions: TransitionScreen = $"Transition Screen"
 @onready var ambience_lights: Light2D = $Ship/Body/Lights/Ambience
 @onready var start_game_button: Button = $"Ship/Control/Start Game"
+@onready var leaderboard_button: Button = $"Ship/Control/Leaderboard"
 @onready var options_button: Button = $Ship/Control/Node2D/Options
 @onready var music_button: Button = $Ship/Control/Node2D/Music
 @onready var sfx_button: Button = $Ship/Control/Node2D/SFX
@@ -11,11 +12,11 @@ extends Node2D
 @onready var menu_hover_sound: AudioStreamPlayer = $MenuHover
 @onready var menu_click_sound: AudioStreamPlayer = $MenuClick
 @onready var start_game_sound: AudioStreamPlayer = $StartGame
-@onready var ambience: AudioStreamPlayer2D = $Ambience
-@onready var music_stream: AudioStreamOggVorbis = preload("res://assets/audio/background/ambience.ogg")
+@onready var ambience_global: MainMenuAmbience = Ambience
 var menu_click_sound_offset: float = 0.05
 var original_ambience_light_energy: float = 0.0
 var default_ambience_light_position: Vector2 = Vector2(0, -21)
+var leaderboard_ambience_light_position: Vector2 = Vector2(69, 44)
 var options_ambience_light_position: Vector2 = Vector2(-64.0, -14.0)
 var music_ambience_light_position: Vector2 = Vector2(-64.0, -20.0)
 var sfx_ambience_light_position: Vector2 = Vector2(-64.0, -6.0)
@@ -27,8 +28,7 @@ func _process(_delta: float) -> void:
 	menu_astronaut.stand_away_from_mouse = not options_button.visible
 
 func _ready() -> void:
-	ambience.stream = music_stream
-	ambience.play()
+	ambience_global.set_playing_track(true)
 	transitions.on_transition_finish.connect(_switch_to_game)
 	original_ambience_light_energy = ambience_lights.energy
 	ambience_lights.position = default_ambience_light_position
@@ -66,19 +66,37 @@ func _on_click_options() -> void:
 	ambience_lights.position = music_ambience_light_position
 	menu_click_sound.play(menu_click_sound_offset)
 
+func _on_click_leaderboard() -> void:
+	transitions.transition(_switch_to_leaderboard, TransitionScreen.TransitionPoint.MIDDLE)
+	menu_click_sound.play(menu_click_sound_offset)
+
 func _switch_to_game() -> void:
+	ambience_global.set_playing_track(false)
 	get_tree().change_scene_to_file("res://assets/main scene.tscn")
+	
+func _switch_to_leaderboard() -> void:
+	get_tree().change_scene_to_file("res://assets/game over/leaderboard.tscn")
 
 func _on_hover_start_game() -> void:
 	menu_hover_sound.play(0.1)
 	_set_ambience_light_maximized(true)
 	start_game_button.grab_focus()
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+	ambience_lights.position = default_ambience_light_position
 	if music_button.visible and sfx_button.visible:
 		music_button.visible = false
 		sfx_button.visible = false
 		options_button.visible = true
-		ambience_lights.position = default_ambience_light_position
+
+func _on_hover_leaderboard() -> void:
+	menu_hover_sound.play(0.1)
+	_set_ambience_light_maximized(true)
+	leaderboard_button.grab_focus()
+	ambience_lights.position = leaderboard_ambience_light_position
+	if music_button.visible and sfx_button.visible:
+		music_button.visible = false
+		sfx_button.visible = false
+		options_button.visible = true
 
 func _on_unhover_start_game() -> void:
 	_set_ambience_light_maximized(false)
@@ -126,3 +144,7 @@ func _on_sfx_pressed() -> void:
 	sfx_button.text = "SFX: " + ("On" if not AudioServer.is_bus_mute(sfx_bus) else "Off")
 	sfx_button.grab_focus()
 	menu_click_sound.play(menu_click_sound_offset)
+
+
+func _on_leaderboard_pressed() -> void:
+	pass # Replace with function body.

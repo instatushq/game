@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://e3terh5nct76"]
+[gd_scene load_steps=100 format=3 uid="uid://e3terh5nct76"]
 
 [ext_resource type="Script" uid="uid://cyvhedqbrq845" path="res://assets/main menu/main_menu.gd" id="1_plx4y"]
 [ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="2_5x655"]
@@ -11,12 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://cif0qsjolivhl" path="res://assets/main menu/game logo.png" id="7_8kyfx"]
 [ext_resource type="Script" uid="uid://cxony63smiav4" path="res://assets/main menu/menu_astronaut.gd" id="7_gg27b"]
 [ext_resource type="Texture2D" uid="uid://cblqbhvs14ana" path="res://assets/main menu/screen.png" id="10_aqpky"]
+[ext_resource type="Texture2D" uid="uid://dnaftmqcdtmf1" path="res://assets/main menu/black screen 3.png" id="10_rlsq6"]
+[ext_resource type="Texture2D" uid="uid://cdecihpovsqep" path="res://assets/main menu/leaderboard text animation.png" id="11_l7adx"]
 [ext_resource type="Texture2D" uid="uid://d3lcnbagcvggt" path="res://assets/astronaut/sprites/mid flight.png" id="12_03fpy"]
+[ext_resource type="Script" path="res://assets/HUD/animated texture rect.gd" id="12_iaeg0"]
 [ext_resource type="Texture2D" uid="uid://tfqkwo3oeep6" path="res://assets/astronaut/sprites/halting.png" id="13_hbnyu"]
 [ext_resource type="Texture2D" uid="uid://jumkphn087od" path="res://assets/astronaut/sprites/idle.png" id="14_4il1l"]
 [ext_resource type="Texture2D" uid="uid://bmwg8e33sqa8n" path="res://assets/astronaut/sprites/idle anim.png" id="15_k0scp"]
 [ext_resource type="Texture2D" uid="uid://b8jx5gok84hjm" path="res://assets/astronaut/textures/helmet light.png" id="16_hbnyu"]
-[ext_resource type="AudioStream" uid="uid://de1c0jr6my3c1" path="res://assets/audio/background/ambience.ogg" id="17_q7ux3"]
+[ext_resource type="PackedScene" uid="uid://dpim8avsm75oe" path="res://assets/audio/ambience.tscn" id="17_q7ux3"]
 [ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="18_k0scp"]
 [ext_resource type="AudioStream" uid="uid://diagdagsrtodi" path="res://assets/audio/FX/menu hover.ogg" id="18_q7ux3"]
 [ext_resource type="AudioStream" uid="uid://yj7lrhkcguwh" path="res://assets/audio/FX/menu click.ogg" id="19_rlsq6"]
@@ -151,6 +154,63 @@ default_font = ExtResource("5_tf0ie")
 default_font_size = 10
 Button/styles/focus = SubResource("StyleBoxEmpty_tf0ie")
 Button/styles/pressed = SubResource("StyleBoxEmpty_5x655")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12g85"]
+atlas = ExtResource("11_l7adx")
+region = Rect2(0, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0afn"]
+atlas = ExtResource("11_l7adx")
+region = Rect2(370, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfhp6"]
+atlas = ExtResource("11_l7adx")
+region = Rect2(740, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmkge"]
+atlas = ExtResource("11_l7adx")
+region = Rect2(1110, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6vct"]
+atlas = ExtResource("11_l7adx")
+region = Rect2(1480, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqeci"]
+atlas = ExtResource("11_l7adx")
+region = Rect2(1850, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3x7p"]
+atlas = ExtResource("11_l7adx")
+region = Rect2(2220, 0, 370, 490)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4cbk5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12g85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0afn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfhp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmkge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6vct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqeci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3x7p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Theme" id="Theme_tf0ie"]
 default_base_scale = 1.63
@@ -495,7 +555,7 @@ zoom = Vector2(11.5, 11.5)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("3_k5jlq")
-margin = Vector2(10, 15)
+margin = Vector2(15, 15)
 
 [node name="Ship" type="Node2D" parent="."]
 
@@ -591,6 +651,43 @@ offset_bottom = 21.01
 mouse_filter = 2
 mouse_default_cursor_shape = 2
 color = Color(0, 0, 0, 0.403922)
+
+[node name="Leaderboard" type="Button" parent="Ship/Control"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 0
+offset_left = 77.0
+offset_top = 52.0
+offset_right = 142.0
+offset_bottom = 91.0
+focus_neighbor_left = NodePath("../Start Game")
+focus_neighbor_top = NodePath("../Start Game")
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_5x655")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(0.490678, 0.658641, 0.805926, 1)
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Ship/Control/Leaderboard"]
+modulate = Color(0, 0, 0, 0.403922)
+show_behind_parent = true
+offset_left = -232.0
+offset_top = -272.0
+offset_right = 138.0
+offset_bottom = 218.0
+mouse_filter = 2
+texture = ExtResource("10_rlsq6")
+
+[node name="Text" type="TextureRect" parent="Ship/Control/Leaderboard"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -232.0
+offset_top = -272.0
+offset_right = 138.0
+offset_bottom = 218.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_12g85")
+script = ExtResource("12_iaeg0")
+sprites = SubResource("SpriteFrames_4cbk5")
 
 [node name="Node2D" type="Node2D" parent="Ship/Control"]
 
@@ -713,10 +810,7 @@ flip_h = true
 [node name="Timer" type="Timer" parent="Astronaut/SpriteContainer/Sprite"]
 wait_time = 4.0
 
-[node name="Ambience" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("17_q7ux3")
-volume_db = 5.0
-bus = &"Ambience"
+[node name="Ambience" parent="." instance=ExtResource("17_q7ux3")]
 
 [node name="MenuHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_q7ux3")
@@ -742,6 +836,8 @@ material = SubResource("ShaderMaterial_qgp4v")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -754,6 +850,11 @@ metadata/_edit_use_anchors_ = true
 [connection signal="mouse_entered" from="Ship/Control/Start Game" to="." method="_on_hover_start_game"]
 [connection signal="mouse_exited" from="Ship/Control/Start Game" to="." method="_on_unhover_start_game"]
 [connection signal="pressed" from="Ship/Control/Start Game" to="." method="_on_click_start_game"]
+[connection signal="focus_entered" from="Ship/Control/Leaderboard" to="." method="_on_hover_leaderboard"]
+[connection signal="focus_exited" from="Ship/Control/Leaderboard" to="." method="_on_unhover_start_game"]
+[connection signal="mouse_entered" from="Ship/Control/Leaderboard" to="." method="_on_hover_leaderboard"]
+[connection signal="mouse_exited" from="Ship/Control/Leaderboard" to="." method="_on_unhover_start_game"]
+[connection signal="pressed" from="Ship/Control/Leaderboard" to="." method="_on_click_leaderboard"]
 [connection signal="focus_entered" from="Ship/Control/Node2D/Options" to="." method="_on_hover_options"]
 [connection signal="focus_exited" from="Ship/Control/Node2D/Options" to="." method="_on_unhover_options"]
 [connection signal="mouse_entered" from="Ship/Control/Node2D/Options" to="." method="_on_hover_options"]
