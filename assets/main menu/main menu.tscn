@@ -622,10 +622,10 @@ texture = ExtResource("10_rlsq6")
 
 [node name="TextureRect2" type="TextureRect" parent="Ship/Control/Leaderboard"]
 layout_mode = 0
-offset_left = -153.0
-offset_top = -179.0
-offset_right = 97.0
-offset_bottom = 152.0
+offset_left = -149.0
+offset_top = -175.0
+offset_right = 96.0
+offset_bottom = 149.0
 mouse_filter = 2
 texture = ExtResource("11_fefhc")
 expand_mode = 1
