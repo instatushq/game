@@ -234,7 +234,7 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_geevi")
 spawn_position = Vector2(0, 0)
 hide_vignette = true
-hp_revive_per_issue_segment = 5
+hp_revive_per_issue_segment = 4
 
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("2_pm5jl")
