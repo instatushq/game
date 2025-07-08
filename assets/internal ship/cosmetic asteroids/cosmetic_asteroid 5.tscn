@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://byafhmsqn2tyg"]
+[gd_scene load_steps=29 format=3 uid="uid://byafhmsqn2tyg"]
 
 [ext_resource type="Script" uid="uid://cdnwmbv4dcebt" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid.gd" id="1_o8gtf"]
 [ext_resource type="Texture2D" uid="uid://cf0crk4a2ormf" path="res://assets/debris/textures/fire asteroid 2.png" id="2_o8gtf"]
 [ext_resource type="Texture2D" uid="uid://c315jyx5n6eqv" path="res://assets/debris/textures/fire_asteroid.png" id="3_ihlvo"]
+[ext_resource type="Texture2D" uid="uid://ccluwdyih4k6l" path="res://assets/internal ship/cosmetic asteroids/Directional explosion.png" id="3_njq1u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_igsmt"]
 radius = 14.8449
@@ -65,6 +66,103 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxcu7"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(0, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpn6r"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(192, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdkw2"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(384, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2mdj"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(576, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dghp0"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(768, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hs24"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(960, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fomy"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(1152, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl24x"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(1344, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axc2c"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(1536, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w8s4"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(1728, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8dle"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(1920, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4h5j"]
+atlas = ExtResource("3_njq1u")
+region = Rect2(1920, 0, 192, 157)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihlvo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxcu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpn6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdkw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2mdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dghp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hs24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fomy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl24x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axc2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w8s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8dle")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4h5j")
+}],
+"loop": true,
+"name": &"nothing",
+"speed": 5.0
+}]
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aiucs"]
 particles_animation = true
 particles_anim_h_frames = 14
@@ -94,11 +192,20 @@ scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_aglr1")
 autoplay = "default"
 
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+position = Vector2(-37, -19)
+rotation = -2.22941
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_ihlvo")
+autoplay = "nothing"
+frame = 10
+frame_progress = 1.0
+
 [node name="Particles" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_aiucs")
 position = Vector2(27, -15)
 emitting = false
-amount = 300
+amount = 50
 texture = ExtResource("3_ihlvo")
 lifetime = 3.0
 one_shot = true
@@ -107,8 +214,8 @@ randomness = 1.0
 fixed_fps = 42
 direction = Vector2(-1, -0.2)
 gravity = Vector2(0, 50)
-initial_velocity_min = 60.0
-initial_velocity_max = 115.61
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
 angular_velocity_min = -180.0
 angular_velocity_max = 180.0
 linear_accel_min = -60.0

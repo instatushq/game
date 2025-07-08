@@ -2,6 +2,7 @@ class_name CosmeticAsteroid extends RigidBody2D
 
 @onready var particles: CPUParticles2D = $Particles
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var explosion_sprite: AnimatedSprite2D = $Explosion
 var target_point: Vector2 = Vector2.ZERO
 const MINIMUM_DISTANCE_FROM_SHIP: float = 700.0
 var movement_speed_min: float = 100.0
@@ -9,6 +10,7 @@ var movement_speed_max: float = 200.0
 const BOTTOM_THRESHOLD: float = 100.0
 const TOP_THRESHOLD: float = 100.0
 var current_speed: float = 0.0
+var _impacted: bool = false
 
 func _ready() -> void:
 	self.body_entered.connect(_on_body_entered)
@@ -47,6 +49,11 @@ func _init_location() -> void:
 	look_at(target_point)
 
 func _physics_process(_delta: float) -> void:
+	if _impacted:
+		linear_velocity = Vector2.ZERO
+		angular_velocity = 0.0
+		return
+	
 	var direction = (target_point - global_position).normalized()
 	linear_velocity = direction * current_speed
 
@@ -54,6 +61,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "ShipExternalCollision":
 		animated_sprite.visible = false
 		particles.emitting = true
+		explosion_sprite.play("default")
+		_impacted = true
 
 func _on_particles_finished() -> void:
 	queue_free()

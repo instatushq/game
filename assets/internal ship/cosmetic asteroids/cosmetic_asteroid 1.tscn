@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bq85575w8bxgw"]
+[gd_scene load_steps=22 format=3 uid="uid://bq85575w8bxgw"]
 
 [ext_resource type="Script" uid="uid://cdnwmbv4dcebt" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid.gd" id="1_u0su2"]
 [ext_resource type="Texture2D" uid="uid://5gxg4a20mw5d" path="res://assets/debris/textures/asteroid 1.png" id="2_4dm2m"]
+[ext_resource type="Texture2D" uid="uid://ccluwdyih4k6l" path="res://assets/internal ship/cosmetic asteroids/Directional explosion.png" id="3_4dm2m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_igsmt"]
 radius = 19.2495
@@ -19,6 +20,103 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxcu7"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(0, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpn6r"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(192, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdkw2"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(384, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2mdj"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(576, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dghp0"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(768, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hs24"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(960, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fomy"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(1152, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl24x"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(1344, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axc2c"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(1536, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w8s4"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(1728, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8dle"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(1920, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4h5j"]
+atlas = ExtResource("3_4dm2m")
+region = Rect2(1920, 0, 192, 157)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejr6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxcu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpn6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdkw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2mdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dghp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hs24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fomy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl24x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axc2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w8s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8dle")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4h5j")
+}],
+"loop": true,
+"name": &"nothing",
 "speed": 5.0
 }]
 
@@ -47,16 +145,25 @@ shape = SubResource("CapsuleShape2D_igsmt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_aglr1")
 
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+position = Vector2(-35, -21)
+rotation = -2.22941
+sprite_frames = SubResource("SpriteFrames_ejr6p")
+autoplay = "nothing"
+frame = 10
+frame_progress = 1.0
+
 [node name="Particles" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_aiucs")
-position = Vector2(28, -8)
+position = Vector2(20, -4)
 emitting = false
-amount = 200
+amount = 50
 texture = ExtResource("2_4dm2m")
 lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
+fixed_fps = 30
 direction = Vector2(-1, -0.2)
 gravity = Vector2(0, 50)
 initial_velocity_min = 60.0
@@ -68,5 +175,5 @@ linear_accel_max = -40.0
 scale_amount_min = 0.5
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_igsmt")
-anim_offset_min = 0.2882
-anim_offset_max = 0.7767
+anim_offset_min = 0.28
+anim_offset_max = 0.3

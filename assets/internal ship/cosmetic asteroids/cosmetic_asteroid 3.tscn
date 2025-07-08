@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://35csyl7rx3c"]
+[gd_scene load_steps=22 format=3 uid="uid://35csyl7rx3c"]
 
 [ext_resource type="Script" uid="uid://cdnwmbv4dcebt" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid.gd" id="1_u8rli"]
 [ext_resource type="Texture2D" uid="uid://bqiptejltup8m" path="res://assets/debris/textures/asteroid 2.png" id="2_5b16g"]
+[ext_resource type="Texture2D" uid="uid://ccluwdyih4k6l" path="res://assets/internal ship/cosmetic asteroids/Directional explosion.png" id="3_u8rli"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_igsmt"]
 radius = 14.8449
@@ -19,6 +20,103 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxcu7"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(0, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpn6r"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(192, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdkw2"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(384, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2mdj"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(576, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dghp0"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(768, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hs24"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(960, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fomy"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(1152, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl24x"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(1344, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axc2c"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(1536, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w8s4"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(1728, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8dle"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(1920, 0, 192, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4h5j"]
+atlas = ExtResource("3_u8rli")
+region = Rect2(1920, 0, 192, 157)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5b16g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxcu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpn6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdkw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2mdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dghp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hs24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fomy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl24x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axc2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w8s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8dle")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4h5j")
+}],
+"loop": true,
+"name": &"nothing",
 "speed": 5.0
 }]
 
@@ -49,11 +147,18 @@ position = Vector2(10, -5)
 sprite_frames = SubResource("SpriteFrames_aglr1")
 autoplay = "default"
 
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+position = Vector2(-29, -24)
+rotation = -2.22941
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_5b16g")
+autoplay = "nothing"
+
 [node name="Particles" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_aiucs")
 position = Vector2(27, -14)
 emitting = false
-amount = 200
+amount = 50
 texture = ExtResource("2_5b16g")
 lifetime = 3.0
 one_shot = true
@@ -70,5 +175,5 @@ linear_accel_max = -55.0
 scale_amount_min = 0.5
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_igsmt")
-anim_offset_min = 0.2882
-anim_offset_max = 0.7767
+anim_offset_min = 0.25
+anim_offset_max = 0.27
