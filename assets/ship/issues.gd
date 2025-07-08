@@ -33,7 +33,11 @@ func _ready() -> void:
 		zone.connect("body_entered", Callable(self, "_on_area_entered").bind(zone))
 		zone.connect("body_exited", Callable(self, "_on_area_exited").bind(zone))
 
-	issues_randomizer.init_weights(possible_issues.size())
+	var possible_issues_weights: Array[float] = []
+	for index in possible_issues.size():
+		possible_issues_weights.append(1.0 if index == possible_issues.size() - 1 else 0.0)
+
+	issues_randomizer.init_weights_with_weights(possible_issues_weights)
 
 
 func _on_area_entered(body: Node, zone: IssueArea2D) -> void:
