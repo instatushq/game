@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://mtin8kgh74wb"]
+[gd_scene load_steps=33 format=3 uid="uid://mtin8kgh74wb"]
 
 [ext_resource type="PackedScene" uid="uid://buerdali4hdwi" path="res://assets/post processing/post_processing.tscn" id="1_7fvey"]
 [ext_resource type="PackedScene" uid="uid://34pxxoahuuaj" path="res://assets/internal ship/internal_ship.tscn" id="1_tfagm"]
@@ -49,6 +49,34 @@ region = Rect2(1824, 0, 304, 216)
 atlas = ExtResource("9_fw6vd")
 region = Rect2(2128, 0, 304, 216)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2n0l"]
+atlas = ExtResource("9_fw6vd")
+region = Rect2(1824, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw6vd"]
+atlas = ExtResource("9_fw6vd")
+region = Rect2(1520, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87h2v"]
+atlas = ExtResource("9_fw6vd")
+region = Rect2(1216, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g8h3"]
+atlas = ExtResource("9_fw6vd")
+region = Rect2(912, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idk4b"]
+atlas = ExtResource("9_fw6vd")
+region = Rect2(608, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qajhp"]
+atlas = ExtResource("9_fw6vd")
+region = Rect2(304, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stas4"]
+atlas = ExtResource("9_fw6vd")
+region = Rect2(0, 0, 304, 216)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_87h2v"]
 animations = [{
 "frames": [{
@@ -75,10 +103,31 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_00yes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2n0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw6vd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87h2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g8h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idk4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qajhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stas4")
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 10.0
 }]
 
 [node name="Game" type="Node2D"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bnb6fd0uu1p82"]
+[gd_scene load_steps=47 format=3 uid="uid://bnb6fd0uu1p82"]
 
 [ext_resource type="Script" uid="uid://ckjc6b027vyxq" path="res://assets/game over/game_over.gd" id="1_5d7i2"]
 [ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="1_064we"]
@@ -56,6 +56,34 @@ region = Rect2(1824, 0, 304, 216)
 atlas = ExtResource("8_jps65")
 region = Rect2(2128, 0, 304, 216)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pgb8"]
+atlas = ExtResource("8_jps65")
+region = Rect2(1824, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jps65"]
+atlas = ExtResource("8_jps65")
+region = Rect2(1520, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wph33"]
+atlas = ExtResource("8_jps65")
+region = Rect2(1216, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypvgp"]
+atlas = ExtResource("8_jps65")
+region = Rect2(912, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36qrg"]
+atlas = ExtResource("8_jps65")
+region = Rect2(608, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4pyq"]
+atlas = ExtResource("8_jps65")
+region = Rect2(304, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d7i2"]
+atlas = ExtResource("8_jps65")
+region = Rect2(0, 0, 304, 216)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_sddn0"]
 animations = [{
 "frames": [{
@@ -82,10 +110,31 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_00yes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pgb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jps65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wph33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypvgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36qrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4pyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d7i2")
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 10.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aqfd3"]
@@ -134,11 +183,12 @@ script = ExtResource("1_5d7i2")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." node_paths=PackedStringArray("stars_layer")]
 unique_name_in_owner = true
 offset = Vector2(154.19, -700)
 transform = Transform2D(1, 0, 0, 1, 154.19, -700)
 script = ExtResource("1_jps65")
+stars_layer = NodePath("Back Layer Of Stars3")
 noise = SubResource("FastNoiseLite_36qrg")
 big_planet = ExtResource("16_85wje")
 small_planet = ExtResource("3_wph33")
@@ -237,6 +287,7 @@ rotation = -12.3296
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sddn0")
 autoplay = "default"
+frame_progress = 0.998429
 
 [node name="stars61" type="AnimatedSprite2D" parent="ParallaxBackground/Back Layer Of Stars3"]
 position = Vector2(653.18, 1121.27)
@@ -303,6 +354,7 @@ background_controller = NodePath("../ParallaxBackground")
 camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(0, 515)
 zoom = Vector2(2, 2)
 script = ExtResource("21_wph33")

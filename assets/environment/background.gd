@@ -2,6 +2,8 @@ extends ParallaxBackground
 
 class_name ParallaxBackgroundController
 
+@export var stars_layer: ParallaxLayer = null
+
 @onready var celestial_items_containers: ParallaxLayer = $Celestials
 @export var noise: FastNoiseLite
 @export var big_planet: PackedScene = null
@@ -154,3 +156,12 @@ func get_base_scale_for_celestial(celestial_body: PackedScene) -> float:
 	elif celestial_body == black_hole:
 		return black_hole_base_scale
 	return 1.0  # Default fallback
+
+func _ready() -> void:
+	_randomize_star_layers_frame()
+
+func _randomize_star_layers_frame() -> void:
+	if stars_layer == null: return
+	for star_layer in stars_layer.get_children():
+		if star_layer is AnimatedSprite2D:
+			star_layer.frame = randi_range(0, star_layer.sprite_frames.get_frame_count(star_layer.animation) - 1)

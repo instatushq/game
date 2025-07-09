@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bhasn5r8ykfgl"]
+[gd_scene load_steps=47 format=3 uid="uid://bhasn5r8ykfgl"]
 
 [ext_resource type="Script" uid="uid://ckjc6b027vyxq" path="res://assets/game over/game_over.gd" id="1_aww1h"]
 [ext_resource type="Script" uid="uid://dntqgq1a353o6" path="res://assets/environment/background.gd" id="2_1jm15"]
@@ -56,6 +56,34 @@ region = Rect2(1824, 0, 304, 216)
 atlas = ExtResource("8_1jm15")
 region = Rect2(2128, 0, 304, 216)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aww1h"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(1824, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jm15"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(1520, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r77rn"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(1216, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e44dp"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(912, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsffk"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(608, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm2i1"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(304, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iacry"]
+atlas = ExtResource("8_1jm15")
+region = Rect2(0, 0, 304, 216)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_r77rn"]
 animations = [{
 "frames": [{
@@ -82,10 +110,31 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_00yes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aww1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jm15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r77rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e44dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsffk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm2i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iacry")
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 10.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aqfd3"]
@@ -134,11 +183,12 @@ script = ExtResource("1_aww1h")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." node_paths=PackedStringArray("stars_layer")]
 unique_name_in_owner = true
 offset = Vector2(154.19, -700)
 transform = Transform2D(1, 0, 0, 1, 154.19, -700)
 script = ExtResource("2_1jm15")
+stars_layer = NodePath("Back Layer Of Stars3")
 noise = SubResource("FastNoiseLite_36qrg")
 big_planet = ExtResource("3_r77rn")
 small_planet = ExtResource("4_e44dp")
