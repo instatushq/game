@@ -1,6 +1,6 @@
 class_name Projectile extends Area2D
 
-@export var speed: float = 400.0 ## Movement speed in pixels per second
+@export var speed: float = 1000.0 ## Movement speed in pixels per second
 
 var start_point: Vector2 # Base of the lane (player's position).
 var end_point: Vector2 # Top of the lane.

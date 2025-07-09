@@ -226,6 +226,7 @@ libraries = {
 autoplay = "default"
 
 [node name="Explosion" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hguji")
 animation = &"normal"
 autoplay = "none"

@@ -1,6 +1,6 @@
 class_name Enemy extends Area2D
 
-@export var speed: float = 100.0 ## Movement speed in pixels per second.
+@export var speed: float = 200.0 ## Movement speed in pixels per second.
 @export var vfx_explode_scene: PackedScene ## Particles for when enemy is destroyed. We'll instantiate and add it to TempestGame; freeing is handled outside (you can use AnimationPlayer to make self-freeing particles).
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D

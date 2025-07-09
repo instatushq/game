@@ -154,6 +154,7 @@ func _ready():
 
 	issues.on_issue_aborted.connect(_handle_unnatural_health_decrease)
 	issues.on_issue_failed.connect(_handle_unnatural_health_decrease)
+	issues.on_issue_segment_failed.connect(_handle_unnatural_health_decrease)
 
 	vhs_effect.play("LOW")
 
@@ -269,7 +270,7 @@ func _handle_unnatural_health_decrease(_zone: IssueArea2D, _issue_instance: Issu
 	_damage_tween.set_parallel(false)  # Set to sequential for proper timing
 	
 	damage_particles_big.emitting = true
-	# damage_particles_small.emitting = true
+	damage_particles_small.emitting = true
 	
 	_damage_tween.tween_property(damage_glow_big, "modulate:a", 1.0, 0.2)
 	_damage_tween.tween_property(damage_glow_small, "modulate:a", 1.0, 0.2)
@@ -297,7 +298,7 @@ func _remove_damage_effect() -> void:
 	_damage_tween.tween_property(damage_glow_small, "modulate:a", 0.0, 0.2)
 
 	damage_particles_big.emitting = false
-	# damage_particles_small.emitting = false
+	damage_particles_small.emitting = false
 
 func _update_systems_titles(new_health: float) -> void:
 	for title in SYSTEMS_TITLES:

@@ -34,7 +34,8 @@ signal enemy_destroyed(score_weight: int)
 @export var sceen_shake_duration: float = 0.04 ## Duration of shake when player is hit (in seconds).
 @export_range(1, 50) var player_elerp_decay: float = 25.0 ## For lerp smoothing using exponential decay (elerp); useful decay range 1 to 25 from slow to fast.
 
-@onready var player: Sprite2D = $Player
+@onready var player: AnimatedSprite2D = $Player
+@onready var frame_to_shoot_frame: int = 3
 @onready var container_vfx: Node2D = $ContainerVFX
 @onready var container_enemy: Node2D = $ContainerEnemy
 @onready var container_projectile: Node2D = $ContainerProjectile
@@ -45,6 +46,7 @@ signal enemy_destroyed(score_weight: int)
 @onready var health_bar: TextureProgressBar = $CanvasLayer/Control/HealthBar
 @onready var screen: Screen = $CanvasLayer/Control/Screen
 @onready var screen_shake: ColorRect = $CanvasLayer/Control/ScreenShake
+@onready var tempest_parent: TempestContainer = get_parent()
 
 var _is_game_playing: bool = false
 var _is_game_paused: bool = false
@@ -55,6 +57,10 @@ var base_contour_offsets: PackedFloat32Array # Stores the Y-offset for each base
 var current_lane_index: int = 0 # The index of the lane the player is currently in (0 to lane_count-1).
 var health_current: int = health_max
 var player_target_position: Vector2
+
+# Shot buffer system
+var shot_buffer: bool = false # Whether there's a buffered shot waiting to be fired
+var is_shooting: bool = false # Whether the player is currently in the shooting animation
 
 # Cached viewport dimensions and calculated points for drawing.
 var vp_size: Vector2
@@ -77,8 +83,13 @@ func _input(event):
 		refresh_line_colors()
 		$Sfx/Move.play()
 	elif event.is_action_pressed("fire_cannon"):
-		spawn_projectile()
-		$Sfx/Shoot.play()
+		if is_shooting:
+			# Buffer the shot if we're already shooting
+			shot_buffer = true
+		else:
+			# Fire immediately if not shooting
+			player.play("shoot")
+			is_shooting = true
 
 func _ready() -> void:
 	# Calculate key drawing points that define the overall perspective relative to camera.
@@ -102,9 +113,25 @@ func _ready() -> void:
 	timer_game.timeout.connect(_on_timer_game_timeout)
 	timer_arena_generate.wait_time = game_duration / arena_count
 	timer_arena_generate.timeout.connect(_on_timer_arena_generate_timeout)
+	player.frame_changed.connect(_on_player_frame_changed)
+	player.animation_finished.connect(_on_player_animation_finished)
 	
 	# For testing.
 	# start_game()
+
+func _on_player_frame_changed():
+	if player.frame == frame_to_shoot_frame:
+		spawn_projectile()
+		$Sfx/Shoot.play()
+
+func _on_player_animation_finished():
+	if player.animation == "shoot":
+		# Animation finished, check if we have a buffered shot
+		is_shooting = false
+		if shot_buffer:
+			shot_buffer = false
+			player.play("shoot")
+			is_shooting = true
 
 func update_camera_relative_coordinates():
 	# Update coordinates when camera moves
@@ -349,9 +376,9 @@ func spawn_projectile():
 func enemy_reached_base(lane_idx: int):
 	# Function called by an Enemy when it reaches the base without being destroyed.
 	print("Enemy in lane ", lane_idx, " reached the base! Player took damage.")
-	health_current -= 1
+	# health_current -= 1
 	health_bar.value = health_current
-	$Sfx/HealthDecreased.play()
+	# $Sfx/HealthDecreased.play()
 	if health_current <= 0:
 		print("You lose!")
 		$Sfx/Lose.play()
@@ -362,6 +389,8 @@ func enemy_reached_base(lane_idx: int):
 		# start_game()
 		return
 	
+	tempest_parent.segment_failed()
+
 	# Briefly show screen shake.
 	screen_shake.show()
 	await get_tree().create_timer(sceen_shake_duration).timeout
@@ -385,6 +414,7 @@ func enemy_killed(progress: float, special: bool) -> void:
 	enemy_destroyed.emit(int(score))
 	$Sfx/EnemyDestroyed.pitch_scale = 1.7 if special else 1.0
 	$Sfx/EnemyDestroyed.play()
+	tempest_parent.segment_completed()
 
 #
 # Signals
@@ -398,11 +428,11 @@ func _on_timer_enemy_spawn_timeout():
 	spawn_enemy(random_lane_idx, special, 0.0)
 
 func _on_timer_game_timeout() -> void:
-	print("You win!")
-	$Sfx/Win.play()
-	_is_game_paused = true
-	screen.game_win()
-	await screen.screen_finished
+	# print("You win!")
+	# $Sfx/Win.play()
+	# _is_game_paused = true
+	# screen.game_win()
+	# await screen.screen_finished
 	on_issue_resolved.emit()
 
 func _on_timer_arena_generate_timeout() -> void:

@@ -1,4 +1,4 @@
-extends Node2D
+class_name TempestContainer extends Node2D
 
 @onready var parent: Issue = get_parent()
 @onready var game: TempestGame = $TempestGame
@@ -10,3 +10,9 @@ func _ready() -> void:
 
 func issue_failed() -> void:
 	parent.issue_failed.emit()
+
+func segment_completed() -> void:
+	parent.on_issue_segment_success()
+
+func segment_failed() -> void:
+	parent.on_issue_segment_failed()

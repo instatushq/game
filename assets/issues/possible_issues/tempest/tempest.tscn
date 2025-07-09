@@ -9,6 +9,7 @@ script = ExtResource("1_nq3rd")
 min_hp_revive = 30
 max_hp_revive = 40
 spawn_position = Vector2(0, 0)
+hide_vignette = true
 
 [node name="TempestWrap" type="Node2D" parent="."]
 position = Vector2(973, 1110)

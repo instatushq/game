@@ -1,22 +1,25 @@
-[gd_scene load_steps=39 format=3 uid="uid://boali0pdrgia"]
+[gd_scene load_steps=52 format=3 uid="uid://boali0pdrgia"]
 
 [ext_resource type="Script" uid="uid://dpo4t4nrncpfb" path="res://assets/issues/possible_issues/tempest/scripts/tempest_game.gd" id="1_apfcl"]
 [ext_resource type="PackedScene" uid="uid://brw5e1ur3qm8b" path="res://assets/issues/possible_issues/tempest/scenes/enemy.tscn" id="2_ngumx"]
 [ext_resource type="PackedScene" uid="uid://dqxmisvem3r8" path="res://assets/issues/possible_issues/tempest/scenes/projectile.tscn" id="3_whwra"]
-[ext_resource type="Texture2D" uid="uid://b10cx23we77me" path="res://assets/issues/possible_issues/tempest/assets/bg1.png" id="4_kng1r"]
-[ext_resource type="Texture2D" uid="uid://clqaljxlns7sx" path="res://assets/issues/possible_issues/tempest/assets/spaceship.png" id="5_5xcva"]
-[ext_resource type="Texture2D" uid="uid://d7a8aqka1u5x" path="res://assets/issues/possible_issues/tempest/assets/bg2.png" id="5_nhumg"]
-[ext_resource type="Texture2D" uid="uid://bfl2mxslhwic3" path="res://assets/issues/possible_issues/tempest/assets/bg3.png" id="6_lhvw7"]
+[ext_resource type="Texture2D" uid="uid://dvhillf4ggqng" path="res://assets/environment/backgrounds/galaxy5.png" id="4_6t636"]
+[ext_resource type="Script" uid="uid://b81ui2n6neonw" path="res://assets/issues/possible_issues/tempest/scripts/background.gd" id="4_vb75n"]
+[ext_resource type="Texture2D" uid="uid://66vjhmpo6mu8" path="res://assets/environment/backgrounds/galaxy2.png" id="5_3fk0d"]
 [ext_resource type="Texture2D" uid="uid://cbu2vr6oqlnp0" path="res://assets/issues/possible_issues/tempest/assets/health_progress_under.png" id="6_qkqqc"]
+[ext_resource type="Texture2D" uid="uid://cwk181vl3pi5m" path="res://assets/environment/backgrounds/galaxy3.png" id="6_vb75n"]
+[ext_resource type="Texture2D" uid="uid://bfrcj1cva63yx" path="res://assets/environment/backgrounds/galaxy4.png" id="7_lvpoi"]
 [ext_resource type="Texture2D" uid="uid://ddnsj147ajkp7" path="res://assets/issues/possible_issues/tempest/assets/health_progress.png" id="7_mmaet"]
-[ext_resource type="Texture2D" uid="uid://cxqk7cldmhgem" path="res://assets/issues/possible_issues/tempest/assets/bg4.png" id="7_yxemk"]
+[ext_resource type="Texture2D" uid="uid://75g4xbuv33xr" path="res://assets/environment/backgrounds/galaxy1.png" id="8_3fk0d"]
 [ext_resource type="PackedScene" uid="uid://bxytu8vqv7tk5" path="res://assets/issues/possible_issues/tempest/scenes/screen.tscn" id="8_5xcva"]
 [ext_resource type="Texture2D" uid="uid://dnq0t7po81jem" path="res://assets/environment/backgrounds/stars/stars & big starst.png" id="8_6t636"]
 [ext_resource type="AudioStream" uid="uid://byvb0tvd0eo0k" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_move.wav" id="9_5xcva"]
 [ext_resource type="AudioStream" uid="uid://cbrqnbs3c1bht" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_shoot.wav" id="10_q04p6"]
 [ext_resource type="Shader" uid="uid://teqriy72chh6" path="res://assets/issues/possible_issues/tempest/scripts/screen_shake.gdshader" id="11_l4s75"]
 [ext_resource type="AudioStream" uid="uid://dm7xt7nahfonl" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_enemy_destroyed.wav" id="11_luoa5"]
+[ext_resource type="Texture2D" uid="uid://o630i1nfk3kd" path="res://assets/issues/possible_issues/tempest/assets/spaceship-Sheet.png" id="11_vb75n"]
 [ext_resource type="AudioStream" uid="uid://bkmucq4bm00bo" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_health_decreased.wav" id="12_l4s75"]
+[ext_resource type="Texture2D" uid="uid://dwjf2ufdm27s8" path="res://assets/ship/sprites/animations/fuel.png" id="12_lvpoi"]
 [ext_resource type="AudioStream" uid="uid://crcwi0idb7l0o" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_new_arena.wav" id="13_kng1r"]
 [ext_resource type="AudioStream" uid="uid://bgovvm70u5uj7" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_lose.wav" id="14_nhumg"]
 [ext_resource type="AudioStream" uid="uid://cygvxr4127rkj" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_win.wav" id="15_5xcva"]
@@ -134,8 +137,92 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_5xcva"]
-colors = PackedColorArray(1.06, 3.705, 1.08, 1, 1, 1, 1, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvpoi"]
+atlas = ExtResource("11_vb75n")
+region = Rect2(0, 0, 64, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n57op"]
+atlas = ExtResource("11_vb75n")
+region = Rect2(64, 0, 64, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwbw2"]
+atlas = ExtResource("11_vb75n")
+region = Rect2(128, 0, 64, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjfar"]
+atlas = ExtResource("11_vb75n")
+region = Rect2(192, 0, 64, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26su3"]
+atlas = ExtResource("11_vb75n")
+region = Rect2(256, 0, 64, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm1j6"]
+atlas = ExtResource("11_vb75n")
+region = Rect2(320, 0, 64, 71)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yxl3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvpoi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvpoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n57op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwbw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjfar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26su3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm1j6")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 30.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxl3e"]
+atlas = ExtResource("12_lvpoi")
+region = Rect2(0, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnygh"]
+atlas = ExtResource("12_lvpoi")
+region = Rect2(370, 0, 370, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u20mu"]
+atlas = ExtResource("12_lvpoi")
+region = Rect2(740, 0, 370, 490)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_obcwa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxl3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnygh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u20mu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kng1r"]
 shader = ExtResource("11_l4s75")
@@ -155,6 +242,7 @@ line_highlight_color = Color(1.195, 3.215, 4.825, 1)
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(0, 335)
 scale = Vector2(2, 2)
+script = ExtResource("4_vb75n")
 
 [node name="Clip" type="Control" parent="Background"]
 clip_contents = true
@@ -163,145 +251,247 @@ anchors_preset = 0
 offset_right = 960.0
 offset_bottom = 540.0
 
-[node name="Parallax2D1" type="Parallax2D" parent="Background/Clip"]
-repeat_size = Vector2(0, 540)
-autoscroll = Vector2(0, 10)
-ignore_camera_scroll = true
-
-[node name="Bg" type="Sprite2D" parent="Background/Clip/Parallax2D1"]
-texture = ExtResource("4_kng1r")
-centered = false
-
-[node name="Parallax2D2" type="Parallax2D" parent="Background/Clip"]
+[node name="Big" type="Parallax2D" parent="Background/Clip"]
 repeat_size = Vector2(0, 540)
 autoscroll = Vector2(0, 20)
 ignore_camera_scroll = true
 
-[node name="Bg" type="Sprite2D" parent="Background/Clip/Parallax2D2"]
-scale = Vector2(1.14988, 1.1)
-texture = ExtResource("5_nhumg")
+[node name="Bg" type="Sprite2D" parent="Background/Clip/Big"]
+position = Vector2(274, 334)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("5_3fk0d")
+centered = false
+
+[node name="Bg2" type="Sprite2D" parent="Background/Clip/Big"]
+position = Vector2(512.5, -0.5)
+rotation = 0.0784508
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("6_vb75n")
+centered = false
+
+[node name="Bg3" type="Sprite2D" parent="Background/Clip/Big"]
+position = Vector2(470.5, 298.5)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("7_lvpoi")
+centered = false
+
+[node name="Bg4" type="Sprite2D" parent="Background/Clip/Big"]
+position = Vector2(184, 151)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("4_6t636")
+centered = false
+
+[node name="Bg5" type="Sprite2D" parent="Background/Clip/Big"]
+position = Vector2(143, 296.5)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("8_3fk0d")
+centered = false
+
+[node name="Small" type="Parallax2D" parent="Background/Clip"]
+repeat_size = Vector2(0, 540)
+autoscroll = Vector2(0, 40)
+ignore_camera_scroll = true
+
+[node name="Bg" type="Sprite2D" parent="Background/Clip/Small"]
+position = Vector2(442, -180.5)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_3fk0d")
+centered = false
+
+[node name="Bg2" type="Sprite2D" parent="Background/Clip/Small"]
+position = Vector2(190.5, 249.5)
+rotation = 0.0784508
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_vb75n")
+centered = false
+
+[node name="Bg3" type="Sprite2D" parent="Background/Clip/Small"]
+position = Vector2(184.5, 11)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_lvpoi")
+centered = false
+
+[node name="Bg4" type="Sprite2D" parent="Background/Clip/Small"]
+position = Vector2(451.5, 365)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_6t636")
 centered = false
 
 [node name="Parallax2D3" type="Parallax2D" parent="Background/Clip"]
+scroll_offset = Vector2(191, -231.5)
 repeat_size = Vector2(0, 540)
-autoscroll = Vector2(0, 30)
+autoscroll = Vector2(0, 20)
 ignore_camera_scroll = true
-
-[node name="Bg" type="Sprite2D" parent="Background/Clip/Parallax2D3"]
-scale = Vector2(1.14988, 1.1)
-texture = ExtResource("6_lhvw7")
-centered = false
 
 [node name="Parallax2D4" type="Parallax2D" parent="Background/Clip"]
+scroll_offset = Vector2(497, -485)
 repeat_size = Vector2(0, 540)
-autoscroll = Vector2(0, 40)
+autoscroll = Vector2(0, 20)
 ignore_camera_scroll = true
 
-[node name="Bg" type="Sprite2D" parent="Background/Clip/Parallax2D4"]
-scale = Vector2(1.14988, 1.1)
-texture = ExtResource("7_yxemk")
-centered = false
-
-[node name="Parallax2D5" type="Parallax2D" parent="Background/Clip"]
+[node name="Stars" type="Parallax2D" parent="Background/Clip"]
+scroll_offset = Vector2(117.5, -9.5)
 repeat_size = Vector2(0, 540)
-autoscroll = Vector2(0, 40)
+autoscroll = Vector2(0, 10)
 ignore_camera_scroll = true
 
-[node name="stars51" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(582.18, 657.274)
-rotation = -14.0239
-scale = Vector2(2, 2)
+[node name="stars1" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(816.5, 423.5)
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars64" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(148.18, 469.274)
-rotation = -12.5128
-scale = Vector2(2, 2)
+[node name="stars2" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(654, 423.5)
+rotation = 3.12772
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars52" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(582.18, 657.274)
-rotation = -14.0239
-scale = Vector2(2, 2)
+[node name="stars3" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(475.5, 373)
+rotation = 2.05701
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars53" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(16.1801, 657.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars4" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(69, 461)
+rotation = 0.52108
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars54" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(-625.82, 1002.27)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars5" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(197.5, 277)
+rotation = 2.82416
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars63" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(217.18, 884.273)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars6" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(292.5, 424.5)
+rotation = 2.82416
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars55" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(921.18, 880.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars7" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(371.5, 250)
+rotation = 1.49475
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars57" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(1147.18, 580.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars8" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(623, 295.5)
+rotation = -1.19695
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars58" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(-271.82, 467.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars9" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(842, 289)
+rotation = -0.00845134
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars56" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(-836.82, 574.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars10" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(508, 225.5)
+rotation = 1.8935
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars59" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(-518.82, 584.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars11" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(88, 264.5)
+rotation = 1.8935
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars60" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(-307.82, 834.274)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars12" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(118.5, 87.5)
+rotation = 2.97093
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars61" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(653.18, 1121.27)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars13" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(314.5, 116)
+rotation = 6.36559
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
-[node name="stars62" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
-position = Vector2(104.18, 1121.27)
-rotation = -12.3296
-scale = Vector2(2, 2)
+[node name="stars14" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(504.5, 113.5)
+rotation = 9.88016
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars15" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(648, 116)
+rotation = 10.5086
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars16" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(852, 124.5)
+rotation = 9.46037
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars17" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(852, 124.5)
+rotation = 9.46037
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars18" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(852, 0.499994)
+rotation = 9.46037
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars19" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(845.5, -103)
+rotation = 9.46037
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars20" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(621, -103)
+rotation = 7.3421
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars21" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(435, -75.5)
+rotation = 5.72634
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars22" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(308.5, -75.5)
+rotation = 4.22948
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars23" type="AnimatedSprite2D" parent="Background/Clip/Stars"]
+position = Vector2(133.5, -75.5)
+rotation = 6.23008
+scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_3fk0d")
 autoplay = "default"
 
@@ -313,24 +503,16 @@ autoplay = "default"
 
 [node name="ContainerLaneLine" type="Node2D" parent="."]
 
-[node name="Player" type="Sprite2D" parent="."]
-texture = ExtResource("5_5xcva")
-region_rect = Rect2(0, 0, 384.446, 490)
+[node name="Player" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yxl3e")
+animation = &"shoot"
+autoplay = "default"
 
-[node name="CPUParticles2D1" type="CPUParticles2D" parent="Player"]
-position = Vector2(0, 21)
-amount = 77
-lifetime = 0.35
-randomness = 1.0
-direction = Vector2(0, 1)
-spread = 4.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 52.0
-initial_velocity_max = 52.0
-radial_accel_max = 92.93
-damping_max = 22.222
-scale_amount_max = 2.0
-color_ramp = SubResource("Gradient_5xcva")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(0, -76)
+sprite_frames = SubResource("SpriteFrames_obcwa")
+autoplay = "default"
+frame_progress = 0.751137
 
 [node name="TimerEnemySpawn" type="Timer" parent="."]
 
@@ -339,7 +521,6 @@ color_ramp = SubResource("Gradient_5xcva")
 [node name="TimerArenaGenerate" type="Timer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
@@ -353,6 +534,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -363,6 +545,7 @@ texture_under = ExtResource("6_qkqqc")
 texture_progress = ExtResource("7_mmaet")
 
 [node name="Screen" parent="CanvasLayer/Control" instance=ExtResource("8_5xcva")]
+visible = false
 layout_mode = 1
 
 [node name="ScreenShake" type="ColorRect" parent="CanvasLayer/Control"]

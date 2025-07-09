@@ -25,6 +25,7 @@ signal on_issue_resolved(zone: IssueArea2D, issue_instance: Issue)
 signal on_issue_failed(zone: IssueArea2D, issue_instance: Issue)
 signal on_issue_aborted(zone: IssueArea2D, issue_instance: Issue)
 signal on_issue_segment_success(zone: IssueArea2D, issue_instance: Issue)
+signal on_issue_segment_failed(zone: IssueArea2D, issue_instance: Issue)
 
 func _ready() -> void:
 	possible_zones = find_children("*", "IssueArea2D")
@@ -84,6 +85,7 @@ func _generate_random_issue(zone: IssueArea2D) -> void:
 	issue_instance.issue_failed.connect(Callable(self, "_on_issue_failed").bind(zone, issue_instance))
 	issue_instance.issue_aborted.connect(Callable(self, "_on_issue_aborted").bind(zone, issue_instance))
 	issue_instance.issue_segment_success.connect(Callable(self, "_on_issue_segment_success").bind(zone, issue_instance))
+	issue_instance.issue_segment_failed.connect(Callable(self, "_on_issue_segment_failed").bind(zone, issue_instance))
 	current_issues[str(zone.get_instance_id())] = issue_instance
 	generate_notification_for_zone(zone)
 	var zone_error_sound: AudioStreamPlayer2D = zone.get_node("ErrorNoise")
@@ -137,6 +139,9 @@ func _on_issue_aborted(zone: IssueArea2D, issue_instance: Issue) -> void:
 
 func _on_issue_segment_success(zone: IssueArea2D, issue_instance: Issue) -> void:
 	on_issue_segment_success.emit(zone, issue_instance)
+
+func _on_issue_segment_failed(zone: IssueArea2D, issue_instance: Issue) -> void:
+	on_issue_segment_failed.emit(zone, issue_instance)
 
 func has_any_issues() -> bool:
 	return not current_issues.is_empty()

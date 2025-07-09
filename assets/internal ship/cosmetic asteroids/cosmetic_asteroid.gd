@@ -5,8 +5,8 @@ class_name CosmeticAsteroid extends RigidBody2D
 @onready var explosion_sprite: AnimatedSprite2D = $Explosion
 var target_point: Vector2 = Vector2.ZERO
 const MINIMUM_DISTANCE_FROM_SHIP: float = 700.0
-var movement_speed_min: float = 100.0
-var movement_speed_max: float = 200.0
+var movement_speed_min: float = 400.0
+var movement_speed_max: float = 400.0
 const BOTTOM_THRESHOLD: float = 100.0
 const TOP_THRESHOLD: float = 100.0
 var current_speed: float = 0.0

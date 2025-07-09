@@ -148,6 +148,7 @@ vfx_explode_scene = ExtResource("2_ipns3")
 shape = SubResource("CircleShape2D_ipns3")
 
 [node name="ParticlesTrack" type="CPUParticles2D" parent="."]
+amount = 14
 lifetime = 0.5
 emission_shape = 1
 emission_sphere_radius = 20.0

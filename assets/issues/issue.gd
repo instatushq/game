@@ -8,6 +8,7 @@ class_name Issue extends Node2D
 @export var hide_vignette: bool = false
 @export var allow_abort: bool = true
 @export_range(-1, 10) var hp_revive_per_issue_segment: int = 2
+@export_range(0, 10) var max_issue_segment_count: int = 10
 
 var abort_ui: PackedScene = preload("res://assets/issues/abort_ui.tscn")
 @onready var abort_ui_instance: CanvasLayer = null
@@ -29,6 +30,7 @@ signal issue_closed
 signal issue_failed
 signal issue_aborted
 signal issue_segment_success
+signal issue_segment_failed
 
 func _find_camera2d(node: Node) -> Camera2D:
 	if node is Camera2D:
@@ -74,7 +76,7 @@ func _ready() -> void:
 	abort_loading_bar.scale.x = 0
 	
 	# for testing bugs
-	open_issue()
+	# open_issue()
 
 func open_issue() -> void:
 	is_open = true
@@ -119,3 +121,6 @@ func abort_issue() -> void:
 
 func on_issue_segment_success() -> void:
 	issue_segment_success.emit()
+
+func on_issue_segment_failed() -> void:
+	issue_segment_failed.emit()
