@@ -512,7 +512,7 @@ autoplay = "default"
 position = Vector2(0, -76)
 sprite_frames = SubResource("SpriteFrames_obcwa")
 autoplay = "default"
-frame_progress = 0.751137
+frame_progress = 0.985229
 
 [node name="TimerEnemySpawn" type="Timer" parent="."]
 
@@ -563,21 +563,28 @@ process_mode = 3
 
 [node name="Move" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("9_5xcva")
+bus = &"Sound FX"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("10_q04p6")
+bus = &"Sound FX"
 
 [node name="EnemyDestroyed" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("11_luoa5")
+bus = &"Sound FX"
 
 [node name="HealthDecreased" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("12_l4s75")
+bus = &"Sound FX"
 
 [node name="NewArena" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("13_kng1r")
+bus = &"Sound FX"
 
 [node name="Lose" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("14_nhumg")
+bus = &"Sound FX"
 
 [node name="Win" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("15_5xcva")
+bus = &"Sound FX"
