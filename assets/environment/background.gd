@@ -17,7 +17,7 @@ class_name ParallaxBackgroundController
 @export var small_planet_base_scale: float = 0.5
 @export var medium_planet_base_scale: float = 0.75
 @export var average_planet_base_scale: float = 0.6
-@export var black_hole_base_scale: float = 1.2
+@export var black_hole_base_scale: float = 3.5
 
 # Scale range for celestial bodies (will be added to base scale)
 @export_range(0.0, 1.0) var min_scale_offset: float = 0.0
@@ -28,7 +28,7 @@ class_name ParallaxBackgroundController
 @export_range(0.0, 1.0) var small_planet_spawn_rate: float = 0.2
 @export_range(0.0, 1.0) var medium_planet_spawn_rate: float = 0.15
 @export_range(0.0, 1.0) var average_planet_spawn_rate: float = 0.25
-@export_range(0.0, 1.0) var black_hole_spawn_rate: float = 0.05
+@export_range(0.0, 1.0) var black_hole_spawn_rate: float = 0.3
 
 # Maximum total number of objects to spawn
 @export_range(1, 100) var max_total_objects: int = 30

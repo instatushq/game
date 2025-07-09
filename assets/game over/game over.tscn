@@ -195,9 +195,7 @@ small_planet = ExtResource("3_wph33")
 medium_planet = ExtResource("15_1mpri")
 average_planet = ExtResource("14_wxsys")
 black_hole = ExtResource("17_w3olx")
-black_hole_base_scale = 4.0
 big_planet_spawn_rate = 0.08
-black_hole_spawn_rate = 1.0
 max_total_objects = 4
 min_distance_between_bodies = 400.0
 
@@ -347,7 +345,7 @@ position = Vector2(257.81, 332)
 position = Vector2(-302.19, 646)
 
 [node name="Blackhole2" parent="ParallaxBackground/Celestials" instance=ExtResource("17_w3olx")]
-position = Vector2(124.81, 435)
+position = Vector2(222.81, 962)
 scale = Vector2(2.3, 2.3)
 
 [node name="EnvironmentManager" parent="." node_paths=PackedStringArray("background_controller", "camera") instance=ExtResource("20_ypvgp")]

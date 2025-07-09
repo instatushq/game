@@ -1,13 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://x1eieaqt1a0v"]
+[gd_scene load_steps=13 format=3 uid="uid://x1eieaqt1a0v"]
 
 [ext_resource type="Shader" uid="uid://8ypycc073j2" path="res://assets/environment/spawnable elements/blackhole/blackhole.gdshader" id="1_1y1st"]
 [ext_resource type="Texture2D" uid="uid://cp1qj3lyoacho" path="res://assets/logo.png" id="2_et0ta"]
-[ext_resource type="Texture2D" uid="uid://dij0iiliackig" path="res://assets/environment/spawnable elements/textures/blackhole.png" id="3_nsrke"]
+[ext_resource type="Texture2D" uid="uid://cshjftuwr2ca" path="res://assets/environment/spawnable elements/textures/black hole.png" id="3_1y1st"]
 
 [sub_resource type="Curve" id="Curve_icqtw"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0, 0.0487804), 0.0, 0.0, 0, 0, Vector2(0.136986, -0.348819), 0.0, 0.0, 0, 0, Vector2(0.305936, 0.224932), 1.84556, 1.84556, 0, 0, Vector2(0.440639, -0.0116144), 0.0, 0.0, 0, 0, Vector2(0.659817, 0.00851715), 0.0, 0.0, 0, 0]
-point_count = 5
+_data = [Vector2(0, 0.0487804), 0.0, 0.0, 0, 0, Vector2(0.0855513, -0.309985), 0.0, 7.02305, 0, 0, Vector2(0.157795, 0.28126), -0.61995, 3.26371, 0, 0, Vector2(0.203422, -0.337942), -0.0512384, -0.0512384, 0, 0, Vector2(0.287072, 0.301075), 0.0, 0.0, 0, 0, Vector2(0.338403, -0.291225), 0.0, 0.0, 0, 0, Vector2(0.507605, 0.00546443), 0.0, 0.0, 0, 0, Vector2(0.659817, 0.00851715), 0.0, 0.0, 0, 0]
+point_count = 8
 
 [sub_resource type="CurveTexture" id="CurveTexture_1y1st"]
 curve = SubResource("Curve_icqtw")
@@ -17,19 +17,47 @@ shader = ExtResource("1_1y1st")
 shader_parameter/curve = SubResource("CurveTexture_1y1st")
 shader_parameter/strength = 0.441
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_icqtw"]
-atlas = ExtResource("3_nsrke")
-region = Rect2(0, 0, 256, 95)
+[sub_resource type="AtlasTexture" id="AtlasTexture_et0ta"]
+atlas = ExtResource("3_1y1st")
+region = Rect2(0, 0, 228, 168)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsrke"]
+atlas = ExtResource("3_1y1st")
+region = Rect2(228, 0, 228, 168)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oualk"]
+atlas = ExtResource("3_1y1st")
+region = Rect2(456, 0, 228, 168)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ppos"]
+atlas = ExtResource("3_1y1st")
+region = Rect2(684, 0, 228, 168)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beywa"]
+atlas = ExtResource("3_1y1st")
+region = Rect2(912, 0, 228, 168)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t4yvt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_icqtw")
+"texture": SubResource("AtlasTexture_et0ta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsrke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oualk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ppos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beywa")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 30.0
 }]
 
 [node name="Blackhole" type="Node2D"]
@@ -38,9 +66,11 @@ scale = Vector2(1.3, 1.3)
 [node name="Blackhole Distortion" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_t6o86")
 position = Vector2(0, -1.53846)
-scale = Vector2(2.73155, 1.72684)
+scale = Vector2(2.732, 1.99372)
 texture = ExtResource("2_et0ta")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_t4yvt")
+autoplay = "default"
+frame_progress = 0.549371
