@@ -70,6 +70,8 @@ var top_y_center: float # The central Y-coordinate around which the top contour 
 var total_base_width: float
 var base_leftmost_x: float # X-coord of the leftmost line at the base.
 
+@onready var animation_player: AnimationPlayer = $CanvasLayer/Control/ShakeAnimation
+
 func _input(event):
 	if not _is_game_playing or _is_game_paused: return
 	if event.is_action_pressed("move_left"):
@@ -336,10 +338,8 @@ func refresh_line_colors():
 #
 func spawn_enemy(lane_idx: int, special: bool = false, progress: float = 0.0):
 	if not enemy_scene:
-		printerr("Enemy scene (PackedScene) not assigned in TempestGame!")
 		return
 	if lane_lines.is_empty() or lane_count == 0:
-		printerr("Cannot spawn enemy: lanes not generated or lane_count is 0.")
 		return
 	
 	var left_line_top_point = lane_lines[lane_idx].points[1] # .points[1] is the top point
@@ -356,10 +356,8 @@ func spawn_enemy(lane_idx: int, special: bool = false, progress: float = 0.0):
 
 func spawn_projectile():
 	if not projectile_scene:
-		printerr("Projectile scene (PackedScene) not assigned in TempestGame!")
 		return
 	if lane_lines.is_empty() or lane_count == 0:
-		printerr("Cannot spawn projectile: lanes not generated or lane_count is 0.")
 		return
 	
 	# Projectile starts at player's current position and moves up its lane.
@@ -375,12 +373,10 @@ func spawn_projectile():
 
 func enemy_reached_base(lane_idx: int):
 	# Function called by an Enemy when it reaches the base without being destroyed.
-	print("Enemy in lane ", lane_idx, " reached the base! Player took damage.")
 	# health_current -= 1
 	health_bar.value = health_current
 	# $Sfx/HealthDecreased.play()
 	if health_current <= 0:
-		print("You lose!")
 		$Sfx/Lose.play()
 		_is_game_paused = true
 		screen.game_lose()
@@ -392,9 +388,7 @@ func enemy_reached_base(lane_idx: int):
 	tempest_parent.segment_failed()
 
 	# Briefly show screen shake.
-	screen_shake.show()
-	await get_tree().create_timer(sceen_shake_duration).timeout
-	screen_shake.hide()
+	shake_screen()
 	
 	# Briefly show a redline indicating where enemy hit us.
 	var left_base_point = lane_lines[lane_idx].points[0]
@@ -407,6 +401,11 @@ func enemy_reached_base(lane_idx: int):
 	await get_tree().create_timer(0.5).timeout
 	if is_instance_valid(line_hit):
 		line_hit.queue_free()
+
+func shake_screen() -> void:
+	screen_shake.show()
+	await get_tree().create_timer(sceen_shake_duration).timeout
+	screen_shake.hide()
 
 func enemy_killed(progress: float, special: bool) -> void:
 	var score : float = enemy_score_min + enemy_score_max * progress
@@ -428,11 +427,6 @@ func _on_timer_enemy_spawn_timeout():
 	spawn_enemy(random_lane_idx, special, 0.0)
 
 func _on_timer_game_timeout() -> void:
-	# print("You win!")
-	# $Sfx/Win.play()
-	# _is_game_paused = true
-	# screen.game_win()
-	# await screen.screen_finished
 	on_issue_resolved.emit()
 
 func _on_timer_arena_generate_timeout() -> void:
@@ -440,7 +434,6 @@ func _on_timer_arena_generate_timeout() -> void:
 	generate_new_arena()
 
 func on_camera_moved():
-	# Call this when the camera moves to update all coordinates and regenerate lane lines
 	if _is_game_playing:
 		generate_lane_lines()
 		update_player_position_and_rotation(false)

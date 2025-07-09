@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://dnq0t7po81jem" path="res://assets/environment/backgrounds/stars/stars & big starst.png" id="8_6t636"]
 [ext_resource type="AudioStream" uid="uid://byvb0tvd0eo0k" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_move.wav" id="9_5xcva"]
 [ext_resource type="AudioStream" uid="uid://cbrqnbs3c1bht" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_shoot.wav" id="10_q04p6"]
-[ext_resource type="Shader" uid="uid://teqriy72chh6" path="res://assets/issues/possible_issues/tempest/scripts/screen_shake.gdshader" id="11_l4s75"]
 [ext_resource type="AudioStream" uid="uid://dm7xt7nahfonl" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_enemy_destroyed.wav" id="11_luoa5"]
 [ext_resource type="Texture2D" uid="uid://o630i1nfk3kd" path="res://assets/issues/possible_issues/tempest/assets/spaceship-Sheet.png" id="11_vb75n"]
 [ext_resource type="AudioStream" uid="uid://bkmucq4bm00bo" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_health_decreased.wav" id="12_l4s75"]
@@ -23,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://crcwi0idb7l0o" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_new_arena.wav" id="13_kng1r"]
 [ext_resource type="AudioStream" uid="uid://bgovvm70u5uj7" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_lose.wav" id="14_nhumg"]
 [ext_resource type="AudioStream" uid="uid://cygvxr4127rkj" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_win.wav" id="15_5xcva"]
+[ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="16_lvpoi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vf5at"]
 atlas = ExtResource("8_6t636")
@@ -224,13 +224,13 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kng1r"]
-shader = ExtResource("11_l4s75")
-shader_parameter/shake_power = 0.015
-shader_parameter/shake_rate = 1.0
-shader_parameter/shake_speed = 5.0
-shader_parameter/shake_block_size = 30.5
-shader_parameter/shake_color_rate = 0.01
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n57op"]
+shader = ExtResource("16_lvpoi")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.032
+shader_parameter/offsetIntensity = 0.05
+shader_parameter/colorOffsetIntensity = 1.5
 
 [node name="TempestGame" type="Node2D"]
 script = ExtResource("1_apfcl")
@@ -512,7 +512,7 @@ autoplay = "default"
 position = Vector2(0, -76)
 sprite_frames = SubResource("SpriteFrames_obcwa")
 autoplay = "default"
-frame_progress = 0.504446
+frame_progress = 0.396564
 
 [node name="TimerEnemySpawn" type="Timer" parent="."]
 
@@ -550,7 +550,7 @@ layout_mode = 1
 
 [node name="ScreenShake" type="ColorRect" parent="CanvasLayer/Control"]
 visible = false
-material = SubResource("ShaderMaterial_kng1r")
+material = SubResource("ShaderMaterial_n57op")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
