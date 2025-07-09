@@ -23,7 +23,6 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 script = ExtResource("1_vky8c")
 
 [node name="Vignette" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_vky8c")
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,6 +34,7 @@ pivot_offset = Vector2(0, 1399)
 mouse_filter = 2
 
 [node name="GameVignette" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_ngvi1")
 anchors_preset = 15
 anchor_right = 1.0

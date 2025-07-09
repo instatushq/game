@@ -512,7 +512,7 @@ autoplay = "default"
 position = Vector2(0, -76)
 sprite_frames = SubResource("SpriteFrames_obcwa")
 autoplay = "default"
-frame_progress = 0.985229
+frame_progress = 0.504446
 
 [node name="TimerEnemySpawn" type="Timer" parent="."]
 
