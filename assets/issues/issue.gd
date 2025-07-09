@@ -74,7 +74,7 @@ func _ready() -> void:
 	abort_loading_bar.scale.x = 0
 	
 	# for testing bugs
-	# open_issue()
+	open_issue()
 
 func open_issue() -> void:
 	is_open = true

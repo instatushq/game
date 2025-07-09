@@ -479,7 +479,7 @@ label_settings = SubResource("LabelSettings_vf0yf")
 
 [node name="Camera2D" type="Camera2D" parent="ColorRect"]
 position = Vector2(0, -119)
-zoom = Vector2(1.2, 1.2)
+zoom = Vector2(1.5, 1.5)
 script = ExtResource("22_sc3ti")
 margin = Vector2(50, 50)
 

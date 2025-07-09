@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://boali0pdrgia"]
+[gd_scene load_steps=39 format=3 uid="uid://boali0pdrgia"]
 
 [ext_resource type="Script" uid="uid://dpo4t4nrncpfb" path="res://assets/issues/possible_issues/tempest/scripts/tempest_game.gd" id="1_apfcl"]
 [ext_resource type="PackedScene" uid="uid://brw5e1ur3qm8b" path="res://assets/issues/possible_issues/tempest/scenes/enemy.tscn" id="2_ngumx"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ddnsj147ajkp7" path="res://assets/issues/possible_issues/tempest/assets/health_progress.png" id="7_mmaet"]
 [ext_resource type="Texture2D" uid="uid://cxqk7cldmhgem" path="res://assets/issues/possible_issues/tempest/assets/bg4.png" id="7_yxemk"]
 [ext_resource type="PackedScene" uid="uid://bxytu8vqv7tk5" path="res://assets/issues/possible_issues/tempest/scenes/screen.tscn" id="8_5xcva"]
+[ext_resource type="Texture2D" uid="uid://dnq0t7po81jem" path="res://assets/environment/backgrounds/stars/stars & big starst.png" id="8_6t636"]
 [ext_resource type="AudioStream" uid="uid://byvb0tvd0eo0k" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_move.wav" id="9_5xcva"]
 [ext_resource type="AudioStream" uid="uid://cbrqnbs3c1bht" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_shoot.wav" id="10_q04p6"]
 [ext_resource type="Shader" uid="uid://teqriy72chh6" path="res://assets/issues/possible_issues/tempest/scripts/screen_shake.gdshader" id="11_l4s75"]
@@ -19,6 +20,119 @@
 [ext_resource type="AudioStream" uid="uid://crcwi0idb7l0o" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_new_arena.wav" id="13_kng1r"]
 [ext_resource type="AudioStream" uid="uid://bgovvm70u5uj7" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_lose.wav" id="14_nhumg"]
 [ext_resource type="AudioStream" uid="uid://cygvxr4127rkj" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_win.wav" id="15_5xcva"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf5at"]
+atlas = ExtResource("8_6t636")
+region = Rect2(0, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hdpe"]
+atlas = ExtResource("8_6t636")
+region = Rect2(304, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkowm"]
+atlas = ExtResource("8_6t636")
+region = Rect2(608, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxsys"]
+atlas = ExtResource("8_6t636")
+region = Rect2(912, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mpri"]
+atlas = ExtResource("8_6t636")
+region = Rect2(1216, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85wje"]
+atlas = ExtResource("8_6t636")
+region = Rect2(1520, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3olx"]
+atlas = ExtResource("8_6t636")
+region = Rect2(1824, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00yes"]
+atlas = ExtResource("8_6t636")
+region = Rect2(2128, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pgb8"]
+atlas = ExtResource("8_6t636")
+region = Rect2(1824, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jps65"]
+atlas = ExtResource("8_6t636")
+region = Rect2(1520, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wph33"]
+atlas = ExtResource("8_6t636")
+region = Rect2(1216, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypvgp"]
+atlas = ExtResource("8_6t636")
+region = Rect2(912, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36qrg"]
+atlas = ExtResource("8_6t636")
+region = Rect2(608, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4pyq"]
+atlas = ExtResource("8_6t636")
+region = Rect2(304, 0, 304, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d7i2"]
+atlas = ExtResource("8_6t636")
+region = Rect2(0, 0, 304, 216)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3fk0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf5at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hdpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkowm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxsys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mpri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85wje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3olx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00yes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pgb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jps65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wph33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypvgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36qrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4pyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d7i2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_5xcva"]
 colors = PackedColorArray(1.06, 3.705, 1.08, 1, 1, 1, 1, 1)
@@ -87,6 +201,109 @@ ignore_camera_scroll = true
 scale = Vector2(1.14988, 1.1)
 texture = ExtResource("7_yxemk")
 centered = false
+
+[node name="Parallax2D5" type="Parallax2D" parent="Background/Clip"]
+repeat_size = Vector2(0, 540)
+autoscroll = Vector2(0, 40)
+ignore_camera_scroll = true
+
+[node name="stars51" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(582.18, 657.274)
+rotation = -14.0239
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars64" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(148.18, 469.274)
+rotation = -12.5128
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars52" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(582.18, 657.274)
+rotation = -14.0239
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars53" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(16.1801, 657.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars54" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(-625.82, 1002.27)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars63" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(217.18, 884.273)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars55" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(921.18, 880.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars57" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(1147.18, 580.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars58" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(-271.82, 467.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars56" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(-836.82, 574.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars59" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(-518.82, 584.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars60" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(-307.82, 834.274)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars61" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(653.18, 1121.27)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
+
+[node name="stars62" type="AnimatedSprite2D" parent="Background/Clip/Parallax2D5"]
+position = Vector2(104.18, 1121.27)
+rotation = -12.3296
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3fk0d")
+autoplay = "default"
 
 [node name="ContainerVFX" type="Node2D" parent="."]
 

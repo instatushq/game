@@ -390,10 +390,6 @@ position = Vector2(257.81, 332)
 [node name="Big Planet2" parent="Game/ParallaxBackground/Celestials" instance=ExtResource("3_fd7t0")]
 position = Vector2(-302.19, 646)
 
-[node name="Blackhole2" parent="Game/ParallaxBackground/Celestials" instance=ExtResource("7_eytmv")]
-position = Vector2(124.81, 435)
-scale = Vector2(2.3, 2.3)
-
 [node name="EnvironmentManager" parent="Game" node_paths=PackedStringArray("background_controller", "camera") instance=ExtResource("21_fd7t0")]
 background_controller = NodePath("../ParallaxBackground")
 camera = NodePath("../Camera2D")
