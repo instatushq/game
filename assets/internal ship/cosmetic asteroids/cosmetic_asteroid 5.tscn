@@ -152,7 +152,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -195,7 +195,6 @@ autoplay = "default"
 [node name="Explosion" type="AnimatedSprite2D" parent="."]
 position = Vector2(-37, -19)
 rotation = -2.22941
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_ihlvo")
 autoplay = "nothing"
 frame = 10

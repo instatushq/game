@@ -195,7 +195,9 @@ small_planet = ExtResource("3_wph33")
 medium_planet = ExtResource("15_1mpri")
 average_planet = ExtResource("14_wxsys")
 black_hole = ExtResource("17_w3olx")
+black_hole_base_scale = 4.0
 big_planet_spawn_rate = 0.08
+black_hole_spawn_rate = 1.0
 max_total_objects = 4
 min_distance_between_bodies = 400.0
 

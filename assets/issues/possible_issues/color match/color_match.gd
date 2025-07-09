@@ -1,6 +1,9 @@
 extends ColorRect
 
 @export_range(10, 60) var game_max_length: float = 30
+@export var button_hold_particles: PackedScene = null
+var top_container_offset: Vector2 = Vector2(21.0, 14.0)
+var bottom_container_offset: Vector2 = Vector2(44.0, 20.0)
 
 @onready var left_group: Array[Node] = $LeftContainer.get_children(false)
 @onready var right_group: Array[Node] = $RightContainer.get_children(false)
@@ -9,7 +12,7 @@ extends ColorRect
 @onready var button_mismatch_sound: AudioStreamPlayer = $ButtonMismatch
 @onready var issue_countdown: IssueCountdown = $Countdown
 @onready var parent: Issue = get_parent().get_parent().get_parent()
-
+var current_holding_particles_instance: CPUParticles2D = null
 
 enum COLOR_MATCH_COLOR {
 	RED,
@@ -63,10 +66,26 @@ func _on_click_colored_button(button: Button) -> void:
 		current_selected_node = clicked_button
 		button.get_node("AnimatedSprite2D").play("down")
 		button_click_sound.play()
+		if current_holding_particles_instance != null:
+			current_holding_particles_instance.queue_free()
+			current_holding_particles_instance = null
+
+		var particles: CPUParticles2D = button_hold_particles.instantiate()
+		particles.color = colors_values[clicked_button.color]
+		particles.position = button.position + bottom_container_offset
+		var offset_vector: Vector2 = top_container_offset if button.get_parent().name.containsn("left") else bottom_container_offset
+		particles.position = offset_vector
+		current_holding_particles_instance = particles
+		button.add_child(particles)
+		particles.reparent(get_parent().get_parent())
 		return
 
 	if (not clicked_button.is_left and current_selected_node.is_left) or (clicked_button.is_left and not current_selected_node.is_left):
 		if clicked_button.color == current_selected_node.color:
+			if current_holding_particles_instance != null:
+				current_holding_particles_instance.queue_free()
+				current_holding_particles_instance = null
+
 			parent.on_issue_segment_success()
 			connected_colors.append(clicked_button.color)
 			current_selected_node = null
@@ -135,9 +154,11 @@ func _update_buttons_view() -> void:
 		if button_info.found and button_info.color in connected_colors:
 			button.disabled = true
 			button.get_node("AnimatedSprite2D").play("down")
+			button.modulate = Color.WHITE
 	
 	for button in right_group:
 		var button_info = _find_element_in_dictionaries(button)
 		if button_info.found and button_info.color in connected_colors:
 			button.disabled = true
 			button.get_node("AnimatedSprite2D").play("down")
+			button.modulate = Color.WHITE

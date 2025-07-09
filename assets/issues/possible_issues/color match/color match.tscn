@@ -1,8 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://tkhk7817dbdm"]
+[gd_scene load_steps=41 format=3 uid="uid://tkhk7817dbdm"]
 
 [ext_resource type="Script" uid="uid://5xn2u6ui2yf" path="res://assets/issues/issue.gd" id="1_la0fh"]
 [ext_resource type="Script" path="res://assets/HUD/animated texture rect.gd" id="2_4iblf"]
 [ext_resource type="Script" uid="uid://qp2bjvhly0yn" path="res://assets/issues/possible_issues/color match/color_match.gd" id="2_sgv0c"]
+[ext_resource type="PackedScene" uid="uid://ba6wvwh6yu8cv" path="res://assets/issues/possible_issues/color match/button_particles.tscn" id="2_tf4x0"]
 [ext_resource type="Texture2D" uid="uid://blle1tc1d47fk" path="res://assets/issues/possible_issues/color match/color matching game UI.png" id="3_4iblf"]
 [ext_resource type="Texture2D" uid="uid://iytx5qfkg3nn" path="res://assets/issues/possible_issues/color match/color matching button 1.png" id="5_per3n"]
 [ext_resource type="Texture2D" uid="uid://d2fxiwtxft6my" path="res://assets/issues/possible_issues/color match/color matching button 2.png" id="6_c5drq"]
@@ -206,6 +207,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("2_sgv0c")
+button_hold_particles = ExtResource("2_tf4x0")
 
 [node name="LeftContainer" type="Control" parent="CanvasLayer/AnimatedTextureRect/ColorRect"]
 custom_minimum_size = Vector2(10, 0)
@@ -629,7 +631,7 @@ energy = 2.0
 texture = SubResource("GradientTexture2D_3r64c")
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer"]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(1.75, 1.75)
 script = ExtResource("7_nfmd7")
 margin = Vector2(30, 20)
 
