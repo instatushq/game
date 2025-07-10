@@ -10,23 +10,18 @@ extends Node2D
 
 var triggered: bool = false
 
-var time_intervals: Array[float] = [0.5, 0.2, 0.15]
+var time_intervals: Array[float] = [0.2, 0.15, 0.1]
 
 signal on_explosion_triggered
-
-# func _input(event: InputEvent) -> void:
-# 	if event.is_action_pressed("interact"):
-# 		on_explosion_triggered.emit()
 
 func _ready() -> void:
 	on_explosion_triggered.connect(_on_explode)
 	barrel_body.on_shot.connect(_on_shoot_tnt)
 	barrel_body.on_contact_explosion.connect(_on_contact_explosion)
 
-func _on_contact_explosion(_body: Node2D, explosion_type: BarrelBody.EXPLOSION_TYPE, intensity: ExplosionNuke.ExplosionIntensity) -> void:
+func _on_contact_explosion(_body: Node2D, explosion_type: BarrelBody.EXPLOSION_TYPE, _intensity: ExplosionNuke.ExplosionIntensity) -> void:
 	if explosion_type == BarrelBody.EXPLOSION_TYPE.NUKE:
-		if intensity == ExplosionNuke.ExplosionIntensity.HIGH:
-			on_explosion_triggered.emit()
+		on_explosion_triggered.emit()
 	elif explosion_type == BarrelBody.EXPLOSION_TYPE.TNT:
 		on_explosion_triggered.emit()
 
