@@ -53,8 +53,12 @@ func _ready() -> void:
 	cosmetic_asteroids.on_asteroid_impacted.connect(_on_asteroid_impacted)
 
 func _on_asteroid_impacted() -> void:
+	if game_manager.is_solving_puzzle: return
+
+	var shaking_duration: float = 0.1 if ship_health.health > ship_major_outage_health_amount else 0.4
+
 	game_manager.post_processing.shake(true)
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(shaking_duration).timeout
 	game_manager.post_processing.shake(false)
 
 func _on_ship_frame_change() -> void:

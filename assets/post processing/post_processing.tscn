@@ -110,6 +110,13 @@ scale = Vector2(1, 1.2)
 pivot_offset = Vector2(0, 1399)
 mouse_filter = 2
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 873.0
+offset_top = 480.0
+offset_right = 1570.0
+offset_bottom = 1003.0
+
 [node name="Shaking" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_w7jtq")
 anchors_preset = 15
@@ -130,3 +137,4 @@ texture = SubResource("CanvasTexture_ngvi1")
 libraries = {
 &"": SubResource("AnimationLibrary_w7jtq")
 }
+autoplay = "stop"
