@@ -21,6 +21,11 @@ game_camera = NodePath("../Camera2D")
 game_duration = 40.0
 arena_count = 3
 lanes_y_offset = 425.0
+line_color = Color(0.192157, 0.588235, 0.662745, 0.627451)
+line_highlight_color = Color(0.392157, 0.894118, 0.823529, 1)
+line_hit_color = Color(0.670588, 0.2, 0.270588, 1)
+line_thickness = 1.5
+player_elerp_decay = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="TempestWrap"]
 position = Vector2(-53, 1)

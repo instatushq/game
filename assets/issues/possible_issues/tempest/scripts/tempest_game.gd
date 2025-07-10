@@ -30,6 +30,7 @@ signal enemy_destroyed(score_weight: int)
 @export_category("Params - Visual")
 @export var line_color: Color = Color(1, 1, 1, 0.3) ## Default lane line color (white with alpha 0.3).
 @export var line_highlight_color: Color = Color(0.0, 1.0, 0.0, 0.7) ## Highlight color (green with alpha 0.7).
+@export var line_hit_color: Color = Color(1, 0, 0, 1) ## Hit color (red with alpha 0.5).
 @export var line_thickness: float = 2.0 ## Thickiness of lane lines.
 @export var sceen_shake_duration: float = 0.04 ## Duration of shake when player is hit (in seconds).
 @export_range(1, 50) var player_elerp_decay: float = 25.0 ## For lerp smoothing using exponential decay (elerp); useful decay range 1 to 25 from slow to fast.
@@ -375,7 +376,7 @@ func enemy_reached_base(lane_idx: int):
 	# Function called by an Enemy when it reaches the base without being destroyed.
 	# health_current -= 1
 	health_bar.value = health_current
-	# $Sfx/HealthDecreased.play()
+	$Sfx/HealthDecreased.play()
 	if health_current <= 0:
 		$Sfx/Lose.play()
 		_is_game_paused = true
@@ -394,8 +395,8 @@ func enemy_reached_base(lane_idx: int):
 	var left_base_point = lane_lines[lane_idx].points[0]
 	var right_base_point = lane_lines[lane_idx + 1].points[0]
 	var line_hit = Line2D.new()
-	line_hit.width = line_thickness
-	line_hit.default_color = Color(1, 0, 0, 0.5) * 5.0
+	line_hit.width = line_thickness * 2.0
+	line_hit.default_color = line_hit_color
 	line_hit.points = PackedVector2Array([left_base_point, right_base_point])
 	container_lane_line.call_deferred("add_child", line_hit)
 	await get_tree().create_timer(0.5).timeout
