@@ -10,6 +10,7 @@ var mouse_world_position: Vector2 = Vector2.ZERO
 @export var pew_scene: PackedScene = preload("res://assets/ship/projectiles/pew.tscn")
 @export var fire_cooldown: float = 0.15
 @export var damage_cooldown_seconds: float = 3
+@export_range(0.0, 100) var reduce_ship_speed_by: float = 67.0
 var is_invincible: bool = false
 
 @onready var rb: ShipRigidBody = $RigidBody2D
@@ -88,8 +89,7 @@ func _input(event: InputEvent) -> void:
 	var input_axis = Vector2.ZERO
 	
 	if event is InputEventMouseMotion:
-		input_axis = Vector2(event.relative.x, event.relative.y).normalized() * 0.5
-
+		input_axis = Vector2(event.relative.x, event.relative.y) * (reduce_ship_speed_by / 1000)
 	_handle_ship_movement(input_axis, game_camera)
 
 func _handle_ship_movement(input_axis: Vector2, camera: Camera2D) -> void:
