@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://buerdali4hdwi"]
+[gd_scene load_steps=12 format=3 uid="uid://buerdali4hdwi"]
 
 [ext_resource type="Shader" uid="uid://vlua2aacmu1b" path="res://assets/post processing/vignette.gdshader" id="1_0myr4"]
 [ext_resource type="Script" uid="uid://fv2rpggo1owr" path="res://assets/post processing/post_processing.gd" id="1_vky8c"]
+[ext_resource type="Shader" uid="uid://dnld0i46qhacx" path="res://assets/post processing/shaking.gdshader" id="3_ngvi1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vky8c"]
 shader = ExtResource("1_0myr4")
@@ -18,6 +19,70 @@ shader_parameter/outer_radius = 0.84
 shader_parameter/vignette_strength = 0.64
 shader_parameter/dither_strength = 0.0
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7jtq"]
+shader = ExtResource("3_ngvi1")
+shader_parameter/hit_effect = 1.0
+shader_parameter/shake_intensity = 10.0
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_intensity = 0.0
+shader_parameter/base_modulate = Color(1, 1, 1, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ngvi1"]
+
+[sub_resource type="Animation" id="Animation_bxkxd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/shake_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+
+[sub_resource type="Animation" id="Animation_w7jtq"]
+resource_name = "play"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/shake_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10.0, 10.0]
+}
+
+[sub_resource type="Animation" id="Animation_ngvi1"]
+resource_name = "stop"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/shake_intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7jtq"]
+_data = {
+&"RESET": SubResource("Animation_bxkxd"),
+&"play": SubResource("Animation_w7jtq"),
+&"stop": SubResource("Animation_ngvi1")
+}
 
 [node name="PostProcessing" type="CanvasLayer"]
 script = ExtResource("1_vky8c")
@@ -44,3 +109,24 @@ grow_vertical = 2
 scale = Vector2(1, 1.2)
 pivot_offset = Vector2(0, 1399)
 mouse_filter = 2
+
+[node name="Shaking" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_w7jtq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 310.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.2)
+pivot_offset = Vector2(0, 1399)
+mouse_filter = 2
+texture = SubResource("CanvasTexture_ngvi1")
+
+[node name="Timer" type="Timer" parent="Shaking"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shaking"]
+libraries = {
+&"": SubResource("AnimationLibrary_w7jtq")
+}

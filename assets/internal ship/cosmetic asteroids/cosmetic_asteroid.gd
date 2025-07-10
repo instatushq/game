@@ -12,6 +12,8 @@ const TOP_THRESHOLD: float = 100.0
 var current_speed: float = 0.0
 var _impacted: bool = false
 
+signal impacted_ship
+
 func _ready() -> void:
 	self.body_entered.connect(_on_body_entered)
 	particles.finished.connect(_on_particles_finished)
@@ -63,6 +65,7 @@ func _on_body_entered(body: Node2D) -> void:
 		particles.emitting = true
 		explosion_sprite.play("default")
 		_impacted = true
+		impacted_ship.emit()
 
 func _on_particles_finished() -> void:
 	queue_free()

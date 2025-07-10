@@ -12,6 +12,7 @@ class_name InternalShip extends Node2D
 @onready var engine_run: AudioStreamPlayer2D = $EngineRun
 @onready var engine_running: AudioStreamPlayer2D = $EngineRunning
 @onready var engine_fail: AudioStreamPlayer2D = $EngineFail
+@onready var cosmetic_asteroids: VisualHerd = $"Visual Herd"
 @export var default_lights_texutres: Texture2D
 @export var broken_lights_texture: Texture2D
 var has_played_broken_animation: bool = false
@@ -48,6 +49,13 @@ func _ready() -> void:
 	ship_sprite.frame_changed.connect(_on_ship_frame_change)
 	if ship_health != null:
 		ship_health.on_health_change.connect(_on_health_change)
+	
+	cosmetic_asteroids.on_asteroid_impacted.connect(_on_asteroid_impacted)
+
+func _on_asteroid_impacted() -> void:
+	game_manager.post_processing.shake(true)
+	await get_tree().create_timer(0.1).timeout
+	game_manager.post_processing.shake(false)
 
 func _on_ship_frame_change() -> void:
 	ship_right_part.frame = ship_sprite.frame
