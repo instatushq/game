@@ -157,11 +157,13 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dm4ju"]
 shader = ExtResource("36_2olap")
-shader_parameter/shock_color = Color(1, 0, 0, 1)
-shader_parameter/amplitude = 30.0
-shader_parameter/frequency = 10.0
-shader_parameter/trigger_time = 0.0
-shader_parameter/duration = 3.0
+shader_parameter/hit_effect = 0.0
+shader_parameter/shake_intensity = 10.0
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_intensity = 0.0
+shader_parameter/base_modulate = Color(1, 1, 1, 1)
+shader_parameter/x_offset = true
+shader_parameter/y_offset = true
 
 [sub_resource type="Theme" id="Theme_3tdpy"]
 default_font = ExtResource("32_3oaur")

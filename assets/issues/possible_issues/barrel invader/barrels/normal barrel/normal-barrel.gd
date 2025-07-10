@@ -6,6 +6,7 @@ class_name NormalBarrel extends Node
 var times_shot: int = 0
 var max_shots: int = 3
 var frames_since_last_explosion: int = 0
+var destroyed: bool = false
 
 func _ready() -> void:
 	barrel_body.on_shot.connect(_on_shot)
@@ -18,7 +19,10 @@ func _on_shot() -> void:
 		barrel_body.on_barrel_destroyed.emit()
 
 func _touched_ship(_body: Node2D) -> void:
-	barrel_body.on_barrel_destroyed.emit()
+	if not destroyed:
+		await get_tree().create_timer(0.05).timeout
+		barrel_body.on_barrel_destroyed.emit()
+		destroyed = true
 
 func blow_away(cause_location: Vector2) -> void:
 	var effect_direction: Vector2 = cause_location.direction_to(barrel_body.global_position)

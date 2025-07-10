@@ -9,6 +9,7 @@ func _ready() -> void:
 	on_explosion_triggered.connect(_on_explode)
 	barrel_body.on_shot.connect(trigger_nuke)
 	barrel_body.on_contact_explosion.connect(_on_contact_explosion)
+	barrel_body.on_impact_ship.connect(_on_impact_ship)
 
 func _on_contact_explosion(_body: Node2D, explosion_type: BarrelBody.EXPLOSION_TYPE, _intensity: ExplosionNuke.ExplosionIntensity) -> void:
 	if explosion_type == BarrelBody.EXPLOSION_TYPE.TNT:
@@ -19,6 +20,9 @@ func _on_contact_explosion(_body: Node2D, explosion_type: BarrelBody.EXPLOSION_T
 func _on_explode() -> void:
 	call_deferred("_spawn_explosion")
 	barrel_body.call_deferred("queue_free")
+
+func _on_impact_ship(_body: Node2D) -> void:
+	on_explosion_triggered.emit()
 
 func _spawn_explosion() -> void:
 	if explosion_scene != null:

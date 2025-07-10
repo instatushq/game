@@ -112,10 +112,10 @@ animations = [{
 
 [node name="TNTExplosionArea" type="Area2D"]
 collision_layer = 1024
-collision_mask = 2048
+collision_mask = 2049
 script = ExtResource("1_0yrar")
 auto_explode = true
-explosion_radius = 97.65
+explosion_radius = 100.0
 
 [node name="ExplosionParticles" type="CPUParticles2D" parent="."]
 position = Vector2(1, 1)

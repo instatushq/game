@@ -1,6 +1,7 @@
 class_name ShipRigidBody extends RigidBody2D
 
 var game_position: Vector2 = Vector2.ZERO
+@onready var ship: Ship = get_parent()
 
 signal on_impact(impacter: ShipImpacter)
 signal on_barrel_impact(impacter: BarrelBody)
@@ -21,3 +22,9 @@ func _on_body_entered(body) -> void:
 			
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	state.transform.origin = game_position
+
+func _nuke_explosion(body: Node2D, intensity: ExplosionNuke.ExplosionIntensity) -> void:
+	ship.on_contact_explosion.emit(body, BarrelBody.EXPLOSION_TYPE.NUKE, intensity)
+
+func _tnt_explosion(body: Node2D, intensity: ExplosionNuke.ExplosionIntensity) -> void:
+	ship.on_contact_explosion.emit(body, BarrelBody.EXPLOSION_TYPE.TNT, intensity)

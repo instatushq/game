@@ -11,11 +11,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nqv73"]
 shader = ExtResource("3_gpou2")
-shader_parameter/shock_color = Color(1, 0, 0, 1)
-shader_parameter/amplitude = 5.0
-shader_parameter/frequency = 50.0
-shader_parameter/trigger_time = -1.0
-shader_parameter/duration = 3.0
+shader_parameter/hit_effect = 1.0
+shader_parameter/shake_intensity = 6.5
+shader_parameter/blink_color = Color(0.632225, 1.9493e-06, 3.36915e-07, 1)
+shader_parameter/blink_intensity = 0.0
+shader_parameter/base_modulate = Color(1, 1, 1, 1)
+shader_parameter/x_offset = true
+shader_parameter/y_offset = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dmai"]
 atlas = ExtResource("3_1h06k")
@@ -175,6 +177,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShipSprite:material:shader_parameter/blink_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShipSprite:material:shader_parameter/hit_effect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_nqv73"]
 resource_name = "Took Damage"
@@ -192,9 +218,35 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShipSprite:material:shader_parameter/blink_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.4, 0.599257, 0.4, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShipSprite:material:shader_parameter/hit_effect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_1l14q"]
 resource_name = "normal"
+length = 0.3
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -202,10 +254,34 @@ tracks/0/path = NodePath("ShipSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShipSprite:material:shader_parameter/blink_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShipSprite:material:shader_parameter/hit_effect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tl6is"]
@@ -230,7 +306,7 @@ height = 55.0677
 [node name="Ship" type="Node2D"]
 script = ExtResource("1_n8q6x")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="ShipRigidBody" type="RigidBody2D" parent="."]
 position = Vector2(-3, -1)
 collision_mask = 53
 gravity_scale = 0.0
@@ -243,47 +319,47 @@ max_contacts_reported = 30
 linear_damp = 1.0
 script = ExtResource("2_pxrqm")
 
-[node name="ShipPoints" type="Node2D" parent="RigidBody2D"]
+[node name="ShipPoints" type="Node2D" parent="ShipRigidBody"]
 position = Vector2(0, -67)
 
-[node name="Canon" type="Node2D" parent="RigidBody2D/ShipPoints"]
+[node name="Canon" type="Node2D" parent="ShipRigidBody/ShipPoints"]
 position = Vector2(0, -81)
 
-[node name="SpritesContainer" type="Node2D" parent="RigidBody2D"]
+[node name="SpritesContainer" type="Node2D" parent="ShipRigidBody"]
 
-[node name="ShipSprite" type="AnimatedSprite2D" parent="RigidBody2D/SpritesContainer"]
+[node name="ShipSprite" type="AnimatedSprite2D" parent="ShipRigidBody/SpritesContainer"]
 material = SubResource("ShaderMaterial_nqv73")
 position = Vector2(0, -120)
 sprite_frames = SubResource("SpriteFrames_gkfdw")
 
-[node name="Trail" type="AnimatedSprite2D" parent="RigidBody2D/SpritesContainer/ShipSprite"]
+[node name="Trail" type="AnimatedSprite2D" parent="ShipRigidBody/SpritesContainer/ShipSprite"]
 show_behind_parent = true
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_psj3n")
 autoplay = "default"
 
-[node name="SpritesAnimations" type="AnimationPlayer" parent="RigidBody2D/SpritesContainer"]
+[node name="SpritesAnimations" type="AnimationPlayer" parent="ShipRigidBody/SpritesContainer"]
 libraries = {
 &"": SubResource("AnimationLibrary_nqv73")
 }
 speed_scale = 8.0
 
-[node name="ShipStates" type="AnimationPlayer" parent="RigidBody2D/SpritesContainer"]
+[node name="ShipStates" type="AnimationPlayer" parent="ShipRigidBody/SpritesContainer"]
 libraries = {
 &"": SubResource("AnimationLibrary_tl6is")
 }
 autoplay = "normal"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipRigidBody"]
 position = Vector2(0, -78)
 shape = SubResource("CapsuleShape2D_gkfdw")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ShipRigidBody"]
 position = Vector2(-33, -39)
 rotation = 0.698132
 shape = SubResource("CapsuleShape2D_o01ar")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ShipRigidBody"]
 position = Vector2(33, -39)
 rotation = -0.698132
 shape = SubResource("CapsuleShape2D_gpou2")

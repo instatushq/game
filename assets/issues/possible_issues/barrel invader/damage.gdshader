@@ -1,50 +1,44 @@
 shader_type canvas_item;
+render_mode unshaded;
 
-/**
-Color to use for the shock.
-*/
-uniform vec3 shock_color : source_color = vec3(1.0, 0.0, 0.0);
-/**
-Initial amplitude of the shock. This will start at this amplitude and
-gradually attenuate.
-*/
-uniform float amplitude = 30.0;
-/**
-How fast should it move side to side, more frequency means it'll move more quickly
-side to side.
-*/
-uniform float frequency = 10.0;
-/**
-Time when the effect was triggered. Set this from GDScript to trigger the effect.
-*/
-uniform float trigger_time = -1.0;
-/**
-Duration of the effect in seconds.
-*/
-uniform float duration = 3.0;
+uniform float hit_effect : hint_range(0, 1) = 0.0;
+uniform float shake_intensity = 10.0;
 
-void vertex() {
-	float time_since_trigger = TIME - trigger_time;
-	float effect_strength = 0.0;
+uniform vec4 blink_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float blink_intensity : hint_range(0.0, 1.0) = 0.0;
 
-	if (trigger_time >= 0.0 && time_since_trigger >= 0.0 && time_since_trigger <= duration) {
-		float exponent = time_since_trigger;
-		effect_strength = amplitude * exp(-2.0*exponent) * sin(frequency*exponent);
-	}
+uniform vec4 base_modulate : source_color = vec4(1.0);
 
-	VERTEX.x += effect_strength;
+uniform bool x_offset = true;
+uniform bool y_offset = true;
+
+float rand(vec2 co) {
+    return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
 }
 
 void fragment() {
-	float time_since_trigger = TIME - trigger_time;
-	vec4 normal_color = texture(TEXTURE, UV);
-	vec4 effect_color = normal_color;
-	effect_color.a = COLOR.a;
+    vec2 uv_offset = vec2(0.0);
+    if (hit_effect > 0.0) {
+        float time = TIME * 30.0;
+        vec2 random_offset = vec2(
+            x_offset ? rand(vec2(time, 0.0)) * 2.0 - 1.0 : 0.0,
+            y_offset ? rand(vec2(time, 10.0)) * 2.0 - 1.0 : 0.0
+        );
+        vec2 tex_size = vec2(textureSize(TEXTURE, 0));
+        uv_offset = (random_offset * shake_intensity * hit_effect) / tex_size;
+    }
 
-	if (trigger_time >= 0.0 && time_since_trigger >= 0.0 && time_since_trigger <= duration) {
-		float exponent = time_since_trigger;
-		effect_color.rgb = normal_color.rgb + shock_color * exp(-2.0*exponent);
-	}
+    vec4 c = textureLod(TEXTURE, UV + uv_offset, 0.0);
 
-	COLOR = effect_color;
+    if (c.a > 0.0001) {
+        c.rgb /= c.a;
+    }
+
+    c.rgba *= base_modulate.rgba;
+
+    c = mix(c, blink_color, blink_intensity * c.a);
+
+    c.rgb *= c.a;
+
+    COLOR = c;
 }

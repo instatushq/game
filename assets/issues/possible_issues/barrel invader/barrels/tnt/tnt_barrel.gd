@@ -18,6 +18,11 @@ func _ready() -> void:
 	on_explosion_triggered.connect(_on_explode)
 	barrel_body.on_shot.connect(_on_shoot_tnt)
 	barrel_body.on_contact_explosion.connect(_on_contact_explosion)
+	barrel_body.on_impact_ship.connect(_on_impact_ship)
+
+func _on_impact_ship(_body: Node2D) -> void:
+	if not triggered:
+		trigger_tnt()
 
 func _on_contact_explosion(_body: Node2D, explosion_type: BarrelBody.EXPLOSION_TYPE, _intensity: ExplosionNuke.ExplosionIntensity) -> void:
 	if explosion_type == BarrelBody.EXPLOSION_TYPE.NUKE:
