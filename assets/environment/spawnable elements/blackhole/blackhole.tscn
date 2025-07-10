@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://x1eieaqt1a0v"]
+[gd_scene load_steps=14 format=3 uid="uid://x1eieaqt1a0v"]
 
 [ext_resource type="Shader" uid="uid://8ypycc073j2" path="res://assets/environment/spawnable elements/blackhole/blackhole.gdshader" id="1_1y1st"]
+[ext_resource type="Script" uid="uid://ckuy47ej2kdk5" path="res://assets/environment/spawnable elements/blackhole/blackhole.gd" id="1_et0ta"]
 [ext_resource type="Texture2D" uid="uid://cp1qj3lyoacho" path="res://assets/logo.png" id="2_et0ta"]
 [ext_resource type="Texture2D" uid="uid://cshjftuwr2ca" path="res://assets/environment/spawnable elements/textures/black hole.png" id="3_1y1st"]
 
@@ -62,6 +63,7 @@ animations = [{
 
 [node name="Blackhole" type="Node2D"]
 scale = Vector2(1.3, 1.3)
+script = ExtResource("1_et0ta")
 
 [node name="Blackhole Distortion" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_t6o86")
