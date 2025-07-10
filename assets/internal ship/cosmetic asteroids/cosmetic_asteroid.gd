@@ -3,6 +3,7 @@ class_name CosmeticAsteroid extends RigidBody2D
 @onready var particles: CPUParticles2D = $Particles
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var explosion_sprite: AnimatedSprite2D = $Explosion
+@onready var audio_stream: AudioStreamPlayer2D = $Boom
 var target_point: Vector2 = Vector2.ZERO
 const MINIMUM_DISTANCE_FROM_SHIP: float = 700.0
 var movement_speed_min: float = 350.0
@@ -66,6 +67,8 @@ func _on_body_entered(body: Node2D) -> void:
 		explosion_sprite.play("default")
 		_impacted = true
 		impacted_ship.emit()
+		audio_stream.pitch_scale = randf_range(0.6, 0.85)
+		audio_stream.play()
 
 func _on_particles_finished() -> void:
 	queue_free()

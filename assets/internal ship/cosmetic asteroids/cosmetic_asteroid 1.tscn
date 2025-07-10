@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bq85575w8bxgw"]
+[gd_scene load_steps=23 format=3 uid="uid://bq85575w8bxgw"]
 
 [ext_resource type="Script" uid="uid://cdnwmbv4dcebt" path="res://assets/internal ship/cosmetic asteroids/cosmetic_asteroid.gd" id="1_u0su2"]
 [ext_resource type="Texture2D" uid="uid://5gxg4a20mw5d" path="res://assets/debris/textures/asteroid 1.png" id="2_4dm2m"]
 [ext_resource type="Texture2D" uid="uid://ccluwdyih4k6l" path="res://assets/internal ship/cosmetic asteroids/Directional explosion.png" id="3_4dm2m"]
+[ext_resource type="AudioStream" uid="uid://dg6ittj5iv108" path="res://assets/internal ship/boom.ogg" id="4_xxcu7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_igsmt"]
 radius = 19.2495
@@ -177,3 +178,10 @@ scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_igsmt")
 anim_offset_min = 0.28
 anim_offset_max = 0.3
+
+[node name="Boom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xxcu7")
+volume_db = -15.0
+pitch_scale = 0.6
+max_distance = 300.0
+bus = &"Sound FX"
