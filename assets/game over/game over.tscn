@@ -354,7 +354,6 @@ background_controller = NodePath("../ParallaxBackground")
 camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 position = Vector2(0, 515)
 zoom = Vector2(2, 2)
 script = ExtResource("21_wph33")
