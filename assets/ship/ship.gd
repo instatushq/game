@@ -4,8 +4,6 @@ class_name Ship extends Node2D
 @export var bottom_camera_movement_margin: float = 700.0
 var side_movement_padding: float = 48.0
 
-var mouse_world_position: Vector2 = Vector2.ZERO
-
 @export var cannon_one_active: bool = true
 @export var pew_scene: PackedScene = preload("res://assets/ship/projectiles/pew.tscn")
 @export var fire_cooldown: float = 0.15
@@ -20,9 +18,6 @@ var is_invincible: bool = false
 @onready var cannon_1: Node2D = $RigidBody2D/ShipPoints/Canon
 @onready var game_manager: BarrelInvader = get_parent()
 @onready var cannon_fire: AudioStreamPlayer = $Shoot
-
-var current_velocity: Vector2 = Vector2(0, 0)
-var last_recorded_y: float = position.y;
 
 var can_control: bool = false
 var can_fire: bool = true
@@ -41,6 +36,14 @@ var global_input_axis: Vector2 = Vector2.ZERO
 func _ready():
 	rb.on_impact.connect(_on_impact_with_object)
 	rb.on_barrel_impact.connect(_on_barrel_impact)
+	game_manager.game_started.connect(_on_issue_opened)
+
+func _on_issue_opened() -> void:
+	var global_mouse_position = get_global_mouse_position()
+	var camera_position = game_camera.global_position
+	var mouse_position_relative_to_camera = global_mouse_position - camera_position
+	ship_position = mouse_position_relative_to_camera
+
 
 func _on_barrel_impact(_barrel: BarrelBody) -> void:
 	if is_invincible: return
