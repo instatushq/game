@@ -11,7 +11,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nqv73"]
 shader = ExtResource("3_gpou2")
-shader_parameter/hit_effect = 1.0
+shader_parameter/hit_effect = 0.0
 shader_parameter/shake_intensity = 6.5
 shader_parameter/blink_color = Color(0.632225, 1.9493e-06, 3.36915e-07, 1)
 shader_parameter/blink_intensity = 0.0
@@ -199,7 +199,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_nqv73"]

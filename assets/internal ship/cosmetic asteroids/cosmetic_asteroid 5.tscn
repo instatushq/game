@@ -114,7 +114,7 @@ region = Rect2(1920, 0, 192, 157)
 atlas = ExtResource("3_njq1u")
 region = Rect2(1920, 0, 192, 157)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ihlvo"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_njq1u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -126,28 +126,28 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tdkw2")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_c2mdj")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_dghp0")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_1hs24")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_8fomy")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_fl24x")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_axc2c")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_0w8s4")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_i8dle")
 }],
 "loop": false,
@@ -193,12 +193,10 @@ sprite_frames = SubResource("SpriteFrames_aglr1")
 autoplay = "default"
 
 [node name="Explosion" type="AnimatedSprite2D" parent="."]
-position = Vector2(-37, -19)
+position = Vector2(-35, -21)
 rotation = -2.22941
-sprite_frames = SubResource("SpriteFrames_ihlvo")
+sprite_frames = SubResource("SpriteFrames_njq1u")
 autoplay = "nothing"
-frame = 10
-frame_progress = 1.0
 
 [node name="Particles" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_aiucs")
