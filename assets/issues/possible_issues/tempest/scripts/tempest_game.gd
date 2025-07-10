@@ -71,8 +71,6 @@ var top_y_center: float # The central Y-coordinate around which the top contour 
 var total_base_width: float
 var base_leftmost_x: float # X-coord of the leftmost line at the base.
 
-@onready var animation_player: AnimationPlayer = $CanvasLayer/Control/ShakeAnimation
-
 func _input(event):
 	if not _is_game_playing or _is_game_paused: return
 	if event.is_action_pressed("move_left"):
@@ -376,7 +374,7 @@ func enemy_reached_base(lane_idx: int):
 	# Function called by an Enemy when it reaches the base without being destroyed.
 	# health_current -= 1
 	health_bar.value = health_current
-	$Sfx/HealthDecreased.play()
+	$Sfx/HealthDecreased.play(0.15)
 	if health_current <= 0:
 		$Sfx/Lose.play()
 		_is_game_paused = true

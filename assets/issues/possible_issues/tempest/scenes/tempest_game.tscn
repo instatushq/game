@@ -14,15 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://bxytu8vqv7tk5" path="res://assets/issues/possible_issues/tempest/scenes/screen.tscn" id="8_5xcva"]
 [ext_resource type="Texture2D" uid="uid://dnq0t7po81jem" path="res://assets/environment/backgrounds/stars/stars & big starst.png" id="8_6t636"]
 [ext_resource type="AudioStream" uid="uid://byvb0tvd0eo0k" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_move.wav" id="9_5xcva"]
-[ext_resource type="AudioStream" uid="uid://cbrqnbs3c1bht" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_shoot.wav" id="10_q04p6"]
 [ext_resource type="AudioStream" uid="uid://dm7xt7nahfonl" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_enemy_destroyed.wav" id="11_luoa5"]
 [ext_resource type="Texture2D" uid="uid://o630i1nfk3kd" path="res://assets/issues/possible_issues/tempest/assets/spaceship-Sheet.png" id="11_vb75n"]
-[ext_resource type="AudioStream" uid="uid://bkmucq4bm00bo" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_health_decreased.wav" id="12_l4s75"]
 [ext_resource type="Texture2D" uid="uid://dwjf2ufdm27s8" path="res://assets/ship/sprites/animations/fuel.png" id="12_lvpoi"]
 [ext_resource type="AudioStream" uid="uid://crcwi0idb7l0o" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_new_arena.wav" id="13_kng1r"]
 [ext_resource type="AudioStream" uid="uid://bgovvm70u5uj7" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_lose.wav" id="14_nhumg"]
 [ext_resource type="AudioStream" uid="uid://cygvxr4127rkj" path="res://assets/issues/possible_issues/tempest/assets/sfx/sfx_win.wav" id="15_5xcva"]
 [ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="16_lvpoi"]
+[ext_resource type="AudioStream" uid="uid://boeq8fmkvrbb2" path="res://assets/issues/possible_issues/barrel invader/pew_pew.ogg" id="18_lvpoi"]
+[ext_resource type="AudioStream" uid="uid://tm0jsaoaowi7" path="res://assets/issues/possible_issues/barrel invader/barrels/tnt/tntexplode.mp3" id="19_lvpoi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vf5at"]
 atlas = ExtResource("8_6t636")
@@ -566,7 +566,7 @@ stream = ExtResource("9_5xcva")
 bus = &"Sound FX"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="Sfx"]
-stream = ExtResource("10_q04p6")
+stream = ExtResource("18_lvpoi")
 bus = &"Sound FX"
 
 [node name="EnemyDestroyed" type="AudioStreamPlayer" parent="Sfx"]
@@ -574,7 +574,7 @@ stream = ExtResource("11_luoa5")
 bus = &"Sound FX"
 
 [node name="HealthDecreased" type="AudioStreamPlayer" parent="Sfx"]
-stream = ExtResource("12_l4s75")
+stream = ExtResource("19_lvpoi")
 bus = &"Sound FX"
 
 [node name="NewArena" type="AudioStreamPlayer" parent="Sfx"]
