@@ -450,5 +450,5 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Timer" type="Timer" parent="Game/CanvasLayer"]
-wait_time = 90.0
+wait_time = 60.0
 one_shot = true
