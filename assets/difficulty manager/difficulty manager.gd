@@ -26,15 +26,15 @@ func increase_difficulty() -> void:
 	if current_difficulty == DIFFICULTY.INSANE: return
 	set_difficulty(DIFFICULTY.values()[current_difficulty + 1])
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.keycode == KEY_R:
-		set_difficulty(DIFFICULTY.EASY)
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_T:
-		set_difficulty(DIFFICULTY.MEDIUM)
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_Y:
-		set_difficulty(DIFFICULTY.HARD)
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_U:
-		set_difficulty(DIFFICULTY.INSANE)
+# func _input(event: InputEvent) -> void:
+# 	if event is InputEventKey and event.pressed and event.keycode == KEY_R:
+# 		set_difficulty(DIFFICULTY.EASY)
+# 	elif event is InputEventKey and event.pressed and event.keycode == KEY_T:
+# 		set_difficulty(DIFFICULTY.MEDIUM)
+# 	elif event is InputEventKey and event.pressed and event.keycode == KEY_Y:
+# 		set_difficulty(DIFFICULTY.HARD)
+# 	elif event is InputEventKey and event.pressed and event.keycode == KEY_U:
+# 		set_difficulty(DIFFICULTY.INSANE)
 
 
 func process_difficulty_number_increment(difficulty_number: float, ceil_to_decimal: bool = true, difficulty_level: DIFFICULTY = current_difficulty) -> float:
