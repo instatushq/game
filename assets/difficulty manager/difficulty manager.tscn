@@ -9,6 +9,7 @@ font_size = 40
 script = ExtResource("1_wgo1e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
