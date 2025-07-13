@@ -12,6 +12,7 @@ var bottom_container_offset: Vector2 = Vector2(44.0, 20.0)
 @onready var button_mismatch_sound: AudioStreamPlayer = $ButtonMismatch
 @onready var issue_countdown: IssueCountdown = $Countdown
 @onready var parent: Issue = get_parent().get_parent().get_parent()
+@onready var difficulty_manager: DifficultyOrganizer = DifficultyManager
 var current_holding_particles_instance: CPUParticles2D = null
 
 enum COLOR_MATCH_COLOR {
@@ -136,8 +137,18 @@ func _assign_controls() -> void:
 func _ready() -> void:
 	_assign_colors_randomly()
 	_assign_controls()
+	_adapt_difficulty()
 	parent.issue_opened.connect(func(): issue_countdown.start_game_countdown(game_max_length))
 	
+func _adapt_difficulty() -> void:
+	if difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.EASY:
+		parent.hp_revive_per_issue_segment = 3
+	elif difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.MEDIUM:
+		parent.hp_revive_per_issue_segment = 3
+	elif difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.HARD:
+		parent.hp_revive_per_issue_segment = 2
+	elif difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.INSANE:
+		parent.hp_revive_per_issue_segment = 1
 
 func _is_issue_resolved() -> bool:
 	return connected_colors.size() == COLOR_MATCH_COLOR.keys().size()
@@ -162,3 +173,4 @@ func _update_buttons_view() -> void:
 			button.disabled = true
 			button.get_node("AnimatedSprite2D").play("down")
 			button.modulate = Color.WHITE
+

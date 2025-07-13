@@ -8,6 +8,7 @@ class_name Issue extends Node2D
 @export var hide_vignette: bool = false
 @export var allow_abort: bool = true
 @export_range(-1, 10) var hp_revive_per_issue_segment: int = 2
+@export_range(0, 10) var hp_loss_per_issue_segment_failed: int = 2
 @export_range(0, 10) var max_issue_segment_count: int = 10
 
 var abort_ui: PackedScene = preload("res://assets/issues/abort_ui.tscn")

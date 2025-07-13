@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpkb7431ur0uy"]
+
+[ext_resource type="Script" uid="uid://bgby3yf28udsb" path="res://assets/difficulty manager/difficulty manager.gd" id="1_wgo1e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wgo1e"]
+font_size = 40
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_wgo1e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 137.0
+grow_horizontal = 0
+label_settings = SubResource("LabelSettings_wgo1e")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -16,6 +16,8 @@ var is_issue_open: bool = false
 @onready var timer: Timer = $Timer
 @onready var issue_resolved_sound: AudioStreamPlayer = $IssueSolved
 @onready var issues_randomizer: IssuesRandomizer = $IssuesRandomizer
+@onready var difficulty_manager: DifficultyOrganizer = DifficultyManager
+var _spawned_issues_count: int = 0
 
 signal zone_body_entered(zone: IssueArea2D, body: Node2D)
 signal zone_body_exited(zone: IssueArea2D, body: Node2D)
@@ -92,7 +94,10 @@ func _generate_random_issue(zone: IssueArea2D) -> void:
 	if zone_error_sound != null:
 		zone_error_sound.play(0.0)
 	on_issue_generated.emit(zone, current_issues.size())
-	
+	_spawned_issues_count += 1
+	if fmod(_spawned_issues_count, game_manager.increase_difficulty_each_game) == 0.0:
+		difficulty_manager.increase_difficulty()
+
 func _on_timer_timeout() -> void:
 	var random_chance = randi_range(0, 100)
 	if random_chance < chance_of_issues:

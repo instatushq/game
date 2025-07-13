@@ -27,6 +27,7 @@ Music="*res://assets/audio/music.tscn"
 Stats="*res://assets/globals/game stats.tscn"
 VolumeManager="*res://assets/volume manager/volume manager.gd"
 Ambience="*res://assets/audio/ambience.tscn"
+DifficultyManager="*res://assets/difficulty manager/difficulty manager.tscn"
 
 [display]
 

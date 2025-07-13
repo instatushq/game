@@ -397,6 +397,7 @@ min_hp_revive = 12
 max_hp_revive = 15
 spawn_position = Vector2(-5000, 0)
 hp_revive_per_issue_segment = 1
+hp_loss_per_issue_segment_failed = 1
 
 [node name="GameNode" type="Node2D" parent="."]
 

@@ -18,6 +18,7 @@ enum Player {
 
 @export var post_processing: PostProcessing = null
 @export var current_player: Player = Player.ASTRONAUT
+@export var increase_difficulty_each_game: int = 2
 
 signal score_changed(old_value: int, new_value: int)
 signal current_player_changed(new_current_player: Player)
@@ -36,6 +37,7 @@ var is_meteor_herd_active: bool = false
 @onready var music: AudioStreamPlayer = Music
 @onready var game_stats: GameStats = Stats
 @onready var transition_screen: TransitionScreen = %"Transition Screen"
+@onready var difficulty_manager: DifficultyOrganizer = DifficultyManager
 var last_mouse_position: Vector2 = Vector2.ZERO
 var timepassed: int = 0
 var is_solving_puzzle: bool = false
@@ -44,6 +46,7 @@ var music_bus_index: int = AudioServer.get_bus_index("Music")
 @onready var death_timer: Timer = Timer.new()
 
 func _ready() -> void:
+	difficulty_manager.set_difficulty(DifficultyOrganizer.DIFFICULTY.EASY)
 	add_child(death_timer)
 	death_timer.one_shot = true
 	death_timer.wait_time = 1.5

@@ -120,6 +120,10 @@ func _ready() -> void:
 	# For testing.
 	# start_game()
 
+func _set_enemy_spawn_interval(new_time_seconds: float) -> void:
+	timer_enemy_spawn.wait_time = new_time_seconds
+	enemy_spawn_interval = new_time_seconds
+
 func _on_player_frame_changed():
 	if player.frame == frame_to_shoot_frame:
 		spawn_projectile()

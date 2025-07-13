@@ -13,6 +13,7 @@ class_name InternalShip extends Node2D
 @onready var engine_running: AudioStreamPlayer2D = $EngineRunning
 @onready var engine_fail: AudioStreamPlayer2D = $EngineFail
 @onready var cosmetic_asteroids: VisualHerd = $"Visual Herd"
+@onready var difficulty_manager: DifficultyOrganizer = DifficultyManager
 @export var default_lights_texutres: Texture2D
 @export var broken_lights_texture: Texture2D
 var has_played_broken_animation: bool = false
@@ -81,7 +82,7 @@ func _on_issue_aborted(_zone: IssueArea2D, _issue_instance: Issue) -> void:
 	ship_health.decrease_health(5)
 
 func _on_issue_failed(zone: IssueArea2D, _issue_instance: Issue) -> void:
-	ship_health.decrease_health(3)
+	ship_health.decrease_health(difficulty_manager.process_difficulty_number_increment(3))
 	if ship_health.health > ship_major_outage_health_amount:
 		if zone.name.containsn("right"):
 			ship_right_part.visible = false
@@ -95,7 +96,7 @@ func _on_issue_segment_success(_zone: IssueArea2D, issue_instance: Issue) -> voi
 	ship_health.increase_health(issue_instance.hp_revive_per_issue_segment)
 
 func _on_issue_segment_failed(_zone: IssueArea2D, issue_instance: Issue) -> void:
-	ship_health.decrease_health(issue_instance.hp_revive_per_issue_segment)
+	ship_health.decrease_health(issue_instance.hp_loss_per_issue_segment_failed)
 
 func _on_animation_finish() -> void:
 	if ship_sprite.animation == "breakdown":

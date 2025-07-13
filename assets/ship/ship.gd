@@ -7,7 +7,7 @@ var side_movement_padding: float = 48.0
 @export var cannon_one_active: bool = true
 @export var pew_scene: PackedScene = preload("res://assets/ship/projectiles/pew.tscn")
 @export var fire_cooldown: float = 0.15
-@export var damage_cooldown_seconds: float = 2
+@export var damage_cooldown_seconds: float = 2.0
 @export_range(0.0, 100) var reduce_ship_speed_by: float = 67.0
 var is_invincible: bool = false
 
@@ -18,6 +18,7 @@ var is_invincible: bool = false
 @onready var cannon_1: Node2D = $ShipRigidBody/ShipPoints/Canon
 @onready var game_manager: BarrelInvader = get_parent()
 @onready var cannon_fire: AudioStreamPlayer = $Shoot
+@onready var difficulty_manager: DifficultyOrganizer = DifficultyManager
 
 var can_control: bool = false
 var can_fire: bool = true
@@ -39,12 +40,19 @@ func _ready():
 	rb.on_barrel_impact.connect(_on_barrel_impact)
 	game_manager.game_started.connect(_on_issue_opened)
 	on_contact_explosion.connect(_on_contact_explosion)
+	_adapt_difficulty()
+
+func _adapt_difficulty() -> void:
+	if difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.HARD or difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.INSANE:
+		damage_cooldown_seconds = 0.3
+	elif difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.EASY or difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.MEDIUM:
+		damage_cooldown_seconds = 1.5
 
 func _on_contact_explosion(body: Node2D, _explosion_type: BarrelBody.EXPLOSION_TYPE, _intensity: ExplosionNuke.ExplosionIntensity) -> void:
 	if not (body is ExplosionNuke or body is ExplosionTNT): return
 	if is_invincible: return
 	if game_manager.parent_issue.game_manager != null:
-		game_manager.parent_issue.game_manager.ship_health.decrease_health(3)
+		game_manager.parent_issue.game_manager.ship_health.decrease_health(difficulty_manager.process_difficulty_number_increment(3))
 
 	is_invincible = true
 	hit_animation_player.play("Took Damage")
@@ -62,7 +70,7 @@ func _on_barrel_impact(_barrel: BarrelBody) -> void:
 	if is_invincible: return
 		
 	if game_manager.parent_issue.game_manager != null:
-		game_manager.parent_issue.game_manager.ship_health.decrease_health(3)
+		game_manager.parent_issue.game_manager.ship_health.decrease_health(difficulty_manager.process_difficulty_number_increment(3))
 
 	is_invincible = true
 	hit_animation_player.play("Took Damage")

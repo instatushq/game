@@ -10,6 +10,7 @@ extends ColorRect
 @onready var game_title_label: Label = $AnimatedTextureRect/title
 @onready var parent: Issue = get_parent()
 @onready var button_tick: AudioStreamPlayer = $ButtonTick
+@onready var difficulty_manager: DifficultyOrganizer = DifficultyManager
 
 @export var ButtonFlashTime: float = 0.5
 @export var TimeBetweenFlashes: float = 0.2
@@ -163,6 +164,21 @@ func _ready() -> void:
 		button_tick.play(0.0)
 	)
 	_update_progress_dots()
+	_adapt_difficulty()
+
+func _adapt_difficulty() -> void:
+	if difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.EASY:
+		parent.hp_revive_per_issue_segment = 2
+	elif difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.MEDIUM:
+		parent.hp_revive_per_issue_segment = 2
+	elif difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.HARD:
+		parent.hp_revive_per_issue_segment = 2
+		parent.min_hp_revive = 14
+		parent.max_hp_revive = 14
+	elif difficulty_manager.current_difficulty == DifficultyOrganizer.DIFFICULTY.INSANE:
+		parent.hp_revive_per_issue_segment = 1
+		parent.min_hp_revive = 11
+		parent.max_hp_revive = 11
 
 func _toggle_cursor_icon_for_buttons(pointer: bool) -> void:
 	if not pointer:
