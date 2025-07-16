@@ -1,6 +1,11 @@
 import express from "express";
 import cors from "cors";
-import { getTopPlayers, addScore, getScoreRank } from "./leaderboard";
+import {
+  getTopPlayers,
+  addScore,
+  getScoreRank,
+  deleteScore,
+} from "./leaderboard";
 import { isEmptyOrWhitespace, validateSocialMediaUrl } from "./utils";
 import { containsProfanity } from "./profanity-filter";
 const port = 3000;
@@ -124,6 +129,22 @@ app.post("/leaderboard", async (req, res) => {
   try {
     const newScore = await addScore(name, score, socialMediaUrl);
     res.json(newScore);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("Internal server error");
+  }
+});
+
+app.delete("/leaderboard/:id", async (req, res) => {
+  const { id } = req.params;
+  if (!id) {
+    res.status(400).send("ID is required");
+    return;
+  }
+
+  try {
+    await deleteScore(id);
+    res.status(200).send("Score deleted");
   } catch (e) {
     console.error(e);
     res.status(500).send("Internal server error");

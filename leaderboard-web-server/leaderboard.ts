@@ -53,3 +53,9 @@ export async function addScore(
     });
   }
 }
+
+export async function deleteScore(id: string) {
+  return await prisma.scores.delete({
+    where: { id },
+  });
+}
