@@ -135,21 +135,21 @@ app.post("/leaderboard", async (req, res) => {
   }
 });
 
-app.delete("/leaderboard/:id", async (req, res) => {
-  const { id } = req.params;
-  if (!id) {
-    res.status(400).send("ID is required");
-    return;
-  }
+// app.delete("/leaderboard/:id", async (req, res) => {
+//   const { id } = req.params;
+//   if (!id) {
+//     res.status(400).send("ID is required");
+//     return;
+//   }
 
-  try {
-    await deleteScore(id);
-    res.status(200).send("Score deleted");
-  } catch (e) {
-    console.error(e);
-    res.status(500).send("Internal server error");
-  }
-});
+//   try {
+//     await deleteScore(id);
+//     res.status(200).send("Score deleted");
+//   } catch (e) {
+//     console.error(e);
+//     res.status(500).send("Internal server error");
+//   }
+// });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
