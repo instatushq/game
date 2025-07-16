@@ -2,8 +2,10 @@ import express from "express";
 import cors from "cors";
 import { getTopPlayers, addScore, getScoreRank } from "./leaderboard";
 import { isEmptyOrWhitespace, validateSocialMediaUrl } from "./utils";
+import { containsProfanity } from "./profanity-filter";
 const port = 3000;
 const app = express();
+
 app.use(
   cors({
     origin: [
@@ -111,6 +113,11 @@ app.post("/leaderboard", async (req, res) => {
 
   if (!isValid && !isEmptyOrWhitespace(socialMediaUrl)) {
     res.status(400).send("Invalid social media URL");
+    return;
+  }
+
+  if (containsProfanity(name)) {
+    res.status(400).send("Name contains profanity");
     return;
   }
 
