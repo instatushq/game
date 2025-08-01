@@ -97,7 +97,8 @@ func save_score(score: int, player_name: String, social_media_url: String) -> vo
 	if player_name.strip_edges().is_empty():
 		return
 		
-	var headers = ["Content-Type: application/json"]
+	var signature = EncryptLoad.encrypt_payload(JSON.stringify({"score": score, "name": player_name, "socialMediaUrl": social_media_url}))
+	var headers = ["Content-Type: application/json", "X-Instatus-Signature: " + signature]
 	var payload = JSON.stringify({"score": score, "name": player_name, "socialMediaUrl": social_media_url})
 
 	submit_score_request.request(
