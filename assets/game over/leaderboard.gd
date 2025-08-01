@@ -26,7 +26,7 @@ var entries_data: Array = []
 var ui_entries: Array[LeaderboardEntry] = []
 var base_url: String = "https://api.game.instatus.com"
 
-@export var displayed_entries_count: int = 20
+@export var displayed_entries_count: int = 50
 
 signal on_entries_data_updated
 
