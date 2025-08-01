@@ -1,3 +1,5 @@
+import crypto from "crypto";
+
 type SocialMedia =
   | "X"
   | "YOUTUBE"
@@ -106,4 +108,14 @@ export function validateSocialMediaUrl(
   }
 
   return { isValid: false, platform: null };
+}
+
+export function isVerifiedPayload(
+  payload: Object,
+  signature: string,
+  secret: string
+) {
+  const hmac = crypto.createHmac("sha256", secret);
+  const digest = hmac.update(JSON.stringify(payload)).digest("hex");
+  return crypto.timingSafeEqual(Buffer.from(digest), Buffer.from(signature));
 }

@@ -6,10 +6,15 @@ import {
   getScoreRank,
   deleteScore,
 } from "./leaderboard";
-import { isEmptyOrWhitespace, validateSocialMediaUrl } from "./utils";
+import {
+  isEmptyOrWhitespace,
+  validateSocialMediaUrl,
+  isVerifiedPayload,
+} from "./utils";
 import { containsProfanity } from "./profanity-filter";
 const port = 3000;
 const app = express();
+const signatureSecret = process.env.INSTATUS_SECRET;
 
 app.use(
   cors({
@@ -87,6 +92,18 @@ app.get("/leaderboard/rank/:score", async (req, res) => {
 });
 
 app.post("/leaderboard", async (req, res) => {
+  const signature = req.get("X-Instatus-Signature");
+
+  if (!signature) {
+    res.status(400).send("Signature missing");
+    return;
+  }
+
+  if (!isVerifiedPayload(req.body, signature, signatureSecret)) {
+    res.status(400).send("Invalid signature");
+    return;
+  }
+
   let { name, score, socialMediaUrl } = req.body;
   const { isValid } = validateSocialMediaUrl(socialMediaUrl);
 
@@ -135,21 +152,21 @@ app.post("/leaderboard", async (req, res) => {
   }
 });
 
-// app.delete("/leaderboard/:id", async (req, res) => {
-//   const { id } = req.params;
-//   if (!id) {
-//     res.status(400).send("ID is required");
-//     return;
-//   }
+app.delete("/leaderboard/:id", async (req, res) => {
+  const { id } = req.params;
+  if (!id) {
+    res.status(400).send("ID is required");
+    return;
+  }
 
-//   try {
-//     await deleteScore(id);
-//     res.status(200).send("Score deleted");
-//   } catch (e) {
-//     console.error(e);
-//     res.status(500).send("Internal server error");
-//   }
-// });
+  try {
+    await deleteScore(id);
+    res.status(200).send("Score deleted");
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("Internal server error");
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
