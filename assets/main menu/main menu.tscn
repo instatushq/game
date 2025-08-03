@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://e3terh5nct76"]
+[gd_scene load_steps=96 format=3 uid="uid://e3terh5nct76"]
 
 [ext_resource type="Script" uid="uid://cyvhedqbrq845" path="res://assets/main menu/main_menu.gd" id="1_plx4y"]
 [ext_resource type="PackedScene" uid="uid://do5khegs2en1m" path="res://assets/main menu/transition_screen.tscn" id="2_5x655"]
@@ -17,7 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://d3lcnbagcvggt" path="res://assets/astronaut/sprites/mid flight.png" id="12_03fpy"]
 [ext_resource type="Texture2D" uid="uid://tfqkwo3oeep6" path="res://assets/astronaut/sprites/halting.png" id="13_hbnyu"]
 [ext_resource type="Texture2D" uid="uid://jumkphn087od" path="res://assets/astronaut/sprites/idle.png" id="14_4il1l"]
+[ext_resource type="Texture2D" uid="uid://b7ew6ueb7rj8y" path="res://assets/main menu/github logo transparent.png" id="14_12g85"]
+[ext_resource type="Script" uid="uid://d4gil8ff4qhto" path="res://assets/main menu/source door.gd" id="14_q0afn"]
 [ext_resource type="Texture2D" uid="uid://bmwg8e33sqa8n" path="res://assets/astronaut/sprites/idle anim.png" id="15_k0scp"]
+[ext_resource type="Texture2D" uid="uid://djhcmflioy788" path="res://assets/main menu/github logo.png" id="15_q0afn"]
 [ext_resource type="Texture2D" uid="uid://b8jx5gok84hjm" path="res://assets/astronaut/textures/helmet light.png" id="16_hbnyu"]
 [ext_resource type="PackedScene" uid="uid://dpim8avsm75oe" path="res://assets/audio/ambience.tscn" id="17_q7ux3"]
 [ext_resource type="Shader" uid="uid://c80jc2w25k2mw" path="res://assets/HUD/glitch.gdshader" id="18_k0scp"]
@@ -161,6 +164,25 @@ default_font = ExtResource("5_tf0ie")
 default_font_size = 20
 Button/styles/focus = SubResource("StyleBoxEmpty_tf0ie")
 Button/styles/pressed = SubResource("StyleBoxEmpty_5x655")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfhp6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_12g85")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_q0afn")
+}],
+"loop": true,
+"name": &"hovered",
+"speed": 5.0
+}]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5x655"]
 
@@ -541,6 +563,15 @@ shadow_filter_smooth = 64.0
 texture = SubResource("GradientTexture2D_5x655")
 texture_scale = 12.0
 
+[node name="Door" type="PointLight2D" parent="Ship/Body/Lights"]
+position = Vector2(-86, 33)
+scale = Vector2(0.28125, 0.203125)
+energy = 5.0
+shadow_filter = 2
+shadow_filter_smooth = 64.0
+texture = SubResource("GradientTexture2D_5x655")
+texture_scale = 6.0
+
 [node name="PointLight2D" type="PointLight2D" parent="Ship/Body/Lights"]
 position = Vector2(-1, 11)
 color = Color(0.396078, 0.866667, 0.964706, 1)
@@ -691,6 +722,25 @@ offset_bottom = 33.0
 mouse_filter = 2
 texture = ExtResource("10_aqpky")
 
+[node name="Source" type="Node2D" parent="Ship/Control" node_paths=PackedStringArray("light")]
+position = Vector2(30, 23)
+script = ExtResource("14_q0afn")
+light = NodePath("../../Body/Lights/Door")
+
+[node name="LinkButton" type="LinkButton" parent="Ship/Control/Source"]
+offset_left = -108.0
+offset_top = 9.0
+offset_right = -75.0
+offset_bottom = 65.0
+focus_neighbor_top = NodePath("../../Node2D/Options")
+focus_neighbor_right = NodePath("../../Leaderboard")
+focus_next = NodePath("../../Leaderboard")
+focus_previous = NodePath("../../Node2D/Options")
+uri = "https://github.com/instatushq/game"
+
+[node name="GithubIcon" type="AnimatedSprite2D" parent="Ship/Control/Source"]
+sprite_frames = SubResource("SpriteFrames_sfhp6")
+
 [node name="StaticBody" type="StaticBody2D" parent="Ship"]
 
 [node name="Ground" type="CollisionShape2D" parent="Ship/StaticBody"]
@@ -810,4 +860,8 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Ship/Control/Node2D/Options" to="." method="_on_click_options"]
 [connection signal="pressed" from="Ship/Control/Node2D/Music" to="." method="_on_music_pressed"]
 [connection signal="pressed" from="Ship/Control/Node2D/SFX" to="." method="_on_sfx_pressed"]
+[connection signal="focus_entered" from="Ship/Control/Source/LinkButton" to="Ship/Control/Source" method="_on_link_button_focus_entered"]
+[connection signal="focus_exited" from="Ship/Control/Source/LinkButton" to="Ship/Control/Source" method="_on_link_button_focus_exited"]
+[connection signal="mouse_entered" from="Ship/Control/Source/LinkButton" to="Ship/Control/Source" method="_on_link_button_mouse_entered"]
+[connection signal="mouse_exited" from="Ship/Control/Source/LinkButton" to="Ship/Control/Source" method="_on_link_button_mouse_exited"]
 [connection signal="animation_finished" from="Astronaut/SpriteContainer/Sprite" to="Astronaut" method="_on_sprite_animation_finished"]
