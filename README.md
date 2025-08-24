@@ -33,3 +33,10 @@ Help us make the game better!
 
 Feel free to fix bugs, or even develop a new mini game. You can fork, branch, and send a pull request.
 
+### What's Instatus?
+
+[Instatus](https://instatus.com) helps you:
+1. Monitor your services
+2. Fix incidents with your team
+3. Share your status with customers
+
