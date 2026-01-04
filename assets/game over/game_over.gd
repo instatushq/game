@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var http: HTTPRequest = $HTTPRequest
 @onready var leaderboard: LeaderboardUI = $Camera2D/Leaderboard
-var base_url: String = "https://api.game.instatus.com"
+var base_url: String = "https://api.instatus.com/game"
 @export var leaderboard_count = 50
 var LEADERBOARD_ENTRIES_URL: String = base_url+"/leaderboard?players="+str(leaderboard_count)
 
